@@ -1,11 +1,19 @@
 @aware(['page'])
-<section class="absolute -z-10 w-screen h-screen bg-gray-900 bg-[url('https://images.unsplash.com/photo-1581822261290-991b38693d1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80')] bg-center bg-cover animate-background">
-  <div class="flex items-center justify-center h-full">
-    <div class="max-w-7xl font-sans text-center lowercase font-bold text-7xl tracking-tighter leading-[3.5rem] text-gray-50">
-       construindo o <span class="text-indigo-500">próximo novo </span><br> com Laravel e Typescript
-    </div>
-  </div>
+{{-- Astro --}}
+<section class="w-full bg-[url('http://localhost:8000/img/bg-astro.png')] bg-center bg-no-repeat animate-background custom-height -mt-36 -z-10 ">
 </section>
+
+{{-- Hero Welcome --}}
+<div class="px-4 py-4 md:py-8 -mt-[540px] text-7xl text-center font-bold tracking-tighter leading-[3.5rem] drop-shadow">
+    <div class="max-w-7xl mx-auto">
+        building the
+        <span class="text-transparent bg-clip-text bg-gradient-to-br from-pink-500 to-yellow-500">
+        what's next
+        </span><br />
+        with laravel & typescript
+    </div>
+</div>
+
 
 <style>
   @keyframes moveBackground {
@@ -13,7 +21,7 @@
       background-position-y: 0;
     }
     50% {
-      background-position-y: 20%;
+      background-position-y: 15%;
     }
     100% {
       background-position-y: 0%;

@@ -8,11 +8,10 @@
     <title>{{ $page->title }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     @vite('resources/css/app.css')
-
 </head>
-<body class="bg-gay-900 text-gray-100 w-full h-screen">
-<div class="grid">
-<x-filament-fabricator::page-blocks :blocks="$page->blocks" />
-</div>
+<body class="bg-black text-gray-300 w-full h-screen">
+    <div class="grid">
+    <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
+    </div>
 </body>
 </html>
