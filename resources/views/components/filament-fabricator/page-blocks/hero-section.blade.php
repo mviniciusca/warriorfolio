@@ -1,13 +1,25 @@
 @aware(['page'])
 
+<section class="absolute -z-40 left-0 right-0 -mt-70  justify-center flex">
+<img src="http://localhost:8000/img/bg-blur.svg" class="w-full h-full -mt-56  bg-dark -z-50">
+</section>
+
+{{-- Space BG --}}
+<section class="absolute -z-40 left-0 right-0 mt-20  justify-center flex">
+<img src="http://localhost:8000/img/circles.svg" class="w-full h-full-z-30">
+</section>
+
 {{-- Astronault Backgorund --}}
+
 <section class="w-full bg-[url('http://localhost:8000/img/bg-astro.png')] bg-center bg-no-repeat animate-background custom-height -mt-36 -z-10 ">
 </section>
 
 {{-- Hero Welcome --}}
-<div class="px-4 py-4 md:py-8 -mt-[540px] ">
+
+<div class="px-4 py-4 md:py-8 -mt-[640px] ">
 
 {{-- Big Welcome --}}
+
     <div class="max-w-7xl mx-auto text-7xl text-center font-bold tracking-tighter leading-[3.5rem] drop-shadow">
        building the
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">
@@ -20,17 +32,26 @@
 
         <span id="changing-text">ia</span>
 
-
-
-
     </div>
 {{-- end Big Welcome --}}
 
 {{-- Welcome --}}
-    <div class="pt-16 max-w-7xl mx-auto  text-center">
+    <div class="mt-28 max-w-7xl mx-auto  text-center">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit ipsum perferendis impedit consectetur ex error! Eum sequi sapiente tempore illo incidunt ducimus facilis. Beatae est blanditiis, eius harum perferendis cum.
     </div>
 {{-- end Welcome --}}
+
+<div class="max-w-7xl mx-auto mt-28">
+    <div class="flex gap-16 items-center justify-center">
+
+        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
+        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
+        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
+        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
+        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
+        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
+    </div>
+</div>
 
 {{-- end Hero --}}
 </div>
