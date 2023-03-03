@@ -1,22 +1,39 @@
 <x-content-section
 :title="'About Me'"
+:class="'grid'"
 >
-<div class="flex basis-2/4">
-    <div class="leading-10">
-Sou um desenvolvedor de software apaixonado por aviação, com mais de dois anos de experiência em programação. Possuo habilidades especializadas em linguagens como PHP e Laravel, além de trabalhar com lojas virtuais na plataforma Opencart. Sou formado pela Embraer e pela Faculdade XP como desenvolvedor Python, o que me deu uma ampla base de conhecimento em diferentes áreas da programação. Minha especialização está em desenvolvimento backend, onde tenho forte conhecimento em arquitetura de software, bancos de dados e outras tecnologias fundamentais para construir aplicações robustas e escaláveis. Com minha experiência em várias linguagens de programação e habilidades em desenvolvimento backend, tenho orgulho de trabalhar em projetos desafiadores e de alta qualidade, oferecendo soluções criativas para problemas complexos e entregando resultados confiáveis e de alto desempenho.
+{{-- ajustar o flex do component pai --}}
+<div class="grid grid-cols-2 gap-16 justify-center">
+        <div class="leading-10">
+            Eu sou um desenvolvedor de software apaixonado por aviação, com mais de 2 anos de experiência em programação. Tenho habilidades especializadas em linguagens como PHP, Laravel e Opencart. Sou formado pela Embraer e pela Faculdade XP como desenvolvedor Python, o que me deu uma ampla base de conhecimento em diferentes áreas da programação. Me especializei em desenvolvimento backend, onde tenho forte conhecimento em arquitetura de software, bancos de dados e outras tecnologias importantes para criar aplicativos robustos e escaláveis. Com minha experiência em várias linguagens de programação e habilidades em desenvolvimento fullstack, tenho orgulho de trabalhar em projetos desafiadores e de alta qualidade, oferecendo soluções criativas para problemas complexos e entregando resultados confiáveis e de alto desempenho. Além disso, com minha paixão pela aviação e formação na Embraer, estou sempre em busca de novas oportunidades para aplicar minhas habilidades em tecnologia em projetos relacionados à aviação e outras áreas afins.
+        </div>
 
-Além de minhas habilidades em desenvolvimento backend, também sou um desenvolvedor fullstack com habilidades em ferramentas de front-end, como HTML, CSS, JavaScript, jQuery, React e Vue.js. Com minha paixão pela aviação e formação na Embraer, estou sempre em busca de novas oportunidades para aplicar minhas habilidades em tecnologia em projetos relacionados à aviação e outras áreas afins.
+        <div class="bg-zinc-900 border border-zinc-800 grid justify-center rounded-xl">
 
-    </div>
+        <span class="text-4xl tracking-tight font-extrabold text-zinc-500 pt-8 pb-8">
+            latest
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">
+            courses
+            </span>
+        </span>
 
-    <div>
+            <x-timeline
+            :course="'Embraer Tech Carrers 2022'"
+            :university="'Faculdade XP'"
+            :date="'12/2022'"
+            />
+            <x-timeline
+            :course="'Python'"
+            :university="'USP'"
+            :date="'11/2022'"
+            />
+            <x-timeline
+            :course="'Técnico Informática'"
+            :university="'FAETEC/RJ'"
+            :date="'12/2006'"
+            />
 
-        <x-timeline />
-        <x-timeline />
-        <x-timeline />
-        <x-timeline />
-
-    </div>
+        </div>
 
     </div>
 </x-content-section>
