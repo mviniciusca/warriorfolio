@@ -3,7 +3,7 @@
         </div>
 </div>
 </div>
-<div class=" mt-16">
+<div class=" mt-16" id="footer">
     <div class="max-w-7xl mx-auto  pt-16 grid-cols-3 grid gap-28 justify-start text-zinc-400 mb-10">
 
        <x-ui.logo />

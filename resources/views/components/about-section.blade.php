@@ -6,10 +6,10 @@
 <div class="grid grid-cols-2 gap-28">
 
 
-        <div class="leading-10 p-8">
+        <div class="leading-10 p-4 pt-0">
 
-        <div id="avatar" class="w-full grid justify-center align-center  pt-0 p-8">
-            <div class="bg-zinc-900 border border-zinc-800 rounded-full h-28 w-28"></div>
+        <div id="avatar" class="w-full grid justify-center align-center mb-16">
+            <div class="bg-zinc-900 border border-zinc-800 rounded-full h-32 w-32"></div>
         </div>
 
          <div>
@@ -17,7 +17,7 @@
          </div>
         </div>
 
-        <div class="bg-zinc-900  grid justify-center p-8">
+        <div class="bg-zinc-900 grid justify-center p-8">
 
         <span class="text-4xl tracking-tight font-extrabold text-zinc-500 pb-8">
             timeline:
