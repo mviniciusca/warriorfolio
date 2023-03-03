@@ -21,6 +21,6 @@ class Timeline extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.timeline');
+        return view('components.ui.timeline');
     }
 }

@@ -1,8 +1,11 @@
-<section class="absolute -z-40 left-0 right-0 -mt-70  justify-center flex">
+{{-- BG Blur --}}
+
+{{--  <section class="absolute -z-40 left-0 right-0 -mt-70  justify-center flex">
 <img src="http://localhost:8000/img/bg-blur.svg" class="w-full h-full -mt-56  bg-dark -z-50">
-</section>
+</section>  --}}
 
 {{-- Space BG --}}
+
 <section class="absolute -z-40 left-0 right-0 mt-20  justify-center flex">
 <img src="http://localhost:8000/img/circles.svg" class="w-full h-full-z-30">
 </section>
@@ -14,14 +17,7 @@
 
 {{-- Hero Welcome --}}
 
-
 <div class="px-4 py-4 md:py-8 -mt-[680px] ">
-
-{{-- Welcome --}}
-    <div class="mb-16 max-w-7xl mx-auto text-center text-xl">
-    Fullstack Developer based in Rio de Janeiro, Brazil
-    </div>
-{{-- end Welcome --}}
 
 {{-- Big Welcome --}}
 
@@ -34,42 +30,45 @@
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">
          +
         </span>
-
         <span id="changing-text">ia</span>
 
     </div>
 {{-- end Big Welcome --}}
 
+{{-- Welcome min text --}}
+    <div class="mt-16 max-w-7xl mx-auto text-center text-xl">
+        Software Developer based in Rio de Janeiro, Brazil
+    </div>
+{{-- end Welcome min text --}}
 
-
+{{-- Stacks Logos --}}
 <div class="max-w-7xl mx-auto mt-28">
     <div class="flex gap-16 items-center justify-center">
 
-        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
-            <img src="http://localhost:8000/img/laravel.png" width="100%" height="100%" />
-        </div>
-        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
-            <img src="http://localhost:8000/img/vue.png" width="100%" height="100%" />
-        </div>
-        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
-            <img src="http://localhost:8000/img/tailwind.png"width="100%" height="100%" />
-        </div>
-        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
-            <img src="http://localhost:8000/img/php.png" width="100%" height="100%" />
-        </div>
-        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
-            <img src="http://localhost:8000/img/livewire.png" width="100%" height="100%" />
-        </div>
-        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
-            <img src="http://localhost:8000/img/ai.png" width="100%" height="100%" />
-        </div>
+       <x-ui.stack :filename="'laravel'" />
+       <x-ui.stack :filename="'vue'" />
+       <x-ui.stack :filename="'tailwind'" />
+       <x-ui.stack :filename="'php'" />
+       <x-ui.stack :filename="'livewire'" />
+       <x-ui.stack :filename="'ai'" />
+
     </div>
+</div>
+{{-- End Stack Logos --}}
 
+{{-- Hero Button --}}
+<div class="flex justify-center items-center gap-8 mx-auto mt-28">
+    <button class="bg-orange-500 p-4 text-lg border text-white border-zinc-800 font-extrabold hover:bg-orange-400">
+        let's build the next together
+    </button>
+</div>
+{{--  End Hero Button --}}
+
+{{-- End Hero Section --}}
 </div>
 
-{{-- end Hero --}}
-</div>
 
+{{-- Styles, scripts from this section --}}
 <style>
   @keyframes moveBackground {
     0% {
