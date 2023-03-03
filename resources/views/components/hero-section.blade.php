@@ -14,7 +14,14 @@
 
 {{-- Hero Welcome --}}
 
-<div class="px-4 py-4 md:py-8 -mt-[640px] ">
+
+<div class="px-4 py-4 md:py-8 -mt-[680px] ">
+
+{{-- Welcome --}}
+    <div class="mb-16 max-w-7xl mx-auto text-center text-xl">
+    Fullstack Developer based in Rio de Janeiro, Brazil
+    </div>
+{{-- end Welcome --}}
 
 {{-- Big Welcome --}}
 
@@ -33,12 +40,7 @@
     </div>
 {{-- end Big Welcome --}}
 
-{{-- Welcome --}}
-    <div class="mt-28 max-w-7xl mx-auto text-center text-xl">
-    Hello there!
-    I'm Marcos Coelho, Backend Developer based in Rio de Janeiro
-    </div>
-{{-- end Welcome --}}
+
 
 <div class="max-w-7xl mx-auto mt-28">
     <div class="flex gap-16 items-center justify-center">
