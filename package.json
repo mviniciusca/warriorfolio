@@ -19,6 +19,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "tailwindcss-animatecss": "^3.0.2",
         "tailwindcss-gradients": "^3.0.0"
     }
 }

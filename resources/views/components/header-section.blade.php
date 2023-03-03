@@ -1,7 +1,9 @@
 <div class="mt-14 px-4 py-4 md:py-8">
     <div class=" flex max-w-7xl mx-auto justify-between">
 
-       <div class="website">marcoscoelho.dev</div>
+       <div id="app-logo">
+        <x-ui.logo />
+       </div>
 
        <div class="logo">
             {{--  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-9 h-9">

@@ -1,5 +1,5 @@
 @props([
-    'course'         => '10',
+    'course'        => '',
     'date'          => '',
     'university'    => '',
 ])

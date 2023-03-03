@@ -6,8 +6,8 @@
 
 {{-- Space BG --}}
 
-<section class="absolute -z-40 left-0 right-0 mt-20  justify-center flex">
-<img src="http://localhost:8000/img/circles.svg" class="w-full h-full-z-30">
+<section class="absolute -z-40 left-0 right-0 -mt-30 justify-center flex overflow-hidden">
+  <img src="http://localhost:8000/img/circles.svg" class="overflow-hidden animate-spin" style="animation-duration: 40s;">
 </section>
 
 {{-- Astronault Backgorund --}}
@@ -24,7 +24,7 @@
     <div class="max-w-7xl mx-auto text-7xl text-center font-bold tracking-tighter leading-[3.5rem] drop-shadow">
        building the
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">
-        next
+        what's next
         </span><br />
         with laravel
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">
@@ -36,7 +36,7 @@
 {{-- end Big Welcome --}}
 
 {{-- Welcome min text --}}
-    <div class="mt-16 max-w-7xl mx-auto text-center text-xl">
+    <div class="mt-16 max-w-7xl mx-auto text-center text-xl lowercase">
         Software Developer based in Rio de Janeiro, Brazil
     </div>
 {{-- end Welcome min text --}}
@@ -57,10 +57,11 @@
 {{-- End Stack Logos --}}
 
 {{-- Hero Button --}}
-<div class="flex justify-center items-center gap-8 mx-auto mt-28">
-    <button class="bg-orange-500 p-4 text-lg border text-white border-zinc-800 font-extrabold hover:bg-orange-400">
-        let's build the next together
+<div class="flex justify-center items-center gap-3 mx-auto mt-28">
+    <button class=" p-4 text-lg border  border-orange-800 hover:bg-zinc-900">
+        more about me and my work
     </button>
+    <span> or say a hello in linkedin</span>
 </div>
 {{--  End Hero Button --}}
 
