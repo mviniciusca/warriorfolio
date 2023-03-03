@@ -1,4 +1,3 @@
-@aware(['page'])
 <div class="mt-14 px-4 py-4 md:py-8">
     <div class=" flex max-w-7xl mx-auto justify-between">
 

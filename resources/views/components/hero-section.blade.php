@@ -1,5 +1,3 @@
-@aware(['page'])
-
 <section class="absolute -z-40 left-0 right-0 -mt-70  justify-center flex">
 <img src="http://localhost:8000/img/bg-blur.svg" class="w-full h-full -mt-56  bg-dark -z-50">
 </section>
@@ -36,21 +34,35 @@
 {{-- end Big Welcome --}}
 
 {{-- Welcome --}}
-    <div class="mt-28 max-w-7xl mx-auto  text-center">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit ipsum perferendis impedit consectetur ex error! Eum sequi sapiente tempore illo incidunt ducimus facilis. Beatae est blanditiis, eius harum perferendis cum.
+    <div class="mt-28 max-w-7xl mx-auto text-center text-xl">
+    Hello there!
+    I'm Marcos Coelho, Backend Developer based in Rio de Janeiro
     </div>
 {{-- end Welcome --}}
 
 <div class="max-w-7xl mx-auto mt-28">
     <div class="flex gap-16 items-center justify-center">
 
-        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
-        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
-        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
-        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
-        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
-        <div class="bg-zinc-900 h-9 w-9 p-10 "></div>
+        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
+            <img src="http://localhost:8000/img/laravel.png" width="100%" height="100%" />
+        </div>
+        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
+            <img src="http://localhost:8000/img/vue.png" width="100%" height="100%" />
+        </div>
+        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
+            <img src="http://localhost:8000/img/tailwind.png"width="100%" height="100%" />
+        </div>
+        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
+            <img src="http://localhost:8000/img/php.png" width="100%" height="100%" />
+        </div>
+        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
+            <img src="http://localhost:8000/img/livewire.png" width="100%" height="100%" />
+        </div>
+        <div class=" h-20 w-20 p-5 flex items-center justify-center rounded-full border-2 border-dashed border-zinc-500">
+            <img src="http://localhost:8000/img/ai.png" width="100%" height="100%" />
+        </div>
     </div>
+
 </div>
 
 {{-- end Hero --}}
@@ -77,7 +89,8 @@
   }
 </style>
 
- <script>
+<script>
+
 let words = ["livewire", "vuejs", "tailwind", "ia"];
 let index = 0;
 let textElement = document.getElementById("changing-text");

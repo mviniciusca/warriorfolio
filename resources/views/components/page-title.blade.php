@@ -1,4 +1,4 @@
 @props([
     'title' => '',
 ])
-<div class="text-center text-5xl font-bold text-zinc-300 lowercase tracking-tighter pt-20 pb-20 mb-16 w-full">{{ $title }}</div>
+<div class="text-5xl font-bold text-zinc-400 text-center lowercase tracking-tighter pt-40 pb-40  w-full">{{ $title }}</div>
