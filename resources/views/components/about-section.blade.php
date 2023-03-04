@@ -1,5 +1,5 @@
 <x-content-section
-:title="'About Me'"
+:title="'about me'"
 :class="'grid'"
 >
 {{-- ajustar o flex do component pai --}}
@@ -20,9 +20,9 @@
         <div class="bg-zinc-900 grid justify-center p-8">
 
         <span class="text-4xl tracking-tight font-extrabold text-zinc-500 pb-8">
-            timeline:
+            recent
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">
-           certificates
+           certifications
             </span>
         </span>
 

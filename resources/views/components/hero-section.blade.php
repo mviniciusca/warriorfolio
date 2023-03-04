@@ -68,7 +68,6 @@
 {{-- End Hero Section --}}
 </div>
 
-
 {{-- Styles, scripts from this section --}}
 <style>
   @keyframes moveBackground {
