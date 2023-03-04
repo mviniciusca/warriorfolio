@@ -12,6 +12,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 
 class ProjectResource extends Resource
 {
@@ -29,9 +30,8 @@ class ProjectResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('category_id')
                     ->required(),
-                Forms\Components\FileUpload::make('cover')
-                    ->required()
-                    ->columnSpan('full'),
+                CuratorPicker::make('cover')
+                    ->required(),
                 Forms\Components\MarkdownEditor::make('about')
                     ->required()
                     ->columnSpan('full'),
@@ -44,19 +44,15 @@ class ProjectResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('category_id'),
-                Tables\Columns\TextColumn::make('cover'),
                 Tables\Columns\TextColumn::make('about'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
-            ])
-            ->filters([
-                //
+                Tables\Columns\TextColumn::make('cover'),
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+            ])
+            ->filters([
+                //
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
