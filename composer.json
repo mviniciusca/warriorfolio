@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.1",
         "filament/filament": "^2.17",
+        "filament/forms": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.3",
         "laravel/breeze": "^1.19",
@@ -17,6 +18,7 @@
         "z3d0x/filament-fabricator": "^1.1"
     },
     "require-dev": {
+        "doctrine/dbal": "^3.6",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",

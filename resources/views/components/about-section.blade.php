@@ -30,21 +30,13 @@
             </span>
         </span>
 
+        @foreach ( $courses as $course)
             <x-ui.timeline
-            :course="'Embraer Tech Carrers 2022'"
-            :university="'Faculdade XP'"
-            :date="'12/2022'"
+            :course="$course->course"
+            :university="$course->university"
+            :conclusion_date="$course->conclusion_date"
             />
-            <x-ui.timeline
-            :course="'Python'"
-            :university="'USP'"
-            :date="'11/2022'"
-            />
-            <x-ui.timeline
-            :course="'Técnico Informática'"
-            :university="'FAETEC/RJ'"
-            :date="'12/2006'"
-            />
+        @endforeach
 
         </div>
 

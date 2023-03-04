@@ -1,13 +1,12 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\ui;
 
-use App\Models\Timeline;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class AboutSection extends Component
+class stack extends Component
 {
     /**
      * Create a new component instance.
@@ -22,8 +21,6 @@ class AboutSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.about-section', [
-            'courses' => Timeline::all()->sortByDesc('id')
-        ]);
+        return view('components.ui.stack');
     }
 }
