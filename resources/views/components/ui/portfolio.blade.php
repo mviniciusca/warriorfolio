@@ -1,30 +1,31 @@
   @props([
-    'title'         => '',
-    'cover'         => '',
-    'link'          => '',
-    'tag_color'     => '',
-    'tag_icon_name' => '',
-    'tag_name'      => '',
-  ])
-  <div class="bg-zinc-900 p-4">
+    'title' => '',
+    'cover' => '',
+    'link' => '',
+    'tagColor' => 'red',
+    'tagIconName' => '',
+    'tagName' => '',
+])
+  <div>
+      <div class="bg-zinc-900 p-4">
 
-   <div class="-ml-4 absolute mt-8 z-10 ">
+          <div class="absolute z-10 -ml-4 mt-8">
 
-            <div class="text-xl text-white pt-1 border-t-4 pl-4 mb-2 border-{{$tag_color}}-400 flex items-center gap-2">
-                <ion-icon name="logo-{{ $tag_icon_name }}"></ion-icon>
-                <span>{{ $tag_name }}</span>
-            </div>
+              <div
+                  class="border-{{ $tagColor }}-400 mb-2 flex items-center gap-2 border-t-4 pt-1 pl-4 text-xl text-white">
+                  <ion-icon name="logo-{{ $tagIconName }}"></ion-icon>
+                  <span>{{ $tagName }}</span>
+              </div>
 
-    </div>
+          </div>
 
-    <div class="bg-zinc-800">
-    <img class="opacity-50 filter grayscale hover:filter-none hover:opacity-90 transition-all ease-in-out duration-200" src="http://localhost:8000/storage/fwzoX4R8iehNuVuYjlxUm9mOPGkCSd-metaSU1HXzIwMjIwODA2XzIyMzc1NC14ZC5qcGc=-.jpg">
-    </div>
-    <div>
+          <div class="bg-zinc-800">
+              <img class="opacity-50 grayscale filter transition-all duration-200 ease-in-out hover:opacity-90 hover:filter-none"
+                  src="http://localhost:8000/storage/fwzoX4R8iehNuVuYjlxUm9mOPGkCSd-metaSU1HXzIwMjIwODA2XzIyMzc1NC14ZC5qcGc=-.jpg">
+          </div>
+          <div>
 
+          </div>
+      </div>
 
-
-
-
-    </div>
   </div>
