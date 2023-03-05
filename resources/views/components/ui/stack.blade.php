@@ -1,8 +1,8 @@
  @props([
-    'filename' => ''
- ])
+    'filename' => '',
+])
 
-
- <div class=" h-20 w-20 p-4 flex items-center justify-center">
-            <img src="http://localhost:8000/img/{{ $filename }}.png" width="100%" height="100%" />
-</div>
+{{-- Stack Icons Hero Section --}}
+ <div class="flex h-20 w-20 items-center justify-center p-4">
+     <img src="{{ url('/img/'.$filename.'.png') }}" id="{{ $filename }}-icon" alt="{{ $filename }} icon" width="100%" height="100%">
+ </div>

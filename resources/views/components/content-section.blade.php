@@ -3,7 +3,7 @@
     'class' => '',
     'icon' => '',
 ])
-<div class="text-5xl font-bold text-zinc-500 lowercase tracking-tighter pt-32 pb-32 w-full flex gap-4 items-center justify-center">
+<div class="text-5xl font-bold text-zinc-500 lowercase tracking-tighter pt-16 pb-32 w-full flex gap-4 items-center justify-center">
 <span class=""><ion-icon name="{{ $icon }}"></ion-icon></span>
 <span class="">{{ $title }}</span>
 </div>

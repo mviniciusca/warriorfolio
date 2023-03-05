@@ -4,39 +4,36 @@
     <div class="grid grid-cols-4 justify-center items-center gap-3">
 
         <x-ui.portfolio
-        :tagColor="'blue'"
-        :tagIconName="'vercel'"
-        :tagName="'app'"
-        :cover="''"
-        :title="''"
+        :cover="'cc0c277a-3c19-4d3b-9edc-7b3681a2523b.jpg'"
+        :title="'vercel app'"
         />
         <x-ui.portfolio
-        :tagColor="'blue'"
-        :tagIconName="'vercel'"
-        :tagName="'app'"
-        :cover="''"
-        :title="''"
+        :cover="'cc0c277a-3c19-4d3b-9edc-7b3681a2523b.jpg'"
+        :title="'vercel app'"
         />
         <x-ui.portfolio
-        :tagColor="'lime'"
-        :tagIconName="'vercel'"
-        :tagName="'app'"
-        :cover="''"
-        :title="''"
+        :cover="'cc0c277a-3c19-4d3b-9edc-7b3681a2523b.jpg'"
+        :title="'vercel app'"
         />
         <x-ui.portfolio
-        :tagColor="'yellow'"
-        :tagIconName="'vercel'"
-        :tagName="'app'"
-        :cover="''"
-        :title="''"
+        :cover="'cc0c277a-3c19-4d3b-9edc-7b3681a2523b.jpg'"
+        :title="'vercel app'"
         />
         <x-ui.portfolio
-        :tagColor="'red'"
-        :tagIconName="'vercel'"
-        :tagName="'app'"
-        :cover="''"
-        :title="''"
+        :cover="'cc0c277a-3c19-4d3b-9edc-7b3681a2523b.jpg'"
+        :title="'vercel app'"
+        />
+        <x-ui.portfolio
+        :cover="'cc0c277a-3c19-4d3b-9edc-7b3681a2523b.jpg'"
+        :title="'vercel app'"
+        />
+        <x-ui.portfolio
+        :cover="'cc0c277a-3c19-4d3b-9edc-7b3681a2523b.jpg'"
+        :title="'vercel app'"
+        />
+        <x-ui.portfolio
+        :cover="'cc0c277a-3c19-4d3b-9edc-7b3681a2523b.jpg'"
+        :title="'vercel app'"
         />
 
     </div>

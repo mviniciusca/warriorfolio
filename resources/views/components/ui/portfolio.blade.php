@@ -1,30 +1,36 @@
-  @props([
-    'title' => '',
-    'cover' => '',
-    'link' => '',
-    'tagColor' => 'red',
-    'tagIconName' => '',
-    'tagName' => '',
+@props([
+    "title" => "",
+    "cover" => "",
+    "link" => ""
 ])
+
   <div>
       <div class="bg-zinc-900 p-4">
 
-          <div class="absolute z-10 -ml-4 mt-8">
+          <div class="absolute z-10 -ml-4 mt-8 text-sm font-semibold text-white">
 
-              <div
-                  class="border-{{ $tagColor }}-400 mb-2 flex items-center gap-2 border-t-4 pt-1 pl-4 text-xl text-white">
-                  <ion-icon name="logo-{{ $tagIconName }}"></ion-icon>
-                  <span>{{ $tagName }}</span>
+              <div class="mb-2 flex items-center gap-1 bg-red-400 p-1">
+                  <ion-icon name="logo-laravel"></ion-icon>
+                  <span>laravel</span>
+              </div>
+
+              <div class="mb-2 flex items-center gap-1 bg-orange-400 p-1">
+                  <ion-icon name="logo-vercel"></ion-icon>
+                  <span>vercel</span>
+              </div>
+
+              <div class="mb-2 flex items-center gap-1 bg-indigo-400 p-1">
+                  <ion-icon name="logo-github"></ion-icon>
+                  <span>github</span>
               </div>
 
           </div>
 
           <div class="bg-zinc-800">
-              <img class="opacity-50 grayscale filter transition-all duration-200 ease-in-out hover:opacity-90 hover:filter-none"
-                  src="http://localhost:8000/storage/fwzoX4R8iehNuVuYjlxUm9mOPGkCSd-metaSU1HXzIwMjIwODA2XzIyMzc1NC14ZC5qcGc=-.jpg">
+            <img class="opacity-50 grayscale filter transition-all duration-200 ease-in-out hover:opacity-90 hover:filter-none"
+            src="{{ asset('storage/media/' . $cover) }}" />
           </div>
           <div>
-
           </div>
       </div>
 
