@@ -67,4 +67,3 @@
     </div>
 </x-content-section>
 
-{

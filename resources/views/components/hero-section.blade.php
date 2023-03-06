@@ -1,7 +1,7 @@
 {{-- BG Blur --}}
 
-{{--  <section class="absolute -z-40 left-0 right-0 -mt-70  justify-center flex">
-<img src="http://localhost:8000/img/bg-blur.svg" class="w-full h-full -mt-56  bg-dark -z-50">
+{{--  <section class="absolute -z-50 left-0 right-0 mt-0 justify-center flex overflow-hidden">
+  <img src="http://localhost:8000/img/lights.png" class="overflow-hidden " style="animation-duration: 40s;">
 </section>  --}}
 
 {{-- Space BG --}}
