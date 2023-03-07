@@ -1,14 +1,19 @@
 <x-content-section
-:title="'from notion to vercel'"
+:title="'from dribbble to vercel'"
+:class="'grid'"
 >
 
-    <div class="grid grid-cols-4 justify-center items-center gap-3">
+    <div class="grid grid-cols-4 justify-center items-center gap-4">
 
-        <x-ui.portfolio
-        :cover="'cc0c277a-3c19-4d3b-9edc-7b3681a2523b.jpg'"
-        :title="'vercel app'"
-        />
+    @foreach ($projects as $project )
+            <x-ui.portfolio
+            :cover="$project->cover"
+            :title="$project->title"
+            :tag="$project->tag"
+            :link="$project->link"
+            :about="$project->about"
+            />
+    @endforeach
 
-    </div>
-
+</div>
 </x-content-section>

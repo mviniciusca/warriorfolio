@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->foreignId('category_id');
             $table->string('cover');
-            $table->text('about');
+            $table->string('tag')->nullable();
+            $table->string('link')->nullable();
+            $table->text('about')->nullable();
             $table->timestamps();
         });
     }

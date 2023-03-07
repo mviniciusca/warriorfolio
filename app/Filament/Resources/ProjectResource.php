@@ -28,12 +28,18 @@ class ProjectResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('slug')
                     ->required(),
-                Forms\Components\TextInput::make('category_id')
-                    ->required(),
+                Forms\Components\Select::make('tag')
+                    ->options([
+                        'vercel'    => 'Vercel',
+                        'github'    => 'Github',
+                        'dribbble'  => 'Dribbble',
+                        'laravel'   => 'Laravel',
+                        'web'       => 'Web',
+                    ]),
+                Forms\Components\TextInput::make('link'),
                 CuratorPicker::make('cover')
                     ->required(),
                 Forms\Components\MarkdownEditor::make('about')
-                    ->required()
                     ->columnSpan('full'),
             ]);
     }
@@ -43,10 +49,7 @@ class ProjectResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('about'),
-                Tables\Columns\TextColumn::make('cover'),
-
+                Tables\Columns\TextColumn::make('tag'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

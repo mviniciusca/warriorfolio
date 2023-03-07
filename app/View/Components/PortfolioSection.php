@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Project;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +22,8 @@ class PortfolioSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.portfolio-section');
+        return view('components.portfolio-section', [
+            'projects' => Project::all()->sortByDesc('id')->take(12),
+        ]);
     }
 }
