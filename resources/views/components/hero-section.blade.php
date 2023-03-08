@@ -1,26 +1,19 @@
-{{-- BG Blur --}}
-
-{{--  <section class="absolute -z-50 left-0 right-0 mt-0 justify-center flex overflow-hidden">
-  <img src="http://localhost:8000/img/lights.png" class="overflow-hidden " style="animation-duration: 40s;">
-</section>  --}}
-
 {{-- Space BG --}}
-
-<section class="absolute -z-40 left-0 right-0 -mt-30 justify-center flex overflow-hidden">
-  <img src="http://localhost:8000/img/circles.svg" class="overflow-hidden animate-spin" style="animation-duration: 40s;">
+<section class="absolute -z-40 left-0 right-0 justify-center h-[900px] bg-gradient-to-t w-full grid overflow-hidden from-black to-zinc-900">
+<div class="maxw-7xl  h-[600px] justify-center items-center">
+    <img src="{{ asset('/img/svg/circles-air.svg') }}" class="animate-spin  opacity-50 filter grayscale" style="animation-duration: 30s;" />
+</div>
+ <div class="bg-[url('{{ asset("/img/bg/blur-black.png") }}')] bg-repeat-x bg-center absolute w-full h-[700px] z-20 mt-96"></div>
 </section>
 
 {{-- Astronault Backgorund --}}
-
-<section class="w-full bg-[url('http://localhost:8000/img/bg-astro.png')] bg-center bg-no-repeat animate-background custom-height -mt-36 -z-10 ">
+<section class="w-full bg-center bg-no-repeat animate-background custom-height -mt-16 -z-10 astro-bg">
 </section>
 
 {{-- Hero Welcome --}}
-
-<div class="px-4 py-4 md:py-8 -mt-[580px] ">
+<div class="px-4 py-4 md:py-8 -mt-[580px]">
 
 {{-- Big Welcome --}}
-
     <div class="max-w-7xl mx-auto text-7xl text-center font-bold tracking-tighter leading-[3.5rem] drop-shadow">
        building the
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">
@@ -33,13 +26,13 @@
         <span id="changing-text">ia</span>
 
     </div>
-{{-- end Big Welcome --}}
+{{-- End Big Welcome --}}
 
 {{-- Welcome min text --}}
     <div class="mt-16 max-w-7xl mx-auto text-center text-xl lowercase">
         Software Developer based in Rio de Janeiro, Brazil
     </div>
-{{-- end Welcome min text --}}
+{{-- End Welcome min text --}}
 
 {{-- Stacks Logos --}}
 <div class="max-w-7xl mx-auto mt-28">
@@ -87,7 +80,7 @@
       background-position-y: 0;
     }
     50% {
-      background-position-y: 15%;
+      background-position-y: 10%;
     }
     100% {
       background-position-y: 0%;
@@ -99,6 +92,16 @@
     animation-duration: 5s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
+  }
+
+  .astro-bg, .circles-bg {
+    background-image:url("{{ asset('/img/bg-astro.png') }}");
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .circles-bg {
+   background-image:url("{{ asset('/img/svg/circles-air.svg') }}");
+   background-size:contain;
   }
 </style>
 
