@@ -3,7 +3,7 @@
 <div class="maxw-7xl  h-[600px] justify-center items-center">
     <img src="{{ asset('/img/svg/circles-air.svg') }}" class="animate-spin opacity-50 filter grayscale" style="animation-duration: 30s;" />
 </div>
- <div class="bg-[url('{{ asset("/img/bg/blur-black.png") }}')] bg-repeat-x bg-center absolute w-full h-[700px] z-20 mt-96"></div>
+ <div class="blur-bg bg-repeat-x bg-center absolute w-full h-[700px] z-20 mt-96"></div>
 </section>
 
 {{-- Astronault Backgorund --}}
@@ -102,6 +102,11 @@
   .circles-bg {
    background-image:url("{{ asset('/img/svg/circles-air.svg') }}");
    background-size:contain;
+  }
+    .blur-bg {
+   background-image:url("{{ asset('/img/bg/blur-black.png') }}");
+   background-size:contain;
+   background-repeat: repeat-x;
   }
 </style>
 

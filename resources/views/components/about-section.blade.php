@@ -13,19 +13,24 @@
                     <div id="picture-section">
 
                         <div id="main-picture" class="justify-center  flex">
-                            <div class="rounded-full w-52 h-52 bg-[url('http://localhost:8000/storage/media/cc0c277a-3c19-4d3b-9edc-7b3681a2523b.jpg')] filter grayscale bg-no-repeat bg-cover bg-center"></div>
+                            <div>
+                            @foreach ($about as $info)
+                                <x-curator-glider :media="$info->profile_picture" class="rounded-full filter grayscale" />
+                            @endforeach
+
+                            </div>
                         </div>
 
                     </div>
 
                 {{-- Skill Tags --}}
-                 <div class="mt-8 flex justify-center items-center flex-wrap gap-2 p-4">
+                 {{--  <div class="mt-8 flex justify-center items-center flex-wrap gap-2 p-4">
                     <div class="text-white text-sm font-semibold border border-zinc-800 bg-zinc-900 p-1 w-1/10">php</div>
                     <div class="text-white text-sm font-semibold border border-zinc-800 bg-zinc-900 p-1 w-1/10">docker</div>
                     <div class="text-white text-sm font-semibold border border-zinc-800 bg-zinc-900 p-1 w-1/10">laravel</div>
                     <div class="text-white text-sm font-semibold border border-zinc-800 bg-zinc-900 p-1 w-1/10">devops</div>
                     <div class="text-white text-sm font-semibold border border-zinc-800 bg-zinc-900 p-1 w-1/10">python</div>
-                </div>
+                </div>  --}}
 
             </div>
 
@@ -35,17 +40,9 @@
 
             {{-- About me info --}}
             <div class="leading-loose text-zinc-300">
-                Eu sou um desenvolvedor de software apaixonado por aviação, com mais de 2 anos de experiência em
-                programação. Tenho habilidades especializadas em linguagens como PHP, Laravel e Opencart. Sou formado
-                pela Embraer e pela Faculdade XP como desenvolvedor Python, o que me deu uma ampla base de conhecimento
-                em diferentes áreas da programação. Me especializei em desenvolvimento backend, onde tenho forte
-                conhecimento em arquitetura de software, bancos de dados e outras tecnologias importantes para criar
-                aplicativos robustos e escaláveis. Com minha experiência em várias linguagens de programação e
-                habilidades em desenvolvimento fullstack, tenho orgulho de trabalhar em projetos desafiadores e de alta
-                qualidade, oferecendo soluções criativas para problemas complexos e entregando resultados confiáveis e
-                de alto desempenho. Além disso, com minha paixão pela aviação e formação na Embraer, estou sempre em
-                busca de novas oportunidades para aplicar minhas habilidades em tecnologia em projetos relacionados à
-                aviação e outras áreas afins.
+              @foreach ($about as $info )
+                {{ $info->about_me }}
+              @endforeach
             </div>
 
         </div>
