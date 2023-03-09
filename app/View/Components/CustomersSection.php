@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Customer;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +22,8 @@ class CustomersSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.customers-section');
+        return view('components.customers-section',[
+            'customers' => Customer::all()->sortByDesc('id')->take(8),
+        ]);
     }
 }

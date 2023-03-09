@@ -2,10 +2,11 @@
 :title="'trusted by'"
 >
     <div class="grid grid-cols-4 gap-8 justify-center items-center">
-        <x-ui.brands />
-        <x-ui.brands />
-        <x-ui.brands />
-        <x-ui.brands />
-    </div>
 
+    @foreach ($customers as $customer)
+        <x-ui.brands
+            :cover="$customer->customer_logo"
+        />
+    @endforeach
+ </div>
 </x-content-section>
