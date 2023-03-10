@@ -12,7 +12,8 @@
         </div>
 
        <div class="menu">
-         linkedin / github
+       <a class="hover:text-zinc-400 transition-all duration-200" href="#">github</a> /
+       <a class="hover:text-zinc-400 transition-all duration-200" href="#">linkedin</a>
        </div>
 
     </div>

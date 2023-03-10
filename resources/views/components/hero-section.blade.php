@@ -1,5 +1,5 @@
 {{-- Space BG --}}
-<section class="absolute -z-40 left-0 right-0 justify-center h-[900px] bg-gradient-to-t w-full grid overflow-hidden from-black to-zinc-900">
+<section class="absolute -z-40 left-0 right-0 justify-center h-[900px] bg-gradient-to-t w-full grid overflow-hidden from-black to-black">
 <div class="maxw-7xl  h-[600px] justify-center items-center">
     <img src="{{ asset('/img/svg/circles-air.svg') }}" class="animate-spin opacity-50 filter grayscale" style="animation-duration: 30s;" />
 </div>

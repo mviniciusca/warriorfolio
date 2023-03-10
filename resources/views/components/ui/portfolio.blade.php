@@ -8,7 +8,7 @@
 
 {{-- Portfolio Box --}}
 
-<div class="bg-gradient-to-t from-zinc-900 to-black p-4 rounded-xl
+<div class="bg-gradient-to-t from-zinc-900 to-black p-4
 hover:-translate-y-3  transition-all duration-300"
 >
 
@@ -94,12 +94,12 @@ hover:-translate-y-3  transition-all duration-300"
 {{--  End Portfolio Tags }}
 {{-- Project Cover --}}
             <div id="project-cover">
-                <img class="opacity-30 grayscale filter transition-all duration-200 ease-in-out hover:opacity-90 hover:filter-none rounded-xl"
+                <img class="opacity-30 grayscale filter transition-all duration-200 ease-in-out hover:opacity-90 hover:filter-none "
                 <x-curator-glider :media="$cover"/>
             </div>
 {{-- Project Title --}}
-            <div class="text-zinc-400 lowercase pt-4 pb-2 font-extrabold">
-                {{ $title }}
+            <div class="text-zinc-500 lowercase pt-4 pb-2 font-extrabold">
+                {{--  {{ $title }}  --}}
             </div>
       </div>
 {{-- End Portfolio Box --}}
