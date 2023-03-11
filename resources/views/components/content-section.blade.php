@@ -12,7 +12,7 @@
     <div class="px-4 py-4 {{ $childrenClass }}">
 
             @if($title !== '')
-                <div class="text-5xl justify-center flex font-bold text-zinc-500 lowercase tracking-tighter pt-24 pb-32" id="title">{{ $title }}</div>
+                <div class="text-4xl justify-center flex font-bold text-zinc-500 lowercase tracking-tighter pt-24 pb-32" id="title">{{ $title }}</div>
             @endif
 
             @if ($subTitle !== '')

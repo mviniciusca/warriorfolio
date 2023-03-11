@@ -6,7 +6,7 @@
     <div>
        <x-ui.logo />
     </div>
-    <div class="flex gap-2 justify-end">
+    <div class="flex gap-2 justify-end text-zinc-500">
         @isset($social_links['github_link'])
                         <a href="{{ $social_links['github_link'] }}">
                             <span class="text-2xl hover:opacity-80 hover:cursor-pointer"><ion-icon name="logo-github"></ion-icon></span>
