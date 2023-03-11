@@ -1,6 +1,6 @@
 {{-- PlanetBG --}}
 
-<div class="planet-bg absolute -z-50 w-full h-[1080px] mt-32">
+<div class="planet-bg absolute -z-50 w-full h-[1080px] -mt-16">
 
 <div class="blur-bg bg-repeat-x bg-center absolute w-full h-[700px] -z-40 -mt-[-600px]"></div>
 </div>
