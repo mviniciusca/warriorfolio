@@ -1,7 +1,7 @@
 <x-content-section
 :title="'from dribbble to vercel'"
 :class="'grid'"
-:subTitle="'Meu portfólio inclui uma variedade de projetos que demonstro habilidades em desenvolvimento web e design. Cada projeto foi criado com atenção aos detalhes e às necessidades do cliente. De websites responsivos a aplicativos interativos, meu portfólio mostra minha experiência em criar soluções digitais para diferentes desafios.'"
+:subTitle="'Do papel ao código. Um overwview dos meus trabalhos!'"
 >
 
 <div class="grid grid-cols-4 justify-center items-center gap-8">
