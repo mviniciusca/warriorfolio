@@ -9,10 +9,8 @@
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio voluptates, commodi dolores recusandae facere eligendi perspiciatis nihil ea eius libero praesentium atque magni quam nisi mollitia ipsam quidem fugiat minus?
     </div>
 
-{{-- Livewire Form --}}
-    <div>
-        <livewire:mail />
-    </div>
+    {{-- Livewire Form --}}
+    <livewire:mail/>
 
 </div>
 

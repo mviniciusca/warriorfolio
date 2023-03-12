@@ -16,19 +16,26 @@ class Mail extends Component
         'mail.message' => 'required',
     ];
 
-    public function render()
-    {
-        return view('livewire.mail');
-    }
-
     public function mount(ModelsMail $mail)
     {
         $this->mail = $mail;
     }
 
-    public function save()
+    public function render()
     {
+        return view('livewire.mail');
+    }
+
+    public function send()
+    {
+        $this->validate();
+
         $this->mail->save();
-        $this->emit('saved');
+
+        $this->mail = new ModelsMail();
+
+        $this->emit('mailSent');
+
+        session()->flash('message', 'Mail sent successfully.');
     }
 }

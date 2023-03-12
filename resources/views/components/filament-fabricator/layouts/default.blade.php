@@ -1,50 +1,38 @@
-@props(['page'])
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $page->title }}</title>
+    <title>codhous</title>
+    {{-- Google fonts --}}
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{-- Vite --}}
     @vite('resources/css/app.css')
+    <!-- Alpine -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    {{-- Livewire --}}
+    <livewire:styles />
 
 </head>
 
-
 <body class="bg-black text-zinc-300 w-full h-screen">
+
     <div class="grid">
-    <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
+
+        <x-header-section />
+        <x-hero-section />
+        <x-about-section />
+        <x-portfolio-section />
+        <x-customers-section />
+        <x-contact-section />
+        <x-footer />
+
     </div>
 
+<livewire:scripts />
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<script>
-$(document).ready(function(){
-  // Adiciona efeito de rolagem suave a todos os links internos
-  $("a[href^='#']").on('click', function(event) {
-
-    // Certifica-se de que this.hash tenha um valor antes de substituir o comportamento padrão
-    if (this.hash !== "") {
-      // Impede o comportamento padrão do link
-      event.preventDefault();
-
-      // Armazena o hash
-      var hash = this.hash;
-
-      // Usa o método animate do jQuery para adicionar o efeito de rolagem suave
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 1500, function(){
-
-        // Adiciona o hash (#) na URL quando concluído a rolagem (comportamento padrão do navegador)
-        window.location.hash = hash;
-      });
-    }
-  });
-});
-</script>
-
 </body>
 </html>
