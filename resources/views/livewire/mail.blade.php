@@ -1,4 +1,4 @@
-<div class="grid grid-cols-2 gap-3 items-start">
+<div class="grid md:grid-cols-2 md:gap-3 gap-2 items-start">
 
  {{-- Contact Form Component --}}
    <div class="grid gap-2">
@@ -23,7 +23,7 @@
 
     </div>
 
-    <div class="grid gap-2 h-full">
+    <div class="grid gap-2 md:h-full">
 
         <textarea rows="3" wire:model='mail.message' placeholder="message"
         class="bg-zinc-900 p-3 text-zinc-500 border h-full border-zinc-800 focus:bg-zinc-700 focus:text-zinc-300 outline-none active:bg-zinc-900"></textarea>

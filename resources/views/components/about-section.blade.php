@@ -1,18 +1,18 @@
 <x-content-section
 :title="'about me'"
-:class="'flex'"
+:class="'lg:flex'"
+:fatherClass="'grid'"
 >
 
-    <div id="about-content-layout" class="flex justify-center gap-24">
+    <div class="grid lg:flex lg:gap-24">
 
-        <div class="flex w-1/4 justify-center p-4 ">
+        <div class="lg:flex lg:w-1/4 grid justify-center p-4">
 
             <div>
 
                  {{-- Picture Section --}}
-                    <div id="picture-section">
-
-                        <div id="main-picture" class="justify-center  flex">
+                    <div id="picture-section" class=" w-1/2 justify-center lg:w-full grid">
+                        <div id="main-picture" class="lg:justify-center lg:flex  grid items-center">
                             <div>
                             @foreach ($about as $info)
                                 <x-curator-glider :media="$info->profile_picture" class="rounded-full filter grayscale" />
@@ -23,30 +23,21 @@
 
                     </div>
 
-                {{-- Skill Tags --}}
-                 {{--  <div class="mt-8 flex justify-center items-center flex-wrap gap-2 p-4">
-                    <div class="text-white text-sm font-semibold border border-zinc-800 bg-zinc-900 p-1 w-1/10">php</div>
-                    <div class="text-white text-sm font-semibold border border-zinc-800 bg-zinc-900 p-1 w-1/10">docker</div>
-                    <div class="text-white text-sm font-semibold border border-zinc-800 bg-zinc-900 p-1 w-1/10">laravel</div>
-                    <div class="text-white text-sm font-semibold border border-zinc-800 bg-zinc-900 p-1 w-1/10">devops</div>
-                    <div class="text-white text-sm font-semibold border border-zinc-800 bg-zinc-900 p-1 w-1/10">python</div>
-                </div>  --}}
-
             </div>
 
         </div>
 
-        <div id="about" class="w-1/3 p-4">
+        <div id="about" class="lg:w-1/3 p-4">
 
             {{-- About me info --}}
-            <div class="leading-loose text-zinc-300">
+            <div class="lg:leading-loose text-zinc-300">
               @foreach ($about as $info )
                 {{ $info->about_me }}
               @endforeach
             </div>
 
         </div>
-        <div id="timeline" class="w-1/4">
+        <div id="timeline" class="lg:w-1/4">
             <div class="grid justify-center p-4">
 
                 {{-- Certifications --}}

@@ -1,10 +1,11 @@
 <x-content-section
 :title="'from dribbble to vercel'"
-:class="'grid'"
+:class="''"
+:fatherClass="'text-center'"
 :subTitle="'Do papel ao código. Um overwview dos meus trabalhos!'"
 >
 
-<div class="grid grid-cols-4 justify-center items-center gap-8">
+<div class="grid md:grid-cols-4 justify-center items-center md:gap-8 grid-cols-1 gap-4">
 
     @foreach ($projects as $project )
             <x-ui.portfolio
