@@ -8,9 +8,7 @@
 
 {{-- Portfolio Box --}}
 
-<div class="bg-gradient-to-t from-zinc-900 to-black p-4
-hover:-translate-y-3  transition-all duration-300"
->
+<div class="bg-gradient-to-t from-zinc-900 to-black p-4 hover:-translate-y-3  transition-all duration-300">
 
 {{--  Portfolio Tags --}}
           <div class="absolute z-10 -ml-4 mt-8 text-sm font-semibold text-white">

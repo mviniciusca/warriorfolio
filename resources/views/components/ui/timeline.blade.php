@@ -1,6 +1,6 @@
 @props([
     'course' => '',
-    'conclusion_date' => '',
+    'conclusion_date' => '0000-00-00',
     'university' => '',
 ])
 
@@ -13,7 +13,7 @@
             </p>
         </div>
         <div class="mt-2 ml-4 mb-6">
-            <h4 class="mb-1.5 text-xl font-semibold text-zinc-400">{{ $course }}</h4>
+            <h4 class="mb-1.5 lg:text-xl font-semibold text-zinc-400">{{ $course }}</h4>
             <p class="mb-3 text-zinc-400">
                 {{ $university }}
             </p>

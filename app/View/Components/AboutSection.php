@@ -25,7 +25,7 @@ class AboutSection extends Component
     {
         return view('components.about-section', [
             'courses' => Timeline::all()->sortByDesc('id')->take(5),
-            'about' => Profile::all()->sortByDesc('id')->take(1),
+            'profile' => Profile::first(),
         ]);
     }
 }

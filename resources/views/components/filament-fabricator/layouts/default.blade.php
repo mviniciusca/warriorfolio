@@ -17,12 +17,12 @@
 
 </head>
 
-<body class="bg-black text-zinc-300 w-full h-screen">
+<body class="bg-black text-zinc-300 w-full h-screen sm:text-sm md:text-md lg:text-lg text-sm">
 
     <div class="grid">
 
         <x-header-section />
-        <x-hero-section />
+        {{--  <x-hero-section />  --}}
         <x-about-section />
         <x-portfolio-section />
         <x-customers-section />

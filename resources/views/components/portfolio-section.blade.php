@@ -5,7 +5,7 @@
 :subTitle="'Do papel ao código. Um overwview dos meus trabalhos!'"
 >
 
-<div class="grid md:grid-cols-4 justify-center items-center md:gap-8 grid-cols-1 gap-4">
+<div class="grid grid-cols-2 gap-4 justify-center items-center md:grid-cols-3 lg:grid-cols-4">
 
     @foreach ($projects as $project )
             <x-ui.portfolio
