@@ -1,6 +1,6 @@
 <x-content-section
-:title="'get in touch'"
-:fatherClass="''"
+    :title='$contact_title'
+    :subTitle='$contact_description'
 >
 
  {{-- Livewire Form --}}

@@ -2,10 +2,11 @@
 
 namespace App\View\Components;
 
-use App\Models\Customer;
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Customer;
+use App\Models\PagesSettings;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class CustomersSection extends Component
 {
@@ -24,6 +25,8 @@ class CustomersSection extends Component
     {
         return view('components.customers-section',[
             'customers' => Customer::all()->sortByDesc('id')->take(8),
+            'customers_title' => PagesSettings::first()->customers_title,
+            'customers_description' => PagesSettings::first()->customers_description,
         ]);
     }
 }

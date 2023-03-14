@@ -9,9 +9,9 @@
                 </button>
                 <div x-show="show" class="">
 
-                    <div class="bg-black bg-opacity-95 h-full w-full p-4 mr-auto fixed top-0 right-0 bottom-0 ">
+                    <div class="bg-black bg-opacity-95 h-full w-full p-4 mr-auto fixed z-50 top-0 right-0 bottom-0 ">
 
-                        <div class="flex justify-end mt-16">
+                        <div class="flex justify-end gap-10">
 
                             <button @click="show = !show" class="text-white justify-end">
                             <ion-icon class="h-9 w-9 justify-end" name="close-outline"></ion-icon>
@@ -20,9 +20,12 @@
                         </div>
 
                         <ul class="grid gap-8 justify-center text-base">
+
                           <li>github</li>
                           <li>linkedin</li>
                         </ul>
+
+
                     </div>
                 </div>
         </nav>

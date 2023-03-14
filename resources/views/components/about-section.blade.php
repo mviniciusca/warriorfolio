@@ -1,14 +1,13 @@
 <x-content-section
-:title="'about me'"
-:class="''"
-:fatherClass="''"
+:title='$about_title'
+:subTitle='$about_description'
 >
 
 <div class="grid gap-4 md:grid-cols-3 md:gap-12 lg:gap-24 items-start ">
 
 {{-- Profile Picutre--}}
     <div class="w-full flex items-center justify-center">
-        <x-curator-glider :media="$profile->profile_picture" class="rounded-full w-1/2 md:w-full md:p-6 lg:p-8"/>
+        <x-curator-glider :media="$profile->profile_picture" class="rounded-full w-1/2 md:w-full md:p-6 lg:p-8 filter grayscale"/>
     </div>
 
 {{--About Me Section--}}

@@ -1,8 +1,6 @@
 <x-content-section
-:title="'from dribbble to vercel'"
-:class="''"
-:fatherClass="'text-center'"
-:subTitle="'Do papel ao código. Um overwview dos meus trabalhos!'"
+:title='$portfolio_title'
+:subTitle='$portfolio_description'
 >
 
 <div class="grid grid-cols-2 gap-4 justify-center items-center md:grid-cols-3 lg:grid-cols-4">

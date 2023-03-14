@@ -2,10 +2,11 @@
 
 namespace App\View\Components;
 
-use App\Models\Project;
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Project;
+use App\Models\PagesSettings;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class PortfolioSection extends Component
 {
@@ -24,6 +25,8 @@ class PortfolioSection extends Component
     {
         return view('components.portfolio-section', [
             'projects' => Project::all()->sortByDesc('id')->take(12),
+            'portfolio_title' => PagesSettings::first()->portfolio_title,
+            'portfolio_description' => PagesSettings::first()->portfolio_description,
         ]);
     }
 }

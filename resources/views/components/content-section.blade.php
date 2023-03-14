@@ -1,9 +1,8 @@
 @props([
     'title'         => '',
-    'class'         => '',
-    'fatherClass'   => 'grid',
-    'childrenClass' => '',
     'subTitle'      => '',
+    'fatherClass'   => '',
+    'childrenClass' => '',
 ])
 
 <div>

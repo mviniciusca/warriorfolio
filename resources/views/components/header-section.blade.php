@@ -1,5 +1,5 @@
 <x-content-section>
-<div class="w-full grid grid-cols-2 gap-28 mt-16 items-center ">
+<div class="w-full grid grid-cols-2 gap-28 lg:mt-16 items-center ">
 
     {{-- Logo --}}
     <div class="flex justify-start">

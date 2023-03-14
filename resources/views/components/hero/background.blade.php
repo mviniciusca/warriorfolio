@@ -1,5 +1,5 @@
 {{-- Hero Background Image --}}
-<div class="absolute -z-50 w-full h-full planet-bg mt-24 lg:mt-0 filter grayscale"></div>
+<div class="absolute -z-50 w-full h-full planet-bg mt-12 lg:mt-0 "></div>
 
 {{-- Styles and Scripts --}}
 <style>
