@@ -8,7 +8,7 @@
 
 <div>
 
-    <div class="max-w-7xl mx-auto items-center justify-center {{ $fatherClass }}">
+    <div class="max-w-7xl mx-auto {{ $fatherClass }}">
     <div class="px-4 py-4 {{ $childrenClass }}">
 
             @if($title !== '')
