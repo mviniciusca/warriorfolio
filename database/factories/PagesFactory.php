@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Timeline>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class TimelineFactory extends Factory
+class PagesFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,10 @@ class TimelineFactory extends Factory
     public function definition(): array
     {
         return [
-            'course' => $this->faker->jobTitle,
-            'university' => $this->faker->company,
-            'conclusion_date' => $this->faker->date(),
+            'title'     => 'Homepage',
+            'slug'      => '/',
+            'layout'    => 'default',
+            'blocks'    => '[]'
         ];
     }
 }

@@ -30,8 +30,7 @@ class ProfileResource extends Resource
             ->schema([
                 CuratorPicker::make('profile_picture')
                  ->label('Public Photo')
-                 ->columnSpan(2)
-                 ->required(),
+                 ->columnSpan(2),
                    Forms\Components\TextInput::make('profile_title')
                    ->columnSpan(1)
                     ->label('Profile Title')
@@ -50,8 +49,7 @@ class ProfileResource extends Resource
                     ->label('Medium Profile'),
                     Forms\Components\MarkdownEditor::make('about_me')
                     ->columnSpan(2)
-                    ->label('Bio')
-                    ->required(),
+                    ->label('Bio'),
                 ]);
     }
 

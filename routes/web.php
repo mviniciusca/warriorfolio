@@ -16,5 +16,4 @@ use Inertia\Inertia;
 |
 */
 
-
 require __DIR__.'/auth.php';

@@ -11,4 +11,16 @@
     @endforeach
 
  </div>
+
+ {{--Empty Section --}}
+    @if($customers->count() === 0)
+        <x-ui.empty-section
+        :btn_icon="'add-outline'"
+        :btn_text="'Add Customer'"
+        :empty_message="'You have no customers yet'"
+        :empty_icon="'person-add-outline'"
+        :link_path="'/admin/customers/create'"
+        />
+    @endif
+
 </x-content-section>
