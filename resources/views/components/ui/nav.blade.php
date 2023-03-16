@@ -14,15 +14,14 @@
                         <div class="flex justify-end gap-10">
 
                             <button @click="show = !show" class="text-white justify-end">
-                            <ion-icon class="h-9 w-9 justify-end" name="close-outline"></ion-icon>
+                                <ion-icon class="h-9 w-9 justify-end" name="close-outline"></ion-icon>
                             </button>
 
                         </div>
 
+                        {{-- Nav Links Mobile --}}
                         <ul class="grid gap-8 justify-center text-base">
-
-                          <li>github</li>
-                          <li>linkedin</li>
+                            <x-ui.nav-links />
                         </ul>
 
 
@@ -31,8 +30,10 @@
         </nav>
 
         {{-- Desktop Menu --}}
-        <nav class=" hidden lg:block">
-            github / linkedin
+        <nav class="hidden lg:block font-normal lg:text-md">
+           <ul class="flex gap-4">
+                <x-ui.nav-links />
+           </ul>
         </nav>
 
    </nav>
