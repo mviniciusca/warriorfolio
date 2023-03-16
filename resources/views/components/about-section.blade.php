@@ -1,9 +1,11 @@
+{{-- About Me Section: This section will show informations about you, your courses and your public picture --}}
 <x-content-section
-:title='$about_title'
-:subTitle='$about_description'
+    :nav_id="'about'"
+    :title='$about_title'
+    :subTitle='$about_description'
 >
 
-<div class="grid gap-4 md:grid-cols-3 md:gap-12 lg:gap-24 items-start ">
+<div class="grid gap-4 md:grid-cols-3 md:gap-12 lg:gap-24 items-start">
 
 {{-- Profile Picutre--}}
     <div class="w-full flex items-center justify-center">
@@ -23,11 +25,11 @@
         {{-- Empty Section --}}
         @if ($profile->about_me === null)
             <x-ui.empty-section
-            :btn_icon="'add-outline'"
-            :btn_text="'Add About Me'"
-            :empty_message="'You have no about me yet'"
-            :empty_icon="'reader-outline'"
-            :link_path="'/admin/profiles/create'"
+                :btn_icon="'add-outline'"
+                :btn_text="'Add About Me'"
+                :empty_message="'You have no about me yet'"
+                :empty_icon="'reader-outline'"
+                :link_path="'/admin/profiles/create'"
             />
         @endif
 
@@ -58,17 +60,15 @@
         {{-- Empty Section --}}
         @if ($courses->count() === 0)
             <x-ui.empty-section
-            :btn_icon="'add-outline'"
-            :btn_text="'Add Course'"
-            :empty_message="'You have no courses yet'"
-            :empty_icon="'school-outline'"
-            :link_path="'/admin/timelines/create'"
+                :btn_icon="'add-outline'"
+                :btn_text="'Add Course'"
+                :empty_message="'You have no courses yet'"
+                :empty_icon="'school-outline'"
+                :link_path="'/admin/timelines/create'"
             />
         @endif
 
-
     </div>
-
 
 </div>
 </x-content-section>

@@ -1,4 +1,5 @@
 @props([
+    'nav_id'        => '',
     'title'         => '',
     'subTitle'      => '',
     'fatherClass'   => '',
@@ -8,7 +9,7 @@
 <div>
 
     <div class="max-w-7xl mx-auto {{ $fatherClass }}">
-    <div class="px-4 py-4 {{ $childrenClass }}">
+    <div class="px-4 py-4 {{ $childrenClass }}" id="{{ $nav_id }}">
 
             @if($title !== '')
                 <div class="text-2xl lg:text-4xl justify-center text-center flex font-bold text-zinc-500 lowercase tracking-tighter pt-8 pb-12 lg:pt-24 lg:pb-32" id="title">{{ $title }}</div>
