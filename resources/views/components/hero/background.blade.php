@@ -1,10 +1,8 @@
 {{-- Hero Background Image --}}
-<div class="absolute -z-50 w-full h-full mt-12 lg:mt-0 ">
-  <x-curator-glider
-    :media="$background->background_image"
-  />
+<div class="absolute -z-50 filter grayscale opacity-10">
+    @if ($background->background_image !== null)
+        <x-curator-glider
+            :media="$background->background_image"
+        />
+    @endif
 </div>
-
-{{-- Styles and Scripts --}}
-
-

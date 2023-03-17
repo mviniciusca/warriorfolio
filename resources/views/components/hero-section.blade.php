@@ -1,9 +1,11 @@
 {{-- Hero Section - This section will show the main content of the website --}}
 
 {{-- Background Image --}}
-<x-hero.background
-    :background="$background"
-/>
+@if ($background !== null)
+    <x-hero.background
+        :background="$background"
+    />
+@endif
 
 {{-- Content Section --}}
 <x-content-section>

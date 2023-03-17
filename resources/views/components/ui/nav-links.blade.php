@@ -1,12 +1,13 @@
-<a class="hover:text-orange-500 transition-all duration-150 lg:border-b-4 border-transparent hover:border-b-orange-500 pb-2 lowercase px-2 py-1" href="{{ url('/') }}#about">
-    <li>about</li>
-</a>
-<a class="hover:text-orange-500 transition-all duration-150 lg:border-b-4 border-transparent hover:border-b-orange-500 pb-2 lowercase px-2 py-1" href="{{ url('/') }}#portfolio">
-    <li>projects</li>
-</a>
-<a class="hover:text-orange-500 transition-all duration-150 lg:border-b-4 border-transparent hover:border-b-orange-500 pb-2 lowercase px-2 py-1" href="{{ url('/') }}#customers">
-    <li>customers</li>
-</a>
-<a class="hover:text-orange-500 transition-all duration-150 lg:border-b-4 border-transparent hover:border-b-orange-500 pb-2 lowercase px-2 py-1" href="{{ url('/') }}#contact">
-    <li>contact</li>
-</a>
+{{-- Nav Links --}}
+<li class="hover:text-orange-500 transition-all duration-150 lg:border-b lg:border-transparent lg:hover:border-b-orange-500 lg:pb-2">
+    <a href="#about" @click="show = !show">about</a>
+</li>
+<li class="hover:text-orange-500 transition-all duration-150 lg:border-b lg:border-transparent lg:hover:border-b-orange-500 lg:pb-2">
+    <a href="#projects" @click="show = !show">projects</a>
+</li>
+<li class="hover:text-orange-500 transition-all duration-150 lg:border-b lg:border-transparent lg:hover:border-b-orange-500 lg:pb-2">
+    <a href="#customers" @click="show = !show">customers</a>
+</li>
+<li class="hover:text-orange-500 transition-all duration-150 lg:border-b lg:border-transparent lg:hover:border-b-orange-500 lg:pb-2">
+    <a href="#contact" @click="show = !show">contact</a>
+</li>
