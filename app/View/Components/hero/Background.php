@@ -3,8 +3,9 @@
 namespace App\View\Components\hero;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\HeroBackground;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class Background extends Component
 {
