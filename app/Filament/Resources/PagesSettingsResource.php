@@ -23,6 +23,14 @@ class PagesSettingsResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('app_name')
+                    ->label('App Name'),
+                Forms\Components\TextInput::make('app_logo')
+                    ->label('App Logo'),
+                Forms\Components\TextInput::make('app_favicon')
+                    ->label('App Favicon'),
+                Forms\Components\TextInput::make('app_description')
+                     ->label('App Description'),
                 Forms\Components\TextInput::make('about_title')
                     ->label('About Me Section Title'),
                 Forms\Components\TextInput::make('about_description')
@@ -46,15 +54,10 @@ class PagesSettingsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('about_title'),
-                Tables\Columns\TextColumn::make('about_description'),
-                Tables\Columns\TextColumn::make('contact_title'),
-                Tables\Columns\TextColumn::make('contact_description'),
-                Tables\Columns\TextColumn::make('portfolio_title'),
-                Tables\Columns\TextColumn::make('portfolio_description'),
-                Tables\Columns\TextColumn::make('customers_title'),
-                Tables\Columns\TextColumn::make('customers_description'),
+                Tables\Columns\TextColumn::make('app_name')
+                ->label('App Name'),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Created At')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),

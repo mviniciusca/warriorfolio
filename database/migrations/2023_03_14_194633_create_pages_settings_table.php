@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('pages_settings', function (Blueprint $table) {
             $table->id();
+            $table->text('app_description')->nullable();
+            $table->string('app_logo')->nullable();
+            $table->string('app_favicon')->nullable();
+            $table->string('app_name')->nullable();
+
             $table->string('about_title')->nullable();
             $table->string('about_description')->nullable();
             $table->string('contact_title')->nullable();
@@ -21,6 +26,7 @@ return new class extends Migration
             $table->string('portfolio_description')->nullable();
             $table->string('customers_title')->nullable();
             $table->string('customers_description')->nullable();
+
             $table->timestamps();
         });
     }
