@@ -10,7 +10,7 @@
 {{-- Content Section --}}
 <x-content-section>
     {{-- Hero Welcome Text --}}
-    <x-hero.welcome />
+    <x-hero.welcome :profile='$profile' />
     {{-- Hero Stacks Icons --}}
     <x-ui.stacks-icons />
 </x-content-section>

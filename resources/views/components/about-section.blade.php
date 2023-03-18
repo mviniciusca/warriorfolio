@@ -13,7 +13,7 @@
        @if ($profile->profile_picture !== null)
             <x-curator-glider :media="$profile->profile_picture" class="rounded-full w-1/2 md:w-full p-4 -mt-4 md:p-6 lg:p-16 lg:-mt-10 filter grayscale"/>
        @else
-           <img src="{{ asset('/img/main-img.png') }}" class="rounded-full w-1/2 md:w-full md:p-6 lg:p-8 filter grayscale"/>
+           <img src="{{ asset('/img/main-img.png') }}" class="rounded-full w-1/2 md:w-full p-4 -mt-4 md:p-6 lg:p-16 lg:-mt-10 filter grayscale"/>
        @endif
 
     </div>

@@ -18,11 +18,13 @@
         </a>
 
     {{-- Visit me on linkedin --}}
+    @if ($profile->linkedin_link !== null)
     <div>
-        <a href="#" target="_blank" class="text-zinc-300 hover:text-orange-400 transition-all duration-200">
+        <a href="{{ $profile->linkedin_link }}" target="_blank" class="text-zinc-300 hover:text-orange-400 transition-all duration-200">
             or visit me on linkedin
         </a>
     </div>
+    @endif
 
 </div>
 
