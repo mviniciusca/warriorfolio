@@ -1,13 +1,13 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\nav;
 
 use Closure;
 use App\Models\Link;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
-class HeaderSection extends Component
+class bar extends Component
 {
     /**
      * Create a new component instance.
@@ -22,8 +22,8 @@ class HeaderSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.header-section',[
-            'links' => Link::all()->sortBy('order'),
+        return view('components.nav.bar',[
+            'links' => Link::all(),
         ]);
     }
 }

@@ -8,7 +8,7 @@
 
     {{-- Navgation --}}
     <div class="flex justify-end">
-        <x-ui.nav />
+        <x-nav.bar :links='$links' />
     </div>
 
 </div>

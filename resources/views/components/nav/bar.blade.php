@@ -17,7 +17,7 @@
                     </div>
                     {{-- Nav Links Mobile --}}
                     <ul class="grid gap-8 justify-center text-2xl">
-                            <x-ui.navlinks />
+                        <x-nav.link :links='$links' />
                     </ul>
                 </div>
                 </div>
@@ -28,9 +28,10 @@
         {{-- Desktop Menu --}}
         <nav class="hidden lg:block font-normal lg:text-md">
            <ul class="flex gap-4">
-                <x-ui.navlinks />
+                <x-nav.link :links='$links' />
            </ul>
         </nav>
         {{-- End Desktop Menu --}}
 
    </nav>
+

@@ -1,19 +1,21 @@
 <?php
 
-namespace App\View\Components\ui;
+namespace App\View\Components\nav;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Link as LinkModel;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
-class NavLinks extends Component
+class Link extends Component
 {
     /**
      * Create a new component instance.
      */
+    public $links;
     public function __construct()
     {
-        //
+        $this->links = LinkModel::all();
     }
 
     /**
@@ -21,6 +23,6 @@ class NavLinks extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.ui.nav-links');
+        return view('components.nav.link');
     }
 }
