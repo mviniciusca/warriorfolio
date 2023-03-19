@@ -6,14 +6,12 @@
 
 <h1 align="center"></h1>
 
-[![WIP](https://img.shields.io/badge/Work%20in%20Progress-yellow)](#)&nbsp;&nbsp;&nbsp;&nbsp;
-[![GitHub issues](https://img.shields.io/github/issues/mviniciusca/warriorfolio)](https://github.com/mviniciusca/warriorfolio/issues)&nbsp;&nbsp;&nbsp;&nbsp;
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)&nbsp;&nbsp;&nbsp;&nbsp;
 [![PHP](https://img.shields.io/badge/PHP-8.1-blue)](https://www.php.net/releases/8.1/en.php)&nbsp;&nbsp;&nbsp;&nbsp;
 [![Laravel](https://img.shields.io/badge/Laravel-10-red)](https://laravel.com/docs/10.x/readme)&nbsp;&nbsp;&nbsp;&nbsp;
-[![Filament](https://img.shields.io/badge/Filament-2.0.0-green)](https://filamentphp.com/docs)&nbsp;&nbsp;&nbsp;&nbsp;
+[![Filament](https://img.shields.io/badge/Filament-2.17-green)](https://filamentphp.com/docs)&nbsp;&nbsp;&nbsp;&nbsp;
 [![Tailwind](https://img.shields.io/badge/Tailwind-2.2.19-blue)](https://tailwindcss.com/)&nbsp;&nbsp;&nbsp;&nbsp;
-[![MySQL](https://img.shields.io/badge/MySQL-5.7-orange)](https://www.mysql.com/)&nbsp;&nbsp;&nbsp;&nbsp;
+[![Livewire](https://img.shields.io/badge/Livewire-2.12-pink)](https://www.mysql.com/)&nbsp;&nbsp;&nbsp;&nbsp;
 
 ## About 
 This project is a web-based application built on Laravel 10 framework that provides a platform to create an online portfolio. Users can add information about themselves, showcase their work through images, add client logos, and provide a contact form for interested parties. The administrative panel of the application is managed by Filament, a Laravel plugin.
