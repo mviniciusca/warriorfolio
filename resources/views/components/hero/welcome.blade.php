@@ -3,12 +3,12 @@
 
 {{--Welcome Text--}}
     <div class="text-center font-bold text-2xl mt-24 leading-tight tracking-tight md:tracking-tighter md:text-4xl md:mt-24 lg:text-6xl lg:mt-60 ">
-        building the <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">what's next</span><br>with laravel + <span id="changing-text">ia</span>
+        warrior<span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">folio</span><br>with laravel + <span id="changing-text">ia</span>
     </div>
 
 {{--Sub-title Text--}}
     <div class="mt-3 md:mt-8">
-        software developer based in rio de janeiro, brazil
+        portfolio landing page system
     </div>
 
 {{--Hero Button --}}
