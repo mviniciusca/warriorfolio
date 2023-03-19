@@ -29,7 +29,7 @@ This project is a web-based application built on Laravel 10 framework that provi
 - Ability to create a list of recent certifications
 
 
-##To-Do:
+## To-Do:
 
 - [ ] Create a dashboard to manage received emails
 - [ ] Allow the admin to edit the initial message displayed on the website via the admin panel
