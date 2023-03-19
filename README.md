@@ -1,8 +1,10 @@
+<h1 align="center">warriorfolio</h1>
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/main/public/img/logo-color.png" width="30%" alt="Descrição da imagem">
 </p>
 
-<h5 style="text-align: center; font-weight: normal;">A Laravel 10 application that provides a platform to create an online portfolio</h5>
+<h5 align="center" style="text-align: center; font-weight: normal;">A Laravel 10 application that provides a platform to create an online portfolio</h5>
 
 <h1 align="center"></h1>
 
