@@ -18,11 +18,14 @@ class ProfileFactory extends Factory
     {
         return [
             'profile_title' => 'Marcos Coelho Profile',
-            'about_me' => 'I am a software developer with a passion for aviation, with over 2 years of programming experience. I have specialized skills in languages such as PHP, Laravel, and Opencart. I graduated from Embraer and XP College as a Python developer, which gave me a broad knowledge base in different areas of programming. I specialize in backend development, where I have strong knowledge in software architecture, databases, and other important technologies for building robust and scalable applications. With my experience in various programming languages and full-stack development skills, I take pride in working on challenging and high-quality projects, offering creative solutions to complex problems and delivering reliable and high-performance results. Additionally, with my passion for aviation and training at Embraer, I am always seeking new opportunities to apply my technology skills in aviation-related projects and other related areas.',
-            'github_link' => 'https://github.com/mviniciusca',
-            'linkedin_link' => 'https://www.linkedin.com/in/marcosvca/',
-            'twitter_link' => 'https://twitter.com/marcosvca_',
-            'medium_link' => 'https://medium.com/@marcoscoelhodev',
+            'about_me'      => "Warriorfolio is a cutting-edge landing page system designed to help users create professional portfolios online. Built on the Laravel framework, this powerful platform is the ideal solution for anyone looking to showcase their skills and talents in a compelling and visually stunning way.
+            With Warriorfolio, users can easily create and customize their portfolios to suit their individual needs and goals. The system comes equipped with a range of customizable templates and themes, allowing users to create a unique and personalized online presence. One of the key features of Warriorfolio is its intuitive drag-and-drop interface, which makes it easy for users to add and organize their content. Whether it's text, images, or videos, users can quickly and easily create a dynamic and engaging portfolio that showcases their work and accomplishments.
+            With a focus on user experience and seamless functionality, Warriorfolio is the perfect tool for anyone looking to take their online presence to the next level.
+            So why wait? Sign up today and start creating your own stunning portfolio with Warriorfolio.",
+            'github_link'   => 'https://github.com/',
+            'linkedin_link' => 'https://www.linkedin.com/',
+            'twitter_link'  => 'https://twitter.com/',
+            'medium_link'   => 'https://medium.com/',
             'profile_picture' => null,
         ];
     }

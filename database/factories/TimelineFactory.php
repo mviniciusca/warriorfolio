@@ -17,9 +17,9 @@ class TimelineFactory extends Factory
     public function definition(): array
     {
         return [
-            'course' => $this->faker->jobTitle,
-            'university' => $this->faker->company,
-            'conclusion_date' => $this->faker->date(),
+            // 'course'             => $this->faker->jobTitle,
+            // 'university'         => $this->faker->company,
+            // 'conclusion_date'    => $this->faker->date(),
         ];
     }
 }

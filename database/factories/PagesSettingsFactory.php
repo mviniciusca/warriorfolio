@@ -18,13 +18,13 @@ class PagesSettingsFactory extends Factory
     {
         return [
             'about_title'               => 'About Me',
-            'about_description'         => '',
+            'about_description'         => '', //
             'contact_title'             => 'Get in Touch',
             'contact_description'       => 'Feel free to contact me for any kind of work or suggestions below',
-            'portfolio_title'           => 'From Paper to Vercel',
-            'portfolio_description'     =>  'From paper to code: an overview of my work.',
-            'customers_title'           => 'Trusted by',
-            'customers_description'     => 'I have worked with a wide variety of clients, from small startups to large companies, each with their unique needs and objectives. Delivering customized projects that exceed client expectations.',
+            'portfolio_title'           => 'Projects',
+            'portfolio_description'     =>  "A portfolio section showcases an individual's or business's best work, providing a powerful marketing tool and building trust with potential clients or employers.",
+            'customers_title'           => 'Customers',
+            'customers_description'     => 'Customers are crucial to the success of any business, providing revenue, feedback, and support. By focusing on their needs, businesses can build loyalty and drive long-term success.',
         ];
     }
 }
