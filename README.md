@@ -11,7 +11,7 @@
 [![Laravel](https://img.shields.io/badge/Laravel-10-red)](https://laravel.com/docs/10.x/readme)&nbsp;&nbsp;&nbsp;&nbsp;
 [![Filament](https://img.shields.io/badge/Filament-2.17-green)](https://filamentphp.com/docs)&nbsp;&nbsp;&nbsp;&nbsp;
 [![Tailwind](https://img.shields.io/badge/Tailwind-2.2.19-blue)](https://tailwindcss.com/)&nbsp;&nbsp;&nbsp;&nbsp;
-[![Livewire](https://img.shields.io/badge/Livewire-2.12-pink)](https://www.mysql.com/)&nbsp;&nbsp;&nbsp;&nbsp;
+[![Livewire](https://img.shields.io/badge/Livewire-2.12-pink)](https://laravel-livewire.com/)&nbsp;&nbsp;&nbsp;&nbsp;
 
 ## About 
 This project is a web-based application built on Laravel 10 framework that provides a platform to create an online portfolio. Users can add information about themselves, showcase their work through images, add client logos, and provide a contact form for interested parties. The administrative panel of the application is managed by Filament, a Laravel plugin.
