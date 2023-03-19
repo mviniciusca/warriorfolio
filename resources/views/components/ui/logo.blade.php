@@ -1,7 +1,9 @@
 {{-- Logo --}}
-<div class="flex gap-4 font-extrabold text-base md:text-lg">
-    {{-- Icon --}}
-        <span class="h-4 w-4 text-3xl"><ion-icon name="flash-outline"></ion-icon></span>
-    {{-- Name --}}
-        <div>marcoscoelho<span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">.dev</span></div>
+<div class="flex gap-1 items-center font-extrabold text-base md:text-lg">
+    {{-- App Logo --}}
+        <span class="w-7 md:w-12">
+            <img src="{{ asset('/img/svg/app-logo.svg') }}" alt="app-logo"/>
+        </span>
+    {{-- App Name --}}
+        <div>warrior<span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">folio</span></div>
  </div>
