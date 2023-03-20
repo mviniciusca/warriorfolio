@@ -16,4 +16,9 @@ use Inertia\Inertia;
 |
 */
 
-require __DIR__.'/auth.php';
+/** Login */
+Route::get('/login', function () {
+    /** redicrect to /admin/login */
+    return redirect('/admin/login');
+})->name('login');
+

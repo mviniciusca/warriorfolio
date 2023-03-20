@@ -18,7 +18,11 @@ class HeroBackgroundResource extends Resource
 {
     protected static ?string $model = HeroBackground::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon    = 'heroicon-o-camera';
+    protected static ?string $navigationLabel   = 'Background';
+    protected static ?string $navigationGroup   = 'Hero Section';
+    protected static ?string $slug              = 'hero-background';
+    protected static ?string $modelLabel        = 'Hero Background';
 
     public static function form(Form $form): Form
     {

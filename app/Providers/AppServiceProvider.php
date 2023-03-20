@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Header;
+use Filament\Facades\Filament;
+use Filament\Navigation\NavigationGroup;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +21,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        //Filament Navigation Group
+        Filament::serving(function () {
+          Filament::registerNavigationGroups([
+            NavigationGroup::make()
+                ->label('Portfolio'),
+            NavigationGroup::make()
+                ->label('Profile'),
+            NavigationGroup::make()
+                ->label('Hero Section'),
+            NavigationGroup::make()
+                ->label('Customers'),
+            NavigationGroup::make()
+                ->label('App Settings'),
+          ]);
+        });
     }
 }

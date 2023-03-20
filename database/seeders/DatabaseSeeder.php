@@ -6,7 +6,6 @@ namespace Database\Seeders;
 
 use App\Models\Link;
 use App\Models\Profile;
-use App\Models\Project;
 use App\Models\Timeline;
 use App\Models\PagesSettings;
 use Illuminate\Database\Seeder;
@@ -20,64 +19,75 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        /** Create a new user on database */
        DB::table('users')->insert([
-            'name' => 'Nome do Usuário',
-            'email' => 'mviniciusca@gmail.com',
-            'password' => Hash::make('admin'),
+            'name'      => 'Warriorfolio',
+            'email'     => 'warriorfolio@test.dev',
+            'password'  => Hash::make('admin'),
         ]);
+
+        /** Create a new page on filament database */
         DB::table('pages')->insert([
-            'title'     => 'Homepage',
             'slug'      => '/',
-            'layout'    => 'default',
+            'title'     => 'Homepage',
             'blocks'    => '',
+            'layout'    => 'default',
         ]);
+
+        /** Add main page settings on database */
         PagesSettings::factory()->count(1)->create();
+
+        /** Add main profile info on database */
+        Profile::factory()->count(1)->create();
+
+        /** Add main courses in the timeline feed on database */
         Timeline::factory()->count(1)->createMany([
             [
-                'course' => 'Bachelor of Science in Computer Science',
-                'university' => 'University of California, Los Angeles',
-                'conclusion_date' => '2015-06-01',
+                'course'            => 'Bachelor of Science in Computer Science',
+                'university'        => 'University of California, Los Angeles',
+                'conclusion_date'   => '2015-06-01',
             ],
             [
-                'course' => 'Master of Science in Computer Science',
-                'university' => 'University of California, Los Angeles',
-                'conclusion_date' => '2017-06-01',
+                'course'            => 'Master of Science in Computer Science',
+                'university'        => 'University of California, Los Angeles',
+                'conclusion_date'   => '2017-06-01',
             ],
             [
-                'course' => 'Doctor of Philosophy in Computer Science',
-                'university' => 'University of California, Los Angeles',
-                'conclusion_date' => '2020-06-01',
+                'course'            => 'Doctor of Philosophy in Computer Science',
+                'university'        => 'University of California, Los Angeles',
+                'conclusion_date'   => '2020-06-01',
             ],
             [
-                'course' => 'Postdoctoral Researcher',
-                'university' => 'University of California, Los Angeles',
-                'conclusion_date' => '2021-06-01',
+                'course'            => 'Postdoctoral Researcher',
+                'university'        => 'University of California, Los Angeles',
+                'conclusion_date'   => '2021-06-01',
             ],
 
         ]);
-        Profile::factory()->count(1)->create();
+
+        /** Add main navigation links on database */
         Link::factory()->count(1)->createMany([
             [
-                'url' => '#contact',
-                'title' => 'Contact',
-                'order' => 4
-            ],
-            [
-                'url' => '#about',
+                'url'   => '#about',
                 'title' => 'About',
                 'order' => 1
             ],
             [
-                'url' => '#projects',
+                'url'   => '#projects',
                 'title' => 'Projects',
+                'order' => 2
+            ],
+            [
+                'url'   => '#customers',
+                'title' => 'Customers',
                 'order' => 3
             ],
             [
-                'url' => '#customers',
-                'title' => 'Customers',
-                'order' => 2
+                'url'   => '#contact',
+                'title' => 'Contact',
+                'order' => 4
             ]
         ]);
-
     }
 }

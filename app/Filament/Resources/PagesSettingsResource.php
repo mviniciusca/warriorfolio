@@ -17,7 +17,11 @@ class PagesSettingsResource extends Resource
 {
     protected static ?string $model = PagesSettings::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $slug              = 'page-settings';
+    protected static ?string $modelLabel        = 'Page Settings';
+    protected static ?string $navigationGroup   = 'App Settings';
+    protected static ?string $navigationLabel   = 'Page Settings';
+    protected static ?string $navigationIcon    = 'heroicon-o-collection';
 
     public static function form(Form $form): Form
     {

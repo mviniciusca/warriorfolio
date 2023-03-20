@@ -17,7 +17,10 @@ class MailResource extends Resource
 {
     protected static ?string $model = Mail::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon    = 'heroicon-o-mail';
+    protected static ?string $navigationLabel   = 'Inbox';
+    protected static ?string $navigationGroup   = 'Mail';
+    protected static ?string $modelLabel        = 'Mail';
 
     public static function form(Form $form): Form
     {
@@ -53,10 +56,10 @@ class MailResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                //Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+               Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
@@ -71,8 +74,13 @@ class MailResource extends Resource
     {
         return [
             'index' => Pages\ListMails::route('/'),
-            'create' => Pages\CreateMail::route('/create'),
-            'edit' => Pages\EditMail::route('/{record}/edit'),
+            //'create' => Pages\CreateMail::route('/create'),
+            //'edit' => Pages\EditMail::route('/{record}/edit'),
         ];
+    }
+
+        protected static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

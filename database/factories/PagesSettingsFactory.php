@@ -17,8 +17,12 @@ class PagesSettingsFactory extends Factory
     public function definition(): array
     {
         return [
+            'app_name'                  => 'Warriorfolio',
+            'app_logo'                  => 'app-logo.png',
+            'app_favicon'               => 'app-favicon.ico',
+            'app_description'           => 'Warriorfolio is a free and open-source portfolio template for developers and designers. It is built with Laravel, Tailwind CSS, and Alpine.js.',
             'about_title'               => 'About Me',
-            'about_description'         => '', //
+            'about_description'         => '', // no description for now
             'contact_title'             => 'Get in Touch',
             'contact_description'       => 'Feel free to contact me for any kind of work or suggestions below',
             'portfolio_title'           => 'Projects',

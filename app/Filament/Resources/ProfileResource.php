@@ -22,7 +22,11 @@ class ProfileResource extends Resource
 {
     protected static ?string $model = Profile::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon    = 'heroicon-o-collection';
+    protected static ?string $navigationLabel   = 'Profile Settings';
+    protected static ?string $navigationGroup   = 'Profile';
+    protected static ?string $slug              = 'profile-settings';
+    protected static ?string $modelLabel        = 'Profile';
 
     public static function form(Form $form): Form
     {
@@ -57,8 +61,6 @@ class ProfileResource extends Resource
     {
         return $table
             ->columns([
-                CuratorColumn::make('profile_picture'),
-                Tables\Columns\TextColumn::make('profile_picture'),
                 Tables\Columns\TextColumn::make('profile_title'),
             ])
             ->filters([

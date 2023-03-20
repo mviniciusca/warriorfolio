@@ -17,7 +17,11 @@ class LinkResource extends Resource
 {
     protected static ?string $model = Link::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon    = 'heroicon-o-link';
+    protected static ?string $navigationLabel   = 'Navigation Links';
+    protected static ?string $navigationGroup   = 'App Settings';
+    protected static ?string $slug              = 'links';
+    protected static ?string $modelLabel        = 'Navigation Link';
 
     public static function form(Form $form): Form
     {

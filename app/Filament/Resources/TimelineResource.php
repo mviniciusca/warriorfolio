@@ -17,7 +17,11 @@ class TimelineResource extends Resource
 {
     protected static ?string $model = Timeline::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon    = 'heroicon-o-academic-cap';
+    protected static ?string $navigationLabel   = 'Courses';
+    protected static ?string $navigationGroup   = 'Profile';
+    protected static ?string $slug              = 'courses';
+    protected static ?string $modelLabel        = 'Course';
 
     public static function form(Form $form): Form
     {
