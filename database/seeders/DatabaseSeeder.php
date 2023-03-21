@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Hero\Welcome;
 use App\Models\Link;
 use App\Models\Profile;
 use App\Models\Timeline;
@@ -89,5 +90,8 @@ class DatabaseSeeder extends Seeder
                 'order' => 4
             ]
         ]);
+
+        /** Create a Welcome Text */
+        Welcome::factory()->count(1)->create();
     }
 }

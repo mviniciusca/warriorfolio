@@ -24,8 +24,8 @@ class PortfolioSection extends Component
     public function render(): View|Closure|string
     {
         return view('components.portfolio-section', [
-            'projects' => Project::all()->sortByDesc('id')->take(12),
-            'portfolio_title' => PagesSettings::first()->portfolio_title,
+            'projects'              => Project::all()->sortByDesc('id')->take(12),
+            'portfolio_title'       => PagesSettings::first()->portfolio_title,
             'portfolio_description' => PagesSettings::first()->portfolio_description,
         ]);
     }

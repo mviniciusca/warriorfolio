@@ -12,7 +12,11 @@
 {{-- Content Section --}}
 <x-content-section>
     {{-- Hero Welcome Text --}}
-    <x-hero.welcome :profile='$profile' />
+    <x-hero.welcome
+        :profile='$profile'
+        :welcomeText="$welcome->title"
+        :subTitleText='$welcome->subtitle'
+    />
     {{-- Hero Stacks Icons --}}
     <x-ui.stacks-icons />
 </x-content-section>

@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Hero\Welcome;
 use App\Models\HeroBackground;
 use App\Models\Profile;
 use Closure;
@@ -25,7 +26,8 @@ class HeroSection extends Component
     {
         return view('components.hero-section', [
            'background' => HeroBackground::where('is_active', true)->first(),
-           'profile' => Profile::first(),
+           'profile'    => Profile::first(),
+           'welcome'    => Welcome::first(),
         ]);
     }
 }
