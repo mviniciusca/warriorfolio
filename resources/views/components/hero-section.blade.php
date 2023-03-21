@@ -5,6 +5,8 @@
     <x-hero.background
         :background="$background"
     />
+@else
+   <x-hero.background :background="null" />
 @endif
 
 {{-- Content Section --}}
