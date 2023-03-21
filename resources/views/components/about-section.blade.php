@@ -13,7 +13,7 @@
        @if ($profile->profile_picture !== null)
             <x-curator-glider :media="$profile->profile_picture" class="rounded-full w-1/2 md:w-full p-4 -mt-4 md:p-6 lg:p-16 lg:-mt-10 filter grayscale"/>
        @else
-           <img src="{{ asset('/img/logo-white.png') }}" class="w-1/2 md:w-full p-4 -mt-4 md:p-6 lg:p-16 lg:-mt-10 filter opacity-70"/>
+           <img src="{{ asset('/img/logo-white.png') }}" class="w-1/2 md:w-full p-4 -mt-4 md:p-6 lg:p-16 lg:-mt-10 filter opacity-90"/>
        @endif
 
     </div>
@@ -40,8 +40,10 @@
 
         @if($courses->count() !== 0)
 
-        <span class="pb-8 text-2xl lg:text-3xl font-extrabold tracking-tight text-zinc-500">recent
-            <span class="bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">certifications</span>
+        {{-- Timeline Title --}}
+        <span class="pb-8 text-2xl lg:text-3xl font-extrabold tracking-tight text-zinc-500">
+            <span>recent</span>
+            <span class="main-gradient-text">certifications</span>
         </span>
 
         @endif

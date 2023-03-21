@@ -27,11 +27,11 @@ class WelcomeResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
+                Forms\Components\Textarea::make('title')
+                    ->label('Title (html allowed)')
                     ->required(),
                 Forms\Components\TextInput::make('subtitle')
-                    ->required(),
-                Forms\Components\Toggle::make('is_active')
+                    ->label('Subtitle')
                     ->required(),
             ]);
     }
@@ -42,8 +42,6 @@ class WelcomeResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('subtitle'),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->boolean(),
             ])
             ->filters([
                 //

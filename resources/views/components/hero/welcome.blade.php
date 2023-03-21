@@ -1,7 +1,7 @@
 @props([
-    'profile'       =>'',
-    'welcomeText'   =>'',
-    'subTitleText'  =>''
+    'profile'       => '',
+    'welcomeText'   => "'building the what's next with laravel + filament'", // default message
+    'subTitleText'  => "'Open Source Portfolio Landing Page System'" // default message
  ])
 
 {{-- Hero Section --}}
@@ -13,7 +13,7 @@
     </div>
 
 {{--Sub-title Text--}}
-    <div class="mt-3 md:mt-8">
+    <div class="mt-3 md:mt-8 lowercase">
         {{ $subTitleText  }}
     </div>
 
@@ -33,13 +33,3 @@
     @endif
 
 </div>
-{{-- <script>
-let words = ["livewire", "vuejs", "tailwind", "ia"];
-let index = 0;
-let textElement = document.getElementById("changing-text");
-
-setInterval(function() {
-  textElement.innerHTML = words[index];
-  index = (index + 1) % words.length;
-}, 2500);
-</script> --}}

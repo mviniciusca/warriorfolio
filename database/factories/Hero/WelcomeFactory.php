@@ -19,7 +19,6 @@ class WelcomeFactory extends Factory
         return [
             'title'         => "Building the what's next <br/>with Laravel + <span class='main-gradient-text'>Filament</span>",
             'subtitle'      => 'Open Source Portfolio Landing Page System',
-            'is_active'     => true
         ];
     }
 }
