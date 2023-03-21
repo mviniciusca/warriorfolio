@@ -3,8 +3,11 @@
 namespace App\Providers;
 
 use Filament\Facades\Filament;
-use Filament\Navigation\NavigationGroup;
+use App\Http\Controllers\Settings;
 use Illuminate\Support\ServiceProvider;
+use Filament\Navigation\NavigationGroup;
+use HtmlSanitizer\Extension\Listing\Node\DdNode;
+use Termwind\Components\Dd;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //Filament Navigation Group
+        // Filament Navigation Group
         Filament::serving(function () {
           Filament::registerNavigationGroups([
             NavigationGroup::make()
@@ -36,5 +39,8 @@ class AppServiceProvider extends ServiceProvider
                 ->label('App Settings'),
           ]);
         });
+
+        //
+
     }
 }

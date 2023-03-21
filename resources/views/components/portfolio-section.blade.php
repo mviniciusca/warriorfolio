@@ -1,5 +1,5 @@
 <x-content-section
-    :nav_id="'portfolio'"
+    :nav_id="'projects'"
     :title='$portfolio_title'
     :subTitle='$portfolio_description'
 >
