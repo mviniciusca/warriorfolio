@@ -7,7 +7,7 @@
             <x-curator-glider :media='$profile->profile_picture' class="rounded-full mx-auto my-auto"/>
         {{-- Default Profile Picture --}}
         @else
-            <img src="{{ asset('/img/app-logo.png') }}" alt="Profile Picture" class="p-10 mx-auto my-auto">
+            <img src="{{ asset('/img/logo-white.png') }}" alt="Profile Picture" class="p-10 mx-auto my-auto">
         @endif
     </div>
     {{-- End Profile Picture --}}
