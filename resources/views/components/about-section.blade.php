@@ -3,75 +3,18 @@
     :nav_id="'about'"
     :title='$about_title'
     :subTitle='$about_description'
+    :skills='$skills'
 >
 
-<div class="grid gap-4 md:grid-cols-3 md:gap-12 lg:gap-24 items-start">
+<div class="grid gap-8 items-start md:grid-cols-3">
 
-{{-- Profile Picutre--}}
-    <div class="w-full flex items-center justify-center">
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt explicabo necessitatibus est corrupti eligendi optio asperiores earum ipsam fugiat! Dolores voluptatem adipisci accusamus fuga distinctio eligendi aspernatur sunt suscipit rem?</div>
+        <div>Necessitatibus, neque enim ducimus deleniti iusto veniam. Modi fugiat reprehenderit, dolor neque omnis provident magni aliquam eum assumenda impedit aspernatur expedita nesciunt asperiores soluta velit maiores quas blanditiis distinctio aliquid.</div>
+        <div>A odit dignissimos minus non, qui sapiente officia sint quas natus error, iste molestias, blanditiis labore maxime molestiae enim? Dolore quam voluptatibus deserunt eveniet vitae recusandae sit laudantium! Velit, consequuntur.</div>
 
-       @if ($profile->profile_picture !== null)
-            <x-curator-glider :media="$profile->profile_picture" class="rounded-full w-1/2 md:w-full p-4 -mt-4 md:p-6 lg:p-16 lg:-mt-10 filter grayscale"/>
-       @else
-           <img src="{{ asset('/img/logo-white.png') }}" class="w-1/2 md:w-full p-4 -mt-4 md:p-6 lg:p-16 lg:-mt-10 filter opacity-90"/>
-       @endif
-
-    </div>
-
-{{--About Me Section--}}
-    <div class="leading-relaxed p-8 md:p-2 text-zinc-400 text-md sm:text-sm md:text-md md:leading-snug lg:text-base lg:leading-loose">
-        {{ $profile->about_me }}
-
-        {{-- Empty Section --}}
-        @if ($profile->about_me === null)
-            <x-ui.empty-section
-                :btn_icon="'add-outline'"
-                :btn_text="'Add About Me'"
-                :empty_message="'You have no about me yet'"
-                :empty_icon="'reader-outline'"
-                :link_path="'/admin/profiles/create'"
-            />
-        @endif
-
-    </div>
-
-{{--Timeline Courses --}}
-    <div class="grid justify-center">
-
-        @if($courses->count() !== 0)
-
-        {{-- Timeline Title --}}
-        <span class="pb-8 text-2xl lg:text-3xl font-extrabold tracking-tight text-zinc-500">
-            <span>recent</span>
-            <span class="main-gradient-text">certifications</span>
-        </span>
-
-        @endif
-
-        {{-- Timeline Listing --}}
-        <div class="grid items-stretch">
-            @foreach ($courses as $item )
-                <x-ui.timeline
-                :course="$item->course"
-                :university="$item->university"
-                :conclusion_date="$item->conclusion_date"
-                />
-            @endforeach
-        </div>
-
-        {{-- Empty Section --}}
-        @if ($courses->count() === 0)
-            <x-ui.empty-section
-                :btn_icon="'add-outline'"
-                :btn_text="'Add Course'"
-                :empty_message="'You have no courses yet'"
-                :empty_icon="'school-outline'"
-                :link_path="'/admin/timelines/create'"
-            />
-        @endif
-
-    </div>
 
 </div>
 </x-content-section>
+
+
 
