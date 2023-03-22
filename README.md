@@ -4,7 +4,7 @@
   <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/main/public/img/logo-color.png" width="30%" alt="Descrição da imagem">
 </p>
 
-<h5 align="center" style="text-align: center; font-weight: normal;">A Laravel 10 application that provides a platform to create an online portfolio</h5>
+<h5 align="center" style="text-align: center; font-weight: normal; text-transform: lowercase">A Laravel application that provides a platform to create an online portfolio</h5>
 
 <h1 align="center"></h1>
 
@@ -44,15 +44,20 @@ This project is a web-based application built on Laravel 10 framework that provi
 3. Create a `.env` file by copying the `.env.example` file
 4. Update the `.env` file with the appropriate database credentials
 5. Run `php artisan key:generate` to generate an application key
-6. Run `php artisan migrate` to create database tables
-7. Run `php artisan serve` to start the application
-8. Visit `http://localhost:8000` in your web browser to access the application
+6. Go to `app/Providers/AppSettingsServiceProvider.php` and remove the `settings` comment from the `boot` method
+7. Run `php artisan migrate` to create database tables
+8. Run `php artisan make:filament-user` to create a user for the administrative panel
+9. Run `npm install` to install dependencies
+10. Run `php artisan serve` to start the application
+11. Visit `http://localhost:8000/admin` in your web browser to access the application
+12. Go to Pages and create a new page with the slug `/` and the title `Home`
+13. Save the page and go to `http://localhost:8000` to view the application
 
 ## Dependencies
 - Laravel 10
 - Filament Plugin
 - PHP 8.1 or higher
-- MySQL 5.7 or higher
+- Database (MySQL, PostgreSQL, SQLite ..)
 
 ## Usage
 Once the application is installed, users can navigate to the home page to begin creating their portfolio. From there, they can add personal information, upload images of their work, and add client logos. The contact form is already integrated into the application.
@@ -64,6 +69,9 @@ If you encounter any issues or have questions, please reach out to the project c
 
 ## Contributing
 Contributions to the project are welcome! Please fork the repository and submit a pull request.
+
+## Contact
+You can reach out to the project contributors through the repository's issue tracker. Or, you can reach out to me directly at [@marcosvca_](https://twitter.com/mviniciusca_)
 
 ## License
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
