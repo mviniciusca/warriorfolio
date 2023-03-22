@@ -39,12 +39,10 @@ class AboutSection extends Component
     public function render(): View|Closure|string
     {
         return view('components.about-section', [
-            'courses'           => Timeline::all()->sortByDesc('id')->take(5),
-            'profile'           => Profile::first(),
-            'about_title'       => PagesSettings::first()->about_title,
-            'about_description' => PagesSettings::first()->about_description,
-            'skills'            =>  $this->getSkillsOne() // get skills from column skill_one
-
+            'courses'   => Timeline::all()->sortByDesc('id')->take(5), // get last 5 courses
+            'profile'   => Profile::first(), // profile data
+            'about'     => PagesSettings::first(), // section title
+            'skills'    => $this->getSkillsOne() // get skills from column skill_one
         ]);
     }
 }
