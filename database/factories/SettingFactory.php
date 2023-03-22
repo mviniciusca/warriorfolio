@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\PagesSettings>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Setting>
  */
-class PagesSettingsFactory extends Factory
+class SettingFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class PagesSettingsFactory extends Factory
     public function definition(): array
     {
         return [
-            'app_name'                  => 'Warriorfolio',
+             'app_name'                  => 'Warriorfolio',
             'app_logo'                  => '/img/app-logo.png',
             'app_favicon'               => '/img/favicon.ico',
             'app_description'           => 'Warriorfolio is a free and open-source portfolio template for developers and designers.

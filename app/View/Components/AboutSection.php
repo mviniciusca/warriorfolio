@@ -4,9 +4,8 @@ namespace App\View\Components;
 
 use Closure;
 use App\Models\Profile;
+use App\Models\Setting;
 use App\Models\Timeline;
-use App\Models\PagesSettings;
-use App\Models\Skill;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
@@ -41,7 +40,7 @@ class AboutSection extends Component
         return view('components.about-section', [
             'courses'   => Timeline::all()->sortByDesc('id')->take(5), // get last 5 courses
             'profile'   => Profile::first(), // profile data
-            'about'     => PagesSettings::first(), // section title
+            'about'     => Setting::first(), // section title
             'skills'    => $this->getSkillsOne() // get skills
         ]);
     }

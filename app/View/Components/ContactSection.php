@@ -3,7 +3,7 @@
 namespace App\View\Components;
 
 use Closure;
-use App\Models\PagesSettings;
+use App\Models\Setting;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
@@ -23,8 +23,8 @@ class ContactSection extends Component
     public function render(): View|Closure|string
     {
         return view('components.contact-section', [
-            'contact_title' => PagesSettings::first()->contact_title,
-            'contact_description' => PagesSettings::first()->contact_description,
+            'contact_title'         => Setting::first()->contact_title,
+            'contact_description'   => Setting::first()->contact_description,
         ]);
     }
 }

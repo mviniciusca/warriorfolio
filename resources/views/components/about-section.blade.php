@@ -6,7 +6,7 @@
     :subTitle='$about->about_description'
 >
 
-<div class="grid p-8 gap-8 lg:flex lg:gap-16 items-start md:grid-cols-1">
+<div class="grid gap-8 lg:flex lg:gap-16 items-start md:grid-cols-1">
     {{-- Profile --}}
     <div class="lg:w-1/3 p-4">
         <x-about.profile :profile='$profile' :skills='$skills' />

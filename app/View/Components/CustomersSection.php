@@ -3,8 +3,8 @@
 namespace App\View\Components;
 
 use Closure;
+use App\Models\Setting;
 use App\Models\Customer;
-use App\Models\PagesSettings;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
@@ -24,9 +24,9 @@ class CustomersSection extends Component
     public function render(): View|Closure|string
     {
         return view('components.customers-section',[
-            'customers' => Customer::all()->sortByDesc('id')->take(8),
-            'customers_title' => PagesSettings::first()->customers_title,
-            'customers_description' => PagesSettings::first()->customers_description,
+            'customers'             => Customer::all()->sortByDesc('id')->take(8),
+            'customers_title'       => Setting::first()->customers_title,
+            'customers_description' => Setting::first()->customers_description,
         ]);
     }
 }

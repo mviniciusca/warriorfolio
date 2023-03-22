@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PagesSettingsResource\Pages;
-use App\Filament\Resources\PagesSettingsResource\RelationManagers;
-use App\Models\PagesSettings;
+use App\Filament\Resources\SettingResource\Pages;
+use App\Filament\Resources\SettingResource\RelationManagers;
+use App\Models\Setting;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,19 +13,20 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PagesSettingsResource extends Resource
+class SettingResource extends Resource
 {
-    protected static ?string $model = PagesSettings::class;
+    protected static ?string $model = Setting::class;
 
-    protected static ?string $slug              = 'page-settings';
-    protected static ?string $modelLabel        = 'Page Settings';
+    protected static ?string $slug              = 'settings';
+    protected static ?string $modelLabel        = 'Settings';
     protected static ?string $navigationGroup   = 'App Settings';
-    protected static ?string $navigationLabel   = 'Page Settings';
-    protected static ?string $navigationIcon    = 'heroicon-o-collection';
+    protected static ?string $navigationLabel   = 'Settings';
+    protected static ?string $navigationIcon    = 'heroicon-o-cog';
 
     public static function form(Form $form): Form
     {
         return $form
+
             ->schema([
                 Forms\Components\TextInput::make('app_name')
                     ->label('App Name'),
@@ -58,13 +59,8 @@ class PagesSettingsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('app_name')
-                ->label('App Name'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->label('Created At')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+
+                Tables\Columns\TextColumn::make('app_name'),
             ])
             ->filters([
                 //
@@ -87,9 +83,9 @@ class PagesSettingsResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPagesSettings::route('/'),
-            'create' => Pages\CreatePagesSettings::route('/create'),
-            'edit' => Pages\EditPagesSettings::route('/{record}/edit'),
+            'index' => Pages\ListSettings::route('/'),
+            'create' => Pages\CreateSetting::route('/create'),
+            'edit' => Pages\EditSetting::route('/{record}/edit'),
         ];
     }
 }

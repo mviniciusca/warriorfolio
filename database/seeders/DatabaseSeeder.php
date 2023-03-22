@@ -4,11 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Hero\Welcome;
 use App\Models\Link;
 use App\Models\Profile;
+use App\Models\Setting;
 use App\Models\Timeline;
-use App\Models\PagesSettings;
+use App\Models\Hero\Welcome;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         /** Add main page settings on database */
-        PagesSettings::factory()->count(1)->create();
+        Setting::factory()->count(1)->create();
 
         /** Add main profile info on database */
         Profile::factory()->count(1)->create();

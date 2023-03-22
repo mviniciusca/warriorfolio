@@ -6,7 +6,7 @@
     'childrenClass' => '',
 ])
 <div class="{{ $fatherClass }} mx-auto max-w-7xl">
-    <div class="{{ $childrenClass }} px-4 py-4" id="{{ $nav_id }}">
+    <div class="{{ $childrenClass }} p-8" id="{{ $nav_id }}">
         @if ($title !== '')
             <div class="flex justify-center pt-8 pb-12 text-center text-2xl font-bold lowercase tracking-tighter text-zinc-500 lg:pt-24 lg:pb-32 lg:text-4xl"
                 id="title">{!! $title !!}

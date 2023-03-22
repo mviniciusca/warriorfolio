@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\PagesSettings;
+use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 
 class AppSettingsProvider extends ServiceProvider
@@ -20,9 +20,7 @@ class AppSettingsProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $settings = PagesSettings::first();
-        // save in cahce
-       // cache()->forever('settings', $settings);
+        $settings = Setting::first();
         // share with all views
         view()->share('settings', $settings);
     }
