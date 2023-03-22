@@ -75,7 +75,7 @@ class DatabaseSeeder extends Seeder
                 'order' => 1
             ],
             [
-                'url'   => '#projects',
+                'url'   => '#portfolio',
                 'title' => 'Projects',
                 'order' => 2
             ],

@@ -23,7 +23,7 @@ class ProfileResource extends Resource
     protected static ?string $model = Profile::class;
 
     protected static ?string $navigationIcon    = 'heroicon-o-collection';
-    protected static ?string $navigationLabel   = 'Profile Settings';
+    protected static ?string $navigationLabel   = 'Profile';
     protected static ?string $navigationGroup   = 'Profile';
     protected static ?string $slug              = 'profile-settings';
     protected static ?string $modelLabel        = 'Profile';
@@ -32,13 +32,22 @@ class ProfileResource extends Resource
     {
            return $form
             ->schema([
-                CuratorPicker::make('profile_picture')
-                 ->label('Public Photo')
-                 ->columnSpan(2),
-                   Forms\Components\TextInput::make('profile_title')
-                   ->columnSpan(1)
-                    ->label('Profile Title')
+                    CuratorPicker::make('picture')
+                    ->label('Public Picture')
+                    ->columnSpan(2),
+                   Forms\Components\TextInput::make('name')
+                    ->columnSpan(1)
+                    ->label('Public Name')
                     ->required(),
+                    Forms\Components\TextInput::make('job_position')
+                    ->columnSpan(1)
+                    ->label('Job Position or Title'),
+                    Forms\Components\TextInput::make('localization')
+                    ->columnSpan(1)
+                    ->label('Localization'),
+                    Forms\Components\TextInput::make('skills')
+                    ->columnSpan(1)
+                    ->label('Skills *separeted by commas*'),
                     Forms\Components\TextInput::make('github_link')
                     ->columnSpan(1)
                     ->label('Github Profile'),
@@ -51,7 +60,16 @@ class ProfileResource extends Resource
                     Forms\Components\TextInput::make('medium_link')
                     ->columnSpan(1)
                     ->label('Medium Profile'),
-                    Forms\Components\MarkdownEditor::make('about_me')
+                    Forms\Components\TextInput::make('facebook_link')
+                    ->columnSpan(1)
+                    ->label('Facebook Profile'),
+                    Forms\Components\TextInput::make('instagram_link')
+                    ->columnSpan(1)
+                    ->label('Instagram Profile'),
+                    Forms\Components\TextInput::make('dribbble_link')
+                    ->columnSpan(1)
+                    ->label('Dribbble Profile'),
+                    Forms\Components\MarkdownEditor::make('about')
                     ->columnSpan(2)
                     ->label('Bio'),
                 ]);
@@ -61,7 +79,7 @@ class ProfileResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('profile_title'),
+                Tables\Columns\TextColumn::make('name'),
             ])
             ->filters([
                 //

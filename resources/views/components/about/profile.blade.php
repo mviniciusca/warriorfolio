@@ -1,10 +1,10 @@
 <div class="grid grid-rows-1 justify-center text-center gap-4">
 
     {{-- Profile Picture --}}
-    <div class="bg-zinc-900 h-44 w-44 rounded-full flex mx-auto items-center justify-center">
+    <div class="bg-zinc-900 h-44 w-44 rounded-full flex mx-auto items-center justify-center mb-4">
         {{-- Profile Picture from Database --}}
-        @if ($profile->profile_picture !== null)
-            <x-curator-glider :media='$profile->profile_picture' class="rounded-full mx-auto my-auto"/>
+        @if ($profile->picture !== null)
+            <x-curator-glider :media='$profile->picture' class="rounded-full mx-auto my-auto"/>
         {{-- Default Profile Picture --}}
         @else
             <img src="{{ asset('/img/logo-white.png') }}" alt="Profile Picture" class="p-10 mx-auto my-auto">
@@ -13,8 +13,9 @@
     {{-- End Profile Picture --}}
     {{-- Profile Title --}}
      <div class="grid gap-2 justify-center items-center">
-         <p class="text-md">{{ $profile->profile_title}}</p>
-         <p class="text-xs">Fullstack Developer</p>
+         <p class="text-md">{{ $profile->name}}</p>
+         <p class="text-sm">{{ $profile->localization }}</p>
+         <p class="text-xs pb-3">{{ $profile->job_position }}</p>
          {{-- Skills --}}
          <div>
             @foreach ($skills as $skill)
@@ -26,6 +27,11 @@
             @endforeach
         </div>
          {{-- End Skills --}}
+         {{-- Social Network --}}
+         <div class="mt-2 gap-3 justify-center">
+            <x-ui.social-network :profile='$profile' />
+         </div>
+         {{-- End Social Network --}}
     </div>
     {{-- End Profile Title --}}
 

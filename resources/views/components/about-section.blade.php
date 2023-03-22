@@ -14,7 +14,7 @@
     <div class="lg:flex lg:gap-16 grid gap-8">
         {{-- Bio --}}
         <div class="w-full lg:w-1/2 p-4">
-            <x-about.bio :bio='$profile' />
+            <x-about.bio :profile='$profile' />
         </div>
         {{-- Courses --}}
         <div class="w-full lg:w-1/2 p-4">

@@ -21,17 +21,17 @@ class AboutSection extends Component
     }
 
   /**
-   * Method to get all skills from column skill_one and remove , and return array
+   * Method to get all skills from column skills and remove , and return array
    */
 
     public function getSkillsOne()
     {
-        $skills = Skill::all();
-        $skillsOne = [];
+        $skills = Profile::all();
+        $getSkills = [];
         foreach ($skills as $skill) {
-            $skillsOne[] = explode(',', $skill->skill_one);
+            $getSkills[] = explode(',', $skill->skills);
         }
-       return $skillsOne;
+       return $getSkills;
     }
     /**
      * Get the view / contents that represent the component.
@@ -42,7 +42,7 @@ class AboutSection extends Component
             'courses'   => Timeline::all()->sortByDesc('id')->take(5), // get last 5 courses
             'profile'   => Profile::first(), // profile data
             'about'     => PagesSettings::first(), // section title
-            'skills'    => $this->getSkillsOne() // get skills from column skill_one
+            'skills'    => $this->getSkillsOne() // get skills
         ]);
     }
 }

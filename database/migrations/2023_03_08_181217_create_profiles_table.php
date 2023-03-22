@@ -13,13 +13,31 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('profile_title');
-            $table->string('profile_picture')->nullable();
-            $table->string('about_me')->nullable();
-            $table->string('github_link')->nullable();
-            $table->string('linkedin_link')->nullable();
-            $table->string('twitter_link')->nullable();
-            $table->string('medium_link')->nullable();
+            $table->string('name');
+            $table->string('localization')
+                ->nullable();
+            $table->string('job_position')
+                ->nullable();
+            $table->string('picture')
+                ->nullable();
+            $table->string('about')
+                ->nullable();
+            $table->string('skills')
+                ->nullable();
+            $table->string('github_link')
+                ->nullable();
+            $table->string('twitter_link')
+                ->nullable();
+            $table->string('linkedin_link')
+                ->nullable();
+            $table->string('dribbble_link')
+                ->nullable();
+            $table->string('instagram_link')
+                ->nullable();
+            $table->string('facebook_link')
+                ->nullable();
+            $table->string('medium_link')
+                ->nullable();
             $table->timestamps();
         });
     }
