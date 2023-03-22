@@ -26,13 +26,15 @@ This project is a web-based application built on Laravel 10 framework that provi
 - Client logo display
 - Easy to use administrative panel with Filament
 - Ability to create a list of recent certifications
+- Ability to create a list of skills
+- Ability to add your social media link, job title and location
 
 
 ## To-Do:
 
 - [ ] Create a dashboard to manage received emails 
 - [x] *~~Allow the admin to edit the initial message displayed on the website via the admin panel~~* **implemented commit 3ddb316** 
-- [ ] Add the ability to add tags for the user's main skills 
+- [x] *~~Add the ability to add tags for the user's main skills~~* **implemented commit: commit 402e0d1** 
 - [x] *~~Add a default background image to the hero section of the website~~* **implemented commit: b9d4cf4**
 
 
