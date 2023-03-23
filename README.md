@@ -72,7 +72,7 @@ If you encounter any issues or have questions, please reach out to the project c
 Contributions to the project are welcome! Please fork the repository and submit a pull request.
 
 ## Contact
-You can reach out to the project contributors through the repository's issue tracker. Or, you can reach out to me directly at [@marcosvca_](https://twitter.com/mviniciusca_)
+You can reach out to the project contributors through the repository's issue tracker. Or, you can reach out to me directly at [@marcosvca_](https://twitter.com/marcosvca_)
 
 ## License
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
