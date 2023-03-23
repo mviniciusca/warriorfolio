@@ -32,11 +32,7 @@ This project is a web-based application built on Laravel 10 framework that provi
 
 ## To-Do:
 
-- [ ] Create a dashboard to manage received emails 
-- [x] *~~Allow the admin to edit the initial message displayed on the website via the admin panel~~* **implemented commit 3ddb316** 
-- [x] *~~Add the ability to add tags for the user's main skills~~* **implemented commit: commit 402e0d1** 
-- [x] *~~Add a default background image to the hero section of the website~~* **implemented commit: b9d4cf4**
-
+- [ ] Create a dashboard to manage received messages
 
 ## Installation
 1. Clone the repository using `git clone`
