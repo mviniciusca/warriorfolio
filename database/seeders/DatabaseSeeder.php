@@ -20,20 +20,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
         /** Create a new user on database */
        DB::table('users')->insert([
             'name'      => 'Warriorfolio',
             'email'     => 'warriorfolio@test.dev',
             'password'  => Hash::make('admin'),
-        ]);
-
-        /** Create a new page on filament database */
-        DB::table('pages')->insert([
-            'slug'      => '/',
-            'title'     => 'Homepage',
-            'blocks'    => '',
-            'layout'    => 'default',
         ]);
 
         /** Add main page settings on database */

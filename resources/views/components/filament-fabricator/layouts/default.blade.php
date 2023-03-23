@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!-- Get title from app services provider -->
-    <title>{{ $settings->app_name }}</title>
+    <title>@if($settings !== null) {{ $settings->app_name }} @endif</title>
     <!-- Description -->
-    <meta name="description" content="{{ $settings->app_description }}">
+    <meta name="description" content="@if($settings !== null) {{ $settings->app_description }} @endif">
    <!-- Favion -->
-    <link rel="icon" href="{{ asset($settings->app_favicon) }}">
+    <link rel="icon" href="@if($settings !== null) {{ asset($settings->app_favicon) }} @endif">
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
