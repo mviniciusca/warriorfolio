@@ -3,7 +3,7 @@
     :title='$portfolio_title'
     :subTitle='$portfolio_description'
 >
-<div class="bg-zinc-900 border blur-bg border-zinc-800 rounded-lg p-4 mt-8 pb-16 pt-8 md:p-16 md:pb-32">
+<div class="bg-zinc-900 border blur-bg border-zinc-800 rounded-lg p-4 mt-8 md:mt-0 pb-16 pt-8 md:p-16 md:pb-32">
     {{-- Portfolio Grid --}}
     <div class="grid grid-cols-2 gap-4 justify-center items-center md:grid-cols-3 lg:grid-cols-4">
         @foreach ($projects as $project )
