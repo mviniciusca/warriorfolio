@@ -13,7 +13,7 @@
             </div>
         @endif
         @if ($subTitle !== '')
-            <div class="text-md -mt-8 pb-8 text-center lowercase leading-loose text-zinc-400 lg:-mt-20 lg:pb-24 lg:text-base"
+            <div class="text-sm md:text-md -mt-8 pb-8 text-center lowercase leading-loose text-zinc-400 lg:-mt-20 lg:pb-24 lg:text-base"
                 id="subTitle">{!! $subTitle !!}</div>
         @endif
         <div id="main-content">{{ $slot }}</div>

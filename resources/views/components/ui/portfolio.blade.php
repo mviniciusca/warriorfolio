@@ -2,7 +2,7 @@
 
 {{-- Portfolio Box --}}
 
-<div class="p-3 hover:-translate-y-3  transition-all duration-300 py-8">
+<div class="p-3 hover:-translate-y-3  transition-all duration-300 lg:py-8">
 
 {{--  Portfolio Tags --}}
           <div class="absolute z-10 -ml-4 mt-8 text-sm font-semibold text-white">
@@ -86,10 +86,10 @@
 {{--  End Portfolio Tags }}
 {{-- Project Cover --}}
             <div id="project-cover">
-                <img class=" rounded-xl transition-all duration-200 ease-in-out hover:opacity-90 hover:filter-none "
-                <x-curator-glider :media="$cover" class="rounded-xl"/>
+                <img class="opacity-80 rounded-xl transition-all duration-200 ease-in-out hover:opacity-100"
+                    <x-curator-glider :media="$cover" class="rounded-xl"/>
             </div>
-{{-- Project Title --}}
+
       </div>
 {{-- End Portfolio Box --}}
 
