@@ -1,13 +1,12 @@
 <?php
 
-namespace App\View\Components\nav;
+namespace App\View\Components\Ui;
 
 use Closure;
-use App\Models\Link;
-use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
-class bar extends Component
+class SocialIcons extends Component
 {
     /**
      * Create a new component instance.
@@ -22,8 +21,6 @@ class bar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.nav.bar',[
-            'links' => Link::all(),
-        ]);
+        return view('components.ui.social-icons');
     }
 }

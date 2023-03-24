@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\ui;
+namespace App\View\Components\Ui;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Stack extends Component
+class Logo extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Stack extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.ui.stack');
+        return view('components.ui.logo');
     }
 }

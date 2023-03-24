@@ -1,11 +1,13 @@
 <x-content-section
     :nav_id="'portfolio'"
-    :title='$portfolio_title'
-    :subTitle='$portfolio_description'
+    :title="''"
+    :subTitle="''"
 >
-{{-- Portfolio Grid --}}
-<div class="grid grid-cols-2 gap-4 justify-center items-center md:grid-cols-3 lg:grid-cols-4">
-    @foreach ($projects as $project )
+<div class="bg-zinc-900 border blur-bg border-zinc-800 rounded-lg p-16 pb-32 md:mt-36">
+
+    {{-- Portfolio Grid --}}
+    <div class="grid grid-cols-2 gap-4 justify-center items-center md:grid-cols-3 lg:grid-cols-4">
+        @foreach ($projects as $project )
             <x-ui.portfolio
                 :tag="$project->tag"
                 :link="$project->link"
@@ -13,9 +15,9 @@
                 :cover="$project->cover"
                 :title="$project->title"
             />
-    @endforeach
+        @endforeach
+    </div>
 </div>
-
 {{-- Empty Section --}}
 @if ($projects->count() === 0)
     <x-ui.empty-section
@@ -28,3 +30,11 @@
 @endif
 
 </x-content-section>
+<style>
+    .blur-bg {
+        background-image: url("{{ asset('/img/blur-orange.png') }}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
+    }
+</style>

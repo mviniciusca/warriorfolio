@@ -38,7 +38,7 @@
     {{-- Contact --}}
     <x-contact-section />
     {{-- Footer --}}
-    <x-footer />
+    <x-footer-section />
     <!--Scripts -->
     <livewire:scripts />
     <!-- Ionicons CDN -->

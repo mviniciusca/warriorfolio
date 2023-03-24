@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\about;
+namespace App\View\Components\Ui;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class bio extends Component
+class EmptySection extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class bio extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.about.bio');
+        return view('components.ui.empty-section');
     }
 }

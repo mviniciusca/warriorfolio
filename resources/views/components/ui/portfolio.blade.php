@@ -1,14 +1,8 @@
-@props([
-   'title'  => '',
-   'cover'  => '',
-   'link'   => '',
-   'tag'    => '',
-   'about'  => ''
-])
+@props(['title', 'tag', 'link', 'cover', 'tag', 'about'])
 
 {{-- Portfolio Box --}}
 
-<div class="bg-gradient-to-t from-zinc-900 to-black p-4 hover:-translate-y-3  transition-all duration-300">
+<div class="p-3 hover:-translate-y-3  transition-all duration-300 py-8">
 
 {{--  Portfolio Tags --}}
           <div class="absolute z-10 -ml-4 mt-8 text-sm font-semibold text-white">
@@ -92,13 +86,10 @@
 {{--  End Portfolio Tags }}
 {{-- Project Cover --}}
             <div id="project-cover">
-                <img class="opacity-30 grayscale filter transition-all duration-200 ease-in-out hover:opacity-90 hover:filter-none "
-                <x-curator-glider :media="$cover"/>
+                <img class=" rounded-xl transition-all duration-200 ease-in-out hover:opacity-90 hover:filter-none "
+                <x-curator-glider :media="$cover" class="rounded-xl"/>
             </div>
 {{-- Project Title --}}
-            <div class="text-zinc-500 lowercase pt-4 pb-2 font-extrabold">
-                {{--  {{ $title }}  --}}
-            </div>
       </div>
 {{-- End Portfolio Box --}}
 

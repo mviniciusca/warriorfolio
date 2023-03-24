@@ -1,21 +1,19 @@
 <?php
 
-namespace App\View\Components\nav;
+namespace App\View\Components\Layouts;
 
 use Closure;
-use App\Models\Link as LinkModel;
-use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
-class Link extends Component
+class Portfolio extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $links;
     public function __construct()
     {
-        $this->links = LinkModel::all();
+        //
     }
 
     /**
@@ -23,6 +21,6 @@ class Link extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.nav.link');
+        return view('components.ui.portfolio');
     }
 }

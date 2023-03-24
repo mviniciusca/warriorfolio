@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\about;
+namespace App\View\Components\About;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class courses extends Component
+class Courses extends Component
 {
     /**
      * Create a new component instance.

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\hero;
+namespace App\View\Components\Ui;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Welcome extends Component
+class SocialNetwork extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Welcome extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.hero.welcome');
+        return view('components.ui.social-network');
     }
 }

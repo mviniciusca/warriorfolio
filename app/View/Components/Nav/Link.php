@@ -1,20 +1,21 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Nav;
 
-use App\Models\Profile;
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Link as LinkModel;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
-class Footer extends Component
+class Link extends Component
 {
     /**
      * Create a new component instance.
      */
+    public $links;
     public function __construct()
     {
-        //
+        $this->links = LinkModel::all();
     }
 
     /**
@@ -22,8 +23,6 @@ class Footer extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.footer',[
-            'social_links' => Profile::first(),
-        ]);
+        return view('components.nav.link');
     }
 }

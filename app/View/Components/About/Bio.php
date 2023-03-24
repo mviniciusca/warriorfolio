@@ -1,13 +1,12 @@
 <?php
 
-namespace App\View\Components\hero;
+namespace App\View\Components\About;
 
 use Closure;
-use App\Models\HeroBackground;
-use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
-class Background extends Component
+class Bio extends Component
 {
     /**
      * Create a new component instance.
@@ -22,6 +21,6 @@ class Background extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.hero.background');
+        return view('components.about.bio');
     }
 }

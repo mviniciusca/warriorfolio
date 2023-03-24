@@ -1,12 +1,13 @@
 <?php
 
-namespace App\View\Components\ui;
+namespace App\View\Components\Hero;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\HeroBackground;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
-class EmptySection extends Component
+class Background extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +22,6 @@ class EmptySection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.ui.empty-section');
+        return view('components.hero.background');
     }
 }

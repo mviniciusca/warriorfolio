@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\ui;
+namespace App\View\Components\Ui;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class StacksIcons extends Component
+class Skill extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class StacksIcons extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.ui.stacks-icons');
+        return view('components.ui.skill');
     }
 }
