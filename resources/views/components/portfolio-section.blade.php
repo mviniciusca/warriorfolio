@@ -32,6 +32,6 @@
         background-image: url("{{ asset('/img/blur-orange.png') }}");
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: bottom center;
+        background-position: bottom;
     }
 </style>
