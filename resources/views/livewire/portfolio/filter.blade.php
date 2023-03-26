@@ -13,19 +13,7 @@
                 <option value="web">Web</option>
             </select>
         </form>
-    </div>
-    <div id="listing">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            @foreach ($projects as $project)
-                <x-ui.portfolio
-                    :tag="$project->tag"
-                    :link="$project->link"
-                    :about="$project->about"
-                    :cover="$project->cover"
-                    :title="$project->title"
-                />
-            @endforeach
-        </div>
+
     </div>
 </div>
 

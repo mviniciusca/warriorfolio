@@ -35,8 +35,6 @@ class Filter extends Component
         if ($this->filter === 'all') {
             return $this->project->all()->sortByDesc('id');
         }
-
-        $this->emit('projects::filer');
         return $this->project->where('tag', $this->filter)->get();
     }
 }
