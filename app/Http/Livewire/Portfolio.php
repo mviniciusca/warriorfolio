@@ -17,13 +17,13 @@ class Portfolio extends Component
 
     public function render()
     {
-        return view('livewire.portfolio',[
-            'projects' => Project::all()->sortByDesc('id'),
+        return view('livewire.portfolio', [
+            'projects' => $this->getProjectsWithTags(),
         ]);
     }
 
-
-
-
-
+    public function getProjectsWithTags()
+    {
+        return Project::with('tag')->get()->sortByDesc('id');
+    }
 }

@@ -1,4 +1,4 @@
-<div class="md:text-md pl-4 pr-4 text-xs lg:text-base">
+<div class="md:text-md text-xs lg:text-base">
     <div class="mb-8 flex flex-row justify-start pr-4 pl-4">
         <form>
                 <select
@@ -13,7 +13,6 @@
                 <option value="web">Web</option>
             </select>
         </form>
-
     </div>
 </div>
 

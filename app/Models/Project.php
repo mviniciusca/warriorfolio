@@ -12,9 +12,8 @@ class Project extends Model
     use HasFactory;
     protected $guarded = [];
 
-    //get the tag for the project
     public function tag()
     {
-        return $this->belongsTo(Tag::class);
+       return $this->belongsTo(Tag::class);
     }
 }

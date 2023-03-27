@@ -38,7 +38,7 @@ class TagResource extends Resource
                 Forms\Components\TextInput::make('color')
                 ->label('Tag Color')
                 ->columnSpan(5),
-                Forms\Components\Textarea::make('icon')
+                Forms\Components\MarkdownEditor::make('icon')
                 ->columnSpan(12)
                 ->label('Tag Icon'),
             ]);
