@@ -20,7 +20,7 @@
     </div>
     </div>
     <div id="listing">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
             @foreach ($projects as $project)
                 <x-ui.portfolio
                     :projectCover="$project->cover"
