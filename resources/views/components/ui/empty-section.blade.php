@@ -1,9 +1,9 @@
 @props([
-    'btn_icon'      => '',
-    'btn_text'      => '',
+    'btn_icon'      => 'add',
+    'btn_text'      => 'create something new',
     'link_path'     => '',
-    'empty_icon'    => '',
-    'empty_message' => '',
+    'empty_icon'    => 'rocket-outline',
+    'empty_message' => 'This section is empty.',
 ])
 @auth
     <div class="grid w-auto justify-center text-center lowercase mb-4">

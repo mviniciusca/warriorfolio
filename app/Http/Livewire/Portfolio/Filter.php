@@ -4,37 +4,51 @@ namespace App\Http\Livewire\Portfolio;
 
 use App\Models\Project;
 use Livewire\Component;
+use App\Models\Project\Tag;
 
 class Filter extends Component
 {
+    public Tag $tags;
+    public $filter;
 
-    public $filter = 'all';
-
-    public Project $project;
-
-    public function mount(Project $project)
+    /**
+     * Mount app
+     *
+     * @param Tag $tags
+     * @return void
+     */
+    public function mount(Tag $tags)
     {
-        $this->project = $project;
+        $this->tags = $tags;
+        $this->filter = 'vercel';
     }
 
+    /**
+     * Render app
+     *
+     * @return void
+     */
     public function render()
     {
-        return view('livewire.portfolio.filter', [
-           // return filter projects
-              'projects' => $this->projects,
+        return view('livewire.portfolio.filter',[
+            'tags' => $this->tags->all(['id', 'title'])
         ]);
     }
 
-    public function filter($filter)
+    /**
+     * Filter projects
+     *
+     * @param string $filter
+     * @return void
+     */
+    public function filterProjects(string $filter)
     {
         $this->filter = $filter;
+        $this->emit('filterProjects', $filter);
     }
 
-    public function getProjectsProperty()
-    {
-        if ($this->filter === 'all') {
-            return $this->project->all()->sortByDesc('id');
-        }
-        return $this->project->where('tag', $this->filter)->get();
-    }
+
+
+
+
 }
