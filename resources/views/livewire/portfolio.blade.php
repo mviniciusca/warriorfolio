@@ -1,12 +1,23 @@
+
 <div
     class="blur-bg mt-8 rounded-lg border border-zinc-800 bg-zinc-900 p-4 pb-16 pt-8 md:mt-0 md:p-16 md:pb-32">
      <div>
         <div class="md:text-md text-xs lg:text-base">
-        <div class="mb-8 flex flex-row justify-end pr-4 pl-4">
+            <div class="flex justify-end gap-5 items-center mb-8">
+                    <div class="justify-start">
+                    @if($tagTitle !== 'All' && $tagTitle !== 'all' && $count !== 0 && $count !== 1)
+                      <span class="lowercase"> Filtering all {{ $count }} projects with <span class="font-bold p-1 border-b-4 pb-1" style="border-bottom-color:{{ $tagColor }}">{{ $tagTitle }}</span> tag</span>
+                    @elseif($tagTitle !== 'All' && $tagTitle !== 'all' && $count === 1)
+                        <span class="lowercase"> Filtering this project with <span class="font-bold p-1 border-b-4 pb-1" style="border-bottom-color:{{ $tagColor }}">{{ $tagTitle }}</span> tag</span>
+                    @elseif($tagTitle === 'All' || $tagTitle === 'all' && $count !== 0)
+                        <span class="lowercase"> Showing all {{ $count }} projects</span>
+                    @endif
+                </div>
+        <div class="justify-end">
             @if($filters->count() > 0)
             <form>
                 <select
-                    class="focus:shadow-outline-zinc mr-0 mb-2 rounded-lg border border-black bg-zinc-800 px-4 py-2 font-medium lowercase leading-4
+                    class="focus:shadow-outline-zinc mr-6 border border-black bg-zinc-800 lowercase leading-8
                     text-white transition-colors duration-150 hover:bg-zinc-900 focus:outline-none active:bg-zinc-800"
                     wire:model="filter">
                     <option value="all">All</option>
@@ -22,6 +33,7 @@
     <div id="listing">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
             @foreach ($projects as $project)
+            @if($count !== 0)
                 <x-ui.portfolio
                     :projectCover="$project->cover"
                     :projectTitle="$project->title"
@@ -31,7 +43,15 @@
                     :tagTitle="$project->tag->title"
                     :tagColor="$project->tag->color"
                 />
+            @endif
             @endforeach
         </div>
+          {{-- Empty Section --}}
+            @if($count === 0)
+              <x-ui.empty-section
+                :empty_message="'No project in this section'"
+                :empty_icon="'albums-outline'"
+              />
+            @endif
     </div>
 </div>

@@ -1,9 +1,9 @@
 @props([
-    'btn_icon'      => 'add',
-    'btn_text'      => 'create something new',
+    'btn_icon'      => '',
+    'btn_text'      => '',
     'link_path'     => '',
-    'empty_icon'    => 'rocket-outline',
-    'empty_message' => 'This section is empty.',
+    'empty_icon'    => '',
+    'empty_message' => '',
 ])
 @auth
     <div class="grid w-auto justify-center text-center lowercase mb-4">
@@ -13,6 +13,7 @@
             </div>
         </div>
         <div class="text-sm text-zinc-400">{{ $empty_message }}</div>
+        @if($btn_icon !== '' && $btn_text !== '' && $link_path !== '')
         <div class="mt-3 flex justify-center">
             <a href="{{ url($link_path) }}">
                 <button
@@ -22,5 +23,6 @@
                 </button>
             </a>
         </div>
+        @endif
     </div>
 @endauth
