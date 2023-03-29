@@ -11,11 +11,17 @@
                     @elseif($tagTitle !== 'All' && $tagTitle !== 'all' && $count === 1)
                         <span class="lowercase"> Filtering this project with <span class="font-bold p-1 border-b-4 pb-1" style="border-bottom-color:{{ $tagColor }}">{{ $tagTitle }}</span> tag</span>
                     @elseif($tagTitle === 'All' || $tagTitle === 'all' && $count !== 0)
-                        <span class="lowercase"> Showing all {{ $count }} projects</span>
+                        @if($count === 1)
+                            <span class="lowercase"> Showing this project</span>
+                        @else
+                        @if($count > 1)
+                            <span class="lowercase"> Showing all {{ $count }} projects</span>
+                        @endif
+                        @endif
                     @endif
                 </div>
         <div class="justify-end">
-            @if($filters->count() > 0)
+            @if($filters->count() > 0 || $projects->count() > 0)
             {{--  Filter --}}
             <form>
                 <select
@@ -36,16 +42,16 @@
     <div id="listing">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
             @foreach ($projects as $project)
-                @if($count !== 0)
+                @if($count !== 0 )
                 <x-ui.portfolio :project="$project"/>
                 @endif
             @endforeach
         </div>
           {{-- Empty Section --}}
-            @if($count === 0)
+            @if($count === 0 || $projects->count() === 0)
               <x-ui.empty-section
                 :empty_message="'No project in this section'"
-                :empty_icon="'albums-outline'"
+                :empty_icon="'no-icon'"
               />
             @endif
     </div>
