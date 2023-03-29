@@ -4,8 +4,9 @@
     'link_path'     => '',
     'empty_icon'    => '',
     'empty_message' => '',
+    'authOnly'     => true, // if true, only show this component if user is authenticated
 ])
-@auth
+    @auth
     <div class="grid w-auto justify-center text-center lowercase mb-4">
         <div class="flex justify-center">
             <div class="mb-2 mt-2 items-center text-6xl text-zinc-600">
@@ -25,4 +26,5 @@
         </div>
         @endif
     </div>
-@endauth
+    @endauth
+

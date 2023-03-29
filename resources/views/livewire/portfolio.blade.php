@@ -1,6 +1,6 @@
 @props(['projects', 'filters', 'tagTitle', 'tagColor', 'count'])
 <div
-    class="blur-bg mt-8 rounded-lg border border-zinc-800 bg-zinc-900 p-4 pb-16 pt-8 md:mt-0 md:p-16 md:pb-32">
+    class="blur-bg mt-8 rounded-lg border border-zinc-800 bg-black p-4 pb-16 pt-8 md:mt-0 md:p-16 md:pb-32">
      <div>
     {{-- Filter Section --}}
         <div class="md:text-md text-xs lg:text-base">
@@ -25,7 +25,7 @@
             {{--  Filter --}}
             <form>
                 <select
-                    class="focus:shadow-outline-zinc mr-6 rounded-md border border-black bg-zinc-800 lowercase leading-8
+                    class="focus:shadow-outline-zinc mr-6 rounded-md border border-black bg-zinc-900 lowercase leading-8
                     text-white transition-colors duration-150 hover:bg-zinc-900 focus:outline-none active:bg-zinc-800"
                     wire:model="filter">
                     <option value="all">All</option>
