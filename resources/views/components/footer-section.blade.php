@@ -44,9 +44,9 @@
                 <span class="text-lg lg:text-2xl hover:opacity-80 hover:cursor-pointer"><ion-icon name="logo-linkedin"></ion-icon></span>
             </a>
         @endisset
-
     </div>
-
+{{-- Background Footer Lights --}}
+    <div class="absolute w-full h-[600px] bottom-100 mb-96 -z-30 bg-cover bg-center bg-no-repeat footer-bg" style="background-image: url('{{ asset('/img/blur-end.png') }}')"></div>
 </div>
-
 </x-content-section>
+

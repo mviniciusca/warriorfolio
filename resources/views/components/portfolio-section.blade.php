@@ -1,20 +1,8 @@
 <x-content-section
     :nav_id="'portfolio'"
-    :title='$portfolio_title'
-    :subTitle='$portfolio_description'
+
 >
-
-
-        <livewire:portfolio />
-        {{-- @foreach ($projects as $project )
-            <x-ui.portfolio
-                :tag="$project->tag"
-                :link="$project->link"
-                :about="$project->about"
-                :cover="$project->cover"
-                :title="$project->title"
-            />
-        @endforeach --}}
+    <livewire:portfolio />
 
 {{-- Empty Section --}}
 @if ($projects->count() === 0)
