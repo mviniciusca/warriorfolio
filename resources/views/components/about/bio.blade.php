@@ -1,3 +1,5 @@
+@props(['profile'])
+
 <div>
     {{-- Profile About --}}
     @if($profile->about !== null)

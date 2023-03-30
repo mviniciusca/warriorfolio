@@ -1,3 +1,5 @@
+@props(['profile', 'skills'])
+
 <div class="grid grid-rows-1 justify-center text-center gap-4">
 
     {{-- Profile Picture --}}

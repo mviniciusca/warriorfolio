@@ -1,3 +1,5 @@
+@props(['background'])
+
 {{-- Hero Background Set by user--}}
 <div class="absolute -z-50 filter inset-0 flex items-start justify-center">
   @if ($background !== null)

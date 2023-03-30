@@ -1,3 +1,5 @@
+@props(['courses'])
+
 <div>
     <div class="pb-8">
         @if($courses->count() !== null)

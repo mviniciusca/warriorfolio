@@ -9,7 +9,7 @@
 
 {{--Welcome Text--}}
     <div class="text-center lowercase font-bold text-2xl mt-16 leading-tight tracking-tight md:tracking-tighter md:text-4xl md:mt-24 lg:text-6xl lg:mt-36">
-       {!! $welcomeText !!}
+        {!! html_entity_decode($welcomeText)  !!}
     </div>
 
 {{--Sub-title Text--}}
