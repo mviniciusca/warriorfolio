@@ -23,7 +23,7 @@ class FooterSection extends Component
     public function render(): View|Closure|string
     {
         return view('components.footer-section',[
-            'social_links' => Profile::first(),
+            'profile' => Profile::first(),
         ]);
     }
 }
