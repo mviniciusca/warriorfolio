@@ -2,21 +2,21 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Mail as ModelsMail;
+use App\Models\Mail as ModelMail;
 use Livewire\Component;
 
 class Mail extends Component
 {
-    public ModelsMail $mail;
+    public ModelMail $mail;
 
     protected $rules = [
-        'mail.name' => 'required',
-        'mail.email' => 'required|email',
-        'mail.subject' => 'required',
-        'mail.message' => 'required',
+        'mail.name'     => 'required|min:5|max:32',
+        'mail.email'    => 'required|email|regex:/^.+@.+$/i',
+        'mail.subject'  => 'required|min:10|max:50',
+        'mail.message'  => 'required|min:10|max:500',
     ];
 
-    public function mount(ModelsMail $mail)
+    public function mount(ModelMail $mail)
     {
         $this->mail = $mail;
     }
@@ -29,13 +29,9 @@ class Mail extends Component
     public function send()
     {
         $this->validate();
-
         $this->mail->save();
-
-        $this->mail = new ModelsMail();
-
+        $this->mail = new ModelMail();
         $this->emit('mailSent');
-
         session()->flash('message', 'Mail sent successfully.');
     }
 }

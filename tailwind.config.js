@@ -6,17 +6,25 @@ module.exports = {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
+        './vendor/filament/**/*.blade.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.jsx',
     ],
-
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
-            }
+            },
+            colors: {
+                danger: colors.rose,
+                primary: colors.orange,
+                success: colors.green,
+                warning: colors.yellow,
+            },
         },
     },
-
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/typography'),
+    ],
 };

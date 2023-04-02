@@ -5,11 +5,12 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Link;
+use App\Models\Mail;
 use App\Models\Profile;
 use App\Models\Setting;
 use App\Models\Timeline;
-use App\Models\Hero\Welcome;
 use App\Models\Project\Tag;
+use App\Models\Hero\Welcome;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -120,5 +121,8 @@ class DatabaseSeeder extends Seeder
 
         /** Create a Welcome Text */
         Welcome::factory()->count(1)->create();
+
+        // Create mails
+        Mail::factory()->count(25)->create();
     }
 }
