@@ -123,6 +123,6 @@ class DatabaseSeeder extends Seeder
         Welcome::factory()->count(1)->create();
 
         // Create mails
-        Mail::factory()->count(25)->create();
+        Mail::factory()->count(100)->create();
     }
 }

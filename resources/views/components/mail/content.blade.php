@@ -12,6 +12,7 @@
         :email="$mail->email"
         :subject="$mail->subject"
         :datetime="$mail->created_at"
+        :mail="$mail"
         />
     @endforeach
 

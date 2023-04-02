@@ -10,7 +10,10 @@ class Inbox extends Component
     public Mail $mail;
 
     protected $listeners = [
-       'email-deleted' => '$refresh',
+        'email-deleted'     => '$refresh',
+        'email-read'        => '$refresh',
+        'email-starred'     => '$refresh',
+
     ];
 
     public function mount(Mail $mail)
@@ -27,13 +30,38 @@ class Inbox extends Component
 
     public function getEmails()
     {
-        return $this->mail->all()->sortByDesc('created_at');
+        // get emails that are not trashed and not sent
+        return $this->mail->where('is_trashed', false)
+                            ->where('is_sent', false)
+                            ->get()
+                            ->sortByDesc('created_at');
     }
 
-    public function deleteEmail($id)
+
+   public function markStar($id)
+   {
+       $mail = $this->mail->find($id);
+       $mail->is_starred = !$mail->is_starred;
+       $mail->save();
+       $this->emit('email-starred');
+   }
+
+    public function markRead($id)
     {
-        return $this->mail->find($id)->delete();
+         $mail = $this->mail->find($id);
+         $mail->is_read = !$mail->is_read;
+         $mail->save();
+         $this->emit('email-read');
+    }
+
+    public function markTrash($id)
+    {
+        $mail = $this->mail->find($id);
+        $mail->is_trashed = !$mail->is_trashed;
+        $mail->save();
         $this->emit('email-deleted');
     }
+
+
 
 }

@@ -17,10 +17,14 @@ class MailFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'subject' => $this->faker->sentence,
-            'message' => $this->faker->paragraph,
+            'name'          => $this->faker->name,
+            'email'         => $this->faker->unique()->safeEmail,
+            'subject'       => $this->faker->sentence,
+            'message'       => $this->faker->paragraph,
+            'is_sent'       => $this->faker->boolean,
+            'is_read'       => $this->faker->boolean,
+            'is_starred'    => $this->faker->boolean,
+            'is_trashed'    => $this->faker->boolean,
         ];
     }
 }
