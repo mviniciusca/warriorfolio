@@ -1,6 +1,11 @@
 <div>
      <div class="mb-8  justify-center">
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center gap-4">
+
+
+
+
+
             <div class="flex gap-2">
                 <button class="rounded-md bg-zinc-50 py-3 px-4 font-bold text-gray-800 hover:bg-gray-200">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -28,6 +33,8 @@
                     </div>
                 </div>
             </div>
+
+
 
         </div>
     </div>

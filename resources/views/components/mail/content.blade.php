@@ -6,7 +6,7 @@
 
     {{-- Message --}}
     @foreach ($mails as $mail)
-        <x-mail.message
+        <x-mail.message :wire:key="$mail->id"
         :id="$mail->id"
         :name="$mail->name"
         :email="$mail->email"
