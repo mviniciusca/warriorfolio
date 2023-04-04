@@ -4,95 +4,108 @@ namespace App\Http\Livewire\Mail;
 
 use App\Models\Mail;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Inbox extends Component
+{
+    use WithPagination;
+    public Mail $mail;
+
+    public $filter = 'inbox';
+
+    public function mount(Mail $mail)
     {
-        public Mail $mail;
+        $this->mail = $mail;
+    }
 
-        protected $listeners = [
-            'email-deleted'     => '$refresh',
-            'email-read'        => '$refresh',
-            'email-starred'     => '$refresh',
+    public function render()
+    {
+        return view('livewire.mail.inbox',[
+            'messages' => $this->getFilteredMessagesProperty(),
+        ]);
+    }
 
-        ];
+    /**
+     * Get the filtered messages
+     *
+     * @return void
+     */
 
-        public function mount(Mail $mail)
-        {
-            $this->mail = $mail;
+    public function getFilteredMessagesProperty()
+    {
+        if($this->filter == 'inbox'){
+            return $this->inbox();
+        }elseif($this->filter == 'starred'){
+            return $this->starred();
+        }elseif($this->filter == 'trashed'){
+            return $this->trashed();
         }
-
-        public function render()
-        {
-            return view('livewire.mail.inbox', [
-                'mails'         => $this->getEmails(),
-                'unreadCount'   => $this->getUnreadCount(),
-                'starredCount'  => $this->getStarredCount(),
-                'trashCount'    => $this->getTrashCount(),
-                'sentCount'     => $this->getSentCount(),
-            ]);
+        elseif($this->filter == 'sent'){
+            return $this->sent();
         }
+    }
 
-        public function getEmails()
-        {
-            // get emails that are not trashed and not sent
-            return $this->mail->where('is_trashed', false)
-                                ->where('is_sent', false)
-                                ->get()
-                                ->sortByDesc('created_at');
-        }
+    /**
+     * Set the filter
+     *
+     * @param [type] $filter
+     * @return void
+     */
+
+    public function setFilter($filter)
+    {
+        $this->filter = $filter;
+    }
 
 
-        public function markStar($id)
-        {
-            $mail = $this->mail->find($id);
-            $mail->is_starred = !$mail->is_starred;
-            $mail->save();
-            $this->emitSelf('email-starred');
-        }
+    public function inbox()
+    {
+       return $this->mail->where('is_trashed', false)->where('is_sent', false)->paginate(10);
+    }
 
-        public function markRead($id)
-        {
-            $mail = $this->mail->find($id);
-            $mail->is_read = !$mail->is_read;
-            $mail->save();
-            $this->emitSelf('email-read');
-        }
+    public function starred()
+    {
+        return $this->mail->where('is_starred', true)->where('is_trashed', false)->paginate(10);
+    }
 
-        public function markTrash($id)
-        {
-            $mail = $this->mail->find($id);
-            $mail->is_trashed = !$mail->is_trashed;
-            $mail->save();
-            $this->emitSelf('email-deleted');
-        }
+    public function trashed()
+    {
+        return $this->mail->where('is_trashed', true)->paginate(10);
+    }
 
-        public function getUnreadCount()
-        {
-            return $this->mail->where('is_read', false)
-                                ->where('is_trashed', false)
-                                ->where('is_sent', false)
-                                ->count();
-        }
+    public function sent()
+    {
+        return $this->mail->where('is_trashed', false)->where('is_sent', true)->paginate(10);
+    }
 
-        public function getStarredCount()
-        {
-            return $this->mail->where('is_starred', true)
-                                ->where('is_trashed', false)
-                                ->where('is_sent', false)
-                                ->count();
-        }
 
-        public function getTrashCount()
-        {
-            return $this->mail->where('is_trashed', true)
-                                ->where('is_sent', false)
-                                ->count();
-        }
+    /**
+     * Toggle the message as favorite or not
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function toggleFavorite($id)
+    {
+        $message = $this->mail->find($id);
+        $message->is_starred = !$message->is_starred;
+        $message->save();
+    }
 
-        public function getSentCount()
-        {
-            return $this->mail->where('is_sent', true)
-                                ->count();
-        }
+    /**
+     * Toggle the message as trashed or not
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function toggleTrash($id)
+    {
+        $message = $this->mail->find($id);
+        $message->is_trashed = !$message->is_trashed;
+        $message->save();
+    }
+
+
+
 
 }
