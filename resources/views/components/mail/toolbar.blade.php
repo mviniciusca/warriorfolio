@@ -3,9 +3,8 @@
     <div>
         <!-- Tabs -->
 
-        <div class="border-b border-gray-200 py-6">
-            <nav class="mb-4 flex items-center gap-8 font-bold lowercase"
-                aria-label="Tabs">
+        <div class="mb-8 mt-8 border-b border-gray-200">
+            <nav class="flex gap-8 font-bold lowercase" aria-label="Tabs">
 
                 <button
                     class="flex items-center gap-1 border border-transparent p-2 hover:border hover:border-b-primary-500 hover:text-primary-400"
