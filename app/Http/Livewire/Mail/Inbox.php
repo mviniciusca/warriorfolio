@@ -39,8 +39,7 @@ class Inbox extends Component
             return $this->starred();
         }elseif($this->filter == 'trashed'){
             return $this->trashed();
-        }
-        elseif($this->filter == 'sent'){
+        }elseif($this->filter == 'sent'){
             return $this->sent();
         }
     }
@@ -60,22 +59,22 @@ class Inbox extends Component
 
     public function inbox()
     {
-       return $this->mail->where('is_trashed', false)->where('is_sent', false)->paginate(10);
+        return $this->mail->where('is_trashed', false)->where('is_sent', false)->paginate(10, ['*'], 'inboxPage');
     }
 
     public function starred()
     {
-        return $this->mail->where('is_starred', true)->where('is_trashed', false)->paginate(10);
+        return $this->mail->where('is_starred', true)->where('is_trashed', false)->paginate(10, ['*'], 'starredPage');
     }
 
     public function trashed()
     {
-        return $this->mail->where('is_trashed', true)->paginate(10);
+        return $this->mail->where('is_trashed', true)->paginate(10, ['*'], 'trashedPage');
     }
 
     public function sent()
     {
-        return $this->mail->where('is_trashed', false)->where('is_sent', true)->paginate(10);
+        return $this->mail->where('is_trashed', false)->where('is_sent', true)->paginate(10, ['*'], 'sentPage');
     }
 
 
