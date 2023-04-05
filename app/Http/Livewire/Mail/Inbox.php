@@ -8,103 +8,105 @@ use Livewire\WithPagination;
 
 class Inbox extends Component
 {
+
     use WithPagination;
+    public $filter;
     public Mail $mail;
 
-    public $filter = 'inbox';
-
-    public function mount(Mail $mail)
+    /**
+     * Mount the component
+    */
+    public function mount()
     {
-        $this->mail = $mail;
+        $this->mail = new Mail();
+        $this->filter = 'inbox';
     }
 
+    /**
+     * Render the component
+     */
     public function render()
     {
         return view('livewire.mail.inbox',[
-            'messages' => $this->getFilteredMessagesProperty(),
+            'messages'      => $this->getMailsProperty($this->filter),
+            'inboxCount'    => $this->getInboxCountProperty(),
+            'sentCount'     => $this->getSentCountProperty(),
+            'starredCount'  => $this->getStarredCountProperty(),
+            'trashedCount'  => $this->getTrashedCountProperty(),
         ]);
     }
 
     /**
-     * Get the filtered messages
-     *
-     * @return void
+     * Set the value of filter
      */
-
-    public function getFilteredMessagesProperty()
-    {
-        if($this->filter == 'inbox'){
-            return $this->inbox();
-        }elseif($this->filter == 'starred'){
-            return $this->starred();
-        }elseif($this->filter == 'trashed'){
-            return $this->trashed();
-        }elseif($this->filter == 'sent'){
-            return $this->sent();
-        }
-    }
-
-    /**
-     * Set the filter
-     *
-     * @param [type] $filter
-     * @return void
-     */
-
     public function setFilter($filter)
     {
         $this->filter = $filter;
     }
 
-
-    public function inbox()
-    {
-        return $this->mail->where('is_trashed', false)->where('is_sent', false)->paginate(10, ['*'], 'inboxPage');
-    }
-
-    public function starred()
-    {
-        return $this->mail->where('is_starred', true)->where('is_trashed', false)->paginate(10, ['*'], 'starredPage');
-    }
-
-    public function trashed()
-    {
-        return $this->mail->where('is_trashed', true)->paginate(10, ['*'], 'trashedPage');
-    }
-
-    public function sent()
-    {
-        return $this->mail->where('is_trashed', false)->where('is_sent', true)->paginate(10, ['*'], 'sentPage');
-    }
-
-
     /**
-     * Toggle the message as favorite or not
-     *
-     * @param [type] $id
-     * @return void
+     * Applies the filter to the mail query and returns the result with pagination
      */
-    public function toggleFavorite($id)
+    public function getMailsProperty($filter)
     {
-        $message = $this->mail->find($id);
-        $message->is_starred = !$message->is_starred;
-        $message->save();
+        if ($filter == 'inbox'){
+            return $this->mail->where('is_trashed', false)->where('is_sent', false)->orderBy('created_at', 'desc')->paginate(10);
+        } elseif ($filter == 'sent'){
+            return $this->mail->where('is_trashed', false)->where('is_sent', true)->orderBy('created_at', 'desc')->paginate(10);
+        } elseif($filter == 'starred'){
+            return $this->mail->where('is_trashed', false)->where('is_starred', true)->where('is_sent', false)->orderBy('created_at', 'desc')->paginate(10);
+        } elseif ($filter == 'trashed') {
+            return $this->mail->where('is_trashed', true)->orderBy('updated_at', 'desc')->paginate(10);
+        }
     }
 
+    public function getInboxCountProperty()
+    {
+        return $this->mail->where('is_trashed', false)->where('is_sent', false)->count();
+    }
+
+    public function getSentCountProperty()
+    {
+        return $this->mail->where('is_trashed', false)->where('is_sent', true)->count();
+    }
+
+    public function getStarredCountProperty()
+    {
+        return $this->mail->where('is_trashed', false)->where('is_starred', true)->where('is_sent', false)->count();
+    }
+
+    public function getTrashedCountProperty()
+    {
+        return $this->mail->where('is_trashed', true)->count();
+    }
+
+
     /**
-     * Toggle the message as trashed or not
+     * Send the email to trash folder or restore it from trash
      *
-     * @param [type] $id
-     * @return void
      */
     public function toggleTrash($id)
     {
-        $message = $this->mail->find($id);
-        $message->is_trashed = !$message->is_trashed;
-        $message->save();
+        $mail = $this->mail->find($id);
+        $mail->is_trashed = !$mail->is_trashed;
+        $mail->save();
     }
 
+    /**
+     * Mark the email as starred or unstarred
+     */
+    public function toggleStarred($id)
+    {
+        $mail = $this->mail->find($id);
+        $mail->is_starred = !$mail->is_starred;
+        $mail->save();
+    }
 
+    public function destroyMessage($id)
+    {
+        $mail = $this->mail->find($id);
+        $mail->delete();
+    }
 
 
 }
