@@ -13,11 +13,11 @@ class Mail extends Model
 
     public function getShortMessageAttribute()
     {
-        return Str::limit($this->message, 35);
+        return Str::limit($this->message, 50);
     }
 
     public function getShortSubjectAttribute()
     {
-        return Str::limit($this->subject, 35);
+        return Str::limit($this->subject, 50);
     }
 }

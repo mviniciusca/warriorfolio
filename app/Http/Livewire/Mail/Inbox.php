@@ -13,6 +13,11 @@ class Inbox extends Component
     public $filter;
     public Mail $mail;
 
+
+    protected $listeners = [
+        'setId'          => '$refresh',
+    ];
+
     /**
      * Mount the component
     */
@@ -106,6 +111,11 @@ class Inbox extends Component
     {
         $mail = $this->mail->find($id);
         $mail->delete();
+    }
+
+    public function showMessage($id)
+    {
+        $this->emit('showMessage', $id);
     }
 
 

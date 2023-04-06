@@ -30,7 +30,7 @@
                     </svg>
                 </x-mail.toolbar.button>
 
-                <x-mail.toolbar.button :counter='$starredCount' :title="'Important'"
+                <x-mail.toolbar.button :counter='$starredCount' :title="'With Star'"
                     :filter="'starred'">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke-width="1.5"
