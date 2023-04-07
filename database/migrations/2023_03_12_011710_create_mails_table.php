@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('subject');
-            $table->text('message');
+            $table->text('body');
             $table->boolean('is_read')->default(false);
             $table->boolean('is_sent')->default(false);
             $table->boolean('is_trashed')->default(false);

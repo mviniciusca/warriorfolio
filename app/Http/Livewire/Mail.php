@@ -9,11 +9,13 @@ class Mail extends Component
 {
     public ModelMail $mail;
 
+    protected $listeners = ['mailSent' => '$refresh'];
+
     protected $rules = [
         'mail.name'     => 'required|min:5|max:32',
         'mail.email'    => 'required|email|regex:/^.+@.+$/i',
         'mail.subject'  => 'required|min:10|max:50',
-        'mail.message'  => 'required|min:10|max:500',
+        'mail.body'     => 'required|min:10|max:500',
     ];
 
     public function mount(ModelMail $mail)
@@ -31,7 +33,7 @@ class Mail extends Component
         $this->validate();
         $this->mail->save();
         $this->mail = new ModelMail();
-        $this->emit('mailSent');
+        $this->emitSelf('mailSent');
         session()->flash('message', 'Mail sent successfully.');
     }
 }

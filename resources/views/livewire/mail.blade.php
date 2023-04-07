@@ -1,43 +1,54 @@
-<div class="grid md:grid-cols-2 md:gap-3 gap-2 items-start">
+<div class="grid items-start gap-2 md:grid-cols-2 md:gap-3">
 
- {{-- Contact Form Component --}}
-   <div class="grid gap-2">
+    {{-- Contact Form Component --}}
+    <div class="grid gap-2">
 
-        <input type="text" wire:model='mail.name' placeholder="name" class="bg-zinc-900 p-3 text-zinc-500 border border-zinc-800 focus:bg-zinc-700 focus:text-zinc-300 outline-none active:bg-zinc-900">
+        <input type="text" wire:model='mail.name' placeholder="name"
+            class="border border-zinc-800 bg-zinc-900 p-3 text-zinc-500 outline-none focus:bg-zinc-700 focus:text-zinc-300 active:bg-zinc-900">
 
         @if ($errors->has('mail.name'))
-            <span class="text-sm text-red-500 italic mb-4">{{ $errors->first('mail.name') }}</span>
+            <span
+                class="mb-4 text-sm italic text-red-500">{{ $errors->first('mail.name') }}</span>
         @endif
 
-        <input type="text" wire:model='mail.email' placeholder="email" class="bg-zinc-900 p-3 text-zinc-500 border border-zinc-800 focus:bg-zinc-700 focus:text-zinc-300 outline-none active:bg-zinc-900">
+        <input type="text" wire:model='mail.email' placeholder="email"
+            class="border border-zinc-800 bg-zinc-900 p-3 text-zinc-500 outline-none focus:bg-zinc-700 focus:text-zinc-300 active:bg-zinc-900">
 
         @if ($errors->has('mail.email'))
-            <span class="text-sm text-red-500 italic mb-4">{{ $errors->first('mail.email') }}</span>
+            <span
+                class="mb-4 text-sm italic text-red-500">{{ $errors->first('mail.email') }}</span>
         @endif
 
-        <input type="text" wire:model='mail.subject' placeholder="subject" class="bg-zinc-900 p-3 text-zinc-500 border border-zinc-800 focus:bg-zinc-700 focus:text-zinc-300 outline-none active:bg-zinc-900">
+        <input type="text" wire:model='mail.subject' placeholder="subject"
+            class="border border-zinc-800 bg-zinc-900 p-3 text-zinc-500 outline-none focus:bg-zinc-700 focus:text-zinc-300 active:bg-zinc-900">
 
         @if ($errors->has('mail.subject'))
-            <span class="text-sm text-red-500 italic mb-4">{{ $errors->first('mail.subject') }}</span>
+            <span
+                class="mb-4 text-sm italic text-red-500">{{ $errors->first('mail.subject') }}</span>
         @endif
 
     </div>
 
     <div class="grid gap-2 md:h-full">
 
-        <textarea rows="3" wire:model='mail.message' placeholder="message"
-        class="bg-zinc-900 p-3 text-zinc-500 border h-full border-zinc-800 focus:bg-zinc-700 focus:text-zinc-300 outline-none active:bg-zinc-900"></textarea>
+        <textarea rows="3" wire:model='mail.body' placeholder="message"
+            class="h-full border border-zinc-800 bg-zinc-900 p-3 text-zinc-500 outline-none focus:bg-zinc-700 focus:text-zinc-300 active:bg-zinc-900"></textarea>
 
-        @if ($errors->has('mail.message'))
-            <span class="text-sm text-red-500 italic mb-4">{{ $errors->first('mail.message') }}</span>
+        @if ($errors->has('mail.body'))
+            <span
+                class="mb-4 text-sm italic text-red-500">{{ $errors->first('mail.body') }}</span>
         @endif
 
-            <button wire:click='send' class="bg-zinc-900 flex items-center gap-1 justify-center border border-zinc-800 mt-1 text-zinc-500 w-1/4 p-3 hover:bg-orange-500 transition-all duration-150 hover:text-white lowercase font-bold">
+        <button wire:click='send'
+            class="mt-1 flex w-1/4 items-center justify-center gap-1 border border-zinc-800 bg-zinc-900 p-3 font-bold lowercase text-zinc-500 transition-all duration-150 hover:bg-orange-500 hover:text-white">
 
             <!-- Heroicon -->
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M4.5 12.75l6 6 9-13.5" />
             </svg>
 
             <!-- Heroicon -->
@@ -48,15 +59,13 @@
 
     </div>
 
-    {{-- Session Show sent message --}}
-    @if (session()->has('message'))
-
+    {{-- Session Show sent body --}}
+    @if (session()->has('body'))
         <!-- Apline hide after 4s -->
-        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)" class="bg-orange-500 fixed z-50 bottom-5 right-5 text-white p-3">
-            {{ session('message') }}
+        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)"
+            class="fixed bottom-5 right-5 z-50 bg-orange-500 p-3 text-white">
+            {{ session('body') }}
         </div>
-
     @endif
-
 
 </div>

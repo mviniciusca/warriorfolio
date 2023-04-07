@@ -11,12 +11,8 @@ class Inbox extends Component
 
     use WithPagination;
     public $filter;
+    public $messageId;
     public Mail $mail;
-
-
-    protected $listeners = [
-        'setId'          => '$refresh',
-    ];
 
     /**
      * Mount the component
@@ -25,6 +21,7 @@ class Inbox extends Component
     {
         $this->mail = new Mail();
         $this->filter = 'inbox';
+        $this->messageId = null;
     }
 
     /**
@@ -38,6 +35,7 @@ class Inbox extends Component
             'sentCount'     => $this->getSentCountProperty(),
             'starredCount'  => $this->getStarredCountProperty(),
             'trashedCount'  => $this->getTrashedCountProperty(),
+            'show'       => $this->showMessage($this->messageId),
         ]);
     }
 
@@ -47,6 +45,17 @@ class Inbox extends Component
     public function setFilter($filter)
     {
         $this->filter = $filter;
+        $this->messageId = null;
+    }
+
+    /**
+     * Set the value of messageId and mark the message as read
+     */
+
+    public function setMessageId($id)
+    {
+        $this->messageId = $id;
+        $this->setAsRead($id);
     }
 
     /**
@@ -61,13 +70,13 @@ class Inbox extends Component
         } elseif($filter == 'starred'){
             return $this->mail->where('is_trashed', false)->where('is_starred', true)->where('is_sent', false)->orderBy('created_at', 'desc')->paginate(20);
         } elseif ($filter == 'trashed') {
-            return $this->mail->where('is_trashed', true)->orderBy('updated_at', 'desc')->paginate(20);
+            return $this->mail->where('is_trashed', true)->orderBy('created_at', 'desc')->paginate(20);
         }
     }
 
     public function getInboxCountProperty()
     {
-        return $this->mail->where('is_trashed', false)->where('is_sent', false)->count();
+        return $this->mail->where('is_trashed', false)->where('is_sent', false)->where('is_read', false)->count();
     }
 
     public function getSentCountProperty()
@@ -127,10 +136,12 @@ class Inbox extends Component
         $mail->delete();
     }
 
-    public function showMessage($id)
+    public function showMessage($messageId)
     {
-        $this->emit('showMessage', $id);
+        return $this->mail->find($messageId);
     }
+
+
 
 
 }

@@ -65,9 +65,9 @@ class LinkResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListLinks::route('/'),
-            'create' => Pages\CreateLink::route('/create'),
-            'edit' => Pages\EditLink::route('/{record}/edit'),
+            'index'     => Pages\ListLinks::route('/'),
+            'create'    => Pages\CreateLink::route('/create'),
+            'edit'      => Pages\EditLink::route('/{record}/edit'),
         ];
     }
 }

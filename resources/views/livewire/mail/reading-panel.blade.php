@@ -1,3 +1,6 @@
+@props(['message'])
 <div>
-    {{ $message }}
+    @if ($message !== null)
+        {{ $message->body }}
+    @endif
 </div>
