@@ -55,13 +55,13 @@ class Inbox extends Component
     public function getMailsProperty($filter)
     {
         if ($filter == 'inbox'){
-            return $this->mail->where('is_trashed', false)->where('is_sent', false)->orderBy('created_at', 'desc')->paginate(10);
+            return $this->mail->where('is_trashed', false)->where('is_sent', false)->orderBy('created_at', 'desc')->paginate(20);
         } elseif ($filter == 'sent'){
-            return $this->mail->where('is_trashed', false)->where('is_sent', true)->orderBy('created_at', 'desc')->paginate(10);
+            return $this->mail->where('is_trashed', false)->where('is_sent', true)->orderBy('created_at', 'desc')->paginate(20);
         } elseif($filter == 'starred'){
-            return $this->mail->where('is_trashed', false)->where('is_starred', true)->where('is_sent', false)->orderBy('created_at', 'desc')->paginate(10);
+            return $this->mail->where('is_trashed', false)->where('is_starred', true)->where('is_sent', false)->orderBy('created_at', 'desc')->paginate(20);
         } elseif ($filter == 'trashed') {
-            return $this->mail->where('is_trashed', true)->orderBy('updated_at', 'desc')->paginate(10);
+            return $this->mail->where('is_trashed', true)->orderBy('updated_at', 'desc')->paginate(20);
         }
     }
 
@@ -104,6 +104,20 @@ class Inbox extends Component
     {
         $mail = $this->mail->find($id);
         $mail->is_starred = !$mail->is_starred;
+        $mail->save();
+    }
+
+    public function setAsRead($id)
+    {
+        $mail = $this->mail->find($id);
+        $mail->is_read = true;
+        $mail->save();
+    }
+
+    public function setAsUnread($id)
+    {
+        $mail = $this->mail->find($id);
+        $mail->is_read = false;
         $mail->save();
     }
 

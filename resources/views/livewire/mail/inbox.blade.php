@@ -1,4 +1,4 @@
-<div class="flex min-h-screen w-full gap-12 rounded-lg bg-white px-4 py-0">
+<div class="flex min-h-screen w-full gap-12 rounded-lg bg-white p-8">
     {{-- Toolbar --}}
     <div class="w-48 items-start pt-8">
         <x-mail.toolbar :wire:key="'filter'" :inboxCount="$inboxCount" :sentCount="$sentCount"

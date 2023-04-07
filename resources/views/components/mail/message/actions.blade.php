@@ -12,6 +12,9 @@
     <div x-show="open"
         class="absolute z-50 -ml-3 -mt-2 rounded-lg border border-zinc-100 bg-white p-4 opacity-100 shadow-lg"
         x-on:click.away="open = false">
+        @if ($message->is_read)
+            <x-mail.mark-read :message="$message" />
+        @endif
         <x-mail.delete-message :message="$message" />
     </div>
 

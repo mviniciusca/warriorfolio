@@ -1,8 +1,8 @@
 @props(['message'])
-<div class="w-full">
-    <div
-        class="mb-2 mt-2 w-full cursor-pointer rounded-xl bg-zinc-50 p-4 text-zinc-500 transition-all duration-200 hover:opacity-100 hover:shadow-md">
-        <div class="flex w-full items-center gap-8">
+<div class="flex w-full items-center">
+    <div wire:click="setAsRead({{ $message->id }})"
+        class="@if ($message->is_read) opacity-50 @endif mb-2 mt-2 w-full cursor-pointer p-2 text-zinc-500 transition-all duration-200 hover:bg-gradient-to-r hover:from-zinc-100 hover:to-white hover:opacity-100">
+        <div class="flex w-full items-center gap-4">
 
             {{-- Add to favorite (star) --}}
             <div>
@@ -12,13 +12,13 @@
             <div class="flex w-full justify-between gap-4">
 
                 {{-- Name and Subject --}}
-                <div class="flex w-full">
-                    <p class="mb-2 w-1/3 font-bold">
+                <div class="flex w-full text-sm font-bold">
+                    <div class="mb-2 w-1/3">
                         {{ $message->name }}
-                    </p>
-                    <p class="text-sm">
+                    </div>
+                    <div>
                         {{ $message->getShortSubjectAttribute() }}
-                    </p>
+                    </div>
                 </div>
 
                 {{-- Clock Icon and Datetime --}}
@@ -36,14 +36,16 @@
                     </div>
                 </div>
 
-                {{-- Actions Menu --}}
+            </div>
+        </div>
+    </div>
 
-                <div class="-ml-6 px-7">
-                    <div class="absolute">
-                        <x-mail.message.actions :message="$message" />
-                    </div>
-                </div>
+    <div class="flex">
+        {{-- Actions Menu --}}
 
+        <div class="-ml-6 -mt-4 px-7">
+            <div class="absolute">
+                <x-mail.message.actions :message="$message" />
             </div>
         </div>
     </div>
