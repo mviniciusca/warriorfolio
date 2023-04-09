@@ -1,7 +1,7 @@
 @props(['message'])
-<div class="grid">
+<div class="flex items-center gap-4">
     <button
-        class="transition-all duration-100 hover:text-primary-400 active:text-zinc-500"
+        class="flex transition-all duration-100 hover:text-primary-400 active:text-zinc-500"
         wire:click="toggleTrash('{{ $message->id }}')" @click="open = !open">
 
         @if (!$message->is_trashed)
@@ -21,9 +21,10 @@
             </svg>
         @endif
     </button>
+
     @if ($message->is_trashed)
         <button
-            class="mt-4 transition-all duration-100 hover:text-primary-400 active:text-zinc-500"
+            class="transition-all duration-100 hover:text-primary-400 active:text-zinc-500"
             wire:click="destroyMessage({{ $message->id }}) @click="open=false">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"

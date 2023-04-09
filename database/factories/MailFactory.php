@@ -20,7 +20,7 @@ class MailFactory extends Factory
             'name'          => $this->faker->name,
             'email'         => $this->faker->unique()->safeEmail,
             'subject'       => $this->faker->sentence,
-            'body'          => $this->faker->paragraph,
+            'body'          => $this->faker->paragraph(30, true),
             'is_sent'       => $this->faker->boolean,
             'is_read'       => $this->faker->boolean,
             'is_starred'    => $this->faker->boolean,

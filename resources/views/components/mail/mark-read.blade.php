@@ -1,7 +1,7 @@
 @props(['message'])
 <div class="grid">
     <button
-        class="mt-1 mb-4 transition-all duration-100 hover:text-primary-400 active:text-zinc-500"
+        class="transition-all duration-100 hover:text-primary-400 active:text-zinc-500"
         wire:click="setAsUnread('{{ $message->id }}')" @click="open = !open">
         @if ($message->is_read)
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
