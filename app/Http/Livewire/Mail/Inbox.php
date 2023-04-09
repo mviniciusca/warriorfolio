@@ -35,7 +35,7 @@ class Inbox extends Component
             'sentCount'     => $this->getSentCountProperty(),
             'starredCount'  => $this->getStarredCountProperty(),
             'trashedCount'  => $this->getTrashedCountProperty(),
-            'show'       => $this->showMessage($this->messageId),
+            'show'          => $this->showMessage($this->messageId),
         ]);
     }
 
@@ -121,6 +121,7 @@ class Inbox extends Component
         $mail = $this->mail->find($id);
         $mail->is_read = true;
         $mail->save();
+
     }
 
     public function setAsUnread($id)

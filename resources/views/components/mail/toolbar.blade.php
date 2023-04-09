@@ -2,25 +2,24 @@
 
 <div>
     <div>
-        <div class="w-full">
+        <div class="w-full rounded-md bg-white p-2">
             <nav class="text-xs font-bold" aria-label="Tabs">
 
                 {{-- Compose Button --}}
 
                 <button
-                    class="mb-8 mt-1 flex w-full items-center justify-center rounded-md border border-zinc-300 py-3 px-2 text-xs transition-all duration-200 hover:border-transparent hover:bg-primary-400 hover:text-white active:bg-primary-800">
+                    class="mb-2 mt-1 flex w-full items-center justify-center rounded-md py-3 px-2 text-xs transition-all duration-200 hover:border-transparent hover:bg-primary-400 hover:text-white active:bg-primary-600">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="h-6 w-6">
+                        stroke="currentColor" class="h-8 w-8">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                     </svg>
-                    <p>{{ __('New Mail') }}</p>
                 </button>
 
                 {{-- Menu Options --}}
 
-                <x-mail.toolbar.button :counter='$inboxCount' :title="'Inbox'"
+                <x-mail.toolbar.button :counter='$inboxCount' :title="''"
                     :filter="'inbox'">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke-width="1.5"
@@ -30,7 +29,7 @@
                     </svg>
                 </x-mail.toolbar.button>
 
-                <x-mail.toolbar.button :counter='$starredCount' :title="'With Star'"
+                <x-mail.toolbar.button :counter='$starredCount' :title="''"
                     :filter="'starred'">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke-width="1.5"
@@ -40,7 +39,7 @@
                     </svg>
                 </x-mail.toolbar.button>
 
-                <x-mail.toolbar.button :counter='$sentCount' :title="'Sent'"
+                <x-mail.toolbar.button :counter='$sentCount' :title="''"
                     :filter="'sent'">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke-width="1.5"
@@ -50,7 +49,7 @@
                     </svg>
                 </x-mail.toolbar.button>
 
-                <x-mail.toolbar.button :counter='$trashedCount' :title="'Trash'"
+                <x-mail.toolbar.button :counter='$trashedCount' :title="''"
                     :filter="'trashed'">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke-width="1.5"

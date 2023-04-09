@@ -15,6 +15,4 @@ class Inbox extends Page
     protected static ?string $title             = '';
 
     protected static string $view = 'filament.pages.mail.inbox';
-
-
 }
