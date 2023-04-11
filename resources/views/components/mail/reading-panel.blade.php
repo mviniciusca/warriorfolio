@@ -24,7 +24,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Message ID Block --}}
             <div class="flex gap-4 pb-4" id="message-id">
                 <div id="avatar">
@@ -57,5 +56,15 @@
             </div>
             {{--  Response Widget --}}
             <x-mail.message.response :item="$show" />
+    @endif
+</div>
+{{--  Select a Message --}}
+<div class="grid h-full items-center">
+    @if ($show === null)
+        <div class="flex h-64 items-center justify-center">
+            <div class="text-center text-lg font-semibold text-zinc-500">
+                <x-mail.message.empty-reading-panel />
+            </div>
+        </div>
     @endif
 </div>
