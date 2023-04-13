@@ -10,12 +10,14 @@
     @endif
     {{-- Read, Unread and Trashed Tags --}}
     <div
-        class="{{ $item->is_trashed ? 'bg-red-400' : '' }} {{ $item->is_starred && !$item->is_trashed ? 'bg-orange-400' : '' }} {{ $item->is_read && !$item->is_trashed && !$item->is_starred ? 'bg-zinc-400' : '' }} {{ !$item->is_read && !$item->is_starred && !$item->trashed ? 'bg-black' : '' }} rounded-md p-1 text-xs font-semibold lowercase text-white">
+        class="{{ $item->is_trashed ? 'bg-red-400' : '' }} {{ $item->is_starred && !$item->is_trashed ? 'bg-orange-400' : '' }} {{ $item->is_read && !$item->is_trashed && !$item->is_starred ? 'bg-indigo-400' : '' }} {{ !$item->is_read && !$item->is_starred && !$item->trashed ? 'bg-zinc-400' : '' }} rounded-md p-1 text-xs font-semibold lowercase text-white">
         @if ($item->is_trashed)
             trashed
         @elseif($item->is_read && !$item->is_trashed)
             read
         @elseif(!$item->is_read && !$item->is_starred && !$item->trashed)
+            unread
+        @else
             unread
         @endif
     </div>

@@ -2,7 +2,6 @@
 <div>
     @if ($show !== null)
         <div class="-mt-4 rounded-md bg-white p-8 text-zinc-500 shadow-sm">
-
             <div id="toolbar" class="mb-4 flex justify-between pb-4">
                 {{--  Actions: Add to Favorite and Tags --}}
                 <div class="flex">
