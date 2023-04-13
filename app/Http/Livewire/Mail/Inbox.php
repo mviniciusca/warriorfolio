@@ -46,6 +46,7 @@ class Inbox extends Component
     {
         $this->filter = $filter;
         $this->messageId = null;
+        $this->resetPage();
     }
 
     /**
@@ -64,13 +65,13 @@ class Inbox extends Component
     public function getMailsProperty($filter)
     {
         if ($filter == 'inbox'){
-            return $this->mail->where('is_trashed', false)->where('is_sent', false)->orderBy('created_at', 'desc')->paginate(20);
+            return $this->mail->where('is_trashed', false)->where('is_sent', false)->orderBy('created_at', 'desc')->paginate(15);
         } elseif ($filter == 'sent'){
-            return $this->mail->where('is_trashed', false)->where('is_sent', true)->orderBy('created_at', 'desc')->paginate(20);
+            return $this->mail->where('is_trashed', false)->where('is_sent', true)->orderBy('created_at', 'desc')->paginate(15);
         } elseif($filter == 'starred'){
-            return $this->mail->where('is_trashed', false)->where('is_starred', true)->where('is_sent', false)->orderBy('created_at', 'desc')->paginate(20);
+            return $this->mail->where('is_trashed', false)->where('is_starred', true)->where('is_sent', false)->orderBy('created_at', 'desc')->paginate(15);
         } elseif ($filter == 'trashed') {
-            return $this->mail->where('is_trashed', true)->orderBy('created_at', 'desc')->paginate(20);
+            return $this->mail->where('is_trashed', true)->orderBy('created_at', 'desc')->paginate(15);
         }
     }
 

@@ -10,6 +10,10 @@
                 @foreach ($messages as $message)
                     <x-mail.message :message="$message" />
                 @endforeach
+                {{-- Paginate --}}
+                <div class="mt-4">
+                    {{ $messages->links() }}
+                </div>
             </div>
             {{-- Empty Messages --}}
             @if ($messages->count() === 0)
