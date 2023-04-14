@@ -12,6 +12,7 @@
             <span>
                 {{ $message->subject }}<br>
                 <p class="text-xs italic">
+                    {{ $message->created_at->format('d/m/Y H:i') }} •
                     {{ $message->created_at->diffForHumans() }}
                 </p>
             </span>
