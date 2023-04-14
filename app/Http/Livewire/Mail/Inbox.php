@@ -52,7 +52,6 @@ class Inbox extends Component
     /**
      * Set the value of messageId and mark the message as read
      */
-
     public function setMessageId($id)
     {
         $this->messageId = $id;
@@ -60,7 +59,7 @@ class Inbox extends Component
     }
 
     /**
-     * Applies the filter to the mail query and returns the result with pagination
+     * Get the mails
      */
     public function getMailsProperty($filter)
     {
@@ -75,21 +74,41 @@ class Inbox extends Component
         }
     }
 
+    /**
+     * Get the count of inbox messages
+     *
+     * @return void
+     */
     public function getInboxCountProperty()
     {
         return $this->mail->where('is_trashed', false)->where('is_sent', false)->where('is_read', false)->count();
     }
 
+    /**
+     * Get the count of sent messages
+     *
+     * @return void
+     */
     public function getSentCountProperty()
     {
         return $this->mail->where('is_trashed', false)->where('is_sent', true)->count();
     }
 
+    /**
+     * Get the count of starred messages
+     *
+     * @return void
+     */
     public function getStarredCountProperty()
     {
         return $this->mail->where('is_trashed', false)->where('is_starred', true)->where('is_sent', false)->count();
     }
 
+    /**
+     * Get the count of trashed messages
+     *
+     * @return void
+     */
     public function getTrashedCountProperty()
     {
         return $this->mail->where('is_trashed', true)->count();
@@ -117,6 +136,12 @@ class Inbox extends Component
         $mail->save();
     }
 
+    /**
+     * Set the message as read
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function setAsRead($id)
     {
         $mail = $this->mail->find($id);
@@ -125,6 +150,22 @@ class Inbox extends Component
 
     }
 
+    /**
+     * Close Message on Reading Panel
+     *
+     * @return void
+     */
+    public function closeMessage()
+    {
+        $this->messageId = null;
+    }
+
+    /**
+     * Set the message as unread
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function setAsUnread($id)
     {
         $mail = $this->mail->find($id);
@@ -132,18 +173,27 @@ class Inbox extends Component
         $mail->save();
     }
 
+    /**
+     * Delete the message permanently
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function destroyMessage($id)
     {
         $mail = $this->mail->find($id);
         $mail->delete();
     }
 
+    /**
+     * Show the message
+     *
+     * @param [type] $messageId
+     * @return void
+     */
     public function showMessage($messageId)
     {
         return $this->mail->find($messageId);
     }
-
-
-
 
 }

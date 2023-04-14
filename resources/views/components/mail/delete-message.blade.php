@@ -1,5 +1,5 @@
 @props(['message'])
-<div class="flex items-center">
+<div class="flex items-center gap-1">
     {{-- Restore message or send to trash --}}
     <x-mail.ui.button wire="toggleTrash({{ $message->id }})">
         @if (!$message->is_trashed)

@@ -18,6 +18,11 @@
                 </div>
                 {{-- Actions: Delete / Restore --}}
                 <div class="flex">
+                    {{-- Close Message on Reading Panel --}}
+                    <x-mail.ui.button wire="closeMessage">
+                        <x-svg.close />
+                    </x-mail.ui.button>
+                    {{-- Delete Message --}}
                     <div class="pr-2 pl-2">
                         <x-mail.delete-message :message="$show" />
                     </div>
