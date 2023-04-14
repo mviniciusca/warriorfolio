@@ -30,12 +30,12 @@ class Inbox extends Component
     public function render()
     {
         return view('livewire.mail.inbox',[
+            'show'          => $this->showMessage($this->messageId),
             'messages'      => $this->getMailsProperty($this->filter),
-            'inboxCount'    => $this->getInboxCountProperty(),
             'sentCount'     => $this->getSentCountProperty(),
+            'inboxCount'    => $this->getInboxCountProperty(),
             'starredCount'  => $this->getStarredCountProperty(),
             'trashedCount'  => $this->getTrashedCountProperty(),
-            'show'          => $this->showMessage($this->messageId),
         ]);
     }
 
@@ -113,7 +113,6 @@ class Inbox extends Component
     {
         return $this->mail->where('is_trashed', true)->count();
     }
-
 
     /**
      * Send the email to trash folder or restore it from trash
