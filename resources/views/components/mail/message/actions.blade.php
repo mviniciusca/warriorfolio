@@ -1,8 +1,8 @@
 @props(['message'])
 
-<div class="p-2">
+<div>
     {{--  show mark as read function --}}
-    @if ($message->is_read)
+    @if ($message->is_read && !$message->is_trashed)
         <x-mail.mark-read :message="$message" />
     @endif
     {{-- show delete / restore fynction  --}}

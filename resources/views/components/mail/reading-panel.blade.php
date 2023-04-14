@@ -2,17 +2,17 @@
 <div>
     @if ($show !== null)
         <div class="-mt-4 rounded-md bg-white p-8 text-zinc-500 shadow-sm">
-            <div id="toolbar" class="mb-6 flex items-center justify-between">
+            <div id="toolbar" class="mb-7 flex items-center justify-between">
                 {{--  Actions: Add to Favorite and Tags --}}
-                <div class="flex">
-                    <div class="pr-2">
+                <div class="flex items-center">
+                    <div>
                         <x-mail.add-favorite :message="$show" />
                     </div>
-                    <div class="pr-2 pl-2">
+                    <div>
                         <x-mail.mark-read :message="$show" />
                     </div>
                     {{-- Tag --}}
-                    <div class="pr-2 pl-4">
+                    <div class="pl-8">
                         <x-mail.tag :item="$show" />
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     {{ $show->subject }}</div>
                 <div class="pt-8 text-sm">{!! html_entity_decode($show->body) !!}</div>
             </div>
-            {{--  Response Widget --}}
+            {{--  Future: Response Widget --}}
             <x-mail.message.response :item="$show" />
     @endif
 </div>
