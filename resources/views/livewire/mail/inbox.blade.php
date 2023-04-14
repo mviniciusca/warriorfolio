@@ -6,9 +6,9 @@
         </div>
         <div
             class="h-screen w-1/2 overflow-hidden rounded-lg bg-white p-4 transition-all duration-100 hover:overflow-y-auto">
-            <div class="mt-6">
+            <div>
                 {{-- Paginate --}}
-                <div class="pb-8">
+                <div class="pt-4 pb-4">
                     {{ $messages->links() }}
                 </div>
                 {{-- Listing Messages --}}

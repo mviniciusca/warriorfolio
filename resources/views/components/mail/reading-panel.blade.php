@@ -2,23 +2,23 @@
 <div>
     @if ($show !== null)
         <div class="-mt-4 rounded-md bg-white p-8 text-zinc-500 shadow-sm">
-            <div id="toolbar" class="mb-4 flex justify-between pb-4">
+            <div id="toolbar" class="mb-6 flex items-center justify-between">
                 {{--  Actions: Add to Favorite and Tags --}}
                 <div class="flex">
-                    <div class="pr-4">
+                    <div class="pr-2">
                         <x-mail.add-favorite :message="$show" />
                     </div>
-                    <div class="pr-4 pl-4">
+                    <div class="pr-2 pl-2">
                         <x-mail.mark-read :message="$show" />
                     </div>
                     {{-- Tag --}}
-                    <div class="pr-4 pl-4">
+                    <div class="pr-2 pl-4">
                         <x-mail.tag :item="$show" />
                     </div>
                 </div>
                 {{-- Actions: Delete / Restore --}}
                 <div class="flex">
-                    <div class="pr-4 pl-4">
+                    <div class="pr-2 pl-2">
                         <x-mail.delete-message :message="$show" />
                     </div>
                 </div>

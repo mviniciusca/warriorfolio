@@ -1,24 +1,10 @@
-@props(['item', 'title'])
+@props(['item', 'class' => 'rounded-md p-1 text-xs font-semibold lowercase text-white'])
 
-<div class="flex gap-2">
-    {{--  Favorite Tag --}}
-    @if ($item->is_starred)
-        <div
-            class="rounded-md bg-orange-400 p-1 text-xs font-semibold lowercase text-white">
-            starred
+<div class="flex">
+    {{-- Tag to trashed items --}}
+    @if ($item->is_trashed)
+        <div class="{{ $class }} bg-red-400">
+            trashed
         </div>
     @endif
-    {{-- Read, Unread and Trashed Tags --}}
-    <div
-        class="{{ $item->is_trashed ? 'bg-red-400' : '' }} {{ $item->is_starred && !$item->is_trashed ? 'bg-orange-400' : '' }} {{ $item->is_read && !$item->is_trashed && !$item->is_starred ? 'bg-indigo-400' : '' }} {{ !$item->is_read && !$item->is_starred && !$item->trashed ? 'bg-zinc-400' : '' }} rounded-md p-1 text-xs font-semibold lowercase text-white">
-        @if ($item->is_trashed)
-            trashed
-        @elseif($item->is_read && !$item->is_trashed)
-            read
-        @elseif(!$item->is_read && !$item->is_starred && !$item->trashed)
-            unread
-        @else
-            unread
-        @endif
-    </div>
 </div>
