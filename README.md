@@ -28,11 +28,12 @@ This project is a web-based application built on Laravel 10 framework that provi
 - Ability to create a list of recent certifications
 - Ability to create a list of skills
 - Ability to add your social media link, job title and location
+- Receive messages from the website 
+- Read, edit, add to favorite and delete messages
 
+## Work in progress
 
-## To-Do:
-
-- [ ] Create a dashboard to manage received messages
+- Ability to write or reply to messages
 
 ## Installation
 1. Clone the repository using `git clone`
