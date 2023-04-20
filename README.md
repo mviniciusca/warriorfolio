@@ -33,7 +33,7 @@ This project is a web-based application built on Laravel 10 framework that provi
 
 ## Work in progress
 
-- Ability to write or reply to messages
+- Ability to write or reply messages
 
 ## Installation
 1. Clone the repository using `git clone`
