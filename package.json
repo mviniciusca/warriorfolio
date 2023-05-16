@@ -21,6 +21,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "node": "^20.1.0",
         "tailwindcss-animatecss": "^3.0.2",
         "tailwindcss-gradients": "^3.0.0"
     }

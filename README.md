@@ -31,9 +31,6 @@ This project is a web-based application built on Laravel 10 framework that provi
 - Receive messages from the website 
 - Read, edit, add to favorite and delete messages
 
-## Work in progress
-
-- Ability to write or reply messages
 
 ## Installation
 1. Clone the repository using `git clone`
@@ -42,6 +39,9 @@ This project is a web-based application built on Laravel 10 framework that provi
 4. Update the `.env` file with the appropriate database credentials
 5. Run `php artisan key:generate` to generate an application key
 7. Run `php artisan migrate` to create database tables
+
+The default username is 'warriorfolio@test.dev' and the default password is 'admin'
+
 8. Run `php artisan make:filament-user` to create a user for the administrative panel
 9. Run `npm install` to install dependencies
 10. Run `php artisan serve` to start the application

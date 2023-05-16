@@ -122,7 +122,5 @@ class DatabaseSeeder extends Seeder
         /** Create a Welcome Text */
         Welcome::factory()->count(1)->create();
 
-        // Create mails
-        Mail::factory()->count(100)->create();
     }
 }
