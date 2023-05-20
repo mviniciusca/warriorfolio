@@ -6,6 +6,7 @@ use App\Filament\Resources\HeroBackgroundResource\Pages;
 use App\Filament\Resources\HeroBackgroundResource\RelationManagers;
 use App\Models\HeroBackground;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Awcodes\Curator\Components\Forms\Uploader;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -28,7 +29,7 @@ class HeroBackgroundResource extends Resource
     {
         return $form
             ->schema([
-                CuratorPicker::make('background_image')
+                Forms\Components\FileUpload::make('background_image')
                     ->label('Background Image')
                     ->required(),
                 Forms\Components\TextInput::make('title')

@@ -28,7 +28,7 @@ class CustomerResource extends Resource
     {
         return $form
             ->schema([
-                CuratorPicker::make('customer_logo')->columnSpan(6)
+                Forms\Components\FileUpload::make('customer_logo')->columnSpan(6)
                 ->label('Logo')
                     ->required(),
                 Forms\Components\TextInput::make('customer_name')->columnSpan(1)

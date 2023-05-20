@@ -30,7 +30,7 @@ class ProjectResource extends Resource
     {
         return $form
             ->schema([
-                CuratorPicker::make('cover')
+                Forms\Components\FileUpload::make('cover')
                     ->columnSpanFull()
                     ->required(),
                     Forms\Components\TextInput::make('title')
@@ -41,7 +41,7 @@ class ProjectResource extends Resource
                         ->label('Tag')
                         ->options(Tag::all()->sortBy('title')->pluck('title', 'id')),
                 Forms\Components\TextInput::make('link'),
-                Forms\Components\MarkdownEditor::make('about')
+                Forms\Components\Textarea::make('about')
                     ->columnSpanFull(),
             ]);
     }

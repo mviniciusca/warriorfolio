@@ -13,6 +13,6 @@
         @endif
     </div>
     <div id="project-cover">
-       <x-curator-glider :media="$project->cover" class="rounded-2xl" />
+       <img src="storage/{{$project->cover}}" class="rounded-2xl" />
     </div>
 </div>
