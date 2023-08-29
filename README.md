@@ -8,13 +8,6 @@
 
 <h1 align="center"></h1>
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)&nbsp;&nbsp;&nbsp;&nbsp;
-[![PHP](https://img.shields.io/badge/PHP-8.1-blue)](https://www.php.net/releases/8.1/en.php)&nbsp;&nbsp;&nbsp;&nbsp;
-[![Laravel](https://img.shields.io/badge/Laravel-10-red)](https://laravel.com/docs/10.x/readme)&nbsp;&nbsp;&nbsp;&nbsp;
-[![Filament](https://img.shields.io/badge/Filament-2.17-green)](https://filamentphp.com/docs)&nbsp;&nbsp;&nbsp;&nbsp;
-[![Tailwind](https://img.shields.io/badge/Tailwind-2.2.19-blue)](https://tailwindcss.com/)&nbsp;&nbsp;&nbsp;&nbsp;
-[![Livewire](https://img.shields.io/badge/Livewire-2.12-pink)](https://laravel-livewire.com/)&nbsp;&nbsp;&nbsp;&nbsp;
-
 ## About 
 This project is a web-based application built on Laravel 10 framework that provides a platform to create an online portfolio. Users can add information about themselves, showcase their work through images, add client logos, and provide a contact form for interested parties. The administrative panel of the application is managed by Filament, a Laravel plugin.
 
@@ -38,18 +31,21 @@ This project is a web-based application built on Laravel 10 framework that provi
 3. Create a `.env` file by copying the `.env.example` file
 4. Update the `.env` file with the appropriate database credentials
 5. Run `php artisan key:generate` to generate an application key
-7. Run `php artisan migrate` to create database tables
+6. Run `php artisan storage:link` to creates a symbolic link between the storage directory and the public directory.
+7. Run `php artisan migrate --seed` to create database tables and seed the database: Warriorfolio comes with some defaults values in DatabaseSeeder. 
 
-The default username is 'warriorfolio@test.dev' and the default password is 'admin'
 
-8. Run `php artisan make:filament-user` to create a user for the administrative panel
-9. Run `npm install` to install dependencies
-10. Run `php artisan serve` to start the application
-11. Visit `http://localhost:8000/admin` in your web browser to access the application
-12. Go to Pages and create a new page
-13. Set `add to blocks`, choose `Page Body` with the slug `/` and the title `Home`
-14. Save
-15. Go to `http://localhost:8000` to view the application
+> :warning: **Note**: The default username is **'warriorfolio@test.dev'** and the default password is **'admin'**. It's recommended to delete this user and create a new set of credentials.
+
+
+1. Run `php artisan make:filament-user` to create a user for the administrative panel
+2. Run `npm install` to install dependencies
+3.  Run `php artisan serve` to start the application
+4.  Visit `http://localhost:8000/admin` in your web browser to access the application
+5.  Go to Pages and create a new page
+6.  Set `add to blocks`, choose `Page Body` with the slug `/` and the title `Home`
+7.  Save
+8.  Go to `http://localhost:8000` to view the application
 
 ## Dependencies
 - Laravel 10
