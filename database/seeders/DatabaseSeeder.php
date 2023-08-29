@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         /** Create a new user on database */
-       DB::table('users')->insert([
-            'name'      => 'Warriorfolio',
-            'email'     => 'warriorfolio@test.dev',
-            'password'  => Hash::make('admin'),
-        ]);
+        DB::table('users')->insert([
+             'name'      => 'Warriorfolio',
+             'email'     => 'warriorfolio@test.dev',
+             'password'  => Hash::make('admin'),
+         ]);
 
         //create tags
 
@@ -61,8 +61,6 @@ class DatabaseSeeder extends Seeder
             ]
 
         ]);
-
-
 
         /** Add main page settings on database */
         Setting::factory()->count(1)->create();

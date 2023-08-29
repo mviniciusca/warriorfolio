@@ -17,7 +17,7 @@ class TagResource extends Resource
 {
     protected static ?string $model = Tag::class;
 
-    protected static ?string $navigationIcon    = 'heroicon-o-collection';
+    protected static ?string $navigationIcon    = 'heroicon-o-tag';
     protected static ?string $navigationLabel   = 'Tags';
     protected static ?string $navigationGroup   = 'Portfolio';
     protected static ?string $slug              = 'projects/tags';
