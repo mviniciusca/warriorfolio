@@ -7,7 +7,8 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/js/app.jsx',
-                 'resources/css/filament.css',
+                'resources/css/app.css',
+                'resources/css/filament.css',
             ],
             refresh: true,
         }),
