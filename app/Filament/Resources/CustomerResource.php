@@ -19,7 +19,7 @@ class CustomerResource extends Resource
 {
     protected static ?string $model = Customer::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-tag';
+    protected static ?string $navigationIcon = 'heroicon-o-building-storefront';
     protected static ?string $navigationLabel = 'Customers';
     protected static ?string $navigationGroup = 'App Sections';
 
@@ -73,6 +73,7 @@ class CustomerResource extends Resource
             ->actions([
                 ActionGroup::make([
                     Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\EditAction::make(),
                 ]),
             ])
             ->bulkActions([
