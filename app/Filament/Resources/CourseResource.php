@@ -2,42 +2,60 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CourseResource\Pages;
-use App\Filament\Resources\CourseResource\RelationManagers;
-use App\Models\Course;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Course;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Section;
+use Filament\Tables\Actions\ActionGroup;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\CourseResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\CourseResource\RelationManagers;
 
 class CourseResource extends Resource
 {
     protected static ?string $model = Course::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationGroup = 'App Sections';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('institution')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\DatePicker::make('start_date')
-                    ->required(),
-                Forms\Components\DatePicker::make('end_date')
-                    ->required(),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('description')
-                    ->maxLength(255),
+                Section::make('Course Information')
+                    ->description('This information will be displayed publicly.')
+                    ->icon('heroicon-o-academic-cap')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('institution')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\DatePicker::make('start_date')
+                            ->helperText('The day will not be displayed')
+                            ->displayFormat('m/Y')
+                            ->required(),
+                        Forms\Components\DatePicker::make('end_date')
+                            ->displayFormat('m/Y')
+                            ->helperText('The day will not be displayed')
+                            ->required(),
+                        Forms\Components\Select::make('status')
+                            ->options([
+                                'in progress' => 'In Progress',
+                                'completed' => 'Completed',
+                                'dropped' => 'Dropped',
+                                'planned' => 'Planned',
+                            ])
+                            ->required(),
+                        Forms\Components\TextInput::make('description')
+                            ->maxLength(255),
+                    ])->columns(2)
             ]);
     }
 
@@ -45,34 +63,43 @@ class CourseResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\BadgeColumn::make('status')
+                    ->sortable()
+                    ->colors([
+                        'primary',
+                        'primary' => 'in progress',
+                        'danger' => 'dropped',
+                        'warning' => 'planned',
+                        'success' => 'completed',
+                    ])
+                    ->icons([
+                        'heroicon-o-check' => 'completed',
+                        'heroicon-o-document' => 'planned',
+                        'heroicon-o-x' => 'dropped',
+                        'heroicon-o-pencil' => 'in progress',
+                    ]),
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('institution')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('start_date')
-                    ->date()
-                    ->sortable(),
+                    ->sortable()
+                    ->date('m/Y'),
                 Tables\Columns\TextColumn::make('end_date')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('description')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->date('m/Y'),
             ])
+            ->defaultSort('start_date', 'desc')
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
