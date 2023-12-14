@@ -2,23 +2,25 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\MailResource\Pages;
-use App\Filament\Resources\MailResource\RelationManagers;
-use App\Models\Mail;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use App\Models\Mail;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Section;
+use Filament\Tables\Actions\ActionGroup;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Filters\TernaryFilter;
+use App\Filament\Resources\MailResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\MailResource\RelationManagers;
 
 class MailResource extends Resource
 {
     protected static ?string $model = Mail::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationLabel = 'Mail';
     public static function form(Form $form): Form
     {
         return $form
@@ -31,16 +33,19 @@ class MailResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('subject')
+                    ->columnSpanFull()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('body')
+                Forms\Components\RichEditor::make('body')->columnSpanFull()
+                    ->fileAttachmentsDirectory('mails')
                     ->required()
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
+                    ->maxLength(65535),
                 Forms\Components\Toggle::make('is_read')
-                    ->required(),
+                    ->inline(false)
+                    ->label('Mark as Read'),
                 Forms\Components\Toggle::make('is_important')
-                    ->required(),
+                    ->inline(false)
+                    ->label('Mark as Important'),
             ]);
     }
 
@@ -48,34 +53,44 @@ class MailResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('subject')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('is_read')
-                    ->boolean(),
                 Tables\Columns\IconColumn::make('is_important')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->label('')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-bookmark')
+                    ->falseIcon('')
+                    ->trueColor('primary'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\ToggleColumn::make('is_read')
+                    ->alignCenter()
+                    ->label('Read'),
+                Tables\Columns\TextColumn::make('subject')
+                    ->words(5)
+                    ->searchable()
+                    ->sortable(),
             ])
+            ->defaultSort('id', 'desc')
+            ->defaultPaginationPageOption(50)
             ->filters([
-                //
+                TernaryFilter::make('is_read')
+                    ->default(false)
+                    ->label('Messages')
+                    ->falseLabel('Show unread messages')
+                    ->trueLabel('Show read messages'),
+                TernaryFilter::make('is_important')
+                    ->label('Important')
+                    ->falseLabel('Show unimportant messages')
+                    ->trueLabel('Show important messages'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -84,19 +99,10 @@ class MailResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMails::route('/'),
-            'create' => Pages\CreateMail::route('/create'),
-            'edit' => Pages\EditMail::route('/{record}/edit'),
+            'index' => Pages\ManageMails::route('/'),
         ];
     }
 }
