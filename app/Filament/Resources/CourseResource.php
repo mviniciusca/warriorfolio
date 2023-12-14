@@ -63,7 +63,8 @@ class CourseResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\BadgeColumn::make('status')
+                Tables\Columns\TextColumn::make('status')
+                    ->badge()
                     ->sortable()
                     ->colors([
                         'primary',
