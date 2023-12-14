@@ -3,6 +3,13 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+
+use App\Models\Mail;
+use App\Models\Newsletter;
+use App\Models\User;
+use App\Models\Setting;
+use App\Models\Slideshow;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +19,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        /** Create a new user on database */
+        User::factory()->create([
+            'name' => 'Warriorfolio',
+            'email' => 'warriorfolio@test.dev',
+        ]);
+
+        /** Add main page settings on database */
+        Setting::factory()
+            ->hasLayout()
+            ->count(1)
+            ->create();
+
+        Mail::factory(50)->create();
+        Newsletter::factory(50)->create();
     }
 }
