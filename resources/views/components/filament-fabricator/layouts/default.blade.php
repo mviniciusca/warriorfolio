@@ -11,7 +11,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="dark:bg-zinc-900 dark:text-zinc-700">
+<body class="dark:bg-zinc-900 dark:text-zinc-500">
     <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
 </body>
 

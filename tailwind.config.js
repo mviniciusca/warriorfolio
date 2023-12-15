@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
 export default {
     content: [
         "./resources/**/*.blade.php",
@@ -6,7 +7,12 @@ export default {
         "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+      extend: {
+          colors: {
+              primary: colors.indigo,
+              secondary: colors.zinc
+        }
+    },
   },
   plugins: [],
 }
