@@ -12,8 +12,8 @@
 </head>
 
 <body class="dark:bg-zinc-900 dark:text-zinc-700">
+    <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
 
 </body>
-
 
 </html>
