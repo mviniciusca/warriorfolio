@@ -21,6 +21,7 @@ class NewsletterResource extends Resource
     protected static ?string $navigationLabel = 'Subscribers';
     protected static ?string $navigationGroup = 'App Sections';
     protected static ?string $title = 'Newsletter Subscribes';
+    protected static ?int $navigationSort = 5;
 
     public static function getNavigationBadge(): ?string
     {

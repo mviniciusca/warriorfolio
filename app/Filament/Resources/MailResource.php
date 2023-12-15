@@ -66,15 +66,15 @@ class MailResource extends Resource
                     ->trueIcon('heroicon-o-bookmark')
                     ->falseIcon('')
                     ->trueColor('primary'),
+                Tables\Columns\ToggleColumn::make('is_read')
+                    ->alignCenter()
+                    ->label('Read'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\ToggleColumn::make('is_read')
-                    ->alignCenter()
-                    ->label('Read'),
                 Tables\Columns\TextColumn::make('subject')
                     ->words(5)
                     ->searchable()
