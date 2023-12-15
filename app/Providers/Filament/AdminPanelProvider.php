@@ -27,6 +27,9 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandLogo(asset('img/core/logo-app.svg'))
+            ->brandLogoHeight('2rem')
+            ->favicon(asset('img/core/favicon.png'))
             ->resources([
                 config('filament-logger.activity_resource')
             ])
