@@ -20,6 +20,12 @@ class NewsletterResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
     protected static ?string $navigationLabel = 'Subscribers';
     protected static ?string $navigationGroup = 'App Sections';
+    protected static ?string $title = 'Newsletter Subscribes';
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 
     public static function form(Form $form): Form
     {

@@ -9,11 +9,12 @@ use Filament\Resources\Pages\ListRecords;
 class ListNewsletters extends ListRecords
 {
     protected static string $resource = NewsletterResource::class;
+    protected static ?string $title = 'Newsletter Subscribers';
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            //
         ];
     }
 }

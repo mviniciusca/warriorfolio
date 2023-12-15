@@ -19,8 +19,15 @@ use App\Filament\Resources\MailResource\RelationManagers;
 class MailResource extends Resource
 {
     protected static ?string $model = Mail::class;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-inbox-stack';
     protected static ?string $navigationLabel = 'Mail';
+    public static function getNavigationBadge(): ?string
+    {
+        if (static::getModel()::where('is_read', false)->count() > 0) {
+            return 'unread ' . static::getModel()::where('is_read', false)->count();
+        }
+        return null;
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -96,6 +103,7 @@ class MailResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+
             ]);
     }
 

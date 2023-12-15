@@ -21,7 +21,7 @@ class ProfileResource extends Resource
     protected static ?string $model = Profile::class;
     protected static ?string $navigationIcon = 'heroicon-o-user';
     protected static ?string $navigationLabel = 'Profile';
-    protected static ?string $navigationGroup = 'Settings';
+    protected static ?string $navigationGroup = 'App Sections';
     protected static ?int $navigationSort = 0;
 
     public static function form(Form $form): Form

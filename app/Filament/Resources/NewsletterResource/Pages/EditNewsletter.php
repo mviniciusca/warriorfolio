@@ -9,7 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditNewsletter extends EditRecord
 {
     protected static string $resource = NewsletterResource::class;
-
+    protected static ?string $title = 'Newsletter Subscribers';
     protected function getHeaderActions(): array
     {
         return [
