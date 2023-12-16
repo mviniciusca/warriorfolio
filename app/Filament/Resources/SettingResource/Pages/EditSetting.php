@@ -10,6 +10,8 @@ class EditSetting extends EditRecord
 {
     protected static string $resource = SettingResource::class;
 
+    protected static ?string $title = 'App Setting';
+
     protected function getHeaderActions(): array
     {
         return [

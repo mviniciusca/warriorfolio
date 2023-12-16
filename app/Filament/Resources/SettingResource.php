@@ -27,14 +27,15 @@ class SettingResource extends Resource
         return $form
             ->schema([
                 Section::make('Design & Appearance')
-                    ->description('Define the design and layout of your application')
+                    ->description('Change the design and appearance of your application')
                     ->icon('heroicon-o-photo')
                     ->schema([
                         Forms\Components\FileUpload::make('background_image')
                             ->image()
                             ->imageEditor()
                             ->directory('app')
-                            ->label('Background Image')->columnSpan(3),
+                            ->label('Background Image')
+                            ->columnSpan(3),
                         Forms\Components\FileUpload::make('logo')
                             ->image()
                             ->imageEditor()
@@ -48,15 +49,16 @@ class SettingResource extends Resource
                             ->helperText('.ico or .png would be amazing!')
                             ->label('Favicon'),
                     ])
-                    ->columns(5)->collapsed(),
+                    ->columns(5)
+                    ->collapsed(),
                 Section::make('Sections Settings')
-                    ->description('Define the design and layout of your application')
+                    ->description('Control the sections of your application')
                     ->icon('heroicon-o-light-bulb')
                     ->schema([
                         Group::make()
                             ->relationship('layout')
                             ->schema([
-                                Forms\Components\TextInput::make('hero_section_title')
+                                Forms\Components\Textarea::make('hero_section_title')
                                     ->autofocus()
                                     ->label('Hero Section Title')
                                     ->helperText('This is the main title of your hero section')
@@ -97,11 +99,13 @@ class SettingResource extends Resource
                                     ->label('Clients Section Subtitle')
                                     ->helperText('This is the subtitle of your clients section')
                                     ->maxLength(255),
-                            ])->columnSpanFull()->columns(2),
-                    ])->columns(3)->collapsed(),
+                            ])->columnSpanFull()
+                            ->columns(2),
+                    ])->columns(3)
+                    ->collapsible(),
                 Section::make('Application Settings')
                     ->description('Define the design and layout of your application')
-                    ->icon('heroicon-o-sparkles')
+                    ->icon('heroicon-o-cog-6-tooth')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->label('Application Name')
@@ -120,8 +124,9 @@ class SettingResource extends Resource
                             ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
                             ->label('Google Site Verification'),
                     ])->columns(3)->collapsed(),
-                Section::make('Modules Control')->description('Enable or disable modules')
-                    ->icon('heroicon-o-cog-6-tooth')
+                Section::make('Modules Control')
+                    ->description('Enable or disable modules')
+                    ->icon('heroicon-o-cube')
                     ->schema([
                         Group::make()
                             ->relationship('module')

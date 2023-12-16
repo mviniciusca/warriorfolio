@@ -8,7 +8,7 @@
             <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
                 <div class="text-center max-w-7xl mt-48">
                     <h1
-                        class="title-font animate__animated animate__fadeInUp animate__delay-3s text-9xl font-bold dark:text-white tracking-tighter leading-tighter mb-8">
+                        class="title-font dark:text-white animate__animated animate__fadeInUp animate__delay-3s text-9xl font-bold tracking-tighter leading-tighter mb-8">
                         {!! $info['hero_section_title'] !!}
                     </h1>
                     <p
