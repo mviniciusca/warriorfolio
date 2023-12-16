@@ -13,7 +13,7 @@
                     </h1>
                     <p
                         class="animate__animated animate__fadeInUp animate__delay-4s mb-8 text-3xl dark:text-white shadow-current tracking-tight leading-tight">
-                        {!! $info['hero_section_subtitle_text'] !!}
+                        {!!html_entity_decode($info['hero_section_subtitle_text'])!!}
                     </p>
                     <div class="flex justify-center animate__animated animate__fadeInUp animate__delay-5s">
                         <button

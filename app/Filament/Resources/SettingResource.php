@@ -26,24 +26,33 @@ class SettingResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Design & Layout')
+                Section::make('Design & Appearance')
                     ->description('Define the design and layout of your application')
-                    ->icon('heroicon-o-cube')
+                    ->icon('heroicon-o-photo')
                     ->schema([
+                        Forms\Components\FileUpload::make('background_image')
+                            ->image()
+                            ->imageEditor()
+                            ->directory('app')
+                            ->label('Background Image')->columnSpan(3),
                         Forms\Components\FileUpload::make('logo')
                             ->image()
+                            ->imageEditor()
                             ->directory('app')
                             ->helperText('.png transparent or .svg will be nice!')
                             ->label('Logo'),
-                        Forms\Components\FileUpload::make('background_image')
-                            ->image()
-                            ->directory('app')
-                            ->label('Background Image'),
                         Forms\Components\FileUpload::make('favicon')
                             ->image()
+                            ->imageEditor()
                             ->directory('app')
-                            ->helperText('.ico would be amazing!')
+                            ->helperText('.ico or .png would be amazing!')
                             ->label('Favicon'),
+                    ])
+                    ->columns(5)->collapsed(),
+                Section::make('Sections Settings')
+                    ->description('Define the design and layout of your application')
+                    ->icon('heroicon-o-light-bulb')
+                    ->schema([
                         Group::make()
                             ->relationship('layout')
                             ->schema([
@@ -89,13 +98,12 @@ class SettingResource extends Resource
                                     ->helperText('This is the subtitle of your clients section')
                                     ->maxLength(255),
                             ])->columnSpanFull()->columns(2),
-                    ])->columns(3)->collapsible(),
+                    ])->columns(3)->collapsed(),
                 Section::make('Application Settings')
                     ->description('Define the design and layout of your application')
                     ->icon('heroicon-o-sparkles')
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->autofocus()
                             ->label('Application Name')
                             ->required(),
                         Forms\Components\TextInput::make('meta_title')
@@ -111,9 +119,9 @@ class SettingResource extends Resource
                         Forms\Components\TextInput::make('meta_google_site_verification')
                             ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
                             ->label('Google Site Verification'),
-                    ])->columns(3)->collapsible(),
+                    ])->columns(3)->collapsed(),
                 Section::make('Modules Control')->description('Enable or disable modules')
-                    ->icon('heroicon-o-cog')
+                    ->icon('heroicon-o-cog-6-tooth')
                     ->schema([
                         Group::make()
                             ->relationship('module')
@@ -134,10 +142,10 @@ class SettingResource extends Resource
                                     ->label('Newsletter Module')
                                     ->inline(false),
                             ])->columns(5),
-                    ])->collapsible(),
+                    ])->collapsed(),
                 Section::make('External Add-ons')
                     ->description('Define scripts to be loaded in your application')
-                    ->icon('heroicon-o-light-bulb')
+                    ->icon('heroicon-o-beaker')
                     ->schema([
                         Forms\Components\Textarea::make('google_analytics')
                             ->rows(2)
