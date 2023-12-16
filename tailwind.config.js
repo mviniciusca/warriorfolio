@@ -10,7 +10,8 @@ export default {
       extend: {
           colors: {
               primary: colors.indigo,
-              secondary: colors.zinc
+              secondary: colors.zinc,
+              tertiary: colors.rose,
         }
     },
   },
