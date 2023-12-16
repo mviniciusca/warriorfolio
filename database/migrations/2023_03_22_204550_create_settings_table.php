@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->string('meta_keywords')->nullable();
             $table->string('meta_robots')->nullable();
             $table->string('meta_google_site_verification')->nullable();
+            $table->string('google_recaptcha_key')->nullable();
             $table->string('google_analytics')->nullable();
             $table->longText('header_scripts')->nullable();
             $table->longText('body_scripts')->nullable();

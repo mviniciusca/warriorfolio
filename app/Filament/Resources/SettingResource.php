@@ -123,6 +123,9 @@ class SettingResource extends Resource
                         Forms\Components\TextInput::make('meta_google_site_verification')
                             ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
                             ->label('Google Site Verification'),
+                        Forms\Components\TextInput::make('google_recaptcha_key')
+                            ->placeholder('ex: 1b2c3d4e5f6g7h8i9j0a')
+                            ->label('Google Recaptcha Key'),
                     ])->columns(3)->collapsed(),
                 Section::make('Modules Control')
                     ->description('Enable or disable modules')

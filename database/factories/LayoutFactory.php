@@ -17,8 +17,8 @@ class LayoutFactory extends Factory
     public function definition(): array
     {
         return [
-            'hero_section_title' => 'building the what\'s next with laravel + filament',
-            'hero_section_subtitle_text' => 'Warriorfolio is a free, open source, self-hosted admin panel for Laravel apps',
+            'hero_section_title' => 'building the what\'s next <br/>with <span class="text-highlight">laravel</span> + filament',
+            'hero_section_subtitle_text' => 'warriorfolio is a free, open source, <br/> cms for creating and managing your own website.',
             'portfolio_section_title' => 'Portfolio',
             'portfolio_section_subtitle_text' => 'Here are some of my projects I\'ve worked on recently',
             'about_section_title' => 'About Me',

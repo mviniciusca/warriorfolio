@@ -24,7 +24,7 @@ class Meta extends Component
     {
         return view('components.header.meta', [
             'meta' => Setting::query()
-                ->select(['name', 'favicon', 'meta_title', 'meta_description', 'meta_keywords', 'meta_author', 'meta_robots', 'meta_google_site_verification', 'google_analytics', 'header_scripts'])
+                ->select(['name', 'favicon', 'meta_title', 'meta_description', 'meta_keywords', 'meta_author', 'meta_robots', 'meta_google_site_verification', 'google_recaptcha_key', 'google_analytics', 'header_scripts'])
                 ->firstOrFail(),
         ]);
     }

@@ -17,6 +17,9 @@
 @if($meta->meta_google_site_verification)
 <meta name="google-site-verification" content="{{ $meta->meta_google_site_verification }}" />
 @endif
+@if($meta->google_recaptcha_key)
+<script src="https://www.google.com/recaptcha/api.js"></script>
+@endif
 @if($meta->google_analytics)
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ $meta->google_analytics }}"></script>
 <script>

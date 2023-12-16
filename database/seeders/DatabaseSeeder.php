@@ -6,11 +6,12 @@ namespace Database\Seeders;
 
 
 use App\Models\Mail;
-use App\Models\Newsletter;
 use App\Models\User;
 use App\Models\Setting;
 use App\Models\Slideshow;
+use App\Models\Newsletter;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,8 +32,16 @@ class DatabaseSeeder extends Seeder
             ->hasLayout()
             ->count(1)
             ->create();
-
         Mail::factory(50)->create();
         Newsletter::factory(50)->create();
+        DB::table('pages')
+            ->insert([
+                'title' => 'Home',
+                'slug' => '/',
+                'blocks' => '[{"data": [], "type": "hero"}]',
+                'layout' => 'default',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
     }
 }
