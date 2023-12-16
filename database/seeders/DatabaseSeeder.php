@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             ->insert([
                 'title' => 'Home',
                 'slug' => '/',
-                'blocks' => '[{"data": [], "type": "hero"}]',
+                'blocks' => '[{"data": [], "type": "header"}, {"data": [], "type": "hero"}, {"data": [], "type": "projects"}, {"data": [], "type": "courses"}, {"data": [], "type": "footer"}]',
                 'layout' => 'default',
                 'created_at' => now(),
                 'updated_at' => now(),

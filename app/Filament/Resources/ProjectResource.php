@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProjectResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProjectResource\RelationManagers;
+use Filament\Forms\Components\Textarea;
 
 class ProjectResource extends Resource
 {
@@ -36,6 +37,36 @@ class ProjectResource extends Resource
     {
         return $form
             ->schema([
+                Group::make()->schema([
+                    Section::make('Project Information')
+                        ->icon('heroicon-o-information-circle')
+                        ->schema([
+                            TextInput::make('name')
+                                ->autofocus()
+                                ->lazy()
+                                ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                ->required()
+                                ->label('Title'),
+                            TextInput::make('slug')
+                                ->disabled()
+                                ->dehydrated()
+                                ->placeholder('generated automatically')
+                                ->label('Slug'),
+                            Textarea::make('short_description')
+                                ->columnSpanFull()
+                                ->label('Short Description')
+                                ->required(),
+                            RichEditor::make('content')
+                                ->fileAttachmentsDirectory('project/attachments')
+                                ->columnSpanFull()
+                                ->required(),
+                            TextInput::make('external_link')
+                                ->label('External Link')
+                                ->placeholder('https://example.com')
+                                ->helperText('If you want to add an external link to the project, you can do it here')
+                                ->columnSpanFull(),
+                        ])->columns(2)
+                ])->columnSpan(3),
                 Group::make()->schema([
                     FileUpload::make('image_cover')
                         ->image()
@@ -62,32 +93,6 @@ class ProjectResource extends Resource
                                 ->default(true)
                         ]),
                 ]),
-                Group::make()->schema([
-                    Section::make('Project Information')
-                        ->icon('heroicon-o-information-circle')
-                        ->schema([
-                            TextInput::make('name')
-                                ->autofocus()
-                                ->reactive()
-                                ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                                ->required()
-                                ->label('Title'),
-                            TextInput::make('slug')
-                                ->disabled()
-                                ->dehydrated()
-                                ->placeholder('generated automatically')
-                                ->label('Slug'),
-                            RichEditor::make('content')
-                                ->fileAttachmentsDirectory('project/attachments')
-                                ->columnSpanFull()
-                                ->required(),
-                            TextInput::make('external_link')
-                                ->label('External Link')
-                                ->placeholder('https://example.com')
-                                ->helperText('If you want to add an external link to the project, you can do it here')
-                                ->columnSpanFull(),
-                        ])->columns(2)
-                ])->columnSpan(3),
             ])->columns(4);
     }
     public static function table(Table $table): Table

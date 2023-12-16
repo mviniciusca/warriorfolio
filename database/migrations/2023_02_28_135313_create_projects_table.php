@@ -15,6 +15,7 @@ return new class () extends Migration {
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('image_cover');
+            $table->text('short_description')->nullable();
             $table->text('content')->nullable();
             $table->string('external_link')->nullable();
             $table->boolean('is_active')->default(true);

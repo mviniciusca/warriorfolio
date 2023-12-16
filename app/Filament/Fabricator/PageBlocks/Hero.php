@@ -23,7 +23,6 @@ class Hero extends PageBlock
 
         $data = [
             'info' => Layout::all()->first(),
-            'slides' => json_decode(Slideshow::query()->where('module_name', '=', 'hero-section')->get(), true),
             'hero' => Setting::all()->first()
         ];
         return $data;
