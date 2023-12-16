@@ -1,4 +1,4 @@
-<div class="bg-hero absolute w-full h-full -z-10 bg-cover bg-center"
+<div class="bg-hero animate__animated animate__fadeIn animate__delay-1s absolute w-full h-full -z-10 bg-cover bg-center"
     style="background-image: url('{{ asset('storage/' .  $hero['background_image'] ) }}')">
 </div>
 @aware(['page'])
@@ -8,14 +8,14 @@
             <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
                 <div class="text-center max-w-7xl mt-48">
                     <h1
-                        class="title-font animate__animated animate__fadeInUp animate__delay-1s text-8xl mb-4 font-bold dark:text-white tracking-tighter leading-tighter">
+                        class="title-font animate__animated animate__fadeInUp animate__delay-3s text-9xl font-bold dark:text-white tracking-tighter leading-tighter mb-8">
                         {!! $info['hero_section_title'] !!}
                     </h1>
                     <p
-                        class="animate__animated animate__fadeInUp animate__delay-2s mb-8 text-3xl dark:text-white shadow-current tracking-tighter leading-tight">
+                        class="animate__animated animate__fadeInUp animate__delay-4s mb-8 text-3xl dark:text-white shadow-current tracking-tight leading-tight">
                         {!! $info['hero_section_subtitle_text'] !!}
                     </p>
-                    <div class="flex justify-center animate__animated animate__fadeInUp animate__delay-3s">
+                    <div class="flex justify-center animate__animated animate__fadeInUp animate__delay-5s">
                         <button
                             class="inline-flex text-secondary-50 dark:bg-primary-500 border-0 py-2 px-6 focus:outline-none dark: hover:bg-primary-600 rounded text-lg">
                             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -25,32 +25,31 @@
             </div>
         </section>
         <!-- Slider main container -->
-
-        <div class="swiper w-full h-48">
+        <div class="swiper w-full">
             <!-- Additional required wrapper -->
+
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide">Slidesas 1</div>
-                <div class="swiper-slide">Slideasasa 2</div>
-                <div class="swiper-slide">Slideasas 3</div>
-                <div class="swiper-slide">Slideasas 3</div>
-                <div class="swiper-slide">Slideasas 3</div>
-                <div class="swiper-slide">Slideasas 3</div>
-                <div class="swiper-slide">Slideasas 3</div>
-                ...
+                @foreach ($slides as $slide)
+                @if(is_array($slide['content']))
+                @foreach ($slide['content'] as $content)
+                <div class="swiper-slide" class="h-16 w-16">
+                    <img class="h-12" src="{{ asset('storage/' . $content['image_path'] ) }}"
+                        alt="{{ $content['image_alt'] }}" title="{{ $content['image_title'] }}">
+                </div>
+                @endforeach
+                @endif
+                @endforeach
             </div>
-
-
-            <!-- If we need scrollbar -->
-            <div class="swiper-scrollbar"></div>
         </div>
     </div>
     <script>
         var swiper = new Swiper(".swiper", {
           slidesPerView: 5,
+          loop: true,
           autoplay:true,
-          centeredSlides: false,
-          spaceBetween: 30,
+          centeredSlides: true,
+          spaceBetween: 20,
           pagination: false,
           navigation: false,
         });
