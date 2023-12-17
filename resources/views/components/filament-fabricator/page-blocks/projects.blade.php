@@ -3,7 +3,7 @@
     <div class="container  max-w-7xl px-5 py-24 mx-auto">
         <div class="grid justify-center items-center text-center">
             <div class="header-title">
-                elevate Your <br /> <span class="text-primary-500">Portfolio</span> Experience.
+                elevate Your <br /> <span class="text-highlight">Portfolio</span> Experience.
             </div>
             <p class="header-subtitle">
                 Creativity in Every Detail. Explore a Tapestry of <br />Unique Projects, Beyond the Ordinary.</p>
