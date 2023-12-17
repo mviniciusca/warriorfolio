@@ -15,3 +15,15 @@
 .text-highlight {
     @apply text-primary-600;
 }
+
+.hero-section-title {
+    @apply text-8xl lowercase tracking-tighter leading-none pt-12 font-semibold text-center mb-8;
+}
+
+.header-title {
+    @apply text-7xl lowercase tracking-tighter leading-none pt-12 font-semibold text-center;
+}
+
+.header-subtitle {
+    @apply text-xl pb-24 pt-8 lowercase text-center;
+}

@@ -33,18 +33,33 @@ class SettingResource extends Resource
                         Forms\Components\FileUpload::make('background_image')
                             ->image()
                             ->imageEditor()
+                            ->imageEditorAspectRatios([
+                                '16:9',
+                                '4:3',
+                                '1:1',
+                            ])
                             ->directory('app')
                             ->label('Background Image')
                             ->columnSpan(3),
                         Forms\Components\FileUpload::make('logo')
                             ->image()
                             ->imageEditor()
+                            ->imageEditorAspectRatios([
+                                '16:9',
+                                '4:3',
+                                '1:1',
+                            ])
                             ->directory('app')
                             ->helperText('.png transparent or .svg will be nice!')
                             ->label('Logo'),
                         Forms\Components\FileUpload::make('favicon')
                             ->image()
                             ->imageEditor()
+                            ->imageEditorAspectRatios([
+                                '16:9',
+                                '4:3',
+                                '1:1',
+                            ])
                             ->directory('app')
                             ->helperText('.ico or .png would be amazing!')
                             ->label('Favicon'),

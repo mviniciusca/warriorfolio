@@ -14,7 +14,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="dark:bg-zinc-900 dark:text-zinc-500">
+<body class="dark:bg-zinc-900 dark:text-zinc-300">
     <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
     {{-- Ionicons CDN --}}
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

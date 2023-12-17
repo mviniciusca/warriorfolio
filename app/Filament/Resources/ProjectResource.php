@@ -71,6 +71,11 @@ class ProjectResource extends Resource
                     FileUpload::make('image_cover')
                         ->image()
                         ->imageEditor()
+                        ->imageEditorAspectRatios([
+                            '16:9',
+                            '4:3',
+                            '1:1',
+                        ])
                         ->directory('projects')
                         ->required()
                         ->placeholder('Upload Cover Image')
