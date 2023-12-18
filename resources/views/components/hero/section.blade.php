@@ -1,12 +1,12 @@
 {{-- Hero Background --}}
 <div class="-mt-36 bg-hero animate__animated animate__fadeIn animate__delay-1s
 absolute w-full h-full -z-10 bg-cover bg-no-repeat bg-center"
-    style="background-image: url('{{ asset('storage/' .  $background->background_image ) }}')">
+    style="background-image: url('{{ asset('storage/' .  $background->background_image) }}')">
 </div>
 {{-- Hero Section --}}
-<div class="px-4 py-4 md:py-8">
-    <div class="max-w-7xl mx-auto">
-        <section>
+<section>
+    <div class="px-4 py-4 md:py-8">
+        <div class="max-w-7xl mx-auto">
             <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
                 <div class="text-center max-w-7xl mt-8">
                     <h1
@@ -31,6 +31,6 @@ absolute w-full h-full -z-10 bg-cover bg-no-repeat bg-center"
             </div>
             {{-- Hero Section Slider --}}
             <x-hero.slider />
+        </div>
     </div>
-    </section>
-</div>
+</section>

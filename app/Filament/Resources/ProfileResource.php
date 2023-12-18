@@ -31,6 +31,7 @@ class ProfileResource extends Resource
                 Group::make()->schema([
                     Forms\Components\FileUpload::make('avatar')
                         ->image()
+                        ->imageEditor()
                         ->label('Profile Picture')
                         ->placeholder('Upload your picture')
                         ->directory('profile/avatar'),

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-
+use App\Models\Course;
 use App\Models\Mail;
 use App\Models\User;
 use App\Models\Setting;
@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             ->create();
         Mail::factory(50)->create();
         Newsletter::factory(50)->create();
+        Course::factory(10)->create();
         DB::table('pages')
             ->insert([
                 'title' => 'Home',

@@ -1,4 +1,4 @@
-@props(['name' => ''])
+@props(['name' => '', 'href' => '#'])
 <div>
     <a href="{{ $href ?? '#' }}" target="_blank">
         <ion-icon name="{{ $name }}"
