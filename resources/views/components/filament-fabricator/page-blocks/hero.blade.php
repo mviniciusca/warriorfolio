@@ -26,7 +26,7 @@ absolute w-full h-full -z-10 bg-cover bg-no-repeat bg-center"
                     </div>
                 </div>
                 <div id="app-image-showcase">
-                    <img class="rounded-t-xl mt-8 shadow-md animate__animated animate__fadeInUp animate__delay-3s"
+                    <img class="rounded-t-xl mt-8 shadow-md animate__animated animate__fadeInUp animate__delay-2s"
                         src="{{ asset('img/core/app.png') }}" alt="app image">
                 </div>
             </div>

@@ -4,21 +4,19 @@
         <div class="max-w-7xl mx-auto">
             <div class="header-title">tell about <span class="text-highlight">yourself</span>.</div>
             <div class="flex mt-24">
-
-                <div class="p-8 w-full md:w-1/4 text-center ">
+                {{-- Profile Section --}}
+                <div class="p-8 w-full md:w-1/4 text-center" id="profile">
                     <div
                         class="bg-secondary-300 h-40 w-40 rounded-full p-1 mx-auto mb-12 bg-gradient-to-tl from-primary-400 to-rose-600">
                         <div class="bg-secondary-50 bg-cover transition-all duration-100 filter grayscale hover:grayscale-0 h-full w-full rounded-full p-2 mx-auto mb-12"
-                            style="background-image:url('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+                            style="background-image:url('{{ asset('storage/') }}')">
                             <div class="absolute bg-secondary-50 text-primary-500 text-xs p-1 ml-6 mt-32 ">
                                 Open to Work
                             </div>
                         </div>
-
                     </div>
-                    <p class="text-xl tracking-tight font-semibold">warriorfusion</p>
-                    <p class="text-sm tracking-tight mb-8">fullstack develper</p>
-
+                    <p class="text-xl tracking-tight font-semibold"></p>
+                    <p class="text-sm tracking-tight mb-8"></p>
                     <div class="flex mx-auto justify-center ">
                         <x-ui.icon name="logo-twitter" />
                         <x-ui.icon name="logo-linkedin" />
@@ -26,24 +24,18 @@
                         <x-ui.icon name="logo-instagram" />
                         <x-ui.icon name="logo-medium" />
                     </div>
-
-                    {{-- linedin buttion --}}
                     <div class="mt-8">
-                        <a href="#"
+                        <a href=""
                             class="inline-flex items-center align-middle gap-2 px-4 py-2 text-sm font-medium text-secondary-500 bg-white border border-secondary-200 rounded-lg hover:bg-secondary-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-secondary-200 focus:text-primary-700 dark:bg-primary-500 dark:text-secondary-50 dark:border-secondary-950 dark:hover:text-primary-500 dark:hover:bg-secondary-50 dark:focus:ring-primary-100">
                             <ion-icon class="text-2xl" name="download-outline"></ion-icon>
                             Curriculum Vitae
                         </a>
                     </div>
-
-
                 </div>
+                {{-- End Profile Section --}}
 
-
-
-
-
-                <div class="p-12 w-full md:w-2/4">Passionate full-stack developer with a knack for crafting
+                <div class="p-12 w-full md:w-2/4 text-md leading-relaxed">Passionate full-stack developer with a knack
+                    for crafting
                     seamless,
                     user-centric
                     web

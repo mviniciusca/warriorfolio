@@ -19,7 +19,7 @@ return new class () extends Migration {
             $table->string('linkedin')->nullable();
             $table->string('medium')->nullable();
             $table->string('twitter')->nullable();
-            $table->string('about')->nullable();
+            $table->text('about')->nullable();
             $table->string('avatar')->nullable();
             $table->string('skills')->nullable();
             $table->string('job_position')->nullable();
