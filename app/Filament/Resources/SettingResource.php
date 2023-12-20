@@ -43,19 +43,26 @@ class SettingResource extends Resource
                             ->label('Application Name')
                             ->required(),
                         Forms\Components\TextInput::make('meta_title')
+                            ->maxLength(255)
                             ->label('Meta Title'),
                         Forms\Components\TextInput::make('meta_description')
+                            ->maxLength(255)
                             ->label('Meta Description'),
                         Forms\Components\TextInput::make('meta_keywords')
+                            ->maxLength(255)
                             ->label('Meta Keywords'),
                         Forms\Components\TextInput::make('meta_author')
+                            ->maxLength(255)
                             ->label('Meta Author'),
                         Forms\Components\TextInput::make('meta_robots')
+                            ->maxLength(255)
                             ->label('Meta Robots'),
                         Forms\Components\TextInput::make('meta_google_site_verification')
+                            ->maxLength(255)
                             ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
                             ->label('Google Site Verification'),
                         Forms\Components\TextInput::make('google_recaptcha_key')
+                            ->maxLength(255)
                             ->placeholder('ex: 1b2c3d4e5f6g7h8i9j0a')
                             ->label('Google Recaptcha Key'),
                     ])->columns(3),
@@ -82,19 +89,24 @@ class SettingResource extends Resource
                                     ->label('Newsletter Module')
                                     ->inline(false),
                             ])->columns(5),
-                    ])->collapsed(),
+                    ]),
                 Section::make('External Add-ons')
                     ->description('Define scripts to be loaded in your application')
                     ->icon('heroicon-o-beaker')
                     ->schema([
                         Forms\Components\Textarea::make('google_analytics')
                             ->rows(2)
-                            ->placeholder('')
+                            ->maxLength(65535)
+                            ->placeholder('--')
                             ->label('Google Tag Analytics Code'),
                         Forms\Components\Textarea::make('header_scripts')
+                            ->maxLength(65535)
+                            ->placeholder('--')
                             ->rows(2)
                             ->label('Head Scripts (ex: Facebook Pixel)'),
                         Forms\Components\Textarea::make('body_scripts')
+                            ->maxLength(65535)
+                            ->placeholder('--')
                             ->rows(2)
                             ->label('Body Scripts (ex: Ionicons)'),
                     ])->collapsed(),
