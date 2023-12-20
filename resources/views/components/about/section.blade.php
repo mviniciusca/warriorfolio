@@ -70,8 +70,10 @@
                                 class="absolute w-3 h-3 bg-secondary-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-secondary-900 dark:bg-secondary-700">
                             </div>
                             <time
-                                class="mb-1 text-sm font-normal leading-none text-secondary-400 dark:text-secondary-500">{{ $course->start_date }}
-                                - {{ $course->end_date }}</time>
+                                class="mb-1 text-sm font-normal leading-none text-secondary-400 dark:text-secondary-500">
+                                {{ \Carbon\Carbon::parse($course->start_date)->format('F, Y') }} -
+                                {{ \Carbon\Carbon::parse($course->end_date)->format('F, Y') }}
+                            </time>
                             <h3 class="text-lg font-semibold text-secondary-900 dark:text-white">
                                 {{$course->institution}}
                             </h3>
