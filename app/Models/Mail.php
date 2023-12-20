@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Flowframe\Trend\Trend;
+use Flowframe\Trend\TrendValue;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Mail extends Model
 {
@@ -28,6 +30,25 @@ class Mail extends Model
     public static function important()
     {
         return static::where('is_important', true)->get();
+    }
+
+    /**
+     * Summary of chartInbox
+     * @return array
+     */
+    public static function chartInbox()
+    {
+        $data = Trend::model(\App\Models\Mail::class)
+            ->between(
+                start: now()->startOfYear(),
+                end: now()->endOfYear(),
+            )
+            ->perMonth()
+            ->count();
+        $data = $data->map(fn(TrendValue $value) => $value->aggregate);
+        $data = $data->take(-3);
+        $data = $data->toArray();
+        return $data;
     }
 
 }

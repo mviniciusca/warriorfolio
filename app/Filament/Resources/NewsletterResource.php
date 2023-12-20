@@ -25,9 +25,14 @@ class NewsletterResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::count();
+        if (static::getModel()::count() >= 999) {
+            return '+999';
+        } elseif (static::getModel()::count() > 0 && static::getModel()::count() <= 999) {
+            return static::getModel()::count();
+        } else {
+            return '';
+        }
     }
-
     public static function form(Form $form): Form
     {
         return $form
@@ -73,6 +78,13 @@ class NewsletterResource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            NewsletterResource\Widgets\NewsletterSubscribersChart::make(),
         ];
     }
 

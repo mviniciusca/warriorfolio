@@ -24,7 +24,11 @@ class MailResource extends Resource
     public static function getNavigationBadge(): ?string
     {
         if (static::getModel()::where('is_read', false)->count() > 0) {
-            return 'unread ' . static::getModel()::where('is_read', false)->count();
+            if (static::getModel()::where('is_read', false)->count() >= 999) {
+                return '+999';
+            } else {
+                return static::getModel()::where('is_read', false)->count();
+            }
         }
         return null;
     }

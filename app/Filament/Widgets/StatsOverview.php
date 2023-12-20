@@ -14,21 +14,15 @@ class StatsOverview extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Newsletter Subscribers', Newsletter::count())
-                ->description('overall subscribers')
-                ->descriptionIcon('heroicon-m-envelope')
-                ->color('primary'),
-            Stat::make('Inbox', Mail::unread()->count())
-                ->descriptionIcon('heroicon-m-inbox')
-                ->description('Unread Messages')
-                ->color('primary'),
+            Stat::make('Newsletter Subscribers', Newsletter::counter())
+                ->color('primary')
+                ->chart(Newsletter::chartSubscribers()),
+            Stat::make('Inbox', Mail::count())
+                ->color('primary')
+                ->chart(Mail::chartInbox()),
             Stat::make('Projects', Project::published()->count())
-                ->descriptionIcon('heroicon-m-photo')
-                ->description('Published')
                 ->color('primary'),
             Stat::make('Categories', Category::count())
-                ->descriptionIcon('heroicon-m-tag')
-                ->description('Created')
                 ->color('primary'),
         ];
     }

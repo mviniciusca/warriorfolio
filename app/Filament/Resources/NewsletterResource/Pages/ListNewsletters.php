@@ -11,10 +11,25 @@ class ListNewsletters extends ListRecords
     protected static string $resource = NewsletterResource::class;
     protected static ?string $title = 'Newsletter Subscribers';
 
+    public function getHeaderWidgetsColumns(): int|array
+    {
+        return [
+            'md' => 'full',
+            'xl' => 'full',
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
             //
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            NewsletterResource\Widgets\NewsletterSubscribersChart::class,
         ];
     }
 }
