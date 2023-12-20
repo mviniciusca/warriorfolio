@@ -8,6 +8,7 @@ use App\Models\Setting;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Resources\Pages\Page;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
@@ -22,50 +23,57 @@ class SettingResource extends Resource
     protected static ?string $navigationLabel = 'Application';
     protected static ?string $navigationGroup = 'Settings';
     protected static ?int $navigationSort = 0;
+
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        return $page->generateNavigationItems([
+            Pages\EditAppearance::class,
+        ]);
+    }
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Section::make('Design & Appearance')
-                    ->description('Change the design and appearance of your application')
-                    ->icon('heroicon-o-photo')
-                    ->schema([
-                        Forms\Components\FileUpload::make('background_image')
-                            ->image()
-                            ->imageEditor()
-                            ->imageEditorAspectRatios([
-                                '16:9',
-                                '4:3',
-                                '1:1',
-                            ])
-                            ->directory('app')
-                            ->label('Background Image')
-                            ->columnSpan(3),
-                        Forms\Components\FileUpload::make('logo')
-                            ->image()
-                            ->imageEditor()
-                            ->imageEditorAspectRatios([
-                                '16:9',
-                                '4:3',
-                                '1:1',
-                            ])
-                            ->directory('app')
-                            ->helperText('.png transparent or .svg will be nice!')
-                            ->label('Logo'),
-                        Forms\Components\FileUpload::make('favicon')
-                            ->image()
-                            ->imageEditor()
-                            ->imageEditorAspectRatios([
-                                '16:9',
-                                '4:3',
-                                '1:1',
-                            ])
-                            ->directory('app')
-                            ->helperText('.ico or .png would be amazing!')
-                            ->label('Favicon'),
-                    ])
-                    ->columns(5)
-                    ->collapsed(),
+                // Section::make('Design & Appearance')
+                //     ->description('Change the design and appearance of your application')
+                //     ->icon('heroicon-o-photo')
+                //     ->schema([
+                //         Forms\Components\FileUpload::make('background_image')
+                //             ->image()
+                //             ->imageEditor()
+                //             ->imageEditorAspectRatios([
+                //                 '16:9',
+                //                 '4:3',
+                //                 '1:1',
+                //             ])
+                //             ->directory('app')
+                //             ->label('Background Image')
+                //             ->columnSpan(3),
+                //         Forms\Components\FileUpload::make('logo')
+                //             ->image()
+                //             ->imageEditor()
+                //             ->imageEditorAspectRatios([
+                //                 '16:9',
+                //                 '4:3',
+                //                 '1:1',
+                //             ])
+                //             ->directory('app')
+                //             ->helperText('.png transparent or .svg will be nice!')
+                //             ->label('Logo'),
+                //         Forms\Components\FileUpload::make('favicon')
+                //             ->image()
+                //             ->imageEditor()
+                //             ->imageEditorAspectRatios([
+                //                 '16:9',
+                //                 '4:3',
+                //                 '1:1',
+                //             ])
+                //             ->directory('app')
+                //             ->helperText('.ico or .png would be amazing!')
+                //             ->label('Favicon'),
+                //     ])
+                //     ->columns(5)
+                //     ->collapsed(),
                 Section::make('Sections Settings')
                     ->description('Control the sections of your application')
                     ->icon('heroicon-o-light-bulb')
@@ -215,6 +223,7 @@ class SettingResource extends Resource
             'index' => Pages\ListSettings::route('/'),
             'create' => Pages\CreateSetting::route('/create'),
             'edit' => Pages\EditSetting::route('/{record}/edit'),
+            'edit-appearance' => Pages\EditAppearance::route('/{record}/edit-appearance'),
         ];
     }
 }
