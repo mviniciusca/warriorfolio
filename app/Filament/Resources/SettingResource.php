@@ -28,104 +28,13 @@ class SettingResource extends Resource
     {
         return $page->generateNavigationItems([
             Pages\EditAppearance::class,
+            Pages\EditSection::class,
         ]);
     }
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                // Section::make('Design & Appearance')
-                //     ->description('Change the design and appearance of your application')
-                //     ->icon('heroicon-o-photo')
-                //     ->schema([
-                //         Forms\Components\FileUpload::make('background_image')
-                //             ->image()
-                //             ->imageEditor()
-                //             ->imageEditorAspectRatios([
-                //                 '16:9',
-                //                 '4:3',
-                //                 '1:1',
-                //             ])
-                //             ->directory('app')
-                //             ->label('Background Image')
-                //             ->columnSpan(3),
-                //         Forms\Components\FileUpload::make('logo')
-                //             ->image()
-                //             ->imageEditor()
-                //             ->imageEditorAspectRatios([
-                //                 '16:9',
-                //                 '4:3',
-                //                 '1:1',
-                //             ])
-                //             ->directory('app')
-                //             ->helperText('.png transparent or .svg will be nice!')
-                //             ->label('Logo'),
-                //         Forms\Components\FileUpload::make('favicon')
-                //             ->image()
-                //             ->imageEditor()
-                //             ->imageEditorAspectRatios([
-                //                 '16:9',
-                //                 '4:3',
-                //                 '1:1',
-                //             ])
-                //             ->directory('app')
-                //             ->helperText('.ico or .png would be amazing!')
-                //             ->label('Favicon'),
-                //     ])
-                //     ->columns(5)
-                //     ->collapsed(),
-                Section::make('Sections Settings')
-                    ->description('Control the sections of your application')
-                    ->icon('heroicon-o-light-bulb')
-                    ->schema([
-                        Group::make()
-                            ->relationship('layout')
-                            ->schema([
-                                Forms\Components\Textarea::make('hero_section_title')
-                                    ->autofocus()
-                                    ->label('Hero Section Title')
-                                    ->helperText('This is the main title of your hero section')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('hero_section_subtitle_text')
-                                    ->label('Hero Section Subtitle')
-                                    ->helperText('This is the subtitle of your hero section')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('portfolio_section_title')
-                                    ->label('Portfolio Section Title')
-                                    ->helperText('This is the title of your portfolio section')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('portfolio_section_subtitle_text')
-                                    ->label('Portfolio Section Subtitle')
-                                    ->helperText('This is the subtitle of your portfolio section')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('about_section_title')
-                                    ->label('About Section Title')
-                                    ->helperText('This is the title of your about section')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('about_section_subtitle_text')
-                                    ->label('About Section Subtitle')
-                                    ->helperText('This is the subtitle of your about section')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('contact_section_title')
-                                    ->label('Contact Section Title')
-                                    ->helperText('This is the title of your contact section')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('contact_section_subtitle_text')
-                                    ->label('Contact Section Subtitle')
-                                    ->helperText('This is the subtitle of your contact section')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('clients_section_text')
-                                    ->label('Clients Section Text')
-                                    ->helperText('This is the text of your clients section')
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('clients_section_subtitle_text')
-                                    ->label('Clients Section Subtitle')
-                                    ->helperText('This is the subtitle of your clients section')
-                                    ->maxLength(255),
-                            ])->columnSpanFull()
-                            ->columns(2),
-                    ])->columns(3)
-                    ->collapsible(),
                 Section::make('Application Settings')
                     ->description('Define the design and layout of your application')
                     ->icon('heroicon-o-cog-6-tooth')
@@ -149,7 +58,7 @@ class SettingResource extends Resource
                         Forms\Components\TextInput::make('google_recaptcha_key')
                             ->placeholder('ex: 1b2c3d4e5f6g7h8i9j0a')
                             ->label('Google Recaptcha Key'),
-                    ])->columns(3)->collapsed(),
+                    ])->columns(3),
                 Section::make('Modules Control')
                     ->description('Enable or disable modules')
                     ->icon('heroicon-o-cube')
@@ -224,6 +133,7 @@ class SettingResource extends Resource
             'create' => Pages\CreateSetting::route('/create'),
             'edit' => Pages\EditSetting::route('/{record}/edit'),
             'edit-appearance' => Pages\EditAppearance::route('/{record}/edit-appearance'),
+            'edit-section' => Pages\EditSection::route('/{record}/edit-section'),
         ];
     }
 }
