@@ -36,16 +36,4 @@ class UserFactory extends Factory
         ]);
     }
 
-    /**
-     * Indicate that the model's profile should be created.
-     * @return UserFactory
-     */
-    public function configure()
-    {
-        return $this->afterCreating(function (\App\Models\User $user) {
-            $user->profile()->create([
-                'user_id' => $user->id,
-            ]);
-        });
-    }
 }
