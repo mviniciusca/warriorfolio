@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Setting;
 use App\Models\Slideshow;
 use App\Models\Newsletter;
+use App\Models\Profile;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -22,18 +23,17 @@ class DatabaseSeeder extends Seeder
     {
 
         /** Create a new user on database */
-        User::factory()->create([
-            'name' => 'Warriorfolio',
-            'email' => 'warriorfolio@test.dev',
-        ]);
+        User::factory()
+            ->hasProfile()
+            ->create([
+                'name' => 'Warriorfolio',
+                'email' => 'warriorfolio@test.dev',
+            ]);
 
         /** Add main page settings on database */
-        Setting::factory()
-            ->hasLayout()
-            ->count(1)
-            ->create();
-        Mail::factory(1000)->create();
-        Newsletter::factory(1100)->create();
+        Setting::factory()->hasLayout()->count(1)->create();
+        Mail::factory(5)->create();
+        Newsletter::factory(50)->create();
         Course::factory(10)->create();
         DB::table('pages')
             ->insert([

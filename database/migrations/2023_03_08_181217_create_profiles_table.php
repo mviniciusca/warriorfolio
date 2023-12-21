@@ -18,6 +18,8 @@ return new class () extends Migration {
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('medium')->nullable();
+            $table->string('twitch')->nullable();
+            $table->string('youtube')->nullable();
             $table->string('twitter')->nullable();
             $table->text('about')->nullable();
             $table->string('avatar')->nullable();

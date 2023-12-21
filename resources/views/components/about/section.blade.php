@@ -19,7 +19,7 @@
                     <p class="text-xl tracking-tight font-semibold">{{ $about->user->name }}</p>
                     <p class="text-sm tracking-tight mb-8">{{ $about->job_position }} <br /> {{ $about->localization }}
                     </p>
-                    <div class="flex mx-auto justify-center ">
+                    <div class="mx-auto">
                         @if($about->twitter)
                         <x-ui.icon :href="$about->twitter" name="logo-twitter" />
                         @endif
@@ -37,6 +37,12 @@
                         @endif
                         @if($about->instagram)
                         <x-ui.icon :href="$about->instagram" name="logo-instagram" />
+                        @endif
+                        @if($about->twitch)
+                        <x-ui.icon :href="$about->twitch" name="logo-twitch" />
+                        @endif
+                        @if($about->youtube)
+                        <x-ui.icon :href="$about->youtube" name="logo-youtube" />
                         @endif
                     </div>
                     <div class="text-sm tracking-tight my-8">

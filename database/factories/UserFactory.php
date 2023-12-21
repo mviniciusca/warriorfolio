@@ -43,7 +43,9 @@ class UserFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (\App\Models\User $user) {
-            $user->profile()->create();
+            $user->profile()->create([
+                'user_id' => $user->id,
+            ]);
         });
     }
 }

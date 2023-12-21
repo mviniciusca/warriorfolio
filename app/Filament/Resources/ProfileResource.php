@@ -49,32 +49,40 @@ class ProfileResource extends Resource
                     Forms\Components\Toggle::make('is_downloadable')
                         ->label('Downloadable CV')
                         ->helperText('If you want to allow users to download your CV, enable this option.'),
-                ])->columnSpan(1),
+                ])
+                    ->columnSpan(1),
                 Section::make('Profile Information')
                     ->icon('heroicon-o-user')
                     ->schema([
                         Group::make()->relationship('user')->schema([
                             Forms\Components\TextInput::make('name')
+                                ->maxLength(255)
+                                ->required()
                                 ->placeholder('--')
                                 ->helperText('Your name will be displayed publicly'),
                             Forms\Components\TextInput::make('email')
+                                ->maxLength(255)
+                                ->required()
                                 ->helperText('Only you can see your email address')
                                 ->placeholder('--'),
                         ])->columns(2),
                         Group::make()->schema([
                             Forms\Components\TextInput::make('localization')
+                                ->maxLength(255)
                                 ->placeholder('--')
                                 ->helperText('Your localization will be displayed publicly'),
                             Forms\Components\TextInput::make('job_position')
+                                ->maxLength(255)
                                 ->placeholder('--')
                                 ->helperText('Your job position will be displayed publicly'),
                             Forms\Components\TagsInput::make('skills')
                                 ->separator(',')
                                 ->placeholder('--')
-                                ->helperText('Separated by commas')
+                                ->helperText('Type a word and press enter to add a new skill')
                                 ->label('Your Skills')
                                 ->columnSpanFull(),
                             Forms\Components\RichEditor::make('about')->label('About (html allowed)')
+                                ->maxLength(65535)
                                 ->toolbarButtons([
                                     'bold',
                                     'italic',
@@ -90,31 +98,43 @@ class ProfileResource extends Resource
                     ->schema([
                         Group::make()->schema([
                             Forms\Components\TextInput::make('github')
-                                ->prefix('github.com/')
-                                ->placeholder('--')
+                                ->placeholder('github.com/your_username')
+                                ->maxLength(255)
                                 ->prefixIcon('heroicon-o-link'),
                             Forms\Components\TextInput::make('twitter')
-                                ->prefix('twitter.com/')
-                                ->placeholder('--')
+                                ->placeholder('www.twitter.com/your_username')
+                                ->maxLength(255)
                                 ->prefixIcon('heroicon-o-link'),
                             Forms\Components\TextInput::make('linkedin')
-                                ->prefix('linkedin.com/in/')
-                                ->placeholder('--')
+                                ->placeholder('www.linkedin.com/in/your_username')
+                                ->maxLength(255)
                                 ->prefixIcon('heroicon-o-link'),
                             Forms\Components\TextInput::make('dribbble')
-                                ->prefix('dribbble.com/')
-                                ->placeholder('--')
+                                ->placeholder('www.dribbble.com/your_username')
+                                ->maxLength(255)
                                 ->prefixIcon('heroicon-o-link'),
                             Forms\Components\TextInput::make('instagram')
-                                ->prefix('instagram.com/')
-                                ->placeholder('--')
+                                ->placeholder('www.instagram.com/your_username')
+                                ->maxLength(255)
                                 ->prefixIcon('heroicon-o-link'),
                             Forms\Components\TextInput::make('facebook')
-                                ->prefix('facebook.com/')
-                                ->placeholder('--')
+                                ->placeholder('www.facebook.com/your_username')
+                                ->maxLength(255)
                                 ->prefixIcon('heroicon-o-link'),
-                        ])->columns(2)->columnSpan(4),
-                    ])->columnSpanFull()->collapsible(),
+                            Forms\Components\TextInput::make('youtube')
+                                ->placeholder('www.youtube.com/your_username')
+                                ->maxLength(255)
+                                ->prefixIcon('heroicon-o-link'),
+                            Forms\Components\TextInput::make('twitch')
+                                ->placeholder('www.twitch.com/your_username')
+                                ->maxLength(255)
+                                ->prefixIcon('heroicon-o-link'),
+                        ])
+                            ->columns(3)
+                            ->columnSpan(4),
+                    ])
+                    ->columnSpanFull()
+                    ->collapsible(),
                 Group::make()->schema([
                     Section::make('Password Settings')
                         ->icon('heroicon-o-lock-closed')
@@ -126,12 +146,14 @@ class ProfileResource extends Resource
                                 ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
                                 ->dehydrated(fn(?string $state): bool => filled($state))
                                 ->label('New Password')
+                                ->maxLength(255)
                                 ->placeholder('********'),
                             Forms\Components\TextInput::make('password_confirmation')
                                 ->type('password')
                                 ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
                                 ->dehydrated(fn(?string $state): bool => filled($state))
                                 ->label('Confirm Password')
+                                ->maxLength(255)
                                 ->placeholder('********'),
                         ])->columns(2)->collapsed(),
                 ])->columnSpanFull()->columns(2),
@@ -148,11 +170,10 @@ class ProfileResource extends Resource
                 //
             ])
             ->actions([
-                // Tables\Actions\EditAction::make(),
+                //
             ])
             ->bulkActions([
-                // Tables\Actions\BulkActionGroup::make([
-                //Tables\Actions\DeleteBulkAction::make(),
+                //
             ]);
     }
 
