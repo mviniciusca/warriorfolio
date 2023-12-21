@@ -8,6 +8,7 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Resources\Pages\Page;
 use Filament\Forms\Components\Section;
 use Filament\Tables\Actions\ActionGroup;
 use Illuminate\Database\Eloquent\Builder;
@@ -15,6 +16,7 @@ use Filament\Tables\Filters\TernaryFilter;
 use App\Filament\Resources\MailResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\MailResource\RelationManagers;
+
 
 class MailResource extends Resource
 {
@@ -59,7 +61,6 @@ class MailResource extends Resource
                     ->label('Mark as Important'),
             ]);
     }
-
     public static function table(Table $table): Table
     {
         return $table
