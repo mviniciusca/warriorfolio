@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('slideshows', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->boolean('show_title')->default(true);
             $table->string('module_name');
             $table->json('content');
             $table->string('sort')->nullable();

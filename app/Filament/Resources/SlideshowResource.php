@@ -34,6 +34,7 @@ class SlideshowResource extends Resource
                     Section::make('Options')->icon('heroicon-o-cog')->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
+                            ->columnSpanFull()
                             ->maxLength(255),
                         Forms\Components\Select::make('module_name')
                             ->options([
@@ -47,12 +48,19 @@ class SlideshowResource extends Resource
                             ->default('hero-section')
                             ->searchDebounce(500)
                             ->searchable()
+                            ->columnSpanFull()
                             ->required(),
-                        Forms\Components\Toggle::make('is_active')
-                            ->label('Visible')
+                        Forms\Components\Toggle::make('show_title')
+                            ->inline(false)
+                            ->label('Show Title')
                             ->default(true)
                             ->required(),
-                    ])
+                        Forms\Components\Toggle::make('is_active')
+                            ->inline(false)
+                            ->label('Show Slideshow')
+                            ->default(true)
+                            ->required(),
+                    ])->columns(2)
                 ])->columnSpan(2),
                 Section::make('Slideshow')
                     ->icon('heroicon-o-camera')
@@ -64,19 +72,23 @@ class SlideshowResource extends Resource
                                 Forms\Components\FileUpload::make('image_path')
                                     ->label('Image')
                                     ->image()
+                                    ->imageEditor()
                                     ->directory('slideshow')
                                     ->required(),
                                 Group::make()->schema([
                                     Forms\Components\TextInput::make('image_title')
                                         ->label('Image Title')
+                                        ->maxLength(255)
                                         ->reactive()
                                         ->lazy()
                                         ->afterStateUpdated(fn(Set $set, ?string $state) => $set('image_alt', Str::slug($state))),
                                     Forms\Components\TextInput::make('image_alt')
                                         ->label('Image Alt')
+                                        ->maxLength(255)
                                         ->disabled()
                                         ->dehydrated(),
                                     Forms\Components\TextInput::make('image_url')
+                                        ->maxLength(255)
                                         ->label('Link'),
                                 ]),
                             ])->columns(2)

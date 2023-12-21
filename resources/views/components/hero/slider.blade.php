@@ -2,7 +2,7 @@
 <div class="swiper max-w-4xl">
     <h1 class="text-2xl text-center mb-12 lowercase">
         @foreach ($slides as $slide )
-        {{ $slide->title }}
+        @if($slide['show_title']) {{ $slide->title }} @endif
         @endforeach
     </h1>
     <div class="swiper-wrapper w-full">

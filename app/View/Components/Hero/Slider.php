@@ -24,7 +24,7 @@ class Slider extends Component
     {
         return view('components.hero.slider', [
             'slides' => Slideshow::query()
-                ->select(['content', 'title'])
+                ->select()
                 ->where('module_name', '=', 'hero-section')
                 ->where('is_active', '=', true)
                 ->get()
