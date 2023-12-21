@@ -18,9 +18,9 @@ class Newsletter extends Model
      */
     public static function counter(): string
     {
-        if (self::count() > 1000) {
+        if (self::count() >= 1000) {
             return round(self::count() / 1000, 1) . 'K';
-        } elseif (self::count() > 1000000) {
+        } elseif (self::count() >= 1000000) {
             return round(self::count() / 1000000, 1) . 'M';
         }
         return self::count();

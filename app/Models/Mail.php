@@ -51,4 +51,14 @@ class Mail extends Model
         return $data;
     }
 
+    public static function counter()
+    {
+        if (static::count() >= 1000) {
+            return round(static::count() / 1000, 1) . 'K';
+        } elseif (static::count() >= 1000000) {
+            return round(static::count() / 1000000, 1) . 'M';
+        }
+        return static::count();
+    }
+
 }

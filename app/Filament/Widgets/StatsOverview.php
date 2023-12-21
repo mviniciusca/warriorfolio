@@ -17,7 +17,7 @@ class StatsOverview extends BaseWidget
             Stat::make('Newsletter Subscribers', Newsletter::counter())
                 ->color('primary')
                 ->chart(Newsletter::chartSubscribers()),
-            Stat::make('Inbox', Mail::count())
+            Stat::make('Inbox', Mail::counter())
                 ->color('primary')
                 ->chart(Mail::chartInbox()),
             Stat::make('Projects', Project::published()->count())

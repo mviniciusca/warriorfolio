@@ -10,6 +10,8 @@ class ListCourses extends ListRecords
 {
     protected static string $resource = CourseResource::class;
 
+    protected static ?string $title = 'Courses & Certifications';
+
     protected function getHeaderActions(): array
     {
         return [

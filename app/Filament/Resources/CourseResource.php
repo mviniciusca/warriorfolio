@@ -22,7 +22,6 @@ class CourseResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
     protected static ?string $navigationGroup = 'App Sections';
     protected static ?int $navigationSort = 2;
-
     public static function form(Form $form): Form
     {
         return $form
@@ -72,12 +71,7 @@ class CourseResource extends Resource
                         'danger' => 'dropped',
                         'warning' => 'planned',
                         'success' => 'completed',
-                    ])
-                    ->icons([
-                        'heroicon-o-check' => 'completed',
-                        'heroicon-o-document' => 'planned',
-                        'heroicon-o-x' => 'dropped',
-                        'heroicon-o-pencil' => 'in progress',
+                        'info' => 'ongoing',
                     ]),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()

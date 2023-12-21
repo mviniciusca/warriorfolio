@@ -8,7 +8,7 @@ use Flowframe\Trend\TrendValue;
 
 class NewsletterSubscribersChart extends ChartWidget
 {
-    protected static ?string $heading = 'Chart';
+    protected static ?string $heading = 'Charts';
 
     protected function getData(): array
     {
