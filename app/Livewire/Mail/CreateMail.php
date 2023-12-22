@@ -43,6 +43,13 @@ class CreateMail extends Component implements HasForms
                     ->columnSpanFull()
                     ->placeholder('Subject'),
                 Forms\Components\RichEditor::make('body')
+                    ->toolbarButtons([
+                        'bold',
+                        'italic',
+                        'redo',
+                        'underline',
+                        'undo',
+                    ])
                     ->autofocus()
                     ->required()
                     ->maxLength(1300)
