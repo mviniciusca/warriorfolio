@@ -32,3 +32,4 @@
 @if($meta->header_scripts)
 {!! $meta->header_scripts !!}
 @endif
+<meta name="csrf-token" content="{{ csrf_token() }}">
