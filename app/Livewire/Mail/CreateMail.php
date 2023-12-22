@@ -2,13 +2,14 @@
 
 namespace App\Livewire\Mail;
 
-use App\Models\Mail;
 use Filament\Forms;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
+use App\Models\Mail;
 use Livewire\Component;
+use Filament\Forms\Form;
 use Illuminate\Contracts\View\View;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Notifications\Notification;
+use Filament\Forms\Concerns\InteractsWithForms;
 
 class CreateMail extends Component implements HasForms
 {
@@ -57,6 +58,11 @@ class CreateMail extends Component implements HasForms
         $data = $this->form->getState();
 
         $record = Mail::create($data);
+
+        Notification::make()
+            ->title('Mail Sent')
+            ->success()
+            ->send();
 
         $this->reset('data');
 

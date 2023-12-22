@@ -19,6 +19,7 @@
     @filamentStyles
     @vite(['resources/css/app.css'])
 </head>
+@livewire('notifications')
 
 <body class="dark:bg-zinc-900 antialiased dark:text-zinc-300 overflow-x-hidden">
     <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
