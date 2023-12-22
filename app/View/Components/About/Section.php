@@ -2,11 +2,13 @@
 
 namespace App\View\Components\About;
 
-use App\Models\Course;
-use App\Models\Profile;
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Course;
+use App\Models\Layout;
+use App\Models\Profile;
+use App\Models\Setting;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class Section extends Component
 {
@@ -25,7 +27,12 @@ class Section extends Component
     {
         return view('components.about.section', [
             'about' => Profile::first(),
-            'courses' => Course::all()->sortDesc()->take(5),
+            'courses' => Course::all()
+                ->sortDesc()
+                ->take(5),
+            'module' => Layout::query()
+                ->select(['about_section_title', 'about_section_subtitle_text'])
+                ->first(),
         ]);
     }
 }

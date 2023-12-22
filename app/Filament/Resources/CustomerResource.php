@@ -8,6 +8,7 @@ use App\Models\Customer;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Tables\Actions\ActionGroup;
 use Illuminate\Database\Eloquent\Builder;
@@ -28,23 +29,23 @@ class CustomerResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('logo')
-                    ->image()
-                    ->directory('customers')
-                    ->label('Brand Logo')
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->placeholder('--')
-                    ->columnSpan(2)
-                    ->required()
-                    ->label('Customer Name'),
-                Forms\Components\TextInput::make('url')
-                    ->placeholder('--')
-                    ->columnSpan(2)
-                    ->helperText('This field is optional')
-                    ->label('Website URL')
-                    ->columnSpanFull(),
-            ])->columns(3);
+                Group::make()->schema([
+                    Forms\Components\FileUpload::make('logo')
+                        ->image()
+                        ->imageEditor()
+                        ->directory('customers')
+                        ->label('Brand Logo')
+                        ->required(),
+                ]),
+                Group::make()->schema([
+                    Forms\Components\TextInput::make('name')
+                        ->label('Customer Name (optional)'),
+                    Forms\Components\TextInput::make('url')
+                        ->columnSpan(2)
+                        ->label('Website URL (optional)')
+                        ->columnSpanFull(),
+                ]),
+            ])->columns(2);
     }
 
     public static function table(Table $table): Table

@@ -1,6 +1,6 @@
 @aware(['page'])
 <section>
-    <div class="container  max-w-7xl px-5 py-24 mx-auto">
+    <div class="container max-w-7xl px-5 py-24 mx-auto">
         <div class="grid justify-center items-center text-center">
             <div class="header-title">
                 elevate Your <br /> <span class="text-highlight">Portfolio</span> Experience.
