@@ -39,8 +39,10 @@ class CustomerResource extends Resource
                 ]),
                 Group::make()->schema([
                     Forms\Components\TextInput::make('name')
+                        ->maxLength(255)
                         ->label('Customer Name (optional)'),
                     Forms\Components\TextInput::make('url')
+                        ->maxLength(255)
                         ->columnSpan(2)
                         ->label('Website URL (optional)')
                         ->columnSpanFull(),
