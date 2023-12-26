@@ -21,11 +21,11 @@ class LayoutFactory extends Factory
             'hero_section_subtitle_text' => 'warriorfolio is a free, open source, <br/> cms for creating and managing your own website.',
             'portfolio_section_title' => 'Portfolio',
             'portfolio_section_subtitle_text' => 'Here are some of my projects I\'ve worked on recently',
-            'about_section_title' => 'About Me',
-            'about_section_subtitle_text' => 'I\'m a full-stack developer based in the Philippines',
-            'contact_section_title' => 'Contact Me',
+            'about_section_title' => 'Let\'s start with a <span class="text-highlight">hello</span>',
+            'about_section_subtitle_text' => 'I\'m a full-stack developer based in Rio de Janeiro, Brazil specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.',
+            'contact_section_title' => 'Get <span class="text-highlight">in touch</span>',
             'contact_section_subtitle_text' => 'I\'m currently available for freelance work',
-            'clients_section_text' => 'Trusted by companies big and small',
+            'clients_section_text' => 'Trusted by <span class="text-highlight"> companies </span> <br /> big and small',
             'clients_section_subtitle_text' => 'Here are some of the companies I\'ve worked with',
         ];
     }

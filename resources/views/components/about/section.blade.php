@@ -3,7 +3,7 @@
     <div class="header-title mb-2">{!! $module->about_section_title !!}</div>
     @endif
     @if($module->about_section_subtitle_text)
-    <div class="text-center text-lg">{!! $module->about_section_subtitle_text !!}</div>
+    <div class="text-center text-lg max-w-2xl mt-4 mx-auto">{!! $module->about_section_subtitle_text !!}</div>
     @endif
     <div class="flex mt-24">
         {{-- Profile Section --}}

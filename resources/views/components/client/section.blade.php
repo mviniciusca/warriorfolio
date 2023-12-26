@@ -1,7 +1,7 @@
 @aware(['page'])
 <x-core.layout>
-    <div class="header-title">worried</div>
-    <div class="subtitle text-xl text-center mt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+    <div class="header-title">{!! $info->clients_section_text !!}</div>
+    <div class="subtitle text-xl text-center mt-2">{!! $info->clients_section_subtitle_text !!}</div>
     <div class="flex flex-wrap gap-8 items-center justify-between mt-24">
         @foreach ($clients as $client)
         <div
