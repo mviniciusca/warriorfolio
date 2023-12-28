@@ -3,6 +3,7 @@
 namespace App\View\Components\Footer;
 
 use App\Models\Layout;
+use App\Models\Setting;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -25,6 +26,9 @@ class Section extends Component
         return view('components.footer.section', [
             'info' => Layout::query()
                 ->select(['contact_section_title', 'contact_section_subtitle_text'])
+                ->first(),
+            'setting' => Setting::query()
+                ->select(['logo', 'name', 'body_scripts'])
                 ->first(),
         ]);
     }

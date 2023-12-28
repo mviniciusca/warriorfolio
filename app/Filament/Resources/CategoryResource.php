@@ -37,15 +37,14 @@ class CategoryResource extends Resource
                             ->required()
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->reactive()
+                            ->lazy()
                             ->label('Category Name')
-                            ->placeholder('--')
                             ->maxLength(255),
                         Forms\Components\Select::make('parent_id')
-                            ->label('Parent Category')
-                            ->optionsLimit(10)
-                            ->searchable()
                             ->relationship('parent', 'name')
-                            ->placeholder('Select Parent Category')
+                            ->searchable()
+                            ->optionsLimit(5)
+                            ->label('Parent Category')
                             ->nullable(),
                         Forms\Components\TextInput::make('slug')
                             ->disabled()
@@ -54,7 +53,6 @@ class CategoryResource extends Resource
                             ->maxLength(255),
                         Forms\Components\ColorPicker::make('hex_color')
                             ->helperText('Select the category tag color')
-                            ->placeholder('--')
                             ->label('Category Tag Color'),
                         Forms\Components\Toggle::make('is_active')
                             ->label('Category Visibility')
