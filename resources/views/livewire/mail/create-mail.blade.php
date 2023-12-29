@@ -1,5 +1,5 @@
-<div clas="w-full grid gap-8 items-center">
-    <form class="grid gap-8 p-8" wire:submit="create">
+<div clas="w-full grid gap-8 items-center mx-auto">
+    <form class="grid gap-8 mx-auto" wire:submit="create">
         {{ $this->form }}
 
         <button

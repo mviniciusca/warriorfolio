@@ -62,6 +62,7 @@ class CategoryResource extends Resource
                         Forms\Components\Textarea::make('icon')
                             ->label('SVG Icon')
                             ->placeholder('Place here the svg icon code: starts with <svg> and ends with </svg>')
+                            ->maxLength(65535)
                             ->columnSpanFull(),
                     ])->columns(3),
             ]);

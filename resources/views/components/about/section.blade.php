@@ -23,30 +23,7 @@
             <p class="text-sm tracking-tight mb-8">{{ $about->job_position }} <br /> {{ $about->localization }}
             </p>
             <div class="mx-auto">
-                @if($about->twitter)
-                <x-ui.icon :href="$about->twitter" name="logo-twitter" />
-                @endif
-                @if($about->linkedin)
-                <x-ui.icon :href="$about->linkedin" name="logo-linkedin" />
-                @endif
-                @if($about->facebook)
-                <x-ui.icon :href="$about->facebook" name="logo-facebook" />
-                @endif
-                @if($about->dribbble)
-                <x-ui.icon :href="$about->dribbble" name="logo-dribbble" />
-                @endif
-                @if($about->github)
-                <x-ui.icon :href="$about->github" name="logo-github" />
-                @endif
-                @if($about->instagram)
-                <x-ui.icon :href="$about->instagram" name="logo-instagram" />
-                @endif
-                @if($about->twitch)
-                <x-ui.icon :href="$about->twitch" name="logo-twitch" />
-                @endif
-                @if($about->youtube)
-                <x-ui.icon :href="$about->youtube" name="logo-youtube" />
-                @endif
+                <x-ui.social-network />
             </div>
             <div class="text-sm tracking-tight my-8">
                 @foreach(explode(',', $about->skills) as $skill)

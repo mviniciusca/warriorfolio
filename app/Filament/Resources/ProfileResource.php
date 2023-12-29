@@ -109,6 +109,10 @@ class ProfileResource extends Resource
                                 ->placeholder('www.linkedin.com/in/your_username')
                                 ->maxLength(255)
                                 ->prefixIcon('heroicon-o-link'),
+                            Forms\Components\TextInput::make('medium')
+                                ->placeholder('www.medium.com/@your_username')
+                                ->maxLength(255)
+                                ->prefixIcon('heroicon-o-link'),
                             Forms\Components\TextInput::make('dribbble')
                                 ->placeholder('www.dribbble.com/your_username')
                                 ->maxLength(255)
