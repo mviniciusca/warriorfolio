@@ -14,34 +14,36 @@ use Filament\Forms\Concerns\InteractsWithForms;
 class CreateMail extends Component implements HasForms
 {
     use InteractsWithForms;
-
     public ?array $data = [];
-
     public function mount(): void
     {
         $this->form->fill();
     }
-
     public function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->autofocus()
                     ->maxLength(50)
-                    ->required()
-                    ->placeholder('Name'),
+                    ->label('Full Name')
+                    ->columnSpanFull()
+                    ->required(),
                 Forms\Components\TextInput::make('email')
-                    ->autofocus()
+                    ->label('Email Address')
                     ->email()
-                    ->required()
-                    ->placeholder('Email'),
+                    ->columnSpanFull()
+                    ->required(),
+                Forms\Components\TextInput::make('phone')
+                    ->label('Phone Number')
+                    ->tel()
+                    ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/')
+                    ->maxLength(20)
+                    ->columnSpanFull()
+                    ->required(),
                 Forms\Components\TextInput::make('subject')
-                    ->autofocus()
                     ->maxLength(140)
                     ->required()
-                    ->columnSpanFull()
-                    ->placeholder('Subject'),
+                    ->columnSpanFull(),
                 Forms\Components\RichEditor::make('body')
                     ->toolbarButtons([
                         'bold',
@@ -50,11 +52,10 @@ class CreateMail extends Component implements HasForms
                         'underline',
                         'undo',
                     ])
-                    ->autofocus()
                     ->required()
                     ->maxLength(1300)
                     ->columnSpanFull()
-                    ->placeholder('Message'),
+                    ->label('Message'),
             ])->columns(2)
             ->statePath('data')
             ->model(Mail::class);

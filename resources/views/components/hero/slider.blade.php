@@ -1,6 +1,6 @@
 @if(count($slides) > 0)
-<div class="swiper max-w-4xl">
-    <h1 class="text-2xl text-center mb-12 lowercase">
+<div class="swiper max-w-3xl">
+    <h1 class="text-xl text-center mb-16 ">
         @foreach ($slides as $slide )
         @if($slide['show_title']) {{ $slide->title }} @endif
         @endforeach

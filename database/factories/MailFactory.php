@@ -18,6 +18,7 @@ class MailFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail,
             'subject' => $this->faker->sentence,
             'body' => $this->faker->paragraph,

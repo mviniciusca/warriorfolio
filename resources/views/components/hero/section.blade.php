@@ -17,20 +17,24 @@ absolute w-full h-full -z-10 bg-cover bg-no-repeat bg-center"
                         class="animate__animated animate__fadeInUp animate__delay-1s mb-8 text-3xl dark:text-white shadow-current tracking-tight leading-tight">
                         {!! $hero->hero_section_subtitle_text !!}
                     </p>
-                    <div class="flex justify-center animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="flex gap-4 justify-center animate__animated animate__fadeInUp animate__delay-2s">
                         <button
                             class="inline-flex items-center align-middle text-secondary-50 dark:bg-primary-500 border-0 py-2 px-6 focus:outline-none dark: hover:bg-primary-600 rounded text-lg">
-                            <ion-icon name="chevron-down-outline"></ion-icon>
+                            let's start
+                        </button>
+                        <button
+                            class="inline-flex items-center align-middle text-secondary-50 dark:bg-transparent border border-secondary-600 py-2 px-6 focus:outline-none dark: hover:bg-primary-600 rounded text-lg">
+                            get in touch
                         </button>
                     </div>
                 </div>
-                <div id="app-image-showcase">
+                {{-- <div id="app-image-showcase">
                     <img class="rounded-t-xl mt-8 shadow-md animate__animated animate__fadeInUp animate__delay-2s"
                         src="{{ asset('img/core/app.png') }}" alt="app image">
-                </div>
-            </div>
-            {{-- Hero Section Slider --}}
-            <x-hero.slider />
+            </div> --}}
         </div>
+        {{-- Hero Section Slider --}}
+        <x-hero.slider />
+    </div>
     </div>
 </section>

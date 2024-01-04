@@ -45,6 +45,9 @@ class MailResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('phone')
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('subject')
                     ->columnSpanFull()
                     ->required()
@@ -78,6 +81,9 @@ class MailResource extends Resource
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('email')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('phone')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('subject')

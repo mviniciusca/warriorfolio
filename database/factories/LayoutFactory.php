@@ -25,8 +25,11 @@ class LayoutFactory extends Factory
             'about_section_subtitle_text' => 'I\'m a full-stack developer based in Rio de Janeiro, Brazil specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.',
             'contact_section_title' => 'Get <span class="text-highlight">in touch</span>',
             'contact_section_subtitle_text' => 'I\'m currently available for freelance work',
-            'clients_section_text' => 'Trusted by <span class="text-highlight"> companies </span> <br /> big and small',
+            'clients_section_title' => 'Trusted by <span class="text-highlight"> companies </span> <br /> big and small',
             'clients_section_subtitle_text' => 'Here are some of the companies I\'ve worked with',
+            'newsletter_section_title' => 'the what\'s <span class="text-highlight">next</span>',
+            'newsletter_section_subtitle_text' => 'join our newsletter and stay updated on new projects and features.',
+            'newsletter_section_button_text' => 'Join',
         ];
     }
 }

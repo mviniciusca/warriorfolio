@@ -24,9 +24,9 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.client.section', [
-            'clients' => Customer::all(),
+            'clients' => Customer::all()->take(12)->sortDesc(),
             'info' => Layout::query()
-                ->select(['clients_section_text', 'clients_section_subtitle_text'])
+                ->select(['clients_section_title', 'clients_section_subtitle_text'])
                 ->first(),
         ]);
     }

@@ -2,11 +2,12 @@
 
 namespace App\View\Components\Footer;
 
-use App\Models\Layout;
-use App\Models\Setting;
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Layout;
+use App\Models\Module;
+use App\Models\Setting;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class Section extends Component
 {
@@ -25,11 +26,11 @@ class Section extends Component
     {
         return view('components.footer.section', [
             'info' => Layout::query()
-                ->select(['contact_section_title', 'contact_section_subtitle_text'])
+                ->select(['contact_section_title', 'contact_section_subtitle_text', 'newsletter_section_title', 'newsletter_section_subtitle_text', 'newsletter_section_button_text', 'newsletter_section_image'])
                 ->first(),
             'setting' => Setting::query()
-                ->select(['logo', 'name', 'body_scripts'])
                 ->first(),
+            'module' => Module::query()->select(['newsletter'])->first(),
         ]);
     }
 }
