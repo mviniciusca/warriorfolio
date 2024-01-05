@@ -21,7 +21,7 @@
 </head>
 @livewire('notifications')
 
-<body class="dark:bg-zinc-900 antialiased dark:text-zinc-300 overflow-x-hidden">
+<body class="dark:bg-secondary-900 antialiased dark:text-secondary-50 overflow-x-hidden">
     <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
     {{-- Ionicons CDN --}}
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

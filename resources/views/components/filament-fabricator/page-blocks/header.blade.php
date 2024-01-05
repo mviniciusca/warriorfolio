@@ -1,13 +1,14 @@
 @aware(['page'])
 <div class="px-4 py-4 md:py-8">
     <div class="max-w-7xl mx-auto">
-        <header class="text-gray-600 body-font">
-            <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-                <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
-                    <a class="mr-5 hover:text-gray-900">First Link</a>
-                    <a class="mr-5 hover:text-gray-900">Second Link</a>
-                    <a class="mr-5 hover:text-gray-900">Third Link</a>
-                    <a class="hover:text-gray-900">Fourth Link</a>
+        <header class=" body-font">
+            <div
+                class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center font-bold text-sm lowercase">
+                <nav class="flex lg:w-2/5 flex-wrap items-center  md:ml-auto">
+                    <a class="mr-5 hover:text-primary-500 cursor-pointer">Homepage</a>
+                    <a class="mr-5 hover:text-primary-500 cursor-pointer">About Me</a>
+                    <a class="mr-5 hover:text-primary-500 cursor-pointer">Projects</a>
+                    <a class="hover:text-primary-500 cursor-pointer">Customers</a>
                 </nav>
                 <a
                     class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
@@ -15,11 +16,8 @@
                 </a>
                 <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
                     <button
-                        class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Button
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
+                        class="inline-flex items-center bg-primary-500 border-0 py-1 px-3 focus:outline-none hover:bg-primary-600 rounded mt-4 md:mt-0 gap-1">contact
+                        <ion-icon name="mail-open"></ion-icon>
                     </button>
                 </div>
             </div>
