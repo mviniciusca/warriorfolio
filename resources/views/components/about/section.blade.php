@@ -10,8 +10,8 @@
         <div class="p-8 w-full md:w-1/4 text-center" id="profile">
             <div
                 class="bg-secondary-500 h-40 w-40 rounded-full p-1 mx-auto mb-12 mt-12 bg-gradient-to-tl from-primary-500 to-tertiary-500 ">
-                <div class="bg-secondary-50 bg-cover bg-center transition-all duration-100 filter grayscale hover:grayscale-0 h-full w-full rounded-full p-2 mx-auto mb-12"
-                    style="background-image:url('{{ asset('storage/' . $about->avatar) }}')">
+                <div class="bg-secondary-50 bg-contain bg-no-repeat bg-center transition-all duration-100 filter grayscale hover:grayscale-0 h-full w-full rounded-full p-2 mx-auto mb-12"
+                    style="background-image:url('{{ $about->avatar ? asset('storage/' . $about->avatar) : asset('img/core/profile-picture.png') }}')">
                     @if($about->is_open_to_work)
                     <div class="absolute bg-secondary-50 text-primary-500 text-xs p-1 ml-6 mt-32 ">
                         Open to Work
