@@ -22,6 +22,7 @@
 @livewire('notifications')
 
 <body class="dark:bg-secondary-900 antialiased dark:text-secondary-50 overflow-x-hidden">
+    <x-ui.chatbox />
     <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
     {{-- Ionicons CDN --}}
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
