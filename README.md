@@ -73,10 +73,11 @@ Warriorfolio 2 está também sob a guarda de um dos maiores frameworks do mundo,
 
 ### Requisitos 
 - PHP 8.1 ou superior;
+- (n) Extensões do PHP habilitadas principalmente OpenSSL, PDO e Zip;
 - Banco de dados como MySQL, PostgreSQL ou SQLite;
 - Composer 2.0 ou superior;
 - NPM;
-- 500MB de espaço em disco ou superior;
+- 600MB de espaço em disco ou superior;
 
 ### Instalação e Configuração
 Para instalar este aplicativo, seguimos a instalação padrão do Laravel. Caso você já saiba utilizar o Laravel, pode pular esta parte e comece a ler no item 11 deste documento.
