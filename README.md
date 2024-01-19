@@ -190,7 +190,7 @@ Procure pelo código:
 Por se tratar de uma Landing Page, só será exibido um slideshow por módulo e o mais recente criado.
 
 #### Módulo de Newsletter ou E-mail Catacher
-Você pode ativar ou desativar o módulo de captura de e-mails. Está denominado como newsltter, mas por enquanto, a sua funcionalidade é apenas de captura de e-mails. Você pode exportar os e-mails capturados em formato CSV e usar em sua campanha de e-mail marketing.
+Você pode ativar ou desativar o módulo de captura de e-mails. Está denominado como newsltter, mas por enquanto, a sua funcionalidade é apenas de captura de e-mails. Você pode exportar os e-mails capturados em formato do Excel e usar em sua campanha de e-mail marketing.
 
 #### Editando as informações do seu SEO
 Para editar as informações do seu SEO, acesse o painel de controle e clique em **SEO**. Você verá o seu SEO. Clique em **Editar** e edite as informações que desejar.
