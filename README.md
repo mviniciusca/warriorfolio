@@ -1,4 +1,9 @@
 ## Warriorfolio 2
+Este projeto ainda está em desenvolvimento e pode sofrer alterações a qualquer momento.
+
+Esta documentação ainda está em desenvolvimento e pode sofrer alterações a qualquer momento. Pode conter erros de português, gramática e formatação. 
+
+Ainda não passou por revisão.
 
 ### Fast Documentation
 
