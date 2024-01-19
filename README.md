@@ -32,6 +32,7 @@ Ainda não passou por revisão.
       - [Erro 403 Forbidden](#erro-403-forbidden)
     - [Quick: Wiki, Tips \& FAQ](#quick-wiki-tips--faq)
     - [Contribuições, Feedbacks e Bugs Report](#contribuições-feedbacks-e-bugs-report)
+    - [Supote](#supote)
     - [Agradecimentos](#agradecimentos)
     - [Licença](#licença)
   
@@ -253,22 +254,26 @@ Nesta seção, você vai encontrar algumas dicas, perguntas e respostas rápidas
 - **Por que o limite de 12 projetos no Warriorfolio 2 ?** 
   > *Por se tratar de uma Landing Page, acredito que até 12 ítens de exibição são suficientes para deixar o carregamento rápido e dinâmico. Lembrando que você pode cadastrar quantos projetos quiser e até mesmo mudar esta configuração de exibição.*
 - **Preciso pagar para usar o Warriorfolio 2 ?**
-    > *Não. Warriorfolio 2 é um app Open Source e está sob a licença MIT. Você pode usar, modificar e até mesmo vender o seu app. Mas não esqueça de dar os créditos se possível aos criadores do Laravel, Filament e Livewire. E a mim né * :) <3 
+    > *Não. Warriorfolio 2 é um app Open Source e está sob a licença MIT. Você pode usar, modificar e até mesmo vender o seu app. Mas não esqueça de dar os créditos se possível aos criadores do Laravel, Filament e Livewire. E a mim né :) <3 
 - **Posso usar o Warriorfolio 2 para fins comerciais ?**
-    > *Sim. Você pode usar o Warriorfolio 2 para fins comerciais.
+    > *Sim. Você pode usar o Warriorfolio 2 para fins comerciais. Lembrando que ele é um app Open Source e está sob a licença MIT. Você pode usar, modificar e até mesmo vender o seu app. Mas não esqueça de dar os créditos se possível aos criadores do Laravel, Filament e Livewire. E a mim né :) <3
 - **Posso usar o Warriorfolio 2 para fins pessoais ?**
     > *Sim. Você pode usar o Warriorfolio 2 para fins pessoais. Foi pra isso que ele foi criado. Para que você possa ter um portfolio simples, rápido e eficaz.*
 - **Onde encontro a Documentação do Filament ?**
-  > https://filamentphp.com/docs aqui você encontra a documentação completa do Filament. *Documentação em Inglês*
+  > https://filamentphp.com/docs aqui você encontra a documentação completa do Filament. 
 - **Onde encontro a Documentação do Livewire ?**
-  > https://laravel-livewire.com/docs aqui você encontra a documentação completa do Livewire. *Documentação em Inglês*
+  > https://laravel-livewire.com/docs aqui você encontra a documentação completa do Livewire. 
 - **Onde encontro a Documentação do Laravel ?**
-  > https://laravel.com/docs aqui você encontra a documentação completa do Laravel. *Documentação em Inglês*
+  > https://laravel.com/docs aqui você encontra a documentação completa do Laravel.
 
 ### Contribuições, Feedbacks e Bugs Report
 Se você encontrou algum bug, ou quer contribuir com o projeto, ou até mesmo dar um feedback, fique a vontade para abrir uma issue ou um pull request.
 
 Sinta-se livre para contribuir, fazer seu fork e deixar o seu feedback.
+
+### Supote
+Sinta-se livre para abrir uma issue ou um pull request. Seu feedback é muito importante para mim.
+
 ### Agradecimentos
 - Aos usuários do Warriorfolio 1;
 - Aos feedbacks e contribuições dos usuários do Warriorfolio 1;
