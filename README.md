@@ -20,6 +20,14 @@ Ainda não passou por revisão.
     - [Instalação e Configuração](#instalação-e-configuração)
     - [Hora de voar 🚀](#hora-de-voar-)
     - [O Pós-Build](#o-pós-build)
+      - [Editando a cor padrão do tema](#editando-a-cor-padrão-do-tema)
+      - [Editando as informações pessoais](#editando-as-informações-pessoais)
+      - [Editando as informações do seu portfolio](#editando-as-informações-do-seu-portfolio)
+      - [Editando as informações do seu currículo](#editando-as-informações-do-seu-currículo)
+      - [Editando as informações do seu contato](#editando-as-informações-do-seu-contato)
+      - [Editando as informações do seu e-mail catcher](#editando-as-informações-do-seu-e-mail-catcher)
+      - [Editando as informações do seu SEO](#editando-as-informações-do-seu-seo)
+      - [Subseção: Customizações Avançadas](#subseção-customizações-avançadas)
     - [Warriorfolio 2 em Produção](#warriorfolio-2-em-produção)
       - [Erros 403 Forbidden](#erros-403-forbidden)
     - [Quick: Wiki, Tips \& FAQ](#quick-wiki-tips--faq)
@@ -130,28 +138,33 @@ Senha: password
 É altamente recomandável que você mude esta senha e o e-mail, para que você possa ter mais segurança principalmente em ambiente de produção. 
 
 ### O Pós-Build 
+
 Legal, você já está deparado com Warriorfolio 2 e quer editar as suas informações ou mudar as cores do tema. Pode parecer confuso ou difícil, mas acredite: não é! Vamos lá:
 
-  -  #### Editando a cor padrão do tema
+#### Editando a cor padrão do tema
   Para editar a cor padrão do tema, acesse o painel de controle e clique em **Configurações**. Você verá a cor padrão do tema. Clique em **Editar** e edite a cor que desejar.
 
-  -  #### Editando as informações pessoais
+#### Editando as informações pessoais
   Para editar as informações pessoais, acesse o painel de controle e clique em **Usuários**. Você verá o seu usuário padrão do sistema. Clique em **Editar** e edite as informações que desejar.
 
-  - #### Editando as informações do seu portfolio
+#### Editando as informações do seu portfolio
   Para editar as informações do seu portfolio, acesse o painel de controle e clique em **Portfolio**. Você verá o seu portfolio. Clique em **Editar** e edite as informações que desejar.
 
-  - #### Editando as informações do seu currículo
+#### Editando as informações do seu currículo
   Para editar as informações do seu currículo, acesse o painel de controle e clique em **Currículo**. Você verá o seu currículo. Clique em **Editar** e edite as informações que desejar.
 
-  - #### Editando as informações do seu contato
+#### Editando as informações do seu contato
   Para editar as informações do seu contato, acesse o painel de controle e clique em **Contato**. Você verá o seu contato. Clique em **Editar** e edite as informações que desejar.
 
-  - #### Editando as informações do seu e-mail catcher
+#### Editando as informações do seu e-mail catcher
   Para editar as informações do seu e-mail catcher ou newsletter, acesse o painel de controle e clique em **E-mail Catcher**. Você verá o seu e-mail catcher. Clique em **Editar** e edite as informações que desejar.
 
-  - #### Editando as informações do seu SEO
+#### Editando as informações do seu SEO
   Para editar as informações do seu SEO, acesse o painel de controle e clique em **SEO**. Você verá o seu SEO. Clique em **Editar** e edite as informações que desejar.
+
+#### Subseção: Customizações Avançadas
+Aqui, você pode explorar opções mais avançadas de personalização para deixar o seu Warriorfolio 2 ainda mais único.
+
 
 
 
