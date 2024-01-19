@@ -123,9 +123,12 @@ php artisan storage:link
 php artisan migrate:fresh --seed
 ```
 🤞 
-- **Se tudo ocorreu bem, rode o comando abaixo para iniciar o servidor e o compilador de assets do Laravel:**
+- **Se tudo ocorreu bem, rode o comando abaixo para iniciar o servidor e em uma nova janela do terminal rode o compilador de assets do Laravel:**
 ```
-php artisan serve && npm run dev
+npm run dev
+```
+```
+php artisan serve
 ```
 ### Hora de voar
 Acesse o endereço (geralmente http://127.0.0.1:8080) e veja o seu app rodando (é lindão né?)!
