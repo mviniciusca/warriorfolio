@@ -1,4 +1,9 @@
-## Warriorfolio 2
+# Warriorfolio 2
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/v2-dev-master/public/gif/app.gif"  alt="Warriorfolio 2">
+</p>
+
 Este projeto ainda está em desenvolvimento e pode sofrer alterações a qualquer momento.
 
 Esta documentação ainda está em desenvolvimento e pode sofrer alterações a qualquer momento. Pode conter erros de português, gramática e formatação. 
@@ -8,20 +13,20 @@ Ainda não passou por revisão.
 ### Fast Documentation
 
 - [Warriorfolio 2](#warriorfolio-2)
-  - [Fast Documentation](#fast-documentation)
-  - [Apresentando Warriorfolio 2](#apresentando-warriorfolio-2)
-  - [Features](#features)
-  - [Engrenagem \& Core](#engrenagem--core)
-  - [Requisitos](#requisitos)
-  - [Instalação e Configuração](#instalação-e-configuração)
-  - [Hora de voar 🚀](#hora-de-voar-)
-  - [O Pós-Build](#o-pós-build)
-  - [Warriorfolio 2 em Produção](#warriorfolio-2-em-produção)
-    - [Erros 403 Forbidden](#erros-403-forbidden)
-  - [Quick: Wiki, Tips \& FAQ](#quick-wiki-tips--faq)
-  - [Contribuições, Feedbacks e Bugs Report](#contribuições-feedbacks-e-bugs-report)
-  - [Agradecimentos](#agradecimentos)
-  - [Licença](#licença)
+    - [Fast Documentation](#fast-documentation)
+    - [Apresentando Warriorfolio 2](#apresentando-warriorfolio-2)
+    - [Features](#features)
+    - [Engrenagem \& Core](#engrenagem--core)
+    - [Requisitos](#requisitos)
+    - [Instalação e Configuração](#instalação-e-configuração)
+    - [Hora de voar 🚀](#hora-de-voar-)
+    - [O Pós-Build](#o-pós-build)
+    - [Warriorfolio 2 em Produção](#warriorfolio-2-em-produção)
+      - [Erros 403 Forbidden](#erros-403-forbidden)
+    - [Quick: Wiki, Tips \& FAQ](#quick-wiki-tips--faq)
+    - [Contribuições, Feedbacks e Bugs Report](#contribuições-feedbacks-e-bugs-report)
+    - [Agradecimentos](#agradecimentos)
+    - [Licença](#licença)
   
 
 ### Apresentando Warriorfolio 2
@@ -59,10 +64,11 @@ O Filament é movido com a tecnologia Livewire, que é um framework para o Larav
 Warriorfolio 2 está também sob a guarda de um dos maiores frameworks do mundo, o Laravel. Criado por Taylor Otwell, o Laravel é um framework robusto, seguro, escalável e com uma documentação completa e de fácil entendimento. O Laravel é um framework que está em constante evolução e é um produto altamente testado e com uma comunidade ativa e engajada.
 
 ### Requisitos 
-• PHP 8.0 ou superior;
-• Composer 2.0 ou superior;
-• NPM (*NPM é instalado junto com o NodeJs, que é um gerenciador de pacotes para o JavaScript*);
-• 500MB de espaço em disco ou superior;
+- PHP 8.0 ou superior;
+- Banco de dados como MySQL, PostgreSQL ou SQLite;
+- Composer 2.0 ou superior;
+- NPM;
+- 500MB de espaço em disco ou superior;
 
 ### Instalação e Configuração
 Para instalar este aplicativo, seguimos a instalação padrão do Laravel. Caso você já saiba utilizar o Laravel, pode pular esta parte e comece a ler no item 11 deste documento.
@@ -200,6 +206,3 @@ Sinta-se livre para contribuir, fazer seu fork e deixar o seu feedback.
 
 ### Licença
 Warriorfolio 2 é um aplicativo Open Source e está sob a licença MIT.
-
-
-
