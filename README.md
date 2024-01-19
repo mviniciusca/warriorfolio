@@ -19,18 +19,17 @@ Ainda não passou por revisão.
     - [Engrenagem \& Core](#engrenagem--core)
     - [Requisitos](#requisitos)
     - [Instalação e Configuração](#instalação-e-configuração)
-    - [Hora de voar 🚀](#hora-de-voar-)
-    - [O Pós-Build](#o-pós-build)
-      - [Editando a cor padrão do tema](#editando-a-cor-padrão-do-tema)
-      - [Editando as informações pessoais](#editando-as-informações-pessoais)
-      - [Editando as informações do seu portfolio](#editando-as-informações-do-seu-portfolio)
-      - [Editando as informações do seu currículo](#editando-as-informações-do-seu-currículo)
-      - [Editando as informações do seu contato](#editando-as-informações-do-seu-contato)
-      - [Editando as informações do seu e-mail catcher](#editando-as-informações-do-seu-e-mail-catcher)
+    - [Hora de voar](#hora-de-voar)
+    - [O Pós-Build: Conhecendo melhor o Warriorfolio 2](#o-pós-build-conhecendo-melhor-o-warriorfolio-2)
+      - [Mudando a cor padrão do tema](#mudando-a-cor-padrão-do-tema)
+      - [Editando os textos públicos do seu app](#editando-os-textos-públicos-do-seu-app)
+      - [Editando o hightlight do seu app](#editando-o-hightlight-do-seu-app)
+      - [Criando Slideshow de Imagens](#criando-slideshow-de-imagens)
+      - [Módulo de Newsletter ou E-mail Catacher](#módulo-de-newsletter-ou-e-mail-catacher)
       - [Editando as informações do seu SEO](#editando-as-informações-do-seu-seo)
-      - [Subseção: Customizações Avançadas](#subseção-customizações-avançadas)
+      - [Organizando a Ordem dos Módulos](#organizando-a-ordem-dos-módulos)
     - [Warriorfolio 2 em Produção](#warriorfolio-2-em-produção)
-      - [Erros 403 Forbidden](#erros-403-forbidden)
+      - [Erro 403 Forbidden](#erro-403-forbidden)
     - [Quick: Wiki, Tips \& FAQ](#quick-wiki-tips--faq)
     - [Contribuições, Feedbacks e Bugs Report](#contribuições-feedbacks-e-bugs-report)
     - [Agradecimentos](#agradecimentos)
@@ -38,29 +37,29 @@ Ainda não passou por revisão.
   
 
 ### Apresentando Warriorfolio 2
-Warriorfolio tem a proposta de ser simples, rápído e eficaz na criação de Landing Pages para o seu portfolio. Chega em sua nova versão mais robusto, mais inteligente, flexível e com novos recursos intuitivos. Projetado para ser 100% administrado pelo Painel de Controle, sem a necessidade de conhecimentos técnicos profundos em programação, PHP e nem mesmo em Laravel.
+Warriorfolio tem a proposta de ser simples, rápído e eficaz na criação de Landing Page para o seu portfolio. Chega em sua nova versão mais robusto, mais inteligente, flexível e com novos recursos intuitivos. Pensado no conceito modular, você pode escolher com extrema facilidade a ordem que a sua página será montada e exibida ao público.
 
-**Warriorfolio 2 é um aplicativo Open Source e está sob a licença MIT.**
+Projetado para ser 100% administrado pelo Painel de Controle, sem a necessidade de conhecimentos técnicos profundos em programação, PHP e nem mesmo em Laravel.
 
 Sinta-se livre para contribuir com o projeto e fazer o seu fork, mas não esqueça de dar os créditos aos criadores do Laravel, Filament e Livewire.
 
 E a mim, claro! 😁 
 
 ### Features 
-- Painel de Controle para gerenciamento de conteúdos;
-- Galeria de Imagens dos seus Projetos;
-- Slider de Imagens;
-- Display de Clientes;
+- Painel de Controle Robusto e Flexível;
+- Módulos Flexíveis, Customizáveis e Ordenáveis;
+- Galeria de Imagens do Portfolio;
+- Slideshow de Imagens;
+- Showcase de Clientes;
 - Display de Habilidades;
 - E-mail catcher para captura de leads;
-- SEO;
 - Integração com o Google Analytics;
 - Curriculo em PDF para download;
 - Ícone de Open to Work;
 - Biografia, Certificados e Cursos;
 - Contato via WhatsApp;
 - Formulário de contato;
-- Controle de Módulos;
+- Painel de Leitura de Mensagens Recebidas;
 
 e mais...
 
@@ -127,7 +126,7 @@ php artisan migrate:fresh --seed
 ```
 php artisan serve && npm run dev
 ```
-### Hora de voar 🚀
+### Hora de voar
 Acesse o endereço (geralmente http://127.0.0.1:8080) e veja o seu app rodando (é lindão né?)!
 
 Agora é só acessar o painel de controle e começar a criar o seu portfolio. Para acessar o painel de controle, acesse a URL do seu app e adicione `/admin` no final e entre com as credenciais abaixo:
@@ -138,36 +137,75 @@ Senha: password
 ```
 É altamente recomandável que você mude esta senha e o e-mail, para que você possa ter mais segurança principalmente em ambiente de produção. 
 
-### O Pós-Build 
+### O Pós-Build: Conhecendo melhor o Warriorfolio 2
 
-Legal, você já está deparado com Warriorfolio 2 e quer editar as suas informações ou mudar as cores do tema. Pode parecer confuso ou difícil, mas acredite: não é! Vamos lá:
+Legal, você está com seu aplicativo rodando e já está logado no painel de controle. Agora é hora de conhecer melhor o Warriorfolio 2 e começar a criar o seu portfolio. Talvez você queira fazer algumas customizações avançadas, ou até mesmo mudar a cor padrão do tema. Vamos lá?
 
-#### Editando a cor padrão do tema
-  Para editar a cor padrão do tema, acesse o painel de controle e clique em **Configurações**. Você verá a cor padrão do tema. Clique em **Editar** e edite a cor que desejar.
+#### Mudando a cor padrão do tema
+Warriorfolio 2 é criado com Tailwind CSS através do Vite. 
 
-#### Editando as informações pessoais
-  Para editar as informações pessoais, acesse o painel de controle e clique em **Usuários**. Você verá o seu usuário padrão do sistema. Clique em **Editar** e edite as informações que desejar.
+Na raiz do projeto, você vai encontrar um arquivo chamado `tailwind.config.js`. Neste arquivo, você pode editar a cor padrão do tema. Procure por esta linha de código:
 
-#### Editando as informações do seu portfolio
-  Para editar as informações do seu portfolio, acesse o painel de controle e clique em **Portfolio**. Você verá o seu portfolio. Clique em **Editar** e edite as informações que desejar.
+```
+  theme: {
+      extend: {
+          colors: {
+              primary: colors.purple,
+              secondary: colors.zinc,
+              tertiary: colors.rose,
+        }
+    },
+```
 
-#### Editando as informações do seu currículo
-  Para editar as informações do seu currículo, acesse o painel de controle e clique em **Currículo**. Você verá o seu currículo. Clique em **Editar** e edite as informações que desejar.
+Entenda que, uma vez modificada, essas alterações são globais. As cores padrões do tema são: `primary`, `secondary` e `tertiary` e representadas pelas cores `purple`, `zinc` e `rose`.
 
-#### Editando as informações do seu contato
-  Para editar as informações do seu contato, acesse o painel de controle e clique em **Contato**. Você verá o seu contato. Clique em **Editar** e edite as informações que desejar.
+Você pode editar as cores do tema, ou até mesmo adicionar novas cores, mas obedecenbdo o padrão do Tailwind. Para saber mais sobre o Tailwind CSS, acesse a documentação oficial em: https://tailwindcss.com/docs
 
-#### Editando as informações do seu e-mail catcher
-  Para editar as informações do seu e-mail catcher ou newsletter, acesse o painel de controle e clique em **E-mail Catcher**. Você verá o seu e-mail catcher. Clique em **Editar** e edite as informações que desejar.
+#### Editando os textos públicos do seu app
+Diferente da versão anterior, o Warriorfolio 2 permite que você edite os textos públicos do seu app através do Painel de Controle. Eles são representados por módulos e você pode editá-los a qualquer momento. Os módulos e os textos para edição estão em **App Sections**.
+
+#### Editando o hightlight do seu app
+Temos um lindíssimo highlight no Warriorfolio 2. Ele é o destaque do texto de cada seção e pode ser utilizado em demais áreas do app. Ele obedece em partes as cores primárias do tema.
+
+Para editar o highlight para algo mais customzado você deve fazer o seguinte passo:
+
+Na pasta `resources/css`, você vai encontrar um arquivo chamado `app.css`. Neste arquivo, você pode editar o highlight para algo mais customizado. 
+
+Procure pelo código:
+```
+/** Highlighted text **/
+
+.text-highlight {
+    @apply text-transparent 
+    bg-clip-text bg-gradient-to-r 
+    to-primary-600 from-rose-400 
+    font-bold;
+}
+```
+
+#### Criando Slideshow de Imagens
+É muito simples, basta clicar em **Slideshow** no painel de controle e adicionar as imagens que desejar. E escolher em qual módulo deseja exibir o slideshow.
+
+Por se tratar de uma Landing Page, só será exibido um slideshow por módulo e o mais recente criado.
+
+#### Módulo de Newsletter ou E-mail Catacher
+Você pode ativar ou desativar o módulo de captura de e-mails. Está denominado como newsltter, mas por enquanto, a sua funcionalidade é apenas de captura de e-mails. Você pode exportar os e-mails capturados em formato CSV e usar em sua campanha de e-mail marketing.
 
 #### Editando as informações do seu SEO
-  Para editar as informações do seu SEO, acesse o painel de controle e clique em **SEO**. Você verá o seu SEO. Clique em **Editar** e edite as informações que desejar.
+Para editar as informações do seu SEO, acesse o painel de controle e clique em **SEO**. Você verá o seu SEO. Clique em **Editar** e edite as informações que desejar.
 
-#### Subseção: Customizações Avançadas
-Aqui, você pode explorar opções mais avançadas de personalização para deixar o seu Warriorfolio 2 ainda mais único.
+#### Organizando a Ordem dos Módulos
+Warriorfolio 2 é modular e esse conceito se aplica também na edição do conteúdo. Como padrão, ele obedece uma ordem de exibição, mas você pode mudar a ordem dos módulos a qualquer momento. Para isso, clique em `Pages/Home` e escolha a ordem dos módulos. 
+Por padrão, é composto desta seguinte maneira:
 
-
-
+```
+1 - Header
+2 - Hero Section
+3 - Projects
+4 - Courses
+5 - Customers
+6 - Footer
+```
 
 ### Warriorfolio 2 em Produção
 
@@ -175,7 +213,7 @@ Aqui, você pode explorar opções mais avançadas de personalização para deix
 >Crie uma senha forte para o seu app.
 >Ao colocar o app para rodar em produção, é altamente recomendável que você mude a senha do painel de controle e o e-mail de acesso. 
 
-#### Erros 403 Forbidden
+#### Erro 403 Forbidden
 Se você implantou seu painel de administração Filament em um ambiente não local e está recebendo erros 403 Forbidden ao tentar acessá-lo, é provável que você tenha esquecido de configurar seu modelo de usuário para acessar o Filament.
 
 **Você deve implementar o contrato FilamentUser:**
@@ -203,7 +241,6 @@ class User extends Authenticatable implements FilamentUser
 The canAccessPanel() method returns true or false depending on whether the user is allowed to access the $panel. In this example, we check if the user's email ends with @yourdomain.com and if they have verified their email address.
 
 > Você pode achar esta informação na Documentação do Filament em: https://filamentphp.com/docs/3.x/panels/users#authorizing-access-to-the-panel
-*Documentação em Inglês* 
 
 
 ### Quick: Wiki, Tips & FAQ
