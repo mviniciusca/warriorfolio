@@ -88,11 +88,20 @@ Se você não tem familiaridade com o Laravel ou quer conferir como o Warriorfol
 ```
 git clone git@github.com:mviniciusca/warriorfolio.git
 ```
-
-- **No terminal, rode o comando abaixo para instalar as dependências do Core do projeto:**
+- **Acesse a pasta do projeto:**
+```
+cd warriorfolio
+```
+- **Antes, vamos precisar de algumas extensões, talvez seja necessário se adiantar e instalar o zip do php:**
+```
+sudo apt-get install php-zip  
+```
+- **Instale as dependências do Composer:**
 ```
 composer install
 ```
+*Caso apresente algum erro, são extensões do PHP que estão faltando na sua máquina. Instale-as e rode o comando novamente.*
+
 - **Agora instale as dependências do NPM:**
 ```
 npm install
