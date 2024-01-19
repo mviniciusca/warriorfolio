@@ -1,4 +1,4 @@
-# <p align="center"> warriorfolio 2 </p>
+# <p align="center"> Warriorfolio 2 </p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/v2-dev-master/public/img/gif/app.gif"  alt="Warriorfolio 2">
@@ -12,7 +12,7 @@ Ainda não passou por revisão.
 
 ### Fast Documentation
 
-- [ warriorfolio 2 ](#-warriorfolio-2-)
+- [ Warriorfolio 2 ](#-warriorfolio-2-)
     - [Fast Documentation](#fast-documentation)
     - [Apresentando Warriorfolio 2](#apresentando-warriorfolio-2)
     - [Features](#features)
@@ -133,25 +133,25 @@ Senha: password
 ### O Pós-Build 
 Legal, você já está deparado com Warriorfolio 2 e quer editar as suas informações ou mudar as cores do tema. Pode parecer confuso ou difícil, mas acredite: não é! Vamos lá:
 
-####Editando a cor padrão do tema
+-  #### Editando a cor padrão do tema
 Para editar a cor padrão do tema, acesse o painel de controle e clique em **Configurações**. Você verá a cor padrão do tema. Clique em **Editar** e edite a cor que desejar.
 
-####Editando as informações pessoais
+-  #### Editando as informações pessoais
 Para editar as informações pessoais, acesse o painel de controle e clique em **Usuários**. Você verá o seu usuário padrão do sistema. Clique em **Editar** e edite as informações que desejar.
 
-####Editando as informações do seu portfolio
+- #### Editando as informações do seu portfolio
 Para editar as informações do seu portfolio, acesse o painel de controle e clique em **Portfolio**. Você verá o seu portfolio. Clique em **Editar** e edite as informações que desejar.
 
-###Editando as informações do seu currículo
+- #### Editando as informações do seu currículo
 Para editar as informações do seu currículo, acesse o painel de controle e clique em **Currículo**. Você verá o seu currículo. Clique em **Editar** e edite as informações que desejar.
 
-###Editando as informações do seu contato
+- #### Editando as informações do seu contato
 Para editar as informações do seu contato, acesse o painel de controle e clique em **Contato**. Você verá o seu contato. Clique em **Editar** e edite as informações que desejar.
 
-####Editando as informações do seu e-mail catcher
+- #### Editando as informações do seu e-mail catcher
 Para editar as informações do seu e-mail catcher ou newsletter, acesse o painel de controle e clique em **E-mail Catcher**. Você verá o seu e-mail catcher. Clique em **Editar** e edite as informações que desejar.
 
-####Editando as informações do seu SEO
+- #### Editando as informações do seu SEO
 Para editar as informações do seu SEO, acesse o painel de controle e clique em **SEO**. Você verá o seu SEO. Clique em **Editar** e edite as informações que desejar.
 
 
