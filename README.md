@@ -72,7 +72,7 @@ O Filament é movido com a tecnologia Livewire, que é um framework para o Larav
 Warriorfolio 2 está também sob a guarda de um dos maiores frameworks do mundo, o Laravel. Criado por Taylor Otwell, o Laravel é um framework robusto, seguro, escalável e com uma documentação completa e de fácil entendimento. O Laravel é um framework que está em constante evolução e é um produto altamente testado e com uma comunidade ativa e engajada.
 
 ### Requisitos 
-- PHP 8.0 ou superior;
+- PHP 8.1 ou superior;
 - Banco de dados como MySQL, PostgreSQL ou SQLite;
 - Composer 2.0 ou superior;
 - NPM;

@@ -1,10 +1,14 @@
 {
-    "name": "laravel/laravel",
-    "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "name": "mviniciusca/warriorfolio",
+    "version": "2.0.0",
+    "author": "Marcos Coelho <mviniciusca@proton.me>",
+    "description": "Warriorfolio 2 is a portfolio application for developers. Built with Laravel and Filament",
     "keywords": [
         "laravel",
-        "framework"
+        "framework",
+        "filament",
+        "portfolio",
+        "application"
     ],
     "license": "MIT",
     "require": {
