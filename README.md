@@ -1,4 +1,4 @@
-# <p align="center"> Warriorfolio 2 </p>
+# <p align="center"> Warriorfolio 2 - work in progress  </p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/v2-dev-master/public/img/gif/app.gif"  alt="Warriorfolio 2">
@@ -6,12 +6,13 @@
 
 Este projeto ainda está em desenvolvimento e pode sofrer alterações a qualquer momento.
 
-Esta documentação ainda está em desenvolvimento e pode sofrer alterações a qualquer momento. Pode conter erros de português, gramática e formatação. 
+Esta documentação ainda está em desenvolvimento e pode sofrer alterações a qualquer momento. 
+Pode conter erros de português, gramática e formatação. 
 
 Ainda não passou por revisão.
 
 ### Fast Documentation
-- [ Warriorfolio 2 ](#-warriorfolio-2-)
+- [ Warriorfolio 2 - work in progress  ](#-warriorfolio-2---work-in-progress--)
     - [Fast Documentation](#fast-documentation)
     - [Apresentando Warriorfolio 2](#apresentando-warriorfolio-2)
     - [Features](#features)
