@@ -103,7 +103,7 @@ php artisan storage:link
 ```
 php artisan migrate:fresh --seed
 ```
-#🤞 
+🤞 
 - **Se tudo ocorreu bem, rode o comando abaixo para iniciar o servidor e o compilador de assets do Laravel:**
 ```
 php artisan serve && npm run dev
@@ -124,8 +124,8 @@ Legal, você já está deparado com Warriorfolio 2 e quer editar as suas informa
 
 ### Warriorfolio 2 em Produção
 
->#⚠️
-> ###Crie uma senha forte para o seu app.
+>⚠️
+>Crie uma senha forte para o seu app.
 >Ao colocar o app para rodar em produção, é altamente recomendável que você mude a senha do painel de controle e o e-mail de acesso. 
 
 #### Erros 403 Forbidden
