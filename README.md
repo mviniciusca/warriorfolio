@@ -4,12 +4,12 @@
   <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/v2-dev-master/public/img/gif/app.gif"  alt="Warriorfolio 2">
 </p>
 
-Este projeto ainda está em desenvolvimento e pode sofrer alterações a qualquer momento.
+This documentation is still under development and may undergo changes at any time. 
+It may contain errors, grammar and formatting. 
 
-Esta documentação ainda está em desenvolvimento e pode sofrer alterações a qualquer momento. 
-Pode conter erros de português, gramática e formatação. 
+This documentation is being written in Portuguese and will be translated into English.
 
-Ainda não passou por revisão.
+It has not been reviewed yet.
 
 ### Fast Documentation
 - [ Warriorfolio 2 - work in progress  ](#-warriorfolio-2---work-in-progress--)
