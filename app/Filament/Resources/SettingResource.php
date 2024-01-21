@@ -29,6 +29,7 @@ class SettingResource extends Resource
         return $page->generateNavigationItems([
             Pages\EditAppearance::class,
             Pages\EditSection::class,
+            Pages\EditChatbox::class,
         ]);
     }
     public static function form(Form $form): Form
@@ -146,6 +147,7 @@ class SettingResource extends Resource
             'edit' => Pages\EditSetting::route('/{record}/edit'),
             'edit-appearance' => Pages\EditAppearance::route('/{record}/edit-appearance'),
             'edit-section' => Pages\EditSection::route('/{record}/edit-section'),
+            'edit-chatbox' => Pages\EditChatbox::route('/{record}/edit-chatbox'),
         ];
     }
 }

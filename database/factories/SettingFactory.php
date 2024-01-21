@@ -37,6 +37,9 @@ class SettingFactory extends Factory
             $setting->module()->create([
                 'setting_id' => $setting->id,
             ]);
+            $setting->chatbox()->create([
+                'setting_id' => $setting->id,
+            ]);
         });
     }
 }
