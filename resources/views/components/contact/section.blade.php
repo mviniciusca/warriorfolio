@@ -7,6 +7,7 @@
     <div class="text-center text-lg max-w-2xl mt-4 mx-auto">{!! $contact->contact_section_subtitle_text !!}</div>
     @endif
     <div class="flex mt-24 lg:gap-8" id="contact">
+        {{-- Address with Google Maps --}}
         @if($contact->contact_section_google_map !== null)
         <div
             class="lg:w-2/3 md:w-1/2 bg-secondary-600 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
@@ -17,7 +18,7 @@
             <div class="bg-secondary-800 text-xs relative flex flex-wrap py-6 rounded shadow-md">
                 <div class="lg:w-1/2 px-6">
                     <h2 class=" font-semibold tracking-widest">ADDRESS</h2>
-                    <p class="mt-3">{{ $contact->contact_section_address }}</p>
+                    <p class="mt-3">{!! $contact->contact_section_address !!}</p>
                 </div>
                 <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
                     <h2 class="font-semibold tracking-widest">EMAIL</h2>
@@ -28,28 +29,47 @@
             </div>
         </div>
         @else
-        <div class="content-center grid w-1/2 lg:pr-24 items-start">
+        {{-- Address without Google Maps --}}
+        <div class="content-start grid w-1/2 lg:pr-24 items-start">
+            @if($contact->contact_section_address)
             <x-ui.info-box title="Headquarter" icon="business">
                 <p>{!! $contact->contact_section_address !!}</p>
             </x-ui.info-box>
+            @endif
             <div class="flex">
+                @if($contact->contact_section_phone)
                 <span class="w-1/2">
                     <x-ui.info-box title="Phone" icon="call">
                         <p>{!! $contact->contact_section_phone !!}</p>
                     </x-ui.info-box>
                 </span>
+                @endif
+                @if($contact->contact_section_email)
                 <span class="w-1/2">
                     <x-ui.info-box title="Mail" icon="mail-open">
                         <p>{!! $contact->contact_section_email !!}</p>
                     </x-ui.info-box>
+                </span>
+                @endif
             </div>
+            @if($contact->contact_section_social_network)
             <x-ui.info-box title="Follow" icon="infinite">
                 <x-ui.social-network />
             </x-ui.info-box>
+            @endif
+            @if($contact->contact_section_google_map === null)
+            <x-contact.empty-address />
+            @endif
         </div>
         @endif
-        <div class=" lg:w-1/2 md:w-1/2 flex flex-col md:ml-auto w-full">
+        {{-- End Address--}}
+        {{-- If Adress is Empty  --}}
+
+        {{-- End If Adress is Empty  --}}
+        {{-- Contact Form--}}
+        <div class="flex flex-col w-full lg:w-1/2 md:w-1/2 md:ml-auto">
             @livewire('mail.create-mail')
         </div>
+        {{-- End Contact Form--}}
 </x-core.layout>
 @endif
