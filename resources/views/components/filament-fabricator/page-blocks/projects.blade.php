@@ -2,7 +2,6 @@
 <x-core.layout>
     <section>
         <div class="container max-w-7xl px-5 mx-auto">
-            <x-ui.modal />
             <div class="grid justify-center items-center py-24 text-center">
                 <div class="header-title">
                     elevate Your <br /> <span class="text-highlight">Portfolio </span> Experience.

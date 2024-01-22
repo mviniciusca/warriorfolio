@@ -9,6 +9,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\SettingResource;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 
 class EditSection extends EditRecord
 {
@@ -23,6 +24,7 @@ class EditSection extends EditRecord
                     ->relationship('layout')
                     ->schema([
                         Section::make('Hero Section')
+                            ->description('This section is used to display your hero image and your hero text to the public.')
                             ->icon('heroicon-o-photo')
                             ->schema([
                                 Textarea::make('hero_section_title')
@@ -34,8 +36,9 @@ class EditSection extends EditRecord
                                     ->label('Hero Section Subtitle')
                                     ->helperText('you also can use the class text-highlight to highlight a word in the subtitle')
                                     ->maxLength(255),
-                            ])->columns(2)->collapsible(),
+                            ])->columns(2)->collapsed(),
                         Section::make('Portfolio Section')
+                            ->description('This section is used to display your portfolio to the public.')
                             ->icon('heroicon-o-bolt')
                             ->schema([
                                 Textarea::make('portfolio_section_title')
@@ -46,8 +49,10 @@ class EditSection extends EditRecord
                                     ->label('Portfolio Section Subtitle')
                                     ->helperText('you also can use the class text-highlight to highlight a word in the subtitle')
                                     ->maxLength(255),
-                            ])->columns(2)->collapsible(),
+                            ])->columns(2)->collapsed(),
                         Section::make('About Section')
+                            ->description('This module is used to display your certifications, skills and your profile
+                            to the public.')
                             ->icon('heroicon-o-user')
                             ->schema([
                                 Textarea::make('about_section_title')
@@ -58,20 +63,39 @@ class EditSection extends EditRecord
                                     ->label('About Section Subtitle')
                                     ->helperText('you also can use the class text-highlight to highlight a word in the subtitle')
                                     ->maxLength(255),
-                            ])->columns(2)->collapsible(),
+                            ])->columns(2)->collapsed(),
                         Section::make('Contact Section')
+                            ->description('This section is used to display your contact information to the public.')
                             ->icon('heroicon-o-envelope')
                             ->schema([
                                 Textarea::make('contact_section_title')
                                     ->label('Contact Section Title')
                                     ->helperText('HTML allowed. Use the class text-highlight to highlight a word in the title')
-                                    ->maxLength(255),
+                                    ->maxLength(160),
                                 Textarea::make('contact_section_subtitle_text')
                                     ->label('Contact Section Subtitle')
                                     ->helperText('you also can use the class text-highlight to highlight a word in the subtitle')
-                                    ->maxLength(255),
-                            ])->columns(2)->collapsible(),
+                                    ->maxLength(160),
+                                Textarea::make('contact_section_address')
+                                    ->label('Contact Public Address')
+                                    ->helperText('Use your business address. This address will be visible to the public.')
+                                    ->maxLength(100),
+                                TextInput::make('contact_section_phone')
+                                    ->label('Contact Public Phone')
+                                    ->tel()
+                                    ->helperText('Use your business phone number. This number will be visible to the public.')
+                                    ->maxLength(50),
+                                Textarea::make('contact_section_email')
+                                    ->label('Public Contact E-mail')
+                                    ->helperText('This e-mail will be visible to the public.')
+                                    ->maxLength(50),
+                                Textarea::make('contact_section_google_map')
+                                    ->label('Google Maps Embed Code')
+                                    ->helperText('Paste the code between the quotes of src="" from the embed code of google maps. Do not paste the whole embed code.')
+                                    ->maxLength(6000),
+                            ])->columns(2)->collapsed(),
                         Section::make('Clients Section')
+                            ->description('This section is used to display your clients to the public.')
                             ->icon('heroicon-o-building-office')
                             ->schema([
                                 Textarea::make('clients_section_title')
@@ -82,8 +106,9 @@ class EditSection extends EditRecord
                                     ->label('Clients Section Subtitle')
                                     ->helperText('you also can use the class text-highlight to highlight a word in the subtitle')
                                     ->maxLength(255),
-                            ])->columns(2)->collapsible(),
+                            ])->columns(2)->collapsed(),
                         Section::make('Newsletter Section')
+                            ->description('You can managing your newsletter section here.')
                             ->icon('heroicon-o-envelope-open')
                             ->schema([
                                 Textarea::make('newsletter_section_title')
@@ -102,7 +127,7 @@ class EditSection extends EditRecord
                                     ->label('Newsletter Section Image')
                                     ->image()
                                     ->imageEditor(),
-                            ])->columns(2)->collapsible(),
+                            ])->columns(2)->collapsed(),
                     ])->columnSpanFull(),
             ]);
     }

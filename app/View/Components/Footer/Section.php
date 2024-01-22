@@ -30,7 +30,7 @@ class Section extends Component
                 ->first(),
             'setting' => Setting::query()
                 ->first(),
-            'module' => Module::query()->select(['newsletter'])->first(),
+            'module_visibility' => Module::query()->select(['newsletter'])->first(),
         ]);
     }
 }

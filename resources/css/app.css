@@ -41,3 +41,30 @@
 .subtitle {
     @apply text-xl pb-24 lowercase text-center;
 }
+
+/** Form Input **/
+.fi-input-wrp {
+    @apply relative mb-4;
+}
+
+/** Change placeholder form color **/
+.fi-input-wrp input::placeholder {
+    @apply text-secondary-500 focus:text-xs focus:font-normal transition-all duration-75;
+}
+
+
+/** Form Input Label **/
+.fi-input-label {
+    @apply absolute left-0 top-0 text-secondary-400 text-sm font-semibold;
+    transform: translateY(-50%);
+}
+
+/** Form Input Error **/
+.fi-input-error {
+    @apply text-red-500 text-sm font-semibold;
+}
+
+/** Form Input Height Size **/
+.fi-input-wrp input {
+    @apply h-12;
+}

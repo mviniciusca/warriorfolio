@@ -25,22 +25,28 @@ class CreateMail extends Component implements HasForms
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->maxLength(50)
-                    ->label('Full Name')
+                    ->label('')
+                    ->placeholder('Full Name')
                     ->columnSpanFull()
                     ->required(),
                 Forms\Components\TextInput::make('email')
-                    ->label('Email Address')
+                    ->label('')
                     ->email()
+                    ->maxLength(50)
+                    ->placeholder('E-mail Address')
                     ->columnSpanFull()
                     ->required(),
                 Forms\Components\TextInput::make('phone')
-                    ->label('Phone Number')
+                    ->label('')
                     ->tel()
                     ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/')
                     ->maxLength(20)
                     ->columnSpanFull()
+                    ->placeholder('Phone Number')
                     ->required(),
                 Forms\Components\TextInput::make('subject')
+                    ->placeholder('Subject')
+                    ->label('')
                     ->maxLength(140)
                     ->required()
                     ->columnSpanFull(),
@@ -52,10 +58,11 @@ class CreateMail extends Component implements HasForms
                         'underline',
                         'undo',
                     ])
+                    ->label('')
                     ->required()
                     ->maxLength(1300)
-                    ->columnSpanFull()
-                    ->label('Message'),
+                    ->placeholder('Your Message')
+                    ->columnSpanFull(),
             ])->columns(2)
             ->statePath('data')
             ->model(Mail::class);

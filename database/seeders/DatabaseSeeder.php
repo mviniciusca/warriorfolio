@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             ->insert([
                 'title' => 'Home',
                 'slug' => '/',
-                'blocks' => '[{"data": [], "type": "header"}, {"data": [], "type": "hero"}, {"data": [], "type": "projects"}, {"data": [], "type": "courses"},{"data": [], "type": "client"}, {"data": [], "type": "footer"}]',
+                'blocks' => '[{"data": [], "type": "header"}, {"data": [], "type": "hero"}, {"data": [], "type": "projects"}, {"data": [], "type": "courses"},{"data": [], "type": "client"}, {"data": [], "type": "contact"}, {"data": [], "type": "footer"}]',
                 'layout' => 'default',
                 'created_at' => now(),
                 'updated_at' => now(),
