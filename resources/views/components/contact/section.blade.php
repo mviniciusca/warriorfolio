@@ -52,20 +52,19 @@
                 </span>
                 @endif
             </div>
-            @if($contact->contact_section_social_network)
+            {{-- Social Network  --}}
             <x-ui.info-box title="Follow" icon="infinite">
                 <x-ui.social-network />
             </x-ui.info-box>
-            @endif
-            @if($contact->contact_section_google_map === null)
+            {{-- Empty Fields --}}
+            @if($contact->contact_section_address == null ||
+            $contact->contact_section_phone == null && $contact->contact_section_email == null)
             <x-contact.empty-address />
             @endif
+            {{-- End Empty Fields --}}
         </div>
         @endif
         {{-- End Address--}}
-        {{-- If Adress is Empty  --}}
-
-        {{-- End If Adress is Empty  --}}
         {{-- Contact Form--}}
         <div class="flex flex-col w-full lg:w-1/2 md:w-1/2 md:ml-auto">
             @livewire('mail.create-mail')
