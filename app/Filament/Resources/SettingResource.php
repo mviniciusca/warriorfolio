@@ -27,8 +27,11 @@ class SettingResource extends Resource
     public static function getRecordSubNavigation(Page $page): array
     {
         return $page->generateNavigationItems([
+            Pages\EditSetting::class,
             Pages\EditAppearance::class,
             Pages\EditSection::class,
+            Pages\EditContactSection::class,
+            Pages\EditHeroSection::class,
             Pages\EditChatbox::class,
         ]);
     }
@@ -74,22 +77,25 @@ class SettingResource extends Resource
                         Group::make()
                             ->relationship('module')
                             ->schema([
-                                Forms\Components\Toggle::make('portfolio')
-                                    ->label('Portfolio Module')
-                                    ->inline(false),
-                                Forms\Components\Toggle::make('contact')
-                                    ->label('Contact Module')
-                                    ->inline(false),
                                 Forms\Components\Toggle::make('about')
                                     ->label('About Module')
                                     ->inline(false),
                                 Forms\Components\Toggle::make('clients')
                                     ->label('Clients Module')
                                     ->inline(false),
+                                Forms\Components\Toggle::make('contact')
+                                    ->label('Contact Module')
+                                    ->inline(false),
+                                Forms\Components\Toggle::make('hero')
+                                    ->label('Hero Module')
+                                    ->inline(false),
                                 Forms\Components\Toggle::make('newsletter')
                                     ->label('Newsletter Module')
                                     ->inline(false),
-                            ])->columns(5),
+                                Forms\Components\Toggle::make('portfolio')
+                                    ->label('Portfolio Module')
+                                    ->inline(false),
+                            ])->columns(3),
                     ]),
                 Section::make('External Add-ons')
                     ->description('Define scripts to be loaded in your application')
@@ -110,7 +116,7 @@ class SettingResource extends Resource
                             ->placeholder('--')
                             ->rows(2)
                             ->label('Body Scripts (ex: Ionicons)'),
-                    ])->collapsed(),
+                    ])->collapsible(),
             ]);
     }
     public static function table(Table $table): Table
@@ -148,6 +154,8 @@ class SettingResource extends Resource
             'edit-appearance' => Pages\EditAppearance::route('/{record}/edit-appearance'),
             'edit-section' => Pages\EditSection::route('/{record}/edit-section'),
             'edit-chatbox' => Pages\EditChatbox::route('/{record}/edit-chatbox'),
+            'edit-contact-section' => Pages\EditContactSection::route('/{record}/edit-contact-section'),
+            'edit-hero-section' => Pages\EditHeroSection::route('/{record}/edit-hero-section'),
         ];
     }
 }

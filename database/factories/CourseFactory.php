@@ -18,7 +18,7 @@ class CourseFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence,
-            'description' => $this->faker->paragraph,
+            'description' => $this->faker->sentence,
             'institution' => $this->faker->company,
             'start_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'end_date' => $this->faker->dateTimeBetween('now', '+1 year'),

@@ -16,6 +16,13 @@ return new class extends Migration {
             // Hero Section
             $table->string('hero_section_title')->nullable();
             $table->string('hero_section_subtitle_text')->nullable();
+            $table->string('hero_section_button_text')->nullable();
+            $table->string('hero_section_button_url')->nullable();
+            $table->string('hero_button_link_target')->default('_self');
+            $table->string('hero_alt_button_text')->nullable();
+            $table->string('hero_alt_button_url')->nullable();
+            $table->string('hero_alt_button_link_target')->default('_self');
+            $table->string('hero_section_image')->nullable();
             // Portfolio Section
             $table->string('portfolio_section_title')->nullable();
             $table->string('portfolio_section_subtitle_text')->nullable();
@@ -29,7 +36,6 @@ return new class extends Migration {
             $table->string('contact_section_phone')->nullable();
             $table->string('contact_section_email')->nullable();
             $table->text('contact_section_google_map')->nullable();
-
             // Clients Section
             $table->string('clients_section_title')->nullable();
             $table->string('clients_section_subtitle_text')->nullable();

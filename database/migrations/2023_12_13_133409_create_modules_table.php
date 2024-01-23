@@ -12,12 +12,13 @@ return new class extends Migration {
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->boolean('portfolio')->default(1);
-            $table->boolean('contact')->default(1);
             $table->boolean('about')->default(1);
-            $table->boolean('clients')->default(1);
-            $table->boolean('newsletter')->default(1);
             $table->boolean('blog')->default(1);
+            $table->boolean('clients')->default(1);
+            $table->boolean('contact')->default(1);
+            $table->boolean('hero')->default(1);
+            $table->boolean('newsletter')->default(1);
+            $table->boolean('portfolio')->default(1);
             $table->boolean('services')->default(1);
             $table->foreignId('setting_id')->constrained()->onDelete('cascade');
             $table->timestamps();
