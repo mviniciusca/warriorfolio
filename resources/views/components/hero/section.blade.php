@@ -1,12 +1,19 @@
-{{-- Hero Background --}}
-<div class="-mt-36 m-auto left-0 right-0 bg-hero animate__animated animate__fadeIn animate__delay-1s
- w-full h-[900px] absolute -z-20 bg-cover bg-no-repeat bg-center"
+{{-- Application Background --}}
+@if($background->background_image_visibility)
+<div class="-mt-36 m-auto left-0 right-0 bg-hero
+ animate__animated animate__fadeIn animate__delay-1s
+ w-full h-[900px] absolute -z-20
+ {{ $background->background_image_size }}
+ {{ $background->background_image_position }}
+ {{ $background->background_image_repeat }}"
     style="background-image: url('{{ $background->background_image ? asset('storage/' .  $background->background_image) : asset('img/core/bg-default.jpg') }}')">
 </div>
 <div class="-mt-36 bg-hero
  w-full h-[900px] absolute -z-10 m-auto left-0 right-0 bg-cover bg-no-repeat bg-center"
     style="background-image: url('{{ asset('img/core/smoother.png') }}')">
 </div>
+@endif
+{{-- Application Background --}}
 {{-- Hero Section --}}
 <section>
     <div class="px-4 py-4 md:py-8">

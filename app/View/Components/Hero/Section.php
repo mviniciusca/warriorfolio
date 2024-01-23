@@ -37,7 +37,13 @@ class Section extends Component
             ])
                 ->first(),
             'background' => Setting::query()
-                ->select(['background_image'])
+                ->select([
+                    'background_image',
+                    'background_image_visibility',
+                    'background_image_position',
+                    'background_image_size',
+                    'background_image_repeat',
+                ])
                 ->first(),
         ]);
     }

@@ -4,13 +4,15 @@ namespace App\Filament\Resources\SettingResource\Pages;
 
 use Filament\Actions;
 use Filament\Forms\Form;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use App\Filament\Resources\SettingResource;
-use Filament\Forms\Components\Toggle;
 
 class EditAppearance extends EditRecord
 {
@@ -38,12 +40,42 @@ class EditAppearance extends EditRecord
                             ->label('Background Image')
                             ->helperText('This image will be used as the background of your application. Recommended size: 1920x1080px (16:9)')
                             ->columnSpanFull(),
-                        Toggle::make('background_image_visibility')
-                            ->label('Background Image Visibility')
-                            ->helperText('Show or hide the background image on your application. This option prevent to show the default background image on your application.'),
+                        Group::make()->schema([
+                            Select::make('background_image_position')
+                                ->label('Background Image Position')
+                                ->options([
+                                    'bg-top' => 'Top',
+                                    'bg-center' => 'Center',
+                                    'bg-bottom' => 'Bottom',
+                                ])
+                                ->default('center')
+                                ->helperText('Choose the position of the background image on your application.'),
+                            Select::make('background_image_size')
+                                ->label('Background Image Size')
+                                ->options([
+                                    'bg-auto' => 'Auto',
+                                    'bg-cover' => 'Cover',
+                                    'bg-contain' => 'Contain',
+                                ])
+                                ->default('cover')
+                                ->helperText('Choose the size of the background image on your application.'),
+                            Select::make('background_image_repeat')
+                                ->label('Background Image Repeat')
+                                ->options([
+                                    'bg-no-repeat' => 'No Repeat',
+                                    'bg-repeat' => 'Repeat',
+                                    'bg-repeat-x' => 'Repeat X',
+                                    'bg-repeat-y' => 'Repeat Y',
+                                ])
+                                ->default('no-repeat')
+                                ->helperText('Choose the repeat of the background image on your application.'),
+                        ])->columns(3)->columnSpanFull(),
                         Toggle::make('dark_mode')
                             ->label('Dark Mode')
                             ->helperText('Enable or disable dark mode on your application.'),
+                        Toggle::make('background_image_visibility')
+                            ->label('Background Image Visibility')
+                            ->helperText('Show or hide the background image on your application. This option prevent to show the default background image on your application.'),
                         FileUpload::make('logo')
                             ->image()
                             ->imageEditor()
