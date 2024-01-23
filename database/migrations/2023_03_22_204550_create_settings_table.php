@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->string('logo')->nullable();
             $table->string('favicon')->nullable();
             $table->string('background_image')->nullable();
+            $table->boolean('background_image_visibility')->default(true);
+            $table->boolean('dark_mode')->default(true);
             $table->string('meta_title')->nullable();
             $table->string('meta_author')->nullable();
             $table->string('meta_description')->nullable();

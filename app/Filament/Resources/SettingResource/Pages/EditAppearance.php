@@ -10,6 +10,7 @@ use Filament\Resources\Pages\EditRecord;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use App\Filament\Resources\SettingResource;
+use Filament\Forms\Components\Toggle;
 
 class EditAppearance extends EditRecord
 {
@@ -35,7 +36,14 @@ class EditAppearance extends EditRecord
                             ])
                             ->directory('app')
                             ->label('Background Image')
-                            ->columnSpan(3),
+                            ->helperText('This image will be used as the background of your application. Recommended size: 1920x1080px (16:9)')
+                            ->columnSpanFull(),
+                        Toggle::make('background_image_visibility')
+                            ->label('Background Image Visibility')
+                            ->helperText('Show or hide the background image on your application. This option prevent to show the default background image on your application.'),
+                        Toggle::make('dark_mode')
+                            ->label('Dark Mode')
+                            ->helperText('Enable or disable dark mode on your application.'),
                         FileUpload::make('logo')
                             ->image()
                             ->imageEditor()
@@ -59,7 +67,7 @@ class EditAppearance extends EditRecord
                             ->helperText('.ico or .png would be amazing!')
                             ->label('Favicon'),
                     ])
-                    ->columns(5),
+                    ->columns(2),
             ]);
     }
 

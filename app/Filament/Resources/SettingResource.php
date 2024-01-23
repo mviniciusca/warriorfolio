@@ -72,7 +72,7 @@ class SettingResource extends Resource
                             ->maxLength(255)
                             ->placeholder('ex: 1b2c3d4e5f6g7h8i9j0a')
                             ->label('Google Recaptcha Key'),
-                    ])->columns(3),
+                    ])->columns(2),
                 Section::make('Modules Control')
                     ->description('Enable or disable modules')
                     ->icon('heroicon-o-cube')
@@ -105,19 +105,19 @@ class SettingResource extends Resource
                     ->icon('heroicon-o-beaker')
                     ->schema([
                         Forms\Components\Textarea::make('google_analytics')
-                            ->rows(2)
+                            ->rows(3)
                             ->maxLength(65535)
                             ->placeholder('--')
                             ->label('Google Tag Analytics Code'),
                         Forms\Components\Textarea::make('header_scripts')
                             ->maxLength(65535)
                             ->placeholder('--')
-                            ->rows(2)
+                            ->rows(3)
                             ->label('Head Scripts (ex: Facebook Pixel)'),
                         Forms\Components\Textarea::make('body_scripts')
                             ->maxLength(65535)
                             ->placeholder('--')
-                            ->rows(2)
+                            ->rows(3)
                             ->label('Body Scripts (ex: Ionicons)'),
                     ])->collapsible(),
             ]);
