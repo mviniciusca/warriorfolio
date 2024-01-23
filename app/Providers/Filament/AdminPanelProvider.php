@@ -42,7 +42,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->navigationGroups([
                 'App Sections',
-                'Blog',
+                'Application',
                 'Settings',
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

@@ -19,9 +19,9 @@ use App\Filament\Resources\SettingResource\RelationManagers;
 class SettingResource extends Resource
 {
     protected static ?string $model = Setting::class;
-    protected static ?string $navigationIcon = 'heroicon-o-cog';
-    protected static ?string $navigationLabel = 'Application';
-    protected static ?string $navigationGroup = 'Settings';
+    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
+    protected static ?string $navigationLabel = 'Settings';
+    protected static ?string $navigationGroup = 'Application';
     protected static ?int $navigationSort = 0;
 
     public static function getRecordSubNavigation(Page $page): array
@@ -29,9 +29,12 @@ class SettingResource extends Resource
         return $page->generateNavigationItems([
             Pages\EditSetting::class,
             Pages\EditAppearance::class,
-            Pages\EditSection::class,
+            Pages\EditAboutSection::class,
+            Pages\EditClientSection::class,
             Pages\EditContactSection::class,
             Pages\EditHeroSection::class,
+            Pages\EditNewsletterSection::class,
+            Pages\EditPortfolioSection::class,
             Pages\EditChatbox::class,
         ]);
     }
@@ -149,13 +152,15 @@ class SettingResource extends Resource
     {
         return [
             'index' => Pages\ListSettings::route('/'),
-            'create' => Pages\CreateSetting::route('/create'),
             'edit' => Pages\EditSetting::route('/{record}/edit'),
             'edit-appearance' => Pages\EditAppearance::route('/{record}/edit-appearance'),
-            'edit-section' => Pages\EditSection::route('/{record}/edit-section'),
             'edit-chatbox' => Pages\EditChatbox::route('/{record}/edit-chatbox'),
             'edit-contact-section' => Pages\EditContactSection::route('/{record}/edit-contact-section'),
             'edit-hero-section' => Pages\EditHeroSection::route('/{record}/edit-hero-section'),
+            'edit-portfolio-section' => Pages\EditPortfolioSection::route('/{record}/edit-portfolio-section'),
+            'edit-about-section' => Pages\EditAboutSection::route('/{record}/edit-about-section'),
+            'edit-client-section' => Pages\EditClientSection::route('/{record}/edit-client-section'),
+            'edit-newsletter-section' => Pages\EditNewsletterSection::route('/{record}/edit-newsletter-section'),
         ];
     }
 }
