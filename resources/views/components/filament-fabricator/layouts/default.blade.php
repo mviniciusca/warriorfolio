@@ -25,7 +25,7 @@ class=" dark @endif ">
 @livewire('notifications')
 
 <body
-    class="antialiased overflow-x-hidden scroll-smooth text-secondary-700 bg-secondary-50 dark:bg-secondary-900  dark:text-secondary-50">
+    class="antialiased overflow-x-hidden scroll-smooth text-secondary-600 bg-secondary-50 dark:bg-secondary-900  dark:text-secondary-100">
     <x-ui.chatbox />
     <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
     {{-- Ionicons CDN --}}

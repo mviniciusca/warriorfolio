@@ -36,7 +36,7 @@
                         @if($hero->hero_section_button_text == true && $hero->hero_section_button_url == true)
                         <a target="{{ $hero->hero_button_link_target }}" href="{{ $hero->hero_section_button_url }}">
                             <button
-                                class="inline-flex items-center align-middle text-secondary-50 dark:bg-primary-500 border-0 py-2 px-6 focus:outline-none dark: hover:bg-primary-600 rounded text-lg">
+                                class="inline-flex items-center align-middle text-secondary-50 bg-primary-500 py-2 px-6 border border-secondary-600 border-opacity-60 focus:outline-none rounded text-lg hover:opacity-80 transition-all duration-100 active:opacity-25">
                                 {{ $hero->hero_section_button_text }}
                             </button>
                         </a>
@@ -45,7 +45,7 @@
                         @if($hero->hero_alt_button_text && $hero->hero_alt_button_url)
                         <a target="{{ $hero->hero_alt_button_link_target }}" href="{{ $hero->hero_alt_button_url }}">
                             <button
-                                class="inline-flex items-center align-middle text-secondary-50 dark:bg-transparent border border-secondary-600 py-2 px-6 focus:outline-none dark: hover:bg-primary-600 rounded text-lg">
+                                class="inline-flex items-center align-middle text-secondary-700 dark:text-secondary-50 border bg-transparent border-secondary-600 border-opacity-60 py-2 px-6 focus:outline-none dark: hover:bg-primary-500 hover:text-secondary-50 hover:opacity-90 transition-all duration-100 rounded text-lg active:opacity-25">
                                 {{ $hero->hero_alt_button_text }}
                             </button>
                         </a>

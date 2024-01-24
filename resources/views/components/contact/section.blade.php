@@ -10,20 +10,20 @@
         {{-- Address with Google Maps --}}
         @if($contact->contact_section_google_map !== null)
         <div
-            class="lg:w-2/3 md:w-1/2 bg-secondary-600 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+            class="lg:w-2/3 md:w-1/2 bg-secondary-100 dark:bg-secondary-600 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
             <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0"
                 marginwidth="0" scrolling="no" src="{{ $contact->contact_section_google_map }}"
                 style="filter: grayscale(1) contrast(1.2) opacity(0.5);">
             </iframe>
-            <div class="bg-secondary-800 text-xs relative flex flex-wrap py-6 rounded shadow-md">
+            <div class="bg-secondary-100 dark:bg-secondary-900 text-xs relative flex flex-wrap py-6 rounded shadow-md">
                 <div class="lg:w-1/2 px-6">
                     <h2 class=" font-semibold tracking-widest">ADDRESS</h2>
                     <p class="mt-3">{!! $contact->contact_section_address !!}</p>
                 </div>
                 <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
-                    <h2 class="font-semibold tracking-widest">EMAIL</h2>
-                    <a class="text-indigo-500 leading-relaxed">{{ $contact->contact_section_email }}</a>
-                    <h2 class="font-semibold tracking-widest mt-4">PHONE</h2>
+                    <h2 class="font-semibold tracking-widest mb-1">EMAIL</h2>
+                    <a class="leading-relaxed">{{ $contact->contact_section_email }}</a>
+                    <h2 class="font-semibold tracking-widest mt-4 mb-1">PHONE</h2>
                     <p class="leading-relaxed">{{ $contact->contact_section_phone }}</p>
                 </div>
             </div>
