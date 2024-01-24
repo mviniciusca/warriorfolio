@@ -8,12 +8,8 @@
  {{ $background->background_image_repeat }}"
     style="background-image: url('{{ $background->background_image ? asset('storage/' .  $background->background_image) : asset('img/core/bg-default.jpg') }}')">
 </div>
-<div class="-mt-36 bg-hero
- w-full h-[900px] absolute -z-10 m-auto left-0 right-0 bg-cover bg-no-repeat bg-center" @if(session('theme')=='dark' )
-    style="background-image: url('{{ asset('img/core/smoother.png') }}')">
-    @else
-    style="background-image: url('{{ asset('img/core/smoother-light.png') }}')">
-    @endif
+<div
+    class="w-full -left-1 h-[200px] absolute  mx-auto -mt-10 -z-10 right-0 bottom-0 bg-secondary-50 dark:bg-secondary-900">
 </div>
 @endif
 {{-- Application Background --}}
@@ -62,16 +58,17 @@
                 <div class="mt-12 rounded-xl" id=" hero-featured-image">
                     <img class="animate__animated animate__fadeInUp animate__delay-2s rounded-t-2xl"
                         src="{{ asset('storage/' . $hero->hero_section_image)}}" alt="hero-section-image" />
-                    <div class="absolute w-full animate__animated animate__fadeIn animate__delay-2s -left-1 -mt-60 h-[250px] z-10 bg-repeat-x bg-contain "
-                        style="background-image: url('{{ asset('img/core/hero-smooter.png') }}')"></div>
-                </div>
-                @endif
-                {{-- End Hero Section: Image --}}
+                    {{-- <div class="absolute w-full animate__animated animate__fadeIn animate__delay-2s -left-1 -mt-60 h-[250px] z-10 bg-repeat-x bg-contain"
+                        style="background-image: url('{{ asset('img/core/hero-smooters.png') }}')">
+                </div> --}}
             </div>
-            {{-- Hero Section Slider --}}
-            <div class="-mt-8 z-10">
-                <x-hero.slider />
-            </div>
+            @endif
+            {{-- End Hero Section: Image --}}
         </div>
+        {{-- Hero Section Slider --}}
+        <div class="-mt-8 z-10">
+            <x-hero.slider />
+        </div>
+    </div>
     </div>
 </section>
