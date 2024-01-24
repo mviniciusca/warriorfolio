@@ -15,10 +15,11 @@
                     <x-ui.logo />
                 </a>
                 <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
-                    <button
+                    @livewire('dark-mode')
+                    {{-- <button
                         class="inline-flex items-center bg-primary-500 border-0 py-1 px-3 focus:outline-none hover:bg-primary-600 rounded mt-4 md:mt-0 gap-1">contact
                         <ion-icon name="mail-open"></ion-icon>
-                    </button>
+                    </button> --}}
                 </div>
             </div>
         </header>
