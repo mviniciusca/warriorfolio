@@ -2,7 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}
 @if(session('theme') == 'dark')
 class=" dark @endif ">
-
 <head>
     <x-header.meta />
     {{-- Google Fonts --}}

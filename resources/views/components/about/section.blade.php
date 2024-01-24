@@ -1,4 +1,4 @@
-<x-core.layout class='bg-secondary-950'>
+<x-core.layout class='bg-secondary-100 dark:bg-secondary-950'>
     @if($module->about_section_title)
     <div class="header-title mb-2">{!! $module->about_section_title !!}</div>
     @endif
@@ -9,7 +9,7 @@
         {{-- Profile Section --}}
         <div class="p-8 w-full md:w-1/4 text-center" id="profile">
             <div
-                class="bg-secondary-500 h-40 w-40 rounded-full p-1 mx-auto mb-12 mt-12 bg-gradient-to-tl from-primary-500 to-tertiary-500 ">
+                class="bg-secondary-500 h-40 w-40 rounded-full p-1 mx-auto mb-8 mt-8 bg-gradient-to-tl from-primary-500 to-tertiary-500 ">
                 <div class="bg-secondary-50 bg-contain bg-no-repeat bg-center transition-all duration-100 filter grayscale hover:grayscale-0 h-full w-full rounded-full p-2 mx-auto mb-12"
                     style="background-image:url('{{ $about->avatar ? asset('storage/' . $about->avatar) : asset('img/core/profile-picture.png') }}')">
                     @if($about->is_open_to_work)
@@ -20,12 +20,12 @@
                 </div>
             </div>
             <p class="text-xl tracking-tight font-semibold">{{ $about->user->name }}</p>
-            <p class="text-sm tracking-tight mb-8">{{ $about->job_position }} <br /> {{ $about->localization }}
+            <p class="text-sm tracking-tight mb-6">{{ $about->job_position }} <br /> {{ $about->localization }}
             </p>
             <div class="mx-auto">
                 <x-ui.social-network />
             </div>
-            <div class="text-sm tracking-tight my-8">
+            <div class="text-sm tracking-tight my-4">
                 @foreach(explode(',', $about->skills) as $skill)
                 <span
                     class="inline-block bg-secondary-900 rounded-md px-4 border-t border-t-secondary-800 py-1 text-xs text-secondary-200 mr-2 mb-2 hover:opacity-80 transition-all duration-100">
@@ -34,9 +34,9 @@
                 @endforeach
             </div>
             @if($about->is_downloadable)
-            <div class="mt-8">
-                <a href="{{ asset('storage/' . $about->document) }}"
-                    class="inline-flex items-center align-middle gap-2 px-4 py-2 text-sm font-medium text-secondary-500 bg-white border border-secondary-200 rounded-lg hover:bg-secondary-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-secondary-200 focus:text-primary-700 dark:bg-primary-500 dark:text-secondary-50 dark:border-secondary-950 dark:hover:text-primary-500 dark:hover:bg-secondary-50 dark:focus:ring-primary-100">
+            <div class="mt-4">
+                <a target="new" href="{{ asset('storage/' . $about->document) }}"
+                    class="inline-flex rounded-md items-center align-middle gap-2 px-4 py-2 text-sm font-medium hover:opacity-60 active:opacity-40 transition-all duration-100 text-secondary-50 bg-primary-500 dark:bg-secondary-50 dark:text-secondary-800">
                     <ion-icon class="text-2xl" name="download-outline"></ion-icon>
                     Curriculum Vitae
                 </a>

@@ -1,5 +1,5 @@
 @if($module_visibility->contact === 1)
-<x-core.layout class='bg-secondary-950'>
+<x-core.layout class='bg-secondary-100 dark:bg-secondary-950'>
     @if($contact->contact_section_title)
     <div class="header-title mb-2">{!! $contact->contact_section_title !!}</div>
     @endif

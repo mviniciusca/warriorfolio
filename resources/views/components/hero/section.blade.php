@@ -9,8 +9,11 @@
     style="background-image: url('{{ $background->background_image ? asset('storage/' .  $background->background_image) : asset('img/core/bg-default.jpg') }}')">
 </div>
 <div class="-mt-36 bg-hero
- w-full h-[900px] absolute -z-10 m-auto left-0 right-0 bg-cover bg-no-repeat bg-center"
+ w-full h-[900px] absolute -z-10 m-auto left-0 right-0 bg-cover bg-no-repeat bg-center" @if(session('theme')=='dark' )
     style="background-image: url('{{ asset('img/core/smoother.png') }}')">
+    @else
+    style="background-image: url('{{ asset('img/core/smoother-light.png') }}')">
+    @endif
 </div>
 @endif
 {{-- Application Background --}}
@@ -21,14 +24,13 @@
             <div class="container mx-auto flex px-5 py-12 items-center justify-center flex-col">
                 <div class="text-center max-w-7xl mt-8">
                     @if($hero->hero_section_title)
-                    <h1
-                        class="hero-section-title dark:text-white animate__animated animate__fadeInUp animate__delay-2s">
+                    <h1 class="hero-section-title animate__animated animate__fadeInUp animate__delay-2s">
                         {!! $hero->hero_section_title !!}
                     </h1>
                     @endif
                     @if($hero->hero_section_subtitle_text)
                     <p
-                        class="animate__animated animate__fadeInUp animate__delay-2s mb-8 text-2xl dark:text-white shadow-current tracking-tight leading-tight">
+                        class="animate__animated animate__fadeInUp animate__delay-2s mb-8 text-2xl shadow-current tracking-tight leading-tight">
                         {!! $hero->hero_section_subtitle_text !!}
                     </p>
                     @endif
