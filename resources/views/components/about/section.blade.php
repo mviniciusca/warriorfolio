@@ -1,9 +1,10 @@
-<x-core.layout class='bg-secondary-100 dark:bg-secondary-950'>
-    @if($module->about_section_title)
-    <div class="header-title mb-2">{!! $module->about_section_title !!}</div>
+@if($module->about)
+<x-core.layout class="{{ $info->about_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : ''}}">
+    @if($info->about_section_title)
+    <div class="header-title mb-2">{!! $info->about_section_title !!}</div>
     @endif
-    @if($module->about_section_subtitle_text)
-    <div class="text-center text-lg max-w-2xl mt-4 mx-auto">{!! $module->about_section_subtitle_text !!}</div>
+    @if($info->about_section_subtitle_text)
+    <div class="text-center text-lg max-w-2xl mt-4 mx-auto">{!! $info->about_section_subtitle_text !!}</div>
     @endif
     <div class="flex mt-24">
         {{-- Profile Section --}}
@@ -71,3 +72,4 @@
         </div>
     </div>
 </x-core.layout>
+@endif
