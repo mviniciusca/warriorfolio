@@ -36,6 +36,9 @@ class EditAboutSection extends EditRecord
                             to the public.')
                 ->icon('heroicon-o-user')
                 ->schema([
+                    Toggle::make('about_section_fill')
+                        ->label('Fill Section Background')
+                        ->helperText('Fill the background of this section with a secondary default color.'),
                     Textarea::make('about_section_title')
                         ->label('About Section Title')
                         ->helperText('HTML allowed. Use the class text-highlight to highlight a word in the title')

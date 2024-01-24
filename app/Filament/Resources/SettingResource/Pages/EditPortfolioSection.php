@@ -35,6 +35,9 @@ class EditPortfolioSection extends EditRecord
                 ->description('This section is used to display your portfolio to the public.')
                 ->icon('heroicon-o-rocket-launch')
                 ->schema([
+                    Toggle::make('portfolio_section_fill')
+                        ->label('Fill Section Background')
+                        ->helperText('Fill the background of this section with a secondary default color.'),
                     Textarea::make('portfolio_section_title')
                         ->label('Portfolio Section Title')
                         ->helperText('HTMl allowed. Use the class text-highlight to highlight a word in the title')

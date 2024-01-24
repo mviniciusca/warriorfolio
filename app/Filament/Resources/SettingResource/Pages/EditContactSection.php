@@ -35,6 +35,9 @@ class EditContactSection extends EditRecord
                 ->icon('heroicon-o-envelope')
                 ->schema([
                     Group::make()->relationship('layout')->schema([
+                        Toggle::make('portfolio_section_fill')
+                            ->label('Fill Section Background')
+                            ->helperText('Fill the background of this section with a secondary default color.'),
                         Textarea::make('contact_section_title')
                             ->autoFocus()
                             ->label('Contact Section Title')

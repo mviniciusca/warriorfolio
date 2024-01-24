@@ -34,6 +34,9 @@ class EditClientSection extends EditRecord
                 ->description('This section is used to display your clients to the public.')
                 ->icon('heroicon-o-building-office')
                 ->schema([
+                    Toggle::make('clients_section_fill')
+                        ->label('Fill Section Background')
+                        ->helperText('Fill the background of this section with a secondary default color.'),
                     Textarea::make('clients_section_title')
                         ->label('Clients Section Text')
                         ->helperText('HTML allowed. Use the class text-highlight to highlight a word in the text')
