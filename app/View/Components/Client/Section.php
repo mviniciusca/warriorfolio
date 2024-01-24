@@ -2,11 +2,12 @@
 
 namespace App\View\Components\Client;
 
-use App\Models\Customer;
-use App\Models\Layout;
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Layout;
+use App\Models\Module;
+use App\Models\Customer;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class Section extends Component
 {
@@ -24,9 +25,18 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.client.section', [
-            'clients' => Customer::all()->take(12)->sortDesc(),
+            'module' => Module::query()
+                ->select(['clients'])
+                ->first(),
+            'clients' => Customer::all()
+                ->take(12)
+                ->sortDesc(),
             'info' => Layout::query()
-                ->select(['clients_section_title', 'clients_section_subtitle_text'])
+                ->select([
+                    'clients_section_fill',
+                    'clients_section_title',
+                    'clients_section_subtitle_text'
+                ])
                 ->first(),
         ]);
     }

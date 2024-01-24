@@ -24,11 +24,20 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.contact.section', [
-            'module_visibility' => Module::query()
+            'module' => Module::query()
                 ->select(['contact'])
                 ->first(),
-            'contact' => Layout::query()
-                ->select(['contact_section_title', 'contact_section_subtitle_text', 'contact_section_address', 'contact_section_email', 'contact_section_google_map', 'contact_section_google_map', 'contact_section_phone'])
+            'info' => Layout::query()
+                ->select([
+                    'contact_section_fill',
+                    'contact_section_title',
+                    'contact_section_subtitle_text',
+                    'contact_section_address',
+                    'contact_section_email',
+                    'contact_section_google_map',
+                    'contact_section_google_map',
+                    'contact_section_phone'
+                ])
                 ->first(),
         ]);
     }
