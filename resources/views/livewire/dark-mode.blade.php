@@ -1,5 +1,5 @@
+{{-- Switch component --}}
 <div>
-    {{-- Switch component --}}
     <label class="relative inline-flex items-center cursor-pointer">
         <input type="checkbox" wire:model.live='active' class="sr-only peer" checked>
         <div
