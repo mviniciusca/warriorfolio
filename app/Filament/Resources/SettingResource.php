@@ -32,6 +32,7 @@ class SettingResource extends Resource
             Pages\EditAboutSection::class,
             Pages\EditClientSection::class,
             Pages\EditContactSection::class,
+            Pages\EditFooterSection::class,
             Pages\EditHeroSection::class,
             Pages\EditNewsletterSection::class,
             Pages\EditPortfolioSection::class,
@@ -82,23 +83,26 @@ class SettingResource extends Resource
                             ->schema([
                                 Forms\Components\Toggle::make('about')
                                     ->label('About Module')
-                                    ->inline(false),
+                                    ->inline(),
                                 Forms\Components\Toggle::make('clients')
                                     ->label('Clients Module')
-                                    ->inline(false),
+                                    ->inline(),
                                 Forms\Components\Toggle::make('contact')
                                     ->label('Contact Module')
-                                    ->inline(false),
+                                    ->inline(),
+                                Forms\Components\Toggle::make('footer')
+                                    ->label('Footer Module')
+                                    ->inline(),
                                 Forms\Components\Toggle::make('hero')
                                     ->label('Hero Module')
-                                    ->inline(false),
+                                    ->inline(),
                                 Forms\Components\Toggle::make('newsletter')
                                     ->label('Newsletter Module')
-                                    ->inline(false),
+                                    ->inline(),
                                 Forms\Components\Toggle::make('portfolio')
                                     ->label('Portfolio Module')
-                                    ->inline(false),
-                            ])->columns(3),
+                                    ->inline(),
+                            ])->columns(4),
                     ]),
                 Section::make('External Add-ons')
                     ->description('Define scripts to be loaded in your application')
@@ -161,6 +165,7 @@ class SettingResource extends Resource
             'edit-about-section' => Pages\EditAboutSection::route('/{record}/edit-about-section'),
             'edit-client-section' => Pages\EditClientSection::route('/{record}/edit-client-section'),
             'edit-newsletter-section' => Pages\EditNewsletterSection::route('/{record}/edit-newsletter-section'),
+            'edit-footer-section' => Pages\EditFooterSection::route('/{record}/edit-footer-section'),
         ];
     }
 }

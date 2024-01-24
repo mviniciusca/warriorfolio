@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->boolean('about')->default(1);
             $table->boolean('blog')->default(1);
+            $table->boolean('footer')->default(1);
             $table->boolean('clients')->default(1);
             $table->boolean('contact')->default(1);
             $table->boolean('hero')->default(1);

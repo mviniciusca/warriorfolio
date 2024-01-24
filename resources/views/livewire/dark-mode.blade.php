@@ -1,41 +1,16 @@
 <div>
     {{-- Switch component --}}
-    <div class="flex items-center justify-center">
-        <div class="relative inline-block w-10 mr-2 align-middle select-none transition-all duration-200 ease-in">
-            <input wire:model.live="active" type="checkbox" id="toggle"
-                class="toggle-checkbox absolute block w-6 h-6 rounded-full transition-all duration-100 bg-white border-4 appearance-none cursor-pointer" />
-            <label for="toggle"
-                class="toggle-label block overflow-hidden h-6 rounded-full transition-all duration-100 bg-gray-300 cursor-pointer"></label>
+    <label class="relative inline-flex items-center cursor-pointer">
+        <input type="checkbox" wire:model.live='active' class="sr-only peer" checked>
+        <div
+            class="w-11 h-6 bg-secondary-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 dark:bg-secondary-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-secondary-600 peer-checked:bg-primary-600">
         </div>
-        <label for="toggle" class="text-xs text-gray-700 dark:text-gray-300"></label>
-        {{-- CSS ANimate Toggle button --}}
-        <style>
-            .toggle-checkbox:checked {
-                @apply: right-0 border-green-400;
-                right: 0;
-                border-color: #68d391;
-            }
-
-            .toggle-checkbox:checked+.toggle-label {
-                @apply: bg-green-400;
-                background-color: #68d391;
-            }
-
-            .toggle-label {
-                @apply: bg-gray-300;
-                background-color: #cbd5e0;
-            }
-
-            .toggle-checkbox:checked+.toggle-label::before {
-                @apply: translate-x-6 border-green-400;
-                transform: translateX(100%);
-                border-color: #68d391;
-            }
-
-            .toggle-checkbox:checked+.toggle-label::after {
-                @apply: bg-green-400;
-                background-color: #68d391;
-            }
-        </style>
-
-    </div>
+        <span class="ms-3 text-sm font-medium text-secondary-900 dark:text-secondary-300">
+            @if($active)
+            <x-ui.moon-icon />
+            @else
+            <x-ui.sun-icon />
+            @endif
+        </span>
+    </label>
+</div>

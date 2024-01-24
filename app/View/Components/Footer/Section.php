@@ -26,11 +26,20 @@ class Section extends Component
     {
         return view('components.footer.section', [
             'info' => Layout::query()
-                ->select(['contact_section_title', 'contact_section_subtitle_text', 'newsletter_section_title', 'newsletter_section_subtitle_text', 'newsletter_section_button_text', 'newsletter_section_image'])
+                ->select([
+                    'newsletter_section_title',
+                    'newsletter_section_subtitle_text',
+                    'newsletter_section_button_text',
+                    'newsletter_section_image',
+                    'footer_section_fill'
+                ])
                 ->first(),
             'setting' => Setting::query()
+                ->select(['logo', 'name'])
                 ->first(),
-            'module_visibility' => Module::query()->select(['newsletter'])->first(),
+            'module' => Module::query()
+                ->select(['newsletter', 'footer'])
+                ->first(),
         ]);
     }
 }
