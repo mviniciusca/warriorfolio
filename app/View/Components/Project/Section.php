@@ -30,6 +30,7 @@ class Section extends Component
                 ->first(),
             'info' => Layout::query()
                 ->select([
+                    'portfolio_section_fill',
                     'portfolio_section_title',
                     'portfolio_section_subtitle_text',
                 ])

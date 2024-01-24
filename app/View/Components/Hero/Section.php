@@ -2,11 +2,12 @@
 
 namespace App\View\Components\Hero;
 
-use App\Models\Layout;
-use App\Models\Setting;
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Layout;
+use App\Models\Module;
+use App\Models\Setting;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class Section extends Component
 {
@@ -24,7 +25,10 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.hero.section', [
-            'hero' => Layout::select([
+            'module' => Module::query()
+                ->select(['hero'])
+                ->first(),
+            'info' => Layout::select([
                 'hero_section_title',
                 'hero_section_subtitle_text',
                 'hero_section_button_text',

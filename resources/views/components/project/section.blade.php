@@ -1,4 +1,5 @@
-<x-core.layout>
+@if($module->portfolio)
+<x-core.layout class="{{ $info->portfolio_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}">
     @if($info->portfolio_section_title)
     <div class="header-title mb-2">{!! $info->portfolio_section_title !!}</div>
     @endif
@@ -24,3 +25,4 @@
         </div>
     </section>
 </x-core.layout>
+@endif

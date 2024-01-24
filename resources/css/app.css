@@ -30,16 +30,16 @@
 /** Hero section **/
 
 .hero-section-title {
-    @apply text-6xl tracking-tighter leading-none pt-12 font-semibold text-center mb-8;
+    @apply text-6xl tracking-tighter leading-none pt-4 font-semibold text-center mb-8;
 }
 
 /** Header for each section **/
 .header-title {
-    @apply text-5xl tracking-tighter leading-none pt-12 pb-2 font-semibold text-center;
+    @apply text-5xl tracking-tighter leading-none pt-4 pb-2 font-semibold text-center;
 }
 
 .subtitle {
-    @apply text-xl pb-24 text-center;
+    @apply text-xl pb-12 text-center;
 }
 
 /** Form Input **/

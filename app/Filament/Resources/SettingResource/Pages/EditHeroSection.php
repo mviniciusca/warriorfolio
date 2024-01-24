@@ -37,9 +37,6 @@ class EditHeroSection extends EditRecord
                 ->icon('heroicon-o-photo')
                 ->schema([
                     Group::make()->relationship('layout')->schema([
-                        Toggle::make('hero_section_fill')
-                            ->label('Fill Section Background')
-                            ->helperText('Fill the background of this section with a secondary default color.'),
                         Textarea::make('hero_section_title')
                             ->autoFocus()
                             ->label('Hero Section Title')
