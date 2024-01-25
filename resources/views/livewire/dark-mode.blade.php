@@ -7,9 +7,9 @@
         </div>
         <span class="ms-3 text-sm font-medium text-secondary-900 dark:text-secondary-300">
             @if($active)
-            <x-ui.moon-icon />
-            @else
             <x-ui.sun-icon />
+            @else
+            <x-ui.moon-icon />
             @endif
         </span>
     </label>

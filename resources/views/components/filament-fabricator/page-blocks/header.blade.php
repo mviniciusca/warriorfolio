@@ -23,7 +23,4 @@
             </div>
         </header>
     </div>
-    <script>
-
-    </script>
 </div>
