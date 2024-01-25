@@ -12,7 +12,7 @@
             <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
                 @foreach ($projects as $project )
                 <div data-modal-target="{{ $project->id }}" data-modal-toggle="{{ $project->id }}"
-                    class="p-8 md:w-1/4 sm:mb-0 mb-0 filter opacity-90 transition-all duration-100">
+                    class="lg:p-4 lg:w-1/4 sm:mb-0 mb-0 filter opacity-90 transition-all duration-100">
                     <div
                         class="p-2 rounded-lg mt-4 bg-secondary-400 bg-opacity-10 cursor-pointer opacity-80 transition-all duration-100 hover:opacity-100 hover:mt-2 pb-4">
                         <img alt="{{ $project->name }} - picture"

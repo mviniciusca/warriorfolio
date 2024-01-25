@@ -68,3 +68,16 @@
 .fi-input-wrp input {
     @apply h-12;
 }
+
+/** Project Content **/
+.project-content img {
+    @apply rounded-lg shadow-lg my-4;
+}
+
+.project-content figcaption {
+    @apply text-center text-sm text-secondary-500 mb-4;
+}
+
+.project-content p {
+    @apply my-8;
+}
