@@ -4,13 +4,14 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Course;
 use App\Models\Mail;
 use App\Models\User;
+use App\Models\Course;
+use App\Models\Profile;
 use App\Models\Setting;
+use App\Models\Category;
 use App\Models\Slideshow;
 use App\Models\Newsletter;
-use App\Models\Profile;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -36,11 +37,17 @@ class DatabaseSeeder extends Seeder
         Newsletter::factory(50)->create();
         Slideshow::factory(1)->create();
         Course::factory(10)->create();
+        Category::factory()->create();
         DB::table('pages')
             ->insert([
                 'title' => 'Home',
                 'slug' => '/',
-                'blocks' => '[{"data": [], "type": "header"}, {"data": [], "type": "hero"}, {"data": [], "type": "projects"}, {"data": [], "type": "courses"},{"data": [], "type": "client"}, {"data": [], "type": "contact"}, {"data": [], "type": "footer"}]',
+                'blocks' => '[
+                     {"data": [], "type": "header"}, {"data": [], "type": "hero"},
+                     {"data": [], "type": "courses"}, {"data": [], "type": "projects"},
+                     {"data": [], "type": "client"}, {"data": [], "type": "contact"},
+                     {"data": [], "type": "footer"}
+                    ]',
                 'layout' => 'default',
                 'created_at' => now(),
                 'updated_at' => now(),

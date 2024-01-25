@@ -108,22 +108,36 @@ class SettingResource extends Resource
                     ->description('Define scripts to be loaded in your application')
                     ->icon('heroicon-o-beaker')
                     ->schema([
-                        Forms\Components\Textarea::make('google_analytics')
-                            ->rows(3)
+                        Forms\Components\Textarea::make('google_fonts_name')
+                            ->rows(1)
+                            ->maxLength(255)
+                            ->helperText('Default: Inter')
+                            ->label('Google Fonts Name'),
+                        Forms\Components\Textarea::make('google_fonts_code')
+                            ->rows(5)
                             ->maxLength(65535)
-                            ->placeholder('--')
-                            ->label('Google Tag Analytics Code'),
+                            ->columnSpanFull()
+                            ->helperText('Paste your Google Fonts code here. Just one default font is allowed.')
+                            ->label('Google Fonts Code'),
+                        Forms\Components\Textarea::make('google_analytics')
+                            ->rows(5)
+                            ->columnSpanFull()
+                            ->maxLength(65535)
+                            ->helperText('Paste your Google Analytics code here.')
+                            ->label('Google Analytics Code'),
                         Forms\Components\Textarea::make('header_scripts')
                             ->maxLength(65535)
-                            ->placeholder('--')
-                            ->rows(3)
-                            ->label('Head Scripts (ex: Facebook Pixel)'),
+                            ->rows(5)
+                            ->columnSpanFull()
+                            ->helperText('Paste your scripts here. This will be loaded in the header.')
+                            ->label('Header Scripts'),
                         Forms\Components\Textarea::make('body_scripts')
                             ->maxLength(65535)
-                            ->placeholder('--')
-                            ->rows(3)
-                            ->label('Body Scripts (ex: Ionicons)'),
-                    ])->collapsible(),
+                            ->rows(5)
+                            ->columnSpanFull()
+                            ->helperText('Paste your scripts here. This will be loaded in the body.')
+                            ->label('Body Scripts'),
+                    ])->collapsible()->columns(2),
             ]);
     }
     public static function table(Table $table): Table

@@ -28,6 +28,8 @@ return new class extends Migration {
             $table->string('meta_robots')->nullable();
             $table->string('meta_google_site_verification')->nullable();
             $table->string('google_recaptcha_key')->nullable();
+            $table->text('google_fonts_code')->nullable();
+            $table->string('google_fonts_name')->nullable();
             $table->string('google_analytics')->nullable();
             $table->longText('header_scripts')->nullable();
             $table->longText('body_scripts')->nullable();

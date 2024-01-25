@@ -3,15 +3,13 @@
 @if(session('theme') == 'dark')
 class=" dark @endif ">
 <head>
-    <x-header.meta />
-    {{-- Google Fonts --}}
-    <link rel=" preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-{{-- Slider CDN --}}
+<x-header.meta />
+{{-- Google Fonts CDN --}}
+<x-header.google-fonts />
+{{-- Swiper CDN --}}
+<link rel=" stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-{{-- Iconicons --}}
+{{-- Iconicons CDN --}}
 <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 {{-- Vite --}}
 <style>
@@ -33,5 +31,6 @@ class=" dark @endif ">
     @filamentScripts
     @vite('resources/js/app.js')
 </body>
+
 
 </html>

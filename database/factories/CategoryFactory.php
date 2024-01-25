@@ -17,7 +17,25 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => 'Laravel',
+            'slug' => 'laravel',
+            'is_active' => true,
+            'hex_color' => '#fb503b',
+            'icon' => 'logo-octocat',
         ];
     }
+
+    /** Create a project after create a category */
+
+    public function configure(): self
+    {
+        return $this->afterCreating(function (\App\Models\Category $category) {
+            \App\Models\Project::factory()
+                ->count(1)
+                ->create([
+                    'category_id' => $category->id,
+                ]);
+        });
+    }
+
 }
