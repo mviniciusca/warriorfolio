@@ -62,6 +62,7 @@ class ProjectResource extends Resource
                                 ->label('Short Description (Optional)'),
                             RichEditor::make('content')
                                 ->fileAttachmentsDirectory('project/attachments')
+                                //->fileAttachmentsVisibility('private')
                                 ->columnSpanFull()
                                 ->maxLength(5000)
                                 ->helperText('The content of the project. Max: 5000 characters.')

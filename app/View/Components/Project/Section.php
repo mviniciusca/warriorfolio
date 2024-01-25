@@ -35,9 +35,11 @@ class Section extends Component
                     'portfolio_section_subtitle_text',
                 ])
                 ->first(),
-            'projects' => Project::all()
+            'projects' => Project::query()
+                ->where('is_active', true)
+                ->orderBy('created_at', 'desc')
                 ->take(12)
-                ->sortByDesc('created_at'),
+                ->get(),
         ]);
     }
 }

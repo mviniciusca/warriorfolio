@@ -16,26 +16,33 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
-                        <span class="sr-only">Close modal</span>
+                        <span class="sr-only">{{ __('Close modal') }}</span>
                     </button>
                 </div>
-                <div class="text-center">
+                <div class="text-center" id="project-category">
                     <span class="px-3 py-1 text-sm rounded-md bg-primary-500 text-secondary-50">
                         {!! $project->category->name!!}
                     </span>
                 </div>
-                <div class="my-4 text-3xl tracking-tight font-semibold text-center">
-                    {!! $project->name !!}
+                <div class="my-4 text-3xl tracking-tight font-semibold text-center" id="project-title">
+                    {{ $project->name }}
                 </div>
-                <div class="my-4 text-center text-md max-w-2xl mx-auto">
-                    {!! $project->short_description!!}
+                <div class="my-4 text-center text-md max-w-2xl mx-auto" id="project-short-description">
+                    {{ $project->short_description }}
                 </div>
-                <div class="my-4 project-content leading-loose" id="content">
+                <div class="my-4 project-content leading-loose" id="project-content">
                     {!! $project->content !!}
                 </div>
-
+                @if($project->external_link)
+                <div id="external-link">
+                    <button id="external-link" type="button" onclick="window.open('{{ $project->external_link }}');"
+                        class="flex items-center text-sm gap-1 py-2 px-3 border border-black border-opacity-40 rounded-md bg-primary-500 text-secondary-50 hover:opacity-80 active:opacity-70 transition-all duration-100">
+                        <ion-icon name="open-outline"></ion-icon>
+                        <span>{{ __('Open Full Project') }}</span>
+                    </button>
+                </div>
+                @endif
             </div>
-
         </div>
     </div>
 </div>
