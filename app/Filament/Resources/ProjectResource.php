@@ -46,24 +46,32 @@ class ProjectResource extends Resource
                                 ->lazy()
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                                 ->required()
+                                ->maxLength(200)
+                                ->helperText('The name of the project. Max: 200 characters.')
                                 ->label('Title'),
                             TextInput::make('slug')
                                 ->disabled()
                                 ->dehydrated()
                                 ->placeholder('generated automatically')
+                                ->helperText('This is automatically generated from the title.')
                                 ->label('Slug'),
                             Textarea::make('short_description')
                                 ->columnSpanFull()
-                                ->label('Short Description')
-                                ->required(),
+                                ->maxLength(500)
+                                ->helperText('A short description of the project. Max: 500 characters.')
+                                ->label('Short Description (Optional)'),
                             RichEditor::make('content')
                                 ->fileAttachmentsDirectory('project/attachments')
                                 ->columnSpanFull()
-                                ->required(),
+                                ->maxLength(5000)
+                                ->helperText('The content of the project. Max: 5000 characters.')
+                                ->label('Content (Optional)'),
                             TextInput::make('external_link')
-                                ->label('External Link')
+                                ->label('External Link (Optional)')
                                 ->placeholder('https://example.com')
-                                ->helperText('If you want to add an external link to the project, you can do it here')
+                                ->url()
+                                ->maxLength(255)
+                                ->helperText('The external link of the project. Max: 255 characters.')
                                 ->columnSpanFull(),
                         ])->columns(2)
                 ])->columnSpan(3),
