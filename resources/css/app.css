@@ -74,6 +74,10 @@
     @apply rounded-lg shadow-lg my-4;
 }
 
+.project-content figure {
+    @apply flex flex-col items-center;
+}
+
 .project-content figcaption {
     @apply text-center text-sm text-secondary-500 mb-4;
 }
