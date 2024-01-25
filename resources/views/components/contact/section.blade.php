@@ -1,5 +1,5 @@
 @if($module->contact)
-<x-core.layout class="{{ $info->contact_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}">
+<x-core.layout class="{{ $info->contact_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}" id="contact">
     @if($info->contact_section_title)
     <div class="header-title mb-2">{!! $info->contact_section_title !!}</div>
     @endif

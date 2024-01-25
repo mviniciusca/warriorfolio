@@ -1,5 +1,5 @@
 @if($module->about)
-<x-core.layout class="{{ $info->about_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : ''}}">
+<x-core.layout class="{{ $info->about_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : ''}}" id="about">
     @if($info->about_section_title)
     <div class="header-title mb-2">{!! $info->about_section_title !!}</div>
     @endif

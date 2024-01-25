@@ -1,8 +1,8 @@
 @if($module->portfolio)
-
-<x-core.layout class="{{ $info->portfolio_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}">
+<x-core.layout class="{{ $info->portfolio_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}"
+    id="portfolio">
     @if($info->portfolio_section_title)
-    <div class="header-title mb-2">{!! $info->portfolio_section_title !!}</div>
+    <div class=" header-title mb-2">{!! $info->portfolio_section_title !!}</div>
     @endif
     @if($info->portfolio_section_subtitle_text)
     <div class="text-center text-lg max-w-2xl mt-4 mx-auto">{!! $info->portfolio_section_subtitle_text !!}</div>
@@ -28,7 +28,6 @@
                 @endforeach
             </div>
         </div>
-
     </section>
 </x-core.layout>
 @endif

@@ -1,5 +1,5 @@
 @if($module->clients)
-<x-core.layout class="{{ $info->clients_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}">
+<x-core.layout class="{{ $info->clients_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}" id="clients">
     <section>
         <div class="header-title">
             {!! $info->clients_section_title !!}

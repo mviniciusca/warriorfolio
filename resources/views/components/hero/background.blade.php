@@ -1,6 +1,6 @@
 {{-- Application Background --}}
 @if($background->background_image_visibility)
-<div class="-mt-36 m-auto left-0 right-0 bg-hero
+<div id="hero" class="-mt-36 m-auto left-0 right-0 bg-hero
  animate__animated animate__fadeIn animate__delay-1s
  w-full h-[900px] absolute -z-20
  {{ $background->background_image_size }}
