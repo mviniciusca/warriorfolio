@@ -28,14 +28,15 @@ class LayoutFactory extends Factory
             'portfolio_section_subtitle_text' => 'Here are some of my projects I\'ve worked on recently',
 
             /** About Section */
-            'about_section_title' => 'Let\'s start with a <span class="text-highlight">hello</span>',
+            'about_section_title' => 'Let\'s start with a <span class="text-highlight">Hello!</span>',
             'about_section_subtitle_text' => 'I\'m a full-stack developer based in Rio de Janeiro, Brazil specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.',
 
             /** Contact Section */
             'contact_section_title' => 'Get <span class="text-highlight">in Touch</span>',
             'contact_section_subtitle_text' => 'I\'m currently available for freelance work',
-            'contact_section_address' => 'Rio de Janeiro, Brazil',
+            'contact_section_address' => 'Av. Rio de Janeiro, S/N <br/> Rio de Janeiro, RJ <br/> Brazil',
             'contact_section_email' => 'warriorfolio@test.dev',
+            'contact_section_phone' => '+55 21 99999-9999',
 
             /** Clients Section */
             'clients_section_title' => '<span class="text-highlight">Trusted</span> by',

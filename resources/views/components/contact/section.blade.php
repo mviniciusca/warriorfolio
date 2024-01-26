@@ -53,9 +53,12 @@
                 @endif
             </div>
             {{-- Social Network  --}}
+            @if($social_network != 0)
             <x-ui.info-box title="Follow" icon="infinite">
                 <x-ui.social-network />
             </x-ui.info-box>
+            @endif
+            {{-- End Social Network  --}}
             {{-- Empty Fields --}}
             @if($info->contact_section_address == null ||
             $info->contact_section_phone == null && $info->contact_section_email == null)

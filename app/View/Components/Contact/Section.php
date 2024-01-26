@@ -2,11 +2,12 @@
 
 namespace App\View\Components\Contact;
 
+use Closure;
 use App\Models\Layout;
 use App\Models\Module;
-use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Profile;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class Section extends Component
 {
@@ -24,6 +25,7 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.contact.section', [
+            'social_network' => $this->isEmpty(),
             'module' => Module::query()
                 ->select(['contact'])
                 ->first(),
@@ -41,4 +43,33 @@ class Section extends Component
                 ->first(),
         ]);
     }
+
+    /**
+     * Check if any field is empty and return the count of empty fields.
+     */
+    public function isEmpty(): int
+    {
+        $model = Profile::query()
+            ->select([
+                'facebook',
+                'twitter',
+                'instagram',
+                'linkedin',
+                'youtube',
+                'github',
+                'medium',
+                'devto',
+                'twitch',
+                'dribbble'
+            ])
+            ->first();
+        $count = 0;
+        foreach ($model->toArray() as $key => $value) {
+            if (!empty($value)) {
+                $count++;
+            }
+        }
+        return $count;
+    }
+
 }

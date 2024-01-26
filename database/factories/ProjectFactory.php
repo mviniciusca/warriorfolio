@@ -18,7 +18,7 @@ class ProjectFactory extends Factory
     {
         return [
             'name' => 'Warriorfolio v2',
-            'slug' => 'warriorfolio-v2',
+            'slug' => 'warriorfolio-v2-demo-post',
             'short_description' => 'Warriorfolio is a free, open source, cms for creating and managing your portfolio website.',
             'content' => 'Warriorfolio aims to be simple, fast and effective in creating a Landing Page for your portfolio. It arrives in its new version, more robust, smarter, flexible and with new intuitive features. With the modular concept in mind, you can very easily choose the order in which your page will be assembled and displayed to the public.
             <p></p>

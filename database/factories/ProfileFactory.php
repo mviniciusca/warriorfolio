@@ -24,8 +24,10 @@ class ProfileFactory extends Factory
             'linkedin' => 'www.linkedin.com/in/warriorfolio',
             'twitter' => 'www.twitter.com/warriorfolio',
             'facebook' => 'www.facebook.com/warriorfolio',
+            'devto' => 'www.dev.to/warriorfolio',
             'instagram' => 'www.instagram.com/warriorfolio',
             'youtube' => 'www.youtube.com/warriorfolio',
+            'medium' => 'www.medium.com/warriorfolio',
             'twitch' => 'www.twitch.com/warriorfolio',
             'skills' => 'PHP, Laravel, Filament, Tailwind, Livewire, Python',
             'about' => 'Enthusiastic full-stack developer with a robust skill set encompassing front-end technologies such as HTML, CSS, and JavaScript, coupled with proficiency in back-end languages like Node.js and Python. Experienced in designing and implementing database structures, API integrations, and responsive user interfaces.

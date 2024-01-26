@@ -35,8 +35,22 @@ class ProfileResource extends Resource
                         ->label('Profile Picture')
                         ->placeholder('Upload your picture')
                         ->directory('profile/avatar'),
+                    Forms\Components\Select::make('avatar_position')
+                        ->label('Profile Picture Position')
+                        ->options([
+                            'bg-center' => 'Center',
+                            'bg-top' => 'Top',
+                            'bg-bottom' => 'Bottom',
+                        ]),
+                    Forms\Components\Select::make('avatar_size')
+                        ->label('Profile Picture Size')
+                        ->options([
+                            'bg-auto' => 'Auto',
+                            'bg-cover' => 'Cover',
+                            'bg-contain' => 'Contain',
+                        ]),
                     Forms\Components\Toggle::make('is_open_to_work')
-                        ->label('Open to work')
+                        ->label('Open to Work')
                         ->helperText('If you are open to work, a icon will be displayed on your profile with a link to your linkedin profile.'),
                     Forms\Components\FileUpload::make('document')
                         ->preserveFilenames()
@@ -57,27 +71,25 @@ class ProfileResource extends Resource
                         Group::make()->relationship('user')->schema([
                             Forms\Components\TextInput::make('name')
                                 ->maxLength(255)
+                                ->label('Full Name')
                                 ->required()
-                                ->placeholder('--')
                                 ->helperText('Your name will be displayed publicly'),
                             Forms\Components\TextInput::make('email')
                                 ->maxLength(255)
+                                ->label('Email Address')
                                 ->required()
-                                ->helperText('Only you can see your email address')
-                                ->placeholder('--'),
+                                ->helperText('Only you can see your email address'),
                         ])->columns(2),
                         Group::make()->schema([
                             Forms\Components\TextInput::make('localization')
                                 ->maxLength(255)
-                                ->placeholder('--')
                                 ->helperText('Your localization will be displayed publicly'),
                             Forms\Components\TextInput::make('job_position')
+                                ->label('Job Position')
                                 ->maxLength(255)
-                                ->placeholder('--')
                                 ->helperText('Your job position will be displayed publicly'),
                             Forms\Components\TagsInput::make('skills')
                                 ->separator(',')
-                                ->placeholder('--')
                                 ->helperText('Type a word and press enter to add a new skill')
                                 ->label('Your Skills')
                                 ->columnSpanFull(),
@@ -111,6 +123,10 @@ class ProfileResource extends Resource
                                 ->prefixIcon('heroicon-o-link'),
                             Forms\Components\TextInput::make('medium')
                                 ->placeholder('www.medium.com/@your_username')
+                                ->maxLength(255)
+                                ->prefixIcon('heroicon-o-link'),
+                            Forms\Components\TextInput::make('devto')
+                                ->placeholder('www.dev.to/your_username')
                                 ->maxLength(255)
                                 ->prefixIcon('heroicon-o-link'),
                             Forms\Components\TextInput::make('dribbble')

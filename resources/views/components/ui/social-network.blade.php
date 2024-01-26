@@ -26,4 +26,7 @@
     @if($social->medium)
     <x-ui.icon :href="$social->medium" name="logo-medium" />
     @endif
+    @if($social->devto)
+    <x-ui.icon :href="$social->devto" name="devto" />
+    @endif
 </div>

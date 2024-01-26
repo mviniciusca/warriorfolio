@@ -19,10 +19,13 @@ return new class () extends Migration {
             $table->string('linkedin')->nullable();
             $table->string('medium')->nullable();
             $table->string('twitch')->nullable();
+            $table->string('devto')->nullable();
             $table->string('youtube')->nullable();
             $table->string('twitter')->nullable();
             $table->text('about')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('avatar_size')->default('bg-contain');
+            $table->string('avatar_position')->default('bg-center');
             $table->string('skills')->nullable();
             $table->string('job_position')->nullable();
             $table->string('localization')->nullable();

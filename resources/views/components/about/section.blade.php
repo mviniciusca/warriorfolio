@@ -11,7 +11,7 @@
         <div class="p-8 w-full md:w-1/4 text-center" id="profile">
             <div
                 class="bg-secondary-500 h-40 w-40 rounded-full p-1 mx-auto mb-8 mt-8 bg-gradient-to-tl from-primary-500 to-tertiary-500 ">
-                <div class="bg-secondary-50 bg-contain bg-no-repeat bg-center transition-all duration-100 filter grayscale hover:grayscale-0 h-full w-full rounded-full p-2 mx-auto mb-12"
+                <div class="bg-secondary-50 bg-no-repeat transition-all duration-100 filter grayscale hover:grayscale-0 h-full w-full rounded-full p-2 mx-auto mb-12 {{ $about->avatar_size . ' ' . $about->avatar_position }}"
                     style="background-image:url('{{ $about->avatar ? asset('storage/' . $about->avatar) : asset('img/core/profile-picture.png') }}')">
                     @if($about->is_open_to_work)
                     <div class="absolute bg-secondary-50 text-primary-500 text-xs p-1 ml-6 mt-32 ">

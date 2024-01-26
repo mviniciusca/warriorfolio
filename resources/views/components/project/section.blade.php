@@ -17,7 +17,7 @@
                         class="p-2 rounded-lg mt-4 bg-secondary-400 bg-opacity-10 cursor-pointer opacity-80 transition-all duration-100 hover:opacity-100 hover:mt-2 pb-4">
                         <img alt="{{ $project->name }} - picture"
                             class="object-cover -mt-8 rounded-xl object-center w-full" @if($project->slug !=
-                        'warriorfolio-v2')
+                        'warriorfolio-v2-demo-post')
                         src="{{ asset('storage/' . $project->image_cover) }}
                         @else
                         src="{{ asset('img/core/project-cover-demo.png') }}
