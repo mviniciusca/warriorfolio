@@ -19,7 +19,7 @@
                     </p>
                     @endif
                     {{-- Hero Section: Buttons --}}
-                    <div class="flex gap-4 justify-center animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="flex z-10 gap-4 justify-center animate__animated animate__fadeInUp animate__delay-2s">
                         {{-- Hero Section Button --}}
                         @if($info->hero_section_button_text == true && $info->hero_section_button_url == true)
                         <a target="{{ $info->hero_button_link_target }}" href="{{ $info->hero_section_button_url }}">
