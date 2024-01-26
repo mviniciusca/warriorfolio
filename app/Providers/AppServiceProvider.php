@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Maintenance;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        view()->share(
+            'maintenance',
+            Maintenance::all()->first()->is_active,
+        );
     }
 }

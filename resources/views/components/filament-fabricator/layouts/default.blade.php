@@ -24,13 +24,17 @@ class=" dark @endif ">
 
 <body
     class="antialiased overflow-x-hidden scroll-smooth text-secondary-600 bg-secondary-50 dark:bg-secondary-900  dark:text-secondary-100">
+    @if(!$maintenance)
     <x-ui.chatbox />
     <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
+    @endif
     {{-- Ionicons CDN --}}
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     @filamentScripts
     @vite('resources/js/app.js')
 </body>
-
+@if($maintenance)
+<x-maintenance.section />
+@endif
 
 </html>

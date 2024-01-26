@@ -44,7 +44,7 @@
 
 /** Form Input **/
 .fi-input-wrp {
-    @apply relative mb-4;
+    @apply relative mb-1;
 }
 
 /** Change placeholder form color **/
@@ -52,6 +52,14 @@
     @apply text-secondary-500 focus:text-xs focus:font-normal transition-all duration-75;
 }
 
+/** Form Input Height Size **/
+.fi-input-wrp input {
+    @apply h-10;
+}
+
+trix-editor {
+    @apply text-left;
+}
 
 /** Form Input Label **/
 .fi-input-label {
@@ -62,11 +70,6 @@
 /** Form Input Error **/
 .fi-input-error {
     @apply text-red-500 text-sm font-semibold;
-}
-
-/** Form Input Height Size **/
-.fi-input-wrp input {
-    @apply h-12;
 }
 
 /** Project Content **/

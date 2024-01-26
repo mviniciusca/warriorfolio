@@ -24,7 +24,18 @@ class SocialNetwork extends Component
     {
         return view('components.ui.social-network', [
             'social' => Profile::query()
-                ->select(['facebook', 'twitter', 'instagram', 'linkedin', 'youtube', 'github', 'twitch', 'medium', 'dribbble', 'devto'])
+                ->select([
+                    'facebook',
+                    'twitter',
+                    'instagram',
+                    'linkedin',
+                    'youtube',
+                    'github',
+                    'twitch',
+                    'medium',
+                    'dribbble',
+                    'devto'
+                ])
                 ->first()
         ]);
     }

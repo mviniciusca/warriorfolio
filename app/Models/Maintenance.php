@@ -20,4 +20,5 @@ class Maintenance extends Model
     {
         return $this->belongsTo(Setting::class);
     }
+
 }
