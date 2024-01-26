@@ -1,7 +1,7 @@
 # <p align="center"> Warriorfolio 2 - work in progress  </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/v2-dev-master/public/img/gif/app.gif"  alt="Warriorfolio 2">
+  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/v2-dev-master/public/img/gif/gif.gif"  alt="Warriorfolio 2">
 </p>
 
 This documentation is still under development and may undergo changes at any time. 
