@@ -55,7 +55,7 @@ E a mim, claro! 😁
 - Display de Habilidades;
 - E-mail catcher para captura de leads;
 - Integração com o Google Analytics;
-- Curriculo em PDF para download;
+- Curriculo para download;
 - Ícone de Open to Work;
 - Biografia, Certificados e Cursos;
 - Contato via WhatsApp;
