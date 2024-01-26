@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Layout;
 use App\Models\Module;
 use App\Models\Chatbox;
+use App\Models\Maintenance;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -38,5 +39,14 @@ class Setting extends Model
     public function chatbox()
     {
         return $this->hasOne(Chatbox::class);
+    }
+
+    /**
+     * Summary of maintenance
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function maintenance()
+    {
+        return $this->hasOne(Maintenance::class);
     }
 }

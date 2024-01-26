@@ -37,6 +37,7 @@ class SettingResource extends Resource
             Pages\EditNewsletterSection::class,
             Pages\EditPortfolioSection::class,
             Pages\EditChatbox::class,
+            Pages\EditMaintenanceSection::class,
         ]);
     }
     public static function form(Form $form): Form
@@ -137,7 +138,7 @@ class SettingResource extends Resource
                             ->columnSpanFull()
                             ->helperText('Paste your scripts here. This will be loaded in the body.')
                             ->label('Body Scripts'),
-                    ])->collapsible()->columns(2),
+                    ])->collapsed()->columns(2),
             ]);
     }
     public static function table(Table $table): Table
@@ -180,6 +181,7 @@ class SettingResource extends Resource
             'edit-client-section' => Pages\EditClientSection::route('/{record}/edit-client-section'),
             'edit-newsletter-section' => Pages\EditNewsletterSection::route('/{record}/edit-newsletter-section'),
             'edit-footer-section' => Pages\EditFooterSection::route('/{record}/edit-footer-section'),
+            'edit-maintenance-section' => Pages\EditMaintenanceSection::route('/{record}/edit-maintenance-section'),
         ];
     }
 }
