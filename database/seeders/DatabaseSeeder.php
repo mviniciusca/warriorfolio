@@ -32,7 +32,11 @@ class DatabaseSeeder extends Seeder
             ]);
 
         /** Add main page settings on database */
-        Setting::factory()->hasLayout()->count(1)->create();
+        Setting::factory()
+            ->hasLayout()
+            ->hasNavigation()
+            ->count(1)
+            ->create();
         Mail::factory(5)->create();
         Newsletter::factory(50)->create();
         Slideshow::factory(1)->create();
@@ -46,7 +50,7 @@ class DatabaseSeeder extends Seeder
                      {"data": [], "type": "header"}, {"data": [], "type": "hero"},
                      {"data": [], "type": "courses"}, {"data": [], "type": "projects"},
                      {"data": [], "type": "client"}, {"data": [], "type": "contact"},
-                     {"data": [], "type": "footer"}
+                     {"data": [], "type": "newsletter"}, {"data": [], "type": "footer"}
                     ]',
                 'layout' => 'default',
                 'created_at' => now(),

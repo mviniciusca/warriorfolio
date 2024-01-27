@@ -30,7 +30,7 @@ class Section extends Component
             'module' => Module::query()
                 ->select(['about'])
                 ->first(),
-            'about' => Profile::first(),
+            'profile' => Profile::first(),
             'courses' => Course::all()
                 ->sortDesc()
                 ->take(5),

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Layout;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -41,6 +41,9 @@ class SettingFactory extends Factory
                 'setting_id' => $setting->id,
             ]);
             $setting->maintenance()->create([
+                'setting_id' => $setting->id,
+            ]);
+            $setting->navigation()->create([
                 'setting_id' => $setting->id,
             ]);
         });

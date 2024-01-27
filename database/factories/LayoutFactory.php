@@ -24,11 +24,11 @@ class LayoutFactory extends Factory
             cms for creating and managing your portfolio website.',
 
             /** Portfolio Section */
-            'portfolio_section_title' => 'Experience <span class="text-highlight">Matters</span>',
+            'portfolio_section_title' => 'Experience <span class="text-highlight">Tranquility</span>',
             'portfolio_section_subtitle_text' => 'Here are some of my projects I\'ve worked on recently',
 
             /** About Section */
-            'about_section_title' => 'Let\'s start with a <span class="text-highlight">Hello!</span>',
+            'about_section_title' => 'Let\'s start with a <span class="text-highlight">Hello</span>',
             'about_section_subtitle_text' => 'I\'m a full-stack developer based in Rio de Janeiro, Brazil specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.',
 
             /** Contact Section */

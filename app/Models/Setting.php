@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Layout;
 use App\Models\Module;
 use App\Models\Chatbox;
+use App\Models\Navigation;
 use App\Models\Maintenance;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -48,5 +49,14 @@ class Setting extends Model
     public function maintenance()
     {
         return $this->hasOne(Maintenance::class);
+    }
+
+    /**
+     * Summary of navigation
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function navigation()
+    {
+        return $this->hasOne(Navigation::class);
     }
 }
