@@ -38,7 +38,8 @@ class AdminPanelProvider extends PanelProvider
                 config('filament-logger.activity_resource')
             ])
             ->colors([
-                'primary' => Color::Indigo,
+                'primary' => Color::Purple,
+                'secondary' => Color::Zinc,
             ])
             ->navigationGroups([
                 'App Sections',
