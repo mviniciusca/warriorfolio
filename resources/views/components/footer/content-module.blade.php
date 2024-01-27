@@ -1,17 +1,18 @@
 <div id="footer-content">
-    <div class="flex flex-wrap gap-2 mx-auto px-5 pt-24 sm:flex-row items-center">
+    <div class="mx-auto flex flex-wrap items-center gap-2 px-5 sm:flex-row">
         {{-- App Logo --}}
         @if($setting->logo)
-        <img src="{{ asset('storage/' . $setting->logo) }}" alt="{{ $setting->name }}" class="w-8 h-8 mr-4">
+        <img src="{{ asset('storage/' . $setting->logo) }}" alt="{{ $setting->name . 'logo-image'}}"
+            class="mr-4 h-8 w-8">
         @else
         <x-ui.logo />
         @endif
         {{-- App Name --}}
-        <p class=" text-sm text-center sm:text-left">
-            © {{ date('Y') }} - {{$setting->name}}
+        <p class="text-center text-sm sm:text-left">
+            © {{ date('Y') . ' - ' . $setting->name }}
         </p>
         {{-- Social Network --}}
-        <div class="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-sm">
+        <div class="mt-2 w-full text-center text-sm sm:ml-auto sm:mt-0 sm:w-auto sm:text-left">
             <x-ui.social-network />
         </div>
     </div>

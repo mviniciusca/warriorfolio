@@ -1,7 +1,7 @@
 @aware(['page'])
-<section {{ $attributes->merge(['class' => 'w-full py-12']) }}>
+<section {{ $attributes->merge(['class' => 'w-full py-16']) }}>
     <div class="px-4 py-4 md:py-8">
-        <div class="max-w-7xl mx-auto">
+        <div class="mx-auto max-w-7xl">
             {{ $slot }}
         </div>
     </div>
