@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}
-@if(session('theme') == 'dark')
-class=" dark @endif ">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="{{ session('theme') == 'dark' ? 'dark' : ''  }}">
+
 <head>
-<x-header.meta />
-{{-- Google Fonts CDN --}}
-<x-header.google-fonts />
-{{-- Swiper CDN --}}
-<link rel=" stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-{{-- Iconicons CDN --}}
-<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-{{-- Vite --}}
-<style>
-    [x-cloak] {
-        display: none !important;
-    }
-</style>
-@filamentStyles
-@vite(['resources/css/app.css','resources/js/app.js'])
+    <x-header.meta />
+    {{-- Google Fonts CDN --}}
+    <x-header.google-fonts />
+    {{-- Swiper CDN --}}
+    <link rel=" stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    {{-- Iconicons CDN --}}
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    {{-- Vite --}}
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+    @filamentStyles
+    @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 @livewire('notifications')
 

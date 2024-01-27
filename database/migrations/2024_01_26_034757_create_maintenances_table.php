@@ -14,7 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->boolean('is_active')->default(false);
             $table->boolean('is_discovery')->default(false);
-            $table->string('content')->default('We are currently performing maintenance. Please check back soon.');
+            $table->boolean('is_contact')->default(true);
+            $table->boolean('is_social')->default(true);
+            $table->string('content')->default('<h2>Maintenance Mode</h2><p>We are currently performing maintenance. Please check back soon.</p>');
             $table->string('image')->nullable();
             $table->foreignId('setting_id')->constrained('settings')->onDelete('cascade');
             $table->timestamps();

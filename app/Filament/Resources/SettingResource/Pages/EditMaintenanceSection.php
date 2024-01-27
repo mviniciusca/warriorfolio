@@ -23,7 +23,7 @@ class EditMaintenanceSection extends EditRecord
     {
         return $form
             ->schema([
-                Section::make('Maintenance')
+                Section::make('Maintenance Mode')
                     ->description('Define the maintenance mode of your application')
                     ->icon('heroicon-o-wrench-screwdriver')
                     ->relationship('maintenance')
@@ -34,7 +34,15 @@ class EditMaintenanceSection extends EditRecord
                             ->default(false),
                         Toggle::make('is_discovery')
                             ->label('Discovery Mode')
-                            ->helperText('Enable discovery mode to allow access to your application for authorized users only. It includes your session.')
+                            ->helperText('Enable discovery mode to allow your application visible to you based in your active login session.')
+                            ->default(false),
+                        Toggle::make('is_contact')
+                            ->label('Show Contact Form')
+                            ->helperText('Enable contact form in maintenance mode to allow users to contact you. Note that is the same contact form of your application.')
+                            ->default(false),
+                        Toggle::make('is_social')
+                            ->label('Social Media Links')
+                            ->helperText('Enable social media in maintenance mode to allow users to follow you. Note that is the same social media of your application.')
                             ->default(false),
                     ])->columns(2),
                 Section::make('Layout & Content')

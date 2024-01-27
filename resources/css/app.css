@@ -88,3 +88,16 @@ trix-editor {
 .project-content p {
     @apply my-8;
 }
+
+/** Maintenance Section Content  **/
+#maintenance-content h2 {
+    @apply text-3xl font-semibold tracking-tight my-2;
+}
+
+#maintenance-content h3 {
+    @apply text-2xl font-semibold my-2;
+}
+
+#maintenance-content p {
+    @apply leading-tight
+}

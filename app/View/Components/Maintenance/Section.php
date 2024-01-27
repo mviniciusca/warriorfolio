@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Maintenance;
 
+use App\Models\Maintenance;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +22,8 @@ class Section extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.maintenance.section');
+        return view('components.maintenance.section', [
+            'maintenance' => Maintenance::query()->first(),
+        ]);
     }
 }
