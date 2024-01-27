@@ -18,7 +18,10 @@ class EditHeroSection extends EditRecord
 {
     protected static string $resource = SettingResource::class;
     protected static ?string $navigationIcon = 'heroicon-o-photo';
-    protected static ?string $title = 'Hero Section';
+    public static function getNavigationLabel(): string
+    {
+        return __('Hero Section');
+    }
 
     public function form(Form $form): Form
     {

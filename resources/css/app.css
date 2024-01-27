@@ -21,6 +21,10 @@
     }
 }
 
+.text-gradient {
+    @apply from-secondary-50 to-secondary-500 dark:from-secondary-400 dark:to-secondary-700 bg-clip-text text-transparent bg-gradient-to-b;
+}
+
 /** Highlighted text **/
 
 .text-highlight {
@@ -30,12 +34,12 @@
 /** Hero section **/
 
 .hero-section-title {
-    @apply text-6xl tracking-tighter leading-none pt-4 font-semibold text-center mb-8;
+    @apply text-6xl tracking-tighter leading-none pt-4 font-bold text-center mb-8;
 }
 
 /** Header for each section **/
 .header-title {
-    @apply text-5xl tracking-tighter leading-none pt-4 pb-2 font-semibold text-center;
+    @apply text-5xl from-secondary-50 to-secondary-500 dark:from-secondary-400 dark:to-secondary-700 bg-clip-text text-transparent bg-gradient-to-b tracking-tighter leading-none pt-4 pb-2 font-semibold text-center;
 }
 
 .subtitle {

@@ -15,8 +15,10 @@ class EditAboutSection extends EditRecord
 {
     protected static string $resource = SettingResource::class;
     protected static ?string $navigationIcon = 'heroicon-o-user';
-    protected static ?string $title = 'About Section';
-
+    public static function getNavigationLabel(): string
+    {
+        return __('About Section');
+    }
     public function form(Form $form): Form
     {
         return $form->schema([

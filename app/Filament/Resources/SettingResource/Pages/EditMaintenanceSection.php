@@ -17,8 +17,10 @@ class EditMaintenanceSection extends EditRecord
 {
     protected static string $resource = SettingResource::class;
     protected static ?string $navigationIcon = 'heroicon-o-wrench-screwdriver';
-    protected static ?string $title = 'Maintenance Mode';
-
+    public static function getNavigationLabel(): string
+    {
+        return __('Maintenance Mode');
+    }
     public function form(Form $form): Form
     {
         return $form

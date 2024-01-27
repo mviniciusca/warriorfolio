@@ -16,8 +16,11 @@ class EditPortfolioSection extends EditRecord
     protected static string $resource = SettingResource::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rocket-launch';
-    protected static ?string $title = 'Portfolio Section';
 
+    public static function getNavigationLabel(): string
+    {
+        return __('Portfolio Section');
+    }
     public function form(Form $form): Form
     {
         return $form->schema([

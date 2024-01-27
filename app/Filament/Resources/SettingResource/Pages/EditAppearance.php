@@ -18,8 +18,10 @@ class EditAppearance extends EditRecord
 {
     protected static string $resource = SettingResource::class;
     protected static ?string $navigationIcon = 'heroicon-o-paint-brush';
-    protected static ?string $title = 'Design & Appearance';
-
+    public static function getNavigationLabel(): string
+    {
+        return __('Design & Appearance');
+    }
     public function form(Form $form): Form
     {
         return $form

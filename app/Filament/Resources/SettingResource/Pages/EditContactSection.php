@@ -16,7 +16,10 @@ class EditContactSection extends EditRecord
 {
     protected static string $resource = SettingResource::class;
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
-    protected static ?string $title = 'Contact Section';
+    public static function getNavigationLabel(): string
+    {
+        return __('Contact Section');
+    }
 
     public function form(Form $form): Form
     {

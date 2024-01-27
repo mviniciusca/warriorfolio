@@ -15,8 +15,10 @@ class EditClientSection extends EditRecord
 {
     protected static string $resource = SettingResource::class;
     protected static ?string $navigationIcon = 'heroicon-o-building-office';
-    protected static ?string $title = 'Clients Section';
-
+    public static function getNavigationLabel(): string
+    {
+        return __('Clients Section');
+    }
     public function form(Form $form): Form
     {
         return $form->schema([

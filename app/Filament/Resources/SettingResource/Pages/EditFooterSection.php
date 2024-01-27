@@ -14,7 +14,10 @@ class EditFooterSection extends EditRecord
 {
     protected static string $resource = SettingResource::class;
     protected static ?string $navigationIcon = 'heroicon-o-bolt';
-    protected static ?string $title = 'Footer Section';
+    public static function getNavigationLabel(): string
+    {
+        return __('Footer Section');
+    }
 
     public function form(Form $form): Form
     {

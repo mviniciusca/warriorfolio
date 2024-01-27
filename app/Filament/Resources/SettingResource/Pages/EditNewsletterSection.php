@@ -16,8 +16,10 @@ class EditNewsletterSection extends EditRecord
 {
     protected static string $resource = SettingResource::class;
     protected static ?string $navigationIcon = 'heroicon-o-envelope-open';
-    protected static ?string $title = 'Newsletter Section';
-
+    public static function getNavigationLabel(): string
+    {
+        return __('Newsletter Section');
+    }
     public function form(Form $form): Form
     {
         return $form

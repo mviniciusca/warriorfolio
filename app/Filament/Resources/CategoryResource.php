@@ -20,10 +20,13 @@ use App\Filament\Resources\CategoryResource\RelationManagers;
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-tag';
     protected static ?string $navigationGroup = 'App Sections';
     protected static ?string $navigationLabel = 'Categories';
+    public static function getNavigationParentItem(): ?string
+    {
+        return __('Projects');
+    }
     protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
