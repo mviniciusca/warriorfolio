@@ -5,7 +5,6 @@ namespace App\View\Components\Hero;
 use Closure;
 use App\Models\Layout;
 use App\Models\Module;
-use App\Models\Setting;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
@@ -37,17 +36,13 @@ class Section extends Component
                 'hero_alt_button_url',
                 'hero_section_image',
                 'hero_button_link_target',
-                'hero_alt_button_link_target'
+                'hero_alt_button_link_target',
+                'hero_section_bg_image',
+                'hero_section_bg_position',
+                'hero_section_bg_size',
+                'hero_section_bg_repeat',
+                'hero_is_bg_visible',
             ])
-                ->first(),
-            'background' => Setting::query()
-                ->select([
-                    'background_image',
-                    'background_image_visibility',
-                    'background_image_position',
-                    'background_image_size',
-                    'background_image_repeat',
-                ])
                 ->first(),
         ]);
     }

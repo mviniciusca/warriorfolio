@@ -1,6 +1,6 @@
 @if($module->hero)
 {{-- Background Module --}}
-<x-hero.background :background='$background' />
+<x-hero.background :info='$info' />
 {{-- Hero Section --}}
 <section class="py-12">
     <div class="px-4 py-4 md:py-12">

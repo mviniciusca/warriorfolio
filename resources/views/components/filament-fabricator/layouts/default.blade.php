@@ -19,10 +19,11 @@
     @filamentStyles
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
+<x-ui.background />
 @livewire('notifications')
 
 <body
-    class="antialiased overflow-x-hidden scroll-smooth text-secondary-500 bg-secondary-50 dark:bg-secondary-900  dark:text-secondary-400">
+    class="overflow-x-hidden scroll-smooth bg-secondary-50 text-secondary-500 antialiased dark:bg-secondary-900 dark:text-secondary-300">
     @if(!$maintenance)
     <x-ui.chatbox />
     <x-filament-fabricator::page-blocks :blocks="$page->blocks" />

@@ -72,11 +72,9 @@ class EditAppearance extends EditRecord
                                 ->default('no-repeat')
                                 ->helperText('Choose the repeat of the background image on your application.'),
                         ])->columns(3)->columnSpanFull(),
-                        Toggle::make('dark_mode')
-                            ->label('Dark Mode')
-                            ->helperText('Enable or disable dark mode on your application.'),
                         Toggle::make('background_image_visibility')
                             ->label('Background Image Visibility')
+                            ->columnSpanFull()
                             ->helperText('Show or hide the background image on your application. This option prevent to show the default background image on your application.'),
                         FileUpload::make('logo')
                             ->image()

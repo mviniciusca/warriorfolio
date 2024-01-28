@@ -24,6 +24,11 @@ return new class extends Migration {
             $table->string('hero_alt_button_url')->nullable();
             $table->string('hero_alt_button_link_target')->default('_self');
             $table->string('hero_section_image')->nullable();
+            $table->string('hero_section_bg_image')->nullable();
+            $table->string('hero_section_bg_position')->default('bg-center');
+            $table->string('hero_section_bg_size')->default('bg-cover');
+            $table->string('hero_section_bg_repeat')->default('bg-no-repeat');
+            $table->boolean('hero_is_bg_visible')->default(true);
             // Portfolio Section
             $table->boolean('portfolio_section_fill')->default(false);
             $table->string('portfolio_section_title')->nullable();

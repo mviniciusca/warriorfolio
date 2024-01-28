@@ -38,7 +38,7 @@ It has not been reviewed yet.
   
 
 ### Apresentando Warriorfolio 2
-Warriorfolio tem a proposta de ser simples, rápído e eficaz na criação do seu portfolio. Chega em sua nova versão mais robusto, mais inteligente, flexível e com novos recursos intuitivos. Pensado no conceito modular, você pode escolher com extrema facilidade a ordem que a sua página será montada e exibida ao público. Desde uma Landing Page até um site completo com páginas separadas, mas com módulos que se integram entre si, como um verdadeiro Lego, Warriorfolio 2 é a ferramenta ideal para você que quer ter um portfolio simples, rápido e eficaz.
+Warriorfolio tem a proposta de ser simples, rápído e eficaz na criação do seu portfolio. Chega em sua nova versão mais robusto, mais inteligente, flexível e com novos recursos intuitivos. Pensado no conceito modular, você pode escolher com extrema facilidade a ordem que a sua página será montada e exibida ao público. Desde uma Landing Page até um site completo com páginas separadas, mas com módulos que se integram entre si, como um verdadeiro LEGO, Warriorfolio 2 é a ferramenta ideal para você que quer ter um portfolio simples, rápido e eficaz.
 
 Projetado para ser 100% administrado pelo Painel de Controle, sem a necessidade de conhecimentos técnicos profundos em programação, PHP e nem mesmo em Laravel.
 

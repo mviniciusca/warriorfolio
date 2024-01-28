@@ -86,12 +86,52 @@ class EditHeroSection extends EditRecord
                             ->label('Hero Section Alt Button Link Target')
                             ->helperText('Choose the target for the alt button link.'),
                         FileUpload::make('hero_section_image')
-                            ->label('Hero Section Image')
+                            ->label('Hero Section Featured Image')
                             ->directory('hero')
                             ->image()
-                            ->imageEditor()
                             ->columnSpanFull()
+                            ->imageEditor()
                             ->helperText('This is your featured image for the hero section.'),
+                        Group::make()->columns(2)->schema([
+                            Toggle::make('hero_is_bg_visible')
+                                ->label('Show Background Image')
+                                ->helperText('Show or hide the background image.'),
+                            FileUpload::make('hero_section_bg_image')
+                                ->label('Hero Section Background Image')
+                                ->directory('hero/bg')
+                                ->image()
+                                ->imageEditor()
+                                ->helperText('Upload a background image for the hero section.'),
+                            Group::make()->columns(3)->schema([
+                                Select::make('hero_section_bg_position')
+                                    ->options([
+                                        'bg-center' => 'Center',
+                                        'bg-top' => 'Top',
+                                        'bg-bottom' => 'Bottom',
+                                        'bg-left' => 'Left',
+                                        'bg-right' => 'Right',
+                                    ])
+                                    ->label('Background Image Position')
+                                    ->helperText('Choose the position of the background image.'),
+                                Select::make('hero_section_bg_size')
+                                    ->options([
+                                        'bg-auto' => 'Auto',
+                                        'bg-cover' => 'Cover',
+                                        'bg-contain' => 'Contain',
+                                    ])
+                                    ->label('Background Image Size')
+                                    ->helperText('Choose the size of the background image.'),
+                                Select::make('hero_section_bg_repeat')
+                                    ->options([
+                                        'bg-repeat' => 'Repeat',
+                                        'bg-no-repeat' => 'No Repeat',
+                                        'bg-repeat-x' => 'Repeat X',
+                                        'bg-repeat-y' => 'Repeat Y',
+                                    ])
+                                    ->label('Background Image Repeat')
+                                    ->helperText('Choose the repeat of the background image.'),
+                            ])->columnSpanFull()
+                        ])->columnSpanFull(),
                     ])->columns(2),
                 ]),
         ]);

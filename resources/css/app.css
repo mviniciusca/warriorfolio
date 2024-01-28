@@ -9,6 +9,23 @@
 /** animate.css **/
 @import '../../node_modules/animate.css/animate.css';
 
+/** animate opacity : start 100% -> end 0% after 2 seconds **/
+.animate-opacity {
+    animation: animateOpacity 2s ease-in;
+}
+
+@keyframes animateOpacity {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.05;
+    }
+}
+
+
+
 /** Core CSS **/
 
 @tailwind base;
@@ -21,29 +38,28 @@
     }
 }
 
+/** Gradients **/
 .spacial-gradient {
-    @apply bg-gradient-to-tr from-primary-500 to-tertiary-400;
+    @apply bg-gradient-to-r from-primary-500 to-tertiary-400 bg-clip-text p-1 text-transparent;
 }
 
 .text-gradient {
-    @apply bg-gradient-to-b from-secondary-200 to-secondary-600 bg-clip-text text-transparent dark:from-secondary-400 dark:to-secondary-700;
+    @apply bg-gradient-to-b from-secondary-200 to-secondary-600 bg-clip-text p-1 text-transparent dark:from-secondary-200 dark:to-secondary-700;
 }
 
 /** Highlighted text **/
-
 .text-highlight {
-    @apply bg-gradient-to-r from-primary-600 to-tertiary-400 bg-clip-text font-bold text-transparent;
+    @apply bg-gradient-to-r from-primary-600 to-tertiary-400 bg-clip-text p-1 font-bold text-transparent;
 }
 
 /** Hero section **/
-
 .hero-section-title {
     @apply mb-8 pt-4 text-center text-6xl font-bold leading-none tracking-tighter;
 }
 
 /** Header for each section **/
 .header-title {
-    @apply bg-gradient-to-b from-secondary-50 to-secondary-500 bg-clip-text pb-2 pt-4 text-center text-5xl font-semibold leading-none tracking-tighter text-transparent dark:from-secondary-300 dark:to-secondary-600;
+    @apply bg-gradient-to-b from-secondary-400 to-secondary-700 bg-clip-text pb-2 pt-4 text-center text-5xl font-semibold leading-none tracking-tighter text-transparent dark:from-secondary-200 dark:to-secondary-500;
 }
 
 .subtitle {
