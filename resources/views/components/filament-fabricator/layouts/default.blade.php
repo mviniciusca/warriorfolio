@@ -8,14 +8,14 @@
 
 <body class="app-core" id="app">
     {{-- App Default Core  --}}
-    @if(!$maintenance)
+    @if(!$maintenance || $discovery && auth()->user())
     <x-ui.background />
     <x-ui.chatbox />
     <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
     @endif
     {{-- End App Default Core --}}
     {{-- Maintenance Mode --}}
-    @if($maintenance)
+    @if($maintenance && (!$discovery || !auth()->user()))
     <x-maintenance.section />
     @endif
     {{-- End Maintenance Mode --}}

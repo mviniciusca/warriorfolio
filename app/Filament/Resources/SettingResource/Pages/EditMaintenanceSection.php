@@ -36,7 +36,7 @@ class EditMaintenanceSection extends EditRecord
                             ->default(false),
                         Toggle::make('is_discovery')
                             ->label('Discovery Mode')
-                            ->helperText('Enable discovery mode to allow your application visible to you based in your active login session.')
+                            ->helperText('Enable discovery mode to allow your application visible to you based in your active login session while maintenance mode is enabled.')
                             ->default(false),
                         Toggle::make('is_contact')
                             ->label('Show Contact Form')

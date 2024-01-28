@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Models\Maintenance;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
         view()->share(
             'maintenance',
             Maintenance::all()->first()->is_active,
+        );
+        view()->share(
+            'discovery',
+            Maintenance::all()->first()->is_discovery,
         );
     }
 }
