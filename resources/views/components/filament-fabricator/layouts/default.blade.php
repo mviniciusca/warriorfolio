@@ -7,6 +7,7 @@
 </head>
 
 <body class="app-core" id="app">
+    <x-header.alerts />
     {{-- App Default Core  --}}
     @if(!$maintenance || $discovery && auth()->user())
     <x-ui.background />

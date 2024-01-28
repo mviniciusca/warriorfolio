@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->boolean('visible')->default(false);
             $table->string('animation_style')->default('animate-pulse');
             $table->string('color')->default('#9000c7');
-            $table->string('icon')->default('call');
+            $table->string('icon')->default('logo-whatsapp');
             $table->timestamps();
         });
     }
