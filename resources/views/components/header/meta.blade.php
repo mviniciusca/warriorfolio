@@ -1,9 +1,8 @@
-@if($meta->meta_title)
-<title>{{ $meta->name }} - {{ $meta->meta_title }}</title>
+@if($meta->name || $meta->meta_title)
+<title>{{ $meta->name . $meta->meta_title }}</title>
 @endif
-@if($meta->favicon)
-<link rel="shortcut icon" href="{{ asset('storage/' . $meta->favicon) }}" />
-@endif
+<link rel="shortcut icon"
+    href="{{ $meta->favicon ? asset('storage/' . $meta->favicon) : asset('img/core/favicon.png') }}" />
 @if($meta->meta_description)
 <meta name="description" content="{{ $meta->meta_description }}" />
 @endif
@@ -29,7 +28,7 @@
     gtag('config', '{{ $meta->google_analytics }}');
 </script>
 @endif
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @if($meta->header_scripts)
 {!! $meta->header_scripts !!}
 @endif
-<meta name="csrf-token" content="{{ csrf_token() }}">

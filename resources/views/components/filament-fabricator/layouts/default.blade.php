@@ -3,38 +3,25 @@
 
 <head>
     <x-header.meta />
-    {{-- Google Fonts CDN --}}
-    <x-header.google-fonts />
-    {{-- Swiper CDN --}}
-    <link rel=" stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    {{-- Iconicons CDN --}}
-    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-    {{-- Vite --}}
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
-    </style>
-    @filamentStyles
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    <x-header.scripts />
 </head>
-<x-ui.background />
-@livewire('notifications')
 
-<body
-    class="overflow-x-hidden scroll-smooth bg-secondary-50 text-secondary-500 antialiased dark:bg-secondary-900 dark:text-secondary-300">
+<body class="app-core" id="app">
+    {{-- App Default Core  --}}
     @if(!$maintenance)
+    <x-ui.background />
     <x-ui.chatbox />
     <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
     @endif
-    {{-- Ionicons CDN --}}
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    @filamentScripts
-    @vite('resources/js/app.js')
+    {{-- End App Default Core --}}
+    {{-- Maintenance Mode --}}
+    @if($maintenance)
+    <x-maintenance.section />
+    @endif
+    {{-- End Maintenance Mode --}}
+    {{-- Body Scripts --}}
+    <x-header.body-scripts />
+    {{-- End Body Scripts --}}
 </body>
-@if($maintenance)
-<x-maintenance.section />
-@endif
 
 </html>
