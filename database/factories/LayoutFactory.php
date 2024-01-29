@@ -21,6 +21,12 @@ class LayoutFactory extends Factory
             'hero_section_title' => 'Portfolio for the <span class="text-highlight">Creative</span> Developer',
             'hero_section_subtitle_text' => 'Warriorfolio is a free, open source, <br/>
             cms for creating and managing your portfolio website.',
+            'hero_section_button_text' => 'my work',
+            'hero_section_button_url' => '#portfolio',
+            'hero_button_link_target' => '_self',
+            'hero_alt_button_text' => 'on the github',
+            'hero_alt_button_url' => 'https://github.com/mviniciusca',
+            'hero_alt_button_link_target' => '_blank',
 
             /** Portfolio Section */
             'portfolio_section_title' => 'Experience <span class="text-highlight">Tranquility</span>',
