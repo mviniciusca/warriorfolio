@@ -38,9 +38,8 @@ class DatabaseSeeder extends Seeder
             ->count(1)
             ->create();
         Mail::factory(5)->create();
-        Newsletter::factory(50)->create();
-        Slideshow::factory(1)->create();
-        Course::factory(10)->create();
+        Newsletter::factory(5)->create();
+        Course::factory(5)->create();
         Category::factory()->create();
         DB::table('pages')
             ->insert([
