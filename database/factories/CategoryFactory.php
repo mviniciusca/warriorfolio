@@ -24,18 +24,4 @@ class CategoryFactory extends Factory
             'icon' => 'logo-octocat',
         ];
     }
-
-    /** Create a project after create a category */
-
-    public function configure(): self
-    {
-        return $this->afterCreating(function (\App\Models\Category $category) {
-            \App\Models\Project::factory()
-                ->count(1)
-                ->create([
-                    'category_id' => $category->id,
-                ]);
-        });
-    }
-
 }
