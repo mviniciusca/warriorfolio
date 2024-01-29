@@ -29,7 +29,7 @@ class ProjectFactory extends Factory
             Filament is powered by Livewire technology, which is a framework for Laravel that allows the creation of applications in real time, without the need for in-depth knowledge of JavaScript. Livewire is a product of Caleb Porzio, creator of AlpineJs.
             <p></p>
             Warriorfolio 2 is also under the umbrella of one of the biggest frameworks in the world, Laravel. Created by Taylor Otwell, Laravel is a robust, secure, scalable framework with complete and easy-to-understand documentation. Laravel is a framework that is constantly evolving and is a highly tested product with an active and engaged community.',
-            'image_cover' => 'img/core/project-cover-demo.png',
+            'image_cover' => 'core/project-cover-demo.png',
             'external_link' => 'https://github.com/mviniciusca/warriorfolio',
         ];
     }

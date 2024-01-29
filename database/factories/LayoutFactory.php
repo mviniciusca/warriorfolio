@@ -18,8 +18,7 @@ class LayoutFactory extends Factory
     {
         return [
             /** Hero Section */
-            'hero_section_title' => 'Building the what\'s next <br/>
-            with <span class="text-highlight">Laravel</span> + Filament',
+            'hero_section_title' => 'Portfolio for the <span class="text-highlight">Creative</span> Developer',
             'hero_section_subtitle_text' => 'Warriorfolio is a free, open source, <br/>
             cms for creating and managing your portfolio website.',
 
