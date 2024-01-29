@@ -10,6 +10,9 @@ class Navigation extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $casts = [
+        'content' => 'array',
+    ];
     public function setting()
     {
         return $this->belongsTo(Setting::class);

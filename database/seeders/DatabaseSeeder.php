@@ -34,7 +34,6 @@ class DatabaseSeeder extends Seeder
         /** Add main page settings on database */
         Setting::factory()
             ->hasLayout()
-            ->hasNavigation()
             ->count(1)
             ->create();
         Mail::factory(5)->create();

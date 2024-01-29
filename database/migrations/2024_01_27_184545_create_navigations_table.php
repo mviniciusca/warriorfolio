@@ -13,11 +13,8 @@ return new class extends Migration {
         Schema::create('navigations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('setting_id')->constrained()->cascadeOnDelete();
-            $table->string('name')->nullable();
-            $table->string('url')->nullable();
-            $table->boolean('is_new_tab')->default(false);
-            $table->boolean('is_visible')->default(true);
-            $table->integer('order')->default(0);
+            $table->json('content')->nullable();
+            $table->string('sort')->nullable();
             $table->timestamps();
         });
     }

@@ -31,6 +31,7 @@ class SettingResource extends Resource
         return $page->generateNavigationItems([
             Pages\EditSetting::class,
             Pages\EditAppearance::class,
+            Pages\EditNavigation::class,
             Pages\EditAboutSection::class,
             Pages\EditClientSection::class,
             Pages\EditContactSection::class,
@@ -184,6 +185,7 @@ class SettingResource extends Resource
             'edit-newsletter-section' => Pages\EditNewsletterSection::route('/{record}/edit-newsletter-section'),
             'edit-footer-section' => Pages\EditFooterSection::route('/{record}/edit-footer-section'),
             'edit-maintenance-section' => Pages\EditMaintenanceSection::route('/{record}/edit-maintenance-section'),
+            'edit-navigation' => Pages\EditNavigation::route('/{record}/edit-navigation'),
         ];
     }
 }
