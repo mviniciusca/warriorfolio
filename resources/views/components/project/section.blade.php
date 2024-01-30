@@ -29,5 +29,8 @@
             </div>
         </div>
     </section>
+    @if($projects->count() === 0)
+    <x-ui.empty-section :auth="'Go to your Dashboard and create a New Project.'" />
+    @endif
 </x-core.layout>
 @endif

@@ -62,7 +62,7 @@
             {{-- Empty Fields --}}
             @if($info->contact_section_address == null ||
             $info->contact_section_phone == null && $info->contact_section_email == null)
-            <x-contact.empty-address />
+            <x-contact.empty-address :$info />
             @endif
             {{-- End Empty Fields --}}
         </div>
@@ -73,5 +73,8 @@
             @livewire('mail.create-mail')
         </div>
         {{-- End Contact Form--}}
+
+
+
 </x-core.layout>
 @endif

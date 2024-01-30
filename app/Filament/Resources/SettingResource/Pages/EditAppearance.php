@@ -30,6 +30,11 @@ class EditAppearance extends EditRecord
                     ->description('Change the design and appearance of your application')
                     ->icon('heroicon-o-photo')
                     ->schema([
+                        Toggle::make('background_image_visibility')
+                            ->label('Background Image Visibility')
+                            ->inline(false)
+                            ->columnSpanFull()
+                            ->helperText('Show or hide the background image on your application. This option prevent to show the default background image on your application.'),
                         FileUpload::make('background_image')
                             ->image()
                             ->imageEditor()
@@ -72,10 +77,7 @@ class EditAppearance extends EditRecord
                                 ->default('no-repeat')
                                 ->helperText('Choose the repeat of the background image on your application.'),
                         ])->columns(3)->columnSpanFull(),
-                        Toggle::make('background_image_visibility')
-                            ->label('Background Image Visibility')
-                            ->columnSpanFull()
-                            ->helperText('Show or hide the background image on your application. This option prevent to show the default background image on your application.'),
+
                         FileUpload::make('logo')
                             ->image()
                             ->imageEditor()

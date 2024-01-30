@@ -6,7 +6,7 @@
     <x-header.scripts />
 </head>
 
-<body class="app-core pt-1" id="app">
+<body class="app-core pt-0" id="app">
     <x-header.alerts />
     {{-- App Default Core  --}}
     @if(!$maintenance || $discovery && auth()->user())

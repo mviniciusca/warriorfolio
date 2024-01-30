@@ -20,6 +20,11 @@
         {{-- About Section --}}
         <section class="text-md w-full p-12 leading-loose md:w-2/4" id="about-you">
             {!! $profile->about !!}
+
+            @if(!$profile->about)
+            <x-ui.empty-section :auth="'Go to your Dashboard and create a New About.'" />
+            @endif
+
         </section>
 
         {{-- Courses and Graduations Section --}}

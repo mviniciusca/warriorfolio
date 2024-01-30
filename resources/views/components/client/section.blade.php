@@ -21,6 +21,9 @@
             </div>
             @endforeach
         </div>
+        @if($clients->count() === 0)
+        <x-ui.empty-section :auth="'Go to your Dashboard and create a New Client.'" />
+        @endif
     </section>
 </x-core.layout>
 @endif

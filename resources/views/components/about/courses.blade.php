@@ -17,3 +17,7 @@
     </li>
     @endforeach
 </ol>
+{{-- Empty Section --}}
+@if($courses->count() === 0)
+<x-ui.empty-section :auth="'Go to your Dashboard and create a New Course.'" />
+@endif
