@@ -44,16 +44,19 @@ body {
 }
 
 /** Gradients **/
-.spacial-gradient {
+.spacial-gradient,
+.sp {
     @apply bg-gradient-to-r from-primary-500 to-tertiary-400 bg-clip-text p-1 text-transparent;
 }
 
-.text-gradient {
+.text-gradient,
+.tg {
     @apply bg-gradient-to-b from-secondary-300 to-secondary-500 bg-clip-text p-1 text-transparent dark:from-secondary-300 dark:to-secondary-700;
 }
 
 /** Highlighted text **/
-.text-highlight {
+.text-highlight,
+.tl {
     @apply bg-gradient-to-r from-primary-600 to-tertiary-400 bg-clip-text p-1 font-bold text-transparent;
 }
 
