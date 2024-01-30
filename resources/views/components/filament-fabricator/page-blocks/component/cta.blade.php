@@ -11,7 +11,7 @@
     <section class="w-full">
         <div
             class="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 sm:py-16 md:grid md:grid-cols-2 lg:px-6 xl:gap-16">
-            <img class="w-full" src="{{ asset('storage/' . $image) }}" alt="image">
+            <img src="{{ asset('storage/' . $image) }}" alt="image">
             <div class="mt-4 md:mt-0">
                 <h2 class="mb-4 text-4xl font-extrabold tracking-tight">
                     {!! $title !!}
