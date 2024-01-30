@@ -7,7 +7,9 @@
                         <x-ui.logo />
                     </a>
                 </span>
+                @if($navigation)
                 <x-header.navigation :$navigation />
+                @endif
             </div>
             <div class="flex flex-wrap items-center">
                 <livewire:dark-mode wire:key='header-dark-mode' />
