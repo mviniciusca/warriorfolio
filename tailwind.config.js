@@ -15,9 +15,9 @@ darkMode: 'class',
   theme: {
       extend: {
           colors: {
-              primary: colors.purple,
-              secondary: colors.zinc,
-              tertiary: colors.rose,
+              primary: colors.purple, // accent color
+              secondary: colors.zinc, // choose a dark color.
+              tertiary: colors.rose, // highlight effects color
         }
     },
   },
