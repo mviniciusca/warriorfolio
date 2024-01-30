@@ -20,9 +20,7 @@
                                 {{ $item['description'] }}
                             </p>
                         </div>
-
                         @endforeach
-
                     </div>
                 </div>
             </section>
