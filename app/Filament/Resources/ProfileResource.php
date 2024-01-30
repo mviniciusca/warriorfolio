@@ -56,9 +56,10 @@ class ProfileResource extends Resource
                         ->preserveFilenames()
                         ->openable()
                         ->downloadable()
-                        ->label('Curriculum Vitae')
-                        ->placeholder('Attach your CV')
+                        ->label('Resume/CV')
+                        ->placeholder('Attach your resume')
                         ->visibility('private')
+                        ->acceptedFileTypes(['application/pdf'])
                         ->directory('profile/documents'),
                     Forms\Components\Toggle::make('is_downloadable')
                         ->label('Downloadable CV')

@@ -23,6 +23,9 @@ class Cta extends PageBlock
                     ->columnSpanFull()
                     ->label('Image')
                     ->required()
+                    ->imageEditor()
+                    ->directory('images/content')
+                    ->moveFiles()
                     ->image(),
                 RichEditor::make('content')
                     ->columnSpanFull()

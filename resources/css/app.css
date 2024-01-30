@@ -51,7 +51,7 @@ body {
 
 .text-gradient,
 .tg {
-    @apply bg-gradient-to-b from-secondary-300 to-secondary-500 bg-clip-text p-1 text-transparent dark:from-secondary-300 dark:to-secondary-700;
+    @apply bg-gradient-to-b from-secondary-300 to-secondary-500 bg-clip-text p-1 text-transparent dark:from-secondary-300 dark:to-secondary-500;
 }
 
 /** Highlighted text **/
