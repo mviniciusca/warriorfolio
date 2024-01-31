@@ -3,7 +3,7 @@
 
 @if($is_active)
 <div class="px-2 py-2 md:py-2">
-    <div class="mx-auto max-w-7xl">
+    <div class="mx-auto max-w-5xl">
         @if($title)
         <h2 id="slider-title my-2" class="mx-auto text-center font-bold">
             {{ $title }}

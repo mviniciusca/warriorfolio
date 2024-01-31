@@ -4,6 +4,7 @@ namespace App\Filament\Fabricator\PageBlocks\Component;
 
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -15,28 +16,38 @@ class FeatureList extends PageBlock
     {
         return Block::make('component.feature-list')
             ->schema([
-                Toggle::make('is_active')
-                    ->default(true)
-                    ->required()
-                    ->label('Show Module'),
-                Repeater::make('features')
+                Section::make('Icon Feature List')
+                    ->description('Add a list of features to your page with icon and description.')
+                    ->icon('heroicon-o-rectangle-stack')
+                    ->collapsed()
                     ->schema([
-                        TextInput::make('title')
+                        Toggle::make('is_active')
+                            ->default(true)
                             ->required()
-                            ->columnSpan(2)
-                            ->label('Title of the feature'),
-                        TextInput::make('icon')
-                            ->label('Icon (optional)')
-                            ->prefix('ion-icon')
-                            ->placeholder('icon-name')
-                            ->columnSpan(2)
-                            ->helperText('Ionicon Name (without the ion-icon prefix)'),
-                        Textarea::make('description')
-                            ->columnSpanFull()
-                            ->rows(3)
-                            ->helperText('Here you can talk about the feature in detail.')
-                            ->label('Description'),
-                    ])->columns(4),
+                            ->label('Show Module'),
+                        Repeater::make('features')
+                            ->schema([
+                                TextInput::make('title')
+                                    ->required()
+                                    ->columnSpan(2)
+                                    ->helperText('The title of the feature. Max: 255 characters.')
+                                    ->maxLength(255)
+                                    ->label('Title of the feature.'),
+                                TextInput::make('icon')
+                                    ->label('Icon (optional)')
+                                    ->prefix('ion-icon')
+                                    ->placeholder('icon-name')
+                                    ->columnSpan(2)
+                                    ->maxLength(255)
+                                    ->helperText('Ionicon Name (without the ion-icon prefix)'),
+                                Textarea::make('description')
+                                    ->columnSpanFull()
+                                    ->maxLength(5000)
+                                    ->rows(3)
+                                    ->helperText('Here you can talk about the feature in detail. Max: 5000 characters.')
+                                    ->label('Description (optional)'),
+                            ])->columns(4)->collapsed(),
+                    ]),
             ]);
     }
 
