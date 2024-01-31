@@ -20,7 +20,7 @@ class Module extends PageBlock
         return Block::make('component.module')
             ->schema([
 
-                Section::make('Module Component')
+                Section::make('Component: Module')
                     ->description('Create a module component to be used in the page.')
                     ->icon('heroicon-o-cube')
                     ->collapsed()

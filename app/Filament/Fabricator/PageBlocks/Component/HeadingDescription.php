@@ -5,11 +5,11 @@ namespace App\Filament\Fabricator\PageBlocks\Component;
 use Filament\Forms\Components\Builder\Block;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
-class HeadingDescripion extends PageBlock
+class HeadingDescription extends PageBlock
 {
     public static function getBlockSchema(): Block
     {
-        return Block::make('component.heading-descripion')
+        return Block::make('component.heading-description')
             ->schema([
                 //
             ]);

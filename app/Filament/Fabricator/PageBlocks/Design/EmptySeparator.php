@@ -15,11 +15,12 @@ class EmptySeparator extends PageBlock
             ->schema([
                 Section::make('Design: Empty Separator')
                     ->description('Add an empty separator to your page.')
-                    ->icon('heroicon-o-minus-circle')
+                    ->icon('heroicon-o-paint-brush')
                     ->collapsed()
                     ->schema([
                         Select::make('class')
-                            ->label('Padding')
+                            ->label('Vertical padding (py)')
+                            ->helperText('Select the padding size for the separator.')
                             ->options([
                                 'py-1 md:py-2 lg:py-4' => 'Extra Small',
                                 'py-3 md:py-6 lg:py-12' => 'Small',

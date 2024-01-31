@@ -16,7 +16,7 @@ class FeatureList extends PageBlock
     {
         return Block::make('component.feature-list')
             ->schema([
-                Section::make('Icon Feature List')
+                Section::make('Component: Icon Feature List')
                     ->description('Add a list of features to your page with icon and description.')
                     ->icon('heroicon-o-rectangle-stack')
                     ->collapsed()
