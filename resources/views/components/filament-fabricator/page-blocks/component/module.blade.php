@@ -10,16 +10,18 @@
 
 
 @if($is_active)
-<section class="{{ $tailwind_css_attributes }}" id="{{ $slug }}">
-    @if($title)
-    <div class="header-title">
-        {!! $title !!}
-    </div>
-    @endif
-    @if($subtitle)
-    <div class="subtitle mt-2 text-center text-xl">
-        {!! $subtitle !!}
-    </div>
-    @endif
-</section>
+<x-core.layout class="{{ $tailwind_css_attributes  }}" id="{{ $slug }}">
+    <section>
+        @if($title)
+        <div class="header-title">
+            {!! $title !!}
+        </div>
+        @endif
+        @if($subtitle)
+        <div class="subtitle mt-2 text-center text-xl">
+            {!! $subtitle !!}
+        </div>
+        @endif
+    </section>
+</x-core.layout>
 @endif

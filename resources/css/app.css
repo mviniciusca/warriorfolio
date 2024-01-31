@@ -62,12 +62,12 @@ body {
 
 /** Hero section **/
 .hero-section-title {
-    @apply mb-8 text-center text-6xl font-bold leading-none tracking-tighter;
+    @apply mb-8 text-center text-5xl font-bold leading-none tracking-tighter;
 }
 
 /** Header for each section **/
 .header-title {
-    @apply bg-gradient-to-b from-secondary-400 to-secondary-700 bg-clip-text text-center text-5xl font-semibold leading-none tracking-tighter text-transparent dark:from-secondary-200 dark:to-secondary-500;
+    @apply bg-gradient-to-b from-secondary-400 to-secondary-600 bg-clip-text text-center text-5xl font-extrabold leading-none tracking-tighter text-transparent dark:from-secondary-100 dark:to-secondary-300;
 }
 
 .subtitle {

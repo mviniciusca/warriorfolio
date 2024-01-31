@@ -2,11 +2,11 @@
 {{-- Background Module --}}
 <x-hero.background :info='$info' />
 {{-- Hero Section --}}
-<section class="py-6">
-    <div class="px-4 py-4 md:py-6">
+<section class="mt-24">
+    <div>
         <div class="mx-auto max-w-7xl">
-            <div class="container mx-auto flex flex-col items-center justify-center px-5 py-8">
-                <div class="mt-2 max-w-7xl text-center">
+            <div class="container mx-auto flex flex-col items-center justify-center">
+                <div class="max-w-7xl text-center">
                     @if($info->hero_section_title)
                     <h1 class="hero-section-title text-gradient animate__animated animate__fadeInUp animate__delay-1s">
                         {!! $info->hero_section_title !!}
@@ -23,19 +23,20 @@
                         {{-- Hero Section Button --}}
                         @if($info->hero_section_button_text == true && $info->hero_section_button_url == true)
                         <a target="{{ $info->hero_button_link_target }}" href="{{ $info->hero_section_button_url }}">
-                            <button
-                                class="inline-flex items-center rounded-md border border-secondary-600 border-opacity-60 bg-primary-500 px-6 py-2 align-middle text-lg text-secondary-50 transition-all duration-100 hover:opacity-80 focus:outline-none active:opacity-25">
+                            <x-ui.button>
                                 {{ $info->hero_section_button_text }}
-                            </button>
+                            </x-ui.button>
                         </a>
                         @endif
                         {{-- Hero Section Alternative Button --}}
                         @if($info->hero_alt_button_text && $info->hero_alt_button_url)
                         <a target="{{ $info->hero_alt_button_link_target }}" href="{{ $info->hero_alt_button_url }}">
-                            <button
-                                class="dark: inline-flex items-center rounded-md border border-secondary-600 border-opacity-60 bg-transparent px-6 py-2 align-middle text-lg text-secondary-700 transition-all duration-100 hover:bg-primary-500 hover:text-secondary-50 hover:opacity-90 focus:outline-none active:opacity-25 dark:text-secondary-50">
+                            <x-ui.button-alt>
                                 {{ $info->hero_alt_button_text }}
-                            </button>
+                                @if($info->hero_alt_button_link_target == '_blank')
+                                <ion-icon class="ml-1" name="trending-up-outline"></ion-icon>
+                                @endif
+                            </x-ui.button-alt>
                         </a>
                         @endif
                     </div>
