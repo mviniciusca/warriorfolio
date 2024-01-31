@@ -18,9 +18,9 @@ class Slider extends PageBlock
     {
         return Block::make('component.slider')
             ->schema([
-                Section::make('Slider')
-                    ->icon('heroicon-o-photo')
-                    ->description('Display a slider of images.')
+                Section::make('Component: Slider')
+                    ->icon('heroicon-o-cube')
+                    ->description('Display a slider of images. 5 images por view.')
                     ->schema([
                         Group::make()->schema([
                             Toggle::make('is_active')

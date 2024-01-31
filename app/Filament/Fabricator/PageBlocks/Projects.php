@@ -3,6 +3,9 @@
 namespace App\Filament\Fabricator\PageBlocks;
 
 use App\Models\Project;
+use App\Forms\Components\Core\Info;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Builder\Block;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
@@ -12,7 +15,18 @@ class Projects extends PageBlock
     {
         return Block::make('projects')
             ->schema([
-                //
+                Section::make('Core: Projects Section Module')
+                    ->description('Add a projects section module to your page')
+                    ->icon('heroicon-o-cpu-chip')
+                    ->collapsed()
+                    ->schema([
+                        Info::make()->schema([
+                            TextInput::make('active')
+                                ->hidden()
+                                ->label('Title')
+                                ->maxLength(1),
+                        ]),
+                    ])
             ]);
     }
 

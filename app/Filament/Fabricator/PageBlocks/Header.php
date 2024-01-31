@@ -6,6 +6,7 @@ use App\Forms\Components\Core\Info;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Builder\Block;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
+use Filament\Forms\Components\TextInput;
 
 class Header extends PageBlock
 {
@@ -15,10 +16,15 @@ class Header extends PageBlock
             ->schema([
                 Section::make('Core: Header')
                     ->description('Add a header to your page.')
-                    ->icon('heroicon-o-bars-3')
+                    ->icon('heroicon-o-cpu-chip')
                     ->collapsed()
                     ->schema([
-                        Info::make()
+                        Info::make()->schema([
+                            TextInput::make('active')
+                                ->hidden()
+                                ->label('Title')
+                                ->maxLength(1),
+                        ]),
                     ])
             ]);
     }
