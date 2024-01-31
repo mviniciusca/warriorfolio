@@ -2,8 +2,8 @@
 {{-- Background Module --}}
 <x-hero.background :info='$info' />
 {{-- Hero Section --}}
-<section class="py-12">
-    <div class="px-4 py-4 md:py-12">
+<section class="py-6">
+    <div class="px-4 py-4 md:py-6">
         <div class="mx-auto max-w-7xl">
             <div class="container mx-auto flex flex-col items-center justify-center px-5 py-8">
                 <div class="mt-2 max-w-7xl text-center">
@@ -43,7 +43,7 @@
                 </div>
                 {{-- Hero Section: Image --}}
                 @if($info->hero_section_image)
-                <div class="mt-8 rounded-xl" id=" hero-featured-image">
+                <div class="mt-8 rounded-xl" id="hero-featured-image">
                     <img class="animate__animated animate__fadeInUp animate__delay-2s rounded-t-2xl"
                         src="{{ asset('storage/' . $info->hero_section_image)}}" alt="hero-section-image" />
                 </div>

@@ -10,13 +10,12 @@
                     <div class="space-y-8 text-center md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3">
                         @foreach ($features as $item)
                         <div>
-                            <div
-                                class="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
-                                <ion-icon class="h-6 w-6 text-primary-500 dark:text-white" name="{{ $item['icon'] }}">
+                            <div class="mx-auto mb-4 flex items-center justify-center">
+                                <ion-icon class="h-10 w-10 text-primary-500" name="{{ $item['icon'] }}">
                                 </ion-icon>
                             </div>
-                            <h3 class="mb-2 text-xl font-bold dark:text-white">{{ $item['title'] }}</h3>
-                            <p class="text-gray-500 dark:text-gray-400">
+                            <h3 class="mb-2 text-lg font-bold">{{ $item['title'] }}</h3>
+                            <p class="">
                                 {{ $item['description'] }}
                             </p>
                         </div>
