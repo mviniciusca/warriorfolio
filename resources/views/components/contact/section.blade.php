@@ -32,21 +32,21 @@
         {{-- Address without Google Maps --}}
         <div class="grid w-1/2 content-start items-start lg:pr-24">
             @if($info->contact_section_address)
-            <x-ui.info-box title="Headquarter" icon="business">
+            <x-ui.info-box title="{{ __('Headquarter') }}" icon="business">
                 <p>{!! $info->contact_section_address !!}</p>
             </x-ui.info-box>
             @endif
             <div class="flex">
                 @if($info->contact_section_phone)
                 <span class="w-1/2">
-                    <x-ui.info-box title="Phone" icon="call">
+                    <x-ui.info-box title="{{ __('Phone') }}" icon="call">
                         <p>{!! $info->contact_section_phone !!}</p>
                     </x-ui.info-box>
                 </span>
                 @endif
                 @if($info->contact_section_email)
                 <span class="w-1/2">
-                    <x-ui.info-box title="Mail" icon="mail-open">
+                    <x-ui.info-box title="{{ __('Mail') }}" icon="mail-open">
                         <p>{!! $info->contact_section_email !!}</p>
                     </x-ui.info-box>
                 </span>
@@ -54,7 +54,7 @@
             </div>
             {{-- Social Network  --}}
             @if($social_network != 0)
-            <x-ui.info-box title="Follow" icon="infinite">
+            <x-ui.info-box title="{{ __('Follow') }}" icon="infinite">
                 <x-ui.social-network />
             </x-ui.info-box>
             @endif
@@ -73,8 +73,5 @@
             @livewire('mail.create-mail')
         </div>
         {{-- End Contact Form--}}
-
-
-
 </x-core.layout>
 @endif
