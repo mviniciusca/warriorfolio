@@ -20,7 +20,7 @@ slidesPerView: 5,
 loop: true,
 centerInsufficientSlides: true,
 centeredSlidesBounds: true,
-peed:300,
+peed:500,
 autoplay:true,
 centeredSlides: true,
 });
