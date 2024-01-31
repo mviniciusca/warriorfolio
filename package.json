@@ -18,6 +18,7 @@
         "vite": "^4.5.1"
     },
     "dependencies": {
-        "animate.css": "^4.1.1"
+        "animate.css": "^4.1.1",
+        "swiper": "^11.0.5"
     }
 }

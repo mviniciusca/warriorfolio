@@ -1,6 +1,6 @@
 import './bootstrap';
 import 'flowbite';
-
+import Swiper from 'swiper/bundle';
 
 /** Menu JS */
 document.querySelectorAll('#nav-menu a').forEach(function(link) {
@@ -15,12 +15,12 @@ targetSection.scrollIntoView({ behavior: 'smooth' });
 });
 
 /** Swipper JS */
-var swiper = new Swiper(".swiper", {
+const swiper = new Swiper(".swiper", {
 slidesPerView: 5,
 loop: true,
 centerInsufficientSlides: true,
 centeredSlidesBounds: true,
-peed:500,
+peed:300,
 autoplay:true,
 centeredSlides: true,
 });
