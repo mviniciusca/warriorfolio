@@ -2,7 +2,7 @@
     <form wire:submit="create">
         {{ $this->form }}
 
-        <x-ui.button :type="'submit'" :icon="'chevron-forward-outline'">
+        <x-ui.button :type="'submit'" class="mt-4 px-5 py-3 text-sm" :icon="'chevron-forward-outline'">
             {{ __('Send Message') }}
         </x-ui.button>
 

@@ -21,6 +21,7 @@ class HeadingDescription extends PageBlock
                 Section::make('Component: Heading Description')
                     ->description('Add a heading description to your page.')
                     ->icon('heroicon-o-cube')
+                    ->collapsed()
                     ->schema([
                         Toggle::make('is_active')
                             ->label('Active')
