@@ -21,13 +21,14 @@ class HeadingDescription extends PageBlock
                 Section::make('Component: Heading Description')
                     ->description('Add a heading description to your page.')
                     ->icon('heroicon-o-cube')
-                    ->collapsed()
+
                     ->schema([
                         Toggle::make('is_center')
                             ->label('Align text center')
+                            ->inline(false)
                             ->default(false),
-                        Select::make('text_size')
-                            ->label('Size')
+                        Select::make('heading_text_size')
+                            ->label('Heading Text Size')
                             ->options([
                                 'text-2xl' => '2xl',
                                 'text-3xl' => '3xl',
@@ -35,12 +36,31 @@ class HeadingDescription extends PageBlock
                                 'text-5xl' => '5xl',
                                 'text-6xl' => '6xl',
                             ])
-                            ->default('md'),
-                        TextInput::make('heading')
+                            ->default('text-3xl'),
+                        Select::make('content_text_size')
+                            ->label('Description Text Size')
+                            ->options([
+                                'text-xs' => 'xs',
+                                'text-sm' => 'sm',
+                                'text-md' => 'text-md',
+                                'text-lg' => 'lg',
+                                'text-xl' => 'xl',
+                                'text-2xl' => '2xl',
+                            ])
+                            ->default('text-base'),
+                        RichEditor::make('heading')
+                            ->toolbarButtons([
+                                'bold',
+                                'italic',
+                                'redo',
+                                'strike',
+                                'underline',
+                                'undo',
+                            ])
                             ->label('Heading')
                             ->placeholder('Enter a heading')
                             ->columnSpanFull()
-                            ->helperText('Heading text for the component.')
+                            ->helperText('Press enter to break a line! Twice to create a new paragraph. Hack: Bold a word to apply a text highlight. 😊')
                             ->required(),
                         RichEditor::make('content')
                             ->label('Description')
@@ -48,7 +68,7 @@ class HeadingDescription extends PageBlock
                             ->columnSpanFull()
                             ->helperText('Description text for the component. Press enter to break a line! Twice to create a new paragraph.')
                             ->required(),
-                    ])->columns(3)
+                    ])->columns(4)
             ]);
     }
 

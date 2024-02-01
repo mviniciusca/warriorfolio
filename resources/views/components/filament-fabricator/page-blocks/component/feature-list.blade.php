@@ -1,8 +1,8 @@
 @aware(['page'])
-@props(['features', 'attributes' => 'bg-white dark:bg-primary-800', 'is_active' => true])
+@props(['features'=> null, 'is_active' => true])
 
 @if($is_active)
-<section class="{{ $attributes }}">
+<section>
     <div class="px-2 py-2 md:py-0">
         <div class="mx-auto max-w-7xl">
             <section>

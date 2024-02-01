@@ -46,6 +46,11 @@ class SettingFactory extends Factory
             $setting->navigation()->create([
                 'setting_id' => $setting->id,
             ]);
+            $setting->core()->createMany([
+                ['setting_id' => $setting->id, 'module_name' => 'header'],
+                ['setting_id' => $setting->id, 'module_name' => 'footer'],
+                ['setting_id' => $setting->id, 'module_name' => 'newsletter']
+            ]);
         });
     }
 }

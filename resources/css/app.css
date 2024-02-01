@@ -56,6 +56,7 @@ body {
 
 /** Highlighted text **/
 .text-highlight,
+.heading-module-title strong,
 .tl {
     @apply bg-gradient-to-r from-primary-600 to-tertiary-400 bg-clip-text p-1 font-bold text-transparent;
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Core;
 use App\Models\Layout;
 use App\Models\Module;
 use App\Models\Chatbox;
@@ -58,5 +59,14 @@ class Setting extends Model
     public function navigation()
     {
         return $this->hasOne(Navigation::class);
+    }
+
+    /**
+     * Summary of core
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function core()
+    {
+        return $this->hasMany(Core::class);
     }
 }

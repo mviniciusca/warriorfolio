@@ -22,6 +22,11 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+
+        // check if model exists on database before sharing it to all views
+        if (Maintenance::all()->isEmpty()) {
+            return;
+        }
         view()->share(
             'maintenance',
             Maintenance::all()->first()->is_active,

@@ -1,4 +1,4 @@
 @aware(['page'])
-@props(['class'])
+@props(['class' => null])
 
 <div class="{{ $class }} w-full"></div>
