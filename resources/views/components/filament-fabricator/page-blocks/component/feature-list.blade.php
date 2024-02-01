@@ -11,11 +11,11 @@
                         @foreach ($features as $item)
                         <div>
                             <div class="mx-auto mb-4 flex items-center justify-center">
-                                <ion-icon class="h-11 w-11" name="{{ $item['icon'] }}">
+                                <ion-icon class="h-9 w-9" name="{{ $item['icon'] }}">
                                 </ion-icon>
                             </div>
-                            <h3 class="mb-4 text-xl font-bold">{{ $item['title'] }}</h3>
-                            <p class="text-md opacity-80">
+                            <h3 class="mb-4 text-lg font-bold">{{ $item['title'] }}</h3>
+                            <p class="text-md opacity-70">
                                 {{ $item['description'] }}
                             </p>
                         </div>
