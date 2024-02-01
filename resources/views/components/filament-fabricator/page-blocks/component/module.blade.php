@@ -18,7 +18,7 @@
         </div>
         @endif
         @if($subtitle)
-        <div class="subtitle mt-2 text-center text-xl">
+        <div class="subtitle">
             {!! $subtitle !!}
         </div>
         @endif
