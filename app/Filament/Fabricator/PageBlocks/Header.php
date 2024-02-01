@@ -13,6 +13,8 @@ class Header extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('header')
+            ->label('Header Module')
+            ->icon('heroicon-o-cpu-chip')
             ->schema([
                 Section::make('Core: Header')
                     ->description('Add a header to your page.')

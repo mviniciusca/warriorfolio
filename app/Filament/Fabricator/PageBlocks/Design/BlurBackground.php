@@ -13,9 +13,11 @@ class BlurBackground extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('design.blur-background')
+            ->label('Blue/Purple Beam')
+            ->icon('heroicon-o-paint-brush')
             ->schema([
-                Section::make('Design: Beam Blur/Purple')
-                    ->description('Add a blue/purple beam to your page.')
+                Section::make('Design: Beam Blur/Purple Separator')
+                    ->description('Add a blue/purple beam separator to your page.')
                     ->icon('heroicon-o-paint-brush')
                     ->collapsed()
                     ->schema([

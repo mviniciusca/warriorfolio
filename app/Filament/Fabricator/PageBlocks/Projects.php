@@ -14,6 +14,8 @@ class Projects extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('projects')
+            ->label('Projects Module')
+            ->icon('heroicon-o-cpu-chip')
             ->schema([
                 Section::make('Core: Projects Section Module')
                     ->description('Add a projects section module to your page')

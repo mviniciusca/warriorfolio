@@ -13,9 +13,11 @@ class BlurBeam extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('design.blur-beam')
+            ->label('Rainbow Beam')
+            ->icon('heroicon-o-paint-brush')
             ->schema([
-                Section::make('Design: Beam Blur')
-                    ->description('Add a beam blur to your page.')
+                Section::make('Design: Beam Blur Separator')
+                    ->description('Add a rainbow beam separator to your page.')
                     ->icon('heroicon-o-paint-brush')
                     ->collapsed()
                     ->schema([

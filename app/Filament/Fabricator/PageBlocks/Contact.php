@@ -13,6 +13,8 @@ class Contact extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('contact')
+            ->label('Contact Module')
+            ->icon('heroicon-o-cpu-chip')
             ->schema([
                 Section::make('Core: Contact Section Module')
                     ->description('Add a contact section module to your page.')

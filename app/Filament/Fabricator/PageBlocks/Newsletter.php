@@ -13,6 +13,8 @@ class Newsletter extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('newsletter')
+            ->label('Newsletter Module')
+            ->icon('heroicon-o-cpu-chip')
             ->schema([
                 Section::make('Core: Newsletter Section Module')
                     ->description('Add a newsletter section module to your page.')

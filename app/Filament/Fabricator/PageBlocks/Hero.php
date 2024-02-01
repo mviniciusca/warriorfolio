@@ -16,6 +16,8 @@ class Hero extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('hero')
+            ->label('Hero Section Module')
+            ->icon('heroicon-o-cpu-chip')
             ->schema([
                 Section::make('Core: Hero Section Module')
                     ->description('Add a hero section to your page.')

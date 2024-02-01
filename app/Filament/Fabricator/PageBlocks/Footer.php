@@ -13,6 +13,8 @@ class Footer extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('footer')
+            ->label('Footer Module')
+            ->icon('heroicon-o-cpu-chip')
             ->schema([
                 Section::make('Core: Footer Section Module')
                     ->description('Add a footer section module to your page.')

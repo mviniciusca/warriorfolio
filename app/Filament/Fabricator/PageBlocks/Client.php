@@ -13,6 +13,8 @@ class Client extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('client')
+            ->label('Customer Module')
+            ->icon('heroicon-o-cpu-chip')
             ->schema([
                 Section::make('Core: Customer Section Module')
                     ->description('Add a customer section module to your page.')

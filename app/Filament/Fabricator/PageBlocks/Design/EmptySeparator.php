@@ -12,6 +12,8 @@ class EmptySeparator extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('design.empty-separator')
+            ->label('Empty Separator')
+            ->icon('heroicon-o-paint-brush')
             ->schema([
                 Section::make('Design: Empty Separator')
                     ->description('Add an empty separator to your page.')
