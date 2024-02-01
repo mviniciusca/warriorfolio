@@ -1,13 +1,13 @@
 @aware(['page'])
-@props(['is_active', 'heading' => null, 'content' => null, 'is_center' => false ])
+@props(['is_active', 'heading' => null, 'content' => null, 'is_center' => false , 'text_size' => 'text-2xl'])
 
 <div class="px-4 py-4 md:py-8">
     <div class="mx-auto max-w-7xl">
         <section>
             <div class="mx-auto max-w-screen-xl {{ $is_center ? 'text-center':'text-left' }}">
-                <div class="sm:text-lg">
+                <div>
 
-                    <h2 class="mb-2 text-3xl font-semibold tracking-tight">
+                    <h2 class="mb-2 font-bold tracking-tight {{ $text_size }}">
                         {!! $heading!!}
                     </h2>
 
