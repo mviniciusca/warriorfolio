@@ -2,15 +2,16 @@
 @props(['type' => 'button', 'button_title' => null, 'button_url' => null, 'button_icon' => null,
 'button_target' => null, 'button_size' => null, 'button_title_secondary' => null, 'button_url_secondary' => null,
 'button_url_secondary' => null, 'button_icon_secondary' => null, 'button_target_secondary' => null,
-'button_size_secondary' => null, 'is_active' => null, 'is_active_secondary' => null])
+'button_size_secondary' => null, 'is_active' => null, 'is_active_secondary' => null, 'is_center' => true])
 
 <div>
     <div class="mx-auto max-w-7xl">
-        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0 lg:mb-4">
+        <div
+            class="flex flex-col sm:flex-row items-center gap-3 {{ $is_center ? 'justify-center' : 'justify-normal' }}">
 
             @if($is_active)
             @if($button_title && $button_url)
-            <a href="{{ $button_target }}" target="{{ $button_url }}">
+            <a href="{{ $button_url }}" target="{{ $button_url }}">
                 <x-ui.button class="{{ $button_size }} text-sm" :icon="$button_icon">
                     {{ $button_title }}
                 </x-ui.button>

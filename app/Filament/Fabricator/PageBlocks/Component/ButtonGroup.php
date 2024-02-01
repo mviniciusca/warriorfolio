@@ -19,6 +19,7 @@ class ButtonGroup extends PageBlock
             ->icon('heroicon-o-cube')
             ->schema([
                 Section::make('Component: Buttons Group')->collapsed()->description('Add a button group in your application.')->icon('heroicon-o-cube')->schema([
+                    Toggle::make('is_center')->label('Group Buttons Centered')->columnSpanFull()->default(true),
                     Fieldset::make('Primary Button (optional)')->columns(3)->schema([
                         Toggle::make('is_active')->label('Show Button')->columnSpanFull()->default(true),
                         TextInput::make('button_title')->label('Button Title')->helperText('Add a primary button title'),
