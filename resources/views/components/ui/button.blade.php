@@ -6,7 +6,7 @@
     text-center font-medium text-white
     hover:bg-primary-800 focus:ring-4 focus:ring-primary-300
     dark:focus:ring-primary-900 hover:opacity-80
-    transition-all duration-100a']) }}
+    transition-all duration-100']) }}
     >
     {{ $slot }}
 
