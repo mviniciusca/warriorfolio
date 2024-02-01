@@ -1,7 +1,8 @@
 @aware(['page'])
-@props(['is_active', 'heading' => null, 'content' => null, 'is_center' => false , 'heading_text_size' => 'text-3xl',
-'content_text_size' => 'text-xl'])
+@props(['is_active' => true, 'heading' => null, 'content' => null, 'is_center' => false , 'heading_text_size' =>
+'text-3xl','content_text_size' => 'text-xl'])
 
+@if($is_active)
 <div class="px-4 py-4 md:py-8">
     <div class="mx-auto max-w-7xl">
         <section>
@@ -21,3 +22,4 @@
         </section>
     </div>
 </div>
+@endif

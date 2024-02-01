@@ -1,13 +1,8 @@
 @aware(['page'])
 @props([
-'is_active' => true,
-'module_name' => null,
-'title' => null,
-'subtitle' => null,
-'tailwind_css_attributes' => null,
+'is_active' => true,'module_name' => null,'title' => null,'subtitle' => null,'tailwind_css_attributes' => null,
 'slug' => null,
 ])
-
 
 @if($is_active)
 <x-core.layout class="{{ $tailwind_css_attributes  }}" id="{{ $slug }}">

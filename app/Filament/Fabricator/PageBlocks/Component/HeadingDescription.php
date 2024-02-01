@@ -21,8 +21,11 @@ class HeadingDescription extends PageBlock
                 Section::make('Component: Heading Description')
                     ->description('Add a heading description to your page.')
                     ->icon('heroicon-o-cube')
-
                     ->schema([
+                        Toggle::make('is_active')
+                            ->label('Active')
+                            ->inline(false)
+                            ->default(true),
                         Toggle::make('is_center')
                             ->label('Align text center')
                             ->inline(false)
