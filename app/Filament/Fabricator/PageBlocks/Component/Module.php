@@ -18,8 +18,9 @@ class Module extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('component.module')
+            ->label('Module Header Component')
+            ->icon('heroicon-o-cube')
             ->schema([
-
                 Section::make('Component: Module')
                     ->description('Create a module component to be used in the page.')
                     ->icon('heroicon-o-cube')

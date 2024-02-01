@@ -17,6 +17,8 @@ class Slider extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('component.slider')
+            ->label('Slider Component')
+            ->icon('heroicon-o-cube')
             ->schema([
                 Section::make('Component: Slider')
                     ->icon('heroicon-o-cube')
