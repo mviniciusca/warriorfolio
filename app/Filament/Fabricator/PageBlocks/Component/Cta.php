@@ -22,35 +22,43 @@ class Cta extends PageBlock
                     ->icon('heroicon-o-cube')
                     ->collapsed()
                     ->schema([
-                        TextInput::make('title')
-                            ->label('Title')
-                            ->required()
-                            ->columnSpanFull()
-                            ->placeholder('Title'),
                         FileUpload::make('image')
                             ->columnSpanFull()
                             ->label('Image')
                             ->required()
                             ->imageEditor()
+                            ->helperText('The image of the CTA module.')
                             ->directory('images/content')
                             ->moveFiles()
                             ->image(),
+                        TextInput::make('title')
+                            ->label('Title')
+                            ->required()
+                            ->columnSpanFull()
+                            ->maxLength(200)
+                            ->helperText('The title of the CTA module. Max: 200 characters.')
+                            ->placeholder('Title'),
                         RichEditor::make('content')
                             ->columnSpanFull()
                             ->label('Content')
                             ->required()
+                            ->maxLength(500)
+                            ->helperText('The content of the CTA module. Max: 500 characters.')
                             ->placeholder('Content'),
                         TextInput::make('button_text')
-                            ->label('Button Text')
-                            ->required()
+                            ->label('Button Text (optional)')
+                            ->maxLength(50)
+                            ->helperText('The text of the button. Max: 50 characters.')
                             ->placeholder('Button Text'),
                         TextInput::make('button_url')
-                            ->label('Button URL')
-                            ->default('#')
-                            ->required()
+                            ->label('Button URL (optional)')
+                            ->url()
+                            ->maxLength(200)
+                            ->helperText('The URL of the button. Max: 200 characters.')
                             ->placeholder('Button URL'),
                         TextInput::make('button_icon')
-                            ->label('Button Icon')
+                            ->label('Button Icon (optional)')
+                            ->default('chevron-forward-outline')
                             ->placeholder('Button Icon'),
                     ])->columns(3),
             ]);

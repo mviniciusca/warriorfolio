@@ -133,3 +133,8 @@ trix-editor {
 #maintenance-content p {
     @apply leading-tight
 }
+
+/** Components **/
+.cta-one img {
+    @apply rounded-lg;
+}
