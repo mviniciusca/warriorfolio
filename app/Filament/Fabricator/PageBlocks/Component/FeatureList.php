@@ -3,6 +3,7 @@
 namespace App\Filament\Fabricator\PageBlocks\Component;
 
 use Filament\Forms\Components\Builder\Block;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
@@ -23,10 +24,14 @@ class FeatureList extends PageBlock
                     ->icon('heroicon-o-rectangle-stack')
                     ->collapsed()
                     ->schema([
-                        Toggle::make('is_active')
-                            ->default(true)
-                            ->required()
-                            ->label('Show Module'),
+                        Group::make()->columns(2)->schema([
+                            Toggle::make('is_active')
+                                ->default(true)
+                                ->label('Show Module'),
+                            Toggle::make('is_centered')
+                                ->default(true)
+                                ->label('Centered Content'),
+                        ]),
                         Repeater::make('features')
                             ->schema([
                                 TextInput::make('title')

@@ -2,7 +2,7 @@
 
 <button type="{{ $type }}" {{ $attributes->merge(['class' =>
     'inline-flex items-center gap-1
-    rounded-lg bg-primary-700
+    rounded-lg bg-primary-700 text-sm
     text-center font-medium text-white
     hover:bg-primary-800 focus:ring-4 focus:ring-primary-300
     dark:focus:ring-primary-900 hover:opacity-80
