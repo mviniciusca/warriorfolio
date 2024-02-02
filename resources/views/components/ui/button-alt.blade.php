@@ -1,8 +1,8 @@
 @props(['type' => 'button', 'icon' => null])
 
 <button type="{{ $type }}" {{ $attributes->merge(['class' =>
-    'border border-primary-500 dark:border-secondary-700
-    inline-flex items-center gap-1
+    'border border-secondary-50 dark:border-secondary-700
+    inline-flex items-center gap-1 bg-opacity-50
     rounded-lg bg-white dark:bg-secondary-700 dark:bg-opacity-50
     text-center font-medium text-primary-500 dark:text-white
     hover:bg-primary-50 focus:ring-4 focus:ring-primary-300
