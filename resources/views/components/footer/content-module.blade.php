@@ -1,5 +1,5 @@
 <div id="footer-content">
-    <div class="mx-auto flex flex-wrap items-center gap-2 px-5 sm:flex-row">
+    <div class="mx-auto flex flex-wrap items-center gap-2 sm:flex-row">
         {{-- App Logo --}}
         @if($setting->logo)
         <img src="{{ asset('storage/' . $setting->logo) }}" alt="{{ $setting->name . 'logo-image'}}"

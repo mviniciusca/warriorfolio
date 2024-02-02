@@ -12,8 +12,14 @@ return new class extends Migration {
     {
         Schema::create('cores', function (Blueprint $table) {
             $table->id();
-            $table->string('module_name');
-            $table->boolean('is_active')->default(true);
+            $table->boolean('header')->default(true);
+            $table->boolean('footer')->default(true);
+            $table->boolean('newsletter')->default(true);
+            $table->boolean('clients')->default(false);
+            $table->boolean('contact')->default(true);
+            $table->boolean('hero')->default(false);
+            $table->boolean('portfolio')->default(false);
+            $table->boolean('about')->default(false);
             $table->foreignId('setting_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

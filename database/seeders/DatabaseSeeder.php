@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
             ->insert([
                 'title' => 'Home',
                 'slug' => '/',
-                'blocks' => '[{"data": [], "type": "design.blur-background"}, {"data": [], "type": "design.blur-separator"}, {"data": [], "type": "header"}, {"data": [], "type": "hero"}, {"data": [], "type": "design.blur-separator"}, {"data": [], "type": "courses"}, {"data": [], "type": "projects"}, {"data": [], "type": "client"}, {"data": [], "type": "design.empty-separator"}, {"data": [], "type": "design.blur-background"}, {"data": [], "type": "contact"}, {"data": [], "type": "design.blur-background"}, {"data": [], "type": "newsletter"}, {"data": [], "type": "footer"}, {"data": [], "type": "design.blur-separator"}]',
+                'blocks' => '[]',
                 'layout' => 'default',
                 'created_at' => now(),
                 'updated_at' => now(),

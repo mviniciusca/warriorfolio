@@ -79,8 +79,31 @@ class SettingResource extends Resource
                             ->placeholder('ex: 1b2c3d4e5f6g7h8i9j0a')
                             ->label('Google Recaptcha Key'),
                     ])->columns(2),
-                Section::make('Core Modules Control')
-                    ->description('Enable or disable modules. Hide the module from entire application')
+                Section::make('Core Module Decoupling')
+                    ->relationship('core')
+                    ->columns(4)
+                    ->description('Couple or decouple core modules from your default layout.')
+                    ->icon('heroicon-o-cpu-chip')
+                    ->schema([
+                        Toggle::make('header')
+                            ->label('Header'),
+                        Toggle::make('footer')
+                            ->label('Footer'),
+                        Toggle::make('newsletter')
+                            ->label('Newsletter'),
+                        Toggle::make('contact')
+                            ->label('Contact'),
+                        Toggle::make('about')
+                            ->label('About'),
+                        Toggle::make('clients')
+                            ->label('Clients'),
+                        Toggle::make('hero')
+                            ->label('Hero Section'),
+                        Toggle::make('portfolio')
+                            ->label('Portfolio'),
+                    ]),
+                Section::make('Core Modules Global Visibility Control')
+                    ->description('Enable or disable modules. This is a global setting and will hide the module from entire application.')
                     ->icon('heroicon-o-cpu-chip')
                     ->schema([
                         Group::make()

@@ -45,7 +45,6 @@ class EditNavigation extends EditRecord
                                     TextInput::make('url')
                                         ->label('Link URL')
                                         ->columnSpan(2)
-                                        ->url()
                                         ->required(),
                                     Select::make('target')
                                         ->columnSpan(2)

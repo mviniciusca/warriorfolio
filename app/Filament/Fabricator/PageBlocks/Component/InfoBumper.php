@@ -18,12 +18,15 @@ class InfoBumper extends PageBlock
             ->label('Info Bumper')
             ->icon('heroicon-o-cube')
             ->schema([
-                Section::make('Component: Info Bumper')->columns(2)->description('A simple info bumper component.')
+                Section::make('Component: Info Bumper')
+                    ->columns(3)
+                    ->description('A simple info bumper component.')
                     ->icon('heroicon-o-cube')
                     ->collapsed()
                     ->schema([
-                        Group::make()->columns(2)->schema([
+                        Group::make()->columns(3)->schema([
                             Toggle::make('is_active')->label('Active')->default(true),
+                            Toggle::make('is_animated')->label('Animated')->default(true),
                             Toggle::make('is_center')->label('Align to Center')->default(false),
                         ])->columnSpanFull(),
                         TextInput::make('bumper_tag')->label('Tag')->placeholder('Tag'),

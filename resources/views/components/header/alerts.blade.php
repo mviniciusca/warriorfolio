@@ -1,3 +1,5 @@
+@props(['maintenance' => null, 'discovery' => null])
+
 {{-- Discovery Mode Alert --}}
 @if($maintenance && ($discovery && auth()->user()))
 <x-ui.alert :icon="'earth-outline'" :id="'discovery-alert'">

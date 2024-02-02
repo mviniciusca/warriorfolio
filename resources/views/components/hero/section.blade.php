@@ -2,7 +2,7 @@
 {{-- Background Module --}}
 <x-hero.background :info='$info' />
 {{-- Hero Section --}}
-<section class="mt-24">
+<section class="py-4">
     <div>
         <div class="mx-auto max-w-7xl">
             <div class="container mx-auto flex flex-col items-center justify-center">
@@ -23,7 +23,7 @@
                         {{-- Hero Section Button --}}
                         @if($info->hero_section_button_text == true && $info->hero_section_button_url == true)
                         <a target="{{ $info->hero_button_link_target }}" href="{{ $info->hero_section_button_url }}">
-                            <x-ui.button>
+                            <x-ui.button class="px-5 py-3">
                                 {{ $info->hero_section_button_text }}
                             </x-ui.button>
                         </a>
@@ -31,7 +31,7 @@
                         {{-- Hero Section Alternative Button --}}
                         @if($info->hero_alt_button_text && $info->hero_alt_button_url)
                         <a target="{{ $info->hero_alt_button_link_target }}" href="{{ $info->hero_alt_button_url }}">
-                            <x-ui.button-alt>
+                            <x-ui.button-alt class="px-5 py-3">
                                 {{ $info->hero_alt_button_text }}
                                 @if($info->hero_alt_button_link_target == '_blank')
                                 <ion-icon class="ml-1" name="trending-up-outline"></ion-icon>
