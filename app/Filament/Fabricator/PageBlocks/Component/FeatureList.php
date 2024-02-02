@@ -28,7 +28,7 @@ class FeatureList extends PageBlock
                             Toggle::make('is_active')
                                 ->default(true)
                                 ->label('Show Module'),
-                            Toggle::make('is_centered')
+                            Toggle::make('is_center')
                                 ->default(true)
                                 ->label('Centered Content'),
                         ]),
