@@ -13,7 +13,7 @@
             <div class="swiper-wrapper flex w-full content-center items-center">
                 @foreach ($slides as $item )
                 <div class="swiper-slide flex content-center items-center justify-around text-center">
-                    <img class="h-10 justify-center opacity-50 filter dark:invert"
+                    <img class="h-10 justify-center opacity-60 filter dark:invert"
                         src="{{ asset('storage/' . $item['image'])}}" alt="slider-image">
                 </div>
                 @endforeach
