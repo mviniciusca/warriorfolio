@@ -59,7 +59,6 @@ class EditHeroSection extends EditRecord
                             ->maxLength(50),
                         TextInput::make('hero_section_button_url')
                             ->label('Hero Section Button URL')
-                            ->url()
                             ->helperText('Use the full URL. Max: 255 characters.')
                             ->maxLength(255),
                         TextInput::make('hero_alt_button_text')

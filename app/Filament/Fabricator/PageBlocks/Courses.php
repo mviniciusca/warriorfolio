@@ -14,7 +14,7 @@ class Courses extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('courses')
-            ->label('Courses Module')
+            ->label('About, Courses & Profile Module')
             ->icon('heroicon-o-cpu-chip')
             ->schema([
                 Section::make('Core: About Me, Profile & Courses Section Module')
