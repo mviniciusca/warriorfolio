@@ -5,7 +5,7 @@
 <div class="mx-auto max-w-7xl py-4">
     <div class="mx-auto">
         @if($title)
-        <h2 class="mx-auto text-center font-bold">
+        <h2 class="mx-auto py-1 text-center font-bold">
             {{ $title }}
         </h2>
         @endif
