@@ -61,12 +61,9 @@ class Setting extends Model
         return $this->hasOne(Navigation::class);
     }
 
-    /**
-     * Summary of core
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+
     public function core()
     {
-        return $this->hasMany(Core::class);
+        return $this->hasOne(Core::class);
     }
 }

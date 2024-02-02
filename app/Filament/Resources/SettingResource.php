@@ -79,20 +79,6 @@ class SettingResource extends Resource
                             ->placeholder('ex: 1b2c3d4e5f6g7h8i9j0a')
                             ->label('Google Recaptcha Key'),
                     ])->columns(2),
-                Section::make('Core Feature Decoupling')
-                    ->description('Enable or disable core features from the application')
-                    ->icon('heroicon-o-cpu-chip')
-                    ->columns(4)
-                    ->schema([
-                        Toggle::make('header_core')
-                            ->label('Header Core'),
-                        Toggle::make('footer_core')
-                            ->label('Footer Core'),
-                        Toggle::make('newsletter_core')
-                            ->label('Newsletter Core'),
-                        Toggle::make('contact_core')
-                            ->label('Contact Core'),
-                    ]),
                 Section::make('Core Modules Control')
                     ->description('Enable or disable modules. Hide the module from entire application')
                     ->icon('heroicon-o-cpu-chip')

@@ -49,7 +49,12 @@ class SettingFactory extends Factory
             $setting->core()->createMany([
                 ['setting_id' => $setting->id, 'module_name' => 'header'],
                 ['setting_id' => $setting->id, 'module_name' => 'footer'],
-                ['setting_id' => $setting->id, 'module_name' => 'newsletter']
+                ['setting_id' => $setting->id, 'module_name' => 'newsletter'],
+                ['setting_id' => $setting->id, 'module_name' => 'about'],
+                ['setting_id' => $setting->id, 'module_name' => 'client'],
+                ['setting_id' => $setting->id, 'module_name' => 'contact'],
+                ['setting_id' => $setting->id, 'module_name' => 'portfolio'],
+                ['setting_id' => $setting->id, 'module_name' => 'hero'],
             ]);
         });
     }

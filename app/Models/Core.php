@@ -13,6 +13,6 @@ class Core extends Model
 
     public function setting()
     {
-        return $this->hasOne(Setting::class);
+        return $this->belongsTo(Setting::class);
     }
 }
