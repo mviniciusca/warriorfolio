@@ -13,8 +13,8 @@
     <div class="swiper-wrapper">
 
         @foreach($sliders->content as $slider)
-        <div
-            class="swiper-slide {{ $sliders->show_title ? 'my-8' : 'my-16' }} flex content-center items-center justify-center">
+        <div class="swiper-slide {{ $sliders->show_title ? 'my-8' : 'my-16' }}
+             flex content-center items-center justify-center">
             <a href="{{ $slider['image_url'] }}">
                 <img class="
                 {{ $sliders->image_size == 'small' ? 'h-10' :($sliders->image_size == 'medium' ? 'h-14' : ($sliders->image_size == 'large' ? 'h-16' : ($sliders->image_size == 'extra-large' ? 'h-20' : 'h-12' )))}}
