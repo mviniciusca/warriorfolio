@@ -7,17 +7,20 @@
         <div class="mx-auto max-w-7xl">
             <div class="container mx-auto flex flex-col items-center justify-center">
                 <div class="max-w-7xl text-center">
+
                     @if($info->hero_section_title)
                     <h1 class="hero-section-title text-gradient animate__animated animate__fadeInUp animate__delay-1s">
                         {!! $info->hero_section_title !!}
                     </h1>
                     @endif
+
                     @if($info->hero_section_subtitle_text)
-                    <p
-                        class="animate__animated animate__fadeInUp animate__delay-2s mb-8 text-2xl leading-tight tracking-tight shadow-current">
+                    <h4
+                        class="animate__animated animate__fadeInUp animate__delay-2s mb-8 text-xl font-semibold leading-tight tracking-tight shadow-current">
                         {!! $info->hero_section_subtitle_text !!}
-                    </p>
+                    </h4>
                     @endif
+
                     {{-- Hero Section: Buttons --}}
                     <div class="animate__animated animate__fadeInUp animate__delay-2s z-10 flex justify-center gap-4">
                         {{-- Hero Section Button --}}
