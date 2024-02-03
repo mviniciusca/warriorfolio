@@ -11,6 +11,8 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Repeater;
 use Filament\Tables\Actions\ActionGroup;
@@ -22,76 +24,103 @@ use App\Filament\Resources\SlideshowResource\RelationManagers;
 class SlideshowResource extends Resource
 {
     protected static ?string $model = Slideshow::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-photo';
     protected static ?int $navigationSort = 3;
+    protected static ?string $navigationGroup = 'App Sections';
+    public static function getNavigationLabel(): string
+    {
+        return __('Core Sliders');
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Group::make()->schema([
-                    Section::make('Options')->icon('heroicon-o-cog')->schema([
-                        Forms\Components\TextInput::make('title')
-                            ->required()
-                            ->columnSpanFull()
-                            ->maxLength(255),
-                        Forms\Components\Select::make('module_name')
-                            ->options([
-                                'about-section' => 'About Section',
-                                'contact-section' => 'Contact Section',
-                                'footer-section' => 'Footer Section',
-                                'hero-section' => 'Hero Section',
-                                'home-default' => 'Homepage',
-                                'portfolio-section' => 'Portfolio Section',
-                            ])
-                            ->default('hero-section')
-                            ->searchDebounce(500)
-                            ->searchable()
-                            ->columnSpanFull()
-                            ->required(),
-                        Forms\Components\Toggle::make('show_title')
-                            ->inline(false)
-                            ->label('Show Title')
-                            ->default(true)
-                            ->required(),
-                        Forms\Components\Toggle::make('is_active')
-                            ->inline(false)
-                            ->label('Show Slideshow')
-                            ->default(true)
-                            ->required(),
-                    ])->columns(2)
+                    Section::make('Options')
+                        ->icon('heroicon-o-cog-6-tooth')
+                        ->description('Set the options for the slideshow.')
+                        ->schema([
+                            Forms\Components\TextInput::make('title')
+                                ->required()
+                                ->autofocus()
+                                ->helperText('The title of the slideshow')
+                                ->columnSpanFull()
+                                ->maxLength(255),
+                            Forms\Components\Select::make('module_name')
+                                ->options([
+                                    'hero-section' => 'Hero Section',
+                                ])
+                                ->default('hero-section')
+                                ->searchDebounce(500)
+                                ->searchable()
+                                ->label('Core Module')
+                                ->helperText('The module where the slideshow will be displayed. Not all core modules support slideshows.')
+                                ->columnSpanFull()
+                                ->required(),
+                            Forms\Components\Toggle::make('show_title')
+                                ->inline(false)
+                                ->label('Show Title')
+                                ->default(true),
+                            Forms\Components\Toggle::make('is_active')
+                                ->inline(false)
+                                ->label('Show Slideshow')
+                                ->default(true),
+                        ])->columns(2)->collapsible(),
+                    Section::make('Design')
+                        ->columns(2)
+                        ->description('Design options')
+                        ->icon('heroicon-o-paint-brush')
+                        ->schema([
+                            Select::make('image_size')
+                                ->options([
+                                    'default' => 'Default (h-10)',
+                                    'medium' => 'Medium (h-16)',
+                                    'large' => 'Large (h-20)',
+                                    'extra-large' => 'Extra Large (h-24)',
+                                ])
+                                ->default('default'),
+                            Toggle::make('is_invert')
+                                ->inline(false)
+                                ->label('Filter: Invert Colors')
+                                ->default(false),
+                        ])->collapsed(),
                 ])->columnSpan(2),
-                Section::make('Slideshow')
+                Section::make('Slider')
+                    ->description('💡Tip: Images with the same size will look better.')
                     ->icon('heroicon-o-camera')
                     ->schema([
                         Repeater::make('content')
-                            ->label('Slides')
+                            ->label('Slider Content')
                             ->defaultItems(1)
                             ->schema([
                                 Forms\Components\FileUpload::make('image_path')
                                     ->label('Image')
                                     ->image()
                                     ->imageEditor()
+                                    ->columnSpanFull()
                                     ->directory('slideshow')
                                     ->required(),
-                                Group::make()->schema([
+                                Group::make()->columns(3)->schema([
                                     Forms\Components\TextInput::make('image_title')
-                                        ->label('Image Title')
-                                        ->maxLength(255)
                                         ->reactive()
                                         ->lazy()
-                                        ->afterStateUpdated(fn(Set $set, ?string $state) => $set('image_alt', Str::slug($state))),
-                                    Forms\Components\TextInput::make('image_alt')
-                                        ->label('Image Alt')
-                                        ->maxLength(255)
-                                        ->disabled()
-                                        ->dehydrated(),
+                                        ->afterStateUpdated(fn(Set $set, ?string $state) => $set('image_alt', Str::slug($state)))
+                                        ->label('Image Title')
+                                        ->helperText('The title of the image (optional)')
+                                        ->maxLength(255),
                                     Forms\Components\TextInput::make('image_url')
                                         ->maxLength(255)
+                                        ->helperText('The URL where the image will link to (optional)')
                                         ->label('Link'),
+                                    Forms\Components\TextInput::make('image_alt')
+                                        ->disabled()
+                                        ->dehydrated()
+                                        ->placeholder('Auto-generated from Image Title')
+                                        ->label('Image Alt')
+                                        ->maxLength(255),
                                 ]),
-                            ])->columns(2)
+                            ])
                             ->reorderable()
                             ->collapsible()
                     ])->columnSpan(4),

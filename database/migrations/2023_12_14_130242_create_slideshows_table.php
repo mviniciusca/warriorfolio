@@ -14,6 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->boolean('show_title')->default(true);
+            $table->boolean('is_invert')->default(false);
+            $table->string('image_size')->default('default');
             $table->string('module_name');
             $table->json('content');
             $table->string('sort')->nullable();

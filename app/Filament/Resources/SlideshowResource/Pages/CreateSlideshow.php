@@ -9,4 +9,6 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateSlideshow extends CreateRecord
 {
     protected static string $resource = SlideshowResource::class;
+
+    protected static ?string $title = 'Core Sliders';
 }

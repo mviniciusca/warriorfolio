@@ -9,7 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditSlideshow extends EditRecord
 {
     protected static string $resource = SlideshowResource::class;
-
+    protected static ?string $title = 'Core Sliders';
     protected function getHeaderActions(): array
     {
         return [

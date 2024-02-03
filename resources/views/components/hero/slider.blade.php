@@ -17,16 +17,6 @@
         @endif
         @endforeach
     </div>
-    <script>
-        var swiper = new Swiper(".swiper", {
-                  slidesPerView: 5,
-                  loop: true,
-                  centerInsufficientSlides: true,
-                  centeredSlidesBounds: true,
-                  speed:200,
-                  autoplay:true,
-                  centeredSlides: true,
-                        });
-    </script>
+
 </div>
 @endif

@@ -9,7 +9,7 @@ use Filament\Resources\Pages\ListRecords;
 class ListSlideshows extends ListRecords
 {
     protected static string $resource = SlideshowResource::class;
-
+    protected static ?string $title = 'Core Sliders';
     protected function getHeaderActions(): array
     {
         return [
