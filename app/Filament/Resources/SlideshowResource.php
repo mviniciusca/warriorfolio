@@ -68,23 +68,34 @@ class SlideshowResource extends Resource
                                 ->default(true),
                         ])->columns(2)->collapsible(),
                     Section::make('Design')
-                        ->columns(2)
+                        ->columns(1)
                         ->description('Design options')
                         ->icon('heroicon-o-paint-brush')
                         ->schema([
+                            Select::make('slider_size')
+                                ->options([
+                                    'max-w-3xl' => 'Small (max-w-3xl)',
+                                    'max-w-4xl' => 'Medium (max-w-4xl)',
+                                    'max-w-5xl' => 'Large (max-w-5xl)',
+                                    'max-w-6xl' => 'Extra Large (max-w-6xl)',
+                                    'max-w-7xl' => 'Full Width (max-w-7xl)',
+                                ])
+                                ->default('max-w-5xl'),
                             Select::make('image_size')
                                 ->options([
-                                    'default' => 'Default (h-10)',
-                                    'medium' => 'Medium (h-16)',
-                                    'large' => 'Large (h-20)',
-                                    'extra-large' => 'Extra Large (h-24)',
+                                    'small' => 'Small (h-10)',
+                                    'default' => 'Default (h-12)',
+                                    'medium' => 'Medium (h-14)',
+                                    'large' => 'Large (h-16)',
+                                    'extra-large' => 'Extra Large (h-20)',
                                 ])
                                 ->default('default'),
                             Toggle::make('is_invert')
                                 ->inline(false)
+                                ->helperText('Invert the colors of the images. This is useful if the png image is dark so turn white in dark mode.')
                                 ->label('Filter: Invert Colors')
                                 ->default(false),
-                        ])->collapsed(),
+                        ])->collapsible(),
                 ])->columnSpan(2),
                 Section::make('Slider')
                     ->description('💡Tip: Images with the same size will look better.')

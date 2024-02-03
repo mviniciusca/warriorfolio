@@ -52,9 +52,8 @@
                 {{-- End Hero Section: Image --}}
             </div>
             {{-- Hero Section Slider --}}
-            <div class="z-10 -mt-8">
-                <x-hero.slider />
-            </div>
+            <x-hero.slider />
+
         </div>
     </div>
 </section>

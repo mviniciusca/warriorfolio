@@ -28,8 +28,9 @@ class Slider extends Component
             ->where('module_name', '=', 'hero-section')
             ->where('is_active', '=', true)
             ->get();
+
         return view('components.hero.slider', [
-            'sliders' => $sliders->toArray(),
+            'sliders' => $sliders->first(),
         ]);
     }
 }

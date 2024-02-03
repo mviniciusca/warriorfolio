@@ -1,8 +1,30 @@
-<div class="swiper mr-auto max-w-3xl">
-    <h1 class="text-md mb-8 text-center font-semibold"> </h1>
-    <div class="swiper-wrapper flex w-full">
-        <div class="swiper-slide flex content-center items-center justify-around text-center" class="h-16 w-16">
-            <img class="justify-center" src="" />
+@if($sliders != null)
+
+@if($sliders->is_active)
+<div class="swiper mx-auto {{ $sliders->slider_size }}">
+
+    @if($sliders->show_title)
+    <h1 class="slider-title text-md pb-2 pt-8 text-center font-semibold">
+        {{ $sliders->title }}
+    </h1>
+    @endif
+
+
+    <div class="swiper-wrapper">
+
+        @foreach($sliders->content as $slider)
+        <div
+            class="swiper-slide {{ $sliders->show_title ? 'my-8' : 'my-16' }} flex content-center items-center justify-center">
+            <a href="{{ $slider['image_url'] }}">
+                <img class="
+                {{ $sliders->image_size == 'small' ? 'h-10' :($sliders->image_size == 'medium' ? 'h-14' : ($sliders->image_size == 'large' ? 'h-16' : ($sliders->image_size == 'extra-large' ? 'h-20' : 'h-12' )))}}
+                {{ $sliders->is_invert ? 'filter  dark:invert' : 'filter-none' }}"
+                    src="{{ asset('storage/' . $slider['image_path'] ) }}" alt="{{ $slider['image_alt'] }}" />
+            </a>
         </div>
+        @endforeach
+
     </div>
 </div>
+@endif
+@endif
