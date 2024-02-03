@@ -67,11 +67,13 @@ body {
 }
 
 /** Header for each section **/
-.header-title {
+.header-title,
+.module-title {
     @apply bg-gradient-to-b from-secondary-400 to-secondary-600 bg-clip-text text-center text-5xl font-extrabold leading-none tracking-tighter text-transparent dark:from-secondary-300 dark:to-secondary-600;
 }
 
-.subtitle {
+.subtitle,
+.module-subtitle {
     @apply text-center text-xl;
 }
 

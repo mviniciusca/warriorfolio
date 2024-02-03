@@ -1,13 +1,20 @@
 @if($module->portfolio)
 <x-core.layout class="{{ $info->portfolio_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}"
     id="portfolio">
+
     @if($info->portfolio_section_title)
-    <div class="header-title mb-2">{!! $info->portfolio_section_title !!}</div>
+    <x-slot name="module_title">
+        {!! $info->portfolio_section_title !!}
+    </x-slot>
     @endif
+
     @if($info->portfolio_section_subtitle_text)
-    <div class="mx-auto mt-4 max-w-2xl text-center text-lg">{!! $info->portfolio_section_subtitle_text !!}</div>
+    <x-slot name="module_subtitle">
+        {!! $info->portfolio_section_subtitle_text !!}
+    </x-slot>
     @endif
-    <section class="mt-24">
+
+    <section class="mt-20">
         <div class="container mx-auto max-w-7xl px-5">
             <div class="-mx-4 -mb-10 -mt-4 flex flex-wrap sm:-m-4">
                 @foreach ($projects as $project )
@@ -29,8 +36,10 @@
             </div>
         </div>
     </section>
+
     @if($projects->count() === 0)
     <x-ui.empty-section :auth="'Go to your Dashboard and create a New Project.'" />
     @endif
+
 </x-core.layout>
 @endif

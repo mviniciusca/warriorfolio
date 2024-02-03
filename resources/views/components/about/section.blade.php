@@ -1,14 +1,14 @@
 @if($module->about)
 <x-core.layout class="{{ $info->about_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : ''}}" id="about">
     @if($info->about_section_title)
-    <div class="header-title mb-2">
+    <x-slot name="module_title">
         {!! $info->about_section_title !!}
-    </div>
+    </x-slot>
     @endif
     @if($info->about_section_subtitle_text)
-    <div class="mx-auto mt-4 max-w-2xl text-center text-lg">
+    <x-slot name="module_subtitle">
         {!! $info->about_section_subtitle_text !!}
-    </div>
+    </x-slot>
     @endif
     <section class="mt-24 flex" id="about-you-module">
 
