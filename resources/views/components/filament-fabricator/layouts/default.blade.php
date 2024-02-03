@@ -3,7 +3,7 @@ null, 'portfolio_core' => null, 'clients_core' => null, 'contact_core' => null, 
 => null])
 
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="{{ session('theme') == 'dark' ? 'dark' : ''  }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="{{ session('theme') == 'dark' ? 'dark' : '' }}">
 
 <head>
     <x-header.meta />
