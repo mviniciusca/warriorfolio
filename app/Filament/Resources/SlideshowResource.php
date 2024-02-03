@@ -50,6 +50,7 @@ class SlideshowResource extends Resource
                                 ->options([
                                     'hero-section' => 'Hero Section',
                                     'about-section' => 'About Section',
+                                    'clients-section' => 'Clients Section',
                                 ])
                                 ->default('hero-section')
                                 ->searchDebounce(500)
