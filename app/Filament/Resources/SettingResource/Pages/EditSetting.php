@@ -5,6 +5,7 @@ namespace App\Filament\Resources\SettingResource\Pages;
 use App\Filament\Resources\SettingResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Tables\Table;
 
 class EditSetting extends EditRecord
 {
@@ -14,10 +15,5 @@ class EditSetting extends EditRecord
     {
         return __('Application Settings');
     }
-    protected function getHeaderActions(): array
-    {
-        return [
-            //
-        ];
-    }
+
 }
