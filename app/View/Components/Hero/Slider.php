@@ -6,6 +6,7 @@ use App\Models\Slideshow;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Maatwebsite\Excel\Concerns\ToArray;
 
 class Slider extends Component
 {
@@ -22,12 +23,13 @@ class Slider extends Component
      */
     public function render(): View|Closure|string
     {
+        $sliders = Slideshow::query()
+            ->select()
+            ->where('module_name', '=', 'hero-section')
+            ->where('is_active', '=', true)
+            ->get();
         return view('components.hero.slider', [
-            'slides' => Slideshow::query()
-                ->select()
-                ->where('module_name', '=', 'hero-section')
-                ->where('is_active', '=', true)
-                ->get()
+            'sliders' => $sliders->toArray(),
         ]);
     }
 }
