@@ -1,3 +1,5 @@
+@props(['maintenance' => null])
+
 <section class="h-screen w-full bg-secondary-50 text-secondary-600 dark:bg-secondary-900 dark:text-secondary-50">
     <div class="mx-auto grid h-full max-w-screen-xl items-center px-4 py-8 lg:px-6 lg:py-16">
         <div class="mt-5 flex flex-col items-center md:flex-row">

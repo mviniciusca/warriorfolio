@@ -54,14 +54,13 @@ null, 'portfolio_core' => null, 'clients_core' => null, 'contact_core' => null, 
 
     @endif
 
-    {{-- Body Scripts --}}
-    <x-header.body-scripts />
-
     {{-- Maintenance Mode --}}
     @if($maintenance && (!$discovery || !auth()->user()))
     <x-maintenance.section />
     @endif
     {{-- End Maintenance Mode --}}
+
+    <x-header.body-scripts />
 </body>
 
 </html>
