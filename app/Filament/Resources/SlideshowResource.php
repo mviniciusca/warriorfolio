@@ -26,10 +26,9 @@ class SlideshowResource extends Resource
     protected static ?string $model = Slideshow::class;
     protected static ?string $navigationIcon = 'heroicon-o-photo';
     protected static ?int $navigationSort = 3;
-    protected static ?string $navigationGroup = 'App Sections';
     public static function getNavigationLabel(): string
     {
-        return __('Core Sliders');
+        return __('Sliders');
     }
 
     public static function form(Form $form): Form
