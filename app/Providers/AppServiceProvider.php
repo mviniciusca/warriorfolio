@@ -25,34 +25,37 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if (Schema::hasTable('maintenances')) {
+            $maintenance = Maintenance::query()
+                ->select(['is_active', 'is_discovery'])
+                ->first();
             view()->share([
-                'maintenance' => Maintenance::all()->first()->is_active,
-                'discovery' => Maintenance::all()->first()->is_discovery,
+                'discovery' => $maintenance->is_discovery,
+                'maintenance' => $maintenance->is_active,
             ]);
 
             if (Schema::hasTable('cores')) {
                 $data = Core::query()
                     ->select(
                         [
-                            'header',
-                            'footer',
-                            'newsletter',
+                            'about',
                             'clients',
                             'contact',
+                            'footer',
+                            'header',
                             'hero',
-                            'portfolio',
-                            'about'
+                            'newsletter',
+                            'portfolio'
                         ]
                     )->first();
                 view()->share([
-                    'hero_core' => $data->hero,
-                    'portfolio_core' => $data->portfolio,
                     'about_core' => $data->about,
-                    'header_core' => $data->header,
-                    'footer_core' => $data->footer,
-                    'newsletter_core' => $data->newsletter,
                     'clients_core' => $data->clients,
                     'contact_core' => $data->contact,
+                    'footer_core' => $data->footer,
+                    'header_core' => $data->header,
+                    'hero_core' => $data->hero,
+                    'newsletter_core' => $data->newsletter,
+                    'portfolio_core' => $data->portfolio,
                 ]);
             }
         }

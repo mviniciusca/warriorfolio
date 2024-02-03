@@ -12,26 +12,17 @@ null, 'portfolio_core' => null, 'clients_core' => null, 'contact_core' => null, 
 
 <body class="app-core" id="app">
     <x-header.alerts />
+    @if(!$maintenance || $discovery && auth()->user())
 
     @if($header_core)
-    {{-- Header Core --}}
     <x-header.section />
     @endif
 
-
-    {{-- App Default Core  --}}
-    @if(!$maintenance || $discovery && auth()->user())
     <x-ui.background />
-    <x-ui.chatbox />
-    <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
-    @endif
-    {{-- End App Default Core --}}
 
-    {{-- Maintenance Mode --}}
-    @if($maintenance && (!$discovery || !auth()->user()))
-    <x-maintenance.section />
-    @endif
-    {{-- End Maintenance Mode --}}
+    <x-ui.chatbox />
+
+    <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
 
     @if($hero_core)
     <x-hero.section />
@@ -53,19 +44,24 @@ null, 'portfolio_core' => null, 'clients_core' => null, 'contact_core' => null, 
     <x-contact.section />
     @endif
 
-
     @if($newsletter_core)
     <x-newsletter.section />
     @endif
-
-    {{-- Body Scripts --}}
-    <x-header.body-scripts />
-    {{-- End Body Scripts --}}
 
     @if($footer_core)
     <x-footer.section />
     @endif
 
+    @endif
+
+    {{-- Body Scripts --}}
+    <x-header.body-scripts />
+
+    {{-- Maintenance Mode --}}
+    @if($maintenance && (!$discovery || !auth()->user()))
+    <x-maintenance.section />
+    @endif
+    {{-- End Maintenance Mode --}}
 </body>
 
 </html>
