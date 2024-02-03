@@ -76,7 +76,7 @@ class EditMaintenanceSection extends EditRecord
                             ])
                             ->maxLength(255)
                             ->required(),
-                    ]),
+                    ])->collapsed(),
             ]);
     }
 }
