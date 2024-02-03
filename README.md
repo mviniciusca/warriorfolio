@@ -1,40 +1,44 @@
-# <p align="center"> Warriorfolio 2 - work in progress  </p>
+## <p align="center"> Warriorfolio 2 : Work In Progress  </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/v2-dev-master/public/img/gif/gif.gif"  alt="Warriorfolio 2">
+  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/v2-dev-master/public/img/gif/ezgif-7-41f5195607.gif"  alt="Warriorfolio 2 wip">
 </p>
 
-This documentation is still under development and may undergo changes at any time. 
-It may contain errors, grammar and formatting. 
+This project is a work in progress.
 
-This documentation is being written in Portuguese and will be translated into English.
+This documentation is still under development and is being written in Portuguese. It will be translated into English soon.
 
 It has not been reviewed yet.
 
 ### Fast Documentation
-- [ Warriorfolio 2 - work in progress  ](#-warriorfolio-2---work-in-progress--)
-    - [Fast Documentation](#fast-documentation)
-    - [Apresentando Warriorfolio 2](#apresentando-warriorfolio-2)
-    - [Features](#features)
-    - [Engrenagem \& Core](#engrenagem--core)
-    - [Requisitos](#requisitos)
-    - [Instalação e Configuração](#instalação-e-configuração)
-    - [Hora de voar](#hora-de-voar)
-    - [O Pós-Build: Conhecendo melhor o Warriorfolio 2](#o-pós-build-conhecendo-melhor-o-warriorfolio-2)
-      - [Mudando a cor padrão do tema](#mudando-a-cor-padrão-do-tema)
-      - [Editando os textos públicos do seu app](#editando-os-textos-públicos-do-seu-app)
-      - [Editando o hightlight do seu app](#editando-o-hightlight-do-seu-app)
-      - [Criando Slideshow de Imagens](#criando-slideshow-de-imagens)
-      - [Módulo de Newsletter ou E-mail Catacher](#módulo-de-newsletter-ou-e-mail-catacher)
-      - [Editando as informações do seu SEO](#editando-as-informações-do-seu-seo)
-      - [Organizando a Ordem dos Módulos](#organizando-a-ordem-dos-módulos)
-    - [Warriorfolio 2 em Produção](#warriorfolio-2-em-produção)
-      - [Erro 403 Forbidden](#erro-403-forbidden)
-    - [Quick: Wiki, Tips \& FAQ](#quick-wiki-tips--faq)
-    - [Contribuições, Feedbacks e Bugs Report](#contribuições-feedbacks-e-bugs-report)
-    - [Supote](#supote)
-    - [Agradecimentos](#agradecimentos)
-    - [Licença](#licença)
+- [ Warriorfolio 2 : Work In Progress  ](#-warriorfolio-2--work-in-progress--)
+  - [Fast Documentation](#fast-documentation)
+  - [Apresentando Warriorfolio 2](#apresentando-warriorfolio-2)
+  - [Features](#features)
+  - [Recursos Adicionais](#recursos-adicionais)
+      - [Blocos de Conteúdo](#blocos-de-conteúdo)
+      - [Modo Manutenção](#modo-manutenção)
+      - [Modo Discovery](#modo-discovery)
+      - [Desacoplamento de Módulos do Core](#desacoplamento-de-módulos-do-core)
+  - [Engrenagem \& Core](#engrenagem--core)
+  - [Requisitos](#requisitos)
+  - [Instalação e Configuração](#instalação-e-configuração)
+  - [Hora de voar](#hora-de-voar)
+  - [O Pós-Build: Conhecendo melhor o Warriorfolio 2](#o-pós-build-conhecendo-melhor-o-warriorfolio-2)
+    - [Mudando a cor padrão do tema](#mudando-a-cor-padrão-do-tema)
+    - [Editando os textos públicos do seu app](#editando-os-textos-públicos-do-seu-app)
+    - [Editando o hightlight do seu app](#editando-o-hightlight-do-seu-app)
+    - [Criando Slideshow de Imagens](#criando-slideshow-de-imagens)
+    - [Módulo de Newsletter ou E-mail Catacher](#módulo-de-newsletter-ou-e-mail-catacher)
+    - [Editando as informações do seu SEO](#editando-as-informações-do-seu-seo)
+    - [Organizando a Ordem dos Módulos](#organizando-a-ordem-dos-módulos)
+  - [Warriorfolio 2 em Produção](#warriorfolio-2-em-produção)
+    - [Erro 403 Forbidden](#erro-403-forbidden)
+  - [Quick: Wiki, Tips \& FAQ](#quick-wiki-tips--faq)
+  - [Contribuições, Feedbacks e Bugs Report](#contribuições-feedbacks-e-bugs-report)
+  - [Supote](#supote)
+  - [Agradecimentos](#agradecimentos)
+  - [Licença](#licença)
   
 
 ### Apresentando Warriorfolio 2
@@ -48,7 +52,9 @@ E a mim, claro! 😁
 
 ### Features 
 - Painel de Controle Robusto e Flexível;
-- Módulos Flexíveis, Customizáveis e Ordenáveis;
+- Modo Manutenção e Modo Discovery;
+- Módulos do Core;
+- Módulos Livres Flexíveis, Customizáveis e Ordenáveis;
 - Galeria de Imagens do Portfolio;
 - Slideshow de Imagens;
 - Showcase de Clientes;
@@ -63,6 +69,16 @@ E a mim, claro! 😁
 - Painel de Leitura de Mensagens Recebidas;
 
 e mais...
+
+### Recursos Adicionais
+##### Blocos de Conteúdo
+- Você não precisa de prender ao modo que o Warriorfolio é projetado. Pensado em modularidade, o app oferece blocos de códigos, ou componentes estrutrais extremamente versáteis. Você pode fazer combinações inúmeras e personalizar ainda mais o seu projeto. Esses elementos estão dividos em: Componenttes, Design e Core.
+##### Modo Manutenção
+- Coloque o seu app em modo manutenção. Você tem a opção de ativar o formulário de contato e suas redes sociais;
+##### Modo Discovery
+- Ative esta função e você será capaz de visualizar o seu app enquanto ele está em modo manutenção; Além disso, uma tarja com o aviso que o Modo Discovery está habilitado será exibida no topo do seu app.
+##### Desacoplamento de Módulos do Core
+- Você pode desacoplar os módulos do Core. Isso siginifca que você pode montar o layout do seu app do seu jeito. Por padrão, o Warriorfolio é montado da seguinte forma: Header, Hero Section, Sobre Você, Projetos, Clientes, Contato, Newsletter (E-mail Catcher) e Footer. Caso você queira criar uma nova página, esses módulos automaticamente estarão disponíveis nesta ordem pra você de forma global. Entretanto, você pode desejar apenas o Header e o Footer sejam exibidos. Para isso, basta ir em App Settings > Desacoplamento de Módulos do Core e desativar os módulos que você não deseja que sejam exibidos.
 
 ### Engrenagem & Core
 Este é um aplicativo em PHP e que tem o Laravel e o Filament no seu Core. O Filament é um conjunto de ferramentas que permite a criação de panel de cotrole ou gerenciador de conteúdos para o Laravel. Idealizado por Dan Harrin, Zep Fietje e por toda comunidade PHP. O Filament está em constante evolução e é um produto altamente testado, seguro, robusto, escalável e com uma documentação completa e de fácil entendimento. 
