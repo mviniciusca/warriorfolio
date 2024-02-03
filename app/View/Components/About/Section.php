@@ -2,6 +2,7 @@
 
 namespace App\View\Components\About;
 
+use App\Models\Slideshow;
 use Closure;
 use App\Models\Course;
 use App\Models\Layout;
@@ -26,7 +27,9 @@ class Section extends Component
      */
     public function render(): View|Closure|string
     {
+
         return view('components.about.section', [
+            'sliders' => getSlider('about-section', new Slideshow),
             'module' => Module::query()
                 ->select(['about'])
                 ->first(),

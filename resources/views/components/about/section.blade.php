@@ -1,37 +1,42 @@
 @if($module->about)
 <x-core.layout class="{{ $info->about_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : ''}}" id="about">
+
     @if($info->about_section_title)
     <x-slot name="module_title">
         {!! $info->about_section_title !!}
     </x-slot>
     @endif
+
     @if($info->about_section_subtitle_text)
     <x-slot name="module_subtitle">
         {!! $info->about_section_subtitle_text !!}
     </x-slot>
     @endif
-    <section class="mt-24 flex" id="about-you-module">
+
+    <div class="mt-24 flex" id="about-you-module">
 
         {{-- Profile Section --}}
-        <section class="w-full p-8 text-center md:w-1/4" id="profile">
+        <div class="w-full p-8 text-center md:w-1/4" id="profile">
             <x-about.profile :$profile />
-        </section>
+        </div>
 
         {{-- About Section --}}
-        <section class="text-md w-full p-12 leading-loose md:w-2/4" id="about-you">
+        <div class="text-md w-full p-12 leading-loose md:w-2/4" id="about-you">
             {!! $profile->about !!}
 
             @if(!$profile->about)
             <x-ui.empty-section :auth="'Go to your Dashboard and create a New About.'" />
             @endif
 
-        </section>
+        </div>
 
         {{-- Courses and Graduations Section --}}
-        <section class="w-full p-12 md:w-2/4" id="courses-and-graduations">
+        <div class="w-full p-12 md:w-2/4" id="courses-and-graduations">
             <x-about.courses :$courses />
-        </section>
+        </div>
 
-    </section>
+    </div>
+
+    <x-hero.slider :$sliders />
 </x-core.layout>
 @endif

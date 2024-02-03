@@ -1,3 +1,5 @@
+@props(['sliders' => null])
+
 @if($sliders != null)
 
 @if($sliders->is_active)

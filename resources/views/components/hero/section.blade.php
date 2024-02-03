@@ -52,7 +52,7 @@
                 {{-- End Hero Section: Image --}}
             </div>
             {{-- Hero Section Slider --}}
-            <x-hero.slider />
+            <x-hero.slider :$sliders />
 
         </div>
     </div>

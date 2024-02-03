@@ -5,6 +5,7 @@ namespace App\View\Components\Hero;
 use Closure;
 use App\Models\Layout;
 use App\Models\Module;
+use App\Models\Slideshow;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
@@ -24,6 +25,7 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.hero.section', [
+            'sliders' => getSlider('hero-section', new Slideshow),
             'module' => Module::query()
                 ->select(['hero'])
                 ->first(),

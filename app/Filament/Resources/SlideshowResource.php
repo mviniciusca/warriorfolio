@@ -49,6 +49,7 @@ class SlideshowResource extends Resource
                             Forms\Components\Select::make('module_name')
                                 ->options([
                                     'hero-section' => 'Hero Section',
+                                    'about-section' => 'About Section',
                                 ])
                                 ->default('hero-section')
                                 ->searchDebounce(500)
