@@ -13,7 +13,7 @@
     </x-slot>
     @endif
 
-    <section id="clients" class="mt-20 flex flex-wrap content-center items-center justify-center gap-8">
+    <section id="clients" class="mt-12 flex flex-wrap content-center items-center justify-center gap-8">
         @foreach ($clients as $client)
         <div
             class="flex min-h-24 w-1/4 items-center rounded-md border bg-secondary-200 opacity-70 transition-all duration-100 hover:opacity-100 dark:border-secondary-700 dark:bg-secondary-800 md:w-1/4 lg:w-1/6">

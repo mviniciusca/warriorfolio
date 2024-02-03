@@ -13,7 +13,7 @@
     </x-slot>
     @endif
 
-    <div class="mt-24 flex" id="about-you-module">
+    <div class="mt-12 flex" id="about-you-module">
 
         {{-- Profile Section --}}
         <div class="w-full p-8 text-center md:w-1/4" id="profile">

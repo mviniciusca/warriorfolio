@@ -14,7 +14,7 @@
     @endif
 
     <section id="contact-section">
-        <div class="mt-20 flex lg:gap-8" id="contact-address">
+        <div class="mt-12 flex lg:gap-8" id="contact-address">
             {{-- Address with Google Maps --}}
             @if($info->contact_section_google_map !== null)
             <div
