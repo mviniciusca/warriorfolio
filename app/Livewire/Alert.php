@@ -10,6 +10,8 @@ class Alert extends Component
     public string $id;
     public int $cookieExpirationTime = 60 * 60 * 24 * 7;
     public string $message;
+    public bool $is_dismissible;
+    public bool $is_active;
     public string $style;
     public string $cookieName;
     public string $cookieValue;

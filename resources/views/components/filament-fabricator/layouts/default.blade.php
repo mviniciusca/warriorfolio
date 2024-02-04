@@ -11,8 +11,6 @@ null, 'portfolio_core' => null, 'clients_core' => null, 'contact_core' => null, 
 </head>
 
 <body class="app-core" id="app">
-    <livewire:alert wire:key='2' style="bumper" id="150"
-        message="This website uses cookies to enhance your browsing experience. By continuing, you agree to the use of cookies." />
     <x-header.alerts />
     @if(!$maintenance || $discovery && auth()->user())
 

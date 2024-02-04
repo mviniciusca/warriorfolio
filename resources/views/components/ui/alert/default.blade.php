@@ -1,1 +1,0 @@
-@props(['display' => null])

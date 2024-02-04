@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Header;
 
+use App\Models\Alert as ModelAlert;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +22,8 @@ class Alerts extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.header.alerts');
+        return view('components.header.alerts', [
+            'alerts' => ModelAlert::all(),
+        ]);
     }
 }
