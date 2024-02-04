@@ -6,7 +6,14 @@ use Livewire\Component;
 
 class Alert extends Component
 {
-    public $display = true;
+    public bool $display = true;
+    public string $id;
+    public int $cookieExpirationTime = 60 * 60 * 24 * 7;
+    public string $message;
+    public string $style;
+    public string $cookieName;
+    public string $cookieValue;
+
     public function render()
     {
         return view('livewire.alert', [
@@ -15,14 +22,15 @@ class Alert extends Component
 
     public function close()
     {
-        // set cookie for 1 day
-        setcookie('alert', 'closed', time() + 60 * 60 * 24, '/');
+        setcookie($this->cookieName, $this->cookieValue, time() + $this->cookieExpirationTime, '/');
         $this->display = false;
     }
 
     public function mount()
     {
-        if (isset($_COOKIE['alert']) && $_COOKIE['alert'] === 'closed') {
+        $this->cookieName = 'wf_' . $this->id;
+        $this->cookieValue = 'displayed';
+        if (isset($_COOKIE[$this->cookieName]) && $_COOKIE[$this->cookieName] === $this->cookieValue) {
             $this->display = false;
         }
     }
