@@ -58,8 +58,10 @@ class SettingResource extends Resource
                         Forms\Components\TextInput::make('meta_title')
                             ->maxLength(255)
                             ->label('Meta Title'),
-                        Forms\Components\TextInput::make('meta_description')
-                            ->maxLength(255)
+                        Forms\Components\TextArea::make('meta_description')
+                            ->maxLength(500)
+                            ->columnSpanFull()
+                            ->rows(2)
                             ->label('Meta Description'),
                         Forms\Components\TextInput::make('meta_keywords')
                             ->maxLength(255)
@@ -75,13 +77,7 @@ class SettingResource extends Resource
                             ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
                             ->password()
                             ->revealable()
-                            ->label('Google Site Verification'),
-                        Forms\Components\TextInput::make('google_recaptcha_key')
-                            ->maxLength(255)
-                            ->placeholder('ex: 1b2c3d4e5f6g7h8i9j0a')
-                            ->password()
-                            ->revealable()
-                            ->label('Google Recaptcha Key'),
+                            ->label('Google Site Verification. Verify ownership using an HTML tag'),
                     ])->columns(2),
                 Section::make('Core Module Decoupling')
                     ->relationship('core')

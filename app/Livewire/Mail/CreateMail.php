@@ -4,6 +4,7 @@ namespace App\Livewire\Mail;
 
 use Filament\Forms;
 use App\Models\Mail;
+use Filament\Forms\Components\TextInput;
 use Livewire\Component;
 use Filament\Forms\Form;
 use Illuminate\Contracts\View\View;
