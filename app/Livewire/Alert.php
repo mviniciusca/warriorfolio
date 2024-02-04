@@ -10,7 +10,6 @@ class Alert extends Component
     public function render()
     {
         return view('livewire.alert', [
-
         ]);
     }
 
