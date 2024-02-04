@@ -141,3 +141,13 @@ trix-editor {
 .cta-one img {
     @apply rounded-lg;
 }
+
+/** Alerts **/
+
+.modal-alert figcaption {
+    @apply hidden;
+}
+
+.modal-alert img {
+    @apply mx-auto rounded-lg py-8;
+}

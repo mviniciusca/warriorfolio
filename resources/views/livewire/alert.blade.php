@@ -31,18 +31,21 @@
 
 
         @if($style == 'modal')
-        <div id="{{ $id }}" class="fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-50">
+        <div id="{{ $id }}"
+            class="fixed inset-0 z-50 overflow-y-auto bg-secondary-950 bg-opacity-10 dark:bg-opacity-70">
             <div class="flex min-h-screen items-center justify-center">
-                <div class="relative m-4 w-full max-w-lg rounded-lg bg-white p-4 shadow-lg dark:bg-secondary-950">
-                    <div class="flex items-start justify-between">
-                        <h2 class="text-md">{!! $message !!}</h2>
+                <div
+                    class="animate__animated animate__fadeIn relative m-4 w-full max-w-2xl rounded-lg bg-secondary-100 p-8 dark:bg-secondary-800">
+                    <div class="flex flex-wrap text-sm">
+
+                        @if($is_dismissible)
+                        <x-ui.ionicon class="absolute right-5 top-5 h-6 w-6 cursor-pointer text-2xl hover:opacity-30"
+                            wire:click='close' icon="close-outline" />
+                        @endif
+
+                        <div class="modal-alert py-4">{!! $message !!}</div>
                     </div>
-                    @if($is_dismissible)
-                    <div class="mt-4 flex items-center justify-end gap-4">
-                        <x-ui.button class="px-3 py-2 text-xs" wire:click="close">Accept</x-ui.button>
-                        <x-ui.button class="px-3 py-2 text-xs" wire:click="close">Decline</x-ui.button>
-                    </div>
-                    @endif
+
                 </div>
             </div>
         </div>
@@ -50,14 +53,16 @@
 
 
         @if($style == 'banner')
-        {{-- Static simple banner --}}
-        <div id="{{ $id }}" tabindex="-1"
-            class="left-0 right-0 top-0 z-50 mx-auto items-start justify-between gap-8 rounded-lg border border-b border-gray-200 bg-gray-50 bg-contain bg-center bg-no-repeat px-4 py-3 dark:border-secondary-800 dark:bg-secondary-950 sm:items-center lg:py-4">
-            <span class="flex items-center gap-2 text-sm font-light">
-                {!! $message !!}
-                <x-ui.button class="px-3 py-2 text-xs" wire:click="close">Accept</x-ui.button>
-            </span>
-        </div>
+
+        <x-ui.alert icon='notifications-outline'>
+
+            {!! $message !!}
+
+            @if($is_dismissible)
+            <x-ui.ionicon class="cursor-pointer hover:opacity-30" wire:click='close' icon="close-outline" />
+            @endif
+
+        </x-ui.alert>
         @endif
 
 

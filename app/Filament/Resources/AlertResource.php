@@ -55,6 +55,7 @@ class AlertResource extends Resource
                                     'default' => 'Default',
                                     'bumper' => 'Bumper on Top',
                                     'modal' => 'Modal',
+                                    'banner' => 'Banner on Top',
                                 ])
                                 ->helperText('Select the style of the alert.')
                                 ->default('default')
@@ -70,8 +71,8 @@ class AlertResource extends Resource
                         Forms\Components\RichEditor::make('message')
                             ->required()
                             ->columnSpan(3)
-                            ->helperText('The message to display in the alert. Max: 500 characters.')
-                            ->maxLength(500),
+                            ->helperText('The message to display in the alert. Max: 2500 characters.')
+                            ->maxLength(2500),
                     ]),
             ]);
     }

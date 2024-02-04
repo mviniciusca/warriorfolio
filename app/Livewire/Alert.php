@@ -30,11 +30,10 @@ class Alert extends Component
 
     public function mount()
     {
-        $this->cookieName = 'wf_' . $this->id;
+        $this->cookieName = 'wf-' . $this->id;
         $this->cookieValue = 'displayed';
         if (isset($_COOKIE[$this->cookieName]) && $_COOKIE[$this->cookieName] === $this->cookieValue) {
             $this->display = false;
         }
     }
-
 }
