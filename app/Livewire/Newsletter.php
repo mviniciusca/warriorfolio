@@ -29,7 +29,7 @@ class Newsletter extends Component implements HasForms
             ->schema([
                 Forms\Components\TextInput::make('email')
                     ->placeholder('Email')
-                    ->label('')
+                    ->hiddenLabel()
                     ->email()
                     ->unique('newsletters', 'email')
                     ->required(),

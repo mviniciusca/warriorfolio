@@ -73,10 +73,14 @@ class SettingResource extends Resource
                         Forms\Components\TextInput::make('meta_google_site_verification')
                             ->maxLength(255)
                             ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
+                            ->password()
+                            ->revealable()
                             ->label('Google Site Verification'),
                         Forms\Components\TextInput::make('google_recaptcha_key')
                             ->maxLength(255)
                             ->placeholder('ex: 1b2c3d4e5f6g7h8i9j0a')
+                            ->password()
+                            ->revealable()
                             ->label('Google Recaptcha Key'),
                     ])->columns(2),
                 Section::make('Core Module Decoupling')
