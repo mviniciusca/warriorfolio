@@ -10,7 +10,7 @@
 {{-- Core Message : Discovery Mode Alert --}}
 @if($maintenance && ($discovery && auth()->user()))
 <livewire:alert :icon="'earth-outline'" :style="'banner'" :id="'discovery-alert'"
-    :message="'Discovery Mode is Active. The website is Maintanance Mode but still visible to you under your login session'"
+    :message="'Discovery Mode is Active. The website is Maintenance Mode but still visible to you under your login session'"
     :is_active="true" />
 @endif
 {{-- End Core Message : Discovery Mode Alert --}}
