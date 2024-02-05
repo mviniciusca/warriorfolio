@@ -35,7 +35,9 @@ class ButtonGroup extends PageBlock
                             'py-3 px-5' => 'Large',
                             'py-4 px-6' => 'Extra Large',
                             'py-5 px-7' => 'Extra Extra Large',
-                        ]),
+                        ])
+                            ->default('py-3 px-5')
+                        ,
                     ]),
                     Fieldset::make('Secondary Button (optional)')->columns(3)->schema([
                         Toggle::make('is_active_secondary')->label('Show Button')->columnSpanFull()->default(true),
@@ -52,7 +54,8 @@ class ButtonGroup extends PageBlock
                             'py-3 px-5' => 'Large',
                             'py-4 px-6' => 'Extra Large',
                             'py-5 px-7' => 'Extra Extra Large',
-                        ]),
+                        ])
+                            ->default('py-3 px-5'),
                     ]),
                 ]),
             ]);
