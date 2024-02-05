@@ -11,7 +11,7 @@
         @if($is_active)
         @if($button_title && $button_url)
         <a href="{{ $button_url }}" target="{{ $button_url }}">
-            <x-ui.button class="{{ $button_size }} text-sm" :icon="$button_icon">
+            <x-ui.button class="{{ $button_size }}" :icon="$button_icon">
                 {{ $button_title }}
             </x-ui.button>
         </a>
@@ -21,7 +21,7 @@
         @if($is_active_secondary)
         @if($button_title_secondary && $button_url_secondary)
         <a href="{{ $button_url_secondary }}" target="{{ $button_target_secondary }}">
-            <x-ui.button-alt class="{{ $button_size_secondary }} text-sm" :icon="$button_icon_secondary">
+            <x-ui.button-alt class="{{ $button_size_secondary }}" :icon="$button_icon_secondary">
                 {{ $button_title_secondary }}
             </x-ui.button-alt>
         </a>
