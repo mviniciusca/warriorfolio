@@ -53,9 +53,9 @@ class AlertResource extends Resource
                             Forms\Components\Select::make('style')
                                 ->options([
                                     'default' => 'Default',
-                                    'bumper' => 'Bumper on Top',
-                                    'modal' => 'Modal',
-                                    'banner' => 'Banner on Top',
+                                    'bumper' => 'Bumper',
+                                    'banner' => 'Banner',
+                                    'toast' => 'Toast',
                                 ])
                                 ->helperText('Select the style of the alert.')
                                 ->default('default')

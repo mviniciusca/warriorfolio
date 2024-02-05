@@ -24,3 +24,36 @@ peed:500,
 autoplay:true,
 centeredSlides: true,
 });
+
+
+const modalEl = document.getElementById('info-popup');
+const modalId = modalEl.getAttribute('data-modal-id');
+const privacyModal = new Modal(modalEl, {
+    placement: 'center'
+});
+
+
+function showModalAfter(delay) {
+    setTimeout(function() {
+        privacyModal.show();
+    }, delay);
+}
+
+
+showModalAfter(100);
+
+const closeModalEl = document.getElementById('close-modal');
+closeModalEl.addEventListener('click', function() {
+    privacyModal.hide();
+});
+
+const acceptPrivacyEl = document.getElementById('confirm-button');
+acceptPrivacyEl.addEventListener('click', function() {
+    alert('privacy accepted');
+    privacyModal.hide();
+});
+
+
+function hideContent() {
+        document.body.classList.add('hide-content');
+    }

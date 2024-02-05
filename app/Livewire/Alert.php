@@ -8,7 +8,7 @@ class Alert extends Component
 {
     public bool $display = true;
     public string $id;
-    public int $cookieExpirationTime = 60 * 60 * 24 * 7;
+    public int $cookieExpirationTime = 3600;
     public string $message;
     public bool $is_dismissible;
     public bool $is_active;
@@ -30,10 +30,11 @@ class Alert extends Component
 
     public function mount()
     {
-        $this->cookieName = 'wf-' . $this->id;
+        $this->cookieName = 'warriorfolio-' . $this->id;
         $this->cookieValue = 'displayed';
         if (isset($_COOKIE[$this->cookieName]) && $_COOKIE[$this->cookieName] === $this->cookieValue) {
             $this->display = false;
         }
+
     }
 }
