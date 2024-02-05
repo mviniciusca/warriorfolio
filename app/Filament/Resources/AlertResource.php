@@ -72,7 +72,7 @@ class AlertResource extends Resource
                             ->required()
                             ->columnSpan(3)
                             ->helperText('The message to display in the alert. Max: 2500 characters.')
-                            ->maxLength(2500),
+                            ->maxLength(6000),
                     ]),
             ]);
     }

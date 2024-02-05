@@ -151,3 +151,19 @@ trix-editor {
 .modal-alert img {
     @apply mx-auto rounded-lg py-8;
 }
+
+.alert-content h2 {
+    @apply block text-xl font-bold;
+}
+
+.alert-content p {
+    @apply block;
+}
+
+.alert-content strong {
+    @apply font-semibold;
+}
+
+.alert-content strong em {
+    @apply font-semibold;
+}
