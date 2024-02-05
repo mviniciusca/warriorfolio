@@ -1,4 +1,5 @@
 @props(['is_dismissible' => null, 'is_active' => null])
+
 <div>
     <div id="wrapper-{{ $id }}">
 
