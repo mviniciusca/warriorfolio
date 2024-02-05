@@ -13,7 +13,7 @@ null, 'portfolio_core' => null, 'clients_core' => null, 'contact_core' => null, 
 <body class="app-core" id="app">
     @if(!$maintenance || $discovery && auth()->user())
 
-    <x-header.alerts />
+    <x-core.alert />
 
     @if($header_core)
     <x-header.section />

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\View\Components\Header;
+namespace App\View\Components\Core;
 
-use App\Models\Alert as ModelAlert;
+use App\Models\Alert as ModelsAlert;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Alerts extends Component
+class Alert extends Component
 {
     /**
      * Create a new component instance.
@@ -22,8 +22,8 @@ class Alerts extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.header.alerts', [
-            'alerts' => ModelAlert::all(),
+        return view('components.core.alert', [
+            'alerts' => ModelsAlert::query()->where('is_active', true)->get()
         ]);
     }
 }
