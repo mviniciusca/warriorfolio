@@ -61,13 +61,20 @@ class AlertResource extends Resource
                                 ->default('default')
                                 ->required(),
                         ]),
-                        Forms\Components\TextInput::make('title')
-                            ->lazy()
-                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('title', Str::slug($state)))
-                            ->required()
-                            ->label('Title Tag')
-                            ->helperText('The tag title of the alert. This is useful to remember what the alert is for. Max: 140 characters.')
-                            ->maxLength(140),
+                        Group::make()->schema([
+                            Forms\Components\TextInput::make('title')
+                                ->lazy()
+                                ->afterStateUpdated(fn(Set $set, ?string $state) => $set('title', Str::slug($state)))
+                                ->required()
+                                ->label('Title Tag')
+                                ->helperText('The tag title of the alert. This is useful to remember what the alert is for. Max: 140 characters.')
+                                ->maxLength(140),
+                            Forms\Components\TextInput::make('button_text')
+                                ->default('Close')
+                                ->label('Button Text')
+                                ->helperText('The text to display on the button. Max: 50 characters. Default is "Close". Leave empty for a close icon.')
+                                ->maxLength(50),
+                        ]),
                         Forms\Components\RichEditor::make('message')
                             ->required()
                             ->columnSpan(3)

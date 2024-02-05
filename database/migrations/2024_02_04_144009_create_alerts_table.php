@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('title')->nullable();
             $table->text('message');
             $table->string('style');
+            $table->string('button_text')->nullable();
             $table->boolean('is_active')->default(true);
             $table->boolean('is_dismissible')->default(true);
             $table->timestamps();
