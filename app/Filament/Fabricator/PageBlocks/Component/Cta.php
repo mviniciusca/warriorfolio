@@ -52,7 +52,6 @@ class Cta extends PageBlock
                             ->placeholder('Button Text'),
                         TextInput::make('button_url')
                             ->label('Button URL (optional)')
-                            ->url()
                             ->maxLength(200)
                             ->helperText('The URL of the button. Max: 200 characters.')
                             ->placeholder('Button URL'),
