@@ -30,7 +30,7 @@ class EmptySeparator extends PageBlock
                                 'py-12 md:py-24 lg:py-48' => 'Large',
                                 'py-24 md:py-48 lg:py-96' => 'Extra Large',
                             ])
-                            ->default('py-6 md:py-12 lg:py-24')
+                            ->default('py-3 md:py-6 lg:py-12')
                             ->required()
                     ]),
             ]);

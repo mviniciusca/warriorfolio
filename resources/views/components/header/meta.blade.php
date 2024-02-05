@@ -1,5 +1,5 @@
 @if($meta->name || $meta->meta_title)
-<title>{{ $meta->name . $meta->meta_title }}</title>
+<title>{{ $meta->name . ' ' . $meta->meta_title }}</title>
 @endif
 <link rel="shortcut icon"
     href="{{ $meta->favicon ? asset('storage/' . $meta->favicon) : asset('img/core/favicon.png') }}" />
