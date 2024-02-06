@@ -12,14 +12,10 @@ use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\Layout\View;
-use Filament\Tables\Columns\Layout\Stack;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\CustomerResource\Pages;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Awcodes\Curator\Components\Tables\CuratorColumn;
 use App\Filament\Resources\CustomerResource\RelationManagers;
-use Filament\Tables\Columns\TextColumn;
 
 class CustomerResource extends Resource
 {
@@ -58,25 +54,25 @@ class CustomerResource extends Resource
     {
         return $table
             ->columns([
-                View::make('admin.brands.table-logo-view')
+                View::make('admin.brands.customers'),
             ])
             ->contentGrid([
-                'sm' => 2,
                 'md' => 3,
-                'lg' => 4
-            ])->defaultSort('id', 'desc')
+                'xl' => 4,
+            ])
+            ->defaultSort('id', 'desc')
             ->filters([
                 //
             ])
             ->actions([
-
-                Tables\Actions\DeleteAction::make(),
-                Tables\Actions\EditAction::make(),
-
+                ActionGroup::make([
+                    Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\EditAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    //    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
