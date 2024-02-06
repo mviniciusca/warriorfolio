@@ -6,8 +6,10 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
+use Awcodes\Curator\CuratorPlugin;
 use Filament\Support\Colors\Color;
 use Filament\Http\Middleware\Authenticate;
+use App\Filament\Resources\CustomMediaResource;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Routing\Middleware\SubstituteBindings;
@@ -28,11 +30,18 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandLogo(asset('img/core/logo-app.svg'))
             ->brandLogoHeight('2rem')
             ->favicon(asset('img/core/favicon.png'))
             ->plugins([
                 FilamentFabricatorPlugin::make(),
+                CuratorPlugin::make()
+                    ->label('Media')
+                    ->pluralLabel('Media Library')
+                    ->navigationIcon('heroicon-o-rectangle-stack')
+                    ->navigationSort(2)
+                    ->navigationCountBadge(),
             ])
             ->resources([
                 config('filament-logger.activity_resource')

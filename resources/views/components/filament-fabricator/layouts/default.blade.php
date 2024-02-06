@@ -60,7 +60,7 @@ null, 'portfolio_core' => null, 'clients_core' => null, 'contact_core' => null, 
     <x-maintenance.section />
     @endif
     {{-- End Maintenance Mode --}}
-
+    <x-curator::modals.modal />
     <x-header.body-scripts />
 </body>
 

@@ -8,6 +8,8 @@
 
 /** animate.css **/
 @import '../../node_modules/animate.css/animate.css';
+@import '../../node_modules/cropperjs/dist/cropper.css';
+@import '../../vendor/awcodes/filament-curator/resources/css/plugin.css';
 
 /** animate opacity : start 100% -> end 0% after 2 seconds **/
 .animate-opacity {

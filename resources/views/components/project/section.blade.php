@@ -22,9 +22,8 @@
                     class="mb-0 opacity-90 filter transition-all duration-100 sm:mb-0 lg:w-1/4 lg:p-4">
                     <div
                         class="mt-4 cursor-pointer rounded-lg bg-secondary-400 bg-opacity-10 p-2 pb-4 opacity-80 transition-all duration-100 hover:opacity-100">
-                        <img alt="{{ $project->name }} - picture"
-                            class="-mt-8 w-full rounded-xl object-cover object-center"
-                            src="{{ asset('storage/' . $project->image_cover) }}">
+                        <x-curator-glider class="-mt-8 w-full rounded-xl object-cover object-center"
+                            :media="$project->image_cover" fallback="card_fallback" />
                         <div class="mt-4 flex justify-between text-sm">
                             <p class="font-medium opacity-100">{{ $project->name }}</p>
                             <ion-icon name="arrow-forward-outline"></ion-icon>

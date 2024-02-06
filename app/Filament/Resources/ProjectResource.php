@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProjectResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProjectResource\RelationManagers;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms\Components\Textarea;
 
 class ProjectResource extends Resource
@@ -64,7 +66,6 @@ class ProjectResource extends Resource
                                 ->label('Short Description (Optional)'),
                             RichEditor::make('content')
                                 ->fileAttachmentsDirectory('project/attachments')
-                                //->fileAttachmentsVisibility('private')
                                 ->columnSpanFull()
                                 ->maxLength(5000)
                                 ->helperText('The content of the project. Max: 5000 characters.')
@@ -79,18 +80,27 @@ class ProjectResource extends Resource
                         ])->columns(2)
                 ])->columnSpan(3),
                 Group::make()->schema([
-                    FileUpload::make('image_cover')
-                        ->image()
-                        ->imageEditor()
-                        ->imageEditorAspectRatios([
-                            '16:9',
-                            '4:3',
-                            '1:1',
-                        ])
+                    CuratorPicker::make('image_cover')
+                        ->buttonLabel('Upload Cover Image')
+                        ->size('lg')
                         ->directory('projects')
+                        ->maxSize(5000)
                         ->required()
-                        ->placeholder('Upload Cover Image')
-                        ->label(''),
+                        ->columnSpanFull()
+                        ->imageCropAspectRatio('1:1')
+                        ->label('Cover Image'),
+                    // FileUpload::make('image_cover')
+                    //     ->image()
+                    //     ->imageEditor()
+                    //     ->imageEditorAspectRatios([
+                    //         '16:9',
+                    //         '4:3',
+                    //         '1:1',
+                    //     ])
+                    //     ->directory('projects')
+                    //     ->required()
+                    //     ->placeholder('Upload Cover Image')
+                    //     ->label(''),
                     Section::make('Category')
                         ->icon('heroicon-o-tag')
                         ->schema([
@@ -115,9 +125,9 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image_cover')
-                    ->label('')
-                    ->size(80),
+                CuratorColumn::make('image_cover')
+                    ->size(80)
+                    ->label('Cover'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),

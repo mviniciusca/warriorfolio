@@ -1,0 +1,5 @@
+@import '/vendor/filament/filament/resources/css/theme.css';
+@import '/vendor/awcodes/filament-curator/resources/css/plugin.css';
+@import '/node_modules/cropperjs/dist/cropper.css';
+
+@config 'tailwind.config.js';
