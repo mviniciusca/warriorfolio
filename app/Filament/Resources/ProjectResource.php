@@ -83,10 +83,8 @@ class ProjectResource extends Resource
                     CuratorPicker::make('image_cover')
                         ->buttonLabel('Upload Cover Image')
                         ->directory('projects')
-                        ->maxSize(5000)
+                        ->maxSize(4000)
                         ->required()
-                        ->columnSpanFull()
-                        ->imageCropAspectRatio('1:1')
                         ->label('Cover Image'),
                     Section::make('Category')
                         ->icon('heroicon-o-tag')

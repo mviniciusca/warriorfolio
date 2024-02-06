@@ -16,19 +16,19 @@
 
     <section class="mt-20">
         <div class="container mx-auto max-w-7xl px-5">
-            <div class="-mx-4 -mb-10 -mt-4 flex flex-wrap sm:-m-4">
+            <div class="flex w-full flex-wrap content-center justify-start">
                 @foreach ($projects as $project )
                 <div data-modal-target="{{ $project->id }}" data-modal-toggle="{{ $project->id }}"
-                    class="mb-0 opacity-90 filter transition-all duration-100 sm:mb-0 lg:w-1/4 lg:p-4">
-                    <div
-                        class="mt-4 cursor-pointer rounded-lg bg-secondary-400 bg-opacity-10 p-2 pb-4 opacity-80 transition-all duration-100 hover:opacity-100">
-                        <x-curator-glider class="-mt-8 w-full rounded-xl object-cover object-center"
-                            :media="$project->image_cover" fallback="card_fallback" />
-                        <div class="mt-4 flex justify-between text-sm">
-                            <p class="font-medium opacity-100">{{ $project->name }}</p>
-                            <ion-icon name="arrow-forward-outline"></ion-icon>
-                        </div>
+                    class="w-1/2 p-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
+
+                    <x-curator-glider class="h-28 rounded-xl bg-indigo-600 object-cover sm:h-48 md:h-52 lg:h-60"
+                        :media="$project->image_cover" />
+
+                    <div class="mt-4 flex justify-between text-sm">
+                        <p class="font-medium opacity-100">{{ $project->name }}</p>
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
                     </div>
+
                 </div>
                 <x-project.modal :project='$project' />
                 @endforeach
