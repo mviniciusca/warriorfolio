@@ -19,18 +19,41 @@
             <div class="flex w-full flex-wrap content-center justify-start">
                 @foreach ($projects as $project )
                 <div data-modal-target="{{ $project->id }}" data-modal-toggle="{{ $project->id }}"
-                    class="w-1/2 p-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
+                    class="w-1/2 {{ $project->content ? 'cursor-pointer' : 'cursor-auto' }} p-2 sm:w-1/2 md:w-1/3 lg:w-1/4">
+
+                    <div class="tag gap-1 flex items-center absolute px-3 py-1 text-xs rounded-md text-white font-bold mt-2 ml-2
+                    {{ $project->category->color ? '' : 'bg-primary-600' }}"
+                        style="background-color: {{ $project->category->hex_color }}">
+
+                        @if($project->category->icon)
+                        <x-ui.ionicon :icon="$project->category->icon" />
+                        @else
+                        <x-ui.ionicon :icon="'bookmark-outline'" />
+                        @endif
+
+                        {{ $project->category->name }}
+
+                    </div>
 
                     <x-curator-glider class="h-28 rounded-xl bg-indigo-600 object-cover sm:h-48 md:h-52 lg:h-60"
                         :media="$project->image_cover" />
-
-                    <div class="mt-4 flex justify-between text-sm">
+                    <div class="mt-4 flex flex-col justify-between gap-2 pb-4 text-xs">
                         <p class="font-medium opacity-100">{{ $project->name }}</p>
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
-                    </div>
 
+                        @if($project->content)
+                        <span class="flex items-center font-semibold hover:text-primary-500">
+                            {{ __('See Full Project') }}
+                            <x-ui.ionicon :icon="'chevron-forward-outline'" />
+                        </span>
+                        @endif
+
+                    </div>
                 </div>
+
+                @if($project->content)
                 <x-project.modal :project='$project' />
+                @endif
+
                 @endforeach
             </div>
         </div>

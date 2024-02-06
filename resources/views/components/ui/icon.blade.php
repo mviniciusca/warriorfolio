@@ -1,12 +1,13 @@
 @props(['name' => '', 'href' => '#'])
+
 <div class="inline-flex">
     <a href="https://{{ $href ?? '#' }}" target="_blank">
         @if($name != 'devto')
         <ion-icon name="{{ $name }}"
-            class="text-2xl cursor-pointer mr-4 transition-all duration-100 hover:opacity-90 opacity-60">
+            class="mr-4 cursor-pointer text-2xl opacity-60 transition-all duration-100 hover:opacity-90">
         </ion-icon>
         @else
-        <svg class="text-2xl fill-secondary-500 dark:fill-secondary-50 h-6 w-6 cursor-pointer mr-4 transition-all duration-100 hover:opacity-90 opacity-60"
+        <svg class="mr-4 h-6 w-6 cursor-pointer fill-secondary-500 text-2xl opacity-60 transition-all duration-100 hover:opacity-90 dark:fill-secondary-50"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
             <path
