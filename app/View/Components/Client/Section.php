@@ -31,8 +31,8 @@ class Section extends Component
                 ->select(['clients'])
                 ->first(),
             'clients' => Customer::all()
-                ->take(12)
-                ->sortDesc(),
+                ->sortByDesc('id')
+                ->take(16),
             'info' => Layout::query()
                 ->select([
                     'clients_section_fill',

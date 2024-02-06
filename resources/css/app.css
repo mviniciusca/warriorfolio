@@ -1,15 +1,10 @@
-/**
-    Warriorfolio V2
-    Marcos Coelho - 2024
-    github.com/mviniciusca
-    Over - Robert Glasper feat. Yebba  ♫
-    MIT License
-**/
+@import '../../node_modules/animate.css/animate.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /** animate.css **/
-@import '../../node_modules/animate.css/animate.css';
-@import '../../node_modules/cropperjs/dist/cropper.css';
-@import '../../vendor/awcodes/filament-curator/resources/css/plugin.css';
 
 /** animate opacity : start 100% -> end 0% after 2 seconds **/
 .animate-opacity {
@@ -27,13 +22,6 @@
 }
 
 
-
-/** Core CSS **/
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer base {
     html {
         font-family: system-ui, sans-serif;
@@ -45,11 +33,6 @@ body {
     @apply overflow-x-hidden antialiased scroll-smooth bg-secondary-50 text-secondary-600 dark:bg-secondary-900 dark:text-secondary-300
 }
 
-/** Gradients **/
-.spacial-gradient,
-.sp {
-    @apply bg-gradient-to-r from-primary-500 to-tertiary-400 bg-clip-text p-1 text-transparent;
-}
 
 .text-gradient,
 .tg {

@@ -82,25 +82,12 @@ class ProjectResource extends Resource
                 Group::make()->schema([
                     CuratorPicker::make('image_cover')
                         ->buttonLabel('Upload Cover Image')
-                        ->size('lg')
                         ->directory('projects')
                         ->maxSize(5000)
                         ->required()
                         ->columnSpanFull()
                         ->imageCropAspectRatio('1:1')
                         ->label('Cover Image'),
-                    // FileUpload::make('image_cover')
-                    //     ->image()
-                    //     ->imageEditor()
-                    //     ->imageEditorAspectRatios([
-                    //         '16:9',
-                    //         '4:3',
-                    //         '1:1',
-                    //     ])
-                    //     ->directory('projects')
-                    //     ->required()
-                    //     ->placeholder('Upload Cover Image')
-                    //     ->label(''),
                     Section::make('Category')
                         ->icon('heroicon-o-tag')
                         ->schema([

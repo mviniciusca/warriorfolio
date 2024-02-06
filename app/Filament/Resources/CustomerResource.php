@@ -11,10 +11,15 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Columns\Layout\View;
+use Filament\Tables\Columns\Layout\Stack;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\CustomerResource\Pages;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 use App\Filament\Resources\CustomerResource\RelationManagers;
+use Filament\Tables\Columns\TextColumn;
 
 class CustomerResource extends Resource
 {
@@ -30,11 +35,10 @@ class CustomerResource extends Resource
         return $form
             ->schema([
                 Group::make()->schema([
-                    Forms\Components\FileUpload::make('logo')
-                        ->image()
-                        ->imageEditor()
+                    CuratorPicker::make('logo')
                         ->directory('customers')
                         ->label('Brand Logo')
+                        //->imageCropAspectRatio('16:9')
                         ->required(),
                 ]),
                 Group::make()->schema([
@@ -54,35 +58,25 @@ class CustomerResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('logo'),
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('url')
-                    ->label('Website URL')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                View::make('admin.brands.table-logo-view')
             ])
+            ->contentGrid([
+                'sm' => 2,
+                'md' => 3,
+                'lg' => 4
+            ])->defaultSort('id', 'desc')
             ->filters([
                 //
             ])
             ->actions([
-                ActionGroup::make([
-                    Tables\Actions\DeleteAction::make(),
-                    Tables\Actions\EditAction::make(),
-                ]),
+
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    //    Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

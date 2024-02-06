@@ -16,10 +16,8 @@
     <section id="clients" class="mt-12 flex flex-wrap content-center items-center justify-center gap-8">
         @foreach ($clients as $client)
         <div
-            class="flex min-h-24 w-1/4 items-center rounded-md border bg-secondary-200 opacity-70 transition-all duration-100 hover:opacity-100 dark:border-secondary-700 dark:bg-secondary-800 md:w-1/4 lg:w-1/6">
-            <img class="mx-auto max-h-14 px-4 text-center grayscale filter dark:invert"
-                src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->name }}" alt="{{ $client->name }}"
-                class="h-full w-full rounded-lg">
+            class="flex min-h-24 w-1/4 items-center rounded-md border bg-white opacity-50 grayscale transition-all duration-100 hover:opacity-100 hover:grayscale-0 dark:border-secondary-700 dark:opacity-20 dark:hover:opacity-80 md:w-1/4 lg:w-1/6">
+            <x-curator-glider :media="$client->logo" class="mx-auto max-h-28 object-contain p-2" />
         </div>
         @endforeach
     </section>
