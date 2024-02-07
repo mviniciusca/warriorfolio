@@ -54,7 +54,7 @@ class CustomerResource extends Resource
             ->columns([
                 CuratorColumn::make('logo')
                     ->label('Brand Logo')
-                    ->size(50),
+                    ->size(100),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
