@@ -30,7 +30,10 @@ class ProjectResource extends Resource
 {
     protected static ?string $model = Project::class;
     protected static ?string $navigationIcon = 'heroicon-o-rocket-launch';
-    protected static ?string $navigationGroup = 'App Sections';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('App Sections');
+    }
     protected static ?int $navigationSort = -1;
     public static function getNavigationLabel(): string
     {

@@ -21,14 +21,11 @@ use Filament\Tables\Actions\ActionGroup;
 class AlertResource extends Resource
 {
     protected static ?string $model = Alert::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-bell';
-
     public static function getNavigationLabel(): string
     {
         return __('Alerts');
     }
-
 
     public static function form(Form $form): Form
     {

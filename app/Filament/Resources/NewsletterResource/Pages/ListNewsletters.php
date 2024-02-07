@@ -14,8 +14,7 @@ class ListNewsletters extends ListRecords
     public function getHeaderWidgetsColumns(): int|array
     {
         return [
-            'md' => 'full',
-            'xl' => 'full',
+            'sm' => 1
         ];
     }
 

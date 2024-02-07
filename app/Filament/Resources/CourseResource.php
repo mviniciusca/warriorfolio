@@ -20,7 +20,18 @@ class CourseResource extends Resource
     protected static ?string $model = Course::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
-    protected static ?string $navigationGroup = 'App Sections';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('App Sections');
+    }
+    public static function getNavigationParentItem(): ?string
+    {
+        return __('Profile');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('Courses');
+    }
     protected static ?int $navigationSort = 2;
     public static function form(Form $form): Form
     {

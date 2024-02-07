@@ -21,11 +21,14 @@ class SettingResource extends Resource
 {
     protected static ?string $model = Setting::class;
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
-    protected static ?string $navigationGroup = 'Application';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Settings');
+    }
     protected static ?int $navigationSort = 0;
     public static function getNavigationLabel(): string
     {
-        return __('Settings');
+        return __('Application Settings');
     }
     public static function getRecordSubNavigation(Page $page): array
     {

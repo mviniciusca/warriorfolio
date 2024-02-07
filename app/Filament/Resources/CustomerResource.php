@@ -15,13 +15,16 @@ use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CustomerResource\RelationManagers;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
+use Filament\Tables\Columns\Layout\Stack;
 
 class CustomerResource extends Resource
 {
     protected static ?string $model = Customer::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-building-office';
-    protected static ?string $navigationLabel = 'Clients';
+    public static function getNavigationLabel(): string
+    {
+        return __('Customers');
+    }
     protected static ?string $navigationGroup = 'App Sections';
     protected static ?int $navigationSort = 4;
 
@@ -31,16 +34,22 @@ class CustomerResource extends Resource
             ->schema([
                 Group::make()->schema([
                     CuratorPicker::make('logo')
+                        ->maxSize(2000)
                         ->directory('customers')
+                        ->helperText('The logo of the customer. Max 2MB')
                         ->label('Brand Logo')
                         ->required(),
                 ]),
                 Group::make()->schema([
                     Forms\Components\TextInput::make('name')
-                        ->maxLength(255)
+                        ->maxLength(100)
+                        ->helperText('The name of the customer. Max 100 characters.')
                         ->label('Customer Name (optional)'),
                     Forms\Components\TextInput::make('url')
-                        ->maxLength(255)
+                        ->maxLength(240)
+                        ->helperText('The website URL of the customer. Max 240 characters.')
+                        ->prefixIcon('heroicon-o-link')
+                        ->prefix('https://www.')
                         ->columnSpan(2)
                         ->label('Website URL (optional)')
                         ->columnSpanFull(),
@@ -52,16 +61,21 @@ class CustomerResource extends Resource
     {
         return $table
             ->columns([
-                CuratorColumn::make('logo')
-                    ->label('Brand Logo')
-                    ->size(100),
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('url')
-                    ->searchable()
-                    ->sortable(),
-            ])
+                Stack::make([
+                    CuratorColumn::make('logo')
+                        ->label('Brand Logo')
+                        ->size(90),
+                    Tables\Columns\TextColumn::make('name')
+                        ->searchable()
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('url')
+                        ->searchable()
+                        ->sortable(),
+                ])
+            ])->contentGrid([
+                    'md' => 3,
+                    'xl' => 5,
+                ])
             ->filters([
                 //
             ])

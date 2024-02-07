@@ -22,7 +22,10 @@ class MailResource extends Resource
 {
     protected static ?string $model = Mail::class;
     protected static ?string $navigationIcon = 'heroicon-o-inbox-stack';
-    protected static ?string $navigationLabel = 'Mail';
+    public static function getNavigationLabel(): string
+    {
+        return __('Mail');
+    }
     public static function getNavigationBadge(): ?string
     {
         if (static::getModel()::where('is_read', false)->count() > 0) {
