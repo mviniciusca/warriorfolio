@@ -26,9 +26,32 @@ class EditSecurity extends EditRecord
     public function form(Form $form): Form
     {
         return $form->schema([
+            Section::make('Change E-mail')
+                ->relationship('user')
+                ->description('This section is used to manage your account e-mail. This affects your login e-mail next time you login.')
+                ->icon('heroicon-o-lock-closed')
+                ->schema([
+                    TextInput::make('email')
+                        ->email()
+                        ->confirmed()
+                        ->regex('/^\S+$/')
+                        ->validationMessages([
+                            'confirmed' => 'The e-mail confirmation does not match.',
+                            'regex' => 'The e-mail must not contain any whitespace.',
+                        ])
+                        ->label('E-mail')
+                        ->minLength(3)
+                        ->maxLength(50)
+                        ->helperText('E-mail must be at least 3 characters long and no more than 50 characters long.'),
+                    TextInput::make('email_confirmation')
+                        ->label('Confirm E-mail')
+                        ->helperText('Please confirm your e-mail')
+                        ->minLength(3)
+                        ->maxLength(50),
+                ])->columns(2),
             Section::make('Change Password')
                 ->relationship('user')
-                ->description('This section is used to manage your account password.')
+                ->description('This section is used to manage your account password. This affects your login password after reload the page.')
                 ->icon('heroicon-o-lock-closed')
                 ->schema([
                     TextInput::make('password')
