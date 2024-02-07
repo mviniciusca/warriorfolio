@@ -8,7 +8,7 @@ class Alert extends Component
 {
     public bool $display = true;
     public string $id;
-    public int $cookieExpirationTime = 3600;
+    public int $cookieExpirationTime = 3600 * 24 * 2;
     public string $message;
     public bool $is_dismissible;
     public bool $is_active;

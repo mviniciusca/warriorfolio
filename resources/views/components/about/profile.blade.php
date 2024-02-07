@@ -1,13 +1,9 @@
 {{-- Profile: Avatar --}}
-<div id="profile-avatar"
-    class="mx-auto mb-8 mt-8 h-40 w-40 rounded-full bg-secondary-500 bg-gradient-to-tl from-primary-500 to-tertiary-400 p-1">
-    <div class="bg-secondary-50 bg-no-repeat transition-all duration-100 hover:grayscale-0 h-full w-full rounded-full p-2 mx-auto mb-12 {{ $profile->avatar_size . ' ' . $profile->avatar_position }}"
-        style="background-image:url('{{ $profile->avatar ? asset('storage/' . $profile->avatar) : asset('img/core/profile-picture.png') }}')">
-        @if($profile->is_open_to_work)
-        <div class="spacial-gradient absolute ml-4 mt-32 p-1 px-3 text-xs text-primary-50">
-            {{ __('Open to Work') }}
-        </div>
-        @endif
+<div id="profile-avatar">
+    <div>
+        <x-curator-glider
+            class="relative mx-auto my-8 max-h-40 max-w-40 rounded-full bg-secondary-300 bg-gradient-to-tl from-primary-500 to-tertiary-500 object-cover p-1 dark:bg-secondary-800"
+            :media="$profile->avatar" />
     </div>
     @if($profile->count() === 0)
     <x-ui.empty-section :auth="'Go to your Dashboard and create a New Profile.'" />
@@ -17,6 +13,23 @@
 @if($profile->user->name)
 <p class="mb-4 text-xl font-semibold tracking-tight">
     {{ $profile->user->name }}
+    @if($profile->is_open_to_work)
+    @if($profile->linkedin)
+    <a href="{{'https://' . $profile->linkedin }}" target="_blank">
+        @endif
+        <div
+            class="absolute mx-auto my-1 -ml-14 -mt-24 inline-block w-auto bg-gradient-to-tl from-primary-500 to-indigo-500 px-2 py-1 text-xs text-white">
+            <span class="flex items-center gap-1 font-semibold">
+                @if($profile->linkedin)
+                <ion-icon class="h-3 w-3" name="logo-linkedin"></ion-icon>
+                @endif
+                {{ __('Open to Work') }}
+            </span>
+            @if($profile->linkedin)
+    </a>
+    @endif
+    </div>
+    @endif
 </p>
 @endif
 @if($profile->job_position || $profile->localization)

@@ -30,64 +30,72 @@ class EditSocialNetwork extends EditRecord
                         ->label('GitHub')
                         ->prefixIcon('heroicon-o-link')
                         ->helperText('Your GitHub link username')
+                        ->prefix('https://')
                         ->maxLength(255)
                         ->placeholder('github link'),
                     TextInput::make('twitter')
                         ->label('X / Twitter')
                         ->prefixIcon('heroicon-o-link')
                         ->helperText('Your X / Twitter link username')
+                        ->prefix('https://')
                         ->maxLength(255)
                         ->placeholder('x / twitter link'),
                     TextInput::make('linkedin')
                         ->label('LinkedIn')
                         ->prefixIcon('heroicon-o-link')
                         ->helperText('Your LinkedIn link username')
+                        ->prefix('https://')
                         ->maxLength(255)
                         ->placeholder('linkedin link'),
                     TextInput::make('facebook')
                         ->label('Facebook')
                         ->prefixIcon('heroicon-o-link')
                         ->helperText('Your Facebook link username')
+                        ->prefix('https://')
                         ->maxLength(255)
                         ->placeholder('facebook link'),
                     TextInput::make('instagram')
                         ->label('Instagram')
                         ->prefixIcon('heroicon-o-link')
                         ->helperText('Your Instagram link username')
+                        ->prefix('https://')
                         ->maxLength(255)
                         ->placeholder('instagram link'),
                     TextInput::make('youtube')
                         ->label('YouTube')
                         ->prefixIcon('heroicon-o-link')
                         ->helperText('Your YouTube link username')
+                        ->prefix('https://')
                         ->maxLength(255)
                         ->placeholder('youtube link'),
                     TextInput::make('twitch')
                         ->label('Twitch')
                         ->prefixIcon('heroicon-o-link')
                         ->helperText('Your Twitch link username')
+                        ->prefix('https://')
                         ->maxLength(255)
                         ->placeholder('twitch link'),
                     TextInput::make('devto')
                         ->label('Dev.to')
                         ->prefixIcon('heroicon-o-link')
                         ->helperText('Your Dev.to link username')
+                        ->prefix('https://')
                         ->maxLength(255)
                         ->placeholder('dev.to link'),
                     TextInput::make('dribbble')
                         ->label('Dribbble')
                         ->prefixIcon('heroicon-o-link')
                         ->helperText('Your Dribbble link username')
+                        ->prefix('https://')
                         ->maxLength(255)
                         ->placeholder('dribbble link'),
                     TextInput::make('medium')
                         ->label('Medium')
                         ->prefixIcon('heroicon-o-link')
                         ->helperText('Your Medium link username')
+                        ->prefix('https://')
                         ->maxLength(255)
                         ->placeholder('medium link'),
-
-
                 ])
         ]);
     }
