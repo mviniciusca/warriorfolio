@@ -13,6 +13,11 @@ class Navigation extends Model
     protected $casts = [
         'content' => 'array',
     ];
+
+    /**
+     * Summary of setting
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function setting()
     {
         return $this->belongsTo(Setting::class);

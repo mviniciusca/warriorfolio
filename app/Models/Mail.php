@@ -10,20 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Mail extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'email',
-        'subject',
-        'phone',
-        'body',
-        'is_newsletter',
-        'is_read',
-        'is_sent',
-        'is_important',
-        'is_draft',
-        'is_archived',
-        'is_deleted',
-    ];
+    protected $guarded = [];
 
     /**
      * Summary of unread
@@ -62,6 +49,11 @@ class Mail extends Model
         return $data;
     }
 
+
+    /**
+     * Summary of counter
+     * @return mixed
+     */
     public static function counter()
     {
         if (static::count() >= 1000) {

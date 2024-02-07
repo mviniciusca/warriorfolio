@@ -18,15 +18,23 @@ class Maintenance extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
 
+
+    /**
+     * Summary of setting
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function setting()
     {
         return $this->belongsTo(Setting::class);
     }
 
-
+    /**
+     * Summary of discoveryMode
+     * @return void
+     */
     public function discoveryMode()
     {
-       //
+        //
 
     }
 

@@ -11,6 +11,10 @@ class Chatbox extends Model
     use HasFactory;
     protected $guarded = [];
 
+    /**
+     * Summary of settings
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function settings()
     {
         return $this->belongsTo(Settings::class);

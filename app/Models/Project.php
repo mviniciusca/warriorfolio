@@ -12,18 +12,28 @@ class Project extends Model
     use HasFactory;
     protected $guarded = [];
 
+    /**
+     * Summary of category
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    /** create a static function to count published projects */
+    /**
+     * Summary of published
+     * @return mixed
+     */
     public static function published()
     {
         return static::where('is_active', true)->get();
     }
 
-    /** create a chart data to count projects by mouth */
+    /**
+     * Summary of chartData
+     * @return mixed
+     */
     public static function chartData()
     {
         return static::selectRaw('count(*) as count, monthname(created_at) as month')
