@@ -24,9 +24,11 @@ class ProfileResource extends Resource
     {
         return __('Profile');
     }
-    protected static ?string $navigationGroup = 'App Sections';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('App Sections');
+    }
     protected static ?int $navigationSort = 0;
-
     public static function form(Form $form): Form
     {
         return $form
@@ -164,9 +166,34 @@ class ProfileResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->paginated(false)
             ->columns([
+                Tables\Columns\ImageColumn::make('avatar')
+                    ->size(90)
+                    ->circular()
+                    ->label('Picture')
+                    ->alignCenter(),
                 Tables\Columns\TextColumn::make('user.name')
-                    ->label(''),
+                    ->label('Name'),
+                Tables\Columns\TextColumn::make('user.email')
+                    ->label('Email'),
+                Tables\Columns\TextColumn::make('job_position')
+                    ->label('Job Position'),
+                Tables\Columns\IconColumn::make('is_open_to_work')
+                    ->label('Open to Work')
+                    ->boolean()
+                    ->alignCenter()
+                    ->icon(function (Profile $record) {
+                        return $record->is_open_to_work ? 'heroicon-o-check-circle' : 'heroicon-o-x-circle';
+                    }),
+                Tables\Columns\IconColumn::make('is_downloadable')
+                    ->label('Downloadable Resume')
+                    ->boolean()
+                    ->alignCenter()
+                    ->icon(function (Profile $record) {
+                        return $record->is_downloadable ? 'heroicon-o-check-circle' : 'heroicon-o-x-circle';
+                    }),
+
             ])
             ->filters([
                 //
