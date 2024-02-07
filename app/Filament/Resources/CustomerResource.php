@@ -9,13 +9,12 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Section;
 use Filament\Tables\Actions\ActionGroup;
-use Filament\Tables\Columns\Layout\View;
 use App\Filament\Resources\CustomerResource\Pages;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CustomerResource\RelationManagers;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 
 class CustomerResource extends Resource
 {
@@ -34,7 +33,6 @@ class CustomerResource extends Resource
                     CuratorPicker::make('logo')
                         ->directory('customers')
                         ->label('Brand Logo')
-                        //->imageCropAspectRatio('16:9')
                         ->required(),
                 ]),
                 Group::make()->schema([
@@ -54,13 +52,16 @@ class CustomerResource extends Resource
     {
         return $table
             ->columns([
-                View::make('admin.brands.customers'),
+                CuratorColumn::make('logo')
+                    ->label('Brand Logo')
+                    ->size(50),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('url')
+                    ->searchable()
+                    ->sortable(),
             ])
-            ->contentGrid([
-                'md' => 3,
-                'xl' => 4,
-            ])
-            ->defaultSort('id', 'desc')
             ->filters([
                 //
             ])
@@ -72,7 +73,7 @@ class CustomerResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    // Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
