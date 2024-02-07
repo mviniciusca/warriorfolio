@@ -26,6 +26,13 @@ class AlertResource extends Resource
     {
         return __('Alerts');
     }
+    public static function getNavigationBadge(): ?string
+    {
+        if (static::getModel()::where('is_active', true)->count() > 0) {
+            return static::getModel()::where('is_active', true)->count();
+        }
+        return null;
+    }
 
     public static function form(Form $form): Form
     {

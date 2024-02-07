@@ -28,6 +28,14 @@ class CustomerResource extends Resource
     protected static ?string $navigationGroup = 'App Sections';
     protected static ?int $navigationSort = 4;
 
+    public static function getNavigationBadge(): ?string
+    {
+        if (static::getModel()::count() > 0) {
+            return static::getModel()::count();
+        }
+        return null;
+    }
+
     public static function form(Form $form): Form
     {
         return $form

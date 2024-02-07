@@ -30,6 +30,13 @@ class SlideshowResource extends Resource
     {
         return __('Sliders');
     }
+    public static function getNavigationBadge(): ?string
+    {
+        if (static::getModel()::where('is_active', true)->count() > 0) {
+            return static::getModel()::where('is_active', true)->count();
+        }
+        return null;
+    }
 
     public static function form(Form $form): Form
     {
@@ -147,9 +154,8 @@ class SlideshowResource extends Resource
                     ->label('Title'),
                 Tables\Columns\TextColumn::make('module_name')
                     ->label('Module'),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->label('Active')
-                    ->boolean(),
+                Tables\Columns\ToggleColumn::make('is_active')
+                    ->label('Active'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d/m/Y H:i'),
             ])

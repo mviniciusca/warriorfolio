@@ -32,6 +32,13 @@ class CourseResource extends Resource
     {
         return __('Courses');
     }
+    public static function getNavigationBadge(): ?string
+    {
+        if (static::getModel()::count() > 0) {
+            return static::getModel()::count();
+        }
+        return null;
+    }
     protected static ?int $navigationSort = 2;
     public static function form(Form $form): Form
     {
