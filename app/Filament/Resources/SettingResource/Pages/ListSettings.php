@@ -20,8 +20,8 @@ class ListSettings extends ListRecords
             ->columns([
                 TextColumn::make('name')
                     ->label('Application Name'),
-                TextColumn::make('user.id')
-                    ->label('User Name'),
+                TextColumn::make('user.name')
+                    ->label('Manager'),
                 IconColumn::make('maintenance.is_discovery')
                     ->alignCenter()
                     ->label('Discovery Mode')
