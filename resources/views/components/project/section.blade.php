@@ -21,7 +21,7 @@
                 <div data-modal-target="{{ $project->id }}" data-modal-toggle="{{ $project->id }}"
                     class="w-1/2 {{ $project->content ? 'cursor-pointer' : 'cursor-auto' }} p-2 sm:w-1/2 md:w-1/3 lg:w-1/4">
 
-                    <div class="tag gap-1 flex items-center absolute px-3 py-1 text-xs rounded-md text-white font-bold mt-2 ml-2
+                    <div class="tag gap-1 flex flex-wrap items-center absolute px-3 py-1 text-xs rounded-md text-white font-bold mt-2 ml-2
                     {{ $project->category->color ? '' : 'bg-primary-600' }}"
                         style="background-color: {{ $project->category->hex_color }}">
 
@@ -35,7 +35,8 @@
 
                     </div>
 
-                    <x-curator-glider class="h-28 rounded-xl bg-indigo-600 object-cover sm:h-48 md:h-52 lg:h-60"
+                    <x-curator-glider
+                        class="mx-auto h-28 w-full rounded-xl object-cover object-center sm:h-48 md:h-52 lg:h-60"
                         :media="$project->image_cover" />
                     <div class="mt-4 flex flex-col justify-between gap-2 pb-4 text-xs">
                         <p class="font-medium opacity-100">{{ $project->name }}</p>

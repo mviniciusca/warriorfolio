@@ -17,7 +17,7 @@
         @foreach ($clients as $client)
         <div
             class="flex min-h-24 w-1/4 items-center rounded-md border bg-white opacity-50 grayscale transition-all duration-100 hover:opacity-100 hover:grayscale-0 dark:border-secondary-700 dark:opacity-20 dark:hover:opacity-80 md:w-1/4 lg:w-1/6">
-            <x-curator-glider :media="$client->logo" class="mx-auto max-h-28 object-contain p-2" />
+            <x-curator-glider :media="$client->logo" class="mx-auto h-28 w-full object-contain object-center p-1" />
         </div>
         @endforeach
     </section>
