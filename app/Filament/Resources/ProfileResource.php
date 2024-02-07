@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProfileResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProfileResource\RelationManagers;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 
 class ProfileResource extends Resource
 {
@@ -43,7 +44,7 @@ class ProfileResource extends Resource
         return $table
             ->paginated(false)
             ->columns([
-                Tables\Columns\ImageColumn::make('avatar')
+                CuratorColumn::make('avatar')
                     ->size(50)
                     ->circular()
                     ->label('Photo')
