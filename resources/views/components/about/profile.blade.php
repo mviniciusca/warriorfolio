@@ -20,9 +20,7 @@
         <div
             class="absolute mx-auto my-1 -ml-14 -mt-24 inline-block w-auto bg-gradient-to-tl from-primary-500 to-indigo-500 px-2 py-1 text-xs text-white">
             <span class="flex items-center gap-1 font-semibold">
-                @if($profile->linkedin)
                 <ion-icon class="h-3 w-3" name="logo-linkedin"></ion-icon>
-                @endif
                 {{ __('Open to Work') }}
             </span>
             @if($profile->linkedin)
