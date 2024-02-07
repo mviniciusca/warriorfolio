@@ -42,6 +42,7 @@ class SettingResource extends Resource
             Pages\EditPortfolioSection::class,
             Pages\EditChatbox::class,
             Pages\EditMaintenanceSection::class,
+            Pages\EditSecurity::class,
         ]);
     }
     public static function form(Form $form): Form
@@ -210,6 +211,7 @@ class SettingResource extends Resource
             'edit-footer-section' => Pages\EditFooterSection::route('/{record}/edit-footer-section'),
             'edit-maintenance-section' => Pages\EditMaintenanceSection::route('/{record}/edit-maintenance-section'),
             'edit-navigation' => Pages\EditNavigation::route('/{record}/edit-navigation'),
+            'edit-security' => Pages\EditSecurity::route('/{record}/edit-security'),
         ];
     }
 }

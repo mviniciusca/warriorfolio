@@ -30,9 +30,10 @@ class Section extends Component
             'module' => Module::query()
                 ->select(['clients'])
                 ->first(),
-            'clients' => Customer::all()
-                ->sortByDesc('id')
-                ->take(16),
+            'clients' => Customer::query()
+                ->orderBy('created_at', 'desc')
+                ->take(12)
+                ->get(),
             'info' => Layout::query()
                 ->select([
                     'clients_section_fill',

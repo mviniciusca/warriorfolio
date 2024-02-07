@@ -156,28 +156,6 @@ class ProfileResource extends Resource
                     ])
                     ->columnSpanFull()
                     ->collapsible(),
-                Group::make()->schema([
-                    Section::make('Password Settings')
-                        ->icon('heroicon-o-lock-closed')
-                        ->relationship('user')
-                        ->schema([
-                            Forms\Components\TextInput::make('password')
-                                ->type('password')
-                                ->confirmed()
-                                ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
-                                ->dehydrated(fn(?string $state): bool => filled($state))
-                                ->label('New Password')
-                                ->maxLength(255)
-                                ->placeholder('********'),
-                            Forms\Components\TextInput::make('password_confirmation')
-                                ->type('password')
-                                ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
-                                ->dehydrated(fn(?string $state): bool => filled($state))
-                                ->label('Confirm Password')
-                                ->maxLength(255)
-                                ->placeholder('********'),
-                        ])->columns(2)->collapsed(),
-                ])->columnSpanFull()->columns(2),
             ])->columns(6);
     }
     public static function table(Table $table): Table

@@ -24,7 +24,7 @@
 
     <x-hero.slider :$sliders />
 
-    @if($clients->count() === 0 && $sliders->count() === 0)
+    @if($clients->isEmpty() && $sliders == null)
     <x-ui.empty-section :auth="'Go to your Dashboard and create a New Client.'" />
     @endif
 
