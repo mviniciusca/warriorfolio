@@ -6,6 +6,7 @@ use Filament\Forms;
 use Filament\Tables;
 use App\Models\Profile;
 use Filament\Forms\Form;
+use Filament\Pages\Page;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Group;
@@ -29,6 +30,15 @@ class ProfileResource extends Resource
         return __('App Sections');
     }
     protected static ?int $navigationSort = 0;
+
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        return $page->generateNavigationItems([
+            Pages\EditProfile::class,
+            Pages\EditSocialNetwork::class,
+        ]);
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -109,59 +119,9 @@ class ProfileResource extends Resource
                                     'underline',
                                     'undo',
                                 ])->columnSpanFull(),
-                        ])->columns(2),
-                    ])->columnSpan(5),
-                Section::make('Social Media')
-                    ->icon('heroicon-o-share')
-                    ->schema([
-                        Group::make()->schema([
-                            Forms\Components\TextInput::make('github')
-                                ->placeholder('github.com/your_username')
-                                ->maxLength(255)
-                                ->prefixIcon('heroicon-o-link'),
-                            Forms\Components\TextInput::make('twitter')
-                                ->placeholder('www.twitter.com/your_username')
-                                ->maxLength(255)
-                                ->prefixIcon('heroicon-o-link'),
-                            Forms\Components\TextInput::make('linkedin')
-                                ->placeholder('www.linkedin.com/in/your_username')
-                                ->maxLength(255)
-                                ->prefixIcon('heroicon-o-link'),
-                            Forms\Components\TextInput::make('medium')
-                                ->placeholder('www.medium.com/@your_username')
-                                ->maxLength(255)
-                                ->prefixIcon('heroicon-o-link'),
-                            Forms\Components\TextInput::make('devto')
-                                ->placeholder('www.dev.to/your_username')
-                                ->maxLength(255)
-                                ->prefixIcon('heroicon-o-link'),
-                            Forms\Components\TextInput::make('dribbble')
-                                ->placeholder('www.dribbble.com/your_username')
-                                ->maxLength(255)
-                                ->prefixIcon('heroicon-o-link'),
-                            Forms\Components\TextInput::make('instagram')
-                                ->placeholder('www.instagram.com/your_username')
-                                ->maxLength(255)
-                                ->prefixIcon('heroicon-o-link'),
-                            Forms\Components\TextInput::make('facebook')
-                                ->placeholder('www.facebook.com/your_username')
-                                ->maxLength(255)
-                                ->prefixIcon('heroicon-o-link'),
-                            Forms\Components\TextInput::make('youtube')
-                                ->placeholder('www.youtube.com/your_username')
-                                ->maxLength(255)
-                                ->prefixIcon('heroicon-o-link'),
-                            Forms\Components\TextInput::make('twitch')
-                                ->placeholder('www.twitch.com/your_username')
-                                ->maxLength(255)
-                                ->prefixIcon('heroicon-o-link'),
-                        ])
-                            ->columns(3)
-                            ->columnSpan(4),
-                    ])
-                    ->columnSpanFull()
-                    ->collapsible(),
-            ])->columns(6);
+                        ])->columns(1),
+                    ])->columnSpan(1),
+            ]);
     }
     public static function table(Table $table): Table
     {
@@ -169,9 +129,9 @@ class ProfileResource extends Resource
             ->paginated(false)
             ->columns([
                 Tables\Columns\ImageColumn::make('avatar')
-                    ->size(90)
+                    ->size(50)
                     ->circular()
-                    ->label('Picture')
+                    ->label('Photo')
                     ->alignCenter(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Name'),
@@ -219,6 +179,7 @@ class ProfileResource extends Resource
             'index' => Pages\ListProfiles::route('/'),
             'create' => Pages\CreateProfile::route('/create'),
             'edit' => Pages\EditProfile::route('/{record}/edit'),
+            'edit-social-network' => Pages\EditSocialNetwork::route('/{record}/edit-social-network'),
         ];
     }
 }
