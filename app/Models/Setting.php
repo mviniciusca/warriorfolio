@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Core;
+use App\Models\User;
 use App\Models\Layout;
 use App\Models\Module;
 use App\Models\Chatbox;
@@ -15,6 +16,15 @@ class Setting extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    /**
+     * Summary of user
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 
     /**
      * Summary of module
@@ -62,6 +72,10 @@ class Setting extends Model
     }
 
 
+    /**
+     * Summary of core
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function core()
     {
         return $this->hasOne(Core::class);

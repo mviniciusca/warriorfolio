@@ -7,10 +7,8 @@ namespace Database\Seeders;
 use App\Models\Mail;
 use App\Models\User;
 use App\Models\Course;
-use App\Models\Profile;
 use App\Models\Setting;
 use App\Models\Category;
-use App\Models\Slideshow;
 use App\Models\Newsletter;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +22,7 @@ class DatabaseSeeder extends Seeder
     {
 
         /** Create a new user on database */
-        User::factory()
+        $user = User::factory()
             ->hasProfile()
             ->create([
                 'name' => 'Warriorfolio',
@@ -35,7 +33,9 @@ class DatabaseSeeder extends Seeder
         Setting::factory()
             ->hasLayout()
             ->count(1)
-            ->create();
+            ->create([
+                'user_id' => $user->id,
+            ]);
         Mail::factory(5)->create();
         Newsletter::factory(5)->create();
         Course::factory(5)->create();
