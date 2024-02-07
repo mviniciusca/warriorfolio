@@ -1,11 +1,11 @@
 <div
-    class="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-secondary-300 bg-secondary-300 bg-opacity-20 px-4 py-8 dark:border dark:border-secondary-800 dark:bg-secondary-800 dark:bg-opacity-40 lg:grid lg:border-none lg:bg-transparent dark:lg:bg-transparent">
+    class="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-secondary-300 bg-secondary-300 bg-opacity-20 px-4 py-2 dark:border dark:border-secondary-800 dark:bg-secondary-800 dark:bg-opacity-40 lg:inline-block lg:items-start lg:justify-normal lg:border-none lg:bg-transparent dark:lg:bg-transparent">
 
     <section id="profile-section-one" class="mx-auto">
 
         <div id="profile-avatar">
             <x-curator-glider
-                class="relative mx-auto my-8 max-h-40 max-w-40 rounded-full bg-secondary-300 bg-gradient-to-tl from-primary-500 to-tertiary-500 object-cover p-1 dark:bg-secondary-700"
+                class="relative mx-auto my-2 max-h-40 max-w-40 rounded-full bg-secondary-300 bg-gradient-to-tl from-primary-500 to-tertiary-500 object-cover p-1 dark:bg-secondary-700 lg:my-2 lg:my-8"
                 :media="$profile->avatar" />
             @if($profile->count() === 0)
             <x-ui.empty-section :auth="'Go to your Dashboard and create a New Profile.'" />
@@ -20,7 +20,7 @@
             <a href="{{'https://' . $profile->linkedin }}" target="_blank">
                 @endif
                 <div
-                    class="absolute mx-auto my-1 -ml-28 -mt-14 inline-block w-auto bg-gradient-to-tl from-primary-500 to-indigo-500 px-4 py-1 text-xs text-white">
+                    class="absolute mx-auto my-1 -ml-28 -mt-8 inline-block w-auto bg-gradient-to-tl from-primary-500 to-indigo-500 px-4 py-1 text-xs text-white lg:-mt-14">
                     <span class="flex items-center gap-1 font-semibold">
                         <ion-icon class="h-3 w-3" name="logo-linkedin"></ion-icon>
                         {{ __('Open to Work') }}

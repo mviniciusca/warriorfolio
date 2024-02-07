@@ -13,15 +13,15 @@
     </x-slot>
     @endif
 
-    <div class="mt-12 flex flex-wrap" id="about-you-module">
+    <div class="mt-4 flex flex-wrap lg:mt-12" id="about-you-module">
 
         {{-- Profile Section --}}
-        <div class="w-full p-8 text-center lg:w-1/4" id="profile">
+        <div class="w-full p-4 text-center lg:w-1/4 lg:p-8" id="profile">
             <x-about.profile :$profile />
         </div>
 
         {{-- About Section --}}
-        <div class="text-md w-full p-12 leading-loose md:w-1/2 lg:w-2/4" id="about-you">
+        <div class="w-full p-4 leading-loose md:w-1/2 lg:w-2/4 lg:p-8" id="about-you">
             {!! $profile->about !!}
 
             @if(!$profile->about)
@@ -31,7 +31,7 @@
         </div>
 
         {{-- Courses and Graduations Section --}}
-        <div class="w-full p-12 md:w-1/2 lg:w-1/4" id="courses-and-graduations">
+        <div class="w-full p-4 md:w-1/2 lg:w-1/4 lg:p-8" id="courses-and-graduations">
             <x-about.courses :$courses />
         </div>
 
