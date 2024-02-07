@@ -17,13 +17,14 @@ class Setting extends Model
     use HasFactory;
     protected $guarded = [];
 
+
     /**
      * Summary of user
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     /**

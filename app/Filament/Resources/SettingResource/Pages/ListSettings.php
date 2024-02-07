@@ -18,7 +18,10 @@ class ListSettings extends ListRecords
         return $table
             ->paginated(false)
             ->columns([
-                TextColumn::make('name')->label('Application Name'),
+                TextColumn::make('name')
+                    ->label('Application Name'),
+                TextColumn::make('user.id')
+                    ->label('User Name'),
                 IconColumn::make('maintenance.is_discovery')
                     ->alignCenter()
                     ->label('Discovery Mode')

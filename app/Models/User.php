@@ -51,6 +51,6 @@ class User extends Authenticatable
 
     public function setting()
     {
-        return $this->hasOne(Setting::class)->withDefault();
+        return $this->hasOne(Setting::class);
     }
 }
