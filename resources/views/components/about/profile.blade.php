@@ -10,17 +10,12 @@
             @if($profile->count() === 0)
             <x-ui.empty-section :auth="'Go to your Dashboard and create a New Profile.'" />
             @endif
-        </div>
-
-        @if($profile->user->name)
-        <div class="mb-4 text-xl font-semibold tracking-tight">
-            <span>{{ $profile->user->name }}</span>
             @if($profile->is_open_to_work)
             @if($profile->linkedin)
             <a href="{{'https://' . $profile->linkedin }}" target="_blank">
                 @endif
                 <div
-                    class="absolute mx-auto my-1 -ml-28 -mt-8 inline-block w-auto bg-gradient-to-tl from-primary-500 to-indigo-500 px-4 py-1 text-xs text-white lg:-mt-14">
+                    class="absolute -ml-12 -mt-10 inline-block w-auto rounded-sm bg-gradient-to-tl from-primary-500 to-indigo-500 p-1 text-xs text-white lg:-mt-16">
                     <span class="flex items-center gap-1 font-semibold">
                         <ion-icon class="h-3 w-3" name="logo-linkedin"></ion-icon>
                         {{ __('Open to Work') }}
@@ -31,13 +26,18 @@
             @endif
             @endif
         </div>
+
+        @if($profile->user->name)
+        <div class="mb-4 text-xl font-semibold tracking-tight">
+            <span>{{ $profile->user->name }}</span>
+        </div>
         @endif
 
     </section>
 
     <section id="profile-section-two" class="mx-auto">
 
-        <div class="flex justify-between gap-4 lg:inline-block">
+        <div class="flex flex-wrap items-center justify-center gap-4 md:justify-between lg:inline-block">
             @if($profile->job_position || $profile->localization)
             <div class="mb-4 tracking-tight">
                 @if($profile->job_position)

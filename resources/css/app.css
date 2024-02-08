@@ -64,7 +64,7 @@ body {
 
 .subtitle,
 .module-subtitle {
-    @apply text-center text-lg lg:text-xl;
+    @apply text-center;
 }
 
 /** Form Input **/

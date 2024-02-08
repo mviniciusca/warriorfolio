@@ -21,7 +21,7 @@
         </div>
 
         {{-- About Section --}}
-        <div class="w-full p-4 leading-loose md:w-1/2 lg:w-2/4 lg:p-8" id="about-you">
+        <div class="w-full p-4 leading-loose md:w-2/3 lg:w-2/4 lg:p-8" id="about-you">
             {!! $profile->about !!}
 
             @if(!$profile->about)
@@ -31,7 +31,7 @@
         </div>
 
         {{-- Courses and Graduations Section --}}
-        <div class="w-full p-4 md:w-1/2 lg:w-1/4 lg:p-8" id="courses-and-graduations">
+        <div class="w-full p-4 md:w-1/3 lg:w-1/4 lg:p-8" id="courses-and-graduations">
             <x-about.courses :$courses />
         </div>
 

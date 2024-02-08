@@ -5,7 +5,7 @@
     <div class="px-4 py-4 md:py-8">
         <div class="mx-auto max-w-7xl">
             <div class="header-title py-2">{{ $module_title }}</div>
-            <div class="subtitle mt-2 text-center text-xl">{{ $module_subtitle }}</div>
+            <div class="subtitle mx-auto mt-2 max-w-5xl text-center">{{ $module_subtitle }}</div>
             {{ $slot }}
         </div>
     </div>
