@@ -2,34 +2,36 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\Slideshow;
 use Filament\Tables;
-use App\Models\Alert;
-use Filament\Tables\Table;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
-class Alerts extends BaseWidget
+class Sliders extends BaseWidget
 {
-    protected static ?int $sort = 6;
+    protected static ?int $sort = 7;
+    protected static ?string $heading = 'Active Sliders';
     public function table(Table $table): Table
     {
         return $table
             ->query(
-                Alert::query()
+                Slideshow::query()
                     ->select()
                     ->where('is_active', true)
                     ->orderBy('created_at', 'desc')
                     ->take(5)
             )
             ->paginated(false)
-            ->heading('Active Alerts')
             ->columns([
                 IconColumn::make('is_active')
                     ->boolean()
                     ->label(''),
                 TextColumn::make('title')
                     ->label('Title'),
+                TextColumn::make('module_name')
+                    ->label('Activated On'),
             ]);
     }
 }
