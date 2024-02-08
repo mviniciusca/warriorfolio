@@ -23,27 +23,35 @@ class CoreModules extends BaseWidget
             ->paginated(false)
             ->columns([
                 IconColumn::make('about')
+                    ->label('About')
                     ->alignCenter()
                     ->boolean(),
                 IconColumn::make('clients')
+                    ->label('Clients')
                     ->alignCenter()
                     ->boolean(),
                 IconColumn::make('contact')
+                    ->label('Contact')
                     ->alignCenter()
                     ->boolean(),
                 IconColumn::make('footer')
+                    ->label('Footer')
                     ->alignCenter()
                     ->boolean(),
                 IconColumn::make('header')
+                    ->label('Header')
                     ->alignCenter()
                     ->boolean(),
                 IconColumn::make('hero')
+                    ->label('Hero')
                     ->alignCenter()
                     ->boolean(),
                 IconColumn::make('newsletter')
+                    ->label('Newsletter')
                     ->alignCenter()
                     ->boolean(),
                 IconColumn::make('portfolio')
+                    ->label('Portfolio')
                     ->alignCenter()
                     ->boolean(),
             ]);
