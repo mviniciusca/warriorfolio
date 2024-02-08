@@ -18,7 +18,7 @@ class NewsletterFactory extends Factory
     {
         return [
             'email' => $this->faker->unique()->safeEmail(),
-            'created_at' => $this->faker->dateTimeBetween('-1 year'),
+            'created_at' => $this->faker->dateTimeThisYear('+12 month'),
         ];
     }
 }

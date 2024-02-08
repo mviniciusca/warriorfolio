@@ -10,8 +10,10 @@ use Filament\Widgets\TableWidget as BaseWidget;
 
 class LatestMails extends BaseWidget
 {
+    protected static ?string $heading = 'Inbox';
     protected static ?int $sort = 1;
-    protected int|string|array $columnSpan = 'full';
+
+    //protected int|string|array $columnSpan = 'full';
     public function table(Table $table): Table
     {
         return $table
@@ -24,8 +26,10 @@ class LatestMails extends BaseWidget
             ->searchable(false)
             ->columns([
                 TextColumn::make('name')
-                    ->label(__('Name')),
+                    ->limit(16)
+                    ->label(__('From')),
                 TextColumn::make('subject')
+                    ->limit(40)
                     ->label(__('Subject')),
             ]);
     }
