@@ -53,13 +53,13 @@ body {
 
 /** Hero section **/
 .hero-section-title {
-    @apply mb-8 text-center text-4xl font-bold leading-none tracking-tighter lg:text-5xl;
+    @apply mb-8 text-center text-4xl font-bold leading-none tracking-tighter lg:text-6xl;
 }
 
 /** Header for each section **/
 .header-title,
 .module-title {
-    @apply bg-gradient-to-b from-secondary-400 to-secondary-600 bg-clip-text text-center text-4xl font-extrabold leading-none tracking-tighter text-transparent dark:from-secondary-300 dark:to-secondary-600 lg:text-5xl;
+    @apply bg-gradient-to-b from-secondary-400 to-secondary-600 bg-clip-text text-center text-3xl font-extrabold leading-none tracking-tighter text-transparent dark:from-secondary-300 dark:to-secondary-600 lg:text-4xl;
 }
 
 .subtitle,
