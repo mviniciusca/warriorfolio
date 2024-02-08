@@ -50,40 +50,49 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 Section::make('Category')
+                    ->description('Create or edit categories for your projects.')
+                    ->columns(3)
                     ->icon('heroicon-o-tag')
                     ->schema([
+                        Forms\Components\Toggle::make('is_active')
+                            ->label('Active')
+                            ->helperText('Projects under this category will be visible to the public.')
+                            ->default(true)
+                            ->required(),
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->reactive()
                             ->lazy()
                             ->label('Category Name')
+                            ->helperText('The name of the category.')
                             ->maxLength(255),
                         Forms\Components\Select::make('parent_id')
                             ->relationship('parent', 'name')
+                            ->options(Category::all()->pluck('name', 'id'))
+                            ->optionsLimit(10)
                             ->searchable()
-                            ->optionsLimit(5)
-                            ->label('Parent Category')
+                            ->searchable()
+                            ->label('Parent Category (optional)')
+                            ->helperText('Select a parent category if this is a sub-category.')
                             ->nullable(),
                         Forms\Components\TextInput::make('slug')
                             ->disabled()
                             ->dehydrated()
                             ->placeholder('generated automatically')
+                            ->helperText('The URL-friendly name of the category. This will be used in the URL of the category page.')
+                            ->label('Category Slug (generated automatically)')
                             ->maxLength(255),
                         Forms\Components\ColorPicker::make('hex_color')
-                            ->helperText('Select the category tag color')
-                            ->label('Category Tag Color'),
-                        Forms\Components\Toggle::make('is_active')
-                            ->label('Category Visibility')
-                            ->default(true)
-                            ->inline(false)
-                            ->required(),
-                        Forms\Components\Textarea::make('icon')
-                            ->label('SVG Icon')
-                            ->placeholder('Place here the svg icon code: starts with <svg> and ends with </svg>')
-                            ->maxLength(65535)
-                            ->columnSpanFull(),
-                    ])->columns(3),
+                            ->helperText('HEX color code (e.g. #FF0000) or color name (e.g. red)')
+                            ->hexColor()
+                            ->label('Category Tag Color (optional)'),
+                        Forms\Components\TextInput::make('icon')
+                            ->label('Ionicon Icon (optional)')
+                            ->prefixIcon('heroicon-o-tag')
+                            ->prefix('ion-icon')
+                            ->helperText('Just the name of the icon'),
+                    ]),
             ]);
     }
 
@@ -108,6 +117,7 @@ class CategoryResource extends Resource
             ->actions([
                 ActionGroup::make([
                     Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
                 ])
             ])
             ->bulkActions([

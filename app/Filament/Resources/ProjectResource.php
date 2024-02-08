@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Models\Category;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Project;
@@ -61,6 +62,7 @@ class ProjectResource extends Resource
                                 ->lazy()
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                                 ->required()
+                                ->unique()
                                 ->maxLength(200)
                                 ->helperText('The name of the project. Max: 200 characters.')
                                 ->label('Title'),
@@ -102,6 +104,30 @@ class ProjectResource extends Resource
                         ->schema([
                             Select::make('category_id')
                                 ->relationship('category', 'name')
+                                ->options(Category::all()->pluck('name', 'id'))
+                                ->createOptionForm([
+                                    Section::make('Fast Create Category')
+                                        ->icon('heroicon-o-tag')
+                                        ->description('Create a new category for the project. Edit other settings of this category later.')
+                                        ->schema([
+                                            TextInput::make('name')
+                                                ->lazy()
+                                                ->unique()
+                                                ->maxLength(200)
+                                                ->helperText('The name of the category. Max: 200 characters.')
+                                                ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                                ->required()
+                                                ->label('Category Name'),
+                                            TextInput::make('slug')
+                                                ->disabled()
+                                                ->unique()
+                                                ->maxLength(200)
+                                                ->dehydrated()
+                                                ->placeholder('generated automatically')
+                                                ->label('Slug'),
+                                        ])->columns(2)
+                                ])
+                                ->optionsLimit(10)
                                 ->searchable()
                                 ->required()
                         ]),
