@@ -16,7 +16,7 @@
 
                     @if($info->hero_section_subtitle_text)
                     <h4
-                        class="animate__animated animate__fadeInUp animate__delay-2s mb-8 text-xl font-semibold leading-tight tracking-tight shadow-current">
+                        class="animate__animated animate__fadeInUp animate__delay-2s mb-8 text-lg leading-tight tracking-tight shadow-current lg:text-xl">
                         {!! $info->hero_section_subtitle_text !!}
                     </h4>
                     @endif
@@ -47,8 +47,8 @@
                 </div>
                 {{-- Hero Section: Image --}}
                 @if($info->hero_section_image)
-                <div class="mt-8 rounded-xl" id="hero-featured-image">
-                    <img class="animate__animated animate__fadeInUp animate__delay-2s rounded-t-2xl"
+                <div class="mt-8" id="hero-featured-image">
+                    <img class="animate__animated animate__fadeInUp animate__delay-2s h-auto p-4 lg:max-h-max"
                         src="{{ asset('storage/' . $info->hero_section_image)}}" alt="hero-section-image" />
                 </div>
                 @endif
