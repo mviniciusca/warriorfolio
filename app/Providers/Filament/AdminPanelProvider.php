@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
@@ -34,6 +35,12 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogo(asset('img/core/logo-app.svg'))
             ->brandLogoHeight('2rem')
             ->favicon(asset('img/core/favicon.png'))
+            ->navigationItems([
+                NavigationItem::make('View Site')
+                    ->url(env('APP_URL'), shouldOpenInNewTab: true)
+                    ->icon('heroicon-o-arrow-up-right')
+                    ->sort(-1),
+            ])
             ->plugins([
                 FilamentFabricatorPlugin::make(),
                 CuratorPlugin::make()
