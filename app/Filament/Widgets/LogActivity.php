@@ -11,6 +11,7 @@ use Spatie\Activitylog\Models\Activity as ActivityLogger;
 class LogActivity extends BaseWidget
 {
     protected int|string|array $columnSpan = 'full';
+    protected static ?string $heading = 'Log Activity';
     protected static ?int $sort = 10;
     public function table(Table $table): Table
     {
@@ -21,6 +22,7 @@ class LogActivity extends BaseWidget
                     ->orderBy('created_at', 'desc')
                     ->take(5)
             )
+            ->emptyStateIcon('heroicon-o-arrow-trending-up')
             ->paginated(false)
             ->columns([
                 TextColumn::make('log_name')

@@ -16,6 +16,7 @@ class SystemStatus extends BaseWidget
     {
         return $table
             ->query(Maintenance::query()->select())
+            ->emptyStateIcon('heroicon-o-server')
             ->paginated(false)
             ->columns([
                 IconColumn::make('is_discovery')

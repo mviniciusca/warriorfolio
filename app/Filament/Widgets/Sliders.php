@@ -23,6 +23,8 @@ class Sliders extends BaseWidget
                     ->orderBy('created_at', 'desc')
                     ->take(5)
             )
+            ->emptyStateIcon('heroicon-o-photo')
+            ->emptyStateHeading('No active sliders')
             ->paginated(false)
             ->columns([
                 IconColumn::make('is_active')

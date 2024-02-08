@@ -12,8 +12,6 @@ class LatestMails extends BaseWidget
 {
     protected static ?string $heading = 'Inbox';
     protected static ?int $sort = 1;
-
-    //protected int|string|array $columnSpan = 'full';
     public function table(Table $table): Table
     {
         return $table
@@ -22,6 +20,7 @@ class LatestMails extends BaseWidget
                     ->latest()
                     ->limit(5)
             )
+            ->emptyStateIcon('heroicon-o-inbox')
             ->paginated(false)
             ->searchable(false)
             ->columns([

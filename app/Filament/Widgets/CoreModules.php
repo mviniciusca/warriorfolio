@@ -20,6 +20,7 @@ class CoreModules extends BaseWidget
             )
             ->heading('Core Modules Status')
             ->description('This table shows the status of the core modules of the website.')
+            ->emptyStateIcon('heroicon-o-cpu-chip')
             ->paginated(false)
             ->columns([
                 IconColumn::make('about')

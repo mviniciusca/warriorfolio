@@ -24,7 +24,7 @@ class MailFactory extends Factory
             'body' => $this->faker->paragraph,
             'is_read' => $this->faker->boolean,
             'is_important' => $this->faker->boolean,
-            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'created_at' => $this->faker->dateTimeThisYear('+ 11 months'),
         ];
     }
 }

@@ -22,6 +22,7 @@ class Alerts extends BaseWidget
                     ->orderBy('created_at', 'desc')
                     ->take(5)
             )
+            ->emptyStateIcon('heroicon-o-bell')
             ->paginated(false)
             ->heading('Active Alerts')
             ->columns([
