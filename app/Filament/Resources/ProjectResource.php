@@ -62,7 +62,7 @@ class ProjectResource extends Resource
                                 ->lazy()
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                                 ->required()
-                                ->unique()
+                                ->unique(ignoreRecord: true)
                                 ->maxLength(200)
                                 ->helperText('The name of the project. Max: 200 characters.')
                                 ->label('Title'),

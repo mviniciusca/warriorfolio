@@ -64,6 +64,7 @@ class CategoryResource extends Resource
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->reactive()
                             ->lazy()
+                            ->unique(ignoreRecord: true)
                             ->label('Category Name')
                             ->helperText('The name of the category.')
                             ->maxLength(255),
@@ -130,7 +131,7 @@ class CategoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\ProjectRelationManager::class,
         ];
     }
 
