@@ -26,6 +26,10 @@ class MailResource extends Resource
     {
         return __('Mail');
     }
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Core Features');
+    }
     public static function getNavigationBadge(): ?string
     {
         if (static::getModel()::where('is_read', false)->count() > 0) {

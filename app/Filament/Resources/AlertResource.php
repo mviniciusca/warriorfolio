@@ -26,6 +26,10 @@ class AlertResource extends Resource
     {
         return __('Alerts');
     }
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Core Features');
+    }
     public static function getNavigationBadge(): ?string
     {
         if (static::getModel()::where('is_active', true)->count() > 0) {

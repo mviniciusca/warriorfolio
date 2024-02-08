@@ -19,13 +19,14 @@ class NewsletterResource extends Resource
 {
     protected static ?string $model = Newsletter::class;
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
-    public static function getNavigationGroup(): ?string
-    {
-        return __('App Sections');
-    }
     public static function getNavigationLabel(): string
     {
         return __('Subscribers');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Core Features');
     }
     protected static ?int $navigationSort = 5;
 

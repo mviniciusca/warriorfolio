@@ -30,6 +30,10 @@ class SlideshowResource extends Resource
     {
         return __('Sliders');
     }
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Core Features');
+    }
     public static function getNavigationBadge(): ?string
     {
         if (static::getModel()::where('is_active', true)->count() > 0) {
