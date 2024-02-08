@@ -102,15 +102,19 @@ class CourseResource extends Resource
                         'info' => 'ongoing',
                     ]),
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Course Name')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('institution')
+                    ->label('Institution')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('start_date')
+                    ->label('Start Date')
                     ->sortable()
                     ->date('m/Y'),
                 Tables\Columns\TextColumn::make('end_date')
+                    ->label('End Date')
                     ->sortable()
                     ->date('m/Y'),
             ])
