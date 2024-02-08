@@ -11,6 +11,7 @@ use Filament\Widgets\TableWidget as BaseWidget;
 class LatestMails extends BaseWidget
 {
     protected static ?int $sort = 1;
+    protected int|string|array $columnSpan = 'full';
     public function table(Table $table): Table
     {
         return $table
