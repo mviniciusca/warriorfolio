@@ -47,32 +47,42 @@ class CourseResource extends Resource
                 Section::make('Course Information')
                     ->description('This information will be displayed publicly.')
                     ->icon('heroicon-o-academic-cap')
+                    ->columns(3)
                     ->schema([
                         Forms\Components\TextInput::make('name')
+                            ->label('Course Name')
+                            ->helperText('The name of the course. Maximum of 255 characters.')
                             ->required()
+                            ->columnSpan(1)
                             ->maxLength(255),
                         Forms\Components\TextInput::make('institution')
+                            ->label('Institution')
+                            ->helperText('The institution where the course was taken. Maximum of 255 characters.')
                             ->required()
+                            ->columnSpan(2)
                             ->maxLength(255),
                         Forms\Components\DatePicker::make('start_date')
+                            ->label('Start Date')
                             ->helperText('The day will not be displayed')
                             ->displayFormat('m/Y')
                             ->required(),
                         Forms\Components\DatePicker::make('end_date')
+                            ->label('End Date')
                             ->displayFormat('m/Y')
                             ->helperText('The day will not be displayed')
                             ->required(),
                         Forms\Components\Select::make('status')
+                            ->label('Status')
+                            ->helperText('The status of the course')
                             ->options([
-                                'in progress' => 'In Progress',
+                                'in-progress' => 'In Progress',
                                 'completed' => 'Completed',
                                 'dropped' => 'Dropped',
                                 'planned' => 'Planned',
                             ])
+                            ->default('in-progress')
                             ->required(),
-                        Forms\Components\TextInput::make('description')
-                            ->maxLength(255),
-                    ])->columns(2)
+                    ])
             ]);
     }
 
@@ -85,7 +95,7 @@ class CourseResource extends Resource
                     ->sortable()
                     ->colors([
                         'primary',
-                        'primary' => 'in progress',
+                        'primary' => 'in-progress',
                         'danger' => 'dropped',
                         'warning' => 'planned',
                         'success' => 'completed',
