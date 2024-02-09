@@ -22,6 +22,7 @@ class LogActivity extends BaseWidget
                     ->orderBy('created_at', 'desc')
                     ->take(5)
             )
+            ->striped()
             ->emptyStateIcon('heroicon-o-arrow-trending-up')
             ->paginated(false)
             ->columns([

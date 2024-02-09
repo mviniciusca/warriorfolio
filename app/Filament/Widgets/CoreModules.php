@@ -18,6 +18,7 @@ class CoreModules extends BaseWidget
             ->query(
                 Core::query()->select()
             )
+            ->striped()
             ->heading('Core Modules Status')
             ->emptyStateIcon('heroicon-o-cpu-chip')
             ->paginated(false)

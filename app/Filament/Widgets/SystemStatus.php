@@ -15,6 +15,7 @@ class SystemStatus extends BaseWidget
     public function table(Table $table): Table
     {
         return $table
+            ->striped()
             ->query(Maintenance::query()->select())
             ->emptyStateIcon('heroicon-o-server')
             ->paginated(false)

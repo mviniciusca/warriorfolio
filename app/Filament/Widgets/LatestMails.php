@@ -20,6 +20,7 @@ class LatestMails extends BaseWidget
                     ->latest()
                     ->limit(5)
             )
+            ->striped()
             ->emptyStateIcon('heroicon-o-inbox')
             ->paginated(false)
             ->searchable(false)

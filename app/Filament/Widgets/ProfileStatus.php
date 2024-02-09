@@ -18,6 +18,7 @@ class ProfileStatus extends BaseWidget
             ->query(
                 Profile::query()->select()
             )
+            ->striped()
             ->emptyStateIcon('heroicon-o-user')
             ->paginated(false)
             ->heading('Profile Status')
