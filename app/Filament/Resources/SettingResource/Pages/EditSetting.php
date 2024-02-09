@@ -2,10 +2,11 @@
 
 namespace App\Filament\Resources\SettingResource\Pages;
 
-use App\Filament\Resources\SettingResource;
 use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
 use Filament\Tables\Table;
+use Filament\Actions\Action;
+use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\SettingResource;
 
 class EditSetting extends EditRecord
 {
@@ -15,5 +16,4 @@ class EditSetting extends EditRecord
     {
         return __('Application Settings');
     }
-
 }

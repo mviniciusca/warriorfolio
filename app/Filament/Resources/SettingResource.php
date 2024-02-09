@@ -18,6 +18,7 @@ use Illuminate\Contracts\Support\Htmlable;
 use App\Filament\Resources\SettingResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SettingResource\RelationManagers;
+use Filament\Widgets\Widget;
 
 class SettingResource extends Resource
 {
@@ -199,7 +200,6 @@ class SettingResource extends Resource
             //
         ];
     }
-
     public static function getPages(): array
     {
         return [
