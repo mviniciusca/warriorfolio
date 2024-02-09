@@ -2,12 +2,15 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\Maintenance;
-use App\Models\Setting;
 use Filament\Tables;
-use Filament\Tables\Columns\IconColumn;
+use App\Models\Setting;
 use Filament\Tables\Table;
+use App\Models\Maintenance;
+use Filament\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Widgets\TableWidget as BaseWidget;
+use Z3d0X\FilamentLogger\Resources\ActivityResource\Pages\ViewActivity;
 
 class SystemStatus extends BaseWidget
 {
