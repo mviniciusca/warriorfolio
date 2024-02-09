@@ -17,11 +17,11 @@ class StatsOverview extends BaseWidget
         return [
             Stat::make('Subscribers', Newsletter::counter())
                 ->color('primary')
-                ->description('Total newsletter subscribers')
+                ->description('Newsletter Subscribers')
                 ->chart(Newsletter::chartSubscribers()),
             Stat::make('Inbox', Mail::counter())
                 ->color('primary')
-                ->description('Messages in the inbox')
+                ->description('Messages in Inbox')
                 ->chart(Mail::chartInbox()),
             Stat::make('Projects', Project::published()->count())
                 ->description('Published Projects')
