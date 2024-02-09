@@ -23,14 +23,18 @@ class ListSettings extends ListRecords
                 TextColumn::make('user.name')
                     ->label('Manager'),
                 IconColumn::make('maintenance.is_discovery')
+                    ->label(__('Discovery Mode'))
                     ->alignCenter()
-                    ->label('Discovery Mode')
-                    ->icon('heroicon-o-command-line')
+                    ->trueColor('success')
+                    ->falseColor('gray')
+                    ->icon('heroicon-o-globe-alt')
                     ->boolean(),
                 IconColumn::make('maintenance.is_active')
                     ->alignCenter()
-                    ->label('Maintenance')
-                    ->icon('heroicon-o-cog-6-tooth')
+                    ->trueColor('success')
+                    ->falseColor('gray')
+                    ->falseIcon('heroicon-o-server')
+                    ->trueIcon('heroicon-o-wrench')
                     ->boolean(),
             ]);
     }
