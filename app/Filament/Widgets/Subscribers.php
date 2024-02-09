@@ -27,7 +27,7 @@ class Subscribers extends ChartWidget
                 [
                     'label' => 'Subscribers',
                     'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
-                    'fill' => true,
+                    'fill' => true
                 ],
             ],
             'labels' => $data->map(fn(TrendValue $value) => $value->date),
