@@ -22,6 +22,16 @@ class SystemStatus extends BaseWidget
             ->query(Maintenance::query()->select())
             ->emptyStateIcon('heroicon-o-server')
             ->paginated(false)
+            ->headerActions(
+                [
+                    ViewAction::make()
+                        ->url(route('filament.admin.resources.slideshows.index'))
+                        ->label('View All')
+                        ->icon('heroicon-o-arrow-up-right')
+                        ->outlined()
+                        ->size('xs'),
+                ]
+            )
             ->columns([
                 IconColumn::make('is_discovery')
                     ->label(__('Discovery Mode'))

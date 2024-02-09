@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use Filament\Tables;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
@@ -21,6 +22,16 @@ class LogActivity extends BaseWidget
                     ->select()
                     ->orderBy('created_at', 'desc')
                     ->take(5)
+            )
+            ->headerActions(
+                [
+                    ViewAction::make()
+                        ->url(route('filament.admin.resources.activity-logs.index'))
+                        ->label('See All')
+                        ->icon('heroicon-o-arrow-up-right')
+                        ->outlined()
+                        ->size('xs'),
+                ]
             )
             ->striped()
             ->emptyStateIcon('heroicon-o-arrow-trending-up')

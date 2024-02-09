@@ -4,6 +4,7 @@ namespace App\Filament\Widgets;
 
 use App\Models\Slideshow;
 use Filament\Tables;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -22,6 +23,16 @@ class Sliders extends BaseWidget
                     ->where('is_active', true)
                     ->orderBy('created_at', 'desc')
                     ->take(5)
+            )
+            ->headerActions(
+                [
+                    ViewAction::make()
+                        ->url(route('filament.admin.resources.slideshows.index'))
+                        ->label('View All')
+                        ->icon('heroicon-o-arrow-up-right')
+                        ->outlined()
+                        ->size('xs'),
+                ]
             )
             ->striped()
             ->emptyStateIcon('heroicon-o-photo')

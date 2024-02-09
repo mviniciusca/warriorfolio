@@ -4,6 +4,7 @@ namespace App\Filament\Widgets;
 
 use App\Models\Profile;
 use Filament\Tables;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -19,6 +20,16 @@ class ProfileStatus extends BaseWidget
                 Profile::query()->select()
             )
             ->striped()
+            ->headerActions(
+                [
+                    ViewAction::make()
+                        ->url(route('filament.admin.resources.profiles.edit', auth()->user()->profile->id))
+                        ->label('Manager')
+                        ->icon('heroicon-o-arrow-up-right')
+                        ->outlined()
+                        ->size('xs'),
+                ]
+            )
             ->emptyStateIcon('heroicon-o-user')
             ->paginated(false)
             ->heading('Profile Status')

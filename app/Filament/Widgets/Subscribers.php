@@ -2,6 +2,8 @@
 
 namespace App\Filament\Widgets;
 
+use Filament\Actions\ViewAction;
+use Filament\Tables\Table;
 use Flowframe\Trend\TrendValue;
 use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
@@ -25,13 +27,12 @@ class Subscribers extends ChartWidget
                 [
                     'label' => 'Subscribers',
                     'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
+                    'fill' => true,
                 ],
             ],
             'labels' => $data->map(fn(TrendValue $value) => $value->date),
         ];
     }
-
-
     protected function getType(): string
     {
         return 'line';

@@ -3,7 +3,9 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Core;
+use App\Models\Setting;
 use Filament\Tables;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
@@ -22,6 +24,16 @@ class CoreModules extends BaseWidget
             ->heading('Core Modules Status')
             ->emptyStateIcon('heroicon-o-cpu-chip')
             ->paginated(false)
+            ->headerActions(
+                [
+                    ViewAction::make()
+                        ->url(route('filament.admin.resources.settings.edit', Setting::query()->first()->id))
+                        ->label('Settings')
+                        ->icon('heroicon-o-arrow-up-right')
+                        ->outlined()
+                        ->size('xs'),
+                ]
+            )
             ->columns([
                 IconColumn::make('about')
                     ->label('About')
