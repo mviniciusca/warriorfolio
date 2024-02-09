@@ -18,4 +18,5 @@ class ManageMails extends ManageRecords
             Actions\CreateAction::make(),
         ];
     }
+
 }

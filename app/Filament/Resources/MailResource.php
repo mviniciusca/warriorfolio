@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use App\Models\Mail;
+use Filament\Forms\Components\Group;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
@@ -16,7 +17,7 @@ use Filament\Tables\Filters\TernaryFilter;
 use App\Filament\Resources\MailResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\MailResource\RelationManagers;
-
+use Filament\Forms\Components\Textarea;
 
 class MailResource extends Resource
 {
@@ -45,61 +46,72 @@ class MailResource extends Resource
     {
         return $form
             ->schema([
+                Group::make()
+                    ->columns(2)
+                    ->columnSpanFull()
+                    ->schema([
+                        Forms\Components\Toggle::make('is_read')
+                            ->label('Mark as Read'),
+                        Forms\Components\Toggle::make('is_important')
+                            ->label('Mark as Important'),
+                    ]),
                 Forms\Components\TextInput::make('name')
-                    ->required()
+                    ->columnSpanFull()
+                    ->label('From')
+                    ->disabled()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
+                    ->label('E-mail')
+                    ->disabled()
                     ->email()
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('phone')
-                    ->required()
+                    ->label('Phone')
+                    ->disabled()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('subject')
                     ->columnSpanFull()
-                    ->required()
+                    ->disabled()
+                    ->label('Subject')
                     ->maxLength(255),
-                Forms\Components\RichEditor::make('body')->columnSpanFull()
-                    ->fileAttachmentsDirectory('mails')
-                    ->required()
+                Textarea::make('body')
+                    ->columnSpanFull()
+                    ->label('Message')
+                    ->disabled()
+                    ->rows(3)
                     ->maxLength(65535),
-                Forms\Components\Toggle::make('is_read')
-                    ->inline(false)
-                    ->label('Mark as Read'),
-                Forms\Components\Toggle::make('is_important')
-                    ->inline(false)
-                    ->label('Mark as Important'),
             ]);
     }
     public static function table(Table $table): Table
     {
         return $table
+            ->striped()
+            ->heading('Inbox')
             ->columns([
                 Tables\Columns\IconColumn::make('is_important')
                     ->label('')
                     ->boolean()
-                    ->trueIcon('heroicon-o-bookmark')
-                    ->falseIcon('')
-                    ->trueColor('primary'),
+                    ->trueIcon('heroicon-s-star')
+                    ->falseIcon('heroicon-o-star')
+                    ->falseColor('gray')
+                    ->trueColor('warning'),
                 Tables\Columns\ToggleColumn::make('is_read')
                     ->alignCenter()
-                    ->label('Read'),
+                    ->label('Mark as Read'),
                 Tables\Columns\TextColumn::make('name')
+                    ->label('From')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('email')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('phone')
-                    ->searchable()
-                    ->sortable(),
+                    ->label('E-mail')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('subject')
+                    ->label('Subject')
                     ->words(5)
-                    ->searchable()
-                    ->sortable(),
+                    ->searchable(),
             ])
             ->defaultSort('id', 'desc')
-            ->defaultPaginationPageOption(50)
+            ->defaultPaginationPageOption(10)
             ->filters([
                 TernaryFilter::make('is_read')
                     ->default(false)
