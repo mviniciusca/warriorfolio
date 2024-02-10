@@ -22,7 +22,7 @@ class StatsOverview extends BaseWidget
                 ->icon('heroicon-o-wrench-screwdriver')
                 ->value(view('components.badge', ['status' => Maintenance::first()]))
                 ->description(Maintenance::first()->is_active ? 'Maintenance Mode' : 'Application is Live')
-                ->color('primary'),
+                ->color(Maintenance::first()->is_active ? 'danger' : 'success'),
             Stat::make('Subscribers', Newsletter::counter())
                 ->color('primary')
                 ->description('Newsletter Subscribers')
