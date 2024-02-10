@@ -22,16 +22,19 @@ class StatsOverview extends BaseWidget
                 ->icon('heroicon-o-wrench-screwdriver')
                 ->value(view('components.badge', ['status' => Maintenance::first()]))
                 ->description(Maintenance::first()->is_active ? 'Maintenance Mode' : 'Application is Live')
-                ->color(Maintenance::first()->is_active ? 'danger' : 'success'),
+                ->color('primary'),
             Stat::make('Subscribers', Newsletter::counter())
+                ->icon('heroicon-o-megaphone')
                 ->color('primary')
                 ->description('Newsletter Subscribers')
                 ->chart(Newsletter::chartSubscribers()),
             Stat::make('Inbox', Mail::counter())
+                ->icon('heroicon-o-inbox')
                 ->color('primary')
                 ->description('Messages in Inbox')
                 ->chart(Mail::chartInbox()),
             Stat::make('Projects', Project::published()->count())
+                ->icon('heroicon-o-rocket-launch')
                 ->description('Published Projects')
                 ->color('primary'),
         ];
