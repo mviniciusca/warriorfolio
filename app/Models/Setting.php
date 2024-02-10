@@ -82,4 +82,17 @@ class Setting extends Model
         return $this->hasOne(Core::class);
     }
 
+    public function systemStatus()
+    {
+        $status = $this->maintenance()
+            ->where('is_active', true)
+            ->first();
+
+        if ($status) {
+            return __('System is under maintenance');
+        } else {
+            return __('System is active');
+        }
+    }
+
 }
