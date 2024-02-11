@@ -4,9 +4,16 @@
     <section id="profile-section-one" class="mx-auto">
 
         <div id="profile-avatar">
+
+            @if($profile->avatar)
             <x-curator-glider
-                class="relative mx-auto my-2 max-h-40 max-w-40 rounded-full bg-secondary-300 bg-gradient-to-tl from-primary-500 to-tertiary-500 object-cover p-1 dark:bg-secondary-700 lg:my-2 lg:my-8"
+                class="relative mx-auto my-2 max-h-40 max-w-40 rounded-full bg-secondary-300 bg-gradient-to-tl from-primary-500 to-tertiary-500 object-cover p-1 dark:bg-secondary-700 lg:my-8"
                 :media="$profile->avatar" />
+            @else
+            <img class="relative mx-auto my-2 max-h-40 max-w-40 rounded-full bg-secondary-300 bg-gradient-to-tl from-primary-500 to-tertiary-500 object-cover p-1 dark:bg-secondary-700 lg:my-8"
+                src="{{ asset('img/core/profile-picture.png') }}" />
+            @endif
+
             @if($profile->count() === 0)
             <x-ui.empty-section :auth="'Go to your Dashboard and create a New Profile.'" />
             @endif

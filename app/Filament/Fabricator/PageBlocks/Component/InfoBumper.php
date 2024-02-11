@@ -29,8 +29,8 @@ class InfoBumper extends PageBlock
                             Toggle::make('is_animated')->label('Animated')->default(true),
                             Toggle::make('is_center')->label('Align to Center')->default(false),
                         ])->columnSpanFull(),
-                        TextInput::make('bumper_tag')->label('Tag')->placeholder('Tag'),
-                        TextInput::make('bumper_title')->label('Title')->placeholder('Title'),
+                        TextInput::make('bumper_tag')->label('Tag')->placeholder('Tag')->required(),
+                        TextInput::make('bumper_title')->label('Title')->placeholder('Title')->required(),
                         TextInput::make('bumper_icon')->label('Ionicon')->placeholder('Icon')->prefix('ion-icon'),
                         TextInput::make('bumper_link')->label('Link')->placeholder('Link'),
                         Select::make('bumper_target')->label('Target')->placeholder('Target')->options([
