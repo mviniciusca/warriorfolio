@@ -1,9 +1,9 @@
-@props(['maintenance' => null, 'discovery' => null])
+@props(['maintenance' => null, 'discovery' => null, 'button_text' => null])
 
 {{-- Messaging Hub --}}
 @foreach ($alerts as $alert)
 <livewire:alert wire:key="$alert->id" :style='$alert->style' :id="$alert->title" :message="$alert->message"
-    :is_active="$alert->is_active" :is_dismissible="$alert->is_dismissible" />
+    :is_active="$alert->is_active" :is_dismissible="$alert->is_dismissible" :button_text="$alert->button_text" />
 @endforeach
 
 
