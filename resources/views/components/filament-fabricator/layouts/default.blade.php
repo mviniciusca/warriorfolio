@@ -11,6 +11,7 @@ null, 'portfolio_core' => null, 'clients_core' => null, 'contact_core' => null, 
 </head>
 
 <body class="app-core" id="app">
+
     @if(!$maintenance || $discovery && auth()->user())
 
     <x-core.alert />
