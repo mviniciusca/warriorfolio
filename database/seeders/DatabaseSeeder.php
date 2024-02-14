@@ -17,20 +17,18 @@ use Illuminate\Support\Facades\DB;
 class DatabaseSeeder extends Seeder
 {
     /**
+     * Warriorfolio app seeder.
      * Seed the application's database.
+     * Be careful with the order of the factories, because some of them have foreign keys.
      */
     public function run(): void
     {
-
-        /** Create a new user on database */
         $user = User::factory()
             ->hasProfile()
             ->create([
                 'name' => 'Warriorfolio',
                 'email' => 'warriorfolio@test.dev',
             ]);
-
-        /** Add main page settings on database */
         $setting = Setting::factory()
             ->hasLayout()
             ->count(1)
