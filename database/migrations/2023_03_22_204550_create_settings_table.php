@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('logo')->nullable();
+            $table->string('logo_dark_mode')->nullable();
+            $table->string('logo_size')->nullable();
             $table->string('favicon')->nullable();
             $table->string('background_image')->nullable();
             $table->boolean('background_image_visibility')->default(true);

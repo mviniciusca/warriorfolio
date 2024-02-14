@@ -13,6 +13,7 @@ use Filament\Resources\Pages\EditRecord;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use App\Filament\Resources\SettingResource;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 
 class EditAppearance extends EditRecord
 {
@@ -33,7 +34,6 @@ class EditAppearance extends EditRecord
                         Toggle::make('background_image_visibility')
                             ->label('Background Image Visibility')
                             ->inline(false)
-                            ->columnSpanFull()
                             ->helperText('Show or hide the background image on your application. This option prevent to show the default background image on your application.'),
                         FileUpload::make('background_image')
                             ->image()
@@ -45,8 +45,18 @@ class EditAppearance extends EditRecord
                             ])
                             ->directory('app')
                             ->label('Background Image')
-                            ->helperText('This image will be used as the background of your application. Recommended size: 1920x1080px (16:9)')
-                            ->columnSpanFull(),
+                            ->helperText('This image will be used as the background of your application. Recommended size: 1920x1080px (16:9)'),
+                        FileUpload::make('favicon')
+                            ->image()
+                            ->imageEditor()
+                            ->imageEditorAspectRatios([
+                                '16:9',
+                                '4:3',
+                                '1:1',
+                            ])
+                            ->directory('app')
+                            ->helperText('.ico or .png would be amazing!')
+                            ->label('Favicon'),
                         Group::make()->schema([
                             Select::make('background_image_position')
                                 ->label('Background Image Position')
@@ -76,32 +86,30 @@ class EditAppearance extends EditRecord
                                 ])
                                 ->default('no-repeat')
                                 ->helperText('Choose the repeat of the background image on your application.'),
-                        ])->columns(3)->columnSpanFull(),
-
-                        FileUpload::make('logo')
-                            ->image()
-                            ->imageEditor()
-                            ->imageEditorAspectRatios([
-                                '16:9',
-                                '4:3',
-                                '1:1',
+                        ])
+                            ->columns(3)
+                            ->columnSpanFull(),
+                        CuratorPicker::make('logo')
+                            ->label('Logo')
+                            ->helperText('Upload a logo for your application. If you don\'t upload a logo, the default logo will be used.')
+                            ->directory('app/logo'),
+                        CuratorPicker::make('logo_dark_mode')
+                            ->label('Dark Mode Logo')
+                            ->helperText('Upload a logo for dark mode. If you don\'t upload a logo, the default logo will be used.')
+                            ->directory('app/logo/dark-mode'),
+                        Select::make('logo_size')
+                            ->label('Logo Size')
+                            ->options([
+                                'max-w-11' => 'Small',
+                                'max-w-14' => 'Default',
+                                'max-w-24' => 'Medium',
+                                'max-w-32' => 'Large',
+                                'max-w-48' => 'Extra Large',
                             ])
-                            ->directory('app')
-                            ->helperText('.png transparent or .svg will be nice!')
-                            ->label('Logo'),
-                        FileUpload::make('favicon')
-                            ->image()
-                            ->imageEditor()
-                            ->imageEditorAspectRatios([
-                                '16:9',
-                                '4:3',
-                                '1:1',
-                            ])
-                            ->directory('app')
-                            ->helperText('.ico or .png would be amazing!')
-                            ->label('Favicon'),
+                            ->default('max-w-14')
+                            ->helperText('Choose the size of the logo on your application.'),
                     ])
-                    ->columns(2),
+                    ->columns(3),
             ]);
     }
 
