@@ -1,7 +1,10 @@
 @props(['icon' => null])
 
-<div
-    class="border-b border-b-secondary-200 bg-secondary-50 text-sm font-light dark:border-b-secondary-800 dark:bg-secondary-900">
+<div {{ $attributes->merge(['class' => 'z-50 text-sm mx-auto w-full border border-secondary-200
+    dark:border-secondary-800
+    bg-secondary-100
+    dark:bg-secondary-950']) }}
+    >
     <div class="py-5">
         <div class="mx-auto max-w-7xl">
             <div class="flex flex-wrap items-center gap-2">

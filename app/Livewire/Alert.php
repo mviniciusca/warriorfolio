@@ -17,18 +17,31 @@ class Alert extends Component
     public string $cookieName;
     public string $cookieValue;
 
+    /**
+     * Alert constructor.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function render()
     {
         return view('livewire.alert', [
         ]);
     }
 
+    /**
+     * Close the alert and set a cookie to prevent it from showing again.
+     * @return void
+     */
     public function close()
     {
         setcookie($this->cookieName, $this->cookieValue, time() + $this->cookieExpirationTime, '/');
         $this->display = false;
     }
 
+
+    /**
+     * Mount the component.
+     * @return void
+     */
     public function mount()
     {
         $this->cookieName = 'warriorfolio-' . $this->id;
