@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Course;
 use App\Models\Setting;
 use App\Models\Category;
+use App\Models\Navigation;
 use App\Models\Newsletter;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -30,14 +31,14 @@ class DatabaseSeeder extends Seeder
             ]);
 
         /** Add main page settings on database */
-        Setting::factory()
+        $setting = Setting::factory()
             ->hasLayout()
             ->count(1)
             ->create([
                 'user_id' => $user->id,
             ]);
-        Mail::factory(200)->create();
-        Newsletter::factory(200)->create();
+        Mail::factory(20)->create();
+        Newsletter::factory(10)->create();
         Course::factory(5)->create();
         Category::factory()->create();
         DB::table('pages')
@@ -49,6 +50,14 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
+        Navigation::factory(1)->create([
+            'setting_id' => $setting->first()->id,
+            'content' => [
+                ["url" => "/", "name" => "Homepage", "target" => "_self", "is_active" => true],
+                ["url" => "core/documentation", "name" => "Documentation", "target" => "_self", "is_active" => true],
+                ["url" => "https://github.com/mviniciusca", "name" => "Github", "target" => "_blank", "is_active" => true]
+            ],
+        ]);
     }
 }
 

@@ -43,9 +43,6 @@ class SettingFactory extends Factory
             $setting->maintenance()->create([
                 'setting_id' => $setting->id,
             ]);
-            $setting->navigation()->create([
-                'setting_id' => $setting->id,
-            ]);
             $setting->core()->create([
                 'setting_id' => $setting->id,
             ]);

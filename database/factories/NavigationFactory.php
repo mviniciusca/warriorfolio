@@ -17,11 +17,7 @@ class NavigationFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => 'Home',
-            'url' => '/',
-            'is_new_tab' => false,
-            'is_visible' => true,
-            'order' => 0,
+            'content' => '[{"url": "/", "name": "Homepage", "target": "_self", "is_active": true}, {"url": "/doc", "name": "Documentation", "target": "_self", "is_active": true}, {"url": "https://github.com/mviniciusca", "name": "Github", "target": "_blank", "is_active": true}]',
         ];
     }
 }
