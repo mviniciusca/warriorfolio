@@ -25,7 +25,7 @@ class SystemStatus extends BaseWidget
             ->headerActions(
                 [
                     ViewAction::make()
-                        ->url(route('filament.admin.resources.slideshows.index'))
+                        ->url(route('filament.admin.resources.settings.edit-maintenance-section', Setting::first()))
                         ->label('View All')
                         ->icon('heroicon-o-arrow-up-right')
                         ->outlined()
