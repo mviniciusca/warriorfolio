@@ -19,7 +19,6 @@ use Filament\Forms\Components\Textarea;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Actions\ActionGroup;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Support\Htmlable;
@@ -104,7 +103,7 @@ class ProjectResource extends Resource
                 Group::make()->schema([
                     CuratorPicker::make('image_cover')
                         ->buttonLabel('Upload Cover Image')
-                        ->directory('projects')
+                        ->directory('public/project')
                         ->maxSize(4000)
                         ->required()
                         ->label('Cover Image'),

@@ -122,34 +122,35 @@ class SlideshowResource extends Resource
                                     ->image()
                                     ->imageEditor()
                                     ->columnSpanFull()
-                                    ->directory('slideshow')
+                                    ->directory('public/slideshow')
                                     ->required(),
-                                Group::make()->columns(3)->schema([
-                                    Forms\Components\TextInput::make('image_title')
-                                        ->reactive()
-                                        ->lazy()
-                                        ->afterStateUpdated(fn(Set $set, ?string $state) => $set('image_alt', Str::slug($state)))
-                                        ->label('Image Title')
-                                        ->helperText('The title of the image (optional)')
-                                        ->maxLength(255),
-                                    Forms\Components\TextInput::make('image_url')
-                                        ->maxLength(255)
-                                        ->helperText('The URL where the image will link to (optional)')
-                                        ->label('Link'),
-                                    Forms\Components\TextInput::make('image_alt')
-                                        ->disabled()
-                                        ->dehydrated()
-                                        ->placeholder('Auto-generated from Image Title')
-                                        ->label('Image Alt')
-                                        ->maxLength(255),
-                                ]),
+                                Group::make()
+                                    ->columns(3)
+                                    ->schema([
+                                        Forms\Components\TextInput::make('image_title')
+                                            ->reactive()
+                                            ->lazy()
+                                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('image_alt', Str::slug($state)))
+                                            ->label('Image Title')
+                                            ->helperText('The title of the image (optional)')
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('image_url')
+                                            ->maxLength(255)
+                                            ->helperText('The URL where the image will link to (optional)')
+                                            ->label('Link'),
+                                        Forms\Components\TextInput::make('image_alt')
+                                            ->disabled()
+                                            ->dehydrated()
+                                            ->placeholder('Auto-generated from Image Title')
+                                            ->label('Image Alt')
+                                            ->maxLength(255),
+                                    ]),
                             ])
                             ->reorderable()
                             ->collapsible()
                     ])->columnSpan(4),
             ])->columns(6);
     }
-
     public static function table(Table $table): Table
     {
         return $table

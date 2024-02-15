@@ -43,7 +43,7 @@ class EditAppearance extends EditRecord
                                 '4:3',
                                 '1:1',
                             ])
-                            ->directory('app')
+                            ->directory('public/background')
                             ->label('Background Image')
                             ->helperText('This image will be used as the background of your application. Recommended size: 1920x1080px (16:9)'),
                         FileUpload::make('favicon')
@@ -54,7 +54,7 @@ class EditAppearance extends EditRecord
                                 '4:3',
                                 '1:1',
                             ])
-                            ->directory('app')
+                            ->directory('public/favicon')
                             ->helperText('.ico or .png would be amazing!')
                             ->label('Favicon'),
                         Group::make()->schema([
@@ -92,11 +92,11 @@ class EditAppearance extends EditRecord
                         CuratorPicker::make('logo')
                             ->label('Logo')
                             ->helperText('Upload a logo for your application. If you don\'t upload a logo, the default logo will be used.')
-                            ->directory('app/logo'),
+                            ->directory('public/logo'),
                         CuratorPicker::make('logo_dark_mode')
                             ->label('Dark Mode Logo')
                             ->helperText('Upload a logo for dark mode. If you don\'t upload a logo, the default logo will be used.')
-                            ->directory('app/logo/dark-mode'),
+                            ->directory('public/logo/dark-mode'),
                         Select::make('logo_size')
                             ->label('Logo Size')
                             ->options([

@@ -43,7 +43,7 @@ class CustomerResource extends Resource
                 Group::make()->schema([
                     CuratorPicker::make('logo')
                         ->maxSize(2000)
-                        ->directory('customers')
+                        ->directory('public/customer')
                         ->helperText('The logo of the customer. Max 2MB')
                         ->label('Brand Logo')
                         ->required(),

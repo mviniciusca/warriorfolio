@@ -38,7 +38,7 @@ class EditProfile extends EditRecord
                     Group::make()->schema([
                         CuratorPicker::make('avatar')
                             ->label('Public Profile Picture')
-                            ->directory('profile/avatar'),
+                            ->directory('public/profile'),
                     ])->columnSpan(1),
                     Group::make()->columns(2)->schema([
                         Group::make()
@@ -81,7 +81,7 @@ class EditProfile extends EditRecord
                                     ->label('Resume/CV')
                                     ->placeholder('Attach Your Resume')
                                     ->acceptedFileTypes(['application/pdf'])
-                                    ->directory('profile/documents'),
+                                    ->directory('public/profile/document'),
                                 Toggle::make('is_downloadable')
                                     ->inline(false)
                                     ->label('Downloadable CV')
