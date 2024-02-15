@@ -1,5 +1,5 @@
 @aware(['page'])
-@props(['bg_transparent' => null, 'author' => null,'testimonial' => null,
+@props(['bg_transparent' => null, 'author' => null, 'testimonial' => null,
 'author_info' => null, 'picture' => null, 'is_active' => null])
 
 
