@@ -1,18 +1,24 @@
 @if($module->newsletter)
 <x-core.layout>
-    <div class="container mx-auto">
+    <div class="mx-auto max-w-7xl px-4">
         <div
-            class="mx-auto grid items-center justify-center gap-8 rounded-xl border border-secondary-300 bg-secondary-100 px-8 py-4 dark:border-secondary-800 dark:bg-secondary-950 lg:flex lg:justify-between">
-            <img class="h-48"
-                src="{{ $info->newsletter_section_image ? asset('storage/' . $info->newsletter_section_image) : asset('img/core/svg/developer.svg') }}"
-                alt="developer guy image" class="mx-auto h-48 w-32" />
-            <span class="text-5xl font-semibold leading-tight tracking-tighter">
-                <p>{!! $info->newsletter_section_title !!}</p>
-                <p class="text-sm font-normal tracking-normal">
-                    {!! $info->newsletter_section_subtitle_text !!}
-                </p>
-            </span>
-            <div>
+            class="flex flex-wrap items-center justify-center rounded-lg border border-secondary-500 border-opacity-30 bg-secondary-100 px-4 py-8 text-center dark:bg-secondary-950 lg:py-12">
+            <div class="image w-full px-4 lg:w-1/4">
+                <img class="mx-auto max-h-24 md:max-h-48 lg:max-h-60"
+                    src="{{ $info->newsletter_section_image ? asset('storage/' . $info->newsletter_section_image) : asset('img/core/svg/developer.svg') }}"
+                    alt="newsletter-image" />
+            </div>
+            <div class="text w-full p-4 lg:w-2/4">
+                <span class="text-2xl font-semibold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
+                    <p>
+                        {!! $info->newsletter_section_title !!}
+                    </p>
+                    <p class="text-xs font-normal tracking-normal md:text-sm">
+                        {!! $info->newsletter_section_subtitle_text !!}
+                    </p>
+                </span>
+            </div>
+            <div class="form mx-auto flex w-full flex-wrap justify-center p-4 lg:w-1/4">
                 <livewire:newsletter :buttonText='$info->newsletter_section_button_text'>
             </div>
         </div>
