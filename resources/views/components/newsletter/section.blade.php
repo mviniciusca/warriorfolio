@@ -1,8 +1,8 @@
 @if($module->newsletter)
 <x-core.layout>
-    <div class="mx-auto max-w-7xl px-4">
+    <div class="mx-auto w-full px-4">
         <div
-            class="flex flex-wrap items-center justify-center rounded-lg border border-secondary-300 bg-secondary-50 px-4 py-8 text-center dark:border-secondary-800 dark:bg-secondary-950 lg:py-12">
+            class="flex flex-wrap items-center justify-center rounded-lg border border-secondary-300 bg-secondary-50 px-4 py-6 text-center dark:border-secondary-800 dark:bg-secondary-950 lg:py-8">
             <div class="image w-full px-4 lg:w-1/4">
                 <img class="mx-auto max-h-48"
                     src="{{ $info->newsletter_section_image ? asset('storage/' . $info->newsletter_section_image) : asset('img/core/svg/developer.svg') }}"
