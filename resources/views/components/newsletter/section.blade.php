@@ -2,14 +2,14 @@
 <x-core.layout>
     <div class="mx-auto max-w-7xl px-4">
         <div
-            class="flex flex-wrap items-center justify-center rounded-lg border border-secondary-500 border-opacity-30 bg-secondary-100 px-4 py-8 text-center dark:bg-secondary-950 lg:py-12">
+            class="flex flex-wrap items-center justify-center rounded-lg border border-secondary-300 bg-secondary-50 px-4 py-8 text-center dark:border-secondary-800 dark:bg-secondary-950 lg:py-12">
             <div class="image w-full px-4 lg:w-1/4">
-                <img class="mx-auto max-h-24 md:max-h-48 lg:max-h-60"
+                <img class="mx-auto max-h-48"
                     src="{{ $info->newsletter_section_image ? asset('storage/' . $info->newsletter_section_image) : asset('img/core/svg/developer.svg') }}"
                     alt="newsletter-image" />
             </div>
             <div class="text w-full p-4 lg:w-2/4">
-                <span class="text-2xl font-semibold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
+                <span class="text-2xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
                     <p>
                         {!! $info->newsletter_section_title !!}
                     </p>
