@@ -91,7 +91,7 @@ Warriorfolio 2 is also under the guardianship of one of the world's largest fram
 - Database such as MySQL, PostgreSQL, or SQLite;
 - Composer 2.0 or higher;
 - NPM;
-- 600MB of disk space or higher;
+- 800MB of disk space or higher;
 
 ### Installation and Configuration
 To install this application, we follow the standard Laravel installation. If you already know how to use Laravel, you can skip this part.
