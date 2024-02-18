@@ -313,3 +313,4 @@ Sinta-se livre para abrir uma issue ou um pull request. Seu feedback é muito im
 
 ### Licença
 Warriorfolio 2 é um aplicativo Open Source e está sob a licença MIT.
+
