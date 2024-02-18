@@ -1,4 +1,5 @@
-## <p align="center"> Warriorfolio 2 : Work In Progress  </p>
+##
+ <p align="center"> Warriorfolio 2 : Work In Progress  </p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/v2-dev-master/public/img/gif/ezgif-7-41f5195607.gif"  alt="Warriorfolio 2 wip">
@@ -12,7 +13,7 @@
 
 ___
 ### Fast Documentation
-- [ Warriorfolio 2 : Work In Progress  ](#-warriorfolio-2--work-in-progress--)
+- [](#)
   - [Fast Documentation](#fast-documentation)
   - [Introduction to Warriorfolio 2](#introduction-to-warriorfolio-2)
   - [Features](#features)
