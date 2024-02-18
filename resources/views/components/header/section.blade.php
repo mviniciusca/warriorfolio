@@ -35,7 +35,6 @@
                     </button>
                 </div>
 
-
                 @if($navigation)
                 <div class="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto" id="mobile-menu-2">
                     <x-header.navigation :$navigation />
