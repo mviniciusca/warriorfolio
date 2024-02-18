@@ -19,12 +19,12 @@ ___
     - [Maintenance Mode](#maintenance-mode)
     - [Discovery Mode](#discovery-mode)
     - [Core Modules Decoupling](#core-modules-decoupling)
-- [Gear \& Core](#gear--core)
+  - [Gear \& Core](#gear--core)
   - [Requirements](#requirements)
   - [Installation and Configuration](#installation-and-configuration)
   - [Time to Fly](#time-to-fly)
   - [Post-Build: Getting to Know Warriorfolio 2 Better](#post-build-getting-to-know-warriorfolio-2-better)
-        - [Changing the Default Theme Color](#changing-the-default-theme-color)
+      - [Changing the Default Theme Color](#changing-the-default-theme-color)
       - [Editing the Public Texts of Your App](#editing-the-public-texts-of-your-app)
       - [Editing Your App's Highlight](#editing-your-apps-highlight)
       - [Creating Image Slideshow](#creating-image-slideshow)
@@ -78,7 +78,7 @@ and more...
 #### Core Modules Decoupling
 - You can decouple the Core modules. This means you can build your app's layout your way. By default, Warriorfolio is assembled as follows: Header, Hero Section, About You, Projects, Customers, Contact, Newsletter (Email Catcher), and Footer. If you want to create a new page, these modules will automatically be available in this order for you globally. However, you may only want the Header and Footer to be displayed. To do this, just go to App Settings > Core Modules Decoupling and disable the modules you don't want to be displayed.
 
-## Gear & Core
+### Gear & Core
 This is a PHP application with Laravel and Filament at its Core. Filament is a set of tools that allows the creation of a control panel or content manager for Laravel. Conceived by Dan Harrin, Zep Fietje, and the entire PHP community. Filament is constantly evolving and is a highly tested, secure, robust, scalable product with complete and easy-to-understand documentation.
 
 Filament is powered by Livewire technology, which is a framework for Laravel that allows the creation of real-time applications without the need for deep JavaScript knowledge. Livewire is a product of Caleb Porzio, creator of AlpineJs.
@@ -86,12 +86,12 @@ Filament is powered by Livewire technology, which is a framework for Laravel tha
 Warriorfolio 2 is also under the guardianship of one of the world's largest frameworks, Laravel. Created by Taylor Otwell, Laravel is a robust, secure, scalable framework with complete and easy-to-understand documentation. Laravel is a framework that is constantly evolving and is a highly tested product with an active and engaged community.
 
 ### Requirements 
-- PHP 8.1 or higher;
-- (n) PHP Extensions enabled mainly OpenSSL, PDO, and Zip;
-- Database such as MySQL, PostgreSQL, or SQLite;
-- Composer 2.0 or higher;
-- NPM;
-- 800MB of disk space or higher;
+- 🐘 PHP 8.1 or higher;
+- 🧪 PHP Extensions enabled mainly OpenSSL, PDO and Zip;
+- 💾 Database such as MySQL, PostgreSQL or SQLite;
+- 🤵🏻 Composer 2.0 or higher;
+- 🌱 NPM;
+- 💎 800MB of disk space or higher;
 
 ### Installation and Configuration
 To install this application, we follow the standard Laravel installation. If you already know how to use Laravel, you can skip this part.
@@ -166,7 +166,7 @@ Password => password
 
 Great, you have your application running and are already logged into the control panel. Now it's time to get to know Warriorfolio 2 better and start creating your portfolio. Maybe you want to make some advanced customizations, or even change the default theme color. Let's go?
 
-###### Changing the Default Theme Color
+##### Changing the Default Theme Color
 Warriorfolio 2 is built with Tailwind CSS through Vite.
 
 In the project root, you will find a file called `tailwind.config.js`. In this file, you can edit the default theme color. Look for this line of code:
