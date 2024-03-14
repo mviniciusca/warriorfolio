@@ -1,7 +1,6 @@
 {
-    "name": "mviniciusca/warriorfolio",
+    "name": "marvincoelhodev/warriorfolio",
     "version": "2.0.0",
-    "author": "Marcos Coelho <mviniciusca@proton.me>",
     "description": "Warriorfolio 2 is a portfolio application for developers. Built with Laravel and Filament",
     "keywords": [
         "laravel",
