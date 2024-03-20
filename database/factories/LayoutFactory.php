@@ -29,7 +29,7 @@ class LayoutFactory extends Factory
             'hero_alt_button_link_target' => '_blank',
 
             /** Portfolio Section */
-            'portfolio_section_title' => 'Experience <span class="text-highlight">Tranquility</span>',
+            'portfolio_section_title' => 'My <span class="text-highlight">Work</span>',
             'portfolio_section_subtitle_text' => 'Here are some of my projects I\'ve worked on recently',
 
             /** About Section */
