@@ -5,8 +5,14 @@
 </p>
 
 ___
+
+### Installation
+```
+composer create-project mviniciusca/warriorfolio
+```
 ### Quick Documentation
 - [ Warriorfolio 2 ](#-warriorfolio-2-)
+  - [Installation](#installation)
   - [Quick Documentation](#quick-documentation)
   - [Introduction to Warriorfolio 2](#introduction-to-warriorfolio-2)
   - [Features](#features)
