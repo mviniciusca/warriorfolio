@@ -70,7 +70,9 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi",
             "@php artisan storage:link --ansi",
-            "@php artisan migrate:fresh --seed --ansi"
+            "@php artisan migrate:fresh --seed --ansi",
+            "npm run dev",
+            "@php artisan serve"
         ]
     },
     "extra": {
