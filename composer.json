@@ -68,12 +68,8 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ],
-        "post-create-project-link-cmd": [
-            "@php artisan storage:link --ansi"
-        ],
-        "post-create-project-run-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php artisan storage:link --ansi",
             "@php artisan migrate:fresh --seed --ansi"
         ]
     },
