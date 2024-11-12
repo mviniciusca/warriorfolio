@@ -52,32 +52,33 @@ class MailResource extends Resource
                     ->columnSpanFull()
                     ->schema([
                         Forms\Components\Toggle::make('is_read')
-                            ->label('Mark as Read'),
+                            ->label(__('Mark as Read')),
                         Forms\Components\Toggle::make('is_important')
-                            ->label('Mark as Important'),
+                            ->label(__('Mark as Important')),
                     ]),
                 Forms\Components\TextInput::make('name')
                     ->columnSpanFull()
-                    ->label('From')
+                    ->label(__('From:'))
                     ->disabled()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
-                    ->label('E-mail')
+                    ->label(__('Email'))
                     ->disabled()
                     ->email()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('phone')
-                    ->label('Phone')
+                    ->label(__('Phone:'))
                     ->disabled()
+                    ->tel()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('subject')
                     ->columnSpanFull()
                     ->disabled()
-                    ->label('Subject')
+                    ->label(__('Subject:'))
                     ->maxLength(255),
                 Textarea::make('body')
                     ->columnSpanFull()
-                    ->label('Message')
+                    ->label(__('Message:'))
                     ->disabled()
                     ->rows(3)
                     ->maxLength(65535),
