@@ -111,13 +111,16 @@ class MailResource extends Resource
                     ->alignCenter()
                     ->label(__('Mark as Read')),
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('From'))
+                    ->label(__('From:'))
+                    ->limit(15)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
-                    ->label(__('Email'))
+                    ->label(__('Email:'))
+                    ->limit(20)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('subject')
-                    ->label(__('Subject'))
+                    ->label(__('Subject:'))
+                    ->limit(50)
                     ->words(5)
                     ->searchable(),
             ])
