@@ -133,7 +133,7 @@ class MailResource extends Resource
                     ->label(__('Mark as Read')),
             ])
             ->defaultSort('id', 'desc')
-            ->defaultPaginationPageOption(10)
+            ->defaultPaginationPageOption(25)
             ->filters([
                 TernaryFilter::make('is_read')
                     ->label(__('Messages'))
