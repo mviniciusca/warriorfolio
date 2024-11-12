@@ -126,13 +126,13 @@ class MailResource extends Resource
             ->filters([
                 TernaryFilter::make('is_read')
                     ->default(false)
-                    ->label('Messages')
-                    ->falseLabel('Unread')
-                    ->trueLabel('Read'),
+                    ->label(__('Messages'))
+                    ->falseLabel(__('Unread'))
+                    ->trueLabel(__('Read')),
                 TernaryFilter::make('is_important')
-                    ->label('Important')
-                    ->falseLabel('Without Star')
-                    ->trueLabel('With Star'),
+                    ->label(__('Important'))
+                    ->falseLabel(__('Without Star'))
+                    ->trueLabel(__('With Star')),
             ])
             ->actions([
                 ActionGroup::make([
