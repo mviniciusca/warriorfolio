@@ -63,7 +63,7 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 Section::make(__('Category'))
-                    ->description(__('Create or edit categories for your projects.'))
+                    ->description(__('Category of your Projects'))
                     ->columns(3)
                     ->icon('heroicon-o-tag')
                     ->schema([
@@ -107,7 +107,7 @@ class CategoryResource extends Resource
                             ->label(__('Ionicon Icon (optional)'))
                             ->prefixIcon('heroicon-o-sparkles')
                             ->prefix('ion-icon')
-                            ->helperText(__('Just the name of the icon.')),
+                            ->helperText(__('Only name. See in https://ionic.io/ionicons')),
                     ]),
             ]);
     }
