@@ -13,7 +13,9 @@ class ManageCustomers extends ManageRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label(__('New Customer'))
+                ->icon('heroicon-o-building-office'),
         ];
     }
 }
