@@ -10,6 +10,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
@@ -89,6 +90,13 @@ class MailResource extends Resource
     {
         return $table
             ->striped()
+            ->headerActions([
+                Action::make('view_trashed_mails')
+                    ->color('gray')
+                    ->label(__('View Trash'))
+                    ->icon('heroicon-o-trash')
+                    ->url(''),
+            ])
             ->heading(__('Inbox'))
             ->description(__('Your messages from your website contact form'))
             ->columns([
