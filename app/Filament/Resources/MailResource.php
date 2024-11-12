@@ -89,7 +89,7 @@ class MailResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->striped()
+            ->striped(false)
             ->headerActions([
                 Action::make('view_trashed_mails')
                     ->color('gray')
@@ -99,6 +99,10 @@ class MailResource extends Resource
             ])
             ->heading(__('Inbox'))
             ->description(__('Your messages from your website contact form'))
+            ->recordClasses(fn (Mail $record) => match ($record->is_read) {
+                1       => 'opacity-50 dark:opacity-30 decoration-dashed line-through',
+                default => null,
+            })
             ->columns([
                 Tables\Columns\IconColumn::make('is_important')
                     ->label('')
@@ -128,7 +132,6 @@ class MailResource extends Resource
             ->defaultPaginationPageOption(10)
             ->filters([
                 TernaryFilter::make('is_read')
-                    ->default(false)
                     ->label(__('Messages'))
                     ->falseLabel(__('Unread'))
                     ->trueLabel(__('Read')),
