@@ -87,7 +87,7 @@ class ProjectResource extends Resource
                                     ->disabled()
                                     ->dehydrated()
                                     ->placeholder('generated automatically')
-                                    ->helperText(___('This is automatically generated from the title.'))
+                                    ->helperText(__('This is automatically generated from the title.'))
                                     ->prefixIcon('heroicon-o-link')
                                     ->label(__('Slug')),
                                 Textarea::make('short_description')
