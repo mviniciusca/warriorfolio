@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Mail extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
     protected $guarded = [];
 
     /**
@@ -36,19 +39,19 @@ class Mail extends Model
      */
     public static function chartInbox()
     {
-        $data = Trend::model(\App\Models\Mail::class)
+        $data = Trend::model(self::class)
             ->between(
                 start: now()->startOfYear(),
                 end: now()->endOfYear(),
             )
             ->perMonth()
             ->count();
-        $data = $data->map(fn(TrendValue $value) => $value->aggregate);
+        $data = $data->map(fn (TrendValue $value) => $value->aggregate);
         $data = $data->take(-3);
         $data = $data->toArray();
+
         return $data;
     }
-
 
     /**
      * Summary of counter
@@ -57,11 +60,11 @@ class Mail extends Model
     public static function counter()
     {
         if (static::count() >= 1000) {
-            return round(static::count() / 1000, 1) . 'K';
+            return round(static::count() / 1000, 1).'K';
         } elseif (static::count() >= 1000000) {
-            return round(static::count() / 1000000, 1) . 'M';
+            return round(static::count() / 1000000, 1).'M';
         }
+
         return static::count();
     }
-
 }
