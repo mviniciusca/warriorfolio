@@ -62,50 +62,52 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Category')
-                    ->description('Create or edit categories for your projects.')
+                Section::make(__('Category'))
+                    ->description(__('Create or edit categories for your projects.'))
                     ->columns(3)
                     ->icon('heroicon-o-tag')
                     ->schema([
                         Forms\Components\Toggle::make('is_active')
-                            ->label('Active')
-                            ->helperText('Projects under this category will be visible to the public.')
+                            ->label(__('Active'))
+                            ->helperText(__('Projects under this category will be visible to the public.'))
                             ->default(true)
                             ->required(),
                         Forms\Components\TextInput::make('name')
                             ->required()
+                            ->prefixIcon('heroicon-o-tag')
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->reactive()
                             ->lazy()
                             ->unique(ignoreRecord: true)
-                            ->label('Category Name')
-                            ->helperText('The name of the category.')
+                            ->label(__('Category Name'))
+                            ->helperText(__('The name of the category.'))
                             ->maxLength(255),
                         Forms\Components\Select::make('parent_id')
                             ->relationship('parent', 'name')
+                            ->prefixIcon('heroicon-o-tag')
                             ->options(Category::all()->pluck('name', 'id'))
                             ->optionsLimit(10)
                             ->searchable()
-                            ->searchable()
-                            ->label('Parent Category (optional)')
-                            ->helperText('Select a parent category if this is a sub-category.')
+                            ->label(__('Parent Category (optional)'))
+                            ->helperText(__('Select a parent category if this is a sub-category.'))
                             ->nullable(),
                         Forms\Components\TextInput::make('slug')
                             ->disabled()
                             ->dehydrated()
-                            ->placeholder('generated automatically')
-                            ->helperText('The URL-friendly name of the category. This will be used in the URL of the category page.')
+                            ->placeholder(__('generated automatically'))
+                            ->helperText(__('The URL-friendly name of the category. This will be used in the URL of the category page.'))
                             ->label('Category Slug (generated automatically)')
                             ->maxLength(255),
                         Forms\Components\ColorPicker::make('hex_color')
-                            ->helperText('HEX color code (e.g. #FF0000) or color name (e.g. red)')
+                            ->helperText(__('HEX color code (e.g. #FF0000) or color name (e.g. red)'))
+                            ->prefixIcon('heroicon-o-paint-brush')
                             ->hexColor()
-                            ->label('Category Tag Color (optional)'),
+                            ->label(__('Category Tag Color (optional)')),
                         Forms\Components\TextInput::make('icon')
-                            ->label('Ionicon Icon (optional)')
-                            ->prefixIcon('heroicon-o-tag')
+                            ->label(__('Ionicon Icon (optional)'))
+                            ->prefixIcon('heroicon-o-sparkles')
                             ->prefix('ion-icon')
-                            ->helperText('Just the name of the icon'),
+                            ->helperText(__('Just the name of the icon.')),
                     ]),
             ]);
     }
