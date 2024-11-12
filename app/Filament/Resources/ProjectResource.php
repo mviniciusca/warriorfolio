@@ -137,13 +137,13 @@ class ProjectResource extends Resource
                                                 ->helperText('The name of the category. Max: 200 characters.')
                                                 ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                                                 ->required()
-                                                ->label('Category Name'),
+                                                ->label(__('Category Name')),
                                             TextInput::make('slug')
                                                 ->disabled()
                                                 ->unique()
                                                 ->maxLength(200)
                                                 ->dehydrated()
-                                                ->placeholder('generated automatically')
+                                                ->placeholder(__('generated automatically'))
                                                 ->label('Slug'),
                                         ])->columns(2),
                                 ])
@@ -156,6 +156,7 @@ class ProjectResource extends Resource
                         ->schema([
                             Toggle::make('is_active')
                                 ->label('Published')
+                                ->helperText(__('Project visibility.'))
                                 ->default(true)
                                 ->required()
                                 ->inline(),
