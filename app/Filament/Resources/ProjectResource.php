@@ -87,23 +87,23 @@ class ProjectResource extends Resource
                                     ->disabled()
                                     ->dehydrated()
                                     ->placeholder('generated automatically')
-                                    ->helperText('This is automatically generated from the title.')
+                                    ->helperText(___('This is automatically generated from the title.'))
                                     ->prefixIcon('heroicon-o-link')
-                                    ->label('Slug'),
+                                    ->label(__('Slug')),
                                 Textarea::make('short_description')
                                     ->columnSpanFull()
                                     ->rows(2)
                                     ->maxLength(500)
                                     ->helperText('A short description of the project. Max: 500 characters.')
-                                    ->label('Short Description (Optional)'),
+                                    ->label(__('Short Description (Optional)')),
                                 RichEditor::make('content')
                                     ->fileAttachmentsDirectory('project/attachments')
                                     ->columnSpanFull()
                                     ->maxLength(5000)
                                     ->helperText('The content of the project. Max: 5000 characters.')
-                                    ->label('Content (Optional)'),
+                                    ->label(__('Content (Optional)')),
                                 TextInput::make('external_link')
-                                    ->label('External Link (Optional)')
+                                    ->label(__('External Link (Optional)'))
                                     ->placeholder('https://example.com')
                                     ->url()
                                     ->maxLength(255)
