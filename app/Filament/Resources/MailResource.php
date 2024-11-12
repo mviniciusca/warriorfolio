@@ -95,7 +95,7 @@ class MailResource extends Resource
                     ->color('gray')
                     ->label(__('View Trash'))
                     ->icon('heroicon-o-trash')
-                    ->url(''),
+                    ->url(route('filament.admin.resources.mails.bin')),
             ])
             ->heading(__('Inbox'))
             ->description(__('Your messages from your website contact form'))
