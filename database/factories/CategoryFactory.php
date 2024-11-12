@@ -17,11 +17,11 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => 'Laravel',
-            'slug' => 'laravel',
+            'name'      => 'Laravel',
+            'slug'      => 'laravel',
             'is_active' => true,
             'hex_color' => '#fb503b',
-            'icon' => 'logo-octocat',
+            'icon'      => 'logo-octocat',
         ];
     }
 }
