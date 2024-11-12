@@ -2,40 +2,46 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use Filament\Forms\Set;
-use App\Models\Category;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Section;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Tables\Actions\ActionGroup;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Contracts\Support\Htmlable;
 use App\Filament\Resources\CategoryResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CategoryResource\RelationManagers;
+use App\Models\Category;
+use Filament\Forms;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Form;
+use Filament\Forms\Set;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-tag';
+
     public static function getNavigationGroup(): ?string
     {
         return __('App Sections');
     }
+
     public static function getNavigationLabel(): string
     {
         return __('Categories');
     }
+
     public static function getNavigationParentItem(): ?string
     {
         return __('Projects');
     }
+
     protected static ?string $recordTitleAttribute = 'name';
+
     public static function getGlobalSearchResultTitle(Model $record): string|Htmlable
     {
         return $record->name;
@@ -46,9 +52,9 @@ class CategoryResource extends Resource
         if (static::getModel()::where('is_active', true)->count() > 0) {
             return static::getModel()::where('is_active', true)->count();
         }
+
         return null;
     }
-
 
     protected static ?int $navigationSort = 1;
 
@@ -68,7 +74,7 @@ class CategoryResource extends Resource
                             ->required(),
                         Forms\Components\TextInput::make('name')
                             ->required()
-                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->reactive()
                             ->lazy()
                             ->unique(ignoreRecord: true)
@@ -117,7 +123,7 @@ class CategoryResource extends Resource
                     ->label('Tag Color'),
                 Tables\Columns\ToggleColumn::make('is_active')
                     ->alignCenter()
-                    ->label('Visible')
+                    ->label('Visible'),
             ])
             ->filters([
                 //
@@ -126,7 +132,7 @@ class CategoryResource extends Resource
                 ActionGroup::make([
                     Tables\Actions\EditAction::make(),
                     Tables\Actions\DeleteAction::make(),
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -145,9 +151,9 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
+            'index'  => Pages\ListCategories::route('/'),
             'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'edit'   => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
 }
