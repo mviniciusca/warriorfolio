@@ -111,9 +111,6 @@ class MailResource extends Resource
                     ->falseIcon('heroicon-o-star')
                     ->falseColor('gray')
                     ->trueColor('warning'),
-                Tables\Columns\ToggleColumn::make('is_read')
-                    ->alignCenter()
-                    ->label(__('Mark as Read')),
                 Tables\Columns\TextColumn::make('name')
                     ->label(__('From:'))
                     ->limit(15)
@@ -127,6 +124,13 @@ class MailResource extends Resource
                     ->limit(50)
                     ->words(5)
                     ->searchable(),
+                Tables\Columns\ToggleColumn::make('is_read')
+                    ->alignEnd()
+                    ->onIcon('heroicon-o-eye-slash')
+                    ->offColor('primary')
+                    ->onColor('gray')
+                    ->offIcon('heroicon-m-eye')
+                    ->label(__('Mark as Read')),
             ])
             ->defaultSort('id', 'desc')
             ->defaultPaginationPageOption(10)
