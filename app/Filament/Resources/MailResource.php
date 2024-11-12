@@ -152,6 +152,7 @@ class MailResource extends Resource
     {
         return [
             'index' => Pages\ManageMails::route('/'),
+            'bin'   => Pages\MailTrashed::route('/bin'),
         ];
     }
 }
