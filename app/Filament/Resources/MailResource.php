@@ -98,7 +98,7 @@ class MailResource extends Resource
                     ->url(route('filament.admin.resources.mails.bin')),
             ])
             ->heading(__('Inbox'))
-            ->description(__('Your messages from your website contact form'))
+            ->description(__('Your messages from your website contact form.'))
             ->recordClasses(fn (Mail $record) => match ($record->is_read) {
                 1       => 'opacity-50 dark:opacity-30 decoration-dashed line-through',
                 default => null,
