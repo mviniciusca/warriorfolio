@@ -14,6 +14,6 @@ class MailTrashed extends ListRecords
     public function table(Table $table): Table
     {
         return $table
-            ->schema([]);
+            ->columns([]);
     }
 }
