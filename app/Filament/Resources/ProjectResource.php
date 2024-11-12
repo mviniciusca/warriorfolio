@@ -114,19 +114,20 @@ class ProjectResource extends Resource
                     ]),
                 Group::make()->schema([
                     CuratorPicker::make('image_cover')
-                        ->buttonLabel('Upload Cover Image')
+                        ->buttonLabel(__('Upload Cover Image'))
                         ->directory('public/project')
                         ->maxSize(4000)
                         ->required()
-                        ->label('Cover Image'),
+                        ->label(__('Cover Image')),
                     Section::make('Category')
                         ->icon('heroicon-o-tag')
                         ->schema([
                             Select::make('category_id')
                                 ->relationship('category', 'name')
                                 ->options(Category::all()->pluck('name', 'id'))
+                                ->helperText(__('Project Category'))
                                 ->createOptionForm([
-                                    Section::make('Fast Create Category')
+                                    Section::make('Fast Create Category.')
                                         ->icon('heroicon-o-tag')
                                         ->description('Create a new category for the project. Edit other settings of this category later.')
                                         ->schema([
