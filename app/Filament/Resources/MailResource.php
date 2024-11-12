@@ -100,16 +100,15 @@ class MailResource extends Resource
                     ->trueColor('warning'),
                 Tables\Columns\ToggleColumn::make('is_read')
                     ->alignCenter()
-                    ->label('Mark as Read'),
+                    ->label(__('Mark as Read')),
                 Tables\Columns\TextColumn::make('name')
-                    ->label('From')
-                    ->searchable()
-                    ->sortable(),
+                    ->label(__('From'))
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('email')
-                    ->label('E-mail')
+                    ->label(__('Email'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('subject')
-                    ->label('Subject')
+                    ->label(__('Subject'))
                     ->words(5)
                     ->searchable(),
             ])
