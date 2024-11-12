@@ -90,6 +90,7 @@ class MailResource extends Resource
         return $table
             ->striped()
             ->heading('Inbox')
+            ->description(__('Your messages from your website contact form'))
             ->columns([
                 Tables\Columns\IconColumn::make('is_important')
                     ->label('')
