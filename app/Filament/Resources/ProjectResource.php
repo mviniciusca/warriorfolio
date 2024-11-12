@@ -2,41 +2,45 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Project;
-use Filament\Forms\Set;
-use App\Models\Category;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Textarea;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Forms\Components\TextInput;
-use Filament\Tables\Actions\ActionGroup;
-use Filament\Forms\Components\RichEditor;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Contracts\Support\Htmlable;
 use App\Filament\Resources\ProjectResource\Pages;
-use Awcodes\Curator\Components\Forms\CuratorPicker;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Awcodes\Curator\Components\Tables\CuratorColumn;
 use App\Filament\Resources\ProjectResource\RelationManagers;
+use App\Models\Category;
+use App\Models\Project;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
+use Filament\Forms;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Form;
+use Filament\Forms\Set;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class ProjectResource extends Resource
 {
     protected static ?string $model = Project::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-rocket-launch';
+
     public static function getNavigationGroup(): ?string
     {
         return __('App Sections');
     }
+
     protected static ?int $navigationSort = -1;
+
     public static function getNavigationLabel(): string
     {
         return __('Projects');
@@ -54,6 +58,7 @@ class ProjectResource extends Resource
         if (static::getModel()::where('is_active', true)->count() > 0) {
             return static::getModel()::where('is_active', true)->count();
         }
+
         return null;
     }
 
@@ -61,45 +66,52 @@ class ProjectResource extends Resource
     {
         return $form
             ->schema([
-                Group::make()->schema([
-                    Section::make('Project Information')
-                        ->icon('heroicon-o-information-circle')
-                        ->schema([
-                            TextInput::make('name')
-                                ->autofocus()
-                                ->lazy()
-                                ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                                ->required()
-                                ->unique(ignoreRecord: true)
-                                ->maxLength(200)
-                                ->helperText('The name of the project. Max: 200 characters.')
-                                ->label('Title'),
-                            TextInput::make('slug')
-                                ->disabled()
-                                ->dehydrated()
-                                ->placeholder('generated automatically')
-                                ->helperText('This is automatically generated from the title.')
-                                ->label('Slug'),
-                            Textarea::make('short_description')
-                                ->columnSpanFull()
-                                ->maxLength(500)
-                                ->helperText('A short description of the project. Max: 500 characters.')
-                                ->label('Short Description (Optional)'),
-                            RichEditor::make('content')
-                                ->fileAttachmentsDirectory('project/attachments')
-                                ->columnSpanFull()
-                                ->maxLength(5000)
-                                ->helperText('The content of the project. Max: 5000 characters.')
-                                ->label('Content (Optional)'),
-                            TextInput::make('external_link')
-                                ->label('External Link (Optional)')
-                                ->placeholder('https://example.com')
-                                ->url()
-                                ->maxLength(255)
-                                ->helperText('The external link of the project. Max: 255 characters.')
-                                ->columnSpanFull(),
-                        ])->columns(2)
-                ])->columnSpan(3),
+                Group::make()
+                    ->columnSpan(3)
+                    ->schema([
+                        Section::make('Project Information')
+                            ->icon('heroicon-o-information-circle')
+                            ->columns(2)
+                            ->schema([
+                                TextInput::make('name')
+                                    ->label(__('Project Title'))
+                                    ->lazy()
+                                    ->required()
+                                    ->autofocus()
+                                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                    ->unique(ignoreRecord: true)
+                                    ->maxLength(200)
+                                    ->prefixIcon('heroicon-o-rocket-launch')
+                                    ->helperText(__('The name of the project. Max: 200 characters.')),
+                                TextInput::make('slug')
+                                    ->disabled()
+                                    ->dehydrated()
+                                    ->placeholder('generated automatically')
+                                    ->helperText('This is automatically generated from the title.')
+                                    ->prefixIcon('heroicon-o-link')
+                                    ->label('Slug'),
+                                Textarea::make('short_description')
+                                    ->columnSpanFull()
+                                    ->rows(2)
+                                    ->maxLength(500)
+                                    ->helperText('A short description of the project. Max: 500 characters.')
+                                    ->label('Short Description (Optional)'),
+                                RichEditor::make('content')
+                                    ->fileAttachmentsDirectory('project/attachments')
+                                    ->columnSpanFull()
+                                    ->maxLength(5000)
+                                    ->helperText('The content of the project. Max: 5000 characters.')
+                                    ->label('Content (Optional)'),
+                                TextInput::make('external_link')
+                                    ->label('External Link (Optional)')
+                                    ->placeholder('https://example.com')
+                                    ->url()
+                                    ->maxLength(255)
+                                    ->prefixIcon('heroicon-o-link')
+                                    ->helperText('The external link of the project. Max: 255 characters.')
+                                    ->columnSpanFull(),
+                            ]),
+                    ]),
                 Group::make()->schema([
                     CuratorPicker::make('image_cover')
                         ->buttonLabel('Upload Cover Image')
@@ -123,7 +135,7 @@ class ProjectResource extends Resource
                                                 ->unique()
                                                 ->maxLength(200)
                                                 ->helperText('The name of the category. Max: 200 characters.')
-                                                ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                                ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                                                 ->required()
                                                 ->label('Category Name'),
                                             TextInput::make('slug')
@@ -133,24 +145,25 @@ class ProjectResource extends Resource
                                                 ->dehydrated()
                                                 ->placeholder('generated automatically')
                                                 ->label('Slug'),
-                                        ])->columns(2)
+                                        ])->columns(2),
                                 ])
                                 ->optionsLimit(10)
                                 ->searchable()
-                                ->required()
+                                ->required(),
                         ]),
-                    Section::make('Project Visibility')
+                    Section::make('Visibility')
                         ->icon('heroicon-o-eye')
                         ->schema([
                             Toggle::make('is_active')
                                 ->label('Published')
-                                ->required()
-                                ->inline(false)
                                 ->default(true)
+                                ->required()
+                                ->inline(),
                         ]),
                 ]),
             ])->columns(4);
     }
+
     public static function table(Table $table): Table
     {
         return $table
@@ -196,9 +209,9 @@ class ProjectResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListProjects::route('/'),
+            'index'  => Pages\ListProjects::route('/'),
             'create' => Pages\CreateProject::route('/create'),
-            'edit' => Pages\EditProject::route('/{record}/edit'),
+            'edit'   => Pages\EditProject::route('/{record}/edit'),
         ];
     }
 }
