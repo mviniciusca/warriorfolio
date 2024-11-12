@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,18 +17,18 @@ class SettingFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => 'Warriorfusion v2',
-            'meta_title' => 'Building the what\'s next with Laravel, Filament and Tailwind CSS',
-            'meta_author' => 'Marcos Coelho',
-            'meta_description' => 'Warriorfusion is a free and open-source web application for creating and managing your own website.',
-            'meta_keywords' => 'warriorfusion, warriorfusion 2, warriorfusion cms, warriorfusion cms 2, warriorfusion 2 cms',
+            'name'             => 'Warriorfolio v2',
+            'meta_title'       => 'Building the what\'s next with Laravel, Filament and Tailwind CSS',
+            'meta_author'      => 'Marcos Coelho',
+            'meta_description' => 'Warriorfolio is a free and open-source web application for creating and managing your own website.',
+            'meta_keywords'    => 'warriorfolio, warriorfolio 2, warriorfolio cms, warriorfolio cms 2, warriorfolio 2 cms',
         ];
     }
 
     /**
      *  Indicate that the model's module and layout should be created.
      *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     * @return Factory
      */
     public function configure()
     {

@@ -3,10 +3,10 @@
 namespace App\Filament\Fabricator\PageBlocks;
 
 use App\Forms\Components\Core\Info;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Builder\Block;
-use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class Header extends PageBlock
 {
@@ -27,7 +27,7 @@ class Header extends PageBlock
                                 ->label('Title')
                                 ->maxLength(1),
                         ]),
-                    ])
+                    ]),
             ]);
     }
 
