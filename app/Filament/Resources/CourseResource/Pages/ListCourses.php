@@ -15,7 +15,9 @@ class ListCourses extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label(__('New Couse'))
+                ->icon('heroicon-o-academic-cap'),
         ];
     }
 }
