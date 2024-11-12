@@ -110,7 +110,7 @@ class MailResource extends Resource
                     ->trueIcon('heroicon-s-star')
                     ->falseIcon('heroicon-o-star')
                     ->falseColor('gray')
-                    ->trueColor('warning'),
+                    ->trueColor('primary'),
                 Tables\Columns\TextColumn::make('name')
                     ->label(__('From:'))
                     ->limit(15)
