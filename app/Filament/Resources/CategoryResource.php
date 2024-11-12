@@ -116,16 +116,18 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ColorColumn::make('hex_color')
+                    ->alignLeft()
+                    ->label(__('Tag Color')),
+                Tables\Columns\ToggleColumn::make('is_active')
+                    ->label(__('Visible')),
                 Tables\Columns\TextColumn::make('parent.name')
+                    ->label(__('Parent'))
+                    ->default('---')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('Category'))
                     ->sortable(),
-                Tables\Columns\ColorColumn::make('hex_color')
-                    ->alignCenter()
-                    ->label('Tag Color'),
-                Tables\Columns\ToggleColumn::make('is_active')
-                    ->alignCenter()
-                    ->label('Visible'),
             ])
             ->filters([
                 //
