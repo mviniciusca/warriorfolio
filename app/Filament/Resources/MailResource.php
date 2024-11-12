@@ -136,7 +136,8 @@ class MailResource extends Resource
             ])
             ->actions([
                 ActionGroup::make([
-                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\EditAction::make()
+                        ->modalHeading(__('Mail')),
                     Tables\Actions\DeleteAction::make(),
                 ]),
             ])
