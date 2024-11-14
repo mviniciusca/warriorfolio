@@ -18,7 +18,7 @@ class LatestMails extends BaseWidget
             ->query(
                 Mail::query()
                     ->where('is_read', '=', false)
-                    ->latest()
+                    ->latest('id')
                     ->limit(5)
             )
             ->heading(__('Inbox'))
