@@ -51,7 +51,7 @@ class NewsletterResource extends Resource
     {
         return $table
             ->heading(__('Mailing List '))
-            ->description(__('Your subscribers in your mailing list.'))
+            ->description(__('Your subscribers in your mailing list. You can export \'em to Excel format.'))
             ->columns([
                 TextColumn::make('name')
                     ->label(__('Name'))
@@ -77,6 +77,7 @@ class NewsletterResource extends Resource
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
+                    ExportBulkAction::make(),
                 ]),
             ]);
     }
@@ -99,8 +100,8 @@ class NewsletterResource extends Resource
     {
         return [
             'index' => Pages\ListNewsletters::route('/'),
-            //'create' => Pages\CreateNewsletter::route('/create'),
-            //'edit'   => Pages\EditNewsletter::route('/{record}/edit'),
+            // 'create' => Pages\CreateNewsletter::route('/create'),
+            // 'edit'   => Pages\EditNewsletter::route('/{record}/edit'),
         ];
     }
 }
