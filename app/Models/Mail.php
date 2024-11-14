@@ -7,6 +7,7 @@ use Flowframe\Trend\TrendValue;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 class Mail extends Model
 {
@@ -19,7 +20,7 @@ class Mail extends Model
      * Summary of unread
      * @return mixed
      */
-    public static function unread()
+    public static function unread(): array|Collection
     {
         return static::where('is_read', false)->get();
     }
@@ -28,7 +29,7 @@ class Mail extends Model
      * Summary of important
      * @return mixed
      */
-    public static function important()
+    public static function important(): array|Collection
     {
         return static::where('is_important', true)->get();
     }
@@ -57,7 +58,7 @@ class Mail extends Model
      * Summary of counter
      * @return mixed
      */
-    public static function counter()
+    public static function counter(): int|string
     {
         if (static::count() >= 1000) {
             return round(static::count() / 1000, 1).'K';

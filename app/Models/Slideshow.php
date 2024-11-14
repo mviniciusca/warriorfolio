@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Slideshow extends Model
 {
     use HasFactory;
+
     protected $casts = [
         'content' => 'array',
     ];
+
     protected $guarded = [];
 }
