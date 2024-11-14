@@ -6,6 +6,7 @@ use App\Filament\Resources\ProfileResource;
 use Filament\Actions;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -37,10 +38,23 @@ class EditSocialNetwork extends EditRecord
                                 ->label(__('Active'))
                                 ->inline(false)
                                 ->default(true),
-                            TextInput::make('social_network')
+                            Select::make('social_network')
                                 ->columnSpan(2)
                                 ->helperText(__('Social Network'))
                                 ->prefixIcon('heroicon-o-user')
+                                ->options([
+                                    'linkedin'      => 'Linkedin',
+                                    'discord'       => 'Discord',
+                                    'twitter'       => 'Twitter',
+                                    'instagram'     => 'Instagram',
+                                    'facebbook'     => 'Facebook',
+                                    'dribbble'      => 'Dribbble',
+                                    'youtube'       => 'Youtube',
+                                    'vercel'        => 'Vercel',
+                                    'github'        => 'Github',
+                                    'tiktok'        => 'Tiktok',
+                                    'stackoverflow' => 'Stackoverflow',
+                                ])
                                 ->label(__('Social Network')),
                             TextInput::make('profile_link')
                                 ->columnSpan(3)

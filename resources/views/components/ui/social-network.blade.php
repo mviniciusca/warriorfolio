@@ -1,7 +1,7 @@
 <div>
 
     @foreach ($items as $social )
-    {{ $social['social_network'] }}
+    <x-ui.icon :href="$social['profile_link']" :name="$social['social_network']" />
     @endforeach
 
 

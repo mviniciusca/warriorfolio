@@ -3,7 +3,7 @@
 <div class="inline-flex">
     <a href="https://{{ $href ?? '#' }}" target="_blank">
         @if($name != 'devto')
-        <ion-icon name="{{ $name }}"
+        <ion-icon name="{{ 'logo-' . $name }}"
             class="mr-4 cursor-pointer text-2xl opacity-60 transition-all duration-100 hover:opacity-90">
         </ion-icon>
         @else
