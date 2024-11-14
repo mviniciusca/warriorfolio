@@ -37,7 +37,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogoHeight('2rem')
             ->favicon(asset('img/core/favicon.png'))
             ->navigationItems([
-                NavigationItem::make('View Site')
+                NavigationItem::make(__('Your Website'))
                     ->url(env('APP_URL'), shouldOpenInNewTab: true)
                     ->icon('heroicon-o-arrow-up-right')
                     ->sort(-1),
