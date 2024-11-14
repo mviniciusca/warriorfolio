@@ -15,22 +15,22 @@ class StatsOverview extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Application Status', '')
-                ->icon('heroicon-o-wrench-screwdriver')
+            Stat::make(__('Website Status'), '')
+                ->icon('heroicon-o-wifi')
                 ->value(view('components.badge', ['status' => Maintenance::first()]))
-                ->description(Maintenance::first()->is_active ? 'Maintenance Mode' : 'Application is Live')
+                ->description(Maintenance::first()->is_active ? 'Maintenance Mode' : 'Website is Live')
                 ->color('primary'),
 
-            Stat::make('Subscribers', Newsletter::counter())
+            Stat::make(__('Mailing List'), Newsletter::counter())
                 ->icon('heroicon-o-megaphone')
                 ->color('primary')
-                ->description('Newsletter Subscribers')
+                ->description(__('Subscribers'))
                 ->chart(Newsletter::chartSubscribers()),
 
-            Stat::make('Inbox', Mail::counter())
+            Stat::make(__('Inbox'), Mail::where('is_read', false)->count())
                 ->icon('heroicon-o-inbox')
                 ->color('primary')
-                ->description('Messages in Inbox')
+                ->description(__('Unread Messages'))
                 ->chart(Mail::chartInbox()),
 
             Stat::make('Projects', Project::published()->count())
