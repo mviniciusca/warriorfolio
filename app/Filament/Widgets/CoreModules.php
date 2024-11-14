@@ -4,7 +4,6 @@ namespace App\Filament\Widgets;
 
 use App\Models\Core;
 use App\Models\Setting;
-use Filament\Tables;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
