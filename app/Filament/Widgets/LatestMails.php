@@ -3,7 +3,6 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Mail;
-use Filament\Tables;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
