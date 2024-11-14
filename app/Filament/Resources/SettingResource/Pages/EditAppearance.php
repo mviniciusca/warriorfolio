@@ -2,27 +2,27 @@
 
 namespace App\Filament\Resources\SettingResource\Pages;
 
-use Filament\Actions;
-use Filament\Forms\Form;
-use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\TextInput;
-use Filament\Resources\Pages\EditRecord;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\RichEditor;
 use App\Filament\Resources\SettingResource;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Form;
+use Filament\Resources\Pages\EditRecord;
 
 class EditAppearance extends EditRecord
 {
     protected static string $resource = SettingResource::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-paint-brush';
+
     public static function getNavigationLabel(): string
     {
         return __('Design & Appearance');
     }
+
     public function form(Form $form): Form
     {
         return $form
@@ -61,7 +61,7 @@ class EditAppearance extends EditRecord
                             Select::make('background_image_position')
                                 ->label('Background Image Position')
                                 ->options([
-                                    'bg-top' => 'Top',
+                                    'bg-top'    => 'Top',
                                     'bg-center' => 'Center',
                                     'bg-bottom' => 'Bottom',
                                 ])
@@ -70,8 +70,8 @@ class EditAppearance extends EditRecord
                             Select::make('background_image_size')
                                 ->label('Background Image Size')
                                 ->options([
-                                    'bg-auto' => 'Auto',
-                                    'bg-cover' => 'Cover',
+                                    'bg-auto'    => 'Auto',
+                                    'bg-cover'   => 'Cover',
                                     'bg-contain' => 'Contain',
                                 ])
                                 ->default('cover')
@@ -80,9 +80,9 @@ class EditAppearance extends EditRecord
                                 ->label('Background Image Repeat')
                                 ->options([
                                     'bg-no-repeat' => 'No Repeat',
-                                    'bg-repeat' => 'Repeat',
-                                    'bg-repeat-x' => 'Repeat X',
-                                    'bg-repeat-y' => 'Repeat Y',
+                                    'bg-repeat'    => 'Repeat',
+                                    'bg-repeat-x'  => 'Repeat X',
+                                    'bg-repeat-y'  => 'Repeat Y',
                                 ])
                                 ->default('no-repeat')
                                 ->helperText('Choose the repeat of the background image on your application.'),
@@ -112,5 +112,4 @@ class EditAppearance extends EditRecord
                     ->columns(3),
             ]);
     }
-
 }
