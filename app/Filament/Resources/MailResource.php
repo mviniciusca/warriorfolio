@@ -105,7 +105,7 @@ class MailResource extends Resource
             })
             ->columns([
                 Tables\Columns\IconColumn::make('is_important')
-                    ->label('')
+                    ->label(__(''))
                     ->boolean()
                     ->trueIcon('heroicon-s-star')
                     ->falseIcon('heroicon-o-star')
@@ -130,7 +130,7 @@ class MailResource extends Resource
                     ->offColor('primary')
                     ->onColor('gray')
                     ->offIcon('heroicon-m-eye')
-                    ->label(__('Mark as Read')),
+                    ->label(__('')),
             ])
             ->defaultSort('id', 'desc')
             ->defaultPaginationPageOption(25)
