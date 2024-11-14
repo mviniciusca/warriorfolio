@@ -64,31 +64,42 @@ class SettingResource extends Resource
                     ->columns(2)
                     ->schema([
                         TextInput::make('name')
-                            ->label('Application Name')
+                            ->label(__('Application Name'))
+                            ->helperText(__('Define the application name.'))
+                            ->prefixIcon('heroicon-o-user')
                             ->required(),
                         TextInput::make('meta_title')
                             ->maxLength(255)
-                            ->label('Meta Title'),
+                            ->label(__('Website Meta Title'))
+                            ->helperText(__('Define the application meta title.'))
+                            ->prefixIcon('heroicon-o-tag'),
                         Textarea::make('meta_description')
                             ->maxLength(500)
                             ->columnSpanFull()
                             ->rows(2)
-                            ->label('Meta Description'),
+                            ->label(__('Website Description '))
+                            ->helperText(__('Description of your application.')),
                         TextInput::make('meta_keywords')
                             ->maxLength(255)
-                            ->label('Meta Keywords'),
+                            ->helperText(__('Meta keywords for your website.'))
+                            ->prefixIcon('heroicon-o-tag')
+                            ->label(__('Meta Keywords')),
                         TextInput::make('meta_author')
                             ->maxLength(255)
-                            ->label('Meta Author'),
+                            ->helperText(__('Define the application author.'))
+                            ->prefixIcon('heroicon-o-user')
+                            ->label(__('Meta Author')),
                         TextInput::make('meta_robots')
                             ->maxLength(255)
-                            ->label('Meta Robots'),
+                            ->prefixIcon('heroicon-o-tag')
+                            ->label(__('Meta Robots')),
                         TextInput::make('meta_google_site_verification')
                             ->maxLength(255)
                             ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
                             ->password()
                             ->revealable()
-                            ->label('Google Site Verification. Verify ownership using an HTML tag'),
+                            ->prefixIcon('heroicon-o-globe-alt')
+                            ->label(__('Google Verification')),
                     ]),
                 Section::make('Core Module Decoupling')
                     ->relationship('core')
