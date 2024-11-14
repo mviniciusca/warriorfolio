@@ -61,7 +61,7 @@ class EditSocialNetwork extends EditRecord
                                 ->required()
                                 ->maxLength(255)
                                 ->columnSpan(3)
-                                ->helperText(__('facebook.com/myprofile'))
+                                ->helperText(__('facebook.com/my-profile'))
                                 ->prefixIcon('heroicon-o-link')
                                 ->label(__('Profile Link')),
                         ]),
