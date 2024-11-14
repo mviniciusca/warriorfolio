@@ -43,12 +43,12 @@ class Mail extends Model
         $data = Trend::model(self::class)
             ->between(
                 start: now()->startOfYear(),
-                end: now()->endOfYear(),
+                end: now()->endOfMonth(),
             )
             ->perMonth()
             ->count();
         $data = $data->map(fn (TrendValue $value) => $value->aggregate);
-        $data = $data->take(-3);
+        $data = $data->take(3);
         $data = $data->toArray();
 
         return $data;
