@@ -2,14 +2,15 @@
 
 namespace App\Livewire;
 
-use Filament\Forms;
-use Livewire\Component;
-use Filament\Forms\Form;
-use Illuminate\Contracts\View\View;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Notifications\Notification;
 use App\Models\Newsletter as ModelsNewsletter;
+use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Form;
+use Filament\Notifications\Notification;
+use Illuminate\Contracts\View\View;
+use Livewire\Component;
 
 class Newsletter extends Component implements HasForms
 {
@@ -18,6 +19,7 @@ class Newsletter extends Component implements HasForms
     public ?array $data = [];
 
     public $buttonText = 'Subscribe';
+
     public function mount(): void
     {
         $this->form->fill();
@@ -27,15 +29,20 @@ class Newsletter extends Component implements HasForms
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('email')
-                    ->placeholder('Email')
+                TextInput::make('name')
+                    ->hiddenLabel()
+                    ->maxLength(200)
+                    ->required()
+                    ->placeholder(__('Name')),
+                TextInput::make('email')
+                    ->placeholder(__('Email'))
                     ->hiddenLabel()
                     ->email()
                     ->unique('newsletters', 'email')
                     ->required(),
             ])
             ->statePath('data')
-            ->model(Newsletter::class);
+            ->model(self::class);
     }
 
     public function create(): void
