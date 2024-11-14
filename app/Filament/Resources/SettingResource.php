@@ -63,12 +63,12 @@ class SettingResource extends Resource
                     ->icon('heroicon-o-cog-6-tooth')
                     ->columns(2)
                     ->schema([
-                        TextInput::make('name')
+                        TextInput::make('application.name')
                             ->label(__('Application Name'))
                             ->helperText(__('Define the application name.'))
                             ->prefixIcon('heroicon-o-user')
                             ->required(),
-                        TextInput::make('meta_title')
+                        TextInput::make('meta.meta_title')
                             ->maxLength(255)
                             ->label(__('Website Meta Title'))
                             ->helperText(__('Define the application meta title.'))
@@ -79,21 +79,21 @@ class SettingResource extends Resource
                             ->rows(2)
                             ->label(__('Website Description '))
                             ->helperText(__('Description of your application.')),
-                        TextInput::make('meta_keywords')
+                        TextInput::make('meta.meta_keywords')
                             ->maxLength(255)
                             ->helperText(__('Meta keywords for your website.'))
                             ->prefixIcon('heroicon-o-tag')
                             ->label(__('Meta Keywords')),
-                        TextInput::make('meta_author')
+                        TextInput::make('meta.meta_author')
                             ->maxLength(255)
                             ->helperText(__('Define the application author.'))
                             ->prefixIcon('heroicon-o-user')
                             ->label(__('Meta Author')),
-                        TextInput::make('meta_robots')
+                        TextInput::make('meta.meta_robots')
                             ->maxLength(255)
                             ->prefixIcon('heroicon-o-tag')
                             ->label(__('Meta Robots')),
-                        TextInput::make('meta_google_site_verification')
+                        TextInput::make('meta.meta_google_site_verification')
                             ->maxLength(255)
                             ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
                             ->password()

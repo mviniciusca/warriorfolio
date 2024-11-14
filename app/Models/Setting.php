@@ -20,6 +20,14 @@ class Setting extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'application' => 'array',
+        'design'      => 'array',
+        'meta'        => 'array',
+        'google'      => 'array',
+        'scripts'     => 'array',
+    ];
+
     /**
      * Summary of user
      * @return BelongsTo
