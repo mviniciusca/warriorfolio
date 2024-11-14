@@ -132,25 +132,25 @@ class SettingResource extends Resource
                             ->relationship('module')
                             ->schema([
                                 Toggle::make('about')
-                                    ->label('About Module')
+                                    ->label(__('About'))
                                     ->inline(),
                                 Toggle::make('clients')
-                                    ->label('Clients Module')
+                                    ->label(__('Clients'))
                                     ->inline(),
                                 Toggle::make('contact')
-                                    ->label('Contact Module')
+                                    ->label(__('Contact'))
                                     ->inline(),
                                 Toggle::make('footer')
-                                    ->label('Footer Module')
+                                    ->label(__('Footer'))
                                     ->inline(),
                                 Toggle::make('hero')
-                                    ->label('Hero Module')
+                                    ->label(__('Hero'))
                                     ->inline(),
                                 Toggle::make('newsletter')
-                                    ->label('Newsletter Module')
+                                    ->label(__('Newsletter'))
                                     ->inline(),
                                 Toggle::make('portfolio')
-                                    ->label('Portfolio Module')
+                                    ->label(__('Portfolio'))
                                     ->inline(),
                             ])->columns(4),
                     ]),
