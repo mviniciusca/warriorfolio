@@ -85,28 +85,28 @@ class EditProfile extends EditRecord
                             ->preserveFilenames()
                             ->openable()
                             ->downloadable()
-                            ->label('Resume')
-                            ->placeholder('Attach Your Resume')
+                            ->label(__('Resume'))
+                            ->placeholder(__('Attach Your Resume'))
                             ->acceptedFileTypes(['application/pdf'])
                             ->directory('public/profile/document'),
                         Toggle::make('is_downloadable')
                             ->inline(false)
-                            ->label('Downloadable')
-                            ->helperText('If you want to allow users to download your CV, enable this option.'),
+                            ->label(__('Downloadable'))
+                            ->helperText(__('If you want to allow users to download your CV, enable this option.')),
                         Toggle::make('is_open_to_work')
                             ->inline(false)
-                            ->label('Open to Work')
-                            ->helperText('If you are open to work, a icon will be displayed on your profile with a link to your linkedin profile.'),
+                            ->label(__('Open to Work'))
+                            ->helperText(__('If you are open to work, a icon will be displayed on your profile with a link to your linkedin profile.')),
                     ])
                     ->columns(3),
-                Section::make('About You')
-                    ->description('This information will be displayed on your public profile page.')
+                Section::make(__('About You'))
+                    ->description(__('This information will be displayed on your public profile page.'))
                     ->icon('heroicon-o-information-circle')
                     ->schema([
                         RichEditor::make('about')
                             ->label('')
                             ->maxLength(2000)
-                            ->helperText('Write about yourself. Enter to break a line, twice to paragraph. Max 2000 characters')
+                            ->helperText(__('Write about yourself. Enter to break a line, twice to paragraph. Max 2000 characters'))
                             ->toolbarButtons([
                                 'bold',
                                 'italic',
