@@ -144,7 +144,7 @@ class SettingResource extends Resource
                                     ->label(__('Footer'))
                                     ->inline(),
                                 Toggle::make('hero')
-                                    ->label(__('Hero'))
+                                    ->label(__('Hero Section'))
                                     ->inline(),
                                 Toggle::make('newsletter')
                                     ->label(__('Newsletter'))
@@ -157,6 +157,7 @@ class SettingResource extends Resource
                 Section::make(__('External Add-ons'))
                     ->description(__('Define scripts to be loaded in your application.'))
                     ->icon('heroicon-o-beaker')
+                    ->collapsed()
                     ->schema([
                         TextInput::make('google_fonts_name')
                             ->columnSpanFull()
@@ -187,7 +188,7 @@ class SettingResource extends Resource
                             ->columnSpanFull()
                             ->helperText(__('Paste your scripts here. This will be loaded in the body.'))
                             ->label(__('Body Scripts')),
-                    ])->collapsed()->columns(2),
+                    ]),
             ]);
     }
 
