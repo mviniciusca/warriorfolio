@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\ProfileResource\Pages;
 
 use App\Filament\Resources\ProfileResource;
-use Filament\Actions;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -40,12 +39,13 @@ class EditSocialNetwork extends EditRecord
                                 ->default(true),
                             Select::make('social_network')
                                 ->columnSpan(2)
+                                ->required()
                                 ->helperText(__('Social Network'))
                                 ->prefixIcon('heroicon-o-user')
                                 ->options([
                                     'linkedin'      => 'Linkedin',
                                     'discord'       => 'Discord',
-                                    'twitter'       => 'Twitter',
+                                    'twitter'       => 'X / Twitter',
                                     'instagram'     => 'Instagram',
                                     'facebbook'     => 'Facebook',
                                     'dribbble'      => 'Dribbble',
@@ -57,8 +57,11 @@ class EditSocialNetwork extends EditRecord
                                 ])
                                 ->label(__('Social Network')),
                             TextInput::make('profile_link')
+                                ->prefix('https://')
+                                ->required()
+                                ->maxLength(255)
                                 ->columnSpan(3)
-                                ->helperText(__('Social Network Profile Link'))
+                                ->helperText(__('facebook.com/myprofile'))
                                 ->prefixIcon('heroicon-o-link')
                                 ->label(__('Profile Link')),
                         ]),
