@@ -47,17 +47,6 @@ class NewsletterResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-            ]);
-    }
-
     public static function table(Table $table): Table
     {
         return $table
@@ -83,14 +72,11 @@ class NewsletterResource extends Resource
                 //
             ])
             ->actions([
-                ActionGroup::make([
-                    EditAction::make(),
-                ]),
+                //
             ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
-                    ExportBulkAction::make(),
                 ]),
             ]);
     }
