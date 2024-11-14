@@ -20,8 +20,6 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-
-
     public function boot(): void
     {
         if (Schema::hasTable('maintenances')) {
@@ -29,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
                 ->select(['is_active', 'is_discovery'])
                 ->first();
             view()->share([
-                'discovery' => $maintenance->is_discovery,
+                'discovery'   => $maintenance->is_discovery,
                 'maintenance' => $maintenance->is_active,
             ]);
 
@@ -44,18 +42,18 @@ class AppServiceProvider extends ServiceProvider
                             'header',
                             'hero',
                             'newsletter',
-                            'portfolio'
+                            'portfolio',
                         ]
                     )->first();
                 view()->share([
-                    'about_core' => $data->about,
-                    'clients_core' => $data->clients,
-                    'contact_core' => $data->contact,
-                    'footer_core' => $data->footer,
-                    'header_core' => $data->header,
-                    'hero_core' => $data->hero,
+                    'about_core'      => $data->about,
+                    'clients_core'    => $data->clients,
+                    'contact_core'    => $data->contact,
+                    'footer_core'     => $data->footer,
+                    'header_core'     => $data->header,
+                    'hero_core'       => $data->hero,
                     'newsletter_core' => $data->newsletter,
-                    'portfolio_core' => $data->portfolio,
+                    'portfolio_core'  => $data->portfolio,
                 ]);
             }
         }

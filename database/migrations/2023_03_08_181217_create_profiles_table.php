@@ -13,7 +13,6 @@ return new class() extends Migration {
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->json('social')->nullable();
             $table->text('about')->nullable();
             $table->string('avatar')->nullable();
