@@ -73,7 +73,7 @@ class SettingResource extends Resource
                             ->label(__('Website Meta Title'))
                             ->helperText(__('Define the application meta title.'))
                             ->prefixIcon('heroicon-o-tag'),
-                        Textarea::make('meta_description')
+                        Textarea::make('meta.meta_description')
                             ->maxLength(500)
                             ->columnSpanFull()
                             ->rows(2)
@@ -93,7 +93,7 @@ class SettingResource extends Resource
                             ->maxLength(255)
                             ->prefixIcon('heroicon-o-tag')
                             ->label(__('Meta Robots')),
-                        TextInput::make('meta.meta_google_site_verification')
+                        TextInput::make('google.meta_google_site_verification')
                             ->maxLength(255)
                             ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
                             ->password()
@@ -159,30 +159,30 @@ class SettingResource extends Resource
                     ->icon('heroicon-o-beaker')
                     ->collapsed()
                     ->schema([
-                        TextInput::make('google_fonts_name')
+                        TextInput::make('google.google_fonts_name')
                             ->columnSpanFull()
                             ->maxLength(255)
                             ->helperText(__('Default: Inter'))
                             ->label(__('Google Fonts Name')),
-                        Textarea::make('google_fonts_code')
+                        Textarea::make('google.google_fonts_code')
                             ->rows(3)
                             ->maxLength(65535)
                             ->columnSpanFull()
                             ->helperText(__('Paste your Google Fonts code here. Just one default font is allowed.'))
                             ->label(__('Google Fonts Code')),
-                        Textarea::make('google_analytics')
+                        Textarea::make('google.google_analytics')
                             ->rows(3)
                             ->columnSpanFull()
                             ->maxLength(65535)
                             ->helperText(__('Paste your Google Analytics code here.'))
                             ->label(__('Google Analytics Code')),
-                        Textarea::make('header_scripts')
+                        Textarea::make('scripts.header_scripts')
                             ->maxLength(65535)
                             ->rows(3)
                             ->columnSpanFull()
                             ->helperText(__('Paste your scripts here. This will be loaded in the header.'))
                             ->label(__('Header Scripts')),
-                        Textarea::make('body_scripts')
+                        Textarea::make('scripts.body_scripts')
                             ->maxLength(65535)
                             ->rows(3)
                             ->columnSpanFull()
