@@ -124,8 +124,8 @@ class SettingResource extends Resource
                         Toggle::make('portfolio')
                             ->label(__('Portfolio')),
                     ]),
-                Section::make('Core Modules Global Visibility Control')
-                    ->description('Enable or disable modules. This is a global setting and will hide the module from entire application.')
+                Section::make(__('Core Modules Global Visibility Control'))
+                    ->description(__('Enable or disable modules. This is a global setting and will hide the module from entire application.'))
                     ->icon('heroicon-o-cpu-chip')
                     ->schema([
                         Group::make()
