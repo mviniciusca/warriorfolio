@@ -13,12 +13,16 @@ class Profile extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'social' => 'array',
+    ];
+
     /**
      * Summary of user
      * @return BelongsTo
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 }
