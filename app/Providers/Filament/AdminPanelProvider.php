@@ -31,6 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->breadcrumbs(false)
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandLogo(asset('img/core/logo-app.svg'))

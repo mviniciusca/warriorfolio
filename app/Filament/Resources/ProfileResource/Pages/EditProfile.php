@@ -78,24 +78,25 @@ class EditProfile extends EditRecord
                             ->columnSpan(3),
                         Group::make()
                             ->schema([
-                                Fieldset::make()->schema([
-                                    FileUpload::make('document')
-                                        ->preserveFilenames()
-                                        ->openable()
-                                        ->downloadable()
-                                        ->label('Resume/CV')
-                                        ->placeholder('Attach Your Resume')
-                                        ->acceptedFileTypes(['application/pdf'])
-                                        ->directory('public/profile/document'),
-                                    Toggle::make('is_downloadable')
-                                        ->inline(false)
-                                        ->label('Downloadable CV')
-                                        ->helperText('If you want to allow users to download your CV, enable this option.'),
-                                    Toggle::make('is_open_to_work')
-                                        ->inline(false)
-                                        ->label('Open to Work')
-                                        ->helperText('If you are open to work, a icon will be displayed on your profile with a link to your linkedin profile.'),
-                                ])->columns(3),
+                                Fieldset::make()
+                                    ->schema([
+                                        FileUpload::make('document')
+                                            ->preserveFilenames()
+                                            ->openable()
+                                            ->downloadable()
+                                            ->label('Resume/CV')
+                                            ->placeholder('Attach Your Resume')
+                                            ->acceptedFileTypes(['application/pdf'])
+                                            ->directory('public/profile/document'),
+                                        Toggle::make('is_downloadable')
+                                            ->inline(false)
+                                            ->label('Downloadable CV')
+                                            ->helperText('If you want to allow users to download your CV, enable this option.'),
+                                        Toggle::make('is_open_to_work')
+                                            ->inline(false)
+                                            ->label('Open to Work')
+                                            ->helperText('If you are open to work, a icon will be displayed on your profile with a link to your linkedin profile.'),
+                                    ])->columns(3),
                             ])->columnSpanFull(),
                     ]),
                 Section::make('About You')

@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             ]);
         Mail::factory(20)->create();
         Newsletter::factory(10)->create();
-        Course::factory(5)->create();
+        Course::factory(3)->create();
         Category::factory()->create();
         DB::table('pages')
             ->insert([

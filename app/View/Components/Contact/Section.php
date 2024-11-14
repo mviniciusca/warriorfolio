@@ -2,12 +2,12 @@
 
 namespace App\View\Components\Contact;
 
-use Closure;
 use App\Models\Layout;
 use App\Models\Module;
 use App\Models\Profile;
-use Illuminate\View\Component;
+use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Section extends Component
 {
@@ -26,7 +26,7 @@ class Section extends Component
     {
         return view('components.contact.section', [
             'social_network' => $this->isEmpty(),
-            'module' => Module::query()
+            'module'         => Module::query()
                 ->select(['contact'])
                 ->first(),
             'info' => Layout::query()
@@ -38,7 +38,7 @@ class Section extends Component
                     'contact_section_email',
                     'contact_section_google_map',
                     'contact_section_google_map',
-                    'contact_section_phone'
+                    'contact_section_phone',
                 ])
                 ->first(),
         ]);
@@ -51,25 +51,16 @@ class Section extends Component
     {
         $model = Profile::query()
             ->select([
-                'facebook',
-                'twitter',
-                'instagram',
-                'linkedin',
-                'youtube',
-                'github',
-                'medium',
-                'devto',
-                'twitch',
-                'dribbble'
+                'social',
             ])
             ->first();
         $count = 0;
         foreach ($model->toArray() as $key => $value) {
-            if (!empty($value)) {
+            if (! empty($value)) {
                 $count++;
             }
         }
+
         return $count;
     }
-
 }
