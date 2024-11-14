@@ -11,16 +11,19 @@ use Filament\Widgets\TableWidget as BaseWidget;
 
 class LatestMails extends BaseWidget
 {
-    protected static ?string $heading = 'Inbox';
     protected static ?int $sort = 1;
+
     public function table(Table $table): Table
     {
         return $table
             ->query(
                 Mail::query()
+                    ->where('is_read', '=', false)
                     ->latest()
                     ->limit(5)
             )
+            ->heading(__('Inbox'))
+            ->description(__('Your new and unread messages.'))
             ->headerActions(
                 [
                     ViewAction::make()

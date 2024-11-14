@@ -4,14 +4,18 @@ namespace App\Filament\Widgets;
 
 use Filament\Actions\ViewAction;
 use Filament\Tables\Table;
-use Flowframe\Trend\TrendValue;
 use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
+use Flowframe\Trend\TrendValue;
 
 class Subscribers extends ChartWidget
 {
-    protected static ?string $heading = 'Subscribers';
+    protected static ?string $heading = 'Mailing List';
+
+    protected static ?string $description = 'Your mailing list subscribers.';
+
     protected static ?int $sort = 2;
+
     protected function getData(): array
     {
         $data = Trend::model(\App\Models\Newsletter::class)
@@ -26,13 +30,14 @@ class Subscribers extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Subscribers',
-                    'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
-                    'fill' => true
+                    'data'  => $data->map(fn (TrendValue $value) => $value->aggregate),
+                    'fill'  => true,
                 ],
             ],
-            'labels' => $data->map(fn(TrendValue $value) => $value->date),
+            'labels' => $data->map(fn (TrendValue $value) => $value->date),
         ];
     }
+
     protected function getType(): string
     {
         return 'line';

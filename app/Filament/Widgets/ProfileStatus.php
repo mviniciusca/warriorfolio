@@ -13,12 +13,15 @@ use Filament\Widgets\TableWidget as BaseWidget;
 class ProfileStatus extends BaseWidget
 {
     protected static ?int $sort = 4;
+
     public function table(Table $table): Table
     {
         return $table
             ->query(
                 Profile::query()->select()
             )
+            ->heading(__('Profile Overview'))
+            ->description(__('A quick view about your profile.'))
             ->striped()
             ->headerActions(
                 [

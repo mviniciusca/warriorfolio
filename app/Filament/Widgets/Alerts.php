@@ -2,17 +2,18 @@
 
 namespace App\Filament\Widgets;
 
-use Filament\Tables;
 use App\Models\Alert;
+use Filament\Tables;
 use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Table;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
 class Alerts extends BaseWidget
 {
     protected static ?int $sort = 6;
+
     public function table(Table $table): Table
     {
         return $table
@@ -27,7 +28,7 @@ class Alerts extends BaseWidget
                 [
                     ViewAction::make()
                         ->url(route('filament.admin.resources.alerts.index'))
-                        ->label('View All')
+                        ->label(__('View All'))
                         ->icon('heroicon-o-arrow-up-right')
                         ->outlined()
                         ->size('xs'),

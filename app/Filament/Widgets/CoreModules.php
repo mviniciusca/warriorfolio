@@ -13,7 +13,9 @@ use Filament\Widgets\TableWidget as BaseWidget;
 class CoreModules extends BaseWidget
 {
     protected int|string|array $columnSpan = 'full';
-    protected static ?int $sort = 0;
+
+    protected static ?int $sort = 10;
+
     public function table(Table $table): Table
     {
         return $table
@@ -21,7 +23,8 @@ class CoreModules extends BaseWidget
                 Core::query()->select()
             )
             ->striped()
-            ->heading('Core Modules Status')
+            ->heading(__('Modules'))
+            ->description(__('See the status of the modules of your application.'))
             ->emptyStateIcon('heroicon-o-cpu-chip')
             ->paginated(false)
             ->headerActions(
