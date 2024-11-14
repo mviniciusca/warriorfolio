@@ -154,39 +154,39 @@ class SettingResource extends Resource
                                     ->inline(),
                             ])->columns(4),
                     ]),
-                Section::make('External Add-ons')
-                    ->description('Define scripts to be loaded in your application')
+                Section::make(__('External Add-ons'))
+                    ->description(__('Define scripts to be loaded in your application.'))
                     ->icon('heroicon-o-beaker')
                     ->schema([
                         TextInput::make('google_fonts_name')
                             ->columnSpanFull()
                             ->maxLength(255)
-                            ->helperText('Default: Inter')
-                            ->label('Google Fonts Name'),
+                            ->helperText(__('Default: Inter'))
+                            ->label(__('Google Fonts Name')),
                         Textarea::make('google_fonts_code')
                             ->rows(3)
                             ->maxLength(65535)
                             ->columnSpanFull()
-                            ->helperText('Paste your Google Fonts code here. Just one default font is allowed.')
-                            ->label('Google Fonts Code'),
+                            ->helperText(__('Paste your Google Fonts code here. Just one default font is allowed.'))
+                            ->label(__('Google Fonts Code')),
                         Textarea::make('google_analytics')
                             ->rows(3)
                             ->columnSpanFull()
                             ->maxLength(65535)
-                            ->helperText('Paste your Google Analytics code here.')
-                            ->label('Google Analytics Code'),
+                            ->helperText(__('Paste your Google Analytics code here.'))
+                            ->label(__('Google Analytics Code')),
                         Textarea::make('header_scripts')
                             ->maxLength(65535)
                             ->rows(3)
                             ->columnSpanFull()
-                            ->helperText('Paste your scripts here. This will be loaded in the header.')
-                            ->label('Header Scripts'),
+                            ->helperText(__('Paste your scripts here. This will be loaded in the header.'))
+                            ->label(__('Header Scripts')),
                         Textarea::make('body_scripts')
                             ->maxLength(65535)
                             ->rows(3)
                             ->columnSpanFull()
-                            ->helperText('Paste your scripts here. This will be loaded in the body.')
-                            ->label('Body Scripts'),
+                            ->helperText(__('Paste your scripts here. This will be loaded in the body.'))
+                            ->label(__('Body Scripts')),
                     ])->collapsed()->columns(2),
             ]);
     }
