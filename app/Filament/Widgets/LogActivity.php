@@ -2,7 +2,6 @@
 
 namespace App\Filament\Widgets;
 
-use Filament\Tables;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -12,8 +11,11 @@ use Spatie\Activitylog\Models\Activity as ActivityLogger;
 class LogActivity extends BaseWidget
 {
     protected int|string|array $columnSpan = 'full';
-    protected static ?string $heading = 'Log Activity';
+
+    protected static ?string $heading = 'Activity';
+
     protected static ?int $sort = 10;
+
     public function table(Table $table): Table
     {
         return $table
