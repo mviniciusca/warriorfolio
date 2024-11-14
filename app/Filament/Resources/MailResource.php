@@ -63,7 +63,7 @@ class MailResource extends Resource
                     ->disabled()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
-                    ->label(__('Email'))
+                    ->label(__('Email: '))
                     ->disabled()
                     ->email()
                     ->maxLength(255),
