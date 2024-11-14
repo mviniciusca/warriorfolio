@@ -24,6 +24,8 @@ class Alerts extends BaseWidget
                     ->orderBy('created_at', 'desc')
                     ->take(5)
             )
+            ->heading(__('Active Notifications'))
+            ->description(__('Active notifications in your application.'))
             ->headerActions(
                 [
                     ViewAction::make()

@@ -13,7 +13,7 @@ use Filament\Widgets\TableWidget as BaseWidget;
 class Sliders extends BaseWidget
 {
     protected static ?int $sort = 7;
-    protected static ?string $heading = 'Active Sliders';
+
     public function table(Table $table): Table
     {
         return $table
@@ -24,6 +24,8 @@ class Sliders extends BaseWidget
                     ->orderBy('created_at', 'desc')
                     ->take(5)
             )
+            ->heading(__('Active Sliders'))
+            ->description(__('Active sliders in your application.'))
             ->headerActions(
                 [
                     ViewAction::make()
