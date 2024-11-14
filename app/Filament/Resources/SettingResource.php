@@ -158,32 +158,32 @@ class SettingResource extends Resource
                     ->description('Define scripts to be loaded in your application')
                     ->icon('heroicon-o-beaker')
                     ->schema([
-                        Textarea::make('google_fonts_name')
-                            ->rows(1)
+                        TextInput::make('google_fonts_name')
+                            ->columnSpanFull()
                             ->maxLength(255)
                             ->helperText('Default: Inter')
                             ->label('Google Fonts Name'),
                         Textarea::make('google_fonts_code')
-                            ->rows(5)
+                            ->rows(3)
                             ->maxLength(65535)
                             ->columnSpanFull()
                             ->helperText('Paste your Google Fonts code here. Just one default font is allowed.')
                             ->label('Google Fonts Code'),
                         Textarea::make('google_analytics')
-                            ->rows(5)
+                            ->rows(3)
                             ->columnSpanFull()
                             ->maxLength(65535)
                             ->helperText('Paste your Google Analytics code here.')
                             ->label('Google Analytics Code'),
                         Textarea::make('header_scripts')
                             ->maxLength(65535)
-                            ->rows(5)
+                            ->rows(3)
                             ->columnSpanFull()
                             ->helperText('Paste your scripts here. This will be loaded in the header.')
                             ->label('Header Scripts'),
                         Textarea::make('body_scripts')
                             ->maxLength(65535)
-                            ->rows(5)
+                            ->rows(3)
                             ->columnSpanFull()
                             ->helperText('Paste your scripts here. This will be loaded in the body.')
                             ->label('Body Scripts'),
