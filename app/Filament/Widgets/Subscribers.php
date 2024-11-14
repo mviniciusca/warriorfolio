@@ -2,8 +2,6 @@
 
 namespace App\Filament\Widgets;
 
-use Filament\Actions\ViewAction;
-use Filament\Tables\Table;
 use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
