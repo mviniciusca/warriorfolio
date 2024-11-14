@@ -15,7 +15,7 @@ class NewsletterSubscribersChart extends ChartWidget
         $data = Trend::model(\App\Models\Newsletter::class)
             ->between(
                 start: now()->startOfYear(),
-                end: now()->endOfYear(),
+                end: now()->endOfMonth(),
             )
             ->perMonth()
             ->count();
@@ -24,11 +24,11 @@ class NewsletterSubscribersChart extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Subscribers',
-                    'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
-                    'fill' => true,
+                    'data'  => $data->map(fn (TrendValue $value) => $value->aggregate),
+                    'fill'  => true,
                 ],
             ],
-            'labels' => $data->map(fn(TrendValue $value) => $value->date),
+            'labels' => $data->map(fn (TrendValue $value) => $value->date),
         ];
     }
 
