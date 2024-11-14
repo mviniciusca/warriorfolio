@@ -101,28 +101,28 @@ class SettingResource extends Resource
                             ->prefixIcon('heroicon-o-globe-alt')
                             ->label(__('Google Verification')),
                     ]),
-                Section::make('Core Module Decoupling')
+                Section::make(__('Core Module Decoupling'))
                     ->relationship('core')
                     ->columns(4)
-                    ->description('Couple or decouple core modules from your default layout.')
+                    ->description(__('Couple or decouple core modules from your default layout.'))
                     ->icon('heroicon-o-cpu-chip')
                     ->schema([
                         Toggle::make('header')
-                            ->label('Header'),
+                            ->label(__('Header')),
                         Toggle::make('footer')
-                            ->label('Footer'),
+                            ->label(__('Footer')),
                         Toggle::make('newsletter')
-                            ->label('Newsletter'),
+                            ->label(__('Newsletter')),
                         Toggle::make('contact')
-                            ->label('Contact'),
+                            ->label(__('Contact')),
                         Toggle::make('about')
-                            ->label('About'),
+                            ->label(__('About')),
                         Toggle::make('clients')
-                            ->label('Clients'),
+                            ->label(__('Clients')),
                         Toggle::make('hero')
-                            ->label('Hero Section'),
+                            ->label(__('Hero Section')),
                         Toggle::make('portfolio')
-                            ->label('Portfolio'),
+                            ->label(__('Portfolio')),
                     ]),
                 Section::make('Core Modules Global Visibility Control')
                     ->description('Enable or disable modules. This is a global setting and will hide the module from entire application.')
