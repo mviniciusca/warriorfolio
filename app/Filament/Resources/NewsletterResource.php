@@ -6,10 +6,12 @@ use App\Filament\Resources\NewsletterResource\Pages;
 use App\Filament\Resources\NewsletterResource\RelationManagers;
 use App\Models\Newsletter;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -18,7 +20,9 @@ use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 class NewsletterResource extends Resource
 {
     protected static ?string $model = Newsletter::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
+
     public static function getNavigationLabel(): string
     {
         return __('Subscribers');
@@ -28,6 +32,7 @@ class NewsletterResource extends Resource
     {
         return __('Core Features');
     }
+
     protected static ?int $navigationSort = 5;
 
     public static function getNavigationBadge(): ?string
@@ -40,11 +45,12 @@ class NewsletterResource extends Resource
             return '';
         }
     }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('email')
+                TextInput::make('email')
                     ->email()
                     ->required()
                     ->maxLength(255),
@@ -55,13 +61,17 @@ class NewsletterResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('email')
+                TextColumn::make('name')
+                    ->label(__('Name'))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('email')
+                    ->label(__('Email'))
+                    ->searchable(),
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -72,7 +82,7 @@ class NewsletterResource extends Resource
             ->actions([
                 ActionGroup::make([
                     Tables\Actions\EditAction::make(),
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -99,9 +109,9 @@ class NewsletterResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListNewsletters::route('/'),
+            'index'  => Pages\ListNewsletters::route('/'),
             'create' => Pages\CreateNewsletter::route('/create'),
-            'edit' => Pages\EditNewsletter::route('/{record}/edit'),
+            'edit'   => Pages\EditNewsletter::route('/{record}/edit'),
         ];
     }
 }
