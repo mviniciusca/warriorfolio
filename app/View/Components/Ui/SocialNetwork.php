@@ -2,10 +2,10 @@
 
 namespace App\View\Components\Ui;
 
-use Closure;
 use App\Models\Profile;
-use Illuminate\View\Component;
+use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class SocialNetwork extends Component
 {
@@ -23,20 +23,10 @@ class SocialNetwork extends Component
     public function render(): View|Closure|string
     {
         return view('components.ui.social-network', [
-            'social' => Profile::query()
-                ->select([
-                    'facebook',
-                    'twitter',
-                    'instagram',
-                    'linkedin',
-                    'youtube',
-                    'github',
-                    'twitch',
-                    'medium',
-                    'dribbble',
-                    'devto'
-                ])
+            'items' => Profile::query()
+                ->select('social')
                 ->first()
+                ->social,
         ]);
     }
 }
