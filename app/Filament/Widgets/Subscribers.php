@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\Newsletter;
 use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
@@ -16,7 +17,7 @@ class Subscribers extends ChartWidget
 
     protected function getData(): array
     {
-        $data = Trend::model(\App\Models\Newsletter::class)
+        $data = Trend::model(Newsletter::class)
             ->between(
                 start: now()->startOfYear(),
                 end: now()->endOfMonth(),
