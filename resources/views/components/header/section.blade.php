@@ -2,7 +2,6 @@
     <div class="mx-auto max-w-7xl">
         <header class="mt-8 flex w-full flex-wrap items-center justify-between">
             <div class="flex flex-wrap items-center gap-4">
-
                 <div>
                     <a href="/">
                         @if($app->logo || $app->logo_dark_mode)
@@ -15,7 +14,6 @@
                         @endif
                     </a>
                 </div>
-
                 <div>
                     <button data-collapse-toggle="mobile-menu-2" type="button"
                         class="ml-1 inline-flex items-center rounded-lg p-2 text-sm hover:bg-secondary-100 focus:outline-none focus:ring-2 focus:ring-secondary-200 dark:hover:bg-secondary-700 dark:focus:ring-secondary-600 lg:hidden"
