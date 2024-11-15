@@ -6,7 +6,7 @@
 @endif
 <meta name="keywords" content="{{ $meta['meta_keywords'] ? $meta['meta_keywords'] : __('Warriorfolio v2') }}">
 <meta name="description"
-    content="{{ $meta['meta_description'] ? $meta['meta_description'] : __('Build the what\'s next!') }}">
+    content="{{ $meta['meta_description'] ? $meta['meta_description'] : __('Building the what\'s next!') }}">
 @endif
 
 @if($design !== null)
