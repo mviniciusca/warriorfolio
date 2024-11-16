@@ -93,9 +93,9 @@ class EditAppearance extends EditRecord
                                     ->label(__('Background Image Size'))
                                     ->prefixIcon('heroicon-o-window')
                                     ->options([
-                                        'bg-auto'    => 'Auto',
-                                        'bg-cover'   => 'Cover',
-                                        'bg-contain' => 'Contain',
+                                        'bg-auto'    => __('Auto'),
+                                        'bg-cover'   => __('Cover'),
+                                        'bg-contain' => __('Contain'),
                                     ])
                                     ->default('cover')
                                     ->helperText(__('Choose the size of the background image on your application.')),
@@ -103,10 +103,10 @@ class EditAppearance extends EditRecord
                                     ->label(__('Background Image Repeat'))
                                     ->prefixIcon('heroicon-o-window')
                                     ->options([
-                                        'bg-no-repeat' => 'No Repeat',
-                                        'bg-repeat'    => 'Repeat',
-                                        'bg-repeat-x'  => 'Repeat X',
-                                        'bg-repeat-y'  => 'Repeat Y',
+                                        'bg-no-repeat' => __('No Repeat'),
+                                        'bg-repeat'    => __('Repeat'),
+                                        'bg-repeat-x'  => __('Repeat X'),
+                                        'bg-repeat-y'  => __('Repeat Y'),
                                     ])
                                     ->default('no-repeat')
                                     ->helperText(__('Choose the repeat of the background image on your application.')),
