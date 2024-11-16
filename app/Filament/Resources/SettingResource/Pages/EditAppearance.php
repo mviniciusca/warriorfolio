@@ -34,11 +34,11 @@ class EditAppearance extends EditRecord
                     ->schema([
                         CuratorPicker::make('logo')
                             ->label(__('Logo'))
-                            ->helperText(__('Upload a logo for your application. If you don\'t upload a logo, the default logo will be used.'))
+                            ->helperText(__('Upload a logo for your website'))
                             ->directory('public/logo'),
                         CuratorPicker::make('logo_dark_mode')
                             ->label(__('Dark Mode Logo'))
-                            ->helperText('Upload a logo for dark mode. If you don\'t upload a logo, the default logo will be used.')
+                            ->helperText(__('Upload a logo for dark mode.'))
                             ->directory('public/logo/dark-mode'),
                         Select::make('logo_size')
                             ->label(__('Logo Size'))
@@ -50,17 +50,17 @@ class EditAppearance extends EditRecord
                                 'max-w-48' => 'Extra Large',
                             ])
                             ->default('max-w-14')
-                            ->helperText('Choose the size of the logo on your application.'),
+                            ->helperText(__('Define the size of the logo on your website.')),
                     ]),
                 Section::make(__('Background'))
-                    ->description(__('Change the design and appearance of your application'))
+                    ->description(__('Change the design and appearance of your website'))
                     ->icon('heroicon-o-photo')
                     ->columns(3)
                     ->schema([
                         Toggle::make('background_image_visibility')
                             ->label('Background Image Visibility')
                             ->inline(false)
-                            ->helperText('Show or hide the background image on your application. This option prevent to show the default background image on your application.'),
+                            ->helperText('Show or hide the background image on your website.'),
                         FileUpload::make('background_image')
                             ->columnSpan(2)
                             ->image()
@@ -71,8 +71,9 @@ class EditAppearance extends EditRecord
                                 '1:1',
                             ])
                             ->directory('public/background')
-                            ->label('Background Image')
-                            ->helperText('This image will be used as the background of your application. Recommended size: 1920x1080px (16:9)'),
+                            ->label(__('Background Image'))
+                            ->helperText('Set the background of your website. 
+                            Recommended size: 1920x1080px (16:9)'),
                         Group::make()
                             ->columns(3)
                             ->columnSpanFull()
