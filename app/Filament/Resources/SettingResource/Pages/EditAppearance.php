@@ -42,6 +42,7 @@ class EditAppearance extends EditRecord
                             ->directory('public/logo/dark-mode'),
                         Select::make('logo_size')
                             ->label(__('Logo Size'))
+                            ->prefixIcon('heroicon-o-window')
                             ->options([
                                 'max-w-11' => __('Small'),
                                 'max-w-14' => __('Default'),
@@ -80,15 +81,17 @@ class EditAppearance extends EditRecord
                             ->schema([
                                 Select::make('background_image_position')
                                     ->label(__('Background Image Position'))
+                                    ->prefixIcon('heroicon-o-window')
                                     ->options([
-                                        'bg-top'    => 'Top',
-                                        'bg-center' => 'Center',
-                                        'bg-bottom' => 'Bottom',
+                                        'bg-top'    => __('Top'),
+                                        'bg-center' => __('Center'),
+                                        'bg-bottom' => __('Bottom'),
                                     ])
                                     ->default('center')
                                     ->helperText(__('Choose the position of the background image on your application.')),
                                 Select::make('background_image_size')
                                     ->label(__('Background Image Size'))
+                                    ->prefixIcon('heroicon-o-window')
                                     ->options([
                                         'bg-auto'    => 'Auto',
                                         'bg-cover'   => 'Cover',
@@ -98,6 +101,7 @@ class EditAppearance extends EditRecord
                                     ->helperText(__('Choose the size of the background image on your application.')),
                                 Select::make('background_image_repeat')
                                     ->label(__('Background Image Repeat'))
+                                    ->prefixIcon('heroicon-o-window')
                                     ->options([
                                         'bg-no-repeat' => 'No Repeat',
                                         'bg-repeat'    => 'Repeat',
