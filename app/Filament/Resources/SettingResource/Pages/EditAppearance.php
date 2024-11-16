@@ -27,8 +27,8 @@ class EditAppearance extends EditRecord
     {
         return $form
             ->schema([
-                Section::make('Design & Appearance')
-                    ->description('Change the design and appearance of your application')
+                Section::make(__('Design & Appearance'))
+                    ->description(__('Change the design and appearance of your application'))
                     ->icon('heroicon-o-photo')
                     ->schema([
                         Toggle::make('background_image_visibility')
@@ -89,6 +89,12 @@ class EditAppearance extends EditRecord
                         ])
                             ->columns(3)
                             ->columnSpanFull(),
+                    ]),
+                Section::make(__('Application Logo'))
+                    ->description(__('Change the design and appearance of your application'))
+                    ->icon('heroicon-o-photo')
+                    ->columns(3)
+                    ->schema([
                         CuratorPicker::make('logo')
                             ->label('Logo')
                             ->helperText('Upload a logo for your application. If you don\'t upload a logo, the default logo will be used.')
@@ -108,8 +114,8 @@ class EditAppearance extends EditRecord
                             ])
                             ->default('max-w-14')
                             ->helperText('Choose the size of the logo on your application.'),
-                    ])
-                    ->columns(3),
+                    ]),
+
             ]);
     }
 }
