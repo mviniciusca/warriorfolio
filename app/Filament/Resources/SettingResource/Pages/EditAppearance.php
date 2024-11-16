@@ -27,7 +27,32 @@ class EditAppearance extends EditRecord
     {
         return $form
             ->schema([
-                Section::make(__('Design & Appearance'))
+                Section::make(__('Application Logo'))
+                    ->description(__('Change the design and appearance of your application'))
+                    ->icon('heroicon-o-sparkles')
+                    ->columns(3)
+                    ->schema([
+                        CuratorPicker::make('logo')
+                            ->label('Logo')
+                            ->helperText('Upload a logo for your application. If you don\'t upload a logo, the default logo will be used.')
+                            ->directory('public/logo'),
+                        CuratorPicker::make('logo_dark_mode')
+                            ->label('Dark Mode Logo')
+                            ->helperText('Upload a logo for dark mode. If you don\'t upload a logo, the default logo will be used.')
+                            ->directory('public/logo/dark-mode'),
+                        Select::make('logo_size')
+                            ->label('Logo Size')
+                            ->options([
+                                'max-w-11' => 'Small',
+                                'max-w-14' => 'Default',
+                                'max-w-24' => 'Medium',
+                                'max-w-32' => 'Large',
+                                'max-w-48' => 'Extra Large',
+                            ])
+                            ->default('max-w-14')
+                            ->helperText('Choose the size of the logo on your application.'),
+                    ]),
+                Section::make(__('Background'))
                     ->description(__('Change the design and appearance of your application'))
                     ->icon('heroicon-o-photo')
                     ->schema([
@@ -89,31 +114,6 @@ class EditAppearance extends EditRecord
                         ])
                             ->columns(3)
                             ->columnSpanFull(),
-                    ]),
-                Section::make(__('Application Logo'))
-                    ->description(__('Change the design and appearance of your application'))
-                    ->icon('heroicon-o-photo')
-                    ->columns(3)
-                    ->schema([
-                        CuratorPicker::make('logo')
-                            ->label('Logo')
-                            ->helperText('Upload a logo for your application. If you don\'t upload a logo, the default logo will be used.')
-                            ->directory('public/logo'),
-                        CuratorPicker::make('logo_dark_mode')
-                            ->label('Dark Mode Logo')
-                            ->helperText('Upload a logo for dark mode. If you don\'t upload a logo, the default logo will be used.')
-                            ->directory('public/logo/dark-mode'),
-                        Select::make('logo_size')
-                            ->label('Logo Size')
-                            ->options([
-                                'max-w-11' => 'Small',
-                                'max-w-14' => 'Default',
-                                'max-w-24' => 'Medium',
-                                'max-w-32' => 'Large',
-                                'max-w-48' => 'Extra Large',
-                            ])
-                            ->default('max-w-14')
-                            ->helperText('Choose the size of the logo on your application.'),
                     ]),
 
             ]);
