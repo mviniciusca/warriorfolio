@@ -33,15 +33,15 @@ class EditAppearance extends EditRecord
                     ->columns(3)
                     ->schema([
                         CuratorPicker::make('logo')
-                            ->label('Logo')
-                            ->helperText('Upload a logo for your application. If you don\'t upload a logo, the default logo will be used.')
+                            ->label(__('Logo'))
+                            ->helperText(__('Upload a logo for your application. If you don\'t upload a logo, the default logo will be used.'))
                             ->directory('public/logo'),
                         CuratorPicker::make('logo_dark_mode')
-                            ->label('Dark Mode Logo')
+                            ->label(__('Dark Mode Logo'))
                             ->helperText('Upload a logo for dark mode. If you don\'t upload a logo, the default logo will be used.')
                             ->directory('public/logo/dark-mode'),
                         Select::make('logo_size')
-                            ->label('Logo Size')
+                            ->label(__('Logo Size'))
                             ->options([
                                 'max-w-11' => 'Small',
                                 'max-w-14' => 'Default',
@@ -80,40 +80,41 @@ class EditAppearance extends EditRecord
                                 '1:1',
                             ])
                             ->directory('public/favicon')
-                            ->helperText('.ico or .png would be amazing!')
+                            ->helperText(__('.ico or .png would be amazing!'))
                             ->label('Favicon'),
-                        Group::make()->schema([
-                            Select::make('background_image_position')
-                                ->label('Background Image Position')
-                                ->options([
-                                    'bg-top'    => 'Top',
-                                    'bg-center' => 'Center',
-                                    'bg-bottom' => 'Bottom',
-                                ])
-                                ->default('center')
-                                ->helperText('Choose the position of the background image on your application.'),
-                            Select::make('background_image_size')
-                                ->label('Background Image Size')
-                                ->options([
-                                    'bg-auto'    => 'Auto',
-                                    'bg-cover'   => 'Cover',
-                                    'bg-contain' => 'Contain',
-                                ])
-                                ->default('cover')
-                                ->helperText('Choose the size of the background image on your application.'),
-                            Select::make('background_image_repeat')
-                                ->label('Background Image Repeat')
-                                ->options([
-                                    'bg-no-repeat' => 'No Repeat',
-                                    'bg-repeat'    => 'Repeat',
-                                    'bg-repeat-x'  => 'Repeat X',
-                                    'bg-repeat-y'  => 'Repeat Y',
-                                ])
-                                ->default('no-repeat')
-                                ->helperText('Choose the repeat of the background image on your application.'),
-                        ])
+                        Group::make()
                             ->columns(3)
-                            ->columnSpanFull(),
+                            ->columnSpanFull()
+                            ->schema([
+                                Select::make('background_image_position')
+                                    ->label(__('Background Image Position'))
+                                    ->options([
+                                        'bg-top'    => 'Top',
+                                        'bg-center' => 'Center',
+                                        'bg-bottom' => 'Bottom',
+                                    ])
+                                    ->default('center')
+                                    ->helperText(__('Choose the position of the background image on your application.')),
+                                Select::make('background_image_size')
+                                    ->label(__('Background Image Size'))
+                                    ->options([
+                                        'bg-auto'    => 'Auto',
+                                        'bg-cover'   => 'Cover',
+                                        'bg-contain' => 'Contain',
+                                    ])
+                                    ->default('cover')
+                                    ->helperText(__('Choose the size of the background image on your application.')),
+                                Select::make('background_image_repeat')
+                                    ->label(__('Background Image Repeat'))
+                                    ->options([
+                                        'bg-no-repeat' => 'No Repeat',
+                                        'bg-repeat'    => 'Repeat',
+                                        'bg-repeat-x'  => 'Repeat X',
+                                        'bg-repeat-y'  => 'Repeat Y',
+                                    ])
+                                    ->default('no-repeat')
+                                    ->helperText(__('Choose the repeat of the background image on your application.')),
+                            ]),
                     ]),
 
             ]);
