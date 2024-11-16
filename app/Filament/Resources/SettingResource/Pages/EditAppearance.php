@@ -110,7 +110,7 @@ class EditAppearance extends EditRecord
                     ]),
                 Section::make(__('Favicon'))
                     ->description(__('Change the favicon of your website.'))
-                    ->icon('heroicon-o-photo')
+                    ->icon('heroicon-o-star')
                     ->columns(3)
                     ->schema([
                         FileUpload::make('favicon')
