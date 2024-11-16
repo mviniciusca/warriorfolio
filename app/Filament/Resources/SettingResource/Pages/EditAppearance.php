@@ -123,7 +123,7 @@ class EditAppearance extends EditRecord
                             ])
                             ->directory('public/favicon')
                             ->helperText(__('.ico or .png would be amazing!'))
-                            ->label('Favicon'),
+                            ->label(__('Favicon')),
                     ]),
             ]);
     }
