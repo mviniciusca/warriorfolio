@@ -23,7 +23,9 @@ class BodyScripts extends Component
     public function render(): View|Closure|string
     {
         return view('components.header.body-scripts', [
-            'info' => Setting::query()->select('scripts')->first()->scripts,
+            'info' => Setting::select('scripts')
+                ->first()
+                ->scripts,
         ]);
     }
 }

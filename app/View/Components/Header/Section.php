@@ -25,7 +25,7 @@ class Section extends Component
     {
         return view('components.header.section', [
             'navigation' => Navigation::all()->first()->content,
-            'app' => Setting::query()->select(['logo', 'logo_dark_mode', 'logo_size'])->first(),
+            'app'        => Setting::select(['logo', 'logo_dark_mode', 'logo_size'])->first(),
         ]);
     }
 }
