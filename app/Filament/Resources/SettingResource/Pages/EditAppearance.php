@@ -55,12 +55,14 @@ class EditAppearance extends EditRecord
                 Section::make(__('Background'))
                     ->description(__('Change the design and appearance of your application'))
                     ->icon('heroicon-o-photo')
+                    ->columns(3)
                     ->schema([
                         Toggle::make('background_image_visibility')
                             ->label('Background Image Visibility')
                             ->inline(false)
                             ->helperText('Show or hide the background image on your application. This option prevent to show the default background image on your application.'),
                         FileUpload::make('background_image')
+                            ->columnSpan(2)
                             ->image()
                             ->imageEditor()
                             ->imageEditorAspectRatios([
@@ -71,17 +73,6 @@ class EditAppearance extends EditRecord
                             ->directory('public/background')
                             ->label('Background Image')
                             ->helperText('This image will be used as the background of your application. Recommended size: 1920x1080px (16:9)'),
-                        FileUpload::make('favicon')
-                            ->image()
-                            ->imageEditor()
-                            ->imageEditorAspectRatios([
-                                '16:9',
-                                '4:3',
-                                '1:1',
-                            ])
-                            ->directory('public/favicon')
-                            ->helperText(__('.ico or .png would be amazing!'))
-                            ->label('Favicon'),
                         Group::make()
                             ->columns(3)
                             ->columnSpanFull()
@@ -116,7 +107,23 @@ class EditAppearance extends EditRecord
                                     ->helperText(__('Choose the repeat of the background image on your application.')),
                             ]),
                     ]),
-
+                Section::make(__('Favicon'))
+                    ->description(__('Change the favicon of your website.'))
+                    ->icon('heroicon-o-photo')
+                    ->columns(3)
+                    ->schema([
+                        FileUpload::make('favicon')
+                            ->image()
+                            ->imageEditor()
+                            ->imageEditorAspectRatios([
+                                '16:9',
+                                '4:3',
+                                '1:1',
+                            ])
+                            ->directory('public/favicon')
+                            ->helperText(__('.ico or .png would be amazing!'))
+                            ->label('Favicon'),
+                    ]),
             ]);
     }
 }
