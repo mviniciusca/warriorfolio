@@ -43,11 +43,11 @@ class EditAppearance extends EditRecord
                         Select::make('logo_size')
                             ->label(__('Logo Size'))
                             ->options([
-                                'max-w-11' => 'Small',
-                                'max-w-14' => 'Default',
-                                'max-w-24' => 'Medium',
-                                'max-w-32' => 'Large',
-                                'max-w-48' => 'Extra Large',
+                                'max-w-11' => __('Small'),
+                                'max-w-14' => __('Default'),
+                                'max-w-24' => __('Medium'),
+                                'max-w-32' => __('Large'),
+                                'max-w-48' => __('Extra Large'),
                             ])
                             ->default('max-w-14')
                             ->helperText(__('Define the size of the logo on your website.')),
