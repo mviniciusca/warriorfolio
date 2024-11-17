@@ -48,7 +48,7 @@ class EditSocialNetwork extends EditRecord
                                     'discord'       => 'Discord',
                                     'twitter'       => 'X / Twitter',
                                     'instagram'     => 'Instagram',
-                                    'facebbook'     => 'Facebook',
+                                    'facebook'      => 'Facebook',
                                     'dribbble'      => 'Dribbble',
                                     'youtube'       => 'Youtube',
                                     'vercel'        => 'Vercel',
