@@ -1,16 +1,17 @@
 @if($module->portfolio)
-<x-core.layout class="{{ $data->portfolio_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}"
+
+<x-core.layout class="{{ $data->portfolio['section_fill'] ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}"
     id="portfolio">
 
-    @if($data->portfolio_section_title)
+    @if($data->portfolio['section_title'])
     <x-slot name="module_title">
-        {!! $data->portfolio_section_title !!}
+        {!! $data->portfolio['section_title'] !!}
     </x-slot>
     @endif
 
-    @if($data->portfolio_section_subtitle_text)
+    @if($data->portfolio['section_subtitle'])
     <x-slot name="module_subtitle">
-        {!! $data->portfolio_section_subtitle_text !!}
+        {!! $data->portfolio['section_subtitle'] !!}
     </x-slot>
     @endif
 
@@ -62,7 +63,7 @@
     </section>
 
     @if($projects->count() === 0)
-    <x-ui.empty-section :auth="'Go to your Dashboard and create a New Project.'" />
+    <x-ui.empty-section :auth="__('Go to your Dashboard and create a New Project.')" />
     @endif
 
 </x-core.layout>

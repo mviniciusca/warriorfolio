@@ -30,6 +30,7 @@ class Section extends Component
             'data'     => Layout::first(['portfolio']),
             'projects' => Project::query()
                 ->where('is_active', true)
+                ->with('category')
                 ->orderBy('created_at', 'desc')
                 ->take(12)
                 ->get(),
