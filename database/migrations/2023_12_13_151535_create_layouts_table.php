@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(Setting::class)->constrained()->cascadeOnDelete()->cascadeOnDelete();
             // Hero Section
-            $table->json('hero')->nullable();
+            $table->json('hero');
 
             // Portfolio Section
             $table->boolean('portfolio_section_fill')->default(false);
