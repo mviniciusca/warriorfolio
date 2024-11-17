@@ -13,6 +13,10 @@ class Layout extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'hero' => 'array',
+    ];
+
     /**
      * Summary of setting
      * @return BelongsTo
