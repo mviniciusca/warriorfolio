@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->json('hero');
 
             // Portfolio Section
+            $table->json('portfolio');
             $table->boolean('portfolio_section_fill')->default(false);
             $table->string('portfolio_section_title')->nullable();
             $table->string('portfolio_section_subtitle_text')->nullable();

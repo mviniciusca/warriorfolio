@@ -14,7 +14,8 @@ class Layout extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'hero' => 'array',
+        'hero'      => 'array',
+        'portfolio' => 'array',
     ];
 
     /**

@@ -43,14 +43,14 @@ class AppServiceProvider extends ServiceProvider
                 'portfolio',
             ]);
             view()->share([
-                'about_core'      => $data->about,
-                'clients_core'    => $data->clients,
-                'contact_core'    => $data->contact,
-                'footer_core'     => $data->footer,
-                'header_core'     => $data->header,
-                'hero_core'       => $data->hero,
-                'newsletter_core' => $data->newsletter,
-                'portfolio_core'  => $data->portfolio,
+                'about_core'      => $data->about ?? true,
+                'clients_core'    => $data->clients ?? true,
+                'contact_core'    => $data->contact ?? true,
+                'footer_core'     => $data->footer ?? true,
+                'header_core'     => $data->header ?? true,
+                'hero_core'       => $data->hero ?? true,
+                'newsletter_core' => $data->newsletter ?? true,
+                'portfolio_core'  => $data->portfolio ?? true,
             ]);
         }
     }
