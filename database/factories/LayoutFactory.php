@@ -55,8 +55,10 @@ class LayoutFactory extends Factory
             ],
 
             /** About Section */
-            'about_section_title'         => 'Let\'s start with a <span class="text-highlight">Hello</span>',
-            'about_section_subtitle_text' => 'I\'m a full-stack developer based in Rio de Janeiro, Brazil specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.',
+            'about' => [
+                'section_title'    => 'Let\'s start with a <span class="text-highlight">Hello</span>',
+                'section_subtitle' => 'I\'m a full-stack developer based in Rio de Janeiro, Brazil specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.',
+            ],
 
             /** Contact Section */
             'contact_section_title'         => 'Get <span class="text-highlight">in Touch</span>',

@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
-use Filament\Actions;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
@@ -35,39 +34,42 @@ class EditAboutSection extends EditRecord
 
     public function form(Form $form): Form
     {
-        return $form->schema([
-            Section::make()
-                ->columns(2)
-                ->schema([
-                    Group::make([
-                        Toggle::make('about')
-                            ->label('Show About Section')
-                            ->helperText('Show or hide the about section on the website.'),
-                    ])
-                        ->relationship('module'),
-                ]),
-            Section::make('About Section')
-                ->relationship('layout')
-                ->description('This module is used to display your certifications, skills and your profile
-                            to the public.')
-                ->icon('heroicon-o-user')
-                ->schema([
-                    Toggle::make('about_section_fill')
-                        ->label('Fill Section Background')
-                        ->helperText('Fill the background of this section with a secondary default color.'),
-                    Textarea::make('about_section_title')
-                        ->label('About Section Title')
-                        ->helperText('HTML allowed. Use the class text-highlight to highlight a word in the title')
-                        ->rows(3)
-                        ->columnSpanFull()
-                        ->maxLength(255),
-                    Textarea::make('about_section_subtitle_text')
-                        ->label('About Section Subtitle')
-                        ->helperText('you also can use the class text-highlight to highlight a word in the subtitle')
-                        ->rows(3)
-                        ->columnSpanFull()
-                        ->maxLength(255),
-                ])->columns(2),
-        ]);
+        return $form
+            ->schema([
+                Section::make()
+                    ->columns(2)
+                    ->schema([
+                        Group::make()
+                            ->relationship('module')
+                            ->schema([
+                                Toggle::make('about')
+                                    ->label(__('Show About Section'))
+                                    ->default(false)
+                                    ->helperText(__('Show or hide the about section on the website.')),
+                            ]),
+                    ]),
+                Section::make(__('About Section'))
+                    ->relationship('layout')
+                    ->description(__('This module is used to display your certifications, skills and your profile to the public.'))
+                    ->icon('heroicon-o-user')
+                    ->columns(2)
+                    ->schema([
+                        Toggle::make('about.section_fill')
+                            ->label(__('Fill Section Background'))
+                            ->helperText(__('Fill the background of this section with a secondary default color.')),
+                        Textarea::make('about.section_title')
+                            ->label(__('About Section Title'))
+                            ->helperText(__('HTML allowed. Use the class text-highlight to highlight a word in the title'))
+                            ->rows(3)
+                            ->columnSpanFull()
+                            ->maxLength(255),
+                        Textarea::make('about.section_subtitle')
+                            ->label(__('About Section Subtitle'))
+                            ->helperText(__('You also can use the class text-highlight to highlight a word in the subtitle'))
+                            ->rows(3)
+                            ->columnSpanFull()
+                            ->maxLength(255),
+                    ]),
+            ]);
     }
 }
