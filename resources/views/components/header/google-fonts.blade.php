@@ -1,8 +1,8 @@
-@if($fonts->google_fonts_code && $fonts->google_fonts_name)
-{!! $fonts->google_fonts_code !!}
+@if($fonts['google']['fonts_code'] && $fonts['google']['font_name'])
+{!! $fonts['google']['fonts_code'] !!}
 <style>
     body {
-        font-family: "{{ $fonts->google_fonts_name }}",
+        font-family: "{{ $fonts['google']['font_name'] }}",
         sans-serif;
     }
 </style>

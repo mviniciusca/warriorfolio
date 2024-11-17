@@ -160,18 +160,18 @@ class SettingResource extends Resource
                     ->icon('heroicon-o-beaker')
                     ->collapsed()
                     ->schema([
-                        TextInput::make('google.google_fonts_name')
+                        TextInput::make('google.font_name')
                             ->columnSpanFull()
                             ->maxLength(255)
                             ->helperText(__('Default: Inter'))
                             ->label(__('Google Fonts Name')),
-                        Textarea::make('google.google_fonts_code')
+                        Textarea::make('google.fonts_code')
                             ->rows(3)
                             ->maxLength(65535)
                             ->columnSpanFull()
                             ->helperText(__('Paste your Google Fonts code here. Just one default font is allowed.'))
                             ->label(__('Google Fonts Code')),
-                        Textarea::make('google.google_analytics')
+                        Textarea::make('google.analytics')
                             ->rows(3)
                             ->columnSpanFull()
                             ->maxLength(65535)

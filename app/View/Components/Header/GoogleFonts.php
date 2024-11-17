@@ -23,10 +23,7 @@ class GoogleFonts extends Component
     public function render(): View|Closure|string
     {
         return view('components.header.google-fonts', [
-            'fonts' => Setting::select([
-                'google_fonts_code',
-                'google_fonts_name',
-            ])->first(),
+            'fonts' => Setting::first(['google']),
         ]);
     }
 }

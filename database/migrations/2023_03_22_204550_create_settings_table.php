@@ -30,21 +30,21 @@ return new class extends Migration {
             $table->boolean('dark_mode')->default(true);
 
             $table->json('meta')->nullable();
-            $table->string('meta_title')->nullable();
-            $table->string('meta_author')->nullable();
-            $table->string('meta_description')->nullable();
-            $table->string('meta_keywords')->nullable();
-            $table->string('meta_robots')->nullable();
+            // $table->string('meta_title')->nullable();
+            // $table->string('meta_author')->nullable();
+            // $table->string('meta_description')->nullable();
+            // $table->string('meta_keywords')->nullable();
+            // $table->string('meta_robots')->nullable();
 
             $table->json('google')->nullable();
-            $table->string('meta_google_site_verification')->nullable();
-            $table->text('google_fonts_code')->nullable();
-            $table->string('google_fonts_name')->nullable();
-            $table->string('google_analytics')->nullable();
+            // $table->string('meta_google_site_verification')->nullable();
+            // $table->text('google_fonts_code')->nullable();
+            // $table->string('google_fonts_name')->nullable();
+            // $table->string('google_analytics')->nullable();
 
             $table->json('scripts')->nullable();
-            $table->longText('header_scripts')->nullable();
-            $table->longText('body_scripts')->nullable();
+            // $table->longText('header_scripts')->nullable();
+            // $table->longText('body_scripts')->nullable();
             $table->timestamps();
         });
     }
