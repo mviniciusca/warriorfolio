@@ -48,7 +48,7 @@
                     @if($info->contact_section_phone)
                     <span class="w-1/2">
                         <x-ui.info-box title="{{ __('Phone') }}" icon="call">
-                            <p>{!! $info->contact_section_phone !!}</p>
+                            <p>{!! '+' .env('MOBILE_COUNTRY_CODE'). ' ' . $info->contact_section_phone !!}</p>
                         </x-ui.info-box>
                     </span>
                     @endif
@@ -60,13 +60,13 @@
                     </span>
                     @endif
                 </div>
-                {{-- Social Network  --}}
+                {{-- Social Network --}}
                 @if($social_network != 0)
                 <x-ui.info-box title="{{ __('Follow') }}" icon="infinite">
                     <x-ui.social-network />
                 </x-ui.info-box>
                 @endif
-                {{-- End Social Network  --}}
+                {{-- End Social Network --}}
                 {{-- Empty Fields --}}
                 @if($info->contact_section_address == null ||
                 $info->contact_section_phone == null && $info->contact_section_email == null)

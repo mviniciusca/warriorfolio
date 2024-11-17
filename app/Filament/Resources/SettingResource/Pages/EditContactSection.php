@@ -40,14 +40,16 @@ class EditContactSection extends EditRecord
                 Section::make()
                     ->columns(2)
                     ->schema([
-                        Group::make([
-                            Toggle::make('contact')
-                                ->label('Show Contact Section')
-                                ->helperText('Show or hide the contact section on the website.'),
-                        ])->relationship('module'),
+                        Group::make()
+                            ->relationship('module')
+                            ->schema([
+                                Toggle::make('contact')
+                                    ->label(__('Show Contact Section'))
+                                    ->helperText(__('Show or hide the contact section on the website.')),
+                            ]),
                     ]),
-                Section::make('Contact Section')
-                    ->description('This section is used to display your contact information to the public.')
+                Section::make(__('Contact Section'))
+                    ->description(__('This section is used to display your contact information to the public.'))
                     ->collapsible()
                     ->icon('heroicon-o-envelope')
                     ->schema([
@@ -56,19 +58,19 @@ class EditContactSection extends EditRecord
                             ->relationship('layout')
                             ->schema([
                                 Toggle::make('contact_section_fill')
-                                    ->label('Fill Section Background')
-                                    ->helperText('Fill the background of this section with a secondary default color.'),
+                                    ->label(__('Fill Section Background'))
+                                    ->helperText(__('Fill the background of this section with a secondary default color.')),
                                 TextInput::make('contact_section_title')
                                     ->autoFocus()
-                                    ->label('Contact Section Title')
+                                    ->label(__('Contact Section Title'))
                                     ->columnSpanFull()
-                                    ->helperText('HTML allowed. Use the class "tl" to highlight a word in the title. Max: 160 characters.')
+                                    ->helperText(__('HTML allowed. Use the class "tl" to highlight a word in the title. Max: 160 characters.'))
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->maxLength(160),
                                 TextInput::make('contact_section_subtitle_text')
-                                    ->label('Contact Section Subtitle')
+                                    ->label(__('Contact Section Subtitle'))
                                     ->columnSpanFull()
-                                    ->helperText('You also can use the class "tl" to highlight a word in the subtitle. Max: 160 characters.')
+                                    ->helperText(__('You also can use the class "tl" to highlight a word in the subtitle. Max: 160 characters.'))
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->maxLength(160),
                                 TextInput::make('contact_section_phone')
@@ -76,23 +78,23 @@ class EditContactSection extends EditRecord
                                     ->tel()
                                     ->prefix('+'.env('MOBILE_COUNTRY_CODE'))
                                     ->suffixIcon('heroicon-o-phone')
-                                    ->helperText('Use your business phone number. This number will be visible to the public.')
+                                    ->helperText(__('Use your business phone number. This number will be visible to the public.'))
                                     ->maxLength(50),
                                 TextInput::make('contact_section_email')
-                                    ->label('Public Contact E-mail')
+                                    ->label(__('Public Contact Email'))
                                     ->email()
                                     ->prefixIcon('heroicon-o-envelope')
-                                    ->helperText('This e-mail will be visible to the public.')
+                                    ->helperText(__('This email will be visible to the public.'))
                                     ->maxLength(50),
                                 Textarea::make('contact_section_address')
-                                    ->label('Contact Public Address')
-                                    ->helperText('Use your business address. This address will be visible to the public. Max: 300 characters.')
+                                    ->label(__('Contact Public Address'))
+                                    ->helperText(__('Use your business address. This address will be visible to the public. Max: 300 characters.'))
                                     ->columnSpanFull()
                                     ->rows(3)
                                     ->maxLength(300),
                                 Textarea::make('contact_section_google_map')
-                                    ->label('Google Maps Embed Code')
-                                    ->helperText('Paste the code between the quotes of src="" from the embed code of google maps. Do not paste the whole embed code.')
+                                    ->label(__('Google Maps Embed Code'))
+                                    ->helperText(__('Paste the code between the quotes of src="" from the embed code of google maps. Do not paste the whole embed code.'))
                                     ->columnSpanFull()
                                     ->rows(6)
                                     ->maxLength(6000),
