@@ -22,37 +22,15 @@ class Meta extends Component
      */
     public function render(): View|Closure|string
     {
+        $setting = Setting::first(['meta', 'app', 'design', 'google', 'scripts']);
+
         return view('components.header.meta', [
-            'meta'    => $this->getMeta(),
-            'app'     => $this->getApplication(),
-            'design'  => $this->getDesign(),
-            'google'  => $this->getGoogle(),
-            'scripts' => $this->getScripts(),
+
+            'meta'    => $setting?->meta ?? [],
+            'app'     => $setting?->app ?? [],
+            'design'  => $setting?->design ?? [],
+            'google'  => $setting?->google ?? [],
+            'scripts' => $setting?->scripts ?? [],
         ]);
-    }
-
-    public function getMeta(): mixed
-    {
-        return  Setting::first()->meta;
-    }
-
-    public function getApplication(): mixed
-    {
-        return  Setting::first()->application;
-    }
-
-    public function getGoogle(): mixed
-    {
-        return  Setting::first()->google;
-    }
-
-    public function getDesign(): mixed
-    {
-        return  Setting::first()->design;
-    }
-
-    public function getScripts(): mixed
-    {
-        return  Setting::first()->scripts;
     }
 }
