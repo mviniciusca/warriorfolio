@@ -28,45 +28,49 @@ class EditNavigation extends EditRecord
     {
         return $form
             ->schema([
-                Section::make('Header Navigation')
+                Section::make('Navigation')
                     ->icon('heroicon-o-bars-3-bottom-left')
-                    ->description('Define the navigation of your application')
+                    ->description(__('Define the navigation menu of your website.'))
+                    ->collapsible()
                     ->schema([
                         Group::make()
                             ->relationship('navigation')
                             ->schema([
                                 Repeater::make('content')
-                                    ->label('Navigation Links')
+                                    ->label(__('Navigation Links'))
                                     ->defaultItems(1)
-                                    ->addActionLabel('Add Link')
+                                    ->addActionLabel(__('Add Link'))
                                     ->cloneable()
                                     ->reorderable()
+                                    ->columns(7)
                                     ->schema([
                                         TextInput::make('name')
-                                            ->label('Link Title')
+                                            ->label(__('Title'))
+                                            ->prefixIcon('heroicon-o-window')
                                             ->columnSpan(2)
                                             ->required(),
                                         TextInput::make('url')
-                                            ->label('Link URL')
-                                            ->columnSpan(2)
+                                            ->label(__('URL'))
+                                            ->prefixIcon('heroicon-o-link')
+                                            ->columnSpan(3)
                                             ->required(),
                                         Select::make('target')
-                                            ->columnSpan(2)
-                                            ->label('Link Target')
+                                            ->columnSpan(1)
+                                            ->label(__('Target'))
                                             ->options([
-                                                '_self'  => 'Same Window',
-                                                '_blank' => 'New Window',
+                                                '_self'  => __('Self'),
+                                                '_blank' => __('New'),
                                             ])
                                             ->default('_self')
                                             ->required(),
                                         Toggle::make('is_active')
-                                            ->label('Visible')
+                                            ->label(__('Visible'))
                                             ->inline(false)
                                             ->default(true)
                                             ->required(),
-                                    ])->columns(7),
+                                    ]),
                             ]),
-                    ])->columnSpanFull()->collapsible(),
+                    ]),
             ]);
     }
 }
