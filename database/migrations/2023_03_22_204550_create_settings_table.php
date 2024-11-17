@@ -16,17 +16,17 @@ return new class extends Migration {
 
             $table->json('application')->nullable();
             $table->string('name')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('logo_dark_mode')->nullable();
-            $table->string('logo_size')->nullable();
 
             $table->json('design')->nullable();
-            $table->string('favicon')->nullable();
-            $table->string('background_image')->nullable();
-            $table->boolean('background_image_visibility')->default(true);
-            $table->string('background_image_position')->default('bg-center');
-            $table->string('background_image_size')->default('bg-cover');
-            $table->string('background_image_repeat')->default('bg-no-repeat');
+            // $table->string('logo')->nullable();
+            // $table->string('logo_dark_mode')->nullable();
+            // $table->string('logo_size')->nullable();
+            // $table->string('favicon')->nullable();
+            // $table->string('background_image')->nullable();
+            // $table->boolean('background_image_visibility')->default(true);
+            // $table->string('background_image_position')->default('bg-center');
+            // $table->string('background_image_size')->default('bg-cover');
+            // $table->string('background_image_repeat')->default('bg-no-repeat');
             $table->boolean('dark_mode')->default(true);
 
             $table->json('meta')->nullable();

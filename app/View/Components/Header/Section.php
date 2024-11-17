@@ -24,8 +24,8 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.header.section', [
-            'navigation' => Navigation::all()->first()->content,
-            'app'        => Setting::select(['logo', 'logo_dark_mode', 'logo_size'])->first(),
+            'navigation' => Navigation::first()->content,
+            'design'     => Setting::first()->design,
         ]);
     }
 }

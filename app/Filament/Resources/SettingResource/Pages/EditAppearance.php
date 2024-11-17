@@ -32,15 +32,15 @@ class EditAppearance extends EditRecord
                     ->icon('heroicon-o-sparkles')
                     ->columns(3)
                     ->schema([
-                        CuratorPicker::make('logo')
+                        CuratorPicker::make('design.logo')
                             ->label(__('Logo'))
                             ->helperText(__('Upload a logo for your website'))
                             ->directory('public/logo'),
-                        CuratorPicker::make('logo_dark_mode')
+                        CuratorPicker::make('design.logo_dark_mode')
                             ->label(__('Dark Mode Logo'))
                             ->helperText(__('Upload a logo for dark mode.'))
                             ->directory('public/logo/dark-mode'),
-                        Select::make('logo_size')
+                        Select::make('design.logo_size')
                             ->label(__('Logo Size'))
                             ->prefixIcon('heroicon-o-window')
                             ->options([
@@ -58,11 +58,11 @@ class EditAppearance extends EditRecord
                     ->icon('heroicon-o-photo')
                     ->columns(3)
                     ->schema([
-                        Toggle::make('background_image_visibility')
+                        Toggle::make('design.background_image_visibility')
                             ->label('Background Image Visibility')
                             ->inline(false)
                             ->helperText('Show or hide the background image on your website.'),
-                        FileUpload::make('background_image')
+                        FileUpload::make('design.background_image')
                             ->columnSpan(2)
                             ->image()
                             ->imageEditor()
@@ -79,7 +79,7 @@ class EditAppearance extends EditRecord
                             ->columns(3)
                             ->columnSpanFull()
                             ->schema([
-                                Select::make('background_image_position')
+                                Select::make('design.background_image_position')
                                     ->label(__('Background Image Position'))
                                     ->prefixIcon('heroicon-o-window')
                                     ->options([
@@ -89,7 +89,7 @@ class EditAppearance extends EditRecord
                                     ])
                                     ->default('center')
                                     ->helperText(__('Choose the position of the background image on your application.')),
-                                Select::make('background_image_size')
+                                Select::make('design.background_image_size')
                                     ->label(__('Background Image Size'))
                                     ->prefixIcon('heroicon-o-window')
                                     ->options([
@@ -99,7 +99,7 @@ class EditAppearance extends EditRecord
                                     ])
                                     ->default('cover')
                                     ->helperText(__('Choose the size of the background image on your application.')),
-                                Select::make('background_image_repeat')
+                                Select::make('design.background_image_repeat')
                                     ->label(__('Background Image Repeat'))
                                     ->prefixIcon('heroicon-o-window')
                                     ->options([
@@ -117,7 +117,7 @@ class EditAppearance extends EditRecord
                     ->icon('heroicon-o-star')
                     ->columns(3)
                     ->schema([
-                        FileUpload::make('favicon')
+                        FileUpload::make('design.favicon')
                             ->image()
                             ->imageEditor()
                             ->imageEditorAspectRatios([

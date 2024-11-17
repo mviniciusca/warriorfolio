@@ -2,10 +2,10 @@
 
 namespace App\View\Components\Ui;
 
-use Closure;
 use App\Models\Setting;
-use Illuminate\View\Component;
+use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Background extends Component
 {
@@ -25,11 +25,7 @@ class Background extends Component
         return view('components.ui.background', [
             'info' => Setting::query()
                 ->select([
-                    'background_image',
-                    'background_image_visibility',
-                    'background_image_position',
-                    'background_image_size',
-                    'background_image_repeat',
+                    'design',
                 ])
                 ->first(),
         ]);

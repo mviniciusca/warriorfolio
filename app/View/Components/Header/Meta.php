@@ -33,26 +33,26 @@ class Meta extends Component
 
     public function getMeta(): mixed
     {
-        return  Setting::select(['meta'])->first()->meta;
+        return  Setting::first()->meta;
     }
 
     public function getApplication(): mixed
     {
-        return  Setting::select(['application'])->first()->application;
+        return  Setting::first()->application;
     }
 
     public function getGoogle(): mixed
     {
-        return  Setting::select(['google'])->first()->google;
+        return  Setting::first()->google;
     }
 
     public function getDesign(): mixed
     {
-        return  Setting::select(['design'])->first()->design;
+        return  Setting::first()->design;
     }
 
     public function getScripts(): mixed
     {
-        return  Setting::select(['scripts'])->first()->scripts;
+        return  Setting::first()->scripts;
     }
 }
