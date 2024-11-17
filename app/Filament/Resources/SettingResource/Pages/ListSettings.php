@@ -18,12 +18,12 @@ class ListSettings extends ListRecords
         return $table
             ->paginated(false)
             ->columns([
-                TextColumn::make('name')
-                    ->label('Application Name'),
+                TextColumn::make('application.name')
+                    ->label(__('Application')),
                 TextColumn::make('user.name')
-                    ->label('Manager'),
+                    ->label(__('User')),
                 IconColumn::make('maintenance.is_discovery')
-                    ->label(__('Discovery Mode'))
+                    ->label(__('Discovery'))
                     ->alignCenter()
                     ->trueColor('success')
                     ->falseColor('gray')
@@ -31,6 +31,7 @@ class ListSettings extends ListRecords
                     ->boolean(),
                 IconColumn::make('maintenance.is_active')
                     ->alignCenter()
+                    ->label(__('Maintenance'))
                     ->trueColor('success')
                     ->falseColor('gray')
                     ->falseIcon('heroicon-o-server')
