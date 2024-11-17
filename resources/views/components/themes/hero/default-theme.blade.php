@@ -20,7 +20,7 @@
 
         {{-- Hero Section Button --}}
         @foreach ($hero->hero['buttons'] as $button)
-        <a target="{{ $button['button_target'] }}" href="{{ $button['button_url'] }}">
+        <a target="{{ $button['button_target'] ?? '_self' }}" href="{{ $button['button_url'] ?? '#' }}">
             @if ($button['button_style'] == 'filled')
             <x-ui.button class="px-5 py-3">
                 {{ $button['button_title'] }}
