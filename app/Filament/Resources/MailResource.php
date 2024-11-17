@@ -23,7 +23,7 @@ class MailResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('Mail');
+        return __('Inbox');
     }
 
     public static function getNavigationGroup(): ?string
