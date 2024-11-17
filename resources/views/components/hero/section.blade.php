@@ -9,13 +9,13 @@
             <div class="container mx-auto flex flex-col items-center justify-center">
                 <div class="max-w-7xl text-center">
 
+                    {{-- Hero Section Theme --}}
                     @if($hero->hero['theme'] === 'default')
                     <x-themes.hero.default-theme :$hero />
                     @endif
 
                     {{-- Hero Section Slider --}}
                     <x-hero.slider :$sliders />
-
                 </div>
             </div>
 </section>
