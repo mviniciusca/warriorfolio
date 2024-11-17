@@ -1,9 +1,9 @@
 <div class="mx-auto" id="footer-content">
     <div class="mx-auto flex flex-wrap items-center justify-center gap-2 py-4 text-center md:flex-row">
         {{-- App Logo --}}
-        @if($setting->logo)
-        <img src="{{ asset('storage/' . $setting->logo) }}" alt="{{ $setting->name . 'logo-image'}}"
-            class="mr-4 h-8 w-8">
+        @if(data_get($setting, 'design.logo'))
+        <img src="{{ asset('storage/' . data_get($setting, 'design.logo')) }}"
+            alt="{{ data_get($setting, 'application.name', env('APP_NAME')) . 'logo-image'}}" class="mr-4 h-8 w-8">
         @else
         <x-ui.logo />
         @endif
