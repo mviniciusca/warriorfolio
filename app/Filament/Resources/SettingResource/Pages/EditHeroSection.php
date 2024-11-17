@@ -80,7 +80,7 @@ class EditHeroSection extends EditRecord
                                 ->icon('heroicon-o-bolt')
                                 ->collapsible()
                                 ->schema([
-                                    Repeater::make('buttons')
+                                    Repeater::make('hero.buttons')
                                         ->label(__('Buttons'))
                                         ->helperText(__('Max two buttons.'))
                                         ->reorderable()
@@ -88,19 +88,19 @@ class EditHeroSection extends EditRecord
                                         ->columnSpanFull()
                                         ->columns(2)
                                         ->schema([
-                                            TextInput::make('hero.button_title')
+                                            TextInput::make('button_title')
                                                 ->label(__('Button Title'))
                                                 ->helperText(__('Max: 50 characters.'))
                                                 ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                                 ->required()
                                                 ->maxLength(50),
-                                            TextInput::make('hero.button_url')
+                                            TextInput::make('button_url')
                                                 ->label(__('URL Link'))
                                                 ->helperText(__('Max: 140 characters.'))
                                                 ->prefixIcon('heroicon-o-link')
                                                 ->default('#')
                                                 ->maxLength(140),
-                                            Select::make('hero.button_style')
+                                            Select::make('button_style')
                                                 ->label(__('Button Style'))
                                                 ->prefixIcon('heroicon-o-window')
                                                 ->options([
@@ -108,7 +108,7 @@ class EditHeroSection extends EditRecord
                                                     'outlined' => __('Outlined'),
                                                 ])
                                                 ->default('filled'),
-                                            Select::make('hero.button_target')
+                                            Select::make('button_target')
                                                 ->label(__('Target'))
                                                 ->prefixIcon('heroicon-o-window')
                                                 ->options([
