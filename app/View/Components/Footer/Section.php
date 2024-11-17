@@ -25,21 +25,19 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.footer.section', [
-            'info' => Layout::query()
-                ->select([
-                    'newsletter_section_title',
-                    'newsletter_section_subtitle_text',
-                    'newsletter_section_button_text',
-                    'newsletter_section_image',
-                    'footer_section_fill',
-                ])
-                ->first(),
-            'setting' => Setting::query()
-                ->select(['design', 'application'])
-                ->first(),
-            'module' => Module::query()
-                ->select(['newsletter', 'footer'])
-                ->first(),
+            'info' => Layout::first([
+                'newsletter_section_title',
+                'newsletter_section_subtitle_text',
+                'newsletter_section_button_text',
+                'newsletter_section_image',
+                'footer_section_fill',
+            ]),
+            'setting' => Setting::first([
+                'design',
+                'application']),
+            'module' => Module::first([
+                'newsletter',
+                'footer']),
         ]);
     }
 }
