@@ -1,16 +1,16 @@
 @if($module->portfolio)
-<x-core.layout class="{{ $info->portfolio_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}"
+<x-core.layout class="{{ $data->portfolio_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}"
     id="portfolio">
 
-    @if($info->portfolio_section_title)
+    @if($data->portfolio_section_title)
     <x-slot name="module_title">
-        {!! $info->portfolio_section_title !!}
+        {!! $data->portfolio_section_title !!}
     </x-slot>
     @endif
 
-    @if($info->portfolio_section_subtitle_text)
+    @if($data->portfolio_section_subtitle_text)
     <x-slot name="module_subtitle">
-        {!! $info->portfolio_section_subtitle_text !!}
+        {!! $data->portfolio_section_subtitle_text !!}
     </x-slot>
     @endif
 

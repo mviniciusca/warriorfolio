@@ -2,12 +2,12 @@
 
 namespace App\View\Components\Project;
 
-use Closure;
 use App\Models\Layout;
 use App\Models\Module;
 use App\Models\Project;
-use Illuminate\View\Component;
+use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Section extends Component
 {
@@ -26,15 +26,8 @@ class Section extends Component
     {
         return view('components.project.section', [
             'module' => Module::query()
-                ->select(['portfolio'])
-                ->first(),
-            'info' => Layout::query()
-                ->select([
-                    'portfolio_section_fill',
-                    'portfolio_section_title',
-                    'portfolio_section_subtitle_text',
-                ])
-                ->first(),
+                ->first(['portfolio']),
+            'data'     => Layout::first(['portfolio']),
             'projects' => Project::query()
                 ->where('is_active', true)
                 ->orderBy('created_at', 'desc')

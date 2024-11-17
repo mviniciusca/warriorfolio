@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
-use Filament\Actions;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
@@ -35,37 +34,41 @@ class EditPortfolioSection extends EditRecord
 
     public function form(Form $form): Form
     {
-        return $form->schema([
-            Section::make()
-                ->columns(2)
-                ->schema([
-                    Group::make([
-                        Toggle::make('portfolio')
-                            ->label('Show Portfolio Section')
-                            ->helperText('Show or hide the portfolio section on the website.'),
-                    ])->relationship('module'),
-                ]),
-            Section::make('Portfolio Section')
-                ->relationship('layout')
-                ->description('This section is used to display your portfolio to the public.')
-                ->icon('heroicon-o-rocket-launch')
-                ->schema([
-                    Toggle::make('portfolio_section_fill')
-                        ->label('Fill Section Background')
-                        ->helperText('Fill the background of this section with a secondary default color.'),
-                    Textarea::make('portfolio_section_title')
-                        ->label('Portfolio Section Title')
-                        ->helperText('HTMl allowed. Use the class text-highlight to highlight a word in the title')
-                        ->rows(3)
-                        ->columnSpanFull()
-                        ->maxLength(255),
-                    Textarea::make('portfolio_section_subtitle_text')
-                        ->label('Portfolio Section Subtitle')
-                        ->helperText('you also can use the class text-highlight to highlight a word in the subtitle')
-                        ->rows(3)
-                        ->columnSpanFull()
-                        ->maxLength(255),
-                ])->columns(2),
-        ]);
+        return $form
+            ->schema([
+                Section::make()
+                    ->columns(2)
+                    ->relationship('module')
+                    ->schema([
+                        Group::make([
+                            Toggle::make('portfolio')
+                                ->label(__('Show Portfolio Section'))
+                                ->helperText(__('Show or hide the portfolio section on the website.')),
+                        ]),
+                    ]),
+                Section::make(__('Portfolio Section'))
+                    ->relationship('layout')
+                    ->description(__('This section is used to display your portfolio to the public.'))
+                    ->icon('heroicon-o-rocket-launch')
+                    ->columns(2)
+                    ->schema([
+                        Toggle::make('portfolio.section_fill')
+                            ->default(false)
+                            ->label('Fill Section Background')
+                            ->helperText('Fill the background of this section with a secondary default color.'),
+                        Textarea::make('portfolio.section_title')
+                            ->label('Portfolio Section Title')
+                            ->helperText(__('HTMl allowed. Use the class tl to highlight a word in the title'))
+                            ->rows(3)
+                            ->columnSpanFull()
+                            ->maxLength(255),
+                        Textarea::make('portfolio.section_subtitle')
+                            ->label(__('Portfolio Section Subtitle'))
+                            ->helperText(__('HTMl allowed. Use the class tl to highlight a word in the title'))
+                            ->rows(3)
+                            ->columnSpanFull()
+                            ->maxLength(255),
+                    ]),
+            ]);
     }
 }

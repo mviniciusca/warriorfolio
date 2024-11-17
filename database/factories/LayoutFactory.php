@@ -50,8 +50,8 @@ class LayoutFactory extends Factory
 
             /** Portfolio Section */
             'portfolio' => [
-                'section_title'    => 'My <span class="text-highlight">Portfolio</span>',
-                'section_subtitle' => 'Here are some of my projects I\'ve worked on recently',
+                'section_title'    => 'My <span class="tl">Portfolio</span>',
+                'section_subtitle' => 'Here are some of my projects I\'ve worked on recently.',
             ],
 
             /** About Section */

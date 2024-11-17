@@ -3,12 +3,10 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProjectResource\Pages;
-use App\Filament\Resources\ProjectResource\RelationManagers;
 use App\Models\Category;
 use App\Models\Project;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
-use Filament\Forms;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
@@ -69,17 +67,17 @@ class ProjectResource extends Resource
                 Group::make()
                     ->columnSpan(3)
                     ->schema([
-                        Section::make('Project Information')
+                        Section::make(__('Project Information'))
                             ->icon('heroicon-o-information-circle')
                             ->columns(2)
                             ->schema([
                                 TextInput::make('name')
-                                    ->label(__('Project Title'))
-                                    ->lazy()
+                                    ->label(__(__('Project Title')))
+                                    ->live(true)
                                     ->required()
                                     ->autofocus()
                                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                                    ->unique(ignoreRecord: true)
+                                    ->unique('projects', 'name', ignoreRecord: true)
                                     ->maxLength(200)
                                     ->prefixIcon('heroicon-o-rocket-launch')
                                     ->helperText(__('The name of the project. Max: 200 characters.')),
@@ -94,13 +92,13 @@ class ProjectResource extends Resource
                                     ->columnSpanFull()
                                     ->rows(2)
                                     ->maxLength(500)
-                                    ->helperText('A short description of the project. Max: 500 characters.')
+                                    ->helperText(__('A short description of the project. Max: 500 characters.'))
                                     ->label(__('Short Description (Optional)')),
                                 RichEditor::make('content')
                                     ->fileAttachmentsDirectory('project/attachments')
                                     ->columnSpanFull()
                                     ->maxLength(5000)
-                                    ->helperText('The content of the project. Max: 5000 characters.')
+                                    ->helperText(__('The content of the project. Max: 5000 characters.'))
                                     ->label(__('Content (Optional)')),
                                 TextInput::make('external_link')
                                     ->label(__('External Link (Optional)'))
@@ -108,7 +106,7 @@ class ProjectResource extends Resource
                                     ->url()
                                     ->maxLength(255)
                                     ->prefixIcon('heroicon-o-link')
-                                    ->helperText('The external link of the project. Max: 255 characters.')
+                                    ->helperText(__('The external link of the project. Max: 255 characters.'))
                                     ->columnSpanFull(),
                             ]),
                     ]),
