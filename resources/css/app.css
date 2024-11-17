@@ -40,6 +40,7 @@ body {
 }
 
 /** Highlighted text **/
+.tl,
 .text-highlight,
 .heading-module-title strong,
 .tl {
