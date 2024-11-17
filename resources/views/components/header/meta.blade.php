@@ -1,12 +1,11 @@
-<title>{{ $app['name'] . ' - ' . $meta['meta_title'] }}</title>
+<title>{{ ( $app['name'] ?? env('APP_NAME')) . ' ' .($meta['meta_title']) }}</title>
 
 @if($meta !== null)
 @if($meta['meta_author'])
 <meta name="author" content="{{ $meta['meta_author'] }}">
 @endif
-<meta name="keywords" content="{{ $meta['meta_keywords'] ? $meta['meta_keywords'] : __('Warriorfolio v2') }}">
-<meta name="description"
-    content="{{ $meta['meta_description'] ? $meta['meta_description'] : __('Building the what\'s next!') }}">
+<meta name="keywords" content="{{ $meta['meta_keywords'] }}">
+<meta name="description" content="{{ $meta['meta_description'] }}">
 @endif
 
 @if($design !== null)

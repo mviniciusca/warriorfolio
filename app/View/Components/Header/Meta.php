@@ -22,12 +22,12 @@ class Meta extends Component
      */
     public function render(): View|Closure|string
     {
-        $setting = Setting::first(['meta', 'app', 'design', 'google', 'scripts']);
+        $setting = Setting::first(['meta', 'application', 'design', 'google', 'scripts']);
 
         return view('components.header.meta', [
 
             'meta'    => $setting?->meta ?? [],
-            'app'     => $setting?->app ?? [],
+            'app'     => $setting?->application ?? [],
             'design'  => $setting?->design ?? [],
             'google'  => $setting?->google ?? [],
             'scripts' => $setting?->scripts ?? [],
