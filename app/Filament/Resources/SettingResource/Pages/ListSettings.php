@@ -8,10 +8,16 @@ use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
 
 class ListSettings extends ListRecords
 {
     protected static string $resource = SettingResource::class;
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('Application Overview');
+    }
 
     public function table(Table $table): Table
     {

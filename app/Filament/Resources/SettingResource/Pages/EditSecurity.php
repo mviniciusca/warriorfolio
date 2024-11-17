@@ -2,25 +2,37 @@
 
 namespace App\Filament\Resources\SettingResource\Pages;
 
+use App\Filament\Resources\SettingResource;
 use Filament\Actions;
-use Filament\Forms\Form;
 use Filament\Forms\Components\Group;
-use Illuminate\Support\Facades\Hash;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
-use Filament\Resources\Pages\EditRecord;
-use App\Filament\Resources\SettingResource;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Form;
+use Filament\Resources\Pages\EditRecord;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Hash;
 
 class EditSecurity extends EditRecord
 {
     protected static string $resource = SettingResource::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
+
     public static function getNavigationLabel(): string
     {
         return __('Account Security Manager');
+    }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('Account Security Manager');
+    }
+
+    public function getSubheading(): string | Htmlable | null
+    {
+        return __('Here you can change your password and or login email address.');
     }
 
     public function form(Form $form): Form
@@ -37,7 +49,7 @@ class EditSecurity extends EditRecord
                         ->regex('/^\S+$/')
                         ->validationMessages([
                             'confirmed' => 'The e-mail confirmation does not match.',
-                            'regex' => 'The e-mail must not contain any whitespace.',
+                            'regex'     => 'The e-mail must not contain any whitespace.',
                         ])
                         ->label('E-mail')
                         ->minLength(3)
@@ -60,10 +72,10 @@ class EditSecurity extends EditRecord
                         ->regex('/^\S+$/')
                         ->validationMessages([
                             'confirmed' => 'The password confirmation does not match.',
-                            'regex' => 'The password must not contain any whitespace.',
+                            'regex'     => 'The password must not contain any whitespace.',
                         ])
-                        ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
-                        ->dehydrated(fn(?string $state): bool => filled($state))
+                        ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
+                        ->dehydrated(fn (?string $state): bool => filled($state))
                         ->label('Password')
                         ->minLength(6)
                         ->maxLength(15)
@@ -71,14 +83,14 @@ class EditSecurity extends EditRecord
                         ->helperText('Password must be at least 6 characters long and no more than 15 characters long.'),
                     TextInput::make('password_confirmation')
                         ->password()
-                        ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
-                        ->dehydrated(fn(?string $state): bool => filled($state))
+                        ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
+                        ->dehydrated(fn (?string $state): bool => filled($state))
                         ->label('Confirm Password')
                         ->revealable()
                         ->helperText('Please confirm your password.')
                         ->minLength(6)
                         ->maxLength(15),
-                ])->columns(2)
+                ])->columns(2),
         ]);
     }
 }

@@ -11,6 +11,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Contracts\Support\Htmlable;
 
 class EditAppearance extends EditRecord
 {
@@ -21,6 +22,16 @@ class EditAppearance extends EditRecord
     public static function getNavigationLabel(): string
     {
         return __('Design & Appearance');
+    }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('Design & Appearance Settings');
+    }
+
+    public function getSubheading(): string | Htmlable | null
+    {
+        return __('Configure your background, favicon and website logo.');
     }
 
     public function form(Form $form): Form

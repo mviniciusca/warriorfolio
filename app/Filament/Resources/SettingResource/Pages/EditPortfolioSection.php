@@ -2,14 +2,15 @@
 
 namespace App\Filament\Resources\SettingResource\Pages;
 
+use App\Filament\Resources\SettingResource;
 use Filament\Actions;
-use Filament\Forms\Form;
 use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
-use App\Filament\Resources\SettingResource;
+use Illuminate\Contracts\Support\Htmlable;
 
 class EditPortfolioSection extends EditRecord
 {
@@ -21,6 +22,17 @@ class EditPortfolioSection extends EditRecord
     {
         return __('Portfolio Section');
     }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('Portfolio Section Settings');
+    }
+
+    public function getSubheading(): string | Htmlable | null
+    {
+        return __('Manager your Portfolio section in your website.');
+    }
+
     public function form(Form $form): Form
     {
         return $form->schema([

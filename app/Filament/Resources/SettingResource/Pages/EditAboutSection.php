@@ -2,23 +2,37 @@
 
 namespace App\Filament\Resources\SettingResource\Pages;
 
+use App\Filament\Resources\SettingResource;
 use Filament\Actions;
-use Filament\Forms\Form;
 use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
-use App\Filament\Resources\SettingResource;
+use Illuminate\Contracts\Support\Htmlable;
 
 class EditAboutSection extends EditRecord
 {
     protected static string $resource = SettingResource::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-user';
+
     public static function getNavigationLabel(): string
     {
         return __('About Section');
     }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('About You Section Settings');
+    }
+
+    public function getSubheading(): string | Htmlable | null
+    {
+        return __('Manager your About You section in your website.');
+    }
+
     public function form(Form $form): Form
     {
         return $form->schema([
