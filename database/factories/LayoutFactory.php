@@ -18,15 +18,35 @@ class LayoutFactory extends Factory
     {
         return [
             /** Hero Section */
-            'hero_section_title'         => 'Portfolio for the <span class="text-highlight">Creative</span> Developer',
-            'hero_section_subtitle_text' => 'Warriorfolio is a free, open source, <br/>
-            cms for creating and managing your portfolio website.',
-            'hero_section_button_text'    => 'my work',
-            'hero_section_button_url'     => '#portfolio',
-            'hero_button_link_target'     => '_self',
-            'hero_alt_button_text'        => 'on the github',
-            'hero_alt_button_url'         => 'https://github.com/mviniciusca',
-            'hero_alt_button_link_target' => '_blank',
+            'hero' => [
+                //
+                'section_title'    => 'Portfolio for the <span class="text-highlight">Creative</span> Developer',
+                'section_subtitle' => 'Warriorfolio is a free, open source,<br/> cms for creating and managing your portfolio website.',
+                //
+                'buttons' => [
+                    [
+                        'button_title'  => 'Github',
+                        'button_url'    => 'https://github.com',
+                        'button_style'  => 'filled',
+                        'button_target' => '_self',
+                    ],
+                    [
+                        'button_title'  => 'Documentation',
+                        'button_url'    => 'https://vercel.app',
+                        'button_style'  => 'outlined',
+                        'button_target' => '_blank',
+                    ],
+                ],
+                //
+                'theme' => 'default',
+                //
+                'is_active'   => false,
+                'bg_position' => 'bg-center',
+                'bg_size'     => 'bg-auto',
+                'bg_repeat'   => 'bg-no-repeat',
+                //
+
+            ],
 
             /** Portfolio Section */
             'portfolio_section_title'         => 'My <span class="text-highlight">Portfolio</span>',

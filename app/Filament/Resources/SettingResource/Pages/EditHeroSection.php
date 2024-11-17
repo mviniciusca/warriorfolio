@@ -116,10 +116,8 @@ class EditHeroSection extends EditRecord
                                                     '_blank' => __('New'),
                                                 ])
                                                 ->default('self'),
-
                                         ]),
                                 ]),
-
                             Section::make(__('Featured Image & Theme'))
                                 ->icon('heroicon-o-sparkles')
                                 ->collapsible()
