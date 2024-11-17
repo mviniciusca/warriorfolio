@@ -57,19 +57,19 @@ class EditHeroSection extends EditRecord
                     Group::make()
                         ->relationship('layout')
                         ->schema([
-                            Textarea::make('hero_section_title')
+                            TextInput::make('hero.section_title')
                                 ->label(__('Hero Section Title'))
+                                ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 140 characters.')
+                                ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                 ->columnSpanFull()
-                                ->helperText('HTML allowed. Use the class text-highlight to highlight a word in the title. Max: 140 characters.')
-                                ->rows(3)
                                 ->maxLength(140),
-                            Textarea::make('hero_section_subtitle_text')
+                            TextInput::make('hero.section_subtitle')
                                 ->label('Hero Section Subtitle')
+                                ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                 ->columnSpanFull()
-                                ->helperText('You also can use the class text-highlight to highlight a word in the subtitle. Max: 160 characters.')
-                                ->rows(3)
+                                ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 160 characters.')
                                 ->maxLength(160),
-                            TextInput::make('hero_section_button_text')
+                            TextInput::make('hero.section_button_text')
                                 ->label('Hero Section Button Text')
                                 ->helperText('Max: 50 characters.')
                                 ->maxLength(50),
