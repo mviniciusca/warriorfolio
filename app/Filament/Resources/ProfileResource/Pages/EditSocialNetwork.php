@@ -31,6 +31,7 @@ class EditSocialNetwork extends EditRecord
                 ->schema([
                     Repeater::make('social')
                         ->cloneable()
+                        ->reorderable()
                         ->columns(6)
                         ->schema([
                             Toggle::make('is_active')
