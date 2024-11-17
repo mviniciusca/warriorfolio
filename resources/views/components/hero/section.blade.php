@@ -7,11 +7,15 @@
     <div>
         <div class="mx-auto max-w-7xl">
             <div class="container mx-auto flex flex-col items-center justify-center">
-                <div class="max-w-7xl text-center">
+                <div class="max-w-7xl">
 
                     {{-- Hero Section Theme --}}
                     @if($hero->hero['theme'] === 'default')
                     <x-themes.hero.default-theme :$hero />
+                    @endif
+
+                    @if($hero->hero['theme'] === 'sierra')
+                    <x-themes.hero.sierra-theme :$hero />
                     @endif
 
                     {{-- Hero Section Slider --}}

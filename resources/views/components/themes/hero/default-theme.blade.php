@@ -1,15 +1,16 @@
 @props(['hero'])
 
-<div>
+<div class="text-center">
     @if($hero->hero['section_title'])
-    <h1 class="hero-section-title text-gradient animate__animated animate__fadeInUp animate__delay-1s">
+    <h1
+        class="animate__animated animate__fadeInUp animate mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
         {!! $hero->hero['section_title'] !!}
     </h1>
     @endif
 
     @if($hero->hero['section_subtitle'])
     <h4
-        class="animate__animated animate__fadeInUp animate__delay-2s mb-8 text-lg leading-tight tracking-tight shadow-current lg:text-xl">
+        class="animate__animated animate__fadeInUp animate__delay-1s mb-8 text-lg leading-tight tracking-tight shadow-current lg:text-xl">
         {!! $hero->hero['section_subtitle'] !!}
     </h4>
     @endif
@@ -41,7 +42,7 @@
 
     {{-- Hero Section: Image --}}
     @isset($hero->hero['featured_image'])
-    <div class="mt-8" id="hero-featured-image">
+    <div class="mt-8 max-w-2xl justify-center mx-auto items-center hidden lg:flex" id="hero-featured-image">
         <img class="animate__animated animate__fadeInUp animate__delay-2s h-auto p-4 lg:max-h-max"
             src="{{ asset('storage/' . $hero->hero['featured_image']) }}" alt="hero-section-image" />
     </div>

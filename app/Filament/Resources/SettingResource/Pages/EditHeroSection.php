@@ -126,6 +126,7 @@ class EditHeroSection extends EditRecord
                                     FileUpload::make('hero.featured_image')
                                         ->label('Featured Image')
                                         ->directory('hero')
+                                        ->maxSize(10000)
                                         ->image()
                                         ->columnSpan(2)
                                         ->imageEditor()
@@ -135,6 +136,7 @@ class EditHeroSection extends EditRecord
                                         ->prefixIcon('heroicon-o-window')
                                         ->options([
                                             'default' => __('Default'),
+                                            'sierra'  => __('Sierra'),
                                         ])
                                         ->default('default'),
                                 ]),
