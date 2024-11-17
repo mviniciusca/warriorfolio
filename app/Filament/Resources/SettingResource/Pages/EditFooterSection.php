@@ -2,21 +2,34 @@
 
 namespace App\Filament\Resources\SettingResource\Pages;
 
-use Filament\Actions;
-use Filament\Forms\Form;
-use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Section;
-use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\SettingResource;
+use Filament\Actions;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Form;
+use Filament\Resources\Pages\EditRecord;
+use Illuminate\Contracts\Support\Htmlable;
 
 class EditFooterSection extends EditRecord
 {
     protected static string $resource = SettingResource::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-bolt';
+
     public static function getNavigationLabel(): string
     {
         return __('Footer Section');
+    }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('Footer Section');
+    }
+
+    public function getSubheading(): string | Htmlable | null
+    {
+        return __('Define your Footer section here.');
     }
 
     public function form(Form $form): Form
@@ -25,20 +38,22 @@ class EditFooterSection extends EditRecord
             Section::make()
                 ->columns(2)
                 ->schema([
-                    Group::make([
-                        Toggle::make('footer')
-                            ->label('Show Footer Section')
-                            ->helperText('Show or hide the footer section on the website.'),
-                    ])->relationship('module'),
+                    Group::make()
+                        ->relationship('module')
+                        ->schema([
+                            Toggle::make('footer')
+                                ->label(__('Show Footer Section'))
+                                ->helperText(__('Show or hide the footer section on the website.')),
+                        ]),
                 ]),
             Section::make()
-                ->description('Define the design and layout of the footer section on the website.')
+                ->description(__('Define the design and layout of the footer section on the website.'))
                 ->icon('heroicon-o-bolt')
                 ->relationship('layout')
                 ->schema([
                     Toggle::make('footer_section_fill')
-                        ->label('Fill Section Background')
-                        ->helperText('Fill the background of this section with a secondary default color.'),
+                        ->label(__('Fill Section Background'))
+                        ->helperText(__('Fill the background of this section with a secondary default color.')),
                 ]),
         ]);
     }
