@@ -9,7 +9,7 @@
         @endif
         {{-- App Name --}}
         <p class="text-center text-sm md:text-left">
-            © {{ date('Y') . ' - ' . $setting->name }}
+            © {{ date('Y') . ' - ' . data_get($setting, 'application.name', env('APP_NAME')) }}
         </p>
         {{-- Social Network --}}
         <div class="order-1 w-full pt-4 text-center text-sm sm:mt-0 sm:w-auto sm:text-left md:ml-auto md:pt-0">
