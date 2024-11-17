@@ -41,13 +41,9 @@ class DatabaseSeeder extends Seeder
         Newsletter::factory(10)->create();
         Course::factory(3)->create();
         Category::factory()->create();
-        Navigation::factory(1)->create([
-            'setting_id' => $setting->first()->id,
-            'content'    => [
-                ['url' => '/', 'name' => 'Homepage', 'target' => '_self', 'is_active' => true],
-                ['url' => 'https://github.com/mviniciusca/warriorfolio', 'name' => 'Github', 'target' => '_blank', 'is_active' => true],
-                ['url' => 'https://warriorfolio.vercel.app', 'name' => 'Documentation', 'target' => '_blank', 'is_active' => true],
-            ],
-        ]);
+        Navigation::factory(1)
+            ->create([
+                'setting_id' => $setting->first()->id,
+            ]);
     }
 }
