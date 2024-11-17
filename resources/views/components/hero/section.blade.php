@@ -45,35 +45,21 @@
                             @endif
                         </a>
                         @endforeach
+                    </div>
 
-                        {{-- Hero Section Alternative Button
-                        @if($hero['hero_alt_button_text'] && $hero['hero_alt_button_url'])
-                        <a target="{{ $hero['hero_alt_button_link_target'] }}"
-                            href="{{ $hero['hero_alt_button_url'] }}">
-                            <x-ui.button-alt class="px-5 py-3">
-                                {{ $hero['hero_alt_button_text'] }}
-                                @if($hero['hero_alt_button_link_target'] == '_blank')
-                                <ion-icon class="ml-1" name="trending-up-outline"></ion-icon>
-                                @endif
-                            </x-ui.button-alt>
-                        </a>
-                        @endif
-                    </div> --}}
-                    {{-- End Hero Section: Buttons --}}
+                    {{-- Hero Section: Image --}}
+                    @isset($hero->hero['featured_image'])
+                    <div class="mt-8" id="hero-featured-image">
+                        <img class="animate__animated animate__fadeInUp animate__delay-2s h-auto p-4 lg:max-h-max"
+                            src="{{ asset('storage/' . $hero->hero['featured_image']) }}" alt="hero-section-image" />
+                    </div>
+                    @endisset
+                    {{-- End Hero Section: Image --}}
                 </div>
-                {{-- Hero Section: Image --}}
-                @if($hero['hero_section_image'])
-                <div class="mt-8" id="hero-featured-image">
-                    <img class="animate__animated animate__fadeInUp animate__delay-2s h-auto p-4 lg:max-h-max"
-                        src="{{ asset('storage/' . $hero['hero_section_image'])}}" alt="hero-section-image" />
-                </div>
-                @endif
-                {{-- End Hero Section: Image --}}
+                {{-- Hero Section Slider --}}
+                <x-hero.slider :$sliders />
+
             </div>
-            {{-- Hero Section Slider --}}
-            <x-hero.slider :$sliders />
-
         </div>
-    </div>
 </section>
 @endif
