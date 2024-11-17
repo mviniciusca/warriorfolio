@@ -23,11 +23,7 @@ class Background extends Component
     public function render(): View|Closure|string
     {
         return view('components.ui.background', [
-            'info' => Setting::query()
-                ->select([
-                    'design',
-                ])
-                ->first(),
+            'design' => Setting::first()->design,
         ]);
     }
 }
