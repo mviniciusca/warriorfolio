@@ -37,8 +37,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => $user->id,
             ]);
         Page::factory()->create();
-        Mail::factory(5)->create();
-        Newsletter::factory(5)->create();
+        Mail::factory(10)->create();
+        Newsletter::factory(10)->create();
         Course::factory(3)->create();
         Category::factory()->create();
     }
