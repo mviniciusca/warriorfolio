@@ -129,6 +129,7 @@ class SettingResource extends Resource
                     ->icon('heroicon-o-cpu-chip')
                     ->schema([
                         Group::make()
+                            ->columns(4)
                             ->relationship('module')
                             ->schema([
                                 Toggle::make('about')
@@ -152,7 +153,7 @@ class SettingResource extends Resource
                                 Toggle::make('portfolio')
                                     ->label(__('Portfolio'))
                                     ->inline(),
-                            ])->columns(4),
+                            ]),
                     ]),
                 Section::make(__('External Add-ons'))
                     ->description(__('Define scripts to be loaded in your application.'))
