@@ -58,10 +58,18 @@ class EditAppearance extends EditRecord
                     ->icon('heroicon-o-photo')
                     ->columns(3)
                     ->schema([
-                        Toggle::make('design.background_image_visibility')
-                            ->label('Background Image Visibility')
-                            ->inline(false)
-                            ->helperText('Show or hide the background image on your website.'),
+                        Group::make()
+                            ->schema([
+                                Toggle::make('design.background_image_visibility')
+                                    ->label(__('Background Visibility'))
+                                    ->inline(false)
+                                    ->helperText(__('Activate the background image on your website.')),
+                                Toggle::make('design.animation')
+                                    ->label(__('Background Animation'))
+                                    ->inline(false)
+                                    ->default(true)
+                                    ->helperText(__('Activate the background animation')),
+                            ]),
                         FileUpload::make('design.background_image')
                             ->columnSpan(2)
                             ->image()
