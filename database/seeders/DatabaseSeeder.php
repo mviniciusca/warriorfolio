@@ -53,6 +53,7 @@ class DatabaseSeeder extends Seeder
             'content'    => [
                 ['url' => '/', 'name' => 'Homepage', 'target' => '_self', 'is_active' => true],
                 ['url' => 'https://github.com/mviniciusca/warriorfolio', 'name' => 'Github', 'target' => '_blank', 'is_active' => true],
+                ['url' => 'https://warriorfolio.vercel.app', 'name' => 'Documentation', 'target' => '_blank', 'is_active' => true],
             ],
         ]);
     }
