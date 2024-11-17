@@ -87,7 +87,7 @@ class EditAppearance extends EditRecord
                                         'bg-center' => __('Center'),
                                         'bg-bottom' => __('Bottom'),
                                     ])
-                                    ->default('center')
+                                    ->default('bg-center')
                                     ->helperText(__('Choose the position of the background image on your application.')),
                                 Select::make('design.background_image_size')
                                     ->label(__('Background Image Size'))
@@ -97,7 +97,7 @@ class EditAppearance extends EditRecord
                                         'bg-cover'   => __('Cover'),
                                         'bg-contain' => __('Contain'),
                                     ])
-                                    ->default('cover')
+                                    ->default('bg-cover')
                                     ->helperText(__('Choose the size of the background image on your application.')),
                                 Select::make('design.background_image_repeat')
                                     ->label(__('Background Image Repeat'))
