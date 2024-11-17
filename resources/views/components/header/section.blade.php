@@ -4,11 +4,13 @@
             <div class="flex flex-wrap items-center gap-4">
                 <div>
                     <a href="/">
+                        @isset($design['logo'])
                         @if($design['logo'] || $design['logo_dark_mode'])
                         <x-curator-glider :media="$design['logo']"
                             class="block {{ $design['logo_size'] ? $design['logo_size'] : 'max-w-11' }} object-contain {{ $design['logo_dark_mode'] ? 'dark:hidden' : '' }}" />
                         <x-curator-glider :media="$design['logo_dark_mode']"
                             class="hidden {{ $design['logo_size'] ? $design['logo_size'] : 'max-w-11' }} object-contain dark:block" />
+                        @endisset
                         @else
                         <x-ui.logo />
                         @endif
