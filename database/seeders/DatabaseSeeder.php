@@ -9,6 +9,7 @@ use App\Models\Course;
 use App\Models\Mail;
 use App\Models\Navigation;
 use App\Models\Newsletter;
+use App\Models\Page;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -35,19 +36,11 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'user_id' => $user->id,
             ]);
+        Page::factory()->create();
         Mail::factory(20)->create();
         Newsletter::factory(10)->create();
         Course::factory(3)->create();
         Category::factory()->create();
-        DB::table('pages')
-            ->insert([
-                'title'      => 'Home',
-                'slug'       => '/',
-                'blocks'     => '[{"data": {"beam_background_active": null}, "type": "design.blur-background"}, {"data": {"active": null}, "type": "header"}, {"data": {"class": "py-3 md:py-6 lg:py-12"}, "type": "design.empty-separator"}, {"data": {"is_active": true, "is_center": true, "bumper_tag": "New", "bumper_icon": "", "bumper_link": null, "bumper_role": "primary", "is_animated": true, "bumper_title": "Warriorfolio v2.0.4 is here 🎉 Let\'s fly 🚀", "bumper_target": "_self"}, "type": "component.info-bumper"}]',
-                'layout'     => 'default',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
         Navigation::factory(1)->create([
             'setting_id' => $setting->first()->id,
             'content'    => [
