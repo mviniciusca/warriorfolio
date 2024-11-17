@@ -60,6 +60,7 @@ class EditHeroSection extends EditRecord
                         ->relationship('layout')
                         ->schema([
                             Section::make(__('Title & Subtitle'))
+                                ->icon('heroicon-o-bars-3-bottom-left')
                                 ->collapsible()
                                 ->schema([
                                     TextInput::make('hero.section_title')
@@ -75,7 +76,6 @@ class EditHeroSection extends EditRecord
                                         ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 160 characters.')
                                         ->maxLength(160),
                                 ]),
-
                             Section::make(__('Buttons'))
                                 ->icon('heroicon-o-bolt')
                                 ->collapsible()
@@ -138,83 +138,55 @@ class EditHeroSection extends EditRecord
                                         ])
                                         ->default('default'),
                                 ]),
+                            Section::make(__('Background'))
+                                ->icon('heroicon-o-sparkles')
+                                ->collapsible()
+                                ->columns(2)
+                                ->schema([
+                                    Toggle::make('hero.is_active')
+                                        ->label(__('Show Background Image'))
+                                        ->helperText(__('Show or hide the background image.')),
+                                    FileUpload::make('hero.bg_image')
+                                        ->label(__('Hero Section Background Image'))
+                                        ->directory('hero/bg')
+                                        ->image()
+                                        ->imageEditor()
+                                        ->helperText(__('Upload a background image for the hero section.')),
+                                    Group::make()
+                                        ->columns(3)
+                                        ->columnSpanFull()
+                                        ->schema([
+                                            Select::make('hero.bg_position')
+                                                ->options([
+                                                    'bg-center' => 'Center',
+                                                    'bg-top'    => 'Top',
+                                                    'bg-bottom' => 'Bottom',
+                                                    'bg-left'   => 'Left',
+                                                    'bg-right'  => 'Right',
+                                                ])
+                                                ->label(__('Background Image Position'))
+                                                ->helperText(__('Choose the position of the background image.')),
+                                            Select::make('hero.bg_size')
+                                                ->options([
+                                                    'bg-auto'    => 'Auto',
+                                                    'bg-cover'   => 'Cover',
+                                                    'bg-contain' => 'Contain',
+                                                ])
+                                                ->label(__('Background Image Size'))
+                                                ->helperText(__('Choose the size of the background image.')),
+                                            Select::make('hero.bg_repeat')
+                                                ->options([
+                                                    'bg-repeat'    => 'Repeat',
+                                                    'bg-no-repeat' => 'No Repeat',
+                                                    'bg-repeat-x'  => 'Repeat X',
+                                                    'bg-repeat-y'  => 'Repeat Y',
+                                                ])
+                                                ->label(__('Background Image Repeat'))
+                                                ->helperText(__('Choose the repeat of the background image.')),
+                                        ]),
+                                ]),
 
-                            // TextInput::make('hero.section_button_text')
-                            //     ->label('Hero Section Button Text')
-                            //     ->helperText('Max: 50 characters.')
-                            //     ->maxLength(50),
-                            // TextInput::make('hero_section_button_url')
-                            //     ->label('Hero Section Button URL')
-                            //     ->helperText('Use the full URL. Max: 255 characters.')
-                            //     ->maxLength(255),
-                            // TextInput::make('hero_alt_button_text')
-                            //     ->label('Hero Section Alt Button Text')
-                            //     ->helperText('Max: 50 characters.')
-                            //     ->maxLength(50),
-                            // TextInput::make('hero_alt_button_url')
-                            //     ->label('Hero Section Alt Button URL')
-                            //     ->url()
-                            //     ->helperText('Use the full URL. Max: 255 characters.')
-                            //     ->maxLength(255),
-                            // Select::make('hero_button_link_target')
-                            //     ->options([
-                            //         '_self'  => 'Same Window',
-                            //         '_blank' => 'New Window',
-                            //     ])
-                            //     ->label('Hero Section Button Link Target')
-                            //     ->helperText('Choose the target for the button link.'),
-                            // Select::make('hero_alt_button_link_target')
-                            //     ->options([
-                            //         '_self'  => 'Same Window',
-                            //         '_blank' => 'New Window',
-                            //     ])
-                            //     ->label('Hero Section Alt Button Link Target')
-                            //     ->helperText('Choose the target for the alt button link.'),
-
-                            //     Group::make()
-                            //         ->columns(2)
-                            //         ->schema([
-                            //             Toggle::make('hero_is_bg_visible')
-                            //                 ->label('Show Background Image')
-                            //                 ->helperText('Show or hide the background image.'),
-                            //             FileUpload::make('hero_section_bg_image')
-                            //                 ->label('Hero Section Background Image')
-                            //                 ->directory('hero/bg')
-                            //                 ->image()
-                            //                 ->imageEditor()
-                            //                 ->helperText('Upload a background image for the hero section.'),
-                            //             Group::make()->columns(3)->schema([
-                            //                 Select::make('hero_section_bg_position')
-                            //                     ->options([
-                            //                         'bg-center' => 'Center',
-                            //                         'bg-top'    => 'Top',
-                            //                         'bg-bottom' => 'Bottom',
-                            //                         'bg-left'   => 'Left',
-                            //                         'bg-right'  => 'Right',
-                            //                     ])
-                            //                     ->label('Background Image Position')
-                            //                     ->helperText('Choose the position of the background image.'),
-                            //                 Select::make('hero_section_bg_size')
-                            //                     ->options([
-                            //                         'bg-auto'    => 'Auto',
-                            //                         'bg-cover'   => 'Cover',
-                            //                         'bg-contain' => 'Contain',
-                            //                     ])
-                            //                     ->label('Background Image Size')
-                            //                     ->helperText('Choose the size of the background image.'),
-                            //                 Select::make('hero_section_bg_repeat')
-                            //                     ->options([
-                            //                         'bg-repeat'    => 'Repeat',
-                            //                         'bg-no-repeat' => 'No Repeat',
-                            //                         'bg-repeat-x'  => 'Repeat X',
-                            //                         'bg-repeat-y'  => 'Repeat Y',
-                            //                     ])
-                            //                     ->label('Background Image Repeat')
-                            //                     ->helperText('Choose the repeat of the background image.'),
-                            //             ])->columnSpanFull(),
-                            //         ])->columnSpanFull(),
-                            //
-                        ])->columns(2),
+                        ]),
                 ]),
         ]);
     }
