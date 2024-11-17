@@ -58,7 +58,7 @@ class EditHeroSection extends EditRecord
                         ->relationship('layout')
                         ->schema([
                             Textarea::make('hero_section_title')
-                                ->label('Hero Section Title')
+                                ->label(__('Hero Section Title'))
                                 ->columnSpanFull()
                                 ->helperText('HTML allowed. Use the class text-highlight to highlight a word in the title. Max: 140 characters.')
                                 ->rows(3)

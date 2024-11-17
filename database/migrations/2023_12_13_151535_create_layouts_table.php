@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Setting;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,8 +13,9 @@ return new class extends Migration {
     {
         Schema::create('layouts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('setting_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Setting::class)->constrained()->cascadeOnDelete()->cascadeOnDelete();
             // Hero Section
+            $table->json('hero')->nullable();
             $table->boolean('hero_section_fill')->default(false);
             $table->string('hero_section_title')->nullable();
             $table->string('hero_section_subtitle_text')->nullable();
