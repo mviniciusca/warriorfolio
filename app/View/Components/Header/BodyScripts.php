@@ -23,7 +23,7 @@ class BodyScripts extends Component
     public function render(): View|Closure|string
     {
         return view('components.header.body-scripts', [
-            'info' => Setting::first()->scripts,
+            'scripts' => Setting::first()->scripts,
         ]);
     }
 }

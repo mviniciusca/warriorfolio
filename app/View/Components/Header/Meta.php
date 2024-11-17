@@ -26,11 +26,11 @@ class Meta extends Component
 
         return view('components.header.meta', [
 
-            'meta'    => $setting?->meta ?? [],
-            'app'     => $setting?->application ?? [],
-            'design'  => $setting?->design ?? [],
-            'google'  => $setting?->google ?? [],
-            'scripts' => $setting?->scripts ?? [],
+            'meta'    => $setting?->meta,
+            'app'     => $setting?->application,
+            'design'  => $setting?->design,
+            'google'  => $setting?->google,
+            'scripts' => $setting?->scripts,
         ]);
     }
 }
