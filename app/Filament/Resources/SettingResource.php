@@ -64,6 +64,7 @@ class SettingResource extends Resource
                     ->schema([
                         TextInput::make('application.name')
                             ->label(__('Application Name'))
+                            ->default('Warriorfolio v2.4')
                             ->helperText(__('Define the application name.'))
                             ->prefixIcon('heroicon-o-user')
                             ->required(),
