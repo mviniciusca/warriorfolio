@@ -30,20 +30,16 @@ class DatabaseSeeder extends Seeder
                 'name'  => 'Warriorfolio',
                 'email' => 'warriorfolio@test.dev',
             ]);
-        $setting = Setting::factory()
+        Setting::factory()
             ->hasLayout()
-            ->count(1)
+            ->hasNavigation()
             ->create([
                 'user_id' => $user->id,
             ]);
         Page::factory()->create();
-        Mail::factory(20)->create();
-        Newsletter::factory(10)->create();
+        Mail::factory(5)->create();
+        Newsletter::factory(5)->create();
         Course::factory(3)->create();
         Category::factory()->create();
-        Navigation::factory(1)
-            ->create([
-                'setting_id' => $setting->first()->id,
-            ]);
     }
 }
