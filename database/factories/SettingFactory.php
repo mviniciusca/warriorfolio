@@ -18,7 +18,7 @@ class SettingFactory extends Factory
     {
         return [
             'application' => [
-                'name' => 'Warriorfolio v2.4',
+                'name' => 'Warriorfolio v2.0.4',
             ],
 
             'meta' => [
