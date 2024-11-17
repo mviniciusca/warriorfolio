@@ -96,24 +96,26 @@ class EditHeroSection extends EditRecord
                                                 ->maxLength(50),
                                             TextInput::make('hero.button_url')
                                                 ->label(__('URL Link'))
-                                                ->helperText(__('Max: 50 characters.'))
+                                                ->helperText(__('Max: 140 characters.'))
                                                 ->prefixIcon('heroicon-o-link')
-                                                ->required()
-                                                ->maxLength(50),
+                                                ->default('#')
+                                                ->maxLength(140),
                                             Select::make('hero.button_style')
                                                 ->label(__('Button Style'))
                                                 ->prefixIcon('heroicon-o-window')
                                                 ->options([
                                                     'filled'   => __('Filled'),
                                                     'outlined' => __('Outlined'),
-                                                ]),
+                                                ])
+                                                ->default('filled'),
                                             Select::make('hero.button_target')
                                                 ->label(__('Target'))
                                                 ->prefixIcon('heroicon-o-window')
                                                 ->options([
                                                     '_self'  => __('Self'),
                                                     '_blank' => __('New'),
-                                                ]),
+                                                ])
+                                                ->default('self'),
 
                                         ]),
                                 ]),
