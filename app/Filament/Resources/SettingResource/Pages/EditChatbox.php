@@ -81,6 +81,7 @@ class EditChatbox extends EditRecord
                         TextInput::make('icon')
                             ->label('Ionicon Name')
                             ->prefix('ion-icon')
+                            ->placeholder('icon-whatsapp')
                             ->required()
                             ->helperText(__('You cant find the name of the icon in ionic.io/ionicons')),
                         TextInput::make('message')
