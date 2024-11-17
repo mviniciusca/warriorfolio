@@ -34,10 +34,12 @@ class Section extends Component
             ]),
             'setting' => Setting::first([
                 'design',
-                'application']),
+                'application',
+            ]),
             'module' => Module::first([
                 'newsletter',
-                'footer']),
+                'footer',
+            ]),
         ]);
     }
 }
