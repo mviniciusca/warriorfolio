@@ -4,11 +4,11 @@
     <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div class="mr-auto place-self-center lg:col-span-7">
             <h1
-                class="animate__animated animate__fadeInUp animate max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+                class="animate__animated animate__fadeInUp animate max-w-2xl mb-4 text-4xl font-extrabold tracking-tighter leading-none md:text-5xl xl:text-6xl dark:text-white">
                 {!! $hero->hero['section_title'] !!}
             </h1>
             <p
-                class="animate__animated animate__fadeInUp animate__delay-2s  max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl">
+                class="animate__animated animate__fadeInUp animate__delay-2s  max-w-2xl mb-6 lg:mb-8 md:text-lg lg:text-xl">
                 {!! $hero->hero['section_subtitle'] !!}</p>
 
             <div class="animate__animated animate__fadeInUp animate__delay-3s z-10 flex gap-4">

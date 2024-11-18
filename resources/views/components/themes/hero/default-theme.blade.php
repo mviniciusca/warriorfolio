@@ -3,7 +3,7 @@
 <div class="text-center">
     @if($hero->hero['section_title'])
     <h1
-        class="animate__animated animate__fadeInUp animate mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+        class="animate__animated animate__fadeInUp animate max-w-2xl mb-4 text-4xl font-extrabold tracking-tighter leading-none md:text-5xl xl:text-6xl dark:text-white">
         {!! $hero->hero['section_title'] !!}
     </h1>
     @endif
