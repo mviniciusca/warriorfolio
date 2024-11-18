@@ -55,7 +55,7 @@ class LayoutFactory extends Factory
 
             /** About Section */
             'about' => [
-                'section_fill'     => false,
+                'section_fill'     => true,
                 'section_title'    => 'Let\'s start with a <span class="tl">Hello</span>',
                 'section_subtitle' => 'I\'m a full-stack developer based in Rio de Janeiro, Brazil specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.',
             ],
@@ -83,6 +83,11 @@ class LayoutFactory extends Factory
                 'section_title'    => 'the<span class="tl">next</span>',
                 'section_subtitle' => 'join our mailing list',
                 'button_text'      => 'Subscribe',
+            ],
+
+            /** Footer Section */
+            'footer' => [
+                'section_fill' => true,
             ],
         ];
     }
