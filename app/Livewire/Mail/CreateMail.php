@@ -2,69 +2,74 @@
 
 namespace App\Livewire\Mail;
 
-use Filament\Forms;
 use App\Models\Mail;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Livewire\Component;
-use Filament\Forms\Form;
-use Illuminate\Contracts\View\View;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Notifications\Notification;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Form;
+use Filament\Notifications\Notification;
+use Illuminate\Contracts\View\View;
+use Livewire\Component;
 
 class CreateMail extends Component implements HasForms
 {
     use InteractsWithForms;
+
     public ?array $data = [];
+
     public function mount(): void
     {
         $this->form->fill();
     }
+
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->maxLength(50)
+                    ->minLength(5)
                     ->required()
                     ->hiddenLabel()
-                    ->placeholder('Full Name')
+                    ->prefixIcon('heroicon-o-user')
+                    ->placeholder(__('Your Name'))
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('email')
+                TextInput::make('email')
                     ->hiddenLabel()
                     ->email()
-                    ->maxLength(50)
-                    ->placeholder('E-mail Address')
+                    ->prefixIcon('heroicon-o-envelope')
+                    ->placeholder(__('Your Email Address'))
+                    ->maxLength(140)
+                    ->minLength(5)
                     ->columnSpanFull()
                     ->required(),
-                Forms\Components\TextInput::make('phone')
+                TextInput::make('phone')
                     ->hiddenLabel()
                     ->tel()
                     ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/')
                     ->maxLength(20)
                     ->columnSpanFull()
-                    ->placeholder('Phone Number')
+                    ->prefixIcon('heroicon-o-phone')
+                    ->placeholder(__('Your Phone Number'))
                     ->required(),
-                Forms\Components\TextInput::make('subject')
-                    ->placeholder('Subject')
-                    ->hiddenLabel()
+                TextInput::make('subject')
+                    ->prefixIcon('heroicon-o-tag')
+                    ->placeholder(__('Message Subject'))
                     ->maxLength(140)
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\RichEditor::make('body')
-                    ->toolbarButtons([
-                        'bold',
-                        'italic',
-                        'redo',
-                        'underline',
-                        'undo',
-                    ])
+                    ->minLength(5)
                     ->hiddenLabel()
                     ->required()
-                    ->maxLength(1300)
-                    ->placeholder('Your Message')
                     ->columnSpanFull(),
-            ])->columns(2)
+                Textarea::make('body')
+                    ->hiddenLabel()
+                    ->required()
+                    ->rows(5)
+                    ->minLength(20)
+                    ->maxLength(300)
+                    ->placeholder(__('Your Message. Min 20 and Max 300 characters.'))
+                    ->columnSpanFull(),
+            ])
             ->statePath('data')
             ->model(Mail::class);
     }

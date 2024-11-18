@@ -1,5 +1,5 @@
 <div>
-    <form class="flex flex-initial items-center gap-2" wire:submit="create">
+    <form class="" wire:submit="create">
         {{ $this->form }}
         <span class="-mt-1">
             <x-ui.button class="-mt-1 p-2 text-sm" type="submit" icon="chevron-forward-outline">

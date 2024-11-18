@@ -2,8 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\Newsletter as ModelsNewsletter;
-use Filament\Forms;
+use App\Models\Newsletter as ModelNewsletter;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -50,7 +49,7 @@ class Newsletter extends Component implements HasForms
     {
         $data = $this->form->getState();
 
-        $record = ModelsNewsletter::create($data);
+        $record = ModelNewsletter::create($data);
 
         Notification::make()
             ->title(__('Thanks for subscribing!'))
