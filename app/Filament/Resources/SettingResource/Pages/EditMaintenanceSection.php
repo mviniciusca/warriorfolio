@@ -73,22 +73,20 @@ class EditMaintenanceSection extends EditRecord
                             ->helperText('Enable social media in maintenance mode to allow users to follow you. Note that is the same social media of your application.')
                             ->default(false),
                     ]),
-                Section::make('Layout & Content')
-                    ->description('Define the layout and content of your maintenance page')
+                Section::make(__('Layout & Content'))
+                    ->description(__('Define the layout and content of your Maintenance Page'))
                     ->icon('heroicon-o-photo')
                     ->relationship('maintenance')
                     ->schema([
                         FileUpload::make('image')
-                            ->label('Featured Image')
-                            ->helperText('Define the image of your maintenance page. Max: 2MB. Transparent background will be amazing.')
-                            ->acceptedFileTypes(['image/*'])
-                            ->maxSize(2000000)
+                            ->label(__('Featured Image'))
+                            ->helperText(__('Define the image of your maintenance page. Transparent background will be amazing.'))
                             ->image(),
                         RichEditor::make('content')
                             ->label('Content')
                             ->columnSpanFull()
-                            ->helperText('Define the content of your maintenance page. Max: 255 characters. All content will be centralized.')
-                            ->default('We are currently performing maintenance. Please check back soon.')
+                            ->helperText(__('Define the content of your maintenance page. All content will be centralized.'))
+                            ->default(__('We are currently performing maintenance. Please check back soon.'))
                             ->toolbarButtons([
                                 'bold',
                                 'h2',
@@ -102,7 +100,7 @@ class EditMaintenanceSection extends EditRecord
                             ])
                             ->maxLength(255)
                             ->required(),
-                    ])->collapsed(),
+                    ]),
             ]);
     }
 }
