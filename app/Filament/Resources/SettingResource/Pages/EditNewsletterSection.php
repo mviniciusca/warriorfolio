@@ -51,17 +51,17 @@ class EditNewsletterSection extends EditRecord
                                 TextInput::make('mailing.section_title')
                                     ->label(__('Title'))
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                                    ->helperText('HTML allowed. Use the class text-highlight to highlight a word in the text. Max: 100 characters')
+                                    ->helperText(__('HTML allowed. Use the class "tl" to highlight a word in the text. Max: 100 characters'))
                                     ->maxLength(100),
                                 TextInput::make('mailing.section_subtitle')
                                     ->label(__('Subtitle'))
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                                    ->helperText('you also can use the class text-highlight to highlight a word in the subtitle. Max: 100 characters')
+                                    ->helperText(__('HTML allowed. Use the class "tl" to highlight a word in the text. Max: 100 characters'))
                                     ->maxLength(100),
                                 TextInput::make('mailing.button_text')
                                     ->label(__('Subscribe Button Text'))
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                                    ->helperText('you also can use the class text-highlight to highlight a word in the subtitle. Max: 20 characters')
+                                    ->helperText(__('HTML allowed. Use the class "tl" to highlight a word in the text. Max: 20 characters'))
                                     ->maxLength(20),
                                 CuratorPicker::make('mailing.image')
                                     ->label('Newsletter Section Image'),
