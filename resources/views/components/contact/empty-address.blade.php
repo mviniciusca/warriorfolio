@@ -8,5 +8,5 @@ data_get($data, 'contact.public_address'),
 data_get($data, 'contact.public_phone'),
 data_get($data, 'contact.public_email')
 ])))
-<x-ui.empty-section :auth="__('Go to your Dashboard and update your Contact.')" />
+<x-ui.empty-section :auth="__('Go to your Dashboard and update your Contact Section.')" />
 @endif
