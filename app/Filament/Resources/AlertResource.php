@@ -70,6 +70,7 @@ class AlertResource extends Resource
                                     ->helperText(__('Enable or disable the ability to dismiss the alert. A cookie will be set to remember the user\'s preference.'))
                                     ->required(),
                                 Select::make('style')
+                                    ->prefixIcon('heroicon-o-tag')
                                     ->label(__('Alert Style'))
                                     ->options([
                                         'default' => 'Default',
@@ -84,16 +85,18 @@ class AlertResource extends Resource
                         Group::make()
                             ->schema([
                                 TextInput::make('title')
-                                    ->lazy()
+                                    ->live(true)
                                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('title', Str::slug($state)))
                                     ->required()
-                                    ->label('Title Tag')
-                                    ->helperText('The tag title of the alert. This is useful to remember what the alert is for. Max: 140 characters.')
+                                    ->label(__('Title Tag'))
+                                    ->prefixIcon('heroicon-o-tag')
+                                    ->helperText(__('The tag title of the alert. This is useful to remember what the alert is for. Max: 140 characters.'))
                                     ->maxLength(140),
                                 TextInput::make('button_text')
-                                    ->default('Close')
-                                    ->label('Button Text')
-                                    ->helperText('The text to display on the button. Max: 50 characters. Default is "Close". Leave empty for a close icon.')
+                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                    ->default(__('Close'))
+                                    ->label(__('Button Text'))
+                                    ->helperText(__('The text to display on the button. Max: 50 characters. Default is "Close". Leave empty for a close icon.'))
                                     ->maxLength(50),
                             ]),
                         RichEditor::make('message')
