@@ -2,25 +2,36 @@
 
 namespace App\Filament\Resources\SettingResource\Pages;
 
-use Filament\Actions;
+use App\Filament\Resources\SettingResource;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
-use Filament\Forms\Components\Section;
 use Filament\Resources\Pages\EditRecord;
-use App\Filament\Resources\SettingResource;
-use Faker\Core\File;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Textarea;
+use Illuminate\Contracts\Support\Htmlable;
 
 class EditMaintenanceSection extends EditRecord
 {
     protected static string $resource = SettingResource::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-wrench-screwdriver';
+
     public static function getNavigationLabel(): string
     {
         return __('Maintenance Mode');
     }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('Maintenance Mode Settings');
+    }
+
+    public function getSubheading(): string | Htmlable | null
+    {
+        return __('Control when your application is under maintenance.');
+    }
+
     public function form(Form $form): Form
     {
         return $form

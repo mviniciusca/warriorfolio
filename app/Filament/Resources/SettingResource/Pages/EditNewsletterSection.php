@@ -13,6 +13,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Contracts\Support\Htmlable;
 
 class EditNewsletterSection extends EditRecord
 {
@@ -23,6 +24,16 @@ class EditNewsletterSection extends EditRecord
     public static function getNavigationLabel(): string
     {
         return __('Newsletter Section');
+    }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('Mailing List Settings');
+    }
+
+    public function getSubheading(): string | Htmlable | null
+    {
+        return __('Manager your Mailing List application.');
     }
 
     public function form(Form $form): Form

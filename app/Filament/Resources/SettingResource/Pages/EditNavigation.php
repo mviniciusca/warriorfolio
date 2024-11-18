@@ -12,6 +12,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Contracts\Support\Htmlable;
 
 class EditNavigation extends EditRecord
 {
@@ -22,6 +23,16 @@ class EditNavigation extends EditRecord
     public static function getNavigationLabel(): string
     {
         return __('Navigation');
+    }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('Navigation Menu Settings');
+    }
+
+    public function getSubheading(): string | Htmlable | null
+    {
+        return __('Items for menu navigation of your website.');
     }
 
     public function form(Form $form): Form
