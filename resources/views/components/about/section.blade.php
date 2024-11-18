@@ -1,15 +1,16 @@
 @if($module->about)
-<x-core.layout class="{{ $info->about_section_fill ? 'bg-secondary-100 dark:bg-secondary-950' : ''}}" id="about">
+<x-core.layout class="{{ data_get($data, 'about.section_fill') ? 'bg-secondary-100 dark:bg-secondary-950' : null }}"
+    id="about">
 
-    @if($info->about_section_title)
+    @if($data->about['section_title'])
     <x-slot name="module_title">
-        {!! $info->about_section_title !!}
+        {!! $data->about['section_title'] !!}
     </x-slot>
     @endif
 
-    @if($info->about_section_subtitle_text)
+    @if($data->about['section_subtitle'])
     <x-slot name="module_subtitle">
-        {!! $info->about_section_subtitle_text !!}
+        {!! $data->about['section_subtitle'] !!}
     </x-slot>
     @endif
 

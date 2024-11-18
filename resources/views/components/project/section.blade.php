@@ -1,6 +1,7 @@
 @if($module->portfolio)
 
-<x-core.layout class="{{ $data->portfolio['section_fill'] ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}"
+<x-core.layout
+    class="{{  data_get($data, 'portfolio.section_fill') ? 'bg-secondary-100 dark:bg-secondary-950' : null }}"
     id="portfolio">
 
     @if($data->portfolio['section_title'])
