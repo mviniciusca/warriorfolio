@@ -94,10 +94,11 @@ class EditContactSection extends EditRecord
                                     ->maxLength(255),
                                 Textarea::make('contact.google_maps_code')
                                     ->label(__('Google Maps Embed Code (Optional)'))
-                                    ->helperText(__('Paste the code between the quotes of src="" from the embed code of google maps. Do not paste the whole embed code.'))
+                                    ->helperText(__('💡 Paste the code between the quotes of src="" from the embed code of google maps. Do not paste the whole embed code.'))
                                     ->columnSpanFull()
-                                    ->rows(5)
-                                    ->maxLength(6000),
+                                    ->placeholder(__('Starts with https://www.google.com/maps ... '))
+                                    ->rows(4)
+                                    ->maxLength(4000),
                             ]),
                     ]),
             ]);
