@@ -40,156 +40,157 @@ class EditHeroSection extends EditRecord
 
     public function form(Form $form): Form
     {
-        return $form->schema([
-            Section::make()
-                ->columns(2)
-                ->schema([
-                    Group::make()
-                        ->relationship('module')
-                        ->schema([
-                            Toggle::make('hero')
-                                ->label(__('Show Hero Section'))
-                                ->helperText(__('Show or hide the hero section on the website.')),
-                        ]),
-                ]),
-            Section::make(__('Hero Section'))
-                ->description(__('This section is used to display your hero section to the public.'))
-                ->icon('heroicon-o-photo')
-                ->schema([
-                    Group::make()
-                        ->relationship('layout')
-                        ->schema([
-                            Section::make(__('Title & Subtitle'))
-                                ->icon('heroicon-o-bars-3-bottom-left')
-                                ->collapsible()
-                                ->schema([
-                                    TextInput::make('hero.section_title')
-                                        ->label(__('Hero Section Title'))
-                                        ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 140 characters.')
-                                        ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                                        ->columnSpanFull()
-                                        ->maxLength(140),
-                                    TextInput::make('hero.section_subtitle')
-                                        ->label('Hero Section Subtitle')
-                                        ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                                        ->columnSpanFull()
-                                        ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 160 characters.')
-                                        ->maxLength(160),
-                                ]),
-                            Section::make(__('Buttons'))
-                                ->icon('heroicon-o-bolt')
-                                ->collapsible()
-                                ->schema([
-                                    Repeater::make('hero.buttons')
-                                        ->label(__('Buttons'))
-                                        ->helperText(__('Max two buttons.'))
-                                        ->reorderable()
-                                        ->maxItems(2)
-                                        ->columnSpanFull()
-                                        ->columns(2)
-                                        ->schema([
-                                            TextInput::make('button_title')
-                                                ->label(__('Button Title'))
-                                                ->helperText(__('Max: 50 characters.'))
-                                                ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                                                ->required()
-                                                ->maxLength(50),
-                                            TextInput::make('button_url')
-                                                ->label(__('URL Link'))
-                                                ->helperText(__('Max: 140 characters.'))
-                                                ->prefixIcon('heroicon-o-link')
-                                                ->default('#')
-                                                ->maxLength(140),
-                                            Select::make('button_style')
-                                                ->label(__('Button Style'))
-                                                ->prefixIcon('heroicon-o-window')
-                                                ->options([
-                                                    'filled'   => __('Filled'),
-                                                    'outlined' => __('Outlined'),
-                                                ])
-                                                ->default('filled'),
-                                            Select::make('button_target')
-                                                ->label(__('Target'))
-                                                ->prefixIcon('heroicon-o-window')
-                                                ->options([
-                                                    '_self'  => __('Self'),
-                                                    '_blank' => __('New'),
-                                                ])
-                                                ->default('self'),
-                                        ]),
-                                ]),
-                            Section::make(__('Featured Image & Theme'))
-                                ->icon('heroicon-o-sparkles')
-                                ->collapsible()
-                                ->columns(3)
-                                ->schema([
-                                    FileUpload::make('hero.featured_image')
-                                        ->label('Featured Image')
-                                        ->directory('hero')
-                                        ->maxSize(10000)
-                                        ->image()
-                                        ->columnSpan(2)
-                                        ->imageEditor()
-                                        ->helperText(__('This is your featured image for the hero section.')),
-                                    Select::make('hero.theme')
-                                        ->label(__('Hero Section Theme'))
-                                        ->prefixIcon('heroicon-o-window')
-                                        ->options([
-                                            'default' => __('Default'),
-                                            'sierra'  => __('Sierra'),
-                                        ])
-                                        ->default('default'),
-                                ]),
-                            Section::make(__('Background'))
-                                ->icon('heroicon-o-sparkles')
-                                ->collapsible()
-                                ->columns(2)
-                                ->schema([
-                                    Toggle::make('hero.is_active')
-                                        ->label(__('Show Background Image'))
-                                        ->helperText(__('Show or hide the background image.')),
-                                    FileUpload::make('hero.bg_image')
-                                        ->label(__('Hero Section Background Image'))
-                                        ->directory('hero/bg')
-                                        ->image()
-                                        ->imageEditor()
-                                        ->helperText(__('Upload a background image for the hero section.')),
-                                    Group::make()
-                                        ->columns(3)
-                                        ->columnSpanFull()
-                                        ->schema([
-                                            Select::make('hero.bg_position')
-                                                ->options([
-                                                    'bg-center' => 'Center',
-                                                    'bg-top'    => 'Top',
-                                                    'bg-bottom' => 'Bottom',
-                                                    'bg-left'   => 'Left',
-                                                    'bg-right'  => 'Right',
-                                                ])
-                                                ->label(__('Background Image Position'))
-                                                ->helperText(__('Choose the position of the background image.')),
-                                            Select::make('hero.bg_size')
-                                                ->options([
-                                                    'bg-auto'    => 'Auto',
-                                                    'bg-cover'   => 'Cover',
-                                                    'bg-contain' => 'Contain',
-                                                ])
-                                                ->label(__('Background Image Size'))
-                                                ->helperText(__('Choose the size of the background image.')),
-                                            Select::make('hero.bg_repeat')
-                                                ->options([
-                                                    'bg-repeat'    => 'Repeat',
-                                                    'bg-no-repeat' => 'No Repeat',
-                                                    'bg-repeat-x'  => 'Repeat X',
-                                                    'bg-repeat-y'  => 'Repeat Y',
-                                                ])
-                                                ->label(__('Background Image Repeat'))
-                                                ->helperText(__('Choose the repeat of the background image.')),
-                                        ]),
-                                ]),
+        return $form
+            ->schema([
+                Section::make()
+                    ->columns(2)
+                    ->schema([
+                        Group::make()
+                            ->relationship('module')
+                            ->schema([
+                                Toggle::make('hero')
+                                    ->label(__('Show Hero Section'))
+                                    ->helperText(__('Show or hide the hero section on the website.')),
+                            ]),
+                    ]),
+                Section::make(__('Hero Section'))
+                    ->description(__('This section is used to display your hero section to the public.'))
+                    ->icon('heroicon-o-photo')
+                    ->schema([
+                        Group::make()
+                            ->relationship('layout')
+                            ->schema([
+                                Section::make(__('Title & Subtitle'))
+                                    ->icon('heroicon-o-bars-3-bottom-left')
+                                    ->collapsible()
+                                    ->schema([
+                                        TextInput::make('hero.section_title')
+                                            ->label(__('Hero Section Title'))
+                                            ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 140 characters.')
+                                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                            ->columnSpanFull()
+                                            ->maxLength(140),
+                                        TextInput::make('hero.section_subtitle')
+                                            ->label('Hero Section Subtitle')
+                                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                            ->columnSpanFull()
+                                            ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 160 characters.')
+                                            ->maxLength(160),
+                                    ]),
+                                Section::make(__('Buttons'))
+                                    ->icon('heroicon-o-bolt')
+                                    ->collapsible()
+                                    ->schema([
+                                        Repeater::make('hero.buttons')
+                                            ->label(__('Buttons'))
+                                            ->helperText(__('Max two buttons.'))
+                                            ->reorderable()
+                                            ->maxItems(2)
+                                            ->columnSpanFull()
+                                            ->columns(2)
+                                            ->schema([
+                                                TextInput::make('button_title')
+                                                    ->label(__('Button Title'))
+                                                    ->helperText(__('Max: 50 characters.'))
+                                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                                    ->required()
+                                                    ->maxLength(50),
+                                                TextInput::make('button_url')
+                                                    ->label(__('URL Link'))
+                                                    ->helperText(__('Max: 140 characters.'))
+                                                    ->prefixIcon('heroicon-o-link')
+                                                    ->default('#')
+                                                    ->maxLength(140),
+                                                Select::make('button_style')
+                                                    ->label(__('Button Style'))
+                                                    ->prefixIcon('heroicon-o-window')
+                                                    ->options([
+                                                        'filled'   => __('Filled'),
+                                                        'outlined' => __('Outlined'),
+                                                    ])
+                                                    ->default('filled'),
+                                                Select::make('button_target')
+                                                    ->label(__('Target'))
+                                                    ->prefixIcon('heroicon-o-window')
+                                                    ->options([
+                                                        '_self'  => __('Self'),
+                                                        '_blank' => __('New'),
+                                                    ])
+                                                    ->default('self'),
+                                            ]),
+                                    ]),
+                                Section::make(__('Featured Image & Theme'))
+                                    ->icon('heroicon-o-sparkles')
+                                    ->collapsible()
+                                    ->columns(3)
+                                    ->schema([
+                                        FileUpload::make('hero.featured_image')
+                                            ->label('Featured Image')
+                                            ->directory('hero')
+                                            ->maxSize(10000)
+                                            ->image()
+                                            ->columnSpan(2)
+                                            ->imageEditor()
+                                            ->helperText(__('This is your featured image for the hero section.')),
+                                        Select::make('hero.theme')
+                                            ->label(__('Hero Section Theme'))
+                                            ->prefixIcon('heroicon-o-window')
+                                            ->options([
+                                                'default' => __('Default'),
+                                                'sierra'  => __('Sierra'),
+                                            ])
+                                            ->default('default'),
+                                    ]),
+                                Section::make(__('Background'))
+                                    ->icon('heroicon-o-sparkles')
+                                    ->collapsible()
+                                    ->columns(2)
+                                    ->schema([
+                                        Toggle::make('hero.is_active')
+                                            ->label(__('Show Background Image'))
+                                            ->helperText(__('Show or hide the background image.')),
+                                        FileUpload::make('hero.bg_image')
+                                            ->label(__('Hero Section Background Image'))
+                                            ->directory('hero/bg')
+                                            ->image()
+                                            ->imageEditor()
+                                            ->helperText(__('Upload a background image for the hero section.')),
+                                        Group::make()
+                                            ->columns(3)
+                                            ->columnSpanFull()
+                                            ->schema([
+                                                Select::make('hero.bg_position')
+                                                    ->options([
+                                                        'bg-center' => 'Center',
+                                                        'bg-top'    => 'Top',
+                                                        'bg-bottom' => 'Bottom',
+                                                        'bg-left'   => 'Left',
+                                                        'bg-right'  => 'Right',
+                                                    ])
+                                                    ->label(__('Background Image Position'))
+                                                    ->helperText(__('Choose the position of the background image.')),
+                                                Select::make('hero.bg_size')
+                                                    ->options([
+                                                        'bg-auto'    => 'Auto',
+                                                        'bg-cover'   => 'Cover',
+                                                        'bg-contain' => 'Contain',
+                                                    ])
+                                                    ->label(__('Background Image Size'))
+                                                    ->helperText(__('Choose the size of the background image.')),
+                                                Select::make('hero.bg_repeat')
+                                                    ->options([
+                                                        'bg-repeat'    => 'Repeat',
+                                                        'bg-no-repeat' => 'No Repeat',
+                                                        'bg-repeat-x'  => 'Repeat X',
+                                                        'bg-repeat-y'  => 'Repeat Y',
+                                                    ])
+                                                    ->label(__('Background Image Repeat'))
+                                                    ->helperText(__('Choose the repeat of the background image.')),
+                                            ]),
+                                    ]),
 
-                        ]),
-                ]),
-        ]);
+                            ]),
+                    ]),
+            ]);
     }
 }

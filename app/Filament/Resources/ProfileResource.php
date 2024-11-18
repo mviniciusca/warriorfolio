@@ -2,34 +2,38 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
+use App\Filament\Resources\ProfileResource\Pages;
+use App\Filament\Resources\ProfileResource\RelationManagers;
 use App\Models\Profile;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
+use Filament\Forms;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
-use Filament\Tables\Table;
 use Filament\Resources\Resource;
-use Filament\Forms\Components\Group;
-use Illuminate\Support\Facades\Hash;
-use Filament\Forms\Components\Section;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\ProfileResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\ProfileResource\RelationManagers;
-use Awcodes\Curator\Components\Tables\CuratorColumn;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileResource extends Resource
 {
     protected static ?string $model = Profile::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-user';
+
     public static function getNavigationLabel(): string
     {
         return __('Profile');
     }
+
     public static function getNavigationGroup(): ?string
     {
-        return __('App Sections');
+        return __('Core Features');
     }
+
     protected static ?int $navigationSort = 0;
 
     public static function getRecordSubNavigation(Page $page): array
@@ -39,6 +43,7 @@ class ProfileResource extends Resource
             Pages\EditSocialNetwork::class,
         ]);
     }
+
     public static function table(Table $table): Table
     {
         return $table
@@ -92,9 +97,9 @@ class ProfileResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListProfiles::route('/'),
-            'create' => Pages\CreateProfile::route('/create'),
-            'edit' => Pages\EditProfile::route('/{record}/edit'),
+            'index'               => Pages\ListProfiles::route('/'),
+            'create'              => Pages\CreateProfile::route('/create'),
+            'edit'                => Pages\EditProfile::route('/{record}/edit'),
             'edit-social-network' => Pages\EditSocialNetwork::route('/{record}/edit-social-network'),
         ];
     }

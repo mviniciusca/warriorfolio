@@ -2,43 +2,49 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use Filament\Forms\Set;
-use Filament\Forms\Form;
+use App\Filament\Resources\SlideshowResource\Pages;
+use App\Filament\Resources\SlideshowResource\RelationManagers;
 use App\Models\Slideshow;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use Filament\Resources\Resource;
+use Filament\Forms;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Repeater;
+use Filament\Forms\Form;
+use Filament\Forms\Set;
+use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\SlideshowResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\SlideshowResource\RelationManagers;
+use Illuminate\Support\Str;
 
 class SlideshowResource extends Resource
 {
     protected static ?string $model = Slideshow::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-photo';
+
     protected static ?int $navigationSort = 3;
+
     public static function getNavigationLabel(): string
     {
         return __('Sliders');
     }
+
     public static function getNavigationGroup(): ?string
     {
-        return __('Core Features');
+        return __('Website Design');
     }
+
     public static function getNavigationBadge(): ?string
     {
         if (static::getModel()::where('is_active', true)->count() > 0) {
             return static::getModel()::where('is_active', true)->count();
         }
+
         return null;
     }
 
@@ -57,10 +63,10 @@ class SlideshowResource extends Resource
                                 ->helperText('The title of the slideshow')
                                 ->columnSpanFull()
                                 ->maxLength(255),
-                            Forms\Components\Select::make('module_name')
+                            Select::make('module_name')
                                 ->options([
-                                    'hero-section' => 'Hero Section',
-                                    'about-section' => 'About Section',
+                                    'hero-section'    => 'Hero Section',
+                                    'about-section'   => 'About Section',
                                     'clients-section' => 'Clients Section',
                                 ])
                                 ->default('hero-section')
@@ -70,11 +76,11 @@ class SlideshowResource extends Resource
                                 ->helperText('The module where the slideshow will be displayed. Not all core modules support slideshows.')
                                 ->columnSpanFull()
                                 ->required(),
-                            Forms\Components\Toggle::make('show_title')
+                            Toggle::make('show_title')
                                 ->inline(false)
                                 ->label('Show Title')
                                 ->default(true),
-                            Forms\Components\Toggle::make('is_active')
+                            Toggle::make('is_active')
                                 ->inline(false)
                                 ->label('Show Slideshow')
                                 ->default(true),
@@ -95,10 +101,10 @@ class SlideshowResource extends Resource
                                 ->default('max-w-5xl'),
                             Select::make('image_size')
                                 ->options([
-                                    'small' => 'Small (h-10)',
-                                    'default' => 'Default (h-12)',
-                                    'medium' => 'Medium (h-14)',
-                                    'large' => 'Large (h-16)',
+                                    'small'       => 'Small (h-10)',
+                                    'default'     => 'Default (h-12)',
+                                    'medium'      => 'Medium (h-14)',
+                                    'large'       => 'Large (h-16)',
                                     'extra-large' => 'Extra Large (h-20)',
                                 ])
                                 ->default('default'),
@@ -130,7 +136,7 @@ class SlideshowResource extends Resource
                                         Forms\Components\TextInput::make('image_title')
                                             ->reactive()
                                             ->lazy()
-                                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('image_alt', Str::slug($state)))
+                                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('image_alt', Str::slug($state)))
                                             ->label('Image Title')
                                             ->helperText('The title of the image (optional)')
                                             ->maxLength(255),
@@ -147,10 +153,11 @@ class SlideshowResource extends Resource
                                     ]),
                             ])
                             ->reorderable()
-                            ->collapsible()
+                            ->collapsible(),
                     ])->columnSpan(4),
             ])->columns(6);
     }
+
     public static function table(Table $table): Table
     {
         return $table
@@ -177,7 +184,6 @@ class SlideshowResource extends Resource
             ]);
     }
 
-
     public static function getRelations(): array
     {
         return [
@@ -188,9 +194,9 @@ class SlideshowResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSlideshows::route('/'),
+            'index'  => Pages\ListSlideshows::route('/'),
             'create' => Pages\CreateSlideshow::route('/create'),
-            'edit' => Pages\EditSlideshow::route('/{record}/edit'),
+            'edit'   => Pages\EditSlideshow::route('/{record}/edit'),
         ];
     }
 }

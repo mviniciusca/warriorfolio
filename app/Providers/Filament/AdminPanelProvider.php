@@ -42,6 +42,16 @@ class AdminPanelProvider extends PanelProvider
                     ->url(env('APP_URL'), shouldOpenInNewTab: true)
                     ->icon('heroicon-o-arrow-up-right')
                     ->sort(-1),
+                NavigationItem::make(__('Hero Section'))
+                    ->icon('heroicon-o-bolt')
+                    ->url('/admin/hero')
+                    ->group(__('Website Design'))
+                    ->sort(1),
+                NavigationItem::make(__('Background & Favicon'))
+                    ->icon('heroicon-o-paint-brush')
+                    ->url('/admin/hero')
+                    ->group(__('Website Design'))
+                    ->sort(1),
             ])
             ->plugins([
                 FilamentFabricatorPlugin::make(),
@@ -60,6 +70,7 @@ class AdminPanelProvider extends PanelProvider
                 'secondary' => Color::Zinc,
             ])
             ->navigationGroups([
+                'Website Design',
                 'App Sections',
                 'Core Features',
                 'Settings',

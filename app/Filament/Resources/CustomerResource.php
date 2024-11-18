@@ -2,37 +2,43 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Customer;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Group;
-use Filament\Tables\Actions\ActionGroup;
 use App\Filament\Resources\CustomerResource\Pages;
-use Awcodes\Curator\Components\Forms\CuratorPicker;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CustomerResource\RelationManagers;
+use App\Models\Customer;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
+use Filament\Forms;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CustomerResource extends Resource
 {
     protected static ?string $model = Customer::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-building-office';
+
     public static function getNavigationLabel(): string
     {
         return __('Customers');
     }
-    protected static ?string $navigationGroup = 'App Sections';
-    protected static ?int $navigationSort = 4;
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Core Features');
+    }
 
     public static function getNavigationBadge(): ?string
     {
         if (static::getModel()::count() > 0) {
             return static::getModel()::count();
         }
+
         return null;
     }
 
@@ -79,11 +85,11 @@ class CustomerResource extends Resource
                     Tables\Columns\TextColumn::make('url')
                         ->searchable()
                         ->sortable(),
-                ])
+                ]),
             ])->contentGrid([
-                    'md' => 3,
-                    'xl' => 5,
-                ])
+                'md' => 3,
+                'xl' => 5,
+            ])
             ->filters([
                 //
             ])
@@ -91,7 +97,7 @@ class CustomerResource extends Resource
                 ActionGroup::make([
                     Tables\Actions\DeleteAction::make(),
                     Tables\Actions\EditAction::make(),
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

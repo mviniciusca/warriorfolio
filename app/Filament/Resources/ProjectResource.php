@@ -34,7 +34,7 @@ class ProjectResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('App Sections');
+        return __('Core Features');
     }
 
     protected static ?int $navigationSort = -1;

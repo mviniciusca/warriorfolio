@@ -27,7 +27,7 @@ class CategoryResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('App Sections');
+        return __('Core Features');
     }
 
     public static function getNavigationLabel(): string
