@@ -15,7 +15,11 @@ class Layout extends Model
 
     protected $casts = [
         'about'     => 'array',
+        'contact'   => 'array',
+        'customer'  => 'array',
+        'footer'    => 'array',
         'hero'      => 'array',
+        'mailing'   => 'array',
         'portfolio' => 'array',
     ];
 

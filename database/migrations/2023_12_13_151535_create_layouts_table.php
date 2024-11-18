@@ -20,27 +20,31 @@ return new class extends Migration {
             $table->json('portfolio');
             // About Section
             $table->json('about');
-            $table->boolean('about_section_fill')->default(false);
-            $table->string('about_section_title')->nullable();
-            $table->string('about_section_subtitle_text')->nullable();
+            // $table->boolean('about_section_fill')->default(false);
+            // $table->string('about_section_title')->nullable();
+            // $table->string('about_section_subtitle_text')->nullable();
             // Contact Section
-            $table->boolean('contact_section_fill')->default(false);
-            $table->string('contact_section_title')->nullable();
-            $table->string('contact_section_subtitle_text')->nullable();
-            $table->string('contact_section_address')->nullable();
-            $table->string('contact_section_phone')->nullable();
-            $table->string('contact_section_email')->nullable();
-            $table->text('contact_section_google_map')->nullable();
+            $table->json('contact');
+            // $table->boolean('contact_section_fill')->default(false);
+            // $table->string('contact_section_title')->nullable();
+            // $table->string('contact_section_subtitle_text')->nullable();
+            // $table->string('contact_section_address')->nullable();
+            // $table->string('contact_section_phone')->nullable();
+            // $table->string('contact_section_email')->nullable();
+            // $table->text('contact_section_google_map')->nullable();
             // Clients Section
+            $table->json('customer')->nullable();
             $table->boolean('clients_section_fill')->default(false);
             $table->string('clients_section_title')->nullable();
             $table->string('clients_section_subtitle_text')->nullable();
             // Newsletter Section
+            $table->json('mailing')->nullable();
             $table->string('newsletter_section_title')->nullable();
             $table->string('newsletter_section_subtitle_text')->nullable();
             $table->string('newsletter_section_image')->nullable();
             $table->string('newsletter_section_button_text')->nullable();
             // Footer Section
+            $table->json('footer')->nullable();
             $table->boolean('footer_section_fill')->default(false);
             $table->timestamps();
         });

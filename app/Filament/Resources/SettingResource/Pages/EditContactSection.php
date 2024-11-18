@@ -57,46 +57,46 @@ class EditContactSection extends EditRecord
                             ->columns(2)
                             ->relationship('layout')
                             ->schema([
-                                Toggle::make('contact_section_fill')
+                                Toggle::make('contact.section_fill')
                                     ->label(__('Fill Section Background'))
                                     ->helperText(__('Fill the background of this section with a secondary default color.')),
-                                TextInput::make('contact_section_title')
+                                TextInput::make('contact.section_title')
                                     ->autoFocus()
                                     ->label(__('Contact Section Title'))
                                     ->columnSpanFull()
                                     ->helperText(__('HTML allowed. Use the class "tl" to highlight a word in the title. Max: 160 characters.'))
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->maxLength(160),
-                                TextInput::make('contact_section_subtitle_text')
+                                TextInput::make('contact.section_subtitle')
                                     ->label(__('Contact Section Subtitle'))
                                     ->columnSpanFull()
                                     ->helperText(__('You also can use the class "tl" to highlight a word in the subtitle. Max: 160 characters.'))
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->maxLength(160),
-                                TextInput::make('contact_section_phone')
-                                    ->label('Contact Public Phone')
+                                TextInput::make('contact.public_phone')
+                                    ->label('Phone Number (Public Information)(Optional)')
                                     ->tel()
                                     ->prefix('+'.env('MOBILE_COUNTRY_CODE'))
                                     ->suffixIcon('heroicon-o-phone')
-                                    ->helperText(__('Use your business phone number. This number will be visible to the public.'))
+                                    ->helperText(__('Use your business phone number. Optional.'))
                                     ->maxLength(50),
-                                TextInput::make('contact_section_email')
-                                    ->label(__('Public Contact Email'))
+                                TextInput::make('contact.public_email')
+                                    ->label(__('Email (Public Information)(Optional)'))
                                     ->email()
                                     ->prefixIcon('heroicon-o-envelope')
-                                    ->helperText(__('This email will be visible to the public.'))
+                                    ->helperText(__('Use your business email address. Optional.'))
                                     ->maxLength(50),
-                                Textarea::make('contact_section_address')
-                                    ->label(__('Contact Public Address'))
-                                    ->helperText(__('Use your business address. This address will be visible to the public. Max: 300 characters.'))
+                                TextInput::make('contact.public_address')
+                                    ->label(__('Address (Public Information)(Optional)'))
+                                    ->helperText(__('Use your business address. Optional.'))
                                     ->columnSpanFull()
-                                    ->rows(3)
-                                    ->maxLength(300),
-                                Textarea::make('contact_section_google_map')
-                                    ->label(__('Google Maps Embed Code'))
+                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                    ->maxLength(255),
+                                Textarea::make('contact.google_maps_code')
+                                    ->label(__('Google Maps Embed Code (Optional)'))
                                     ->helperText(__('Paste the code between the quotes of src="" from the embed code of google maps. Do not paste the whole embed code.'))
                                     ->columnSpanFull()
-                                    ->rows(6)
+                                    ->rows(5)
                                     ->maxLength(6000),
                             ]),
                     ]),

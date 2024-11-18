@@ -26,36 +26,20 @@ class Section extends Component
     {
         return view('components.contact.section', [
             'social_network' => $this->isEmpty(),
-            'module'         => Module::query()
-                ->select(['contact'])
-                ->first(),
-            'info' => Layout::query()
-                ->select([
-                    'contact_section_fill',
-                    'contact_section_title',
-                    'contact_section_subtitle_text',
-                    'contact_section_address',
-                    'contact_section_email',
-                    'contact_section_google_map',
-                    'contact_section_google_map',
-                    'contact_section_phone',
-                ])
-                ->first(),
+            'module'         => Module::first(['contact']),
+            'data'           => Layout::first(['contact']),
         ]);
     }
 
     /**
-     * Check if any field is empty and return the count of empty fields.
+     * Summary of isEmpty
+     * @return int
      */
     public function isEmpty(): int
     {
-        $model = Profile::query()
-            ->select([
-                'social',
-            ])
-            ->first();
+        $model = Profile::first(['social']);
         $count = 0;
-        foreach ($model->toArray() as $key => $value) {
+        foreach ($model->toArray() as $value) {
             if (! empty($value)) {
                 $count++;
             }
