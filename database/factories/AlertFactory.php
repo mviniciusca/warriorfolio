@@ -17,7 +17,12 @@ class AlertFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'is_dismissible' => true,
+            'is_active'      => true,
+            'title'          => 'example-alert',
+            'style'          => 'toast',
+            'button_text'    => 'Agree',
+            'message'        => 'This is an alert example! You can use for some important message!',
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Alert;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Mail;
@@ -41,5 +42,6 @@ class DatabaseSeeder extends Seeder
         Newsletter::factory(10)->create();
         Course::factory(3)->create();
         Category::factory()->create();
+        Alert::factory()->create();
     }
 }
