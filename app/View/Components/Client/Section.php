@@ -2,13 +2,13 @@
 
 namespace App\View\Components\Client;
 
-use Closure;
+use App\Models\Customer;
 use App\Models\Layout;
 use App\Models\Module;
-use App\Models\Customer;
 use App\Models\Slideshow;
-use Illuminate\View\Component;
+use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Section extends Component
 {
@@ -26,21 +26,12 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.client.section', [
-            'sliders' => getSlider('clients-section', new Slideshow),
-            'module' => Module::query()
-                ->select(['clients'])
-                ->first(),
-            'clients' => Customer::query()
-                ->orderBy('created_at', 'desc')
+            'sliders'   => getSlider('clients-section', new Slideshow),
+            'module'    => Module::first(['clients']),
+            'customers' => Customer::orderBy('created_at', 'desc')
                 ->take(12)
                 ->get(),
-            'info' => Layout::query()
-                ->select([
-                    'clients_section_fill',
-                    'clients_section_title',
-                    'clients_section_subtitle_text'
-                ])
-                ->first(),
+            'data' => Layout::first(['customer']),
         ]);
     }
 }

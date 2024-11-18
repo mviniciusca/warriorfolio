@@ -24,9 +24,9 @@ return new class extends Migration {
             $table->json('contact');
             // Clients Section
             $table->json('customer');
-            $table->boolean('clients_section_fill')->default(false);
-            $table->string('clients_section_title')->nullable();
-            $table->string('clients_section_subtitle_text')->nullable();
+            // $table->boolean('clients_section_fill')->default(false);
+            // $table->string('clients_section_title')->nullable();
+            // $table->string('clients_section_subtitle_text')->nullable();
             // Newsletter Section
             $table->json('mailing')->nullable();
             $table->string('newsletter_section_title')->nullable();
