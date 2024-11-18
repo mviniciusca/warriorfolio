@@ -27,9 +27,9 @@ return new class extends Migration {
             // Newsletter Section
             $table->json('mailing')->nullable();
             $table->string('newsletter_section_title')->nullable();
-            $table->string('newsletter_section_subtitle_text')->nullable();
-            $table->string('newsletter_section_image')->nullable();
-            $table->string('newsletter_section_button_text')->nullable();
+            // $table->string('newsletter_section_subtitle_text')->nullable();
+            // $table->string('newsletter_section_image')->nullable();
+            // $table->string('newsletter_section_button_text')->nullable();
             // Footer Section
             $table->json('footer')->nullable();
             $table->boolean('footer_section_fill')->default(false);

@@ -79,9 +79,11 @@ class LayoutFactory extends Factory
             ],
 
             /** Newsletter Module */
-            'newsletter_section_title'         => 'the<span class="tl">next</span>',
-            'newsletter_section_subtitle_text' => 'join our mailing list',
-            'newsletter_section_button_text'   => 'Subscribe',
+            'mailing' => [
+                'section_title'    => 'the<span class="tl">next</span>',
+                'section_subtitle' => 'join our mailing list',
+                'button_text'      => 'Subscribe',
+            ],
         ];
     }
 }
