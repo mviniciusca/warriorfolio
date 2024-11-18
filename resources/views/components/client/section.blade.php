@@ -1,5 +1,5 @@
 @if($module->clients)
-<x-core.layout class="{{ data_get($data, 'customer.section_fill') ? 'bg-secondary-100 dark:bg-secondary-950' : '' }}"
+<x-core.layout class="{{ data_get($data, 'customer.section_fill') ? 'bg-secondary-100 dark:bg-secondary-950' : null }}"
     id="clients">
 
     @if($data->customer['section_title'])
