@@ -63,7 +63,7 @@ class EditNewsletterSection extends EditRecord
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->helperText('you also can use the class text-highlight to highlight a word in the subtitle. Max: 20 characters')
                                     ->maxLength(20),
-                                CuratorPicker::make('newsletter_section_image')
+                                CuratorPicker::make('mailing.image')
                                     ->label('Newsletter Section Image'),
                             ]),
                     ]),
