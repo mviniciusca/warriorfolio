@@ -47,10 +47,10 @@
         {{-- Hero Section: Image --}}
         @if(data_get($hero,'hero.featured_image'))
         <div class="mt-8" id="hero-featured-image">
-            <img class="animate__animated animate__fadeInUp animate__delay-1s h-auto p-4 lg:max-h-max"
+            <img class="animate__animated animate__fadeInUp animate__delay-2s h-auto p-4 lg:max-h-max"
                 src="{{ asset('storage/' . $hero->hero['featured_image']) }}" alt="hero-section-image" />
             @else
-            <img class="animate__animated animate__fadeInUp animate__delay-1s p-4 lg:max-h-max h-auto"
+            <img class="animate__animated animate__fadeInUp animate__delay-3s p-4 lg:max-h-max h-auto"
                 src="{{ asset('img/core/demo/app-demo.png') }}" alt="hero-section-image" />
             @endif
         </div>

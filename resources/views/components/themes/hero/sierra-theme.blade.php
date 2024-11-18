@@ -1,7 +1,7 @@
 @props(['hero'])
 
 <section>
-    <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-3">
+    <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-2">
         <div class="mr-auto place-self-center lg:col-span-1">
             <h1
                 class="animate__animated animate__fadeInUp animate max-w-2xl mb-4 text-4xl font-extrabold tracking-tighter leading-none md:text-5xl xl:text-6xl dark:text-white">
@@ -36,7 +36,7 @@
             </div>
 
         </div>
-        <div class="hidden animate__animated animate__fadeInUp  lg:mt-0 lg:col-span-2 rounded-lg lg:flex">
+        <div class="hidden animate__animated animate__fadeInUp  lg:mt-0 lg:col-span-1 rounded-lg lg:flex">
             {{-- Hero Section: Image --}}
             @if(data_get($hero,'hero.featured_image'))
             <div class="mt-8" id="hero-featured-image">
