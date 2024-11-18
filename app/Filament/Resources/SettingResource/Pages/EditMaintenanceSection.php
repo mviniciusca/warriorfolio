@@ -4,10 +4,13 @@ namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;
 
@@ -36,19 +39,31 @@ class EditMaintenanceSection extends EditRecord
     {
         return $form
             ->schema([
-                Section::make('Maintenance Mode')
-                    ->description('Define the maintenance mode of your application')
+                Section::make(__('Maintenance Mode'))
+                    ->description(__('Define the maintenance mode of your application.'))
                     ->icon('heroicon-o-wrench-screwdriver')
                     ->relationship('maintenance')
+                    ->columns(2)
                     ->schema([
-                        Toggle::make('is_active')
-                            ->label('Maintenance Mode')
-                            ->helperText('Enable maintenance mode to disable access to your application')
-                            ->default(false),
-                        Toggle::make('is_discovery')
-                            ->label('Discovery Mode')
-                            ->helperText('Enable discovery mode to allow your application visible to you based in your active login session while maintenance mode is enabled.')
-                            ->default(false),
+                        Group::make()
+                            ->columnSpanFull()
+                            ->columns(2)
+                            ->schema([
+                                Toggle::make('is_active')
+                                    ->live()
+                                    ->label(__('Maintenance Mode'))
+                                    ->afterStateUpdated(function (Set $set, bool $state) {
+                                        return $state ? $set('is_discovery', false) : null;
+                                    })
+                                    ->helperText(__('Enable Maintenance Mode to disable access to your application for non-logged users. Includes you when not under a valid Auth session.')),
+                                Toggle::make('is_discovery')
+                                    ->live()
+                                    ->label('Discovery Mode')
+                                    ->helperText(__('Discovery Mode allows your application visible to you based in your active Auth session while Maintenance Mode is enabled.'))
+                                    ->hidden(function (Get $get): bool {
+                                        return $get('is_active') ? false : true;
+                                    }),
+                            ]),
                         Toggle::make('is_contact')
                             ->label('Show Contact Form')
                             ->helperText('Enable contact form in maintenance mode to allow users to contact you. Note that is the same contact form of your application.')
@@ -57,7 +72,7 @@ class EditMaintenanceSection extends EditRecord
                             ->label('Social Media Links')
                             ->helperText('Enable social media in maintenance mode to allow users to follow you. Note that is the same social media of your application.')
                             ->default(false),
-                    ])->columns(2),
+                    ]),
                 Section::make('Layout & Content')
                     ->description('Define the layout and content of your maintenance page')
                     ->icon('heroicon-o-photo')
