@@ -44,14 +44,34 @@ class AdminPanelProvider extends PanelProvider
                     ->sort(-1),
                 NavigationItem::make(__('Hero Section'))
                     ->icon('heroicon-o-bolt')
-                    ->url('/admin/hero')
+                    ->url('/admin/settings/1/edit-hero-section')
                     ->group(__('Website Design'))
                     ->sort(1),
                 NavigationItem::make(__('Background & Favicon'))
                     ->icon('heroicon-o-paint-brush')
-                    ->url('/admin/hero')
+                    ->url('/admin/settings/1/edit-appearance')
                     ->group(__('Website Design'))
                     ->sort(1),
+                NavigationItem::make(__('About Section'))
+                    ->icon('heroicon-o-user')
+                    ->url('/admin/settings/1/edit-about-section')
+                    ->group(__('App Sections'))
+                    ->sort(1),
+                NavigationItem::make(__('Projects Section'))
+                    ->icon('heroicon-o-rocket-launch')
+                    ->url('/admin/settings/1/edit-portfolio-section')
+                    ->group(__('App Sections'))
+                    ->sort(2),
+                NavigationItem::make(__('Contact Section'))
+                    ->icon('heroicon-o-envelope')
+                    ->url('/admin/settings/1/edit-contact-section')
+                    ->group(__('App Sections'))
+                    ->sort(3),
+                NavigationItem::make(__('More Sections'))
+                    ->icon('heroicon-o-arrow-up-right')
+                    ->url('/admin/settings/1/edit')
+                    ->group(__('App Sections'))
+                    ->sort(3),
             ])
             ->plugins([
                 FilamentFabricatorPlugin::make(),
@@ -70,9 +90,9 @@ class AdminPanelProvider extends PanelProvider
                 'secondary' => Color::Zinc,
             ])
             ->navigationGroups([
+                'Core Features',
                 'Website Design',
                 'App Sections',
-                'Core Features',
                 'Settings',
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

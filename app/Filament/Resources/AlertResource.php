@@ -2,39 +2,43 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
+use App\Filament\Resources\AlertResource\Pages;
 use App\Models\Alert;
-use Filament\Forms\Set;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use Filament\Resources\Resource;
+use Filament\Forms;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
-use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\AlertResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\AlertResource\RelationManagers;
+use Filament\Forms\Form;
+use Filament\Forms\Set;
+use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class AlertResource extends Resource
 {
     protected static ?string $model = Alert::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-bell';
+
     public static function getNavigationLabel(): string
     {
-        return __('Alerts');
+        return __('Website Alerts');
     }
+
     public static function getNavigationGroup(): ?string
     {
         return __('Core Features');
     }
+
     public static function getNavigationBadge(): ?string
     {
         if (static::getModel()::where('is_active', true)->count() > 0) {
             return static::getModel()::where('is_active', true)->count();
         }
+
         return null;
     }
 
@@ -61,9 +65,9 @@ class AlertResource extends Resource
                             Forms\Components\Select::make('style')
                                 ->options([
                                     'default' => 'Default',
-                                    'bumper' => 'Bumper',
-                                    'banner' => 'Banner',
-                                    'toast' => 'Toast',
+                                    'bumper'  => 'Bumper',
+                                    'banner'  => 'Banner',
+                                    'toast'   => 'Toast',
                                 ])
                                 ->helperText('Select the style of the alert.')
                                 ->default('default')
@@ -72,7 +76,7 @@ class AlertResource extends Resource
                         Group::make()->schema([
                             Forms\Components\TextInput::make('title')
                                 ->lazy()
-                                ->afterStateUpdated(fn(Set $set, ?string $state) => $set('title', Str::slug($state)))
+                                ->afterStateUpdated(fn (Set $set, ?string $state) => $set('title', Str::slug($state)))
                                 ->required()
                                 ->label('Title Tag')
                                 ->helperText('The tag title of the alert. This is useful to remember what the alert is for. Max: 140 characters.')
@@ -145,9 +149,9 @@ class AlertResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAlerts::route('/'),
+            'index'  => Pages\ListAlerts::route('/'),
             'create' => Pages\CreateAlert::route('/create'),
-            'edit' => Pages\EditAlert::route('/{record}/edit'),
+            'edit'   => Pages\EditAlert::route('/{record}/edit'),
         ];
     }
 }
