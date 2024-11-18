@@ -25,8 +25,8 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.footer.section', [
-            'info' => Layout::first([
-                'footer_section_fill',
+            'data' => Layout::first([
+                'footer',
             ]),
             'setting' => Setting::first([
                 'design',

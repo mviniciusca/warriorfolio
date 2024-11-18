@@ -25,10 +25,10 @@ return new class extends Migration {
             // Clients Section
             $table->json('customer');
             // Newsletter Section
-            $table->json('mailing')->nullable();
+            $table->json('mailing');
             // Footer Section
             $table->json('footer')->nullable();
-            $table->boolean('footer_section_fill')->default(false);
+            // $table->boolean('footer_section_fill')->default(false);
             $table->timestamps();
         });
     }

@@ -51,7 +51,7 @@ class EditFooterSection extends EditRecord
                 ->icon('heroicon-o-bolt')
                 ->relationship('layout')
                 ->schema([
-                    Toggle::make('footer_section_fill')
+                    Toggle::make('footer.section_fill')
                         ->label(__('Fill Section Background'))
                         ->helperText(__('Fill the background of this section with a secondary default color.')),
                 ]),
