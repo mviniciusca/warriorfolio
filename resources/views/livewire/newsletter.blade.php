@@ -1,9 +1,9 @@
 <div>
-    <form class="" wire:submit="create">
+    <form wire:submit="create">
         {{ $this->form }}
-        <span class="-mt-1">
-            <x-ui.button class="-mt-1 p-2 text-sm" type="submit" icon="chevron-forward-outline">
-                {{ $buttonText }}
+        <span class="mt-4">
+            <x-ui.button class="p-2 mt-4" type="submit" icon="chevron-forward-outline">
+                {{ $buttonText ?? __('Subscribe') }}
             </x-ui.button>
         </span>
     </form>

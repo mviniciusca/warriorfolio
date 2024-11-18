@@ -2,7 +2,7 @@
 <x-core.layout>
     <div class="mx-auto w-full px-4">
         <div
-            class="flex flex-wrap items-center justify-center rounded-lg border border-secondary-300 bg-secondary-50 px-4 py-6 text-center dark:border-secondary-800 dark:bg-secondary-950 lg:py-8">
+            class="flex flex-wrap items-center justify-center rounded-lg border border-secondary-300 bg-secondary-50 px-4 py-6 text-center dark:border-secondary-800 dark:bg-secondary-950 lg:py-12">
             <div class="image w-full px-4 lg:w-1/4">
                 <img class="mx-auto max-h-48"
                     src="{{ data_get($data, 'mailing.image') ? asset('storage/' . $data->mailing['image']) : asset('img/core/svg/developer.svg') }}"
@@ -13,7 +13,7 @@
                     <p>
                         {!! $data->mailing['section_title'] !!}
                     </p>
-                    <p class="text-xs font-normal tracking-normal md:text-sm">
+                    <p class="text-xs font-normal tracking-normal md:text-base">
                         {!! $data->mailing['section_subtitle'] !!}
                     </p>
                 </span>
