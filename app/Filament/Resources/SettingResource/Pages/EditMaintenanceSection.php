@@ -58,7 +58,7 @@ class EditMaintenanceSection extends EditRecord
                                     ->helperText(__('Enable Maintenance Mode to disable access to your application for non-logged users. Includes you when not under a valid Auth session.')),
                                 Toggle::make('is_discovery')
                                     ->live()
-                                    ->label('Discovery Mode')
+                                    ->label(__('Discovery Mode'))
                                     ->helperText(__('Discovery Mode allows your application visible to you based in your active Auth session while Maintenance Mode is enabled.'))
                                     ->hidden(function (Get $get): bool {
                                         return $get('is_active') ? false : true;
@@ -83,7 +83,7 @@ class EditMaintenanceSection extends EditRecord
                             ->helperText(__('Define the image of your maintenance page. Transparent background will be amazing.'))
                             ->image(),
                         RichEditor::make('content')
-                            ->label('Content')
+                            ->label(__('Content'))
                             ->columnSpanFull()
                             ->helperText(__('Define the content of your maintenance page. All content will be centralized.'))
                             ->default(__('We are currently performing maintenance. Please check back soon.'))
