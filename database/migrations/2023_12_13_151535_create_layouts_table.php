@@ -28,7 +28,6 @@ return new class extends Migration {
             $table->json('mailing');
             // Footer Section
             $table->json('footer')->nullable();
-            // $table->boolean('footer_section_fill')->default(false);
             $table->timestamps();
         });
     }
