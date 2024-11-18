@@ -72,8 +72,11 @@ class LayoutFactory extends Factory
             ],
 
             /** Clients Section */
-            'clients_section_title'         => '<span class="tl">Trusted</span> by',
-            'clients_section_subtitle_text' => 'Here are some of the companies I\'ve worked with',
+            'customer' => [
+                'section_fill'     => false,
+                'section_title'    => '<span class="tl">Trusted</span> by',
+                'section_subtitle' => 'Here are some of the companies I\'ve worked with',
+            ],
 
             /** Newsletter Module */
             'newsletter_section_title'         => 'the<span class="tl">next</span>',

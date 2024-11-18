@@ -53,16 +53,16 @@ class EditClientSection extends EditRecord
                 ->icon('heroicon-o-building-office')
                 ->columns(2)
                 ->schema([
-                    Toggle::make('clients_section_fill')
+                    Toggle::make('customer.section_fill')
                         ->label(__('Fill Section Background'))
                         ->helperText(__('Fill the background of this section with a secondary default color.')),
-                    Textarea::make('clients_section_title')
+                    Textarea::make('customer.section_title')
                         ->label(__('Customers Section Text'))
                         ->helperText(__('HTML allowed. Use the class text-highlight to highlight a word in the text'))
                         ->columnSpanFull()
                         ->rows(3)
                         ->maxLength(255),
-                    Textarea::make('clients_section_subtitle_text')
+                    Textarea::make('customer.section_subtitle')
                         ->label(__('Customers Section Subtitle'))
                         ->helperText(__('You also can use the class text-highlight to highlight a word in the subtitle'))
                         ->columnSpanFull()
