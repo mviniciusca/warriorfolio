@@ -6,7 +6,11 @@ use App\Filament\Resources\AlertResource\Pages;
 use App\Models\Alert;
 use Filament\Forms;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
@@ -46,52 +50,57 @@ class AlertResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Alert Information')
-                    ->description('Add a new alert to the system.')
+                Section::make(__('Alert Information'))
+                    ->description(__('Manager your website alerts.'))
                     ->columns(4)
                     ->icon('heroicon-o-bell')
                     ->schema([
-                        Group::make()->columns(3)->columnSpanFull()->schema([
-                            Forms\Components\Toggle::make('is_active')
-                                ->label('Active')
-                                ->default(true)
-                                ->helperText('Active or inactive alerts will be displayed on the front-end.')
-                                ->required(),
-                            Forms\Components\Toggle::make('is_dismissible')
-                                ->label('Dismissible')
-                                ->default(true)
-                                ->helperText('Enable or disable the ability to dismiss the alert. A cookie will be set to remember the user\'s preference.')
-                                ->required(),
-                            Forms\Components\Select::make('style')
-                                ->options([
-                                    'default' => 'Default',
-                                    'bumper'  => 'Bumper',
-                                    'banner'  => 'Banner',
-                                    'toast'   => 'Toast',
-                                ])
-                                ->helperText('Select the style of the alert.')
-                                ->default('default')
-                                ->required(),
-                        ]),
-                        Group::make()->schema([
-                            Forms\Components\TextInput::make('title')
-                                ->lazy()
-                                ->afterStateUpdated(fn (Set $set, ?string $state) => $set('title', Str::slug($state)))
-                                ->required()
-                                ->label('Title Tag')
-                                ->helperText('The tag title of the alert. This is useful to remember what the alert is for. Max: 140 characters.')
-                                ->maxLength(140),
-                            Forms\Components\TextInput::make('button_text')
-                                ->default('Close')
-                                ->label('Button Text')
-                                ->helperText('The text to display on the button. Max: 50 characters. Default is "Close". Leave empty for a close icon.')
-                                ->maxLength(50),
-                        ]),
-                        Forms\Components\RichEditor::make('message')
+                        Group::make()
+                            ->columns(3)
+                            ->columnSpanFull()
+                            ->schema([
+                                Toggle::make('is_active')
+                                    ->label(__('Active'))
+                                    ->default(true)
+                                    ->helperText(__('Active or inactive this alert.'))
+                                    ->required(),
+                                Toggle::make('is_dismissible')
+                                    ->label(__('Dismissible'))
+                                    ->default(true)
+                                    ->helperText(__('Enable or disable the ability to dismiss the alert. A cookie will be set to remember the user\'s preference.'))
+                                    ->required(),
+                                Select::make('style')
+                                    ->label(__('Alert Style'))
+                                    ->options([
+                                        'default' => 'Default',
+                                        'bumper'  => 'Bumper',
+                                        'banner'  => 'Banner',
+                                        'toast'   => 'Toast',
+                                    ])
+                                    ->helperText(__('Select the style of the alert.'))
+                                    ->default('default')
+                                    ->required(),
+                            ]),
+                        Group::make()
+                            ->schema([
+                                TextInput::make('title')
+                                    ->lazy()
+                                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('title', Str::slug($state)))
+                                    ->required()
+                                    ->label('Title Tag')
+                                    ->helperText('The tag title of the alert. This is useful to remember what the alert is for. Max: 140 characters.')
+                                    ->maxLength(140),
+                                TextInput::make('button_text')
+                                    ->default('Close')
+                                    ->label('Button Text')
+                                    ->helperText('The text to display on the button. Max: 50 characters. Default is "Close". Leave empty for a close icon.')
+                                    ->maxLength(50),
+                            ]),
+                        RichEditor::make('message')
                             ->required()
                             ->columnSpan(3)
-                            ->helperText('The message to display in the alert. Max: 2500 characters.')
-                            ->maxLength(6000),
+                            ->helperText(__('The message to display in the alert. Max: 2500 characters.'))
+                            ->maxLength(3000),
                     ]),
             ]);
     }
