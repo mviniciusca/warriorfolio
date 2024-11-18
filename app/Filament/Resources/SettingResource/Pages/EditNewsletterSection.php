@@ -63,7 +63,10 @@ class EditNewsletterSection extends EditRecord
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->helperText(__('HTML allowed. Use the class "tl" to highlight a word in the text. Max: 20 characters'))
                                     ->maxLength(20),
-                                CuratorPicker::make('mailing.image')
+                                FileUpload::make('mailing.image')
+                                    ->image()
+                                    ->imageEditor()
+                                    ->directory('public/mailing')
                                     ->label(__('Section Image')),
                             ]),
                     ]),

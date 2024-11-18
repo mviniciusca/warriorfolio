@@ -53,7 +53,7 @@ class Newsletter extends Component implements HasForms
         $record = ModelsNewsletter::create($data);
 
         Notification::make()
-            ->title('Thanks for subscribing!')
+            ->title(__('Thanks for subscribing!'))
             ->success()
             ->send();
 

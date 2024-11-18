@@ -26,10 +26,6 @@ class Section extends Component
     {
         return view('components.footer.section', [
             'info' => Layout::first([
-                'newsletter_section_title',
-                'newsletter_section_subtitle_text',
-                'newsletter_section_button_text',
-                'newsletter_section_image',
                 'footer_section_fill',
             ]),
             'setting' => Setting::first([
@@ -37,7 +33,6 @@ class Section extends Component
                 'application',
             ]),
             'module' => Module::first([
-                'newsletter',
                 'footer',
             ]),
         ]);

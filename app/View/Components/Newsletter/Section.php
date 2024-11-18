@@ -2,11 +2,11 @@
 
 namespace App\View\Components\Newsletter;
 
-use Closure;
 use App\Models\Layout;
 use App\Models\Module;
-use Illuminate\View\Component;
+use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Section extends Component
 {
@@ -24,18 +24,8 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.newsletter.section', [
-            'module' => Module::query()
-                ->select(['newsletter'])
-                ->first(),
-            'info' => Layout::query()
-                ->select([
-                    'newsletter_section_title',
-                    'newsletter_section_subtitle_text',
-                    'newsletter_section_button_text',
-                    'newsletter_section_image',
-                    'footer_section_fill'
-                ])
-                ->first(),
+            'module' => Module::first(['newsletter']),
+            'data'   => Layout::first(['mailing']),
         ]);
     }
 }
