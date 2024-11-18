@@ -20,8 +20,8 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'    => 'Portfolio for the <span class="tl">Creative</span> Developer',
-                'section_subtitle' => 'Warriorfolio is a free, open source,<br/> cms for creating and managing your portfolio website.',
+                'section_title'    => 'The what\'s <span class="tl">Next</span> is here.',
+                'section_subtitle' => 'Warriorfolio v2.0.4 is here and this is Sierra<br>your new hero section theme.',
                 /** Buttons */
                 'buttons' => [
                     [
@@ -38,7 +38,7 @@ class LayoutFactory extends Factory
                     ],
                 ],
                 /** Themes */
-                'theme' => 'default',
+                'theme' => 'sierra',
                 /** Background */
                 'is_active'   => false,
                 'bg_position' => 'bg-center',
