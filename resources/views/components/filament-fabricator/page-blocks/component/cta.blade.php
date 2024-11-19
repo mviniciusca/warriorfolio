@@ -1,39 +1,38 @@
 @aware(['page'])
-@props([
-'title' => null,
-'content' => null,
-'button_text' => null,
-'button_url' => null,
-'button_icon' => null,
-'image' => null
-])
+@props([ 'content' => null])
 
-<section class="py-4">
-    <div class="cta-one mx-auto max-w-screen-xl items-center gap-8 md:grid md:grid-cols-2 xl:gap-16">
-        @if($image)
-        <img src="{{ asset('storage/' . $image) }}" alt="image-cta">
+
+<section class="">
+    @foreach ($content as $item )
+
+    <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+
+        @if(data_get($item, 'image'))
+        <img class="w-full rounded-lg opacity-100 hover:opacity-90"
+            src="{{ asset('storage/'. data_get($item, 'image')) }}" alt="dashboard image">
         @endif
 
         <div class="mt-4 md:mt-0">
-
-            @if($title)
-            <h2 class="mb-4 text-4xl font-bold tracking-tighter">
-                {!! $title !!}
-            </h2>
+            @if(data_get($item, 'title'))
+            <h2 class="mb-4 text-4xl tracking-tighter font-extrabold">{{ data_get($item, 'title') }}</h2>
             @endif
 
-            @if($content)
-            <p class="mb-6 font-light md:text-lg">{!! $content !!}</p>
+            @if(data_get($item, 'description'))
+            <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">{{ data_get($item, 'description') }}
+            </p>
             @endif
 
-            @if($button_text && $button_url)
-            <a href="{{ $button_url ?? '#'}}">
+            @if(data_get($item, 'button_text') && data_get($item, 'button_url'))
+            <a href="{{ data_get($item, 'button_url') ?? '#'}}">
                 <x-ui.button type='submit' class="mt-4 px-4 py-3" icon='chevron-forward-outline'>
-                    {{ $button_text }}
+                    {{ data_get($item, 'button_text') }}
                 </x-ui.button>
             </a>
             @endif
 
+
         </div>
     </div>
+
+    @endforeach
 </section>
