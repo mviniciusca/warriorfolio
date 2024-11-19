@@ -2,13 +2,12 @@
 
 namespace App\Filament\Fabricator\PageBlocks;
 
+use App\Forms\Components\Core\Info;
 use App\Models\Layout;
 use App\Models\Setting;
-use App\Models\Slideshow;
-use App\Forms\Components\Core\Info;
+use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Builder\Block;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class Hero extends PageBlock
@@ -17,11 +16,11 @@ class Hero extends PageBlock
     {
         return Block::make('hero')
             ->label('Hero Section Module')
-            ->icon('heroicon-o-cpu-chip')
+            ->icon('heroicon-o-photo')
             ->schema([
                 Section::make('Core: Hero Section Module')
                     ->description('Add a hero section to your page.')
-                    ->icon('heroicon-o-cpu-chip')
+                    ->icon('heroicon-o-photo')
                     ->collapsed()
                     ->schema([
                         Info::make()->schema([
@@ -30,17 +29,17 @@ class Hero extends PageBlock
                                 ->label('Title')
                                 ->maxLength(1),
                         ]),
-                    ])
+                    ]),
             ]);
     }
 
     public static function mutateData(array $data): array
     {
-
         $data = [
             'info' => Layout::all()->first(),
-            'hero' => Setting::all()->first()
+            'hero' => Setting::all()->first(),
         ];
+
         return $data;
     }
 }

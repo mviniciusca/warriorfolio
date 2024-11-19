@@ -14,12 +14,12 @@ class Cta extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('component.cta')
-            ->label('CTA Image + Text')
-            ->icon('heroicon-o-cube')
+            ->label('CTA')
+            ->icon('heroicon-o-square-3-stack-3d')
             ->schema([
-                Section::make('Core: CTA Module')
+                Section::make('CTA')
                     ->description('This module is composed of a title, image, content, button text, button URL, and button icon.')
-                    ->icon('heroicon-o-cube')
+                    ->icon('heroicon-o-square-3-stack-3d')
                     ->collapsed()
                     ->schema([
                         FileUpload::make('image')

@@ -16,12 +16,12 @@ class FeatureList extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('component.feature-list')
-            ->label('Feature Icon List Component')
-            ->icon('heroicon-o-cube')
+            ->label('Icon List')
+            ->icon('heroicon-o-squares-2x2')
             ->schema([
-                Section::make('Component: Feature Icon List')
+                Section::make('Icon List')
                     ->description('Add a list of features to your page with icon and description.')
-                    ->icon('heroicon-o-rectangle-stack')
+                    ->icon('heroicon-o-squares-2x2')
                     ->collapsed()
                     ->schema([
                         Group::make()->columns(2)->schema([

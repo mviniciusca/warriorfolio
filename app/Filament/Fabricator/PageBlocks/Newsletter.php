@@ -3,9 +3,9 @@
 namespace App\Filament\Fabricator\PageBlocks;
 
 use App\Forms\Components\Core\Info;
+use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Builder\Block;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class Newsletter extends PageBlock
@@ -14,11 +14,11 @@ class Newsletter extends PageBlock
     {
         return Block::make('newsletter')
             ->label('Newsletter Module')
-            ->icon('heroicon-o-cpu-chip')
+            ->icon('heroicon-o-envelope')
             ->schema([
                 Section::make('Core: Newsletter Section Module')
                     ->description('Add a newsletter section module to your page.')
-                    ->icon('heroicon-o-cpu-chip')
+                    ->icon('heroicon-o-envelope')
                     ->collapsed()
                     ->schema([
                         Info::make()->schema([
@@ -27,7 +27,7 @@ class Newsletter extends PageBlock
                                 ->label('Title')
                                 ->maxLength(1),
                         ]),
-                    ])
+                    ]),
             ]);
     }
 

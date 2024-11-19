@@ -2,14 +2,14 @@
 
 namespace App\Filament\Fabricator\PageBlocks\Component;
 
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Builder\Block;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class Slider extends PageBlock
@@ -18,10 +18,10 @@ class Slider extends PageBlock
     {
         return Block::make('component.slider')
             ->label('Slider Component')
-            ->icon('heroicon-o-cube')
+            ->icon('heroicon-o-gif')
             ->schema([
                 Section::make('Component: Slider')
-                    ->icon('heroicon-o-cube')
+                    ->icon('heroicon-o-gif')
                     ->description('Display a slider of images. 5 images por view.')
                     ->schema([
                         Group::make()->schema([
@@ -40,14 +40,14 @@ class Slider extends PageBlock
                             ->icon('heroicon-o-photo')
                             ->description('Display a slider of images.')
                             ->collapsible()->schema([
-                                    Repeater::make('slides')
-                                        ->schema([
-                                            FileUpload::make('image')
-                                                ->image()
-                                                ->required()
-                                                ->imageEditor()
-                                        ])->collapsible()
-                                ])
+                                Repeater::make('slides')
+                                    ->schema([
+                                        FileUpload::make('image')
+                                            ->image()
+                                            ->required()
+                                            ->imageEditor(),
+                                    ])->collapsible(),
+                            ])
                             ->collapsed(),
                         Section::make('Slider Settings')
                             ->icon('heroicon-o-cog')
@@ -85,7 +85,7 @@ class Slider extends PageBlock
                             ])
                             ->collapsed()
                             ->columns(2),
-                    ])->collapsed()
+                    ])->collapsed(),
             ]);
     }
 

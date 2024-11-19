@@ -15,12 +15,12 @@ class HeadingDescription extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('component.heading-description')
-            ->label('Heading Description Component')
-            ->icon('heroicon-o-cube')
+            ->label('Header Description')
+            ->icon('heroicon-o-bars-arrow-up')
             ->schema([
                 Section::make('Component: Heading Description')
                     ->description('Add a heading description to your page.')
-                    ->icon('heroicon-o-cube')
+                    ->icon('heroicon-o-bars-arrow-up')
                     ->collapsed()
                     ->schema([
                         Toggle::make('is_active')
@@ -44,11 +44,11 @@ class HeadingDescription extends PageBlock
                         Select::make('content_text_size')
                             ->label('Description Text Size')
                             ->options([
-                                'text-xs' => 'xs',
-                                'text-sm' => 'sm',
-                                'text-md' => 'text-md',
-                                'text-lg' => 'lg',
-                                'text-xl' => 'xl',
+                                'text-xs'  => 'xs',
+                                'text-sm'  => 'sm',
+                                'text-md'  => 'text-md',
+                                'text-lg'  => 'lg',
+                                'text-xl'  => 'xl',
                                 'text-2xl' => '2xl',
                             ])
                             ->default('text-base'),
@@ -72,7 +72,7 @@ class HeadingDescription extends PageBlock
                             ->columnSpanFull()
                             ->helperText('Description text for the component. Press enter to break a line! Twice to create a new paragraph.')
                             ->required(),
-                    ])->columns(4)
+                    ])->columns(4),
             ]);
     }
 

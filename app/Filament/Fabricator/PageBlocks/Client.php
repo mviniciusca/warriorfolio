@@ -3,9 +3,9 @@
 namespace App\Filament\Fabricator\PageBlocks;
 
 use App\Forms\Components\Core\Info;
+use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Builder\Block;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class Client extends PageBlock
@@ -14,20 +14,21 @@ class Client extends PageBlock
     {
         return Block::make('client')
             ->label('Customer Module')
-            ->icon('heroicon-o-cpu-chip')
+            ->icon('heroicon-o-building-office-2')
             ->schema([
                 Section::make('Core: Customer Section Module')
                     ->description('Add a customer section module to your page.')
-                    ->icon('heroicon-o-cpu-chip')
+                    ->icon('heroicon-o-building-office-2')
                     ->collapsed()
                     ->schema([
-                        Info::make()->schema([
-                            TextInput::make('active')
-                                ->hidden()
-                                ->label('Title')
-                                ->maxLength(1),
-                        ]),
-                    ])
+                        Info::make()
+                            ->schema([
+                                TextInput::make('active')
+                                    ->hidden()
+                                    ->label('Title')
+                                    ->maxLength(1),
+                            ]),
+                    ]),
             ]);
     }
 

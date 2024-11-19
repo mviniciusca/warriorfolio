@@ -16,12 +16,12 @@ class InfoBumper extends PageBlock
     {
         return Block::make('component.info-bumper')
             ->label('Info Bumper')
-            ->icon('heroicon-o-cube')
+            ->icon('heroicon-o-megaphone')
             ->schema([
                 Section::make('Component: Info Bumper')
                     ->columns(3)
                     ->description('A simple info bumper component.')
-                    ->icon('heroicon-o-cube')
+                    ->icon('heroicon-o-megaphone')
                     ->collapsed()
                     ->schema([
                         Group::make()->columns(3)->schema([
@@ -34,13 +34,13 @@ class InfoBumper extends PageBlock
                         TextInput::make('bumper_icon')->label('Ionicon')->placeholder('Icon')->prefix('ion-icon'),
                         TextInput::make('bumper_link')->label('Link')->placeholder('Link'),
                         Select::make('bumper_target')->label('Target')->placeholder('Target')->options([
-                            '_self' => 'Same Window',
+                            '_self'  => 'Same Window',
                             '_blank' => 'New Window',
                         ])->default('_self'),
                         Select::make('bumper_role')->label('Role')->options([
                             'primary' => 'Primary',
-                            'danger' => 'Danger',
-                            'info' => 'Info',
+                            'danger'  => 'Danger',
+                            'info'    => 'Info',
                         ])->default('primary'),
                     ]),
             ]);

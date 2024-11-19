@@ -16,7 +16,7 @@ class Testimonial extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('component.testimonial')
-            ->icon('heroicon-o-cube')
+            ->icon('heroicon-o-chat-bubble-left-right')
             ->label('Testimonial')
             ->schema([
                 Section::make('Testimonial')

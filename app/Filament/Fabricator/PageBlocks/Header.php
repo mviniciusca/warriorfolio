@@ -14,11 +14,11 @@ class Header extends PageBlock
     {
         return Block::make('header')
             ->label('Header Module')
-            ->icon('heroicon-o-cpu-chip')
+            ->icon('heroicon-o-bars-3-bottom-right')
             ->schema([
                 Section::make('Core: Header')
                     ->description('Add a header to your page.')
-                    ->icon('heroicon-o-cpu-chip')
+                    ->icon('heroicon-o-bars-3-bottom-right')
                     ->collapsed()
                     ->schema([
                         Info::make()->schema([
