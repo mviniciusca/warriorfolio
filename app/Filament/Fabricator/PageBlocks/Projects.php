@@ -16,9 +16,9 @@ class Projects extends PageBlock
         return Block::make('projects')
             ->label('Projects Module')
             ->icon('heroicon-o-rocket-launch')
-            ->schema([
+            ->schema(components: [
                 Section::make('Core: Projects Section Module')
-                    ->description('Add a projects section module to your page')
+                    ->description(description: 'Add a projects section module to your page')
                     ->icon('heroicon-o-rocket-launch')
                     ->collapsed()
                     ->schema([
