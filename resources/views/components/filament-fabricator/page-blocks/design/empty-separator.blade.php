@@ -1,4 +1,4 @@
 @aware(['page'])
-@props(['class' => null])
+@props(['vertical_space' => null])
 
-<div class="{{ $class }} w-full"></div>
+<div class="{{ $vertical_space }} w-full"></div>
