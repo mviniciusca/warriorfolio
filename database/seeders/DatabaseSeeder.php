@@ -38,8 +38,6 @@ class DatabaseSeeder extends Seeder
                 'user_id' => $user->id,
             ]);
         Page::factory()->create();
-        Page::factory()->about()->create(); // About
-        Page::factory()->contact()->create(); // Contact
 
         Mail::factory(10)->create();
         Newsletter::factory(10)->create();
