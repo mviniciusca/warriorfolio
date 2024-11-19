@@ -14,20 +14,21 @@ class Courses extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('courses')
-            ->label('About You Section')
+            ->label(__('Profile Section'))
             ->icon('heroicon-o-academic-cap')
             ->schema([
-                Section::make('Core: About Me, Profile & Courses Section Module')
-                    ->description('Add a about me, profile & courses section module to your page.')
+                Section::make(__('Core: Profile Section'))
+                    ->description(__('Core Module with About, Profile and Courses'))
                     ->icon('heroicon-o-academic-cap')
                     ->collapsed()
                     ->schema([
-                        Info::make()->schema([
-                            TextInput::make('active')
-                                ->hidden()
-                                ->label('Title')
-                                ->maxLength(1),
-                        ]),
+                        Info::make()
+                            ->schema([
+                                TextInput::make('active')
+                                    ->hidden()
+                                    ->label('Title')
+                                    ->maxLength(1),
+                            ]),
                     ]),
             ]);
     }

@@ -15,11 +15,11 @@ class HeadingDescription extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('component.heading-description')
-            ->label('Header Description')
+            ->label(__('Heading Title'))
             ->icon('heroicon-o-bars-arrow-up')
             ->schema([
-                Section::make('Component: Heading Description')
-                    ->description('Add a heading description to your page.')
+                Section::make(__('Heading Title and Subtitle'))
+                    ->description(__('Add a heading and subtitle to your page.'))
                     ->icon('heroicon-o-bars-arrow-up')
                     ->collapsed()
                     ->schema([

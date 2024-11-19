@@ -16,8 +16,8 @@ class Client extends PageBlock
             ->label('Customer Module')
             ->icon('heroicon-o-building-office-2')
             ->schema([
-                Section::make('Core: Customer Section Module')
-                    ->description('Add a customer section module to your page.')
+                Section::make(__('Core: Customer Section'))
+                    ->description(__('Add a Customer Section Module to your page.'))
                     ->icon('heroicon-o-building-office-2')
                     ->collapsed()
                     ->schema([

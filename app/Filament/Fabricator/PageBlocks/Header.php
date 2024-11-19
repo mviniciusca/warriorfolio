@@ -13,20 +13,21 @@ class Header extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('header')
-            ->label('Header Module')
+            ->label(__('Navigation Module'))
             ->icon('heroicon-o-bars-3-bottom-right')
             ->schema([
-                Section::make('Core: Header')
-                    ->description('Add a header to your page.')
+                Section::make('Core: Navigation Header')
+                    ->description(__('Add a Header Module with Logo and Menu Navigation.'))
                     ->icon('heroicon-o-bars-3-bottom-right')
                     ->collapsed()
                     ->schema([
-                        Info::make()->schema([
-                            TextInput::make('active')
-                                ->hidden()
-                                ->label('Title')
-                                ->maxLength(1),
-                        ]),
+                        Info::make()
+                            ->schema([
+                                TextInput::make('active')
+                                    ->hidden()
+                                    ->label('Title')
+                                    ->maxLength(1),
+                            ]),
                     ]),
             ]);
     }
