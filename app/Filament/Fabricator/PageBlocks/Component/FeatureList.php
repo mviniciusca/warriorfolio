@@ -33,6 +33,8 @@ class FeatureList extends PageBlock
                                 ->label('Centered Content'),
                         ]),
                         Repeater::make('features')
+                            ->cloneable()
+                            ->label(__('List'))
                             ->schema([
                                 TextInput::make('title')
                                     ->required()
