@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Setting;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -46,7 +47,7 @@ class SettingFactory extends Factory
      */
     public function configure()
     {
-        return $this->afterCreating(function (\App\Models\Setting $setting) {
+        return $this->afterCreating(function (Setting $setting) {
             $setting->module()->create([
                 'setting_id' => $setting->id,
             ]);
