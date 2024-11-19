@@ -20,7 +20,7 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'    => 'The what\'s <br><span class="tl">Next</span> is here.',
+                'section_title'    => 'Featuring <br><span class="tl">Sierra</span>',
                 'section_subtitle' => 'Warriorfolio v2.0.4 is here and this <br> is Sierra, your new hero section theme.',
                 /** Buttons */
                 'buttons' => [

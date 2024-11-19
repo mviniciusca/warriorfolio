@@ -2,11 +2,9 @@
 
 namespace App\Filament\Fabricator\PageBlocks\Design;
 
-use App\Forms\Components\Core\Info;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class BlurBeam extends PageBlock
