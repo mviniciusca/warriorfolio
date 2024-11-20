@@ -9,6 +9,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
@@ -46,7 +47,7 @@ class Cta extends PageBlock
                                             ->label(__('Image'))
                                             ->required()
                                             ->imageEditor()
-                                            ->helperText(__('Featured Image'))
+                                            ->helperText(__('Featured Image.'))
                                             ->directory('images/content')
                                             ->image(),
                                     ]),
@@ -61,6 +62,10 @@ class Cta extends PageBlock
                                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                             ->helperText('The title of the CTA module. Max: 200 characters.')
                                             ->placeholder('Title'),
+                                        Textarea::make('description')
+                                            ->label(__('Description'))
+                                            ->rows(3)
+                                            ->helperText(__('Description for the current card.')),
                                         TextInput::make('button_text')
                                             ->columnSpanFull()
                                             ->label(__('Button Text (optional'))
