@@ -47,7 +47,7 @@ class Cta extends PageBlock
                                             ->label(__('Image'))
                                             ->required()
                                             ->imageEditor()
-                                            ->helperText(__('Featured Image.'))
+                                            ->helperText(__('Featured Image. 580px x 420px will looks great!'))
                                             ->directory('images/content')
                                             ->image(),
                                     ]),
