@@ -60,14 +60,14 @@ class HeadingDescription extends PageBlock
                             ->columnSpanFull()
                             ->maxLength(300)
                             ->required()
-                            ->rows(3),
+                            ->rows(2),
                         Textarea::make('content')
                             ->label(__('Content'))
                             ->helperText(__('HTML Allowed. Use class "tl" to highlight a word.'))
                             ->columnSpanFull()
                             ->maxLength(300)
                             ->required()
-                            ->rows(3),
+                            ->rows(2),
                     ]),
             ]);
     }

@@ -15,33 +15,73 @@ class InfoBumper extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('component.info-bumper')
-            ->label('Info Bumper')
+            ->label(__('Bumper'))
             ->icon('heroicon-o-megaphone')
             ->schema([
-                Section::make('Component: Info Bumper')
+                Section::make(__('Info Bumper'))
                     ->columns(3)
-                    ->description('A simple info bumper component.')
+                    ->description(__('A simple info bumper component.'))
                     ->icon('heroicon-o-megaphone')
                     ->collapsed()
                     ->schema([
-                        Group::make()->columns(3)->schema([
-                            Toggle::make('is_active')->label('Active')->default(true),
-                            Toggle::make('is_animated')->label('Animated')->default(true),
-                            Toggle::make('is_center')->label('Align to Center')->default(false),
-                        ])->columnSpanFull(),
-                        TextInput::make('bumper_tag')->label('Tag')->placeholder('Tag')->required(),
-                        TextInput::make('bumper_title')->label('Title')->placeholder('Title')->required(),
-                        TextInput::make('bumper_icon')->label('Ionicon')->placeholder('Icon')->prefix('ion-icon'),
-                        TextInput::make('bumper_link')->label('Link')->placeholder('Link'),
-                        Select::make('bumper_target')->label('Target')->placeholder('Target')->options([
-                            '_self'  => 'Same Window',
-                            '_blank' => 'New Window',
-                        ])->default('_self'),
-                        Select::make('bumper_role')->label('Role')->options([
-                            'primary' => 'Primary',
-                            'danger'  => 'Danger',
-                            'info'    => 'Info',
-                        ])->default('primary'),
+                        Group::make()
+                            ->columns(3)
+                            ->columnSpanFull()
+                            ->schema([
+                                Toggle::make('is_active')
+                                    ->label('Active')
+                                    ->default(true),
+                                Toggle::make('is_animated')
+                                    ->label('Animated')
+                                    ->default(true),
+                                Toggle::make('is_center')
+                                    ->label('Align to Center')
+                                    ->default(false),
+                            ]),
+                        TextInput::make('bumper_tag')
+                            ->label(__('Tag'))
+                            ->prefixIcon('heroicon-o-tag')
+                            ->helperText(__('Featured Tag'))
+                            ->required(),
+                        TextInput::make('bumper_title')
+                            ->label(__('Title'))
+                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                            ->helperText(__('Information Title.'))
+                            ->columnSpan(2)
+                            ->required(),
+                        Group::make()
+                            ->columnSpanFull()
+                            ->columns(2)
+                            ->schema([
+                                TextInput::make('bumper_icon')
+                                    ->label('Ionicon')
+                                    ->helperText(__('Ionicon. (Optional)'))
+                                    ->suffixIcon('heroicon-o-window')
+                                    ->prefix('ion-icon'),
+                                TextInput::make('bumper_link')
+                                    ->label('Link')
+                                    ->prefixIcon('heroicon-o-link')
+                                    ->helperText(__('URL Link. (Optional)')),
+                                Select::make('bumper_target')
+                                    ->label('Link Target')
+                                    ->prefixIcon('heroicon-o-window')
+                                    ->helperText(__('It opens in a new or same window.'))
+                                    ->options([
+                                        '_self'  => __('Self'),
+                                        '_blank' => __('New'),
+                                    ])
+                                    ->default('_self'),
+                                Select::make('bumper_role')
+                                    ->label('Role')
+                                    ->prefixIcon('heroicon-o-bell')
+                                    ->helperText(__('Select a role of this bumper.'))
+                                    ->options([
+                                        'primary' => 'Primary',
+                                        'danger'  => 'Danger',
+                                        'info'    => 'Info',
+                                    ])
+                                    ->default('primary'),
+                            ]),
                     ]),
             ]);
     }
