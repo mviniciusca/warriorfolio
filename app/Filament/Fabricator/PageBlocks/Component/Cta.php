@@ -19,10 +19,10 @@ class Cta extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('component.cta')
-            ->label(__('cta'))
+            ->label(__('CTA'))
             ->icon('heroicon-o-square-3-stack-3d')
             ->schema([
-                Section::make('CTA')
+                Section::make(__('CTA'))
                     ->description(__('Add a CTA to your page.'))
                     ->icon('heroicon-o-square-3-stack-3d')
                     ->collapsed()
