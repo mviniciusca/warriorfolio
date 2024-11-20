@@ -8,6 +8,7 @@ use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
@@ -26,6 +27,7 @@ class Cta extends PageBlock
                     ->collapsed()
                     ->schema([
                         Repeater::make('content')
+                            ->collapsible()
                             ->cloneable()
                             ->columns(3)
                             ->label(__('CTA'))
@@ -37,6 +39,7 @@ class Cta extends PageBlock
                                         Toggle::make('is_invert')
                                             ->inline(false)
                                             ->default(false)
+                                            ->helperText(__('Invert the original position for the current card.'))
                                             ->label(__('Invert Position')),
                                         FileUpload::make('image')
                                             ->columnSpan(2)
@@ -65,13 +68,22 @@ class Cta extends PageBlock
                                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                             ->helperText('The text of the button. Max: 50 characters.')
                                             ->placeholder('Button Text'),
-                                        TextInput::make('button_url')
-                                            ->columnSpanFull()
-                                            ->prefixIcon('heroicon-o-link')
-                                            ->label('Button URL (optional)')
-                                            ->maxLength(200)
-                                            ->helperText('The URL of the button. Max: 200 characters.')
-                                            ->placeholder('Button URL'),
+                                        Group::make()
+                                            ->columns(3)
+                                            ->schema([
+                                                TextInput::make('button_url')
+                                                    ->prefixIcon('heroicon-o-link')
+                                                    ->label('Button URL (optional)')
+                                                    ->maxLength(200)
+                                                    ->columnSpan(2)
+                                                    ->helperText('The URL of the button. Max: 200 characters.')
+                                                    ->placeholder('Button URL'),
+                                                Toggle::make('is_blank')
+                                                    ->helperText(__('Link Target'))
+                                                    ->label(__('New Window'))
+                                                    ->inline(false),
+                                            ]),
+
                                     ]),
 
                             ]),
