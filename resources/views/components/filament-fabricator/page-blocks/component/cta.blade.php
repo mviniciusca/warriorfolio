@@ -1,7 +1,7 @@
 @aware(['page'])
-@props([ 'content' => null])
+@props([ 'content' => null, 'is_active' => null])
 
-
+@if($is_active)
 <section>
     @foreach ($content as $item )
 
@@ -36,3 +36,4 @@
 
     @endforeach
 </section>
+@endif
