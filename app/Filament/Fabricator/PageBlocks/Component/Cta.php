@@ -26,8 +26,11 @@ class Cta extends PageBlock
                     ->collapsed()
                     ->schema([
                         Repeater::make('content')
+                            ->cloneable()
                             ->columns(3)
                             ->label(__('CTA'))
+                            ->addActionLabel(__('New Item'))
+                            ->itemLabel(__('Card'))
                             ->schema([
                                 Group::make()
                                     ->schema([
