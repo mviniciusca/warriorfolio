@@ -36,6 +36,7 @@ class Cta extends PageBlock
                                     ->schema([
                                         Toggle::make('is_invert')
                                             ->inline(false)
+                                            ->default(false)
                                             ->label(__('Invert Position')),
                                         FileUpload::make('image')
                                             ->columnSpan(2)
