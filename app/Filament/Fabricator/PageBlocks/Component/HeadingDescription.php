@@ -6,6 +6,7 @@ use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
@@ -16,63 +17,58 @@ class HeadingDescription extends PageBlock
     {
         return Block::make('component.heading-description')
             ->label(__('Heading Title'))
-            ->icon('heroicon-o-bars-arrow-up')
+            ->icon('heroicon-o-information-circle')
             ->schema([
                 Section::make(__('Heading Title and Subtitle'))
                     ->description(__('Add a heading and subtitle to your page.'))
-                    ->icon('heroicon-o-bars-arrow-up')
+                    ->icon('heroicon-o-information-circle')
                     ->collapsed()
+                    ->columns(4)
                     ->schema([
                         Toggle::make('is_active')
-                            ->label('Active')
+                            ->label(__('Show Module'))
                             ->inline(false)
                             ->default(true),
                         Toggle::make('is_center')
-                            ->label('Align text center')
+                            ->label(__('Align to Center'))
                             ->inline(false)
-                            ->default(false),
+                            ->default(true),
                         Select::make('heading_text_size')
                             ->label('Heading Text Size')
                             ->options([
-                                'text-2xl' => '2xl',
-                                'text-3xl' => '3xl',
-                                'text-4xl' => '4xl',
-                                'text-5xl' => '5xl',
-                                'text-6xl' => '6xl',
+                                'text-2xl' => __('Large 2XL'),
+                                'text-3xl' => __('Default 3XL'),
+                                'text-4xl' => __('Text 4XL'),
+                                'text-5xl' => __('Text 5XL'),
+                                'text-6xl' => __('Text 6XL'),
                             ])
                             ->default('text-3xl'),
                         Select::make('content_text_size')
                             ->label('Description Text Size')
                             ->options([
-                                'text-xs'  => 'xs',
-                                'text-sm'  => 'sm',
-                                'text-md'  => 'text-md',
-                                'text-lg'  => 'lg',
-                                'text-xl'  => 'xl',
-                                'text-2xl' => '2xl',
+                                'text-xs'   => __('Extra Small'),
+                                'text-sm'   => __('Small'),
+                                'text-base' => __('Default'),
+                                'text-lg'   => __('Large'),
+                                'text-xl'   => __('Extra Large'),
+                                'text-2xl'  => __('Super Large'),
                             ])
                             ->default('text-base'),
-                        RichEditor::make('heading')
-                            ->toolbarButtons([
-                                'bold',
-                                'italic',
-                                'redo',
-                                'strike',
-                                'underline',
-                                'undo',
-                            ])
-                            ->label('Heading')
-                            ->placeholder('Enter a heading')
+                        Textarea::make('heading')
+                            ->label(__('Description'))
+                            ->helperText(__('HTML Allowed. Use class "tl" to highlight a word.'))
                             ->columnSpanFull()
-                            ->helperText('Press enter to break a line! Twice to create a new paragraph. Hack: Bold a word to apply a text highlight. 😊')
-                            ->required(),
-                        RichEditor::make('content')
-                            ->label('Description')
-                            ->placeholder('Enter a description')
+                            ->maxLength(300)
+                            ->required()
+                            ->rows(3),
+                        Textarea::make('content')
+                            ->label(__('Content'))
+                            ->helperText(__('HTML Allowed. Use class "tl" to highlight a word.'))
                             ->columnSpanFull()
-                            ->helperText('Description text for the component. Press enter to break a line! Twice to create a new paragraph.')
-                            ->required(),
-                    ])->columns(4),
+                            ->maxLength(300)
+                            ->required()
+                            ->rows(3),
+                    ]),
             ]);
     }
 
