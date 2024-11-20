@@ -8,7 +8,7 @@
     <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
 
         @if(data_get($item, 'image'))
-        <img class="w-full rounded-lg opacity-100 hover:opacity-90"
+        <img class="w-full order-{{ $item['is_invert'] ? '1' : '3' }} rounded-lg opacity-100 hover:opacity-90"
             src="{{ asset('storage/'. data_get($item, 'image')) }}" alt="dashboard image">
         @endif
 
