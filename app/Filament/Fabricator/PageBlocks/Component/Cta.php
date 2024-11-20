@@ -27,6 +27,9 @@ class Cta extends PageBlock
                     ->icon('heroicon-o-square-3-stack-3d')
                     ->collapsed()
                     ->schema([
+                        Toggle::make('is_active')
+                            ->default(true)
+                            ->label(__('Show Module')),
                         Repeater::make('content')
                             ->collapsible()
                             ->cloneable()
