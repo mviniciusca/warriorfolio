@@ -46,7 +46,7 @@ class InfoBumper extends PageBlock
                         TextInput::make('bumper_title')
                             ->label(__('Title'))
                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                            ->helperText(__('Title'))
+                            ->helperText(__('Main content of the bumper.'))
                             ->columnSpan(2)
                             ->required(),
                         Group::make()
