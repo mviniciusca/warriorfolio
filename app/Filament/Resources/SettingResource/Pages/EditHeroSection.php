@@ -55,11 +55,25 @@ class EditHeroSection extends EditRecord
                     ]),
                 Section::make(__('Hero Section'))
                     ->description(__('This section is used to display your hero section to the public.'))
+                    ->collapsible()
                     ->icon('heroicon-o-photo')
                     ->schema([
                         Group::make()
                             ->relationship('layout')
                             ->schema([
+                                Group::make()
+                                    ->columns(3)
+                                    ->schema([
+                                        Select::make('hero.theme')
+                                            ->label(__('Theme'))
+                                            ->helperText(__('Select the theme of your Hero Section.'))
+                                            ->prefixIcon('heroicon-o-window')
+                                            ->options([
+                                                'default' => __('Default'),
+                                                'sierra'  => __('Sierra'),
+                                            ])
+                                            ->default('default'),
+                                    ]),
                                 Section::make(__('Title & Subtitle'))
                                     ->icon('heroicon-o-bars-3-bottom-left')
                                     ->collapsed()
@@ -87,6 +101,7 @@ class EditHeroSection extends EditRecord
                                             ->reorderable()
                                             ->maxItems(2)
                                             ->columnSpanFull()
+                                            ->collapsed()
                                             ->columns(2)
                                             ->schema([
                                                 TextInput::make('button_title')
@@ -119,7 +134,7 @@ class EditHeroSection extends EditRecord
                                                     ->default('self'),
                                             ]),
                                     ]),
-                                Section::make(__('Featured Image & Theme'))
+                                Section::make(__('Featured Image'))
                                     ->icon('heroicon-o-sparkles')
                                     ->collapsed()
                                     ->columns(3)
@@ -132,14 +147,6 @@ class EditHeroSection extends EditRecord
                                             ->columnSpan(2)
                                             ->imageEditor()
                                             ->helperText(__('This is your featured image for the hero section.')),
-                                        Select::make('hero.theme')
-                                            ->label(__('Hero Section Theme'))
-                                            ->prefixIcon('heroicon-o-window')
-                                            ->options([
-                                                'default' => __('Default'),
-                                                'sierra'  => __('Sierra'),
-                                            ])
-                                            ->default('default'),
                                     ]),
                                 Section::make(__('Background'))
                                     ->icon('heroicon-o-sparkles')
@@ -191,8 +198,18 @@ class EditHeroSection extends EditRecord
 
                             ]),
                     ]),
-                Section::make(__('Slider'))
-                    ->schema([]),
+                Section::make(__('Hero Section Slider'))
+                    ->icon('heroicon-o-photo')
+                    ->collapsible()
+                    ->description(__('Slider component in your Hero Section.'))
+                    ->schema([
+                        Toggle::make('is_active')
+                            ->label(__('Active')),
+                        Repeater::make('content')
+                            ->schema([
+                                FileUpload::make('image'),
+                            ]),
+                    ]),
             ]);
     }
 }
