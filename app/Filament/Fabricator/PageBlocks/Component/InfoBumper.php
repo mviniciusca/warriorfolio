@@ -41,12 +41,12 @@ class InfoBumper extends PageBlock
                         TextInput::make('bumper_tag')
                             ->label(__('Tag'))
                             ->prefixIcon('heroicon-o-tag')
-                            ->helperText(__('Featured Tag'))w
+                            ->helperText(__('Featured Tag'))
                             ->required(),
                         TextInput::make('bumper_title')
                             ->label(__('Title'))
                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                            ->helperText(__('Information Title.'))
+                            ->helperText(__('Title'))
                             ->columnSpan(2)
                             ->required(),
                         Group::make()
@@ -55,7 +55,7 @@ class InfoBumper extends PageBlock
                             ->schema([
                                 TextInput::make('bumper_icon')
                                     ->label('Ionicon')
-                                    ->helperText(__('Ionicon. (Optional)'))
+                                    ->helperText(__('Ionicon.(Optional)'))
                                     ->suffixIcon('heroicon-o-window')
                                     ->prefix('ion-icon'),
                                 TextInput::make('bumper_link')
