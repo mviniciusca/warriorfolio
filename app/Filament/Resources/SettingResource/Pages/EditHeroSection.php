@@ -69,10 +69,10 @@ class EditHeroSection extends EditRecord
                                             ->helperText(__('Select the theme of your Hero Section.'))
                                             ->prefixIcon('heroicon-o-window')
                                             ->options([
-                                                'default' => __('Default'),
                                                 'sierra'  => __('Sierra'),
+                                                'default' => __('Default'),
                                             ])
-                                            ->default('default'),
+                                            ->default('sierra'),
                                     ]),
                                 Section::make(__('Title & Subtitle'))
                                     ->icon('heroicon-o-bars-3-bottom-left')
@@ -194,22 +194,24 @@ class EditHeroSection extends EditRecord
                                                     ->label(__('Background Image Repeat'))
                                                     ->helperText(__('Choose the repeat of the background image.')),
                                             ]),
-                                    ]),
 
+                                    ]),
+                                Section::make(__('Slider'))
+                                    ->icon('heroicon-o-photo')
+                                    ->collapsible()
+                                    ->schema([
+                                        Toggle::make('hero.slider_is_active')
+                                            ->label(__('Active')),
+                                        Repeater::make('hero.slider_content')
+                                            ->cloneable()
+                                            ->columns(3)
+                                            ->schema([
+                                                FileUpload::make('hero.slider_image'),
+                                            ]),
+                                    ]),
                             ]),
                     ]),
-                Section::make(__('Hero Section Slider'))
-                    ->icon('heroicon-o-photo')
-                    ->collapsible()
-                    ->description(__('Slider component in your Hero Section.'))
-                    ->schema([
-                        Toggle::make('is_active')
-                            ->label(__('Active')),
-                        Repeater::make('content')
-                            ->schema([
-                                FileUpload::make('image'),
-                            ]),
-                    ]),
+
             ]);
     }
 }
