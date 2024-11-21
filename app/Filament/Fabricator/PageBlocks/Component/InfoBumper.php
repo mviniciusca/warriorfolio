@@ -41,7 +41,7 @@ class InfoBumper extends PageBlock
                         TextInput::make('bumper_tag')
                             ->label(__('Tag'))
                             ->prefixIcon('heroicon-o-tag')
-                            ->helperText(__('Featured Tag'))
+                            ->helperText(__('Featured Tag'))w
                             ->required(),
                         TextInput::make('bumper_title')
                             ->label(__('Title'))
