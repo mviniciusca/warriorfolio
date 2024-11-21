@@ -62,7 +62,7 @@ class EditHeroSection extends EditRecord
                             ->schema([
                                 Section::make(__('Title & Subtitle'))
                                     ->icon('heroicon-o-bars-3-bottom-left')
-                                    ->collapsible()
+                                    ->collapsed()
                                     ->schema([
                                         TextInput::make('hero.section_title')
                                             ->label(__('Hero Section Title'))
@@ -79,7 +79,7 @@ class EditHeroSection extends EditRecord
                                     ]),
                                 Section::make(__('Buttons'))
                                     ->icon('heroicon-o-bolt')
-                                    ->collapsible()
+                                    ->collapsed()
                                     ->schema([
                                         Repeater::make('hero.buttons')
                                             ->label(__('Buttons'))
@@ -121,7 +121,7 @@ class EditHeroSection extends EditRecord
                                     ]),
                                 Section::make(__('Featured Image & Theme'))
                                     ->icon('heroicon-o-sparkles')
-                                    ->collapsible()
+                                    ->collapsed()
                                     ->columns(3)
                                     ->schema([
                                         FileUpload::make('hero.featured_image')
@@ -143,7 +143,7 @@ class EditHeroSection extends EditRecord
                                     ]),
                                 Section::make(__('Background'))
                                     ->icon('heroicon-o-sparkles')
-                                    ->collapsible()
+                                    ->collapsed()
                                     ->columns(2)
                                     ->schema([
                                         Toggle::make('hero.is_active')
@@ -191,6 +191,8 @@ class EditHeroSection extends EditRecord
 
                             ]),
                     ]),
+                Section::make(__('Slider'))
+                    ->schema([]),
             ]);
     }
 }
