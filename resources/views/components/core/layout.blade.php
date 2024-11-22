@@ -1,7 +1,7 @@
 @aware(['page'])
 @props(['module_title' => null, 'module_subtitle' => null])
 
-<main {{ $attributes->merge(['class' => 'w-full ']) }}>
+<section {{ $attributes->merge(['class' => 'w-full ']) }}>
     <div class="px-16 py-8 md:py-12">
         <div class="mx-auto max-w-7xl">
             <div class="header-title py-2">{{ $module_title }}</div>
@@ -9,4 +9,4 @@
             {{ $slot }}
         </div>
     </div>
-</main>
+</section>
