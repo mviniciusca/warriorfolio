@@ -72,6 +72,7 @@ class EditHeroSection extends EditRecord
                                             ->default('sierra'),
                                     ]),
                                 Section::make(__('Title & Subtitle'))
+                                    ->description(__('Configure the title and subtitle of your Hero Section'))
                                     ->icon('heroicon-o-bars-3-bottom-left')
                                     ->collapsed()
                                     ->schema([
@@ -89,6 +90,7 @@ class EditHeroSection extends EditRecord
                                             ->maxLength(160),
                                     ]),
                                 Section::make(__('Buttons'))
+                                    ->description(__('A pair of buttons in your Hero Section.'))
                                     ->icon('heroicon-o-bolt')
                                     ->collapsed()
                                     ->schema([
@@ -132,6 +134,7 @@ class EditHeroSection extends EditRecord
                                             ]),
                                     ]),
                                 Section::make(__('Featured Image'))
+                                    ->description(__('The featured image of your Hero Section.'))
                                     ->icon('heroicon-o-sparkles')
                                     ->collapsed()
                                     ->columns(3)
@@ -146,6 +149,7 @@ class EditHeroSection extends EditRecord
                                             ->helperText(__('This is your featured image for the hero section.')),
                                     ]),
                                 Section::make(__('Background'))
+                                    ->description(__('Controls for Background Image for your Hero Section.'))
                                     ->icon('heroicon-o-sparkles')
                                     ->collapsed()
                                     ->columns(2)
@@ -194,19 +198,23 @@ class EditHeroSection extends EditRecord
 
                                     ]),
                                 Section::make(__('Static Slider'))
+                                    ->description(__('Activate a static slider under your Hero Section.'))
                                     ->icon('heroicon-o-photo')
-                                    ->collapsible()
+                                    ->collapsed()
                                     ->columns(2)
                                     ->schema([
                                         Toggle::make('hero.slider_is_active')
-                                            ->label(__('Active')),
+                                            ->label(__('Active'))
+                                            ->helperText(__('Enable this static slider in your Hero Section.')),
                                         Toggle::make('hero.is_invert')
-                                            ->label(__('Invert Filter')),
+                                            ->default(true)
+                                            ->label(__('Invert Filter'))
+                                            ->helperText(__('When enabled, invert the color of image in dark mode. If the image is black in white mode, turns to white in dark mode.')),
                                         Repeater::make('hero.slider_content')
                                             ->columnSpanFull()
                                             ->cloneable()
                                             ->columns(2)
-                                            ->collapsible()
+                                            ->collapsed()
                                             ->label(__('Items'))
                                             ->schema([
                                                 FileUpload::make('hero.slider_image')
