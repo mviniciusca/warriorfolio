@@ -13,7 +13,7 @@
                             {{ $is_center ? 'justify-center' : 'justify-normal' }}">
                         <ion-icon class="h-10 w-10" name="{{ $item['icon'] }}"></ion-icon>
                     </div>
-                    <h3 class="mb-2 text-lg font-bold">{{ $item['title'] }}</h3>
+                    <h3 class="mb-2 text-base leading-tight font-semibold">{{ $item['title'] }}</h3>
                     <p class="text-sm opacity-80">
                         {{ $item['description'] }}
                     </p>

@@ -55,7 +55,7 @@ class HeadingDescription extends PageBlock
                             ])
                             ->default('text-base'),
                         Textarea::make('heading')
-                            ->label(__('Description'))
+                            ->label(__('Heading Title'))
                             ->helperText(__('HTML Allowed. Use class "tl" to highlight a word.'))
                             ->columnSpanFull()
                             ->maxLength(300)
@@ -65,8 +65,7 @@ class HeadingDescription extends PageBlock
                             ->label(__('Subtitle / Main Content'))
                             ->helperText(__('Short description or main content.'))
                             ->columnSpanFull()
-                            ->maxLength(6000)
-                            ->required(),
+                            ->maxLength(6000),
                     ]),
             ]);
     }
