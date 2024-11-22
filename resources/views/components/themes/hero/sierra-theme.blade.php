@@ -36,10 +36,12 @@
             </div>
 
             {{-- Newsletter Module --}}
+            @if($hero->hero['is_mailing_active'])
             <div class="animate__animated animate__slideInDown max-w-80 py-8">
                 <p class="py-4 text-base">Join your mailing list.</p>
                 @livewire('newsletter')
             </div>
+            @endif
 
         </div>
         <div class="hidden animate__animated animate__fadeInUp lg:mt-0 lg:col-span-1 rounded-lg lg:flex">
