@@ -193,7 +193,7 @@ class EditHeroSection extends EditRecord
                                             ]),
 
                                     ]),
-                                Section::make(__('Slider'))
+                                Section::make(__('Static Slider'))
                                     ->icon('heroicon-o-photo')
                                     ->collapsible()
                                     ->schema([
@@ -201,8 +201,11 @@ class EditHeroSection extends EditRecord
                                             ->label(__('Active')),
                                         Repeater::make('hero.slider_content')
                                             ->cloneable()
+                                            ->collapsible()
+                                            ->label(__('Items'))
                                             ->schema([
-                                                FileUpload::make('hero.slider_image'),
+                                                FileUpload::make('hero.slider_image')
+                                                    ->helperText(__('PNG format will look great.')),
                                             ]),
                                     ]),
                             ]),

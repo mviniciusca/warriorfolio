@@ -19,6 +19,7 @@
                     @endif
 
 
+                    {{-- Static Slider --}}
                     <div class="flex flex-wrap justify-evenly gap-4">
                         @foreach ($hero->hero['slider_content'] as $item )
                         @foreach ($item as $item )
@@ -29,7 +30,6 @@
 
                     {{-- Hero Section Slider --}}
                     <x-hero.slider :$sliders />
-                    {{-- New Sliders --}}
 
                 </div>
             </div>
