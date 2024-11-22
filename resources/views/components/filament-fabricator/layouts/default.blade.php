@@ -11,47 +11,55 @@ null, 'portfolio_core' => null, 'clients_core' => null, 'contact_core' => null, 
 </head>
 
 <body class="app-core" id="app">
-
     @if(!$maintenance || $discovery && auth()->user())
 
+    {{-- Over Modules --}}
     <x-core.alert />
-
-    @if($header_core)
-    <x-header.section />
-    @endif
-
     <x-ui.background />
-
     <x-ui.chatbox />
 
-    <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
 
-    @if($hero_core)
-    <x-hero.section />
+    @if($header_core)
+    <header class="header-section" id="app-header">
+        <x-header.section />
+    </header>
     @endif
 
-    @if($about_core)
-    <x-about.section />
-    @endif
 
-    @if($portfolio_core)
-    <x-project.section />
-    @endif
+    <main class="main-section" id="app-main">
 
-    @if($clients_core)
-    <x-client.section />
-    @endif
+        <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
 
-    @if($contact_core)
-    <x-contact.section />
-    @endif
+        @if($hero_core)
+        <x-hero.section />
+        @endif
 
-    @if($newsletter_core)
-    <x-newsletter.section />
-    @endif
+        @if($about_core)
+        <x-about.section />
+        @endif
+
+        @if($portfolio_core)
+        <x-project.section />
+        @endif
+
+        @if($clients_core)
+        <x-client.section />
+        @endif
+
+        @if($contact_core)
+        <x-contact.section />
+        @endif
+
+        @if($newsletter_core)
+        <x-newsletter.section />
+        @endif
+
+    </main>
 
     @if($footer_core)
-    <x-footer.section />
+    <footer class="footer-section" id="app-footer">
+        <x-footer.section />
+    </footer>
     @endif
 
     @endif
@@ -60,8 +68,7 @@ null, 'portfolio_core' => null, 'clients_core' => null, 'contact_core' => null, 
     @if($maintenance && (!$discovery || !auth()->user()))
     <x-maintenance.section />
     @endif
-    {{-- End Maintenance Mode --}}
-    <x-curator::modals.modal />
+
     <x-header.body-scripts />
 </body>
 
