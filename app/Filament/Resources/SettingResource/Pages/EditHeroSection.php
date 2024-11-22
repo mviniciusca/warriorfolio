@@ -3,14 +3,11 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
-use Filament\Actions;
-use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -204,7 +201,6 @@ class EditHeroSection extends EditRecord
                                             ->label(__('Active')),
                                         Repeater::make('hero.slider_content')
                                             ->cloneable()
-                                            ->columns(3)
                                             ->schema([
                                                 FileUpload::make('hero.slider_image'),
                                             ]),

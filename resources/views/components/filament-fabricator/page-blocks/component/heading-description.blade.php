@@ -3,7 +3,7 @@
 'text-3xl', 'content_text_size' => 'text-xl'])
 
 @if($is_active)
-<div class="mx-auto max-w-7xl">
+<x-core.layout>
     <div class="mx-auto max-w-screen-xl {{ $is_center ? 'text-center':'text-left' }}">
         <div id="heading-component">
 
@@ -21,5 +21,5 @@
 
         </div>
     </div>
-</div>
+</x-core.layout>
 @endif

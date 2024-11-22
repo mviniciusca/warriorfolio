@@ -29,14 +29,18 @@ class Newsletter extends Component implements HasForms
         return $form
             ->columns(2)
             ->schema([
-                TextInput::make('name')
-                    ->hiddenLabel()
-                    ->maxLength(200)
-                    ->required()
-                    ->placeholder(__('Name')),
+                // TextInput::make('name')
+                //     ->hiddenLabel()
+                //     ->maxLength(200)
+                //     ->required()
+                //     ->placeholder(__('Name')),
                 TextInput::make('email')
-                    ->placeholder(__('Email'))
+                    ->placeholder(__('Email address'))
+                    ->prefixIcon('heroicon-o-envelope')
+                    ->minLength(5)
+                    ->maxLength(255)
                     ->hiddenLabel()
+                    ->helperText(__('We hate spam.'))
                     ->email()
                     ->unique('newsletters', 'email')
                     ->required(),
