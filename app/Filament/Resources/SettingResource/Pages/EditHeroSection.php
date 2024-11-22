@@ -11,6 +11,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;
 
@@ -62,6 +63,7 @@ class EditHeroSection extends EditRecord
                                     ->columns(3)
                                     ->schema([
                                         Select::make('hero.theme')
+                                            ->live()
                                             ->label(__('Theme'))
                                             ->helperText(__('Select the theme of your Hero Section.'))
                                             ->prefixIcon('heroicon-o-window')
@@ -70,6 +72,10 @@ class EditHeroSection extends EditRecord
                                                 'default' => __('Default'),
                                             ])
                                             ->default('sierra'),
+                                        Toggle::make('hero.is_mailing_active')
+                                            ->live()
+                                            ->helperText(__('Enable the Mailing List Module on Hero Sections where this option is available.'))
+                                            ->label(__('Show Mailing List Module')),
                                     ]),
                                 Section::make(__('Title & Subtitle'))
                                     ->description(__('Configure the title and subtitle of your Hero Section'))
