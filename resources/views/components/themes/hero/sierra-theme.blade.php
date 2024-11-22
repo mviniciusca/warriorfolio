@@ -1,7 +1,7 @@
 @props(['hero'])
 
-<section>
-    <div class="grid max-w-screen-xl px-4  mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-2">
+<section class="sierra-theme" id="sierra-theme">
+    <div class="grid max-w-screen-xl mx-auto lg:grid-cols-2">
         <div class="mr-auto place-self-center lg:col-span-1">
             <h1
                 class="animate__animated animate__fadeInUp animate max-w-2xl mb-4 text-4xl font-extrabold tracking-tighter leading-none md:text-5xl xl:text-6xl dark:text-white">
