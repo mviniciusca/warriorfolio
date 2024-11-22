@@ -20,13 +20,14 @@
 
 
                     {{-- Static Slider --}}
+                    @if($hero->hero['slider_is_active'])
                     <div class="flex flex-wrap justify-evenly gap-4">
-                        @foreach ($hero->hero['slider_content'] as $item )
-                        @foreach ($item as $item )
-                        <img class="dark:invert" src="{{ asset('storage/' . $item['slider_image'] ) }}" />
-                        @endforeach
+                        @foreach (collect($hero->hero['slider_content'])->flatten(1) as $item)
+                        <img class="{{ $hero->hero['is_invert'] ? 'dark:invert' : '' }}"
+                            src="{{ asset('storage/' . $item['slider_image']) }}" />
                         @endforeach
                     </div>
+                    @endif
 
                     {{-- Hero Section Slider --}}
                     <x-hero.slider :$sliders />
