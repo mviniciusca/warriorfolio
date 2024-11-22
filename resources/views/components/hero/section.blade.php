@@ -23,8 +23,8 @@
                     @if($hero->hero['slider_is_active'])
                     <div class="flex flex-wrap justify-evenly gap-4">
                         @foreach (collect($hero->hero['slider_content'])->flatten(1) as $item)
-                        <img class="{{ $hero->hero['is_invert'] ? 'dark:invert' : '' }}"
-                            src="{{ asset('storage/' . $item['slider_image']) }}" />
+                        <img class="{{ $hero->hero['is_invert'] ? 'dark:invert' : null }} opacity-50 hover:opacity-100 transition-all duration-100"
+                            src=" {{ asset('storage/' . $item['slider_image']) }}" />
                         @endforeach
                     </div>
                     @endif
