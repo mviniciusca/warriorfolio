@@ -15,7 +15,6 @@ null, 'portfolio_core' => null, 'clients_core' => null, 'contact_core' => null, 
 
     {{-- Over Modules --}}
     <x-core.alert />
-    <x-ui.background />
     <x-ui.chatbox />
 
 
