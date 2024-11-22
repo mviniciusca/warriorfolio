@@ -73,6 +73,7 @@ class EditHeroSection extends EditRecord
                                             ])
                                             ->default('sierra'),
                                         Toggle::make('hero.is_mailing_active')
+                                            ->default(true)
                                             ->live()
                                             ->helperText(__('Enable the Mailing List Module on Hero Sections where this option is available.'))
                                             ->label(__('Show Mailing List Module')),

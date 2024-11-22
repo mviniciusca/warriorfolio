@@ -36,9 +36,9 @@
             </div>
 
             {{-- Newsletter Module --}}
-            @if($hero->hero['is_mailing_active'])
+            @if(data_get($hero, 'is_mailing_active') ?? true)
             <div class="animate__animated animate__slideInDown max-w-80 py-8">
-                <p class="py-4 text-base">Join your mailing list.</p>
+                <p class="py-4 text-base">{{ __('Join your mailing list.') }}</p>
                 @livewire('newsletter')
             </div>
             @endif

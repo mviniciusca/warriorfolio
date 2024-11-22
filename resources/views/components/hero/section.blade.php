@@ -16,7 +16,7 @@
             @endif
 
             {{-- Static Slider --}}
-            @if($hero->hero['slider_is_active'])
+            @if(data_get($hero,'slider_is_active') ?? false)
             <div class="flex mb-16 mt-4 mx-auto flex-wrap justify-around gap-4">
                 @foreach (collect($hero->hero['slider_content'])->flatten(1) as $item)
                 <img class="{{ $hero->hero['is_invert'] ? 'dark:invert' : null }} opacity-50 hover:opacity-100 transition-all duration-100"

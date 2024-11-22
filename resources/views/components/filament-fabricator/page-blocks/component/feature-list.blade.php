@@ -4,7 +4,7 @@
 @if($is_active)
 <x-core.layout>
     <section>
-        <div class="mx-auto max-w-screen-xl">
+        <div class="mx-auto pb-8">
             <div
                 class="space-y-8 {{ $is_center ? 'text-center' : 'text-left' }} md:grid md:grid-cols-3 md:gap-12 md:space-y-0 lg:grid-cols-3">
                 @foreach ($features as $item)
