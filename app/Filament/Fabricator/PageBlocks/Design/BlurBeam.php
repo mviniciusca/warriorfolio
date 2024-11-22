@@ -21,13 +21,16 @@ class BlurBeam extends PageBlock
                     ->collapsed()
                     ->schema([
                         Select::make('color')
+                            ->helperText(__('Select the color or style of the light. Default color is pink.'))
+                            ->required()
                             ->options([
                                 'black'   => __('Black'),
                                 'blur'    => __('Blur'),
                                 'pink'    => __('Pink'),
                                 'rainbow' => __('Rainbow'),
                                 'white'   => __('White'),
-                            ]),
+                            ])
+                            ->default('pink'),
                     ]),
             ]);
     }

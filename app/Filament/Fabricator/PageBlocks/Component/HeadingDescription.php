@@ -61,13 +61,12 @@ class HeadingDescription extends PageBlock
                             ->maxLength(300)
                             ->required()
                             ->rows(2),
-                        Textarea::make('content')
-                            ->label(__('Content'))
-                            ->helperText(__('HTML Allowed. Use class "tl" to highlight a word.'))
+                        RichEditor::make('content')
+                            ->label(__('Subtitle / Main Content'))
+                            ->helperText(__('Short description or main content.'))
                             ->columnSpanFull()
-                            ->maxLength(300)
-                            ->required()
-                            ->rows(2),
+                            ->maxLength(6000)
+                            ->required(),
                     ]),
             ]);
     }
