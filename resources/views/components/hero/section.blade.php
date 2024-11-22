@@ -19,7 +19,7 @@
                     @endif
 
 
-                    <div class="flex flex-wrap justify-evenly">
+                    <div class="flex flex-wrap justify-evenly gap-4">
                         @foreach ($hero->hero['slider_content'] as $item )
                         @foreach ($item as $item )
                         <img class="dark:invert" src="{{ asset('storage/' . $item['slider_image'] ) }}" />
