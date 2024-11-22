@@ -8,7 +8,7 @@
                     src="{{ data_get($data, 'mailing.image') ? asset('storage/' . $data->mailing['image']) : asset('img/core/svg/developer.svg') }}"
                     alt="newsletter-image" />
             </div>
-            <div class="text w-full p-4 lg:w-1/4">
+            <div class="text w-full p-4 lg:w-2/4">
                 <span class="text-2xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
                     <p>
                         {!! $data->mailing['section_title'] !!}
@@ -18,9 +18,11 @@
                     </p>
                 </span>
             </div>
-            <div class="form mx-auto flex w-full flex-wrap justify-center p-4 lg:w-2/4">
+
+            <div class="form flex flex-wrap mx-auto justify-start text-center lg:text-left lg:w-1/4">
                 <livewire:newsletter :buttonText="$data->mailing['button_text']">
             </div>
+
         </div>
     </div>
 </x-core.layout>
