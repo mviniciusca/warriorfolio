@@ -1,12 +1,14 @@
+/* Default Theme CSS */
+
+/** Animate CSS **/
 @import '../../node_modules/animate.css/animate.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/** animate.css **/
+/** Background Animation FX **/
 
-/** animate opacity : start 100% -> end 0% after 2 seconds **/
 .animate-opacity {
     animation: animateOpacity 2s ease-in;
 }
@@ -21,6 +23,7 @@
     }
 }
 
+/** Main App **/
 
 @layer base {
     html {
@@ -28,7 +31,6 @@
     }
 }
 
-/** Main App **/
 body {
     @apply overflow-x-hidden antialiased scroll-smooth bg-secondary-50 text-secondary-600 dark:bg-secondary-900 dark:text-secondary-400
 }
