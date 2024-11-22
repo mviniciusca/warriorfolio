@@ -1,6 +1,5 @@
 @props(['hero'])
 
-
 <section>
     <div class="grid max-w-screen-xl px-4  mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-2">
         <div class="mr-auto place-self-center lg:col-span-1">
