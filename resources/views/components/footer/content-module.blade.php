@@ -1,5 +1,5 @@
 <div class="mx-auto" id="footer-content">
-    <div class="mx-auto flex flex-wrap items-center justify-center gap-2 py-4 text-center md:flex-row">
+    <div class="mx-auto flex flex-wrap items-center justify-center gap-2  text-center md:flex-row">
         {{-- App Logo --}}
         @if(data_get($setting, 'design.logo'))
         <img src="{{ asset('storage/' . data_get($setting, 'design.logo')) }}"
