@@ -196,16 +196,34 @@ class EditHeroSection extends EditRecord
                                 Section::make(__('Static Slider'))
                                     ->icon('heroicon-o-photo')
                                     ->collapsible()
+                                    ->columns(2)
                                     ->schema([
                                         Toggle::make('hero.slider_is_active')
                                             ->label(__('Active')),
+                                        Toggle::make('hero.is_invert')
+                                            ->label(__('Invert Filter')),
                                         Repeater::make('hero.slider_content')
+                                            ->columnSpanFull()
                                             ->cloneable()
+                                            ->columns(2)
                                             ->collapsible()
                                             ->label(__('Items'))
                                             ->schema([
                                                 FileUpload::make('hero.slider_image')
+                                                    ->label(__('Image'))
                                                     ->helperText(__('PNG format will look great.')),
+                                                Group::make()
+                                                    ->schema([
+                                                        TextInput::make('hero.slider_link')
+                                                            ->label(__('Link (Optional)'))
+                                                            ->helperText(__('URL Link.'))
+                                                            ->columnSpan(2)
+                                                            ->prefixIcon('heroicon-o-link'),
+                                                        Toggle::make('hero.is_new_window')
+                                                            ->label(__('New Window'))
+                                                            ->default(false),
+                                                    ]),
+
                                             ]),
                                     ]),
                             ]),
