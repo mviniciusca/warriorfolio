@@ -36,7 +36,7 @@
             </div>
 
             {{-- Newsletter Module --}}
-            <div class="animate__animated animate__slideInDown  py-12">
+            <div class="animate__animated animate__slideInDown max-w-80 py-8">
                 <p class="py-4 text-base">Join your mailing list.</p>
                 @livewire('newsletter')
             </div>

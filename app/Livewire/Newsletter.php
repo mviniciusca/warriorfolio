@@ -27,7 +27,7 @@ class Newsletter extends Component implements HasForms
     public function form(Form $form): Form
     {
         return $form
-            ->columns(2)
+            ->columns(1)
             ->schema([
                 // TextInput::make('name')
                 //     ->hiddenLabel()
