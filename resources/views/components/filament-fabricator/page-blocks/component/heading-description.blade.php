@@ -8,7 +8,7 @@
         <div id="heading-component">
             <div class="grid mx-auto lg:gap-8 py-6 lg:grid-cols-12">
                 <div class="{{ $image ? 'col-span-7' : 'col-span-full' }}"> @if($heading)
-                    <h2 class="heading-module-title mb-4 font-bold tracking-tighter {{ $heading_text_size }}">
+                    <h2 class="heading-module-title mb-8 font-bold tracking-tighter {{ $heading_text_size }}">
                         {!! $heading !!}
                     </h2>
                     @endif
