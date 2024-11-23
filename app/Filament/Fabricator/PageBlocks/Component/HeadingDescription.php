@@ -42,11 +42,11 @@ class HeadingDescription extends PageBlock
                                 Select::make('heading_text_size')
                                     ->label('Heading Text Size')
                                     ->options([
-                                        'text-2xl' => __('Large 2XL'),
-                                        'text-3xl' => __('Default 3XL'),
-                                        'text-4xl' => __('Text 4XL'),
-                                        'text-5xl' => __('Text 5XL'),
-                                        'text-6xl' => __('Text 6XL'),
+                                        'sm:text-lg md:text-lg lg:text-2xl'  => __('Large 2XL'),
+                                        'sm:text-lg md:text-xl lg:text-3xl'  => __('Default 3XL'),
+                                        'sm:text-lg md:text-2xl lg:text-4xl' => __('Text 4XL'),
+                                        'sm:text-lg md:text-3xl lg:text-5xl' => __('Text 5XL'),
+                                        'sm:text-lg md:text-4xl lg:text-6xl' => __('Text 6XL'),
                                     ])
                                     ->default('text-3xl'),
                                 Select::make('content_text_size')
