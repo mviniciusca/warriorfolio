@@ -103,6 +103,11 @@ class EditHeroSection extends EditRecord
                                     ->schema([
                                         Repeater::make('hero.buttons')
                                             ->label(__('Buttons'))
+                                            ->itemLabel(function (array $state): string {
+                                                $title = $state['button_title'] ?? __('Button');
+
+                                                return preg_replace('/<.*?>.*?<\/.*?>/', '', $title);
+                                            })
                                             ->helperText(__('Max two buttons.'))
                                             ->reorderable()
                                             ->maxItems(2)

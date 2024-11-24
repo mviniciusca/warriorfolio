@@ -31,6 +31,11 @@ class EditSocialNetwork extends EditRecord
                 ->schema([
                     Repeater::make('social')
                         ->cloneable()
+                        ->itemLabel(function (array $state): string {
+                            $title = $state['social_network'] ?? __('Card');
+
+                            return preg_replace('/<.*?>.*?<\/.*?>/', '', ucfirst($title));
+                        })
                         ->reorderable()
                         ->columns(6)
                         ->schema([
@@ -40,6 +45,7 @@ class EditSocialNetwork extends EditRecord
                                 ->default(true),
                             Select::make('social_network')
                                 ->columnSpan(2)
+                                ->live()
                                 ->required()
                                 ->helperText(__('Social Network'))
                                 ->prefixIcon('heroicon-o-user')
