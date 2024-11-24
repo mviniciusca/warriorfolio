@@ -48,25 +48,34 @@ class EditNavigation extends EditRecord
                             ->relationship('navigation')
                             ->schema([
                                 Repeater::make('content')
+                                    ->collapsible()
                                     ->label(__('Navigation Links'))
                                     ->defaultItems(1)
                                     ->addActionLabel(__('Add Link'))
                                     ->cloneable()
+                                    ->itemLabel(function (array $state): string {
+                                        $title = $state['name'] ?? __('Navigation Card');
+
+                                        return preg_replace('/<.*?>.*?<\/.*?>/', '', $title);
+                                    })
                                     ->reorderable()
                                     ->columns(7)
                                     ->schema([
                                         TextInput::make('name')
                                             ->label(__('Title'))
                                             ->prefixIcon('heroicon-o-window')
+                                            ->helperText(__('Link Title'))
                                             ->columnSpan(2)
                                             ->required(),
                                         TextInput::make('url')
                                             ->label(__('URL'))
                                             ->prefixIcon('heroicon-o-link')
+                                            ->helperText(__('Link URL'))
                                             ->columnSpan(3)
                                             ->required(),
                                         Select::make('target')
                                             ->columnSpan(1)
+                                            ->helperText(__('Link Target'))
                                             ->label(__('Target'))
                                             ->options([
                                                 '_self'  => __('Self'),
@@ -75,6 +84,7 @@ class EditNavigation extends EditRecord
                                             ->default('_self')
                                             ->required(),
                                         Toggle::make('is_active')
+                                            ->helperText(__('Status'))
                                             ->label(__('Visible'))
                                             ->inline(false)
                                             ->default(true)
