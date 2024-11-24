@@ -9,6 +9,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Get;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class FeatureList extends PageBlock
@@ -36,11 +37,14 @@ class FeatureList extends PageBlock
                             ]),
                         Repeater::make('features')
                             ->columns(4)
+                            ->live()
+                            ->label(__('Card'))
                             ->collapsed()
                             ->cloneable()
-                            ->label(__('List'))
+                            ->itemLabel(fn (array $state): string => $state['title'] ?? __('Card'))
                             ->schema([
                                 TextInput::make('title')
+                                    ->live()
                                     ->required()
                                     ->columnSpan(2)
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
