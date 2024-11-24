@@ -43,22 +43,37 @@ class FeatureList extends PageBlock
                                 TextInput::make('title')
                                     ->required()
                                     ->columnSpan(2)
+                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->helperText(__('The title of the feature. Max: 255 characters.'))
                                     ->maxLength(255)
                                     ->label(__('Title of the feature.')),
                                 TextInput::make('icon')
                                     ->label(__('Icon (optional)'))
-                                    ->prefix('ion-icon')
                                     ->placeholder('icon-name')
                                     ->columnSpan(2)
+                                    ->prefixIcon('heroicon-o-cube')
                                     ->maxLength(255)
-                                    ->helperText(__('Ionicon Name (without the ion-icon prefix)')),
+                                    ->helperText(__('Ionicon Name (ex: heart-outline)')),
                                 Textarea::make('description')
                                     ->columnSpanFull()
                                     ->maxLength(5000)
                                     ->rows(3)
                                     ->helperText(__('Here you can talk about the feature in detail. Max: 5000 characters.'))
                                     ->label('Description (optional)'),
+                                Group::make()
+                                    ->columnSpanFull()
+                                    ->columns(3)
+                                    ->schema([
+                                        TextInput::make('link')
+                                            ->columnSpan(2)
+                                            ->label(__('Link (Optional)'))
+                                            ->helperText(__('URL Link to this card. Optional.'))
+                                            ->prefixIcon('heroicon-o-link'),
+                                        Toggle::make('is_new_window')
+                                            ->inline(false)
+                                            ->label(__('New Window'))
+                                            ->helperText(__('Opens in a new Window')),
+                                    ]),
                             ]),
                     ]),
             ]);
