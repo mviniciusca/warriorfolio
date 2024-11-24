@@ -44,7 +44,7 @@ class FeatureList extends PageBlock
                                     ->required()
                                     ->columnSpan(2)
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                                    ->helperText(__('The title of the feature. Max: 255 characters.'))
+                                    ->helperText(__('The title of the feature.'))
                                     ->maxLength(255)
                                     ->label(__('Title of the feature.')),
                                 TextInput::make('icon')
@@ -56,9 +56,8 @@ class FeatureList extends PageBlock
                                     ->helperText(__('Ionicon Name (ex: heart-outline)')),
                                 Textarea::make('description')
                                     ->columnSpanFull()
-                                    ->maxLength(5000)
                                     ->rows(3)
-                                    ->helperText(__('Here you can talk about the feature in detail. Max: 5000 characters.'))
+                                    ->helperText(__('Here you can talk about the feature in detail.'))
                                     ->label('Description (optional)'),
                                 Group::make()
                                     ->columnSpanFull()
