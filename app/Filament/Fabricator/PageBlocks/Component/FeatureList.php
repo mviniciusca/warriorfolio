@@ -41,7 +41,11 @@ class FeatureList extends PageBlock
                             ->label(__('Card'))
                             ->collapsed()
                             ->cloneable()
-                            ->itemLabel(fn (array $state): string => $state['title'] ?? __('Card'))
+                            ->itemLabel(function (array $state): string {
+                                $title = $state['title'] ?? __('Card');
+
+                                return preg_replace('/<.*?>.*?<\/.*?>/', '', $title);
+                            })
                             ->schema([
                                 TextInput::make('title')
                                     ->live()
