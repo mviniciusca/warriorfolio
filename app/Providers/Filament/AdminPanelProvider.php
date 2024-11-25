@@ -2,7 +2,6 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Resources\CustomMediaResource;
 use Awcodes\Curator\CuratorPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -47,9 +46,14 @@ class AdminPanelProvider extends PanelProvider
                     ->url('/admin/settings/1/edit-hero-section')
                     ->group(__('Website Design'))
                     ->sort(1),
-                NavigationItem::make(__('Background & Favicon'))
+                NavigationItem::make(__('Background & Logo'))
                     ->icon('heroicon-o-paint-brush')
                     ->url('/admin/settings/1/edit-appearance')
+                    ->group(__('Website Design'))
+                    ->sort(1),
+                NavigationItem::make(__('Navigation'))
+                    ->icon('heroicon-o-bars-3-bottom-left')
+                    ->url('/admin/settings/1/edit-navigation')
                     ->group(__('Website Design'))
                     ->sort(1),
                 NavigationItem::make(__('About Section'))
