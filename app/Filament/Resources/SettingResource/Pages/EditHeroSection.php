@@ -88,11 +88,13 @@ class EditHeroSection extends EditRecord
                                             ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 140 characters.')
                                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                             ->columnSpanFull()
+                                            ->placeholder(__('hackable ♠'))
                                             ->maxLength(140),
                                         TextInput::make('hero.section_subtitle')
                                             ->label('Hero Section Subtitle')
                                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                             ->columnSpanFull()
+                                            ->placeholder(__('hackable ♠'))
                                             ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 160 characters.')
                                             ->maxLength(160),
                                     ]),

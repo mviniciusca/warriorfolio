@@ -64,12 +64,14 @@ class EditContactSection extends EditRecord
                                     ->autoFocus()
                                     ->label(__('Contact Section Title'))
                                     ->columnSpanFull()
+                                    ->placeholder(__('hackable ♠'))
                                     ->helperText(__('HTML allowed. Use the class "tl" to highlight a word in the title. Max: 160 characters.'))
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->maxLength(160),
                                 TextInput::make('contact.section_subtitle')
                                     ->label(__('Contact Section Subtitle'))
                                     ->columnSpanFull()
+                                    ->placeholder(__('hackable ♠'))
                                     ->helperText(__('You also can use the class "tl" to highlight a word in the subtitle. Max: 160 characters.'))
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->maxLength(160),

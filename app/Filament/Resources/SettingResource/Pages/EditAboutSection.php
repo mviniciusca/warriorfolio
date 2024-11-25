@@ -58,12 +58,14 @@ class EditAboutSection extends EditRecord
                             ->label(__('Fill Section Background'))
                             ->helperText(__('Fill the background of this section with a secondary default color.')),
                         Textarea::make('about.section_title')
+                            ->placeholder(__('hackable ♠'))
                             ->label(__('About Section Title'))
                             ->helperText(__('HTML allowed. Use the class text-highlight to highlight a word in the title'))
                             ->rows(3)
                             ->columnSpanFull()
                             ->maxLength(255),
                         Textarea::make('about.section_subtitle')
+                            ->placeholder(__('hackable ♠'))
                             ->label(__('About Section Subtitle'))
                             ->helperText(__('You also can use the class text-highlight to highlight a word in the subtitle'))
                             ->rows(3)

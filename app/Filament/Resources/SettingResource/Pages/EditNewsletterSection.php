@@ -61,11 +61,13 @@ class EditNewsletterSection extends EditRecord
                             ->schema([
                                 TextInput::make('mailing.section_title')
                                     ->label(__('Title'))
+                                    ->placeholder(__('hackable ♠'))
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->helperText(__('HTML allowed. Use the class "tl" to highlight a word in the text. Max: 100 characters'))
                                     ->maxLength(100),
                                 TextInput::make('mailing.section_subtitle')
                                     ->label(__('Subtitle'))
+                                    ->placeholder(__('hackable ♠'))
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->helperText(__('HTML allowed. Use the class "tl" to highlight a word in the text. Max: 100 characters'))
                                     ->maxLength(100),

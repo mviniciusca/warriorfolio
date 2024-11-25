@@ -59,12 +59,14 @@ class EditClientSection extends EditRecord
                     Textarea::make('customer.section_title')
                         ->label(__('Customers Section Text'))
                         ->helperText(__('HTML allowed. Use the class text-highlight to highlight a word in the text'))
+                        ->placeholder(__('hackable ♠'))
                         ->columnSpanFull()
                         ->rows(3)
                         ->maxLength(255),
                     Textarea::make('customer.section_subtitle')
                         ->label(__('Customers Section Subtitle'))
                         ->helperText(__('You also can use the class text-highlight to highlight a word in the subtitle'))
+                        ->placeholder(__('hackable ♠'))
                         ->columnSpanFull()
                         ->rows(3)
                         ->maxLength(255),

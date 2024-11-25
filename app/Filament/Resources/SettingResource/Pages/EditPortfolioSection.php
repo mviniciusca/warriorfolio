@@ -58,12 +58,14 @@ class EditPortfolioSection extends EditRecord
                             ->helperText('Fill the background of this section with a secondary default color.'),
                         Textarea::make('portfolio.section_title')
                             ->label('Portfolio Section Title')
+                            ->placeholder(__('hackable ♠'))
                             ->helperText(__('HTMl allowed. Use the class tl to highlight a word in the title'))
                             ->rows(3)
                             ->columnSpanFull()
                             ->maxLength(255),
                         Textarea::make('portfolio.section_subtitle')
                             ->label(__('Portfolio Section Subtitle'))
+                            ->placeholder(__('hackable ♠'))
                             ->helperText(__('HTMl allowed. Use the class tl to highlight a word in the title'))
                             ->rows(3)
                             ->columnSpanFull()
