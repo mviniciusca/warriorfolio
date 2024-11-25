@@ -6,6 +6,7 @@ use App\Filament\Resources\SettingResource;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
@@ -56,18 +57,18 @@ class EditPortfolioSection extends EditRecord
                             ->default(false)
                             ->label('Fill Section Background')
                             ->helperText('Fill the background of this section with a secondary default color.'),
-                        Textarea::make('portfolio.section_title')
+                        TextInput::make('portfolio.section_title')
                             ->label('Portfolio Section Title')
                             ->placeholder(__('hackable ♠'))
                             ->helperText(__('HTMl allowed. Use the class tl to highlight a word in the title'))
-                            ->rows(3)
+                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
                             ->columnSpanFull()
                             ->maxLength(255),
-                        Textarea::make('portfolio.section_subtitle')
+                        TextInput::make('portfolio.section_subtitle')
                             ->label(__('Portfolio Section Subtitle'))
                             ->placeholder(__('hackable ♠'))
                             ->helperText(__('HTMl allowed. Use the class tl to highlight a word in the title'))
-                            ->rows(3)
+                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
                             ->columnSpanFull()
                             ->maxLength(255),
                     ]),

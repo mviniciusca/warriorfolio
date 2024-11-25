@@ -6,6 +6,7 @@ use App\Filament\Resources\SettingResource;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
@@ -57,18 +58,18 @@ class EditAboutSection extends EditRecord
                         Toggle::make('about.section_fill')
                             ->label(__('Fill Section Background'))
                             ->helperText(__('Fill the background of this section with a secondary default color.')),
-                        Textarea::make('about.section_title')
+                        TextInput::make('about.section_title')
                             ->placeholder(__('hackable ♠'))
                             ->label(__('About Section Title'))
+                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
                             ->helperText(__('HTML allowed. Use the class text-highlight to highlight a word in the title'))
-                            ->rows(3)
                             ->columnSpanFull()
                             ->maxLength(255),
-                        Textarea::make('about.section_subtitle')
+                        TextInput::make('about.section_subtitle')
                             ->placeholder(__('hackable ♠'))
+                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
                             ->label(__('About Section Subtitle'))
                             ->helperText(__('You also can use the class text-highlight to highlight a word in the subtitle'))
-                            ->rows(3)
                             ->columnSpanFull()
                             ->maxLength(255),
                     ]),

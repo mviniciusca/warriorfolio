@@ -7,6 +7,7 @@ use Filament\Actions;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
@@ -56,19 +57,19 @@ class EditClientSection extends EditRecord
                     Toggle::make('customer.section_fill')
                         ->label(__('Fill Section Background'))
                         ->helperText(__('Fill the background of this section with a secondary default color.')),
-                    Textarea::make('customer.section_title')
+                    TextInput::make('customer.section_title')
                         ->label(__('Customers Section Text'))
                         ->helperText(__('HTML allowed. Use the class text-highlight to highlight a word in the text'))
                         ->placeholder(__('hackable ♠'))
                         ->columnSpanFull()
-                        ->rows(3)
+                        ->prefixIcon('heroicon-o-bars-3-bottom-left')
                         ->maxLength(255),
-                    Textarea::make('customer.section_subtitle')
+                    TextInput::make('customer.section_subtitle')
                         ->label(__('Customers Section Subtitle'))
                         ->helperText(__('You also can use the class text-highlight to highlight a word in the subtitle'))
                         ->placeholder(__('hackable ♠'))
                         ->columnSpanFull()
-                        ->rows(3)
+                        ->prefixIcon('heroicon-o-bars-3-bottom-left')
                         ->maxLength(255),
                 ]),
         ]);
