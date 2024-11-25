@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
-use Filament\Actions;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
@@ -63,6 +62,7 @@ class EditNavigation extends EditRecord
                                     ->schema([
                                         TextInput::make('name')
                                             ->label(__('Title'))
+                                            ->placeholder(__('hackable ♠'))
                                             ->prefixIcon('heroicon-o-window')
                                             ->helperText(__('Link Title'))
                                             ->columnSpan(2)

@@ -161,5 +161,5 @@ trix-editor {
 }
 
 .tag {
-    @apply font-light bg-primary-500 ml-1 absolute animate-pulse mt-1 lowercase text-xs px-2 text-white rounded-md;
+    @apply font-light bg-primary-700 animate-pulse lowercase text-xs px-2 text-white rounded-md;
 }
