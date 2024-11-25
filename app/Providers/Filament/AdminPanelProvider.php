@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Models\Setting;
 use Awcodes\Curator\CuratorPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -14,6 +15,7 @@ use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
@@ -43,37 +45,37 @@ class AdminPanelProvider extends PanelProvider
                     ->sort(-1),
                 NavigationItem::make(__('Hero Section'))
                     ->icon('heroicon-o-bolt')
-                    ->url('/admin/settings/1/edit-hero-section')
+                    ->url('/admin/settings/'.$this->getSetting().'/edit-hero-section')
                     ->group(__('Website Design'))
                     ->sort(1),
                 NavigationItem::make(__('Background & Logo'))
                     ->icon('heroicon-o-paint-brush')
-                    ->url('/admin/settings/1/edit-appearance')
+                    ->url('/admin/settings/'.$this->getSetting().'/edit-appearance')
                     ->group(__('Website Design'))
                     ->sort(1),
                 NavigationItem::make(__('Navigation'))
                     ->icon('heroicon-o-bars-3-bottom-left')
-                    ->url('/admin/settings/1/edit-navigation')
+                    ->url('/admin/settings/'.$this->getSetting().'/edit-navigation')
                     ->group(__('Website Design'))
                     ->sort(1),
                 NavigationItem::make(__('About Section'))
                     ->icon('heroicon-o-user')
-                    ->url('/admin/settings/1/edit-about-section')
+                    ->url('/admin/settings/'.$this->getSetting().'/edit-about-section')
                     ->group(__('App Sections'))
                     ->sort(1),
                 NavigationItem::make(__('Projects Section'))
                     ->icon('heroicon-o-rocket-launch')
-                    ->url('/admin/settings/1/edit-portfolio-section')
+                    ->url('/admin/settings/'.$this->getSetting().'/edit-portfolio-section')
                     ->group(__('App Sections'))
                     ->sort(2),
                 NavigationItem::make(__('Contact Section'))
                     ->icon('heroicon-o-envelope')
-                    ->url('/admin/settings/1/edit-contact-section')
+                    ->url('/admin/settings/'.$this->getSetting().'/edit-contact-section')
                     ->group(__('App Sections'))
                     ->sort(3),
                 NavigationItem::make(__('More Sections'))
                     ->icon('heroicon-o-arrow-up-right')
-                    ->url('/admin/settings/1/edit')
+                    ->url('/admin/settings/'.$this->getSetting().'/edit')
                     ->group(__('App Sections'))
                     ->sort(3),
             ])
@@ -123,5 +125,10 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
+    }
+
+    private function getSetting(): mixed
+    {
+        return Setting::first(['id'])->value('id');
     }
 }
