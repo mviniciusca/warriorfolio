@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
         Category::factory()->create();
         Alert::factory()->create();
 
+        /** Pages */
         $this->call([
             LandingPageSeeder::class,
             DocumentationPageSeeder::class,
