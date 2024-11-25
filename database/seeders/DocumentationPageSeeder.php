@@ -23,7 +23,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'design.blur-beam',
                     ],
                     [
-                        'data' => ['class' => 'py-3 md:py-6 lg:py-12'],
+                        'data' => ['vertical_space' => 'sm'],
                         'type' => 'design.empty-separator',
                     ],
                     [
@@ -39,7 +39,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'component.heading-description',
                     ],
                     [
-                        'data' => ['class' => 'py-1 md:py-2 lg:py-4'],
+                        'data' => ['vertical_space' => 'xs'],
                         'type' => 'design.empty-separator',
                     ],
                     [
@@ -47,7 +47,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'design.blur-beam',
                     ],
                     [
-                        'data' => ['class' => 'py-3 md:py-6 lg:py-12'],
+                        'data' => ['vertical_space' => 'xs'],
                         'type' => 'design.empty-separator',
                     ],
                     [
@@ -139,7 +139,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'design.blur-beam',
                     ],
                     [
-                        'data' => ['class' => 'py-3 md:py-6 lg:py-12'],
+                        'data' => ['vertical_space' => 'xs'],
                         'type' => 'design.empty-separator',
                     ],
                     [
@@ -217,7 +217,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'design.blur-beam',
                     ],
                     [
-                        'data' => ['class' => 'py-1 md:py-2 lg:py-4'],
+                        'data' => ['vertical_space' => 'xs'],
                         'type' => 'design.empty-separator',
                     ],
                     [
