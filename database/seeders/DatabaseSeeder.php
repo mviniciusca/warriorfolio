@@ -8,13 +8,12 @@ use App\Models\Alert;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Mail;
-use App\Models\Navigation;
 use App\Models\Newsletter;
-use App\Models\Page;
 use App\Models\Setting;
 use App\Models\User;
+use Database\Seeders\DocumentationPageSeeder;
+use Database\Seeders\LandingPageSeeder;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -37,12 +36,15 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'user_id' => $user->id,
             ]);
-        Page::factory()->create();
-
         Mail::factory(10)->create();
         Newsletter::factory(10)->create();
         Course::factory(3)->create();
         Category::factory()->create();
         Alert::factory()->create();
+
+        $this->call([
+            LandingPageSeeder::class,
+            DocumentationPageSeeder::class,
+        ]);
     }
 }
