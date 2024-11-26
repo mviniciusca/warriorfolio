@@ -27,7 +27,7 @@ class MailMessage extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Mail Message',
+            subject: $this->data['subject'] ?? __('New Message from ').env('APP_NAME'),
         );
     }
 
