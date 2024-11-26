@@ -77,8 +77,8 @@ class AdminPanelProvider extends PanelProvider
                     ->url('/admin/settings/'.$this->getSetting().'/edit')
                     ->group(__('App Sections'))
                     ->sort(3),
-                NavigationItem::make(__('Logs'))
-                    ->icon('heroicon-o-exclamation-triangle')
+                NavigationItem::make(__('Log Viewer'))
+                    ->icon('heroicon-o-arrow-up-right')
                     ->url('/admin/logs')
                     ->group(__('Settings'))
                     ->sort(3),
