@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Mail\MailMessage;
-use App\Models\Mail as MailModel;
 use Exception;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
