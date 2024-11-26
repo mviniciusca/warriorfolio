@@ -47,7 +47,7 @@ class EditNavigation extends EditRecord
                             ->relationship('navigation')
                             ->schema([
                                 Repeater::make('content')
-                                    ->collapsible()
+                                    ->collapsed()
                                     ->label(__('Navigation Links'))
                                     ->defaultItems(1)
                                     ->addActionLabel(__('Add Link'))
