@@ -12,7 +12,7 @@
                 <a target="{{ $is_new_window ? '_blank' : '_self' }}" href="{{ $link }}">
                     @endif
                     <div
-                        class="icon-card p-8 rounded-lg min-h-60 opacity-90 hover:opacity-100 transition-all duration-50 
+                        class="icon-card p-4 rounded-lg min-h-60 opacity-90 hover:opacity-100 transition-all duration-50 
                         {{ $is_animated ? 'hover:-mt-5 hover:z-10' : '' }}
                         {{ $is_filled ? ' dark:bg-secondary-950/50 hover:dark:bg-secondary-950 bg-secondary-50/50 hover:bg-secondary-100' : '' }} 
                         {{ $is_border ? 'border hover:border-secondary-400 dark:hover:border-secondary-700 dark:border-secondary-800 border-secondary-200' : '' }}">
