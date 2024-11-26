@@ -20,7 +20,11 @@ class MailService
         $this->fromEmail = env('MAIL_FROM_ADDRESS') ?? Auth::user()->email;
     }
 
-    private function prepare()
+    /**
+     * Summary of prepare
+     * @return MailService
+     */
+    private function prepare(): static
     {
         try {
             Mail::to($this->data['email'])
@@ -33,7 +37,12 @@ class MailService
         return $this;
     }
 
-    private function validate(?string $message = null)
+    /**
+     * Summary of validate
+     * @param mixed $message
+     * @return MailService
+     */
+    private function validate(?string $message = null): static
     {
         if ($this->error) {
             Notification::make()
@@ -51,14 +60,22 @@ class MailService
         return $this;
     }
 
-    private function save()
+    /**
+     * Summary of save
+     * @return MailService
+     */
+    private function save(): static
     {
         $this->prepare()->validate();
 
         return $this;
     }
 
-    public function send()
+    /**
+     * Summary of send
+     * @return MailService
+     */
+    public function send(): self
     {
         return $this->save();
     }
