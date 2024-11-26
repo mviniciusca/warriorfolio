@@ -11,13 +11,16 @@ use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\CreateAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
@@ -59,9 +62,9 @@ class MailResource extends Resource
                     ->columns(2)
                     ->columnSpanFull()
                     ->schema([
-                        Forms\Components\Toggle::make('is_read')
+                        Toggle::make('is_read')
                             ->label(__('Mark as Read')),
-                        Forms\Components\Toggle::make('is_important')
+                        Toggle::make('is_important')
                             ->label(__('Mark as Important')),
                     ]),
                 TextInput::make('name')
@@ -162,27 +165,27 @@ class MailResource extends Resource
                 default => null,
             })
             ->columns([
-                Tables\Columns\IconColumn::make('is_important')
+                IconColumn::make('is_important')
                     ->label(__(''))
                     ->boolean()
                     ->trueIcon('heroicon-s-star')
                     ->falseIcon('heroicon-o-star')
                     ->falseColor('gray')
                     ->trueColor('primary'),
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->label(__('From:'))
                     ->limit(15)
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email')
+                TextColumn::make('email')
                     ->label(__('Email:'))
                     ->limit(20)
                     ->searchable(),
-                Tables\Columns\TextColumn::make('subject')
+                TextColumn::make('subject')
                     ->label(__('Subject:'))
                     ->limit(50)
                     ->words(5)
                     ->searchable(),
-                Tables\Columns\ToggleColumn::make('is_read')
+                ToggleColumn::make('is_read')
                     ->alignEnd()
                     ->onIcon('heroicon-o-eye-slash')
                     ->offColor('primary')
@@ -197,6 +200,11 @@ class MailResource extends Resource
                     ->label(__('Messages'))
                     ->falseLabel(__('Unread'))
                     ->trueLabel(__('Read')),
+                TernaryFilter::make('is_sent')
+                    ->label(__('Status'))
+                    ->default(false)
+                    ->falseLabel(__('Received'))
+                    ->trueLabel(__('Sent')),
                 TernaryFilter::make('is_important')
                     ->label(__('Important'))
                     ->falseLabel(__('Without Star'))
