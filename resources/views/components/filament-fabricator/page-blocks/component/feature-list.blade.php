@@ -16,8 +16,9 @@
                         {{ $is_animated ? 'hover:-mt-5 hover:z-10' : '' }}
                         {{ $is_filled ? ' dark:bg-secondary-950/50 hover:dark:bg-secondary-950' : '' }} 
                         {{ $is_border ? 'border hover:border-secondary-500 dark:border-secondary-800 border-secondary-200' : '' }}">
-                        <div class="mx-auto mb-2 flex {{ $is_center ? 'items-center' : 'items-start' }}
-                            {{ $is_center ? 'justify-center' : 'justify-normal' }}">
+                        <div class="mx-auto mb-2 flex 
+                        {{ $is_center ? 'items-center justify-center' : 'items-start justify-normal' }}
+                       ">
                             <ion-icon class="h-10 w-10" name="{{ $item['icon'] }}"></ion-icon>
                         </div>
                         <h3 class="mb-2 text-base leading-tight">{!! $item['title'] !!}</h3>
