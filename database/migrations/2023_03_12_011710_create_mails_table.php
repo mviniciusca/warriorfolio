@@ -14,11 +14,12 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('email');
+            $table->string('phone')->nullable();
             $table->string('subject');
-            $table->string('phone');
             $table->text('body');
             $table->boolean('is_read')->default(false);
             $table->boolean('is_important')->default(false);
+            $table->boolean('is_sent')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

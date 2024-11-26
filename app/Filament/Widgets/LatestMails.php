@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Mail;
+use Filament\Actions\Action;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -25,9 +26,10 @@ class LatestMails extends BaseWidget
             ->description(__('Your new and unread messages.'))
             ->headerActions(
                 [
+
                     ViewAction::make()
                         ->url(route('filament.admin.resources.mails.index'))
-                        ->label('Inbox')
+                        ->label(__('Inbox'))
                         ->icon('heroicon-o-arrow-up-right')
                         ->outlined()
                         ->size('xs'),

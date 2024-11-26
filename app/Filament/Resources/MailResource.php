@@ -4,16 +4,23 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MailResource\Pages;
 use App\Models\Mail;
+use App\Services\MailService;
 use Filament\Forms;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
 class MailResource extends Resource
 {
@@ -57,22 +64,22 @@ class MailResource extends Resource
                         Forms\Components\Toggle::make('is_important')
                             ->label(__('Mark as Important')),
                     ]),
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->columnSpanFull()
                     ->label(__('From:'))
                     ->disabled()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('email')
+                TextInput::make('email')
                     ->label(__('Email: '))
                     ->disabled()
                     ->email()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('phone')
+                TextInput::make('phone')
                     ->label(__('Phone:'))
                     ->disabled()
                     ->tel()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('subject')
+                TextInput::make('subject')
                     ->columnSpanFull()
                     ->disabled()
                     ->label(__('Subject:'))
@@ -91,6 +98,57 @@ class MailResource extends Resource
         return $table
             ->striped(false)
             ->headerActions([
+                CreateAction::make('write_message')
+                    ->label(__('Write'))
+                    ->closeModalByClickingAway(false)
+                    ->color('primary')
+                    ->icon('heroicon-o-pencil')
+                    ->form([
+                        Group::make()
+                            ->columns(2)
+                            ->schema([
+                                Hidden::make('is_sent')
+                                    ->default(true),
+                                TextInput::make('email')
+                                    ->required()
+                                    ->email()
+                                    ->placeholder(__('Destiny email address'))
+                                    ->maxLength(255)
+                                    ->prefixIcon('heroicon-o-envelope')
+                                    ->label(__('To:')),
+                                TextInput::make('name')
+                                    ->required()
+                                    ->placeholder(__('Your Name'))
+                                    ->maxLength(255)
+                                    ->prefixIcon('heroicon-o-user')
+                                    ->label(__('Your Name:'))
+                                    ->default(function (): mixed {
+                                        return Auth::user()->name ?? env('APP_NAME');
+                                    }),
+                                TextInput::make('subject')
+                                    ->required()
+                                    ->placeholder(__('Email subject'))
+                                    ->maxLength(255)
+                                    ->columnSpanFull()
+                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                    ->label(__('Subject:')),
+                                RichEditor::make('body')
+                                    ->required()
+                                    ->placeholder(__('Your Message'))
+                                    ->maxLength(5000)
+                                    ->columnSpanFull()
+                                    ->label(__('Message')),
+                            ]),
+                    ])
+                    ->after(function (?array $data): MailService|null {
+                        if (env('SMTP_SERVICES')) {
+                            $mail = new MailService($data);
+
+                            return $mail->send();
+                        }
+
+                        return null;
+                    }),
                 Action::make('view_trashed_mails')
                     ->color('gray')
                     ->label(__('View Trash'))
