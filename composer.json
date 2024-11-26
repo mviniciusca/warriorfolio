@@ -26,6 +26,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "opcodesio/log-viewer": "^3.12",
         "pxlrbt/filament-excel": "^2.3",
         "spatie/laravel-activitylog": "^4.7",
         "z3d0x/filament-fabricator": "^2.0",

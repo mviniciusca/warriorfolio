@@ -3,6 +3,9 @@
 namespace App\Livewire\Mail;
 
 use App\Models\Mail;
+use App\Models\User;
+use App\Notifications\NewMailNotification;
+use Exception;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -10,6 +13,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class CreateMail extends Component implements HasForms
@@ -78,12 +82,28 @@ class CreateMail extends Component implements HasForms
     {
         $data = $this->form->getState();
 
-        $record = Mail::create($data);
+        try {
+            $record = Mail::create($data);
+            Notification::make()
+                ->title(__('Message sent!'))
+                ->success()
+                ->send();
+        } catch (Exception $e) {
+            Notification::make()
+                ->title(__('Error on sent message!'))
+                ->danger()
+                ->send();
+            Log::error($e->getMessage());
+        }
 
-        Notification::make()
-            ->title('Mail Sent')
-            ->success()
-            ->send();
+        if (env('SMTP_SERVICES')) {
+            try {
+                $user = User::first(['email']);
+                $user->notify(new NewMailNotification($data));
+            } catch (Exception $e) {
+                Log::error($e->getMessage());
+            }
+        }
 
         $this->reset('data');
 

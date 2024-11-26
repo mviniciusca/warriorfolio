@@ -19,7 +19,7 @@
                         <div class="mx-auto mb-2 flex 
                         {{ $is_center ? 'items-center justify-center' : 'items-start justify-normal' }}
                        ">
-                            <ion-icon class="h-10 w-10 lg:h-14 lg:w-14" name="{{ $item['icon'] }}"></ion-icon>
+                            <ion-icon class="h-10 w-10 lg:h-11 lg:w-11" name="{{ $item['icon'] }}"></ion-icon>
                         </div>
                         <h3 class="mb-2 text-base leading-tight">{!! $item['title'] !!}</h3>
                         <p class="text-sm opacity-80">
