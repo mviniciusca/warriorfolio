@@ -9,7 +9,6 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Get;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class FeatureList extends PageBlock
@@ -26,14 +25,39 @@ class FeatureList extends PageBlock
                     ->collapsed()
                     ->schema([
                         Group::make()
-                            ->columns(2)
                             ->schema([
-                                Toggle::make('is_active')
-                                    ->default(true)
-                                    ->label(__('Show Module')),
-                                Toggle::make('is_center')
-                                    ->default(true)
-                                    ->label(__('Centered Content')),
+                                Section::make(__('Settings'))
+                                    ->description(__('Module Settings'))
+                                    ->collapsed()
+                                    ->columns(3)
+                                    ->icon('heroicon-o-cog-6-tooth')
+                                    ->schema([
+                                        Toggle::make('is_active')
+                                            ->default(true)
+                                            ->inline(false)
+                                            ->helperText(__('Show / Hide this module.'))
+                                            ->label(__('Show Module')),
+                                        Toggle::make('is_center')
+                                            ->default(true)
+                                            ->inline(false)
+                                            ->helperText(__('Align content in the center.'))
+                                            ->label(__('Centered')),
+                                        Toggle::make('is_filled')
+                                            ->default(false)
+                                            ->inline(false)
+                                            ->helperText(__('Fill background with dark color.'))
+                                            ->label(__('Filled Background')),
+                                        Toggle::make('is_animated')
+                                            ->default(false)
+                                            ->inline(false)
+                                            ->helperText(__('Hover Animation.'))
+                                            ->label(__('Animated')),
+                                        Toggle::make('is_border')
+                                            ->default(false)
+                                            ->inline(false)
+                                            ->helperText(__('Show border in each card.'))
+                                            ->label(__('Border')),
+                                    ]),
                             ]),
                         Repeater::make('features')
                             ->columns(4)

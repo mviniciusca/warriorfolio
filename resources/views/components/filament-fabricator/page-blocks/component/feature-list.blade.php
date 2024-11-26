@@ -1,5 +1,6 @@
 @aware(['page'])
-@props(['features'=> null, 'is_active' => null, 'is_center' => null])
+@props(['features'=> null, 'is_active' => null, 'is_center' => null, 'link' => null, 'is_new_window' => null,
+'is_filled' => null, 'is_animated' => null, 'is_border' => null])
 
 @if($is_active)
 <x-core.layout>
@@ -7,18 +8,26 @@
         <div class="mx-auto pb-8">
             <div class="{{ $is_center ? 'text-center' : 'text-left' }} grid md:grid-cols-3 lg:grid-cols-3 gap-2">
                 @foreach ($features as $key => $item)
-                <div
-                    class="icon-card border p-8 hover:dark:bg-secondary-950 dark:bg-secondary-950/50 hover:-mt-5 hover:z-10 min-h-60 opacity-90 hover:opacity-100 transition-all duration-50 hover:border-secondary-500 dark:border-secondary-800 border-secondary-200">
-
-                    <div class="mx-auto mb-2 flex {{ $is_center ? 'items-center' : 'items-start' }}
+                @if($link)
+                <a target="{{ $is_new_window ? '_blank' : '_self' }}" href="{{ $link }}">
+                    @endif
+                    <div
+                        class="icon-card p-8 min-h-60 opacity-90 hover:opacity-100 transition-all duration-50 
+                        {{ $is_animated ? 'hover:-mt-5 hover:z-10' : '' }}
+                        {{ $is_filled ? ' dark:bg-secondary-950/50 hover:dark:bg-secondary-950' : '' }} 
+                        {{ $is_border ? 'border hover:border-secondary-500 dark:border-secondary-800 border-secondary-200' : '' }}">
+                        <div class="mx-auto mb-2 flex {{ $is_center ? 'items-center' : 'items-start' }}
                             {{ $is_center ? 'justify-center' : 'justify-normal' }}">
-                        <ion-icon class="h-10 w-10" name="{{ $item['icon'] }}"></ion-icon>
+                            <ion-icon class="h-10 w-10" name="{{ $item['icon'] }}"></ion-icon>
+                        </div>
+                        <h3 class="mb-2 text-base leading-tight">{!! $item['title'] !!}</h3>
+                        <p class="text-sm opacity-80">
+                            {!! $item['description'] !!}
+                        </p>
                     </div>
-                    <h3 class="mb-2 text-base leading-tight">{!! $item['title'] !!}</h3>
-                    <p class="text-sm opacity-80">
-                        {!! $item['description'] !!}
-                    </p>
-                </div>
+                    @if($link)
+                </a>
+                @endif
                 @endforeach
             </div>
         </div>
