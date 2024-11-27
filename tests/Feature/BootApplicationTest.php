@@ -9,15 +9,20 @@ use Tests\TestCase;
 class BootApplicationTest extends TestCase
 {
     /** @test **/
-    public function it_should_get_homepage_page(): void
+    public function it_should_see_landing_page(): void
     {
         $this->get('/')->assertStatus(200);
     }
 
     /** @test **/
-    public function it_should_exists_login_route(): void
+    public function it_should_see_login_page(): void
     {
         $this->get(route('login'))->assertRedirect();
     }
 
+    /** @test **/
+    public function it_should_see_documentation_page(): void
+    {
+        $this->get('/docs')->assertStatus(200);
+    }
 }
