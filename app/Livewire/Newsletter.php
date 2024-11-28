@@ -29,11 +29,6 @@ class Newsletter extends Component implements HasForms
         return $form
             ->columns(1)
             ->schema([
-                // TextInput::make('name')
-                //     ->hiddenLabel()
-                //     ->maxLength(200)
-                //     ->required()
-                //     ->placeholder(__('Name')),
                 TextInput::make('email')
                     ->placeholder(__('Email address'))
                     ->prefixIcon('heroicon-o-envelope')
