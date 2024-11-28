@@ -1,7 +1,8 @@
 @props(['hero'])
 
 <section class="sierra-theme" id="sierra-theme">
-    <div class="grid max-w-screen-xl mx-auto lg:grid-cols-2">
+    <div
+        class="grid mx-auto  {{ data_get($hero,'hero.featured_image_is_active') ? 'lg:grid-cols-2 max-w-screen-xl ' : '' }}">
         <div class="mr-auto place-self-center lg:col-span-1">
             <h1
                 class="animate__animated animate__fadeInUp animate max-w-2xl mb-4 text-4xl font-extrabold tracking-tighter leading-none md:text-5xl xl:text-6xl dark:text-white">
@@ -44,8 +45,9 @@
             @endif
 
         </div>
+        {{-- Hero Section: Featured Image --}}
+        @if(data_get($hero,'hero.featured_image_is_active'))
         <div class="hidden animate__animated animate__fadeInUp lg:mt-0 lg:col-span-1 rounded-lg lg:flex">
-            {{-- Hero Section: Featured Image --}}
             @if(data_get($hero,'hero.featured_image'))
             <div class="mt-8" id="hero-featured-image">
                 <img class="animate__animated animate__fadeInUp  h-auto p-4 lg:max-h-max"
@@ -58,4 +60,5 @@
         </div>
     </div>
     </div>
+    @endif
 </section>
