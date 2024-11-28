@@ -153,6 +153,10 @@ class EditHeroSection extends EditRecord
                                     ->collapsed()
                                     ->columns(3)
                                     ->schema([
+                                        Toggle::make('hero.featured_image_is_active')
+                                            ->default(true)
+                                            ->helperText(__('Show / hide featured image.'))
+                                            ->label(__('Active')),
                                         FileUpload::make('hero.featured_image')
                                             ->label('Featured Image')
                                             ->directory('hero')

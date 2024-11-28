@@ -45,7 +45,7 @@
 
         </div>
         <div class="hidden animate__animated animate__fadeInUp lg:mt-0 lg:col-span-1 rounded-lg lg:flex">
-            {{-- Hero Section: Image --}}
+            {{-- Hero Section: Featured Image --}}
             @if(data_get($hero,'hero.featured_image'))
             <div class="mt-8" id="hero-featured-image">
                 <img class="animate__animated animate__fadeInUp  h-auto p-4 lg:max-h-max"
