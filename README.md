@@ -41,7 +41,6 @@ And me, of course! 😁
 ### Features
 - Write Messages via SMTP - new v2.0.4
 - Notifications via SMTP - new v2.0.4
-
 - Robust and Flexible Control Panel;
 - Maintenance Mode and Discovery Mode;
 - Core Modules;
