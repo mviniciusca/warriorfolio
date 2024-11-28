@@ -3,12 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\Newsletter as ModelNewsletter;
+use Exception;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Newsletter extends Component implements HasForms
@@ -48,12 +50,20 @@ class Newsletter extends Component implements HasForms
     {
         $data = $this->form->getState();
 
-        $record = ModelNewsletter::create($data);
+        try {
+            $record = ModelNewsletter::create($data);
 
-        Notification::make()
-            ->title(__('Thanks for subscribing!'))
-            ->success()
-            ->send();
+            Notification::make()
+                ->title(__('Thanks for subscribing!'))
+                ->success()
+                ->send();
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            Notification::make()
+                ->title(__('Error! Please, try again later.'))
+                ->error()
+                ->send();
+        }
 
         $this->reset('data');
 
