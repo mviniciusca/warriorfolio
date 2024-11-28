@@ -39,6 +39,9 @@ Feel free to contribute to the project and fork it, but don't forget to give cre
 And me, of course! 😁
 
 ### Features
+- Write Messages via SMTP - new v2.0.4
+- Notifications via SMTP - new v2.0.4
+
 - Robust and Flexible Control Panel;
 - Maintenance Mode and Discovery Mode;
 - Core Modules;
@@ -47,14 +50,14 @@ And me, of course! 😁
 - Image Slideshow;
 - Customer Showcase;
 - Skills Display;
-- Email catcher for lead capture;
+- Email catcher for mailing list;
 - Integration with Google Analytics;
 - Curriculum for download;
 - Open to Work icon;
-- Biography, Certificates, and Courses;
-- Contact via WhatsApp;
-- Contact form;
-- Panel for Reading Received Messages;
+- Bio, Certificates, and Courses;
+- Contact via WhatsApp Web;
+- Contact Form;
+- Inbox;
 
 and more...
 
@@ -80,10 +83,10 @@ Warriorfolio 2 is also under the guardianship of one of the world's largest fram
 ### Requirements 
 - 🐘 PHP 8.1 or higher;
 - 🧪 PHP Extensions enabled mainly OpenSSL, PDO and Zip;
-- 💾 Database such as MySQL, PostgreSQL or SQLite;
+- 💾 DB such as MySQL, PostgreSQL, SQLite ...;
 - 🤵🏻 Composer 2.0 or higher;
-- 🌱 NPM;
-- 💎 800MB of disk space or higher;
+- 🌱 NPM 10.2 or higher;
+- 💎 1GB of disk space or higher;
 
 ### Documentation
 [Visit the Official Documentation](https://warriorfolio.vercel.app/) from Warriorfolio on Vercel
