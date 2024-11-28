@@ -39,8 +39,9 @@ Feel free to contribute to the project and fork it, but don't forget to give cre
 And me, of course! 😁
 
 ### Features
-- Write Messages via SMTP - new v2.0.4
-- Notifications via SMTP - new v2.0.4
+- Write Messages via SMTP - v2.0.4
+- Notifications via SMTP - v2.0.4
+- Log Reports - v2.0.4
 - Robust and Flexible Control Panel;
 - Maintenance Mode and Discovery Mode;
 - Core Modules;
