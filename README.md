@@ -42,6 +42,8 @@ And me, of course! 😁
 - Write Messages via SMTP - v2.0.4
 - Notifications via SMTP - v2.0.4
 - Log Reports - v2.0.4
+- Multi-language Support - v2.0.4
+- Hero Section Themes - v2.0.4
 - Robust and Flexible Control Panel;
 - Maintenance Mode and Discovery Mode;
 - Core Modules;
