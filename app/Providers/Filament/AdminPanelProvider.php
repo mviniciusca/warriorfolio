@@ -135,7 +135,9 @@ class AdminPanelProvider extends PanelProvider
     private function getSetting()
     {
         if (Schema::hasTable('settings')) {
-        return Setting::first(['id'])->value('id');
+            $setting = Setting::first(['id']);
+            return $setting ? $setting->value('id') : null;
         }
+        return null;
     }
 }
