@@ -38,7 +38,9 @@ class LayoutFactory extends Factory
                     ],
                 ],
                 /** Themes */
-                'theme' => 'sierra',
+                'theme' => 'sierra',               
+                'is_mailing_active' => true,
+                'featured_image_is_active' => true,
                 /** Background */
                 'is_active'   => false,
                 'bg_position' => 'bg-center',

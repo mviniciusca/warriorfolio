@@ -14,10 +14,10 @@ return new class extends Migration {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->json('application')->nullable();
             $table->string('name')->nullable();
-            $table->json('design')->nullable();
             $table->boolean('dark_mode')->default(true);
+            $table->json('application')->nullable();
+            $table->json('design')->nullable();
             $table->json('meta')->nullable();
             $table->json('google')->nullable();
             $table->json('scripts')->nullable();
