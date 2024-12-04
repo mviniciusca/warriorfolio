@@ -1,11 +1,10 @@
 /* Default Theme CSS */
 
-/** Animate CSS **/
-@import '../../node_modules/animate.css/animate.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/** Animate CSS **/
+@import '../../node_modules/animate.css/animate.css';
 
 /** Background Animation FX **/
 
