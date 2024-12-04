@@ -16,7 +16,7 @@ class DocumentationPageSeeder extends Seeder
         DB::table('pages')
             ->insert([
                 'title'  => 'Documentation',
-                'Slug'   => 'docs',
+                'slug'   => 'docs',
                 'blocks' => json_encode([
                     [
                         'data' => ['color' => 'pink'],
