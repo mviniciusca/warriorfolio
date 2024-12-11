@@ -18,7 +18,6 @@
 <head>
     <x-header.meta />
     <x-header.scripts />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="app-core" id="app">
