@@ -1,10 +1,10 @@
+/** Animate CSS **/
 @import '../../node_modules/animate.css/animate.css';
 
 /* Default Theme CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/** Animate CSS **/
 /** Background Animation FX **/
 
 .animate-opacity {
