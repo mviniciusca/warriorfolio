@@ -28,7 +28,7 @@ class DocumentationPageSeeder extends Seeder
                     ],
                     [
                         'data' => [
-                            'image'             => '01JDBT66005FWS0MTANNKSFPM4.png',
+                            'image'             => 'public/img/core/demo/cpu.png',
                             'content'           => '<p>Olá, bem-vindo ao Warriorfolio.</p><p><br></p><p>Através desta Documentação Rápida, vou e guiar pelos primeiros passos que você deve tomar antes de iniciar sozinho sua jornada no Warriorfolio.</p>',
                             'heading'           => 'Fast <span class="tl">Documentation</span>',
                             'is_active'         => true,
