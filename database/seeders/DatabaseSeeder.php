@@ -36,9 +36,9 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'user_id' => $user->id,
             ]);
-        Mail::factory(10)->create();
-        Newsletter::factory(10)->create();
-        Course::factory(3)->create();
+        Mail::factory(100)->create();
+        Newsletter::factory(100)->create();
+        Course::factory(5)->create();
         Category::factory()->create();
         Alert::factory()->create();
 

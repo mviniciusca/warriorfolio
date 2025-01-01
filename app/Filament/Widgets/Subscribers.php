@@ -28,7 +28,7 @@ class Subscribers extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Subscribers',
+                    'label' => __('Subscribers'),
                     'data'  => $data->map(fn (TrendValue $value) => $value->aggregate),
                     'fill'  => true,
                 ],
