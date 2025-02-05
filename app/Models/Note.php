@@ -18,7 +18,7 @@ class Note extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'content'  => 'array',
-        'settings' => 'array',
+        'content' => 'array',
+        'blocks'  => 'array',
     ];
 }
