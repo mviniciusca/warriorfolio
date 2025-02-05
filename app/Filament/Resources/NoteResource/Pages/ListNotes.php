@@ -13,9 +13,7 @@ class ListNotes extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make()
-                ->icon('heroicon-o-pencil')
-                ->label(__('New Note')),
+            Actions\CreateAction::make(),
         ];
     }
 }
