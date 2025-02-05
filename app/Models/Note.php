@@ -13,6 +13,8 @@ class Note extends Model
 
     use SoftDeletes;
 
+    protected $table = 'pages';
+
     protected $guarded = [];
 
     protected $casts = [
