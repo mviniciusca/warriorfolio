@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->json('content');
             $table->json('settings');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

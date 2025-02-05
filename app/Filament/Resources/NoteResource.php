@@ -25,6 +25,25 @@ class NoteResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-pencil';
 
+    public static function getNavigationLabel(): string
+    {
+        return __('Notes');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Core Features');
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        if (static::getModel()::count() > 0) {
+            return static::getModel()::count();
+        }
+
+        return null;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
