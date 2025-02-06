@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('slug')->unique();
             $table->string('layout')->default('default')->index();
             $table->json('blocks');
+            $table->string('style')->default('default');
             $table->foreignId('parent_id')->nullable()->constrained('pages')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
             $table->softDeletes();
