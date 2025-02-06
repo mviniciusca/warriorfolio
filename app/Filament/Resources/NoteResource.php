@@ -28,20 +28,7 @@ class NoteResource extends Resource
     {
         return $form
             ->schema([
-                Section::make()
-                    ->columns(2)
-                    ->schema([
-                        Hidden::make('layout')
-                            ->default('notes'),
-                        Hidden::make('blocks')
-                            ->default([]),
-                        TextInput::make('title'),
-                        TextInput::make('slug'),
-                        RichEditor::make('content.main')
-                            ->columnSpanFull(),
-                        Toggle::make('content.is_active')
-                            ->default(true),
-                    ]),
+                //
             ]);
     }
 
