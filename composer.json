@@ -24,10 +24,10 @@
         "flowframe/laravel-trend": "^0.3.0",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
-        "z3d0x/filament-fabricator": "*",
-        "z3d0x/filament-logger": "^0.7.3",
         "opcodesio/log-viewer": "^3.12",
-        "pxlrbt/filament-excel": "^2.3"
+        "pxlrbt/filament-excel": "^2.3",
+        "z3d0x/filament-fabricator": "^2.4",
+        "z3d0x/filament-logger": "^0.7.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
