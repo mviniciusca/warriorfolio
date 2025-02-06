@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Page;
+use Filament\Pages\Page;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Z3d0X\FilamentFabricator\Models\Concerns\HandlesPageUrls;
 
 class Note extends Model
 {
@@ -14,15 +15,11 @@ class Note extends Model
 
     use SoftDeletes;
 
+    protected $table = 'pages';
+
     protected $guarded = [];
 
     protected $casts = [
-        'content' => 'array',
+        'blocks' => 'json',
     ];
-
-    public function page()
-    {
-        // belongsTo(Page, 'coluna_na_tabela_notes', 'coluna_na_tabela_pages')
-        return $this->belongsTo(Page::class, 'page_slug', 'slug');
-    }
 }
