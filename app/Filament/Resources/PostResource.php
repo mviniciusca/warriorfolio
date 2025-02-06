@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
+use Filament\Actions\EditAction;
 use Filament\Forms;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
@@ -13,6 +14,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -86,15 +89,15 @@ class PostResource extends Resource
             )
             ->columns([
                 TextColumn::make('title')
+                    ->limit(50)
                     ->searchable(),
                 TextColumn::make('slug')
+                    ->limit(20)
                     ->prefix('/')
                     ->searchable(),
                 TextColumn::make('layout')
+                    ->badge()
                     ->searchable(),
-                TextColumn::make('parent.title')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -112,15 +115,19 @@ class PostResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
-                    ->label(__('New Post')),
-                Action::make('visit')
-                    ->label(__('filament-fabricator::page-resource.actions.visit'))
-                    ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
-                    ->icon('heroicon-o-arrow-top-right-on-square')
-                    ->openUrlInNewTab()
-                    ->color('success')
-                    ->visible(config('filament-fabricator.routing.enabled')),
+                ActionGroup::make([
+                    Tables\Actions\EditAction::make()
+                        ->label(__('Edit')),
+                    Action::make('visit')
+                        ->label(__('filament-fabricator::page-resource.actions.visit'))
+                        ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
+                        ->icon('heroicon-o-arrow-top-right-on-square')
+                        ->openUrlInNewTab()
+                        ->color('success')
+                        ->visible(config('filament-fabricator.routing.enabled')),
+                    DeleteAction::make()
+                        ->label('Delete'),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
