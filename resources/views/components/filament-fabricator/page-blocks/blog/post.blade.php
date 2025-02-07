@@ -2,10 +2,10 @@
 <x-core.layout>
     @if ($page->is_active)
         <main class="antialiased">
-            <x-blog.header :title='$page->title' />
             <div class="mx-auto flex max-w-screen-xl justify-between px-4">
                 <article
                     class="format format-sm sm:format-base lg:format-lg format-blue dark:format-invert mx-auto w-full max-w-3xl">
+                    <x-blog.header :title='$page->title' />
                     <x-blog.profile :published_at='$page->created_at' />
                     <header class="not-format mb-4 lg:mb-6">
                         <span class="max-w-auto text-md inline p-1 text-xs text-white"
@@ -19,10 +19,10 @@
                     <div class="content">
                         {!! $page->content !!}
                     </div>
+                    <x-blog.post.articles :page="$page" />
                 </article>
             </div>
         </main>
-        <x-blog.post.articles :page="$page" />
     @else
         <x-blog.post.not-found />
     @endif

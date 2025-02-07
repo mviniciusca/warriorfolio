@@ -26,7 +26,7 @@ class Articles extends Component
             ['articles' => Page::all()
                 ->where('is_active', '=', true)
                 ->sortByDesc('created_at')
-                ->take(5), // 4 - 1,
+                ->take(3), // 4 - 1,
             ]);
     }
 }
