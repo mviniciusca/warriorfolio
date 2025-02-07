@@ -8,6 +8,8 @@ use App\Models\Post;
 use Filament\Actions\EditAction;
 use Filament\Forms;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -65,17 +67,13 @@ class PostResource extends Resource
                 TextInput::make('slug')
                     ->required()
                     ->maxLength(255),
-                TextInput::make('layout')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('default'),
                 Hidden::make('style')->default('blog'),
-                TextInput::make('blocks')
+                Hidden::make('blocks')
                     ->dehydrated()
                     ->default([['data' => [], 'type' => 'blog.post']])
                     ->required(),
-                Select::make('parent_id')
-                    ->relationship('parent', 'title'),
+                RichEditor::make('content')
+                    ->columnSpanFull(),
             ]);
     }
 
