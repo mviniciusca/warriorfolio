@@ -16,9 +16,9 @@
                             {{ $page->title }}</h1>
                         <p>{{ \Carbon\Carbon::parse($page->created_at)->format('d/m/Y H:i') }}</p>
                     </header>
-                    <p class="lead">
+                    <div class="content">
                         {!! $page->content !!}
-                    </p>
+                    </div>
                 </article>
             </div>
         </main>
