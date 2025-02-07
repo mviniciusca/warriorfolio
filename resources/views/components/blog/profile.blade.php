@@ -2,7 +2,7 @@
     'published_at' => null,
 ])
 <div>
-    <section class="flex py-8 items-center mb-6 not-italic">
+    <section class="flex pb-8 items-center mb-6 not-italic">
         <div class="inline-flex items-center mr-3 text-sm ">
             @if($user->profile->avatar)
             <x-curator-glider
@@ -14,8 +14,7 @@
             @endif
             <div>
                 <p href="#" rel="author" class="text-xl font-bold ">{{ $user->name }}</p>
-                <p class="text-base">{{ $user->profile->job_position }} • {{ $user->profile->localization }}</p>
-                <p class="text-base"><time pubdate datetime="2022-02-08" title="February 8th, 2022">{{ $published_at }}</time></p>
+                <p class="text-base pb-2">{{ $user->profile->job_position }} • {{ $user->profile->localization }}</p>
                 <x-ui.social-network />
             </div>
         </div>
