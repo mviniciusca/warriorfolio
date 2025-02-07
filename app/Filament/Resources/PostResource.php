@@ -116,6 +116,9 @@ class PostResource extends Resource
                 TextColumn::make('title')
                     ->limit(50)
                     ->searchable(),
+                TextColumn::make('category.name')
+                    ->limit(50)
+                    ->searchable(),
                 TextColumn::make('slug')
                     ->limit(20)
                     ->prefix('/')

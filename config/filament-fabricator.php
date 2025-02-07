@@ -1,6 +1,9 @@
 <?php
 
 // config for Z3d0X/FilamentFabricator
+
+use App\Models\Page;
+
 return [
     'routing' => [
         'enabled' => true,
@@ -33,7 +36,7 @@ return [
         Illuminate\Routing\Middleware\SubstituteBindings::class,
     ],
 
-    'page-model' => Z3d0X\FilamentFabricator\Models\Page::class,
+    'page-model' => Page::class,
 
     'page-resource' => Z3d0X\FilamentFabricator\Resources\PageResource::class,
 
