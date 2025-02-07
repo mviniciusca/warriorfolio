@@ -4,16 +4,21 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
+use App\Models\Category;
 use App\Models\Post;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Actions\EditAction;
 use Filament\Forms;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
@@ -23,6 +28,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
 use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
@@ -82,6 +88,18 @@ class PostResource extends Resource
                             ->prefixIcon('heroicon-o-link')
                             ->required()
                             ->maxLength(255),
+                    ]),
+                Group::make()
+                    ->columnSpan(1)
+                    ->schema([
+                        CuratorPicker::make('img_cover')
+                            ->label(__('Cover')),
+                        Toggle::make('is_active')
+                            ->label(__('Status'))
+                            ->default(true),
+                        Select::make('category_id')
+                            ->label(__('Category'))
+                            ->options(Category::all()->pluck('name', 'id'), ),
                     ]),
             ]);
     }

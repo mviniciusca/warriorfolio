@@ -16,7 +16,9 @@ return new class extends Migration {
             $table->text('content')->nullable();
             $table->boolean('is_active')->default(true);
             $table->string('style')->default('default');
+            $table->string('img_cover')->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('pages')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
             $table->softDeletes();
         });
