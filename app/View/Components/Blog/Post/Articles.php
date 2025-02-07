@@ -23,6 +23,9 @@ class Articles extends Component
     public function render(): View|Closure|string
     {
         return view('components.blog.post.articles',
-            ['articles' => Page::all()]);
+            ['articles' => Page::all()
+                ->sortByDesc('created_at')
+                ->take(5), // 4 - 1,
+            ]);
     }
 }
