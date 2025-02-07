@@ -10,4 +10,9 @@ class Post extends Page
 {
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
