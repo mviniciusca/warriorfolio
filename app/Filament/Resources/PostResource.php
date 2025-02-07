@@ -10,6 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -60,20 +61,28 @@ class PostResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+            ->columns(4)
             ->schema([
-                TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Hidden::make('style')->default('blog'),
-                Hidden::make('blocks')
-                    ->dehydrated()
-                    ->default([['data' => [], 'type' => 'blog.post']])
-                    ->required(),
-                RichEditor::make('content')
-                    ->columnSpanFull(),
+                Section::make(__('Blog Post'))
+                    ->columnSpan(3)
+                    ->icon('heroicon-o-pencil')
+                    ->schema([
+                        TextInput::make('title')
+                            ->prefixIcon('heroicon-o-pencil')
+                            ->required()
+                            ->maxLength(255),
+                        Hidden::make('style')->default('blog'),
+                        Hidden::make('blocks')
+                            ->dehydrated()
+                            ->default([['data' => [], 'type' => 'blog.post']])
+                            ->required(),
+                        RichEditor::make('content')
+                            ->columnSpanFull(),
+                        TextInput::make('slug')
+                            ->prefixIcon('heroicon-o-link')
+                            ->required()
+                            ->maxLength(255),
+                    ]),
             ]);
     }
 
