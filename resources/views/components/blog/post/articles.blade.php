@@ -9,7 +9,8 @@
                 @if ($item->style === 'blog' && $item['slug'] != $page['slug'])
                 <article class="max-w-xs">
                     <a class="hover:opacity-80 transition-all duration-200 hover:underline" href="{{ env('APP_URL') . '/' . $item->slug }}">
-                        <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg" alt="Image 1">
+                       
+                        <x-curator-glider :media="$item->img_cover" class="mb-5 rounded-lg" />
                         <h2 class="mb-2 text-md font-bold tracking-tight">
                             <p>{{ $item->title }}</p>
                         </h2>
