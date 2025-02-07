@@ -2,12 +2,11 @@
 
 namespace App\View\Components\Blog\Post;
 
-use App\Models\Page;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Articles extends Component
+class NotFound extends Component
 {
     /**
      * Create a new component instance.
@@ -22,11 +21,6 @@ class Articles extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.blog.post.articles',
-            ['articles' => Page::all()
-                ->where('is_active', '=', true)
-                ->sortByDesc('created_at')
-                ->take(5), // 4 - 1,
-            ]);
+        return view('components.blog.post.not-found');
     }
 }
