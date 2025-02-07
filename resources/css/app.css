@@ -27,137 +27,142 @@
     html {
         font-family: system-ui, sans-serif;
     }
-}
-
-body {
-    @apply overflow-x-hidden antialiased scroll-smooth bg-secondary-50 text-secondary-600 dark:bg-secondary-900 dark:text-secondary-400
-}
 
 
-.text-gradient,
-.tg {
-    @apply bg-gradient-to-b from-secondary-300 to-secondary-500 bg-clip-text p-1 text-transparent dark:from-secondary-300 dark:to-secondary-500;
-}
+    body {
+        @apply overflow-x-hidden antialiased scroll-smooth bg-secondary-50 text-secondary-600 dark:bg-secondary-900 dark:text-secondary-400
+    }
 
-/** Highlighted text **/
-.text-highlight,
-.heading-module-title strong,
-.tl {
-    @apply bg-gradient-to-r from-primary-600 to-tertiary-400 bg-clip-text p-1 text-transparent;
-}
 
-.heading-module-title strong {
-    @apply font-bold;
+    .text-gradient,
+    .tg {
+        @apply bg-gradient-to-b from-secondary-300 to-secondary-500 bg-clip-text p-1 text-transparent dark:from-secondary-300 dark:to-secondary-500;
+    }
 
-}
+    /** Highlighted text **/
+    .text-highlight,
+    .heading-module-title strong,
+    .tl {
+        @apply bg-gradient-to-r from-primary-600 to-tertiary-400 bg-clip-text p-1 text-transparent;
+    }
 
-/** Hero section **/
-.hero-section-title {
-    @apply mb-8 text-center text-4xl font-bold leading-none tracking-tighter lg:text-5xl;
-}
+    .heading-module-title strong {
+        @apply font-bold;
 
-/** Header for each section **/
-.header-title,
-.module-title {
-    @apply bg-gradient-to-b pt-8 md:pt-12 lg:pt-16 from-secondary-400 to-secondary-600 bg-clip-text text-center text-3xl font-extrabold leading-none tracking-tighter text-transparent dark:from-secondary-300 dark:to-secondary-600 lg:text-4xl;
-}
+    }
 
-.subtitle,
-.module-subtitle {
-    @apply text-center;
-}
+    /** Hero section **/
+    .hero-section-title {
+        @apply mb-8 text-center text-4xl font-bold leading-none tracking-tighter lg:text-5xl;
+    }
 
-/** Form Input **/
-.fi-input-wrp {
-    @apply relative mb-1;
-}
+    /** Header for each section **/
+    .header-title,
+    .module-title {
+        @apply bg-gradient-to-b pt-8 md:pt-12 lg:pt-16 from-secondary-400 to-secondary-600 bg-clip-text text-center text-3xl font-extrabold leading-none tracking-tighter text-transparent dark:from-secondary-300 dark:to-secondary-600 lg:text-4xl;
+    }
 
-/** Change placeholder form color **/
-.fi-input-wrp input::placeholder {
-    @apply text-secondary-500 transition-all duration-75 focus:text-xs focus:font-normal;
-}
+    .subtitle,
+    .module-subtitle {
+        @apply text-center;
+    }
 
-/** Form Input Height Size **/
-.fi-input-wrp input {
-    @apply h-10;
-}
+    /** Form Input **/
+    .fi-input-wrp {
+        @apply relative mb-1;
+    }
 
-trix-editor {
-    @apply text-left;
-}
+    /** Change placeholder form color **/
+    .fi-input-wrp input::placeholder {
+        @apply text-secondary-500 transition-all duration-75 focus:text-xs focus:font-normal;
+    }
 
-/** Form Input Label **/
-.fi-input-label {
-    @apply absolute left-0 top-0 text-sm font-semibold text-secondary-400;
-    transform: translateY(-50%);
-}
+    /** Form Input Height Size **/
+    .fi-input-wrp input {
+        @apply h-10;
+    }
 
-/** Form Input Error **/
-.fi-input-error {
-    @apply text-sm font-semibold text-red-500;
-}
+    trix-editor {
+        @apply text-left;
+    }
 
-/** Project Content **/
-.project-content img {
-    @apply my-4 rounded-lg shadow-lg;
-}
+    /** Form Input Label **/
+    .fi-input-label {
+        @apply absolute left-0 top-0 text-sm font-semibold text-secondary-400;
+        transform: translateY(-50%);
+    }
 
-.project-content figure {
-    @apply flex flex-col items-center;
-}
+    /** Form Input Error **/
+    .fi-input-error {
+        @apply text-sm font-semibold text-red-500;
+    }
 
-.project-content figcaption {
-    @apply mb-4 text-center text-sm text-secondary-500;
-}
+    /** Project Content **/
+    .project-content img {
+        @apply my-4 rounded-lg shadow-lg;
+    }
 
-.project-content p {
-    @apply my-8;
-}
+    .project-content figure {
+        @apply flex flex-col items-center;
+    }
 
-/** Maintenance Section Content  **/
-#maintenance-content h2 {
-    @apply my-2 text-3xl font-semibold tracking-tight;
-}
+    .project-content figcaption {
+        @apply mb-4 text-center text-sm text-secondary-500;
+    }
 
-#maintenance-content h3 {
-    @apply my-2 text-2xl font-semibold;
-}
+    .project-content p {
+        @apply my-8;
+    }
 
-#maintenance-content p {
-    @apply leading-tight
-}
+    /** Maintenance Section Content  **/
+    #maintenance-content h2 {
+        @apply my-2 text-3xl font-semibold tracking-tight;
+    }
 
-/** Components **/
-.cta-one img {
-    @apply rounded-lg;
-}
+    #maintenance-content h3 {
+        @apply my-2 text-2xl font-semibold;
+    }
 
-/** Alerts **/
+    #maintenance-content p {
+        @apply leading-tight
+    }
 
-.modal-alert figcaption {
-    @apply hidden;
-}
+    /** Components **/
+    .cta-one img {
+        @apply rounded-lg;
+    }
 
-.modal-alert img {
-    @apply mx-auto rounded-lg py-8;
-}
+    /** Alerts **/
 
-.alert-content h2 {
-    @apply block text-xl font-bold;
-}
+    .modal-alert figcaption {
+        @apply hidden;
+    }
 
-.alert-content p {
-    @apply block;
-}
+    .modal-alert img {
+        @apply mx-auto rounded-lg py-8;
+    }
 
-.alert-content strong {
-    @apply font-semibold;
-}
+    .alert-content h2 {
+        @apply block text-xl font-bold;
+    }
 
-.alert-content strong em {
-    @apply font-semibold;
-}
+    .alert-content p {
+        @apply block;
+    }
 
-.tag {
-    @apply font-light bg-primary-700 animate-pulse lowercase text-xs px-2 text-white rounded-md;
+    .alert-content strong {
+        @apply font-semibold;
+    }
+
+    .alert-content strong em {
+        @apply font-semibold;
+    }
+
+    .tag {
+        @apply font-light bg-primary-700 animate-pulse lowercase text-xs px-2 text-white rounded-md;
+    }
+
+    .content p {
+        @apply pt-6 leading-relaxed;
+    }
 }
