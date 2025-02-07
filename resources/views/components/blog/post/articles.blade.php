@@ -4,7 +4,7 @@
         <div class="mx-auto max-w-screen-xl px-4">
             <h2 class="mb-8 flex items-center justify-between text-2xl font-bold">{{ __('The Latest') }}
             </h2>
-            <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($articles as $item)
                     @if ($item->style === 'blog' && $item['slug'] != $page['slug'])
                         <article class="max-w-xs">
