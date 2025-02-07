@@ -1,8 +1,8 @@
 @aware(['page'])
 <x-core.layout>
     @if ($page->is_active)
-        <x-blog.header :title='$page->title' />
         <main class="antialiased">
+            <x-blog.header :title='$page->title' />
             <div class="mx-auto flex max-w-screen-xl justify-between px-4">
                 <article
                     class="format format-sm sm:format-base lg:format-lg format-blue dark:format-invert mx-auto w-full max-w-3xl">
