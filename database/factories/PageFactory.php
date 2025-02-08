@@ -14,7 +14,7 @@ class PageFactory extends Factory
         return [
             'title'       => $this->faker->sentence,
             'style'       => 'blog',
-            'content'     => $this->faker->paragraph,
+            'content'     => $this->faker->paragraph(50),
             'slug'        => $this->faker->slug,
             'category_id' => 1,
             'is_active'   => true,

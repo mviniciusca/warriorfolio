@@ -15,7 +15,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 9 4-4-4-4" />
                     </svg>
-                    <a href="{{ env('APP_URL') . '/' . 'posts' }}"
+                    <a href="{{ env('APP_URL') . '/' . 'blog' }}"
                         class="ms-1 text-sm font-medium hover:text-primary-600 md:ms-2">{{ __('Posts') }}</a>
                 </div>
             </li>
