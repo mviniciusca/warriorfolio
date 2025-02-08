@@ -20,7 +20,7 @@ class BlogSeeder extends Seeder
                 'layout'     => 'default',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'style'      => 'blog',
+                'style'      => 'default',
                 'blocks'     => json_encode([
                     [
                         'data' => [],

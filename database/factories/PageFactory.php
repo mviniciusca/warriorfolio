@@ -12,7 +12,7 @@ class PageFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'       => $this->faker->word,
+            'title'       => $this->faker->sentence,
             'style'       => 'blog',
             'content'     => $this->faker->paragraph,
             'slug'        => $this->faker->slug,
