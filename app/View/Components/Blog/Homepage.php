@@ -23,9 +23,7 @@ class Homepage extends Component
     public function render(): View|Closure|string
     {
         return view('components.blog.homepage', [
-            'data' => Page::all()
-                ->where('style', '=', 'blog')
-                ->where('is_active'),
+            'data' => Page::simplePaginate(5),
         ]);
     }
 }

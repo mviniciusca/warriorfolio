@@ -6,7 +6,7 @@
             </h2>
             <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($articles as $item)
-                    @if ($item->style === 'blog' && $item['slug'] != $page['slug'])
+                    @if ($item->style === 'blog')
                         <article class="max-w-xs">
                             <a class="transition-all duration-200 hover:underline hover:opacity-80"
                                 href="{{ env('APP_URL') . '/' . $item->slug }}">
