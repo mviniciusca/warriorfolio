@@ -12,7 +12,18 @@ class PageFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title'       => $this->faker->word,
+            'style'       => 'blog',
+            'content'     => $this->faker->paragraph,
+            'slug'        => $this->faker->slug,
+            'category_id' => 1,
+            'is_active'   => true,
+            'blocks'      => [
+                [
+                    'data' => [],
+                    'type' => 'blog.post',
+                ],
+            ],
         ];
     }
 }
