@@ -1,14 +1,13 @@
 <?php
 
-namespace App\View\Components\Blog;
+namespace App\View\Components\Blog\Widget;
 
-use App\Models\Page;
 use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Homepage extends Component
+class Profile extends Component
 {
     /**
      * Create a new component instance.
@@ -23,12 +22,8 @@ class Homepage extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.blog.homepage', [
-            'data' => Page::query()
-                ->where('style', '=', 'blog')
-                ->where('is_active', '=', true)
-                ->with('category')
-                ->simplePaginate(5),
+        return view('components.blog.widget.profile', [
+            'data' => User::with('profile')->first(),
         ]);
     }
 }
