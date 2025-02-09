@@ -8,7 +8,7 @@
             </div>
 
             <!-- Coluna lateral -->
-            <div class="order-1 w-full px-12 lg:w-1/3">
+            <div class="order-1 hidden w-full lg:block lg:w-1/3 lg:px-12">
                 <aside>
                     <x-blog.widget.profile />
                 </aside>
