@@ -1,7 +1,6 @@
 @props(['profile ' => null])
 <x-core.layout>
     <div class="mx-auto">
-        <x-blog.header />
         <div class="-mx-4 flex flex-wrap">
             <!-- Coluna principal -->
             <div class="order-2 w-full px-4 lg:w-2/3">
