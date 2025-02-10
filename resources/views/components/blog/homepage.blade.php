@@ -9,7 +9,7 @@
                         {{ Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->content)), 20, '...') }}
                     </p>
                     <span class="mt-4 flex items-center justify-between text-sm">
-                        <span class="flex items-center gap-4">
+                        <span class="flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -18,7 +18,12 @@
                             </svg>
                             <p>{{ $item->category->name }}</p>
                         </span>
-                        <p> {{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}</p>
+                        <span class="flex items-center gap-1"> <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                            {{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}</span>
                     </span>
                 </div>
                 <div class="w-32">
