@@ -3,15 +3,11 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
-use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Category;
 use App\Models\Post;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
-use Filament\Actions\EditAction;
-use Filament\Forms;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
-use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -26,11 +22,7 @@ use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
-use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
-use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 use Z3d0X\FilamentFabricator\Models\Contracts\Page as PageContract;
 use Z3d0X\FilamentFabricator\Models\Page;
@@ -74,7 +66,9 @@ class PostResource extends Resource
                     ->icon('heroicon-o-pencil')
                     ->schema([
                         TextInput::make('title')
+                            ->live(onBlur: true)
                             ->prefixIcon('heroicon-o-pencil')
+                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', env('APP_BLOG_PATH').Str::slug($state).env('APP_BLOG_URL_END')))
                             ->required()
                             ->maxLength(255),
                         Hidden::make('style')->default('blog'),
