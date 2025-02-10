@@ -4,33 +4,38 @@
             <div
                 class="flex w-full justify-between overflow-hidden border-b border-b-secondary-200 py-8 dark:border-b-secondary-800">
                 <div class="w-2/3">
-                    <div class="mb-2 text-2xl font-bold leading-tight tracking-tighter">{{ $item->title }}</div>
+                    <div class="mb-2 text-2xl font-bold leading-tight tracking-tighter">
+                        {{ Str::words($item->title, 15, '...') }}</div>
                     <p class="text-base opacity-80">
-                        {{ Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->content)), 20, '...') }}
+                        {{ Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->content)), 15, '...') }}
                     </p>
                     <span class="mt-4 flex items-center justify-between text-sm">
                         <span class="flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
+                                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                             </svg>
+
                             <p>{{ $item->category->name }}</p>
                         </span>
-                        <span class="flex items-center gap-1"> <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <span class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
                             </svg>
+
                             {{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}</span>
                     </span>
                 </div>
-                <div class="w-32">
+                <div
+                    class="flex h-32 w-32 items-center justify-center rounded-lg border border-secondary-200 bg-secondary-100 object-center p-4 text-center dark:border-secondary-700 dark:bg-secondary-800">
                     @if ($item->img_cover)
                         <x-curator-glider class="rounded-lg object-cover" :media="$item->img_cover" />
                     @else
-                        <img class="mb-5 rounded-lg opacity-90" src="{{ asset('img/core/logo-app.svg') }}" />
+                        <img class="mb-5 rounded-lg opacity-50 grayscale filter dark:invert"
+                            src="{{ asset('img/core/logo-app.svg') }}" />
                     @endif
                 </div>
             </div>

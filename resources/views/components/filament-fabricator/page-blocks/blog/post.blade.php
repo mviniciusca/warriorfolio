@@ -1,4 +1,5 @@
 @aware(['page'])
+@props(['title' => $page->title])
 <x-core.layout>
     @if ($page->is_active)
         <main class="antialiased">
@@ -6,6 +7,7 @@
                 <article
                     class="format format-sm sm:format-base lg:format-lg format-blue dark:format-invert mx-auto w-full max-w-3xl">
                     <x-blog.header :title='$page->title' />
+                    <x-blog.header.breadcrumb :$title />
                     <header class="not-format mb-4 lg:mb-6">
                         <span class="max-w-auto text-md inline p-1 text-xs text-white"
                             style="background-color: {{ $page->category->hex_color }}">
