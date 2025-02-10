@@ -28,6 +28,7 @@ class Homepage extends Component
                 ->where('style', '=', 'blog')
                 ->where('is_active', '=', true)
                 ->with('category')
+                ->orderByDesc('created_at')
                 ->simplePaginate(5),
         ]);
     }

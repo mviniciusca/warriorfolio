@@ -15,7 +15,7 @@ class PageFactory extends Factory
             'title'       => $this->faker->sentence,
             'style'       => 'blog',
             'content'     => $this->faker->paragraph(50),
-            'slug'        => $this->faker->slug,
+            'slug'        => env('APP_BLOG_PATH').$this->faker->slug.env('APP_BLOG_URL_END'),
             'category_id' => 1,
             'is_active'   => true,
             'blocks'      => [
