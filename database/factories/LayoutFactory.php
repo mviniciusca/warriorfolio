@@ -20,8 +20,8 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'    => 'Featuring <br><span class="tl">Sierra</span>',
-                'section_subtitle' => 'Warriorfolio v2.0.4 is here and this <br> is Sierra, your new hero section theme.',
+                'section_title'    => 'Hands-on and ... <br><span class="tl">Write</span>',
+                'section_subtitle' => 'Warriorfolio v2.0.5 is here and your <br> Blog, is waiting for you!',
                 /** Buttons */
                 'buttons' => [
                     [
@@ -38,8 +38,8 @@ class LayoutFactory extends Factory
                     ],
                 ],
                 /** Themes */
-                'theme' => 'sierra',               
-                'is_mailing_active' => true,
+                'theme'                    => 'sierra',
+                'is_mailing_active'        => true,
                 'featured_image_is_active' => true,
                 /** Background */
                 'is_active'   => false,
