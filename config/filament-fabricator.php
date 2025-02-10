@@ -2,6 +2,7 @@
 
 // config for Z3d0X/FilamentFabricator
 
+use App\Filament\Resources\PageResource;
 use App\Models\Page;
 
 return [
@@ -38,7 +39,7 @@ return [
 
     'page-model' => Page::class,
 
-    'page-resource' => Z3d0X\FilamentFabricator\Resources\PageResource::class,
+    'page-resource' => PageResource::class,
 
     'enable-view-page' => false,
 
