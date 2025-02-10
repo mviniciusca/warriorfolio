@@ -8,8 +8,18 @@
                     <p class="text-base opacity-80">
                         {{ Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->content)), 20, '...') }}
                     </p>
-                    <p class="mt-4 text-sm">{{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}
-                    </p>
+                    <span class="mt-4 flex items-center justify-between text-sm">
+                        <span class="flex items-center gap-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
+                            </svg>
+                            <p>{{ $item->category->name }}</p>
+                        </span>
+                        <p> {{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}</p>
+                    </span>
                 </div>
                 <div class="w-32">
                     @if ($item->img_cover)
