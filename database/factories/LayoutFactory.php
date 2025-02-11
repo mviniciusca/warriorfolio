@@ -20,7 +20,7 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'    => 'Hands-on and ...<span class="tl">Write</span>',
+                'section_title'    => 'Therefore ...<span class="tl">I Write</span>',
                 'section_subtitle' => 'Warriorfolio '.env('APP_VERSION').' is here and your <br> Blog, is waiting for you!',
                 /** Buttons */
                 'buttons' => [
