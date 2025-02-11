@@ -30,12 +30,6 @@ class LayoutFactory extends Factory
                         'button_style'  => 'filled',
                         'button_target' => '_self',
                     ],
-                    // [
-                    //     'button_title'  => 'Documentation',
-                    //     'button_url'    => 'https://vercel.app',
-                    //     'button_style'  => 'outlined',
-                    //     'button_target' => '_blank',
-                    // ],
                 ],
                 /** Themes */
                 'theme'                    => 'default',
