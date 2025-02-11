@@ -20,22 +20,22 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'    => 'Therefore ...<span class="tl">I Write</span>',
+                'section_title'    => 'Therefore... <span class="tl">I Write</span>',
                 'section_subtitle' => 'Warriorfolio '.env('APP_VERSION').' is here and your <br> Blog, is waiting for you!',
                 /** Buttons */
                 'buttons' => [
                     [
-                        'button_title'  => 'Github',
-                        'button_url'    => 'https://github.com',
+                        'button_title'  => 'Your Blog',
+                        'button_url'    => '/blog',
                         'button_style'  => 'filled',
                         'button_target' => '_self',
                     ],
-                    [
-                        'button_title'  => 'Documentation',
-                        'button_url'    => 'https://vercel.app',
-                        'button_style'  => 'outlined',
-                        'button_target' => '_blank',
-                    ],
+                    // [
+                    //     'button_title'  => 'Documentation',
+                    //     'button_url'    => 'https://vercel.app',
+                    //     'button_style'  => 'outlined',
+                    //     'button_target' => '_blank',
+                    // ],
                 ],
                 /** Themes */
                 'theme'                    => 'default',
