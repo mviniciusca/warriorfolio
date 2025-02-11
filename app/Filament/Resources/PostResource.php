@@ -21,6 +21,7 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
@@ -108,18 +109,15 @@ class PostResource extends Resource
             )
             ->columns([
                 TextColumn::make('title')
-                    ->limit(50)
+                    ->limit(40)
                     ->searchable(),
                 TextColumn::make('category.name')
-                    ->limit(50)
-                    ->searchable(),
-                TextColumn::make('slug')
-                    ->limit(20)
-                    ->prefix('/')
-                    ->searchable(),
-                TextColumn::make('layout')
                     ->badge()
+                    ->limit(30)
                     ->searchable(),
+                ToggleColumn::make('is_active')
+                    ->alignCenter()
+                    ->label(__('Published')),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -138,8 +136,6 @@ class PostResource extends Resource
             ])
             ->actions([
                 ActionGroup::make([
-                    Tables\Actions\EditAction::make()
-                        ->label(__('Edit')),
                     Action::make('visit')
                         ->label(__('filament-fabricator::page-resource.actions.visit'))
                         ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
@@ -147,6 +143,8 @@ class PostResource extends Resource
                         ->openUrlInNewTab()
                         ->color('success')
                         ->visible(config('filament-fabricator.routing.enabled')),
+                    Tables\Actions\EditAction::make()
+                        ->label(__('Edit')),
                     DeleteAction::make()
                         ->label('Delete'),
                 ]),
