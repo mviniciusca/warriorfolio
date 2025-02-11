@@ -1,4 +1,4 @@
-@props(['profile ' => null])
+@props(['profile ' => null, 'page' => null])
 <x-core.layout>
     <div class="mx-auto">
         <div class="-mx-4 flex flex-wrap">

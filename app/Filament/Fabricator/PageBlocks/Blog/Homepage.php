@@ -10,6 +10,7 @@ class Homepage extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('blog.homepage')
+            ->hidden()
             ->schema([
                 //
             ]);
