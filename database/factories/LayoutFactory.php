@@ -20,8 +20,8 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'    => 'Hands-on and ... <br><span class="tl">Write</span>',
-                'section_subtitle' => 'Warriorfolio v2.0.5 is here and your <br> Blog, is waiting for you!',
+                'section_title'    => 'Hands-on and ...<span class="tl">Write</span>',
+                'section_subtitle' => 'Warriorfolio '.env('APP_VERSION').' is here and your <br> Blog, is waiting for you!',
                 /** Buttons */
                 'buttons' => [
                     [
@@ -38,7 +38,7 @@ class LayoutFactory extends Factory
                     ],
                 ],
                 /** Themes */
-                'theme'                    => 'sierra',
+                'theme'                    => 'default',
                 'is_mailing_active'        => true,
                 'featured_image_is_active' => true,
                 /** Background */
