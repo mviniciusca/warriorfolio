@@ -1,5 +1,5 @@
 @aware(['page'])
-@props(['title' => $page->title])
+@props(['title' => $page->title, 'page' => null])
 <x-core.layout>
     @if ($page->is_active)
         <main class="antialiased">

@@ -10,6 +10,7 @@ class Post extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('blog.post')
+            ->hidden()
             ->schema([
                 //
             ]);
