@@ -29,7 +29,7 @@ class DocumentationPageSeeder extends Seeder
                     [
                         'data' => [
                             'image'             => null,
-                            'content'           => '<p>Olá, bem-vindo ao Warriorfolio.</p><p><br></p><p>Através desta Documentação Rápida, vou e guiar pelos primeiros passos que você deve tomar antes de iniciar sozinho sua jornada no Warriorfolio.</p>',
+                            'content'           => '<p>Hello, welcome to Warriorfolio.</p><p><br></p><p>Through this Quick Documentation, I will guide you through the first steps you should take before starting your journey on Warriorfolio on your own.</p>',
                             'heading'           => 'Fast <span class="tl">Documentation</span>',
                             'is_active'         => true,
                             'is_center'         => false,
@@ -53,7 +53,7 @@ class DocumentationPageSeeder extends Seeder
                     [
                         'data' => [
                             'image'             => null,
-                            'content'           => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque semper ullamcorper mauris ut scelerisque. Sed quis luctus velit, at hendrerit nulla. Sed tempor vulputate leo pellentesque lacinia.</p>',
+                            'content'           => "<p>Check out what's new in version ".env('APP_VERSION')." of Warriorfolio. To learn more details, visit our page on <a class='tl' href='https://warriorfolio.vercel.app/' target='_blank'>Vercel</a>.</p>",
                             'heading'           => 'App <span class="tl">Features</span> ',
                             'is_active'         => true,
                             'is_center'         => false,
@@ -66,51 +66,58 @@ class DocumentationPageSeeder extends Seeder
                         'data' => [
                             'features' => [
                                 [
+                                    'icon'          => 'chatbox-outline',
+                                    'link'          => null,
+                                    'title'         => 'Blog <span class="tag">new</span>',
+                                    'description'   => 'Write notes and let your ideas flow. Now, Warriorfolio has a blog ready for you to express yourself. It also features Core Modules, just like any other component of Warriorfolio.',
+                                    'is_new_window' => false,
+                                ],
+                                [
                                     'icon'          => 'document-outline',
                                     'link'          => null,
-                                    'title'         => 'Pages',
+                                    'title'         => 'Pages <span class="tag">updated</span>',
                                     'description'   => 'You can create as many pages as you want and, following the concept of modularity, add pre-built components to them or create your own through components that combine with each other.',
                                     'is_new_window' => false,
                                 ],
                                 [
                                     'icon'          => 'hardware-chip-outline',
                                     'link'          => null,
-                                    'title'         => 'Core Modules <span class="tag">updated</span>',
+                                    'title'         => 'Core Modules',
                                     'description'   => 'These are pre-build components that cannot be changed individually. This is designed to accelerate the development of new pages. Through these modules, you have access to several specific functionalities.',
                                     'is_new_window' => false,
                                 ],
                                 [
                                     'icon'          => 'flash-outline',
                                     'link'          => null,
-                                    'title'         => 'Hero Section <span class="tag">new</span>',
+                                    'title'         => 'Hero Section',
                                     'description'   => 'Improved Hero Section, redesigned layout, more intuitive to use. It now comes with Sierra, a new interface with new presentation possibilities. Enchant your visitors from the first moment.',
                                     'is_new_window' => false,
                                 ],
                                 [
                                     'icon'          => 'heart-outline',
                                     'link'          => null,
-                                    'title'         => 'New Sidebar <span class="tag">updated</span>',
+                                    'title'         => 'New Sidebar',
                                     'description'   => 'Smarter Sidebar with main elements accessible for easy location. Don\'t waste your time looking for the number of unread messages, for example, just look at the badge on your sidebar.',
                                     'is_new_window' => false,
                                 ],
                                 [
                                     'icon'          => 'terminal-outline',
                                     'link'          => null,
-                                    'title'         => 'Hackable <span class="tag">updated</span>',
+                                    'title'         => 'Hackable',
                                     'description'   => 'Have total control of your application. Smart shortcuts, functions distributed throughout the system for you to customize the layout of your application as you wish. Use special CSS classes like "tl" for text effects or "tag" to create an animated tag.',
                                     'is_new_window' => false,
                                 ],
                                 [
                                     'icon'          => 'mail-outline',
                                     'link'          => null,
-                                    'title'         => 'Messages <span class="tag">updated</span>',
+                                    'title'         => 'Messages',
                                     'description'   => 'Receive messages and in the future, write, through a modern Inbox with advanced filters. Received, sent, favorite messages in a single inbox, making your day-to-day easier.',
                                     'is_new_window' => false,
                                 ],
                                 [
                                     'icon'          => 'leaf-outline',
                                     'link'          => null,
-                                    'title'         => 'Boost <span class="tag">updated</span>',
+                                    'title'         => 'Boost',
                                     'description'   => 'The layout of the entire system, both your Dashboard and the Website, have been redesigned. Incredible performance gain, with a huge evolution in Laravel Queries and also in System Architecture.',
                                     'is_new_window' => false,
                                 ],
@@ -145,8 +152,8 @@ class DocumentationPageSeeder extends Seeder
                     [
                         'data' => [
                             'image'             => null,
-                            'content'           => '<p>Now that you know some of the main features and updates in this version of Warriorfolio, let\'s get our hands dirty, or rather, on the components. It is through them that you can create the layout of the pages as you wish.</p><p><br></p><p>The modules are separated into two categories: Components and Core Modules. Components are individual blocks and actions are saved only on the pages that are created. Core Modules are components that have already been developed and cannot be changed in their structure, that is, their behavior is the same.</p><p><br></p><p>The Core Modules in this version 2.0.4 of Warriorfolio are: Header, Hero Section, Projects Section, Profile Section, Mailing List Module, Contact Section and Footer. Let\'s get to know each of them and their use.</p>',
-                            'heading'           => 'Getting <span class="tl">Started</span> ',
+                            'content'           => '<p>Now that you know some of the main features and updates in this version of Warriorfolio, let\'s get our hands dirty, or rather, on the components. It is through them that you can create the layout of the pages as you wish.</p><p><br></p><p>The modules are separated into two categories: Components and Core Modules. Components are individual blocks and actions are saved only on the pages that are created. Core Modules are components that have already been developed and cannot be changed in their structure, that is, their behavior is the same.</p><p><br></p><p>The Core Modules in this version '.env('APP_VERSION').' of Warriorfolio are: Header, Hero Section, Projects Section, Profile Section, Mailing List Module, Contact Section and Footer. Let\'s get to know each of them and their use.</p>',
+                            'heading'           => 'Getting <span class="tl">Started</span>',
                             'is_active'         => true,
                             'is_center'         => false,
                             'content_text_size' => 'text-base',
