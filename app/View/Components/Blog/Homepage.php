@@ -29,7 +29,7 @@ class Homepage extends Component
                 ->where('is_active', '=', true)
                 ->with('category')
                 ->orderByDesc('created_at')
-                ->simplePaginate(5),
+                ->simplePaginate(10),
         ]);
     }
 }
