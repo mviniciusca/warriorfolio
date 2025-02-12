@@ -1,25 +1,22 @@
 @props(['current' => 'laravel-cloud-is-here', 'page' => null])
 <div>
-    <aside aria-label="Related articles" class="py-8 lg:py-24">
-        <div class="mx-auto max-w-screen-xl px-4">
-            <h2 class="mb-8 flex items-center justify-between text-2xl font-bold">{{ __('The Latest') }}
+    <aside aria-label="Related articles" class="py-4 lg:py-12">
+        <div class="mx-auto max-w-screen-xl">
+            <h2
+                class="mb-8 flex items-center justify-between border-b border-b-secondary-200 pb-4 text-2xl dark:border-b-secondary-800">
+                <span class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                    </svg>
+                    {{ __('Latest Stories') }}
+                </span>
             </h2>
-            <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="w-full">
                 @foreach ($articles as $item)
                     @if ($item->style === 'blog')
-                        <article class="max-w-xs">
-                            <a class="transition-all duration-200 hover:underline hover:opacity-80"
-                                href="{{ env('APP_URL') . '/' . $item->slug }}">
-                                @if ($item->img_cover)
-                                    <x-curator-glider :media="$item->img_cover" class="mb-5 rounded-lg" />
-                                @else
-                                    <img class="mb-5 rounded-lg opacity-90" src="{{ asset('img/core/logo-app.svg') }}" />
-                                @endif
-                                <h2 class="text-md mb-2 font-bold tracking-tight">
-                                    <p>{{ $item->title }}</p>
-                                </h2>
-                            </a>
-                        </article>
+                        <x-blog.post.card :$item />
                     @endif
                 @endforeach
             </div>

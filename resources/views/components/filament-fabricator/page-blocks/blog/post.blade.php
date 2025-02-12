@@ -3,7 +3,7 @@
 <x-core.layout>
     @if ($page->is_active)
         <main class="antialiased">
-            <div class="mx-auto flex max-w-screen-xl justify-between px-4">
+            <div class="mx-auto flex max-w-screen-xl justify-between">
                 <article
                     class="format format-sm sm:format-base lg:format-lg format-blue dark:format-invert mx-auto w-full max-w-3xl">
                     <x-blog.header.breadcrumb :$title />
@@ -16,7 +16,7 @@
                         <p class="-mt-6">{{ \Carbon\Carbon::parse($page->created_at)->format('d/m/Y H:i') }}</p>
                     </header>
                     <x-blog.profile />
-                    <div class="content">
+                    <div class="py-8">
                         {!! $page->content !!}
                     </div>
                     <x-blog.post.articles :page="$page" />
