@@ -5,7 +5,7 @@
                 class="flex w-full justify-between overflow-hidden border-b border-b-secondary-200 py-8 dark:border-b-secondary-800">
                 <div class="w-2/3">
                     <div class="mb-2 text-2xl font-bold leading-tight tracking-tighter">
-                        {{ Str::words($item->title, 15, '...') }}</div>
+                        {{ Str::words($item->title, 18, '...') }}</div>
                     <p class="text-base opacity-80">
                         {{ Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->content)), 15, '...') }}
                     </p>
