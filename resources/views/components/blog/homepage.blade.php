@@ -4,9 +4,9 @@
             <div
                 class="flex w-full justify-between overflow-hidden border-b border-b-secondary-200 py-8 dark:border-b-secondary-800">
                 <div class="w-2/3">
-                    <div class="mb-2 text-2xl font-bold leading-tight tracking-tighter">
+                    <div class="text-md mb-2 font-bold leading-tight tracking-tighter md:text-2xl">
                         {{ Str::words($item->title, 18, '...') }}</div>
-                    <p class="text-base opacity-80">
+                    <p class="text-xs opacity-80 md:text-base">
                         {{ Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->content)), 15, '...') }}
                     </p>
                     <span class="mt-4 flex items-center justify-between text-sm">
@@ -30,7 +30,7 @@
                     </span>
                 </div>
                 <div
-                    class="flex h-32 w-32 items-center justify-center rounded-lg border border-secondary-200 bg-secondary-100 object-center p-4 text-center dark:border-secondary-700 dark:bg-secondary-800">
+                    class="flex h-24 w-24 items-center justify-center rounded-lg border border-secondary-200 bg-secondary-100 object-center p-4 text-center dark:border-secondary-700 dark:bg-secondary-800 lg:h-32 lg:w-32">
                     @if ($item->img_cover)
                         <x-curator-glider class="rounded-lg object-cover" :media="$item->img_cover" />
                     @else
