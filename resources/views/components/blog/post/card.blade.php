@@ -1,5 +1,5 @@
 @props(['item' => null])
-<div>
+<div wire:key="{{ $item->id }}">
     <a class="transition-all duration-100 hover:opacity-70" href="{{ env('APP_URL') . '/' . $item->slug }}">
         <div
             class="flex w-full justify-between overflow-hidden border-b border-b-secondary-200 py-8 dark:border-b-secondary-800">

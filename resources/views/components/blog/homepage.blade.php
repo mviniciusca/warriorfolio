@@ -1,9 +1,10 @@
 @props(['item' => null])
-@foreach ($data as $item)
-    @if ($item->is_active)
-        <x-blog.post.card :$item />
-    @endif
-@endforeach
+{{-- @foreach ($data as $item)
+    @if ($item->is_active) --}}
+<livewire:blog.feed />
+{{-- <x-blog.post.card :$item /> --}}
+{{-- @endif
+@endforeach --}}
 <div class="py-8">
-    {{ $data->links() }}
+    {{-- {{ $data->links() }} --}}
 </div>
