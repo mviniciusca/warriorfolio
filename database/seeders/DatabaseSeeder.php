@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         Mail::factory(100)->create();
         Newsletter::factory(100)->create();
         Course::factory(5)->create();
-        Category::factory()->create();
+        Category::factory(5)->create();
         Alert::factory()->create();
         Page::factory(20)->create();
 
