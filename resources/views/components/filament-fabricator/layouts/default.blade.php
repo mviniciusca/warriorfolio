@@ -1,5 +1,5 @@
 @props([
-    'page',
+    'page' => null,
     'maintenance' => null,
     'discovery' => null,
     'header_core' => null,
