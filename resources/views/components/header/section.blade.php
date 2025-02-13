@@ -1,17 +1,18 @@
+{{--  Navigation / Logo / Darkmode  --}}
 <x-core.layout>
     <div class="app-header mt-8 flex w-full flex-wrap items-center justify-between">
         <div class="app-logo flex flex-wrap items-center gap-4">
             <div>
                 <a href="/">
                     @isset($design['logo'])
-                    @if($design['logo'] || $design['logo_dark_mode'])
-                    <x-curator-glider :media="$design['logo']"
-                        class="block {{ $design['logo_size'] ? $design['logo_size'] : 'max-w-11' }} object-contain {{ $design['logo_dark_mode'] ? 'dark:hidden' : '' }}" />
-                    <x-curator-glider :media="$design['logo_dark_mode']"
-                        class="hidden {{ $design['logo_size'] ? $design['logo_size'] : 'max-w-11' }} object-contain dark:block" />
-                    @endisset
+                        @if ($design['logo'] || $design['logo_dark_mode'])
+                            <x-curator-glider :media="$design['logo']"
+                                class="{{ $design['logo_size'] ? $design['logo_size'] : 'max-w-11' }} {{ $design['logo_dark_mode'] ? 'dark:hidden' : '' }} block object-contain" />
+                            <x-curator-glider :media="$design['logo_dark_mode']"
+                                class="{{ $design['logo_size'] ? $design['logo_size'] : 'max-w-11' }} hidden object-contain dark:block" />
+                        @endisset
                     @else
-                    <x-ui.logo />
+                        <x-ui.logo />
                     @endif
                 </a>
             </div>
@@ -34,11 +35,11 @@
                 </button>
             </div>
 
-            @if($navigation)
-            <div class="nav-bar hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
-                id="mobile-menu-2">
-                <x-header.navigation :$navigation />
-            </div>
+            @if ($navigation)
+                <div class="nav-bar hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
+                    id="mobile-menu-2">
+                    <x-header.navigation :$navigation />
+                </div>
             @endif
         </div>
 
@@ -47,4 +48,8 @@
         </div>
 
     </div>
+    <span class="mx-auto max-w-7xl">
+        <img class="animate-pulse" src="{{ asset('img/core/core-ui-elements/beams/pink-beam.png') }}" alt="light-beam"
+            id="menu-gipper-board">
+    </span>
 </x-core.layout>

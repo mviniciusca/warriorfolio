@@ -19,10 +19,6 @@ class DocumentationPageSeeder extends Seeder
                 'slug'   => 'docs',
                 'blocks' => json_encode([
                     [
-                        'data' => ['color' => 'pink'],
-                        'type' => 'design.blur-beam',
-                    ],
-                    [
                         'data' => ['vertical_space' => 'sm'],
                         'type' => 'design.empty-separator',
                     ],

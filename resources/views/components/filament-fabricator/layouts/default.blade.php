@@ -1,5 +1,5 @@
 @props([
-    'page' => null,
+    'page',
     'maintenance' => null,
     'discovery' => null,
     'header_core' => null,
@@ -20,7 +20,7 @@
         <x-header.scripts />
     </head>
 
-    <body class="app-core" id="app">
+    <body class="default-theme app-core" id="app">
         @if (!$maintenance || ($discovery && auth()->user()))
 
             {{-- Over Modules --}}
