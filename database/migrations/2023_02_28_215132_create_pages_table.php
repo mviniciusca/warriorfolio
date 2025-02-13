@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('layout')->default('default')->index();
             $table->json('blocks');
             $table->text('content')->nullable();
+            $table->text('resume')->nullable();
             $table->boolean('is_active')->default(true);
             $table->string('style')->default('default');
             $table->string('img_cover')->nullable();

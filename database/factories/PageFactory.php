@@ -14,6 +14,7 @@ class PageFactory extends Factory
         return [
             'title'       => $this->faker->sentence,
             'style'       => 'blog',
+            'resume'      => $this->faker->paragraph(),
             'content'     => $this->faker->paragraph(50),
             'slug'        => env('APP_BLOG_PATH').$this->faker->slug.env('APP_BLOG_URL_END'),
             'category_id' => $this->faker->numberBetween(1, 5),

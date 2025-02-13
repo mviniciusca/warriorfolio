@@ -1,6 +1,6 @@
 @props(['title' => 'null'])
 <div>
-    <nav class="flex py-12" aria-label="Breadcrumb">
+    <nav class="flex py-2" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
                 <a href="{{ env('APP_URL') }}"

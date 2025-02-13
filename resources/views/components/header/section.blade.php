@@ -48,8 +48,8 @@
         </div>
 
     </div>
-    <span class="mx-auto max-w-7xl">
+    <div class="mx-auto max-w-7xl py-4">
         <img class="animate-pulse" src="{{ asset('img/core/core-ui-elements/beams/pink-beam.png') }}" alt="light-beam"
             id="menu-gipper-board">
-    </span>
+    </div>
 </x-core.layout>

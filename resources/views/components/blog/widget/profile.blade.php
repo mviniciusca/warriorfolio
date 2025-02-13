@@ -11,7 +11,7 @@
                     class="relative mx-auto my-2 max-h-32 max-w-32 rounded-full bg-secondary-300 bg-gradient-to-tl from-primary-500 to-tertiary-500 object-cover p-1 dark:bg-secondary-700 lg:my-8"
                     :media="$data->profile->avatar" />
             @else
-                <img class="relative mx-auto my-2 max-h-32 max-w-32 rounded-full bg-secondary-300 bg-gradient-to-tl from-primary-500 to-tertiary-500 object-cover p-1 dark:bg-secondary-700 lg:my-8"
+                <img class="relative mx-auto my-2 max-h-32 max-w-32 rounded-full bg-secondary-300 object-cover p-1 opacity-65 invert dark:bg-secondary-700 dark:invert-0 lg:my-8"
                     src="{{ asset('img/core/profile-picture.png') }}" />
             @endif
 
