@@ -1,11 +1,9 @@
 @props(['profile' => null])
+
 <div
     class="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-secondary-300 bg-secondary-300 bg-opacity-20 px-4 py-2 text-center dark:border dark:border-secondary-800 dark:bg-secondary-800 dark:bg-opacity-40 lg:inline-block lg:items-start lg:justify-normal lg:border-none lg:bg-transparent dark:lg:bg-transparent">
-
     <section id="profile-section-one" class="mx-auto">
-
         <div id="profile-avatar">
-
             @if ($data->profile->avatar)
                 <x-curator-glider
                     class="relative mx-auto my-2 max-h-32 max-w-32 rounded-full bg-secondary-300 bg-gradient-to-tl from-primary-500 to-tertiary-500 object-cover p-1 dark:bg-secondary-700 lg:my-8"
@@ -14,7 +12,6 @@
                 <img class="relative mx-auto my-2 max-h-32 max-w-32 rounded-full bg-secondary-300 object-cover p-1 opacity-65 invert dark:bg-secondary-700 dark:invert-0 lg:my-8"
                     src="{{ asset('img/core/profile-picture.png') }}" />
             @endif
-
             @if ($data->profile->count() === 0)
                 <x-ui.empty-section :auth="'Go to your Dashboard and create a New Profile.'" />
             @endif
@@ -34,17 +31,13 @@
                 @endif
             @endif
         </div>
-
         @if ($data->profile->user->name)
             <div class="mb-4 text-xl font-semibold tracking-tight">
                 <span>{{ $data->profile->user->name }}</span>
             </div>
         @endif
-
     </section>
-
     <section id="profile-section-two" class="mx-auto">
-
         <div class="flex flex-wrap items-center justify-center gap-4 md:justify-between lg:inline-block">
             @if ($data->profile->job_position || $data->profile->localization)
                 <div class="mb-4 tracking-tight">
@@ -58,8 +51,6 @@
                     @endif
                 </div>
             @endif
-
-
             @if ($data->profile->is_downloadable && $data->profile->document)
                 <div class="py-2">
                     <a target="new" href="{{ asset('storage/' . $data->profile->document) }}"
@@ -70,13 +61,11 @@
                 </div>
             @endif
         </div>
-
-
+        {{--  Social Icons --}}
         <div class="mx-auto my-8" id="social-network">
             <x-ui.social-network />
         </div>
-
-
+        {{--  Skills --}}
         <div id="skills"
             class="my-4 flex flex-wrap content-center items-center justify-center text-sm tracking-tight">
             @if ($data->profile->skills)
@@ -91,8 +80,6 @@
             @if (!$data->profile->skills)
                 <x-ui.empty-section :auth="'Go to your Dashboard and create a New Skill.'" />
             @endif
-
         </div>
-
     </section>
 </div>
