@@ -1,6 +1,7 @@
 @props(['item' => null])
 <div wire:key="{{ $item->id }}">
-    <a class="transition-all duration-100 hover:opacity-70" href="{{ env('APP_URL') . '/' . $item->slug }}">
+    <a class="opacity-80 transition-all duration-100 hover:opacity-100 active:opacity-20"
+        href="{{ env('APP_URL') . '/' . $item->slug }}">
         <div
             class="flex w-full justify-between overflow-hidden border-b border-b-secondary-200 py-8 dark:border-b-secondary-800">
             <div class="w-2/3">
