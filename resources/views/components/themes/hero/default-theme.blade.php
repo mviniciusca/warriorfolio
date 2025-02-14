@@ -51,9 +51,7 @@
                         src="{{ asset('storage/' . $hero->hero['featured_image']) }}" alt="hero-section-image" />
                 @else
                     <img class="mx-auto mt-4 h-auto rounded-3xl p-4 dark:hidden lg:max-h-max"
-                        src="{{ asset('img/core/demo/app-demo.png') }}" alt="hero-section-image" />
-                    <img class="mx-auto mt-4 hidden h-auto rounded-3xl p-4 dark:block lg:max-h-max"
-                        src="{{ asset('img/core/demo/app-demo-dark.png') }}" alt="hero-section-image" />
+                        src="{{ asset('img/core/demo/default-landing-image.png') }}" alt="hero-section-image" />
             @endif
         </div>
     @endif
