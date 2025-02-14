@@ -39,6 +39,7 @@ class SettingResource extends Resource
         return $page->generateNavigationItems([
             Pages\EditSetting::class,
             Pages\EditAppearance::class,
+            Pages\EditBlogSettings::class,
             Pages\EditNavigation::class,
             Pages\EditAboutSection::class,
             Pages\EditClientSection::class,
@@ -64,7 +65,7 @@ class SettingResource extends Resource
                     ->schema([
                         TextInput::make('application.name')
                             ->label(__('Application Name'))
-                            ->default('Warriorfolio v2.4')
+                            ->default('Warriorfolio'.env('APP_VERSION'))
                             ->helperText(__('Define the application name.'))
                             ->prefixIcon('heroicon-o-user')
                             ->required(),
@@ -236,6 +237,7 @@ class SettingResource extends Resource
             'edit-maintenance-section' => Pages\EditMaintenanceSection::route('/{record}/edit-maintenance-section'),
             'edit-navigation'          => Pages\EditNavigation::route('/{record}/edit-navigation'),
             'edit-security'            => Pages\EditSecurity::route('/{record}/edit-security'),
+            'edit-blog'                => Pages\EditBlogSettings::route('/{record}/edit-blog'),
         ];
     }
 }
