@@ -21,6 +21,12 @@ class SettingFactory extends Factory
             'application' => [
                 'name' => 'Warriorfolio v'.env('APP_VERSION'),
             ],
+            'blog' => [
+                'is_active'      => true,
+                'is_logo_active' => true,
+                'name'           => 'Warriorfolio <br/> <span class="tl font-black">Notes</span>',
+                'description'    => 'This is your blog.',
+            ],
             //
             'meta' => [
                 'meta_title'       => 'Building the what\'s next with Laravel, Filament and Tailwind CSS.',
