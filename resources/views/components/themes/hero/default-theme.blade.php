@@ -42,20 +42,21 @@
         </div>
     </div>
     </div>
-
-    <div class="animate__animated animate__fadeInUp animate__delay-2s hidden lg:col-span-5 lg:mt-0 lg:flex">
-        {{-- Hero Section: Image --}}
-        @if (data_get($hero, 'hero.featured_image'))
-            <div class="mt-8" id="hero-featured-image">
-                <img class="animate__animated animate__fadeInUp animate__delay-2s h-auto p-4 lg:max-h-max"
-                    src="{{ asset('storage/' . $hero->hero['featured_image']) }}" alt="hero-section-image" />
-            @else
-                <img class="mx-auto mt-4 h-auto rounded-3xl p-4 dark:hidden lg:max-h-max"
-                    src="{{ asset('img/core/demo/app-demo.png') }}" alt="hero-section-image" />
-                <img class="mx-auto mt-4 hidden h-auto rounded-3xl p-4 dark:block lg:max-h-max"
-                    src="{{ asset('img/core/demo/app-demo-dark.png') }}" alt="hero-section-image" />
-        @endif
-    </div>
+    @if (data_get($hero, 'hero.featured_image_is_active'))
+        <div class="animate__animated animate__fadeInUp animate__delay-2s hidden lg:col-span-5 lg:mt-0 lg:flex">
+            {{-- Hero Section: Image --}}
+            @if (data_get($hero, 'hero.featured_image'))
+                <div class="mt-8" id="hero-featured-image">
+                    <img class="animate__animated animate__fadeInUp animate__delay-2s h-auto p-4 lg:max-h-max"
+                        src="{{ asset('storage/' . $hero->hero['featured_image']) }}" alt="hero-section-image" />
+                @else
+                    <img class="mx-auto mt-4 h-auto rounded-3xl p-4 dark:hidden lg:max-h-max"
+                        src="{{ asset('img/core/demo/app-demo.png') }}" alt="hero-section-image" />
+                    <img class="mx-auto mt-4 hidden h-auto rounded-3xl p-4 dark:block lg:max-h-max"
+                        src="{{ asset('img/core/demo/app-demo-dark.png') }}" alt="hero-section-image" />
+            @endif
+        </div>
+    @endif
     </div>
     </div>
 

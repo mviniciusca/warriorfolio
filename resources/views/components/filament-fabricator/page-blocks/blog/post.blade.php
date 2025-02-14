@@ -1,5 +1,6 @@
 @aware(['page'])
-@props(['title' => $page->title, 'page' => null])
+@props(['title' => $page->title])
+
 @if ($page->is_active)
     <main class="p-8 antialiased">
         <div class="mx-auto flex max-w-screen-xl justify-between">
