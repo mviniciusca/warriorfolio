@@ -35,11 +35,6 @@ class CategoryResource extends Resource
         return __('Categories');
     }
 
-    public static function getNavigationParentItem(): ?string
-    {
-        return __('Projects');
-    }
-
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function getGlobalSearchResultTitle(Model $record): string|Htmlable
@@ -63,13 +58,13 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 Section::make(__('Category'))
-                    ->description(__('Category of your Projects'))
+                    ->description(__('Category for your Projects or Blog Post'))
                     ->columns(3)
                     ->icon('heroicon-o-tag')
                     ->schema([
                         Forms\Components\Toggle::make('is_active')
                             ->label(__('Active'))
-                            ->helperText(__('Projects under this category will be visible to the public.'))
+                            ->helperText(__('Projects or Posts under this category will be visible to the public.'))
                             ->default(true)
                             ->required(),
                         Forms\Components\TextInput::make('name')
@@ -120,7 +115,7 @@ class CategoryResource extends Resource
                     ->alignLeft()
                     ->label(__('Tag Color')),
                 Tables\Columns\ToggleColumn::make('is_active')
-                    ->label(__('Visible')),
+                    ->label(__('Visible on Menu')),
                 Tables\Columns\TextColumn::make('parent.name')
                     ->label(__('Parent'))
                     ->default('---')
