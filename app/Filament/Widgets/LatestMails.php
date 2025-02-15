@@ -26,7 +26,6 @@ class LatestMails extends BaseWidget
             ->description(__('Your new and unread messages.'))
             ->headerActions(
                 [
-
                     ViewAction::make()
                         ->url(route('filament.admin.resources.mails.index'))
                         ->label(__('Inbox'))
