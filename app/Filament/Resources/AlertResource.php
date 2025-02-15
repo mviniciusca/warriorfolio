@@ -34,7 +34,7 @@ class AlertResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Core Features');
+        return __('Website Design');
     }
 
     public static function getNavigationBadge(): ?string
