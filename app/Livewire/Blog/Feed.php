@@ -40,7 +40,9 @@ class Feed extends Component
     {
         return view('livewire.blog.feed', [
             'data'       => $this->data, // Usa a propriedade computada com paginação
-            'categories' => Category::where('is_active', true)->get(),
+            'categories' => Category::
+                where('is_active', true)
+                    ->get(),
         ]);
     }
 }
