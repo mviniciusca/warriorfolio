@@ -26,7 +26,7 @@ class ProfileResource extends Resource
         return __('Core Features');
     }
 
-    protected static ?int $navigationSort = 0;
+    protected static ?int $navigationSort = 3;
 
     public static function getRecordSubNavigation(Page $page): array
     {
