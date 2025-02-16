@@ -26,6 +26,10 @@ class PostsWidget extends BaseWidget
             ->striped()
             ->paginated(false)
             ->searchable(false)
+            ->recordClasses(fn (Post $record) => match ($record->is_active) {
+                0       => 'opacity-50 dark:opacity-30',
+                default => null,
+            })
             ->heading(__('Latest Posts'))
             ->description(__('Your latest posts from your blog.'))
             ->query(
