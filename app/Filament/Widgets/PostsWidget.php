@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Post;
+use Filament\Actions\CreateAction;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables;
 use Filament\Tables\Actions\ViewAction;
@@ -25,6 +26,8 @@ class PostsWidget extends BaseWidget
             ->striped()
             ->paginated(false)
             ->searchable(false)
+            ->heading(__('Latest Posts'))
+            ->description(__('Your latest posts from your blog.'))
             ->query(
                 Post::query()
                     ->select(['id', 'title', 'category_id', 'is_active'])
@@ -34,6 +37,12 @@ class PostsWidget extends BaseWidget
             )
             ->headerActions(
                 [
+                    ViewAction::make('new')
+                        ->icon('heroicon-o-pencil')
+                        ->color('primary')
+                        ->size('xs')
+                        ->url(route('filament.admin.resources.posts.create'))
+                        ->label('New Post'),
                     ViewAction::make()
                         ->url(route('filament.admin.resources.posts.index'))
                         ->label(__('View All'))
