@@ -107,6 +107,10 @@ class PostResource extends Resource
                     ->select()
                     ->where('style', '=', 'blog')
             )
+            ->recordClasses(fn (Post $record) => match ($record->is_active) {
+                0       => 'opacity-50 dark:opacity-30',
+                default => null,
+            })
             ->columns([
                 TextColumn::make('title')
                     ->limit(40)
