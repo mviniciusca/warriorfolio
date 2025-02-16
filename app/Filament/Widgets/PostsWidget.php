@@ -42,7 +42,7 @@ class PostsWidget extends BaseWidget
                         ->color('primary')
                         ->size('xs')
                         ->url(route('filament.admin.resources.posts.create'))
-                        ->label('New Post'),
+                        ->label(__('New Post')),
                     ViewAction::make()
                         ->url(route('filament.admin.resources.posts.index'))
                         ->label(__('View All'))
