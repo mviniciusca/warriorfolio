@@ -69,10 +69,12 @@ class PostResource extends Resource
                         TextInput::make('title')
                             ->live(onBlur: true)
                             ->prefixIcon('heroicon-o-pencil')
-                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', env('APP_BLOG_PATH').Str::slug($state).env('APP_BLOG_URL_END')))
+                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug',
+                                env('APP_BLOG_PATH') . Str::slug($state) . env('APP_BLOG_URL_END')))
                             ->required()
                             ->maxLength(255),
-                        Hidden::make('style')->default('blog'),
+                        Hidden::make('style')
+                            ->default('blog'),
                         Hidden::make('blocks')
                             ->dehydrated()
                             ->default([['data' => [], 'type' => 'blog.post']])
@@ -94,7 +96,7 @@ class PostResource extends Resource
                             ->default(true),
                         Select::make('category_id')
                             ->label(__('Category'))
-                            ->options(Category::all()->pluck('name', 'id'), ),
+                            ->options(Category::all()->pluck('name', 'id')),
                     ]),
             ]);
     }
@@ -107,8 +109,8 @@ class PostResource extends Resource
                     ->select()
                     ->where('style', '=', 'blog')
             )
-            ->recordClasses(fn (Post $record) => match ($record->is_active) {
-                0       => 'opacity-50 dark:opacity-30',
+            ->recordClasses(fn(Post $record) => match ($record->is_active) {
+                0 => 'opacity-50 dark:opacity-30',
                 default => null,
             })
             ->columns([
@@ -142,7 +144,8 @@ class PostResource extends Resource
                 ActionGroup::make([
                     Action::make('visit')
                         ->label(__('filament-fabricator::page-resource.actions.visit'))
-                        ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
+                        ->url(fn(?PageContract $record) =>
+                        FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
                         ->icon('heroicon-o-arrow-top-right-on-square')
                         ->openUrlInNewTab()
                         ->color('success')
@@ -170,9 +173,9 @@ class PostResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListPosts::route('/'),
+            'index' => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
-            'edit'   => Pages\EditPost::route('/{record}/edit'),
+            'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
     }
 }
