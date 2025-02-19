@@ -54,7 +54,7 @@
                             src="{{ asset('storage/' . $hero->hero['featured_image']) }}" alt="hero-section-image" />
                     @else
                         <img class="animate__animated animate__fadeInUp mx-auto h-auto rounded-xl p-4 lg:max-h-max"
-                            src="{{ asset('img/core/demo/app-demo.png') }}" alt="hero-section-image" />
+                            src="{{ asset('img/core/demo/default-landing-image.png') }}" alt="hero-section-image" />
                 @endif
             </div>
     </div>
