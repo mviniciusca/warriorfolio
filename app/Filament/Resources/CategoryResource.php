@@ -12,6 +12,7 @@ use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
@@ -121,17 +122,27 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('name')
+                    ->label(__('Category'))
+                    ->sortable(),
+                Tables\Columns\ToggleColumn::make('is_active')
+                    ->alignCenter()
+                    ->label(__('Active')),
                 Tables\Columns\ColorColumn::make('hex_color')
                     ->alignLeft()
+                    ->alignCenter()
                     ->label(__('Tag Color')),
-                Tables\Columns\ToggleColumn::make('is_active')
-                    ->label(__('Visible on Menu')),
+                IconColumn::make('is_blog')
+                    ->label(__('Visible for Blog'))
+                    ->alignCenter()
+                    ->boolean(),
+                IconColumn::make('is_project')
+                    ->label(__('Visible for Project'))
+                    ->alignCenter()
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('parent.name')
                     ->label(__('Parent'))
                     ->default('---')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('name')
-                    ->label(__('Category'))
                     ->sortable(),
             ])
             ->filters([
