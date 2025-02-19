@@ -21,7 +21,7 @@ class Feed extends Component
     public function setCategory($categoryId): void
     {
         $this->category = $categoryId;
-        $this->resetPage(); // Reseta a página para 1 ao mudar a categoria
+        $this->resetPage();
     }
 
     public function getDataProperty()
@@ -33,13 +33,14 @@ class Feed extends Component
             $query->where('category_id', $this->category);
         }
 
-        return $query->orderByDesc('created_at')->paginate(5); // Exibir 5 por página
+        return $query->orderByDesc('created_at')
+            ->paginate(5);
     }
 
     public function render()
     {
         return view('livewire.blog.feed', [
-            'data'       => $this->data, // Usa a propriedade computada com paginação
+            'data'       => $this->data,
             'categories' => Category::
                 where('is_active', true)
                     ->where('is_blog', '=', true)
