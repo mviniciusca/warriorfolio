@@ -34,7 +34,7 @@ class LayoutFactory extends Factory
                 /** Themes */
                 'theme'                    => 'default',
                 'is_mailing_active'        => true,
-                'featured_image_is_active' => false,
+                'featured_image_is_active' => true,
                 /** Background */
                 'is_active'   => false,
                 'bg_position' => 'bg-center',
@@ -52,7 +52,7 @@ class LayoutFactory extends Factory
             /** About Section */
             'about' => [
                 'section_fill'     => true,
-                'section_title'    => 'Let\'s start with a <span class="tl">Hello</span>',
+                'section_title'    => 'About Me',
                 'section_subtitle' => 'I\'m a full-stack developer based in Rio de Janeiro, Brazil specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.',
             ],
 
