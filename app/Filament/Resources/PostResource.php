@@ -105,7 +105,7 @@ class PostResource extends Resource
                             ->icon('heroicon-o-photo')
                             ->schema([
                                 CuratorPicker::make('img_cover')
-                                    ->helperText(__('Image cover.'))
+                                    ->helperText(__('Image cover. Optional.'))
                                     ->label(__('Cover')),
                             ]),
                         Section::make(__('Settings'))
@@ -118,6 +118,7 @@ class PostResource extends Resource
                                     ->options(Category::all()->pluck('name', 'id')),
                                 Toggle::make('is_active')
                                     ->label(__('Status'))
+                                    ->required()
                                     ->label(__('Published'))
                                     ->helperText(__('Visibility status of your post.'))
                                     ->default(true),
