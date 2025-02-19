@@ -67,6 +67,16 @@ class CategoryResource extends Resource
                             ->helperText(__('Projects or Posts under this category will be visible to the public.'))
                             ->default(true)
                             ->required(),
+                        Forms\Components\Toggle::make('is_blog')
+                            ->label(__('Visible for Blog Posts'))
+                            ->helperText(__('Define if the Category is visible for your Blog.'))
+                            ->default(true)
+                            ->required(),
+                        Forms\Components\Toggle::make('is_project')
+                            ->label(__('Visible for Projects'))
+                            ->helperText(__('Define if the Category is visible for your Projects.'))
+                            ->default(true)
+                            ->required(),
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->prefixIcon('heroicon-o-tag')

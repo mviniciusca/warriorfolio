@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('slug')->unique();
             $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->text('icon')->nullable();
+            $table->boolean('is_blog')->default(true);
             $table->string('hex_color')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
