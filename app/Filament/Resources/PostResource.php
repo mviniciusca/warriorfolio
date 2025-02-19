@@ -115,7 +115,9 @@ class PostResource extends Resource
                                     ->label(__('Category'))
                                     ->helperText(__('Main category of your post.'))
                                     ->required()
-                                    ->options(Category::all()->pluck('name', 'id')),
+                                    ->options(Category::
+                                    where('is_blog', '=', true)
+                                        ->pluck('name', 'id')),
                                 Toggle::make('is_active')
                                     ->label(__('Status'))
                                     ->required()
