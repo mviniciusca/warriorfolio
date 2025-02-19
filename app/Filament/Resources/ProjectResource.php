@@ -122,7 +122,9 @@ class ProjectResource extends Resource
                         ->schema([
                             Select::make('category_id')
                                 ->relationship('category', 'name')
-                                ->options(Category::all()->pluck('name', 'id'))
+                                ->options(Category::
+                                where('is_project', '=', true)
+                                    ->pluck('name', 'id'))
                                 ->helperText(__('Project Category'))
                                 ->createOptionForm([
                                     Section::make('Fast Create Category.')
