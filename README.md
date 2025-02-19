@@ -1,4 +1,4 @@
-## <p align="center"> Warriorfolio 2 </p>
+## <p align="center"> Warriorfolio 2.1 </p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/main/public/img/gif/ezgif-7-41f5195607.gif"  alt="Warriorfolio 2 wip">
@@ -11,7 +11,7 @@ ___
 composer create-project mviniciusca/warriorfolio
 ```
 ### Quick Documentation
-- [ Warriorfolio 2 ](#-warriorfolio-2-)
+- [ Warriorfolio 2.1 ](#-warriorfolio-21-)
   - [Installation](#installation)
   - [Quick Documentation](#quick-documentation)
   - [Introduction to Warriorfolio 2](#introduction-to-warriorfolio-2)
@@ -39,6 +39,7 @@ Feel free to contribute to the project and fork it, but don't forget to give cre
 And me, of course! 😁
 
 ### Features
+- Blog - v2.1.0
 - Write Messages via SMTP - v2.0.4
 - Notifications via SMTP - v2.0.4
 - Log Reports - v2.0.4
@@ -88,7 +89,7 @@ Warriorfolio 2 is also under the guardianship of one of the world's largest fram
 - 💾 DB such as MySQL, PostgreSQL, SQLite ...;
 - 🤵🏻 Composer 2.0 or higher;
 - 🌱 NPM 10.2 or higher;
-- 💎 1GB of disk space or higher;
+- 💎 2GB of disk space or higher;
 
 ### Documentation
 [Visit the Official Documentation](https://warriorfolio.vercel.app/) from Warriorfolio on Vercel
