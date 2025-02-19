@@ -18,10 +18,10 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'      => Str::ucfirst($this->faker->word()),
-            'slug'      => $this->faker->slug(),
+            'name'      => 'Laravel',
+            'slug'      => 'laravel',
             'is_active' => true,
-            'hex_color' => $this->faker->hexColor(),
+            'hex_color' => '#f55247',
             'icon'      => 'logo-octocat',
         ];
     }
