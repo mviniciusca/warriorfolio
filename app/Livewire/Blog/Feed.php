@@ -42,6 +42,7 @@ class Feed extends Component
             'data'       => $this->data, // Usa a propriedade computada com paginação
             'categories' => Category::
                 where('is_active', true)
+                    ->where('is_blog', '=', true)
                     ->get(),
         ]);
     }
