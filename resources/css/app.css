@@ -30,7 +30,7 @@
 
 
     body {
-        @apply overflow-x-hidden antialiased scroll-smooth bg-secondary-50 text-secondary-600 dark:bg-secondary-900 dark:text-secondary-400
+        @apply overflow-x-hidden antialiased scroll-smooth bg-secondary-50 text-secondary-600 dark:bg-secondary-950 dark:text-secondary-300
     }
 
 
