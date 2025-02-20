@@ -11,10 +11,8 @@
                     <p class="py-2 font-mono uppercase">
                         {{ \Carbon\Carbon::parse($page->created_at)->format('F d, Y ') }}
                     </p>
-
                     {{-- Title --}}
-                    <h1
-                        class="leading-tighter mt-2 text-3xl font-black tracking-tight dark:text-white/90 lg:mb-4 lg:text-5xl">
+                    <h1 class="mt-2 text-3xl font-black tracking-tight dark:text-white/90 lg:mb-4 lg:text-4xl">
                         {{ $page->title }}
                     </h1>
                     {{-- Subtitle --}}
@@ -22,7 +20,6 @@
                         {{ $page->resume }}
                     </h2>
                     {{-- Info --}}
-
                 </section>
                 {{-- Profile --}}
                 <x-blog.profile :$page />
