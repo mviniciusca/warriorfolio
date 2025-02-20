@@ -27,7 +27,6 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 use Z3d0X\FilamentFabricator\Models\Contracts\Page as PageContract;
-use Z3d0X\FilamentFabricator\Models\Page;
 
 class PostResource extends Resource
 {
