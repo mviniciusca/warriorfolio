@@ -31,7 +31,10 @@ use Z3d0X\FilamentFabricator\Models\Page;
 
 class PostResource extends Resource
 {
-    protected static ?string $model = Page::class;
+    public static function getModel(): string
+    {
+        return FilamentFabricator::getPageModel();
+    }
 
     protected static ?string $navigationIcon = 'heroicon-o-pencil';
 
