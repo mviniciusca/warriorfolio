@@ -1,7 +1,16 @@
 @props(['title' => null])
 
 <div>
-    <nav class="flex py-2" aria-label="Breadcrumb">
+    <div class="mb-8">
+        <a class="flex items-center gap-1 font-mono" href="{{ env('APP_URL') . '/blog' }}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg>
+            <p class="font-extrabold uppercase">{{ __('Back to the Main Blog') }}</p>
+        </a>
+    </div>
+    {{-- <nav class="flex py-2" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
                 <a href="{{ env('APP_URL') }}"
@@ -33,5 +42,5 @@
                 </div>
             </li>
         </ol>
-    </nav>
+    </nav> --}}
 </div>
