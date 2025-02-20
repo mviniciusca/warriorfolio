@@ -14,7 +14,7 @@
 
                     {{-- Title --}}
                     <h1
-                        class="leading-tighter mt-2 text-3xl font-extrabold tracking-tight dark:text-white/90 lg:mb-4 lg:text-5xl">
+                        class="leading-tighter mt-2 text-3xl font-black tracking-tight dark:text-white/90 lg:mb-4 lg:text-5xl">
                         {{ $page->title }}
                     </h1>
                     {{-- Subtitle --}}
@@ -26,7 +26,7 @@
                 </section>
                 {{-- Profile --}}
                 <x-blog.profile :$page />
-                <div class="py-4">
+                <div class="content py-4">
                     {!! $page->content !!}
                 </div>
                 {{-- Article --}}
