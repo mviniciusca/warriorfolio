@@ -7,7 +7,7 @@
                 <x-curator-glider class="relative mx-auto my-2 mr-4 max-h-16 max-w-14 rounded-full object-cover"
                     :media="$user->profile->avatar" />
             @else
-                <img class="relative mx-auto my-2 mr-4 max-h-16 max-w-16 rounded-full object-cover"
+                <img class="relative mx-auto my-2 mr-4 max-h-16 max-w-16 rounded-full object-cover invert-0 dark:invert"
                     src="{{ asset('img/core/profile-picture.png') }}" />
             @endif
             <div>
