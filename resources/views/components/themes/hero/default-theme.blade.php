@@ -1,4 +1,4 @@
-@props(['hero'])
+@props(['hero', 'icon' => null])
 
 <section>
     <div class="text-center">
@@ -23,14 +23,14 @@
             @foreach ($hero->hero['buttons'] as $button)
                 <a target="{{ $button['button_target'] ?? '_self' }}" href="{{ $button['button_url'] ?? '#' }}">
                     @if ($button['button_style'] == 'filled')
-                        <x-ui.button class="px-5 py-3">
+                        <x-ui.button :icon="$button['icon']" class="px-5 py-3">
                             {{ $button['button_title'] }}
                             @if ($button['button_target'] == '_blank')
                                 <ion-icon class="ml-1" name="trending-up-outline"></ion-icon>
                             @endif
                         </x-ui.button>
                     @else
-                        <x-ui.button-alt class="px-5 py-3">
+                        <x-ui.button-alt :icon="$button['icon']" class="px-5 py-3">
                             {{ $button['button_title'] }}
                             @if ($button['button_target'] == '_blank')
                                 <ion-icon class="ml-1" name="trending-up-outline"></ion-icon>

@@ -129,6 +129,11 @@ class EditHeroSection extends EditRecord
                                                     ->prefixIcon('heroicon-o-link')
                                                     ->default('#')
                                                     ->maxLength(140),
+                                                TextInput::make('icon')
+                                                    ->label(__('Icon'))
+                                                    ->helperText(__('Max: 140 characters.'))
+                                                    ->prefixIcon('heroicon-o-cube')
+                                                    ->maxLength(140),
                                                 Select::make('button_style')
                                                     ->label(__('Button Style'))
                                                     ->prefixIcon('heroicon-o-window')
