@@ -9,7 +9,7 @@
         @endif
 
         @if ($module_subtitle)
-            <div class="subtitle mx-auto mt-4 max-w-5xl text-center">{{ $module_subtitle }}</div>
+            <div class="subtitle mx-auto mt-4 max-w-3xl text-center text-lg">{{ $module_subtitle }}</div>
         @endif
         <div class="section-container" id="app-container">
             {{ $slot }}

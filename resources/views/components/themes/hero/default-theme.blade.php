@@ -11,7 +11,7 @@
 
         @if ($hero->hero['section_subtitle'])
             <h2
-                class="animate__animated animate__fadeInUp animate__delay-1s mb-8 text-lg leading-tight tracking-tight shadow-current lg:text-xl">
+                class="animate__animated animate__fadeInUp animate__delay-1s mb-2 text-lg leading-tight tracking-tight shadow-current lg:text-xl">
                 {!! $hero->hero['section_subtitle'] !!}
             </h2>
         @endif
