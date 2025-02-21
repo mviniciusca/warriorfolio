@@ -5,7 +5,7 @@
         @auth
             <div class="text-center text-xs">
                 <ion-icon class="mx-auto text-2xl" name="folder-open-outline"></ion-icon>
-                <p class="my-4">{!! __($message . ' ' . $auth) !!} </p>
+                <p class="my-1">{!! __($message . ' ' . $auth) !!} </p>
             </div>
         @endauth
     @endif
