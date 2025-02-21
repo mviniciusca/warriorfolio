@@ -166,7 +166,20 @@
         @apply font-light bg-primary-700 animate-pulse lowercase text-xs px-2 text-white rounded-md;
     }
 
+    /** Blog Post Main Content **/
     .content p {
-        @apply pt-6 leading-relaxed;
+        @apply pt-6;
+    }
+
+    .content img {
+        @apply rounded-lg my-4;
+    }
+
+    .content figcaption {
+        @apply hidden;
+    }
+
+    .attachment__caption {
+        @apply hidden;
     }
 }
