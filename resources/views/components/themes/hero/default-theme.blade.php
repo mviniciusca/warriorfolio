@@ -4,7 +4,7 @@
     <div class="text-center">
         @if ($hero->hero['section_title'])
             <h1
-                class="animate__animated animate__fadeInUp animate mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tighter dark:text-white md:text-5xl xl:text-6xl">
+                class="animate__animated animate__fadeInUp animate mb-4 max-w-5xl text-4xl font-extrabold leading-none tracking-tighter dark:text-white md:text-5xl xl:text-6xl">
                 {!! $hero->hero['section_title'] !!}
             </h1>
         @endif
