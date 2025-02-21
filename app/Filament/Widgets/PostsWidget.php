@@ -34,9 +34,8 @@ class PostsWidget extends BaseWidget
             ->description(__('Your latest posts from your blog.'))
             ->query(
                 Post::query()
-                    ->select(['id', 'title', 'category_id', 'is_active'])
-                    ->where('style', '=', 'blog')
                     ->latest('created_at')
+                    ->with('page')
                     ->take(5)
             )
             ->headerActions(
@@ -55,7 +54,7 @@ class PostsWidget extends BaseWidget
                         ->size('xs'),
                 ]
             )
-            ->recordUrl(fn (Post $record) => route('filament.admin.resources.posts.edit', $record))
+            ->recordUrl(fn (Post $record) => route('filament.admin.resources.posts.edit', $record->page->id))
             ->columns([
                 IconColumn::make('is_active')
                     ->alignCenter()
@@ -63,7 +62,7 @@ class PostsWidget extends BaseWidget
                     ->label(__('Published')),
                 TextColumn::make('category.name')
                     ->badge(),
-                TextColumn::make('title')
+                TextColumn::make('page.title')
                     ->limit(50),
             ]);
     }

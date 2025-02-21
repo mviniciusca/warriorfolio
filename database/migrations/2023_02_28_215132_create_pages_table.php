@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,16 +14,17 @@ return new class extends Migration {
             $table->string('title')->index();
             $table->string('slug')->unique();
             $table->string('layout')->default('default')->index();
-            $table->json('blocks');
-            $table->text('content')->nullable();
-            $table->text('resume')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->json('blocks');
             $table->string('style')->default('default');
-            $table->string('img_cover')->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('pages')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(Category::class)->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(Post::class)->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
             $table->softDeletes();
+            // $table->text('content')->nullable();
+            // $table->text('resume')->nullable();
+            // $table->foreignIdFor(Category::class)->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            // $table->string('img_cover')->nullable();
         });
     }
 

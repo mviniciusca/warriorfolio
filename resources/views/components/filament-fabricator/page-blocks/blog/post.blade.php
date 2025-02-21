@@ -1,7 +1,7 @@
 @aware(['page'])
 @props(['title' => $page->title])
 
-@if ($page->is_active)
+@if ($page->post->is_active)
     <main class="p-8 antialiased">
         <div class="mx-auto flex max-w-screen-xl justify-between">
             <article
@@ -9,7 +9,7 @@
                 <x-blog.header.breadcrumb :$title />
                 <section class="not-format">
                     <p class="py-2 font-mono uppercase">
-                        {{ \Carbon\Carbon::parse($page->created_at)->format('F d, Y ') . __('in ') . $page->category->name }}
+                        {{ \Carbon\Carbon::parse($page->created_at)->format('F d, Y ') . __('in ') . $page->post->category->name }}
                     </p>
                     {{-- Title --}}
                     <h1 class="mt-2 text-3xl font-black tracking-tight dark:text-white/90 lg:mb-4 lg:text-4xl">
@@ -17,14 +17,14 @@
                     </h1>
                     {{-- Subtitle --}}
                     <h2 class="text-md pb-4 leading-tight tracking-tight">
-                        {{ $page->resume }}
+                        {{ $page->post->resume }}
                     </h2>
                     {{-- Info --}}
                 </section>
                 {{-- Profile --}}
                 <x-blog.profile :$page />
                 <div class="content py-4 font-serif text-xl leading-relaxed">
-                    {!! $page->content !!}
+                    {!! $page->post->content !!}
                 </div>
                 {{-- Article --}}
                 <x-blog.post.articles :page="$page" />

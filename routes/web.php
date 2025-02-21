@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 
 if (Schema::hasTable('settings')) {
-$id = Setting::first(['id']);
+    $id = Setting::first(['id']);
 }
 
 Route::get('/login', function (): RedirectResponse {
