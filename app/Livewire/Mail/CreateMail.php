@@ -37,15 +37,13 @@ class CreateMail extends Component implements HasForms
                     ->required()
                     ->label(__('Full Name'))
                     ->prefixIcon('heroicon-o-user')
-                    ->placeholder(__('Your Name'))
                     ->columnSpanFull(),
                 TextInput::make('email')
                     ->label(__('Email Address'))
                     ->email()
                     ->prefixIcon('heroicon-o-envelope')
-                    ->placeholder(__('Your Email Address'))
                     ->maxLength(140)
-                    ->minLength(5)
+                    ->minLength(8)
                     ->columnSpanFull()
                     ->required(),
                 TextInput::make('phone')
@@ -55,11 +53,9 @@ class CreateMail extends Component implements HasForms
                     ->maxLength(20)
                     ->columnSpanFull()
                     ->prefixIcon('heroicon-o-phone')
-                    ->placeholder(__('Your Phone Number'))
                     ->required(),
                 TextInput::make('subject')
                     ->prefixIcon('heroicon-o-tag')
-                    ->placeholder(__('Message Subject'))
                     ->maxLength(140)
                     ->minLength(5)
                     ->label(__('Message Subject'))
