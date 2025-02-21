@@ -20,14 +20,15 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'    => 'Therefore... <span class="tl">I Write</span>',
-                'section_subtitle' => 'Warriorfolio '.env('APP_VERSION').' is here and your <br> Blog, is waiting for you!',
+                'section_title'    => 'Free your mind with <span class="tl">Notes</span>',
+                'section_subtitle' => 'Warriorfolio '.env('APP_VERSION').' is here with your blog. Write something amazing right now! ✨',
                 /** Buttons */
                 'buttons' => [
                     [
-                        'button_title'  => 'Your Blog',
+                        'button_title'  => 'Meet Notes',
+                        'icon'          => 'musical-note-sharp',
                         'button_url'    => '/blog',
-                        'button_style'  => 'filled',
+                        'button_style'  => 'outlined',
                         'button_target' => '_self',
                     ],
                 ],
