@@ -1,4 +1,7 @@
-{{--  Navigation / Logo / Darkmode  --}}
+{{-- background Image --}}
+<x-ui.background />
+
+{{--  Navigation / Logo / Dark Mode  --}}
 <x-core.layout>
     <div class="app-header mt-8 flex w-full flex-wrap items-center justify-between">
         <div class="app-logo flex flex-wrap items-center gap-4">
