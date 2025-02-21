@@ -1,7 +1,5 @@
 @if ($module->clients)
-    <x-core.layout
-        class="{{ data_get($data, 'customer.section_fill') ? 'bg-secondary-100  dark:bg-secondary-900' : null }}"
-        id="clients">
+    <x-core.layout class="{{ data_get($data, 'customer.section_fill') ? 'section-filled' : null }}" id="clients">
 
         @if ($data->customer['section_title'])
             <x-slot name="module_title">
