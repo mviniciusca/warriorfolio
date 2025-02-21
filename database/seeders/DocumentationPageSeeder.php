@@ -18,15 +18,12 @@ class DocumentationPageSeeder extends Seeder
                 'title'  => 'Documentation',
                 'slug'   => 'docs',
                 'blocks' => json_encode([
-                    [
-                        'data' => ['vertical_space' => 'sm'],
-                        'type' => 'design.empty-separator',
-                    ],
+
                     [
                         'data' => [
                             'image'             => null,
-                            'content'           => '<p>Hello, welcome to Warriorfolio.</p><p><br></p><p>Through this Quick Documentation, I will guide you through the first steps you should take before starting your journey on Warriorfolio on your own.</p>',
                             'heading'           => 'Fast <span class="tl">Documentation</span>',
+                            'content'           => 'Hello, welcome to Warriorfolio. <br/> Through this Quick Documentation, I will guide you through the first steps you should take before starting your journey on Warriorfolio on your own.',
                             'is_active'         => true,
                             'is_center'         => false,
                             'content_text_size' => 'text-base',
@@ -34,10 +31,7 @@ class DocumentationPageSeeder extends Seeder
                         ],
                         'type' => 'component.heading-description',
                     ],
-                    [
-                        'data' => ['vertical_space' => 'xs'],
-                        'type' => 'design.empty-separator',
-                    ],
+
                     [
                         'data' => ['color' => 'blur'],
                         'type' => 'design.blur-beam',
@@ -64,7 +58,7 @@ class DocumentationPageSeeder extends Seeder
                                 [
                                     'icon'          => 'chatbox-outline',
                                     'link'          => null,
-                                    'title'         => 'Blog <span class="tag">new</span>',
+                                    'title'         => 'Notes (Blog) <span class="tag">new</span>',
                                     'description'   => 'Write notes and let your ideas flow. Now, Warriorfolio has a blog ready for you to express yourself. It also features Core Modules, just like any other component of Warriorfolio.',
                                     'is_new_window' => false,
                                 ],
@@ -226,7 +220,7 @@ class DocumentationPageSeeder extends Seeder
                     [
                         'data' => [
                             'image'             => null,
-                            'content'           => '<p>&nbsp;To learn more about this Documentation, please visit the<span style="text-decoration: underline;"> </span><a href="https://github.com/mviniciusca/warriorfolio"><span style="text-decoration: underline;">Github</span></a> and the official website of the <a href="https://warriorfolio.vercel.app"><span style="text-decoration: underline;">Documentation on Vercel.</span></a>&nbsp;</p>',
+                            'content'           => '<p>&nbsp;To learn more about this Documentation, please visit the <span style="text-decoration: underline;"> </span><a href="https://github.com/mviniciusca/warriorfolio"><span style="text-decoration: underline;">Github</span></a> and the official website of the <a href="https://warriorfolio.vercel.app"><span style="text-decoration: underline;">Documentation on Vercel.</span></a>&nbsp;</p>',
                             'heading'           => 'Read <span class="tl">More</span>',
                             'is_active'         => true,
                             'is_center'         => false,
