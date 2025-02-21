@@ -16,14 +16,16 @@
                     </h2>
                     <ul class="font-medium">
                         @foreach ($navigation as $item)
-                            @foreach ($item['content'] as $content)
-                                @if ($content['is_active'])
-                                    <li class="mb-4">
-                                        <a target="{{ $content['target'] }}" href="{{ $content['url'] }}"
-                                            class="hover:underline">{!! $content['name'] !!}</a>
-                                    </li>
-                                @endif
-                            @endforeach
+                            @isset($item['content'])
+                                @foreach ($item['content'] as $content)
+                                    @if ($content['is_active'])
+                                        <li class="mb-4">
+                                            <a target="{{ $content['target'] }}" href="{{ $content['url'] }}"
+                                                class="hover:underline">{!! $content['name'] !!}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            @endisset
                         @endforeach
                     </ul>
                 </div>
@@ -33,15 +35,17 @@
                     </h2>
                     <ul class="font-medium">
                         @foreach ($social as $item)
-                            @foreach ($item['social'] as $item)
-                                @if ($item['is_active'])
-                                    <li class="mb-4 flex items-center">
-                                        <a target="_blank" href="{{ $item['profile_link'] }}"
-                                            class="hover:underline">{{ ucfirst($item['social_network']) }}
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
+                            @isset($item['social'])
+                                @foreach ($item['social'] as $item)
+                                    @if ($item['is_active'])
+                                        <li class="mb-4 flex items-center">
+                                            <a target="_blank" href="{{ $item['profile_link'] }}"
+                                                class="hover:underline">{{ ucfirst($item['social_network']) }}
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            @endisset
                         @endforeach
                     </ul>
                 </div>
