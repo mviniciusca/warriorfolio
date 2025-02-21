@@ -1,6 +1,5 @@
 @if ($module->contact)
-    <x-core.layout class="{{ data_get($data, 'contact.section_fill') ? 'bg-secondary-100  dark:bg-secondary-900' : '' }}"
-        id="contact">
+    <x-core.layout class="{{ data_get($data, 'contact.section_fill') ? 'section-filled' : '' }}" id="contact">
 
         @if ($data->contact['section_title'])
             <x-slot name="module_title">
