@@ -1,5 +1,5 @@
 @if ($module->about)
-    <x-core.layout class="{{ data_get($data, 'about.section_fill') ? 'bg-secondary-100 dark:bg-secondary-950' : null }}"
+    <x-core.layout class="{{ data_get($data, 'about.section_fill') ? 'bg-secondary-100  dark:bg-secondary-900' : null }}"
         id="about">
 
         @if ($data->about['section_title'])
