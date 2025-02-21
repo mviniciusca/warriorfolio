@@ -1,19 +1,64 @@
-<div class="mx-auto" id="footer-content">
-    <div class="mx-auto flex flex-wrap items-center justify-center gap-2 text-center md:flex-row">
-        {{-- App Logo --}}
-        @if (data_get($setting, 'design.logo'))
-            <img src="{{ asset('storage/' . data_get($setting, 'design.logo')) }}"
-                alt="{{ data_get($setting, 'application.name', env('APP_NAME')) . 'logo-image' }}" class="mr-4 h-8 w-8">
-        @else
-            <x-ui.logo />
-        @endif
-        {{-- App Name --}}
-        <p class="text-center text-sm md:text-left">
-            © {{ date('Y') . ' - ' . data_get($setting, 'application.name', env('APP_NAME')) }}
-        </p>
-        {{-- Social Network --}}
-        <div class="order-1 w-full pt-4 text-center text-sm sm:mt-0 sm:w-auto sm:text-left md:ml-auto md:pt-0">
-            <x-ui.social-network />
+<section id="footer-content">
+    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div class="md:flex md:justify-between">
+            <div class="mb-6 md:mb-0">
+                @if (data_get($setting, 'design.logo'))
+                    <img src="{{ asset('storage/' . data_get($setting, 'design.logo')) }}"
+                        alt="{{ data_get($setting, 'application.name', env('APP_NAME')) . 'logo-image' }}"
+                        class="mr-4 h-8 w-8">
+                @else
+                    <x-ui.logo />
+                @endif
+            </div>
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6">
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold uppercase">{{ __('Pages') }}
+                    </h2>
+                    <ul class="font-medium">
+                        @foreach ($navigation as $item)
+                            @foreach ($item['content'] as $content)
+                                @if ($content['is_active'])
+                                    <li class="mb-4">
+                                        <a target="{{ $content['target'] }}" href="{{ $content['url'] }}"
+                                            class="hover:underline">{!! $content['name'] !!}</a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        @endforeach
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold uppercase">
+                        {{ __('Follow') }}
+                    </h2>
+                    <ul class="font-medium">
+                        @foreach ($social as $item)
+                            @foreach ($item['social'] as $item)
+                                @if ($item['is_active'])
+                                    <li class="mb-4 flex items-center">
+                                        <a target="_blank" href="{{ $item['profile_link'] }}"
+                                            class="hover:underline">{{ ucfirst($item['social_network']) }}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="my-6 border-secondary-200 dark:border-secondary-800 sm:mx-auto lg:my-8" />
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <span>
+                {{-- App Name --}}
+                <p class="text-center text-sm md:text-left">
+                    © {{ date('Y') . ' - ' . data_get($setting, 'application.name', env('APP_NAME')) }}
+                </p>
+            </span>
+            <div class="mt-4 flex sm:mt-0 sm:justify-center">
+                <x-ui.social-network />
+
+            </div>
         </div>
     </div>
-</div>
+</section>

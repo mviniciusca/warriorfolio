@@ -4,6 +4,8 @@ namespace App\View\Components\Footer;
 
 use App\Models\Layout;
 use App\Models\Module;
+use App\Models\Navigation;
+use App\Models\Profile;
 use App\Models\Setting;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -35,6 +37,10 @@ class Section extends Component
             'module' => Module::first([
                 'footer',
             ]),
+            'navigation' => Navigation::select('content')
+                ->get(),
+            'social' => Profile::select('social')
+                ->get(),
         ]);
     }
 }
