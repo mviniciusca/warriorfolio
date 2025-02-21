@@ -37,4 +37,9 @@ class Category extends Model
     {
         return $this->hasMany(Page::class, 'category_id');
     }
+
+    public function post()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
