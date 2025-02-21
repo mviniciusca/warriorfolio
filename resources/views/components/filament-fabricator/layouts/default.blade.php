@@ -10,6 +10,7 @@
     'contact_core' => null,
     'newsletter_core' => null,
     'footer_core' => null,
+    'background_core' => null,
 ])
 
 <!DOCTYPE html>
@@ -22,6 +23,9 @@
 
     <body class="default-theme app-core" id="app">
         @if (!$maintenance || ($discovery && auth()->user()))
+
+            {{-- Background --}}
+            <x-ui.background />
 
             {{-- Over Modules --}}
             <x-core.alert />
@@ -38,6 +42,7 @@
             <main class="main-section" id="app-main">
 
                 <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
+
 
                 @if ($hero_core)
                     <x-hero.section />
