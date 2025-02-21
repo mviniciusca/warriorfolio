@@ -14,7 +14,7 @@
                 <p rel="author" class="mt-1 font-mono text-base font-semibold uppercase">
                     {{ $user->name }}
                 </p>
-                <p class="-mt-1 pb-1 font-mono text-xs uppercase">{{ $user->profile->job_position }} -
+                <p class="-mt-1 pb-1 font-mono text-xs uppercase">{!! $user->profile->job_position !!} -
                     {{ $user->profile->localization }}</p>
                 <p> <x-ui.social-network /></p>
             </div>

@@ -24,8 +24,6 @@
     <body class="default-theme app-core" id="app">
         @if (!$maintenance || ($discovery && auth()->user()))
 
-            {{-- Background --}}
-            <x-ui.background />
 
             {{-- Over Modules --}}
             <x-core.alert />
