@@ -1,7 +1,7 @@
 @props(['data' => null])
 
 @if ($data->blog['is_active'] ?? false)
-    <section id="blog-header-components" class="p-21 w-full overflow-hidden rounded-xl md:py-12">
+    <section id="blog-header-components" class="w-full overflow-hidden rounded-xl p-5 md:py-4">
         <div class="flex flex-initial items-center gap-2">
             @if ($data->blog['is_logo_active'] ?? true)
                 <div
