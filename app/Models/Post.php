@@ -13,6 +13,8 @@ class Post extends Model
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
 
+    protected $guarded = [];
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -20,6 +22,6 @@ class Post extends Model
 
     public function page()
     {
-        return $this->belongsTo(Page::class);
+        return $this->hasOne(Page::class);
     }
 }

@@ -15,7 +15,7 @@
             </h2>
             <div class="w-full">
                 @foreach ($articles as $item)
-                    @if ($item->style === 'blog')
+                    @if ($item->style === 'blog' && $item->post->is_active)
                         <x-blog.post.card :$item />
                     @endif
                 @endforeach

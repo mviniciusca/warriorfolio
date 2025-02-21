@@ -9,7 +9,7 @@
                     {{ Str::words($item->title, 18, '...') }}
                 </div>
                 <p class="text-xs opacity-80 md:text-base">
-                    {{ Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->content)), 15, '...') }}
+                    {{ Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->post->content)), 15, '...') }}
                 </p>
                 <span class="mt-4 flex items-center justify-between font-mono text-sm uppercase">
                     <span class="flex items-center gap-1">
@@ -18,7 +18,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                         </svg>
-                        <p>{{ $item->category->name }}</p>
+                        <p>{{ $item->post->category->name }}</p>
                     </span>
                     <span class="flex items-center gap-1 font-mono uppercase">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -31,8 +31,8 @@
             </div>
             <div
                 class="flex h-24 w-24 items-center justify-center rounded-lg border border-secondary-200 bg-secondary-100 object-center p-4 text-center dark:border-secondary-700 dark:bg-secondary-800 lg:h-32 lg:w-32">
-                @if ($item->img_cover)
-                    <x-curator-glider class="rounded-lg object-cover" :media="$item->img_cover" />
+                @if ($item->post->img_cover)
+                    <x-curator-glider class="rounded-lg object-cover" :media="$item->post->img_cover" />
                 @else
                     <img class="mb-5 rounded-lg opacity-50 grayscale filter dark:invert"
                         src="{{ asset('img/core/logo-app.svg') }}" />

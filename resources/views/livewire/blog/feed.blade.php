@@ -18,7 +18,9 @@
         @endforeach
     </div>
     @foreach ($data as $item)
-        <x-blog.post.card :$item />
+        @if ($item->post->is_active)
+            <x-blog.post.card :$item />
+        @endif
     @endforeach
     <div class="py-8">
         {{ $data->links() }}

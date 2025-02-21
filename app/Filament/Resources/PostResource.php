@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Category;
+use App\Models\Page as PageContract;
+use App\Models\Page as PageModel;
 use App\Models\Post;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms\Components\Group;
@@ -26,7 +28,6 @@ use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
-use Z3d0X\FilamentFabricator\Models\Contracts\Page as PageContract;
 
 class PostResource extends Resource
 {
@@ -79,19 +80,23 @@ class PostResource extends Resource
                                 env('APP_BLOG_PATH').Str::slug($state).env('APP_BLOG_URL_END')))
                             ->required()
                             ->maxLength(255),
-                        Textarea::make('resume')
-                            ->helperText(__('Optional'))
-                            ->label(__('Short Description')),
                         Hidden::make('style')
                             ->default('blog'),
                         Hidden::make('blocks')
                             ->dehydrated()
                             ->default([['data' => [], 'type' => 'blog.post']])
                             ->required(),
-                        RichEditor::make('content')
-                            ->required()
-                            ->helperText(__('Content of your post.'))
-                            ->columnSpanFull(),
+                        Group::make()
+                            ->relationship('post')
+                            ->schema([
+                                Textarea::make('resume')
+                                    ->helperText(__('Optional'))
+                                    ->label(__('Short Description')),
+                                RichEditor::make('content')
+                                    ->required()
+                                    ->helperText(__('Content of your post.'))
+                                    ->columnSpanFull(),
+                            ]),
                         TextInput::make('slug')
                             ->prefixIcon('heroicon-o-link')
                             ->dehydrated()
@@ -102,6 +107,7 @@ class PostResource extends Resource
                     ]),
                 Group::make()
                     ->columnSpan(1)
+                    ->relationship('post')
                     ->schema([
                         Section::make(__('Featured Image'))
                             ->icon('heroicon-o-photo')
