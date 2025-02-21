@@ -18,8 +18,8 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'      => 'Laravel',
-            'slug'      => 'laravel',
+            'name'      => 'Warriorfolio',
+            'slug'      => 'warriorfolio',
             'is_active' => true,
             'hex_color' => '#f55247',
             'icon'      => 'logo-octocat',
