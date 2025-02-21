@@ -4,16 +4,16 @@
     <div class="text-center">
         @if ($hero->hero['section_title'])
             <h1
-                class="animate__animated animate__fadeInUp animate mb-4 max-w-5xl text-4xl font-extrabold leading-none tracking-tighter dark:text-white md:text-5xl xl:text-6xl">
+                class="animate__animated animate__fadeInUp animate mb-4 max-w-5xl text-4xl font-extrabold leading-none tracking-tighter dark:text-white md:text-5xl lg:text-7xl">
                 {!! $hero->hero['section_title'] !!}
             </h1>
         @endif
 
         @if ($hero->hero['section_subtitle'])
-            <h4
+            <h2
                 class="animate__animated animate__fadeInUp animate__delay-1s mb-8 text-lg leading-tight tracking-tight shadow-current lg:text-xl">
                 {!! $hero->hero['section_subtitle'] !!}
-            </h4>
+            </h2>
         @endif
 
         {{-- Hero Section: Buttons --}}

@@ -3,7 +3,7 @@
     <aside aria-label="Related articles" class="py-4 lg:py-12">
         <div class="mx-auto max-w-screen-xl">
             <h2
-                class="mb-8 flex items-center justify-between border-b border-b-secondary-200 pb-4 text-2xl dark:border-b-secondary-800">
+                class="mb-8 flex items-center justify-between border-b border-b-secondary-100 pb-4 text-xl dark:border-b-secondary-800">
                 <span class="flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
