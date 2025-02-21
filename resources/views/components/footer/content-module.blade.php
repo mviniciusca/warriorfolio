@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <hr class="my-6 border-secondary-200 dark:border-secondary-800 sm:mx-auto lg:my-8" />
+        <hr class="my-6 border-secondary-200 dark:border-secondary-800 sm:mx-auto" />
         <div class="sm:flex sm:items-center sm:justify-between">
             <span>
                 {{-- App Name --}}
