@@ -1,17 +1,14 @@
-@props(['type' => 'button', 'icon' => null])
+@props(['type' => 'button', 'icon' => 'arrow-forward-outline'])
 
-<button type="{{ $type }}" {{ $attributes->merge(['class' =>
-    'inline-flex items-center gap-1 text-sm
-    rounded-lg bg-primary-700
-    text-center font-medium text-white
-    hover:bg-primary-800 focus:ring-4 focus:ring-primary-300
-    dark:focus:ring-primary-900 hover:opacity-80
-    transition-all duration-100']) }}
-    >
-    {{ $slot }}
+<button type="{{ $type }}"
+    class="mt-4 inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-3 text-center text-sm font-medium text-white transition-all duration-100 hover:opacity-90 focus:ring-4 focus:ring-primary-500 dark:focus:ring-primary-950">
 
-    @if($icon)
-    <x-ui.ionicon :icon='$icon' />
+    <span>
+        {{ $slot }}
+    </span>
+
+    @if ($icon != 'none')
+        <x-ui.ionicon :icon='$icon' />
     @endif
 
 </button>

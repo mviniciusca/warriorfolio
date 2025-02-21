@@ -21,6 +21,9 @@ class SettingFactory extends Factory
             'application' => [
                 'name' => 'Warriorfolio v'.env('APP_VERSION'),
             ],
+            'config' => [
+                'empty_section' => true,
+            ],
             'blog' => [
                 'is_active'      => true,
                 'is_logo_active' => true,
@@ -36,7 +39,7 @@ class SettingFactory extends Factory
             ],
             //
             'design' => [
-                'animation'                   => true,
+                'animation'                   => false,
                 'background_image_visibility' => true,
                 'background_image_position'   => 'bg-center',
                 'background_image_size'       => 'bg-auto',
