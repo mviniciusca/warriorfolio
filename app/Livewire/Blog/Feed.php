@@ -44,6 +44,7 @@ class Feed extends Component
             'categories' => Category::
                 where('is_active', true)
                     ->where('is_blog', '=', true)
+                    ->whereHas('pages')
                     ->get(),
         ]);
     }

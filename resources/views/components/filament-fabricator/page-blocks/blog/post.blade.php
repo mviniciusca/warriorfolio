@@ -9,7 +9,7 @@
                 <x-blog.header.breadcrumb :$title />
                 <section class="not-format">
                     <p class="py-2 font-mono uppercase">
-                        {{ \Carbon\Carbon::parse($page->created_at)->format('F d, Y ') }}
+                        {{ \Carbon\Carbon::parse($page->created_at)->format('F d, Y ') . __('in ') . $page->category->name }}
                     </p>
                     {{-- Title --}}
                     <h1 class="mt-2 text-3xl font-black tracking-tight dark:text-white/90 lg:mb-4 lg:text-4xl">
@@ -23,7 +23,7 @@
                 </section>
                 {{-- Profile --}}
                 <x-blog.profile :$page />
-                <div class="content py-4">
+                <div class="content py-4 font-serif text-xl leading-normal">
                     {!! $page->content !!}
                 </div>
                 {{-- Article --}}
