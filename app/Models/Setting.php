@@ -27,6 +27,7 @@ class Setting extends Model
         'google'      => 'array',
         'scripts'     => 'array',
         'blog'        => 'array',
+        'config'      => 'array',
     ];
 
     /**

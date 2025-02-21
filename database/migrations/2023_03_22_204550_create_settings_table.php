@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->json('google')->nullable();
             $table->json('scripts')->nullable();
             $table->json('blog')->nullable();
+            $table->json('config')->nullable();
             $table->timestamps();
         });
     }

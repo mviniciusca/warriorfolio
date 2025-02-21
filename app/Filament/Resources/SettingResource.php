@@ -102,6 +102,15 @@ class SettingResource extends Resource
                             ->prefixIcon('heroicon-o-globe-alt')
                             ->label(__('Google Verification')),
                     ]),
+                Section::make(__('Alerts'))
+                    ->description(__('General Alert Settings'))
+                    ->icon('heroicon-o-bell-alert')
+                    ->schema([
+                        Toggle::make('config.empty_section')
+                            ->label(__('Empty Section'))
+                            ->helperText(__('Alert for Empty Sections'))
+                            ->default(true),
+                    ]),
                 Section::make(__('Core Module Decoupling'))
                     ->relationship('core')
                     ->columns(4)
