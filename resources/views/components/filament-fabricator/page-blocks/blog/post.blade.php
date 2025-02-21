@@ -23,7 +23,7 @@
                 </section>
                 {{-- Profile --}}
                 <x-blog.profile :$page />
-                <div class="content py-4 font-serif text-xl leading-normal">
+                <div class="content py-4 font-serif text-xl leading-relaxed">
                     {!! $page->content !!}
                 </div>
                 {{-- Article --}}
