@@ -27,13 +27,16 @@ class Feed extends Component
     public function getDataProperty()
     {
         $query = Page::where('is_active', true)
-            ->where('style', 'blog');
+            ->where('style', 'blog')
+            ->with('post');
 
         if (! is_null($this->category)) {
-            $query->where('category_id', $this->category);
+            $query->whereHas('post', function ($query) {
+                $query->where('category_id', $this->category);
+            });
         }
 
-        return $query->orderByDesc('created_at')
+        return $query->orderBy('created_at', 'desc')
             ->paginate(5);
     }
 
