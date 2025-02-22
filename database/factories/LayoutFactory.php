@@ -46,7 +46,7 @@ class LayoutFactory extends Factory
             /** Portfolio Section */
             'portfolio' => [
                 'section_fill'     => false,
-                'section_title'    => 'My <span class="tl">Portfolio</span>',
+                'section_title'    => 'Projects',
                 'section_subtitle' => 'Here are some of my projects I\'ve worked on recently.',
             ],
 
@@ -60,7 +60,7 @@ class LayoutFactory extends Factory
             /** Contact Section */
             'contact' => [
                 'section_fill'     => false,
-                'section_title'    => 'Get <span class="tl">in Touch</span>',
+                'section_title'    => 'Get in Touch',
                 'section_subtitle' => 'I\'m currently available for freelance work',
                 'public_address'   => 'Rio-GIG Airport </br> Av. 20 de Janeiro, S/N <br/> Rio de Janeiro, RJ <br/> Brazil',
                 'public_email'     => 'warriorfolio@test.dev',
@@ -71,7 +71,7 @@ class LayoutFactory extends Factory
             /** Clients Section */
             'customer' => [
                 'section_fill'     => false,
-                'section_title'    => '<span class="tl">Trusted</span> by',
+                'section_title'    => 'Trusted by',
                 'section_subtitle' => 'Here are some of the companies I\'ve worked with',
             ],
 

@@ -17,7 +17,7 @@
             @endif
             <div id="blog-name-group">
                 @isset($data->blog['name'])
-                    <p class="text-3xl font-semibold leading-none tracking-tighter md:text-4xl lg:text-5xl">
+                    <p class="text-3xl font-bold leading-none tracking-tighter md:text-4xl lg:text-5xl">
                         {!! $data->blog['name'] !!}
                     </p>
                 @endisset
