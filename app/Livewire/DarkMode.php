@@ -13,7 +13,14 @@ class DarkMode extends Component
 
     public function mount(): void
     {
-        $this->active = isset($_COOKIE['theme']) && $_COOKIE['theme'] === 'dark';
+        if (isset($_COOKIE['theme'])) {
+            $this->active = $_COOKIE['theme'] === 'dark';
+        } else {
+            $this->active = true;
+            setcookie('theme', 'dark', time() + (86400 * 30), '/');
+            session(['theme' => 'dark']);
+        }
+
         $this->theme = $this->active ? 'dark' : 'light';
     }
 
