@@ -15,9 +15,9 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: colors.purple, // accent color
-                secondary: colors.zinc, // dark color.
-                tertiary: colors.pink, // highlight effects color
+                primary: colors.purple,     //accent color
+                secondary: colors.zinc,     //dark color.
+                tertiary: colors.pink,      //highlight effects color
             }
         },
     },

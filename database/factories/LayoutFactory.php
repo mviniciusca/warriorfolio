@@ -70,7 +70,7 @@ class LayoutFactory extends Factory
 
             /** Clients Section */
             'customer' => [
-                'section_fill'     => false,
+                'section_fill'     => true,
                 'section_title'    => 'Trusted by',
                 'section_subtitle' => 'Here are some of the companies I\'ve worked with',
             ],
