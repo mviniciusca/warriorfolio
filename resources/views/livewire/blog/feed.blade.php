@@ -13,9 +13,9 @@
             @endif
         </span>
         @foreach ($categories as $category)
-            <p class="cursor-pointer border-b-2 border-b-transparent transition-all duration-100 hover:opacity-80 active:opacity-40"
-                type="button" wire:click="setCategory({{ $category->id }})">
-                {{ $category->name }}
+            <p class="text-md cursor-pointer border-b-2 border-b-transparent transition-all duration-100 hover:opacity-80 active:opacity-40"
+                wire:click="setCategory({{ $category->id }})">
+                <span class="font-extralight">{{ $category->name }}</span>
             </p>
         @endforeach
     </div>

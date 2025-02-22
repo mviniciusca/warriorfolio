@@ -18,8 +18,8 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'      => 'Warriorfolio',
-            'slug'      => 'warriorfolio',
+            'name'      => 'Notes',
+            'slug'      => 'notes',
             'is_active' => true,
             'hex_color' => '#f55247',
             'icon'      => 'logo-octocat',
