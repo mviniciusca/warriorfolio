@@ -4,9 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Category;
-use App\Models\Page as PageContract;
 use App\Models\Page as PageModel;
-use App\Models\Post;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
@@ -141,10 +139,14 @@ class PostResource extends Resource
     {
         return $table
             ->query(
-                PageContract::query()
+                PageModel::query()
                     ->where('style', '=', 'blog')
                     ->orderByDesc('created_at')
             )
+            ->recordClasses(fn (PageModel $record) => match ($record->is_active) {
+                0       => 'opacity-50 dark:opacity-30',
+                default => null,
+            })
             ->columns([
                 TextColumn::make('title')
                     ->limit(40)
@@ -176,7 +178,7 @@ class PostResource extends Resource
                 ActionGroup::make([
                     Action::make('visit')
                         ->label(__('filament-fabricator::page-resource.actions.visit'))
-                        ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
+                        ->url(fn (?PageModel $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
                         ->icon('heroicon-o-arrow-top-right-on-square')
                         ->openUrlInNewTab()
                         ->color('success')
