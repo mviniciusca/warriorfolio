@@ -2,7 +2,7 @@
 @props(['title' => $page->title])
 
 @if ($page->post->is_active)
-    <main class="p-8 antialiased">
+    <main class="p-1 antialiased">
         <div class="mx-auto flex max-w-screen-xl justify-between">
             <article
                 class="format format-sm sm:format-base lg:format-lg format-blue dark:format-invert mx-auto w-full max-w-3xl">
@@ -12,7 +12,8 @@
                         {{ \Carbon\Carbon::parse($page->created_at)->format('F d, Y ') . __('in ') . $page->post->category->name }}
                     </p>
                     {{-- Title --}}
-                    <h1 class="mt-2 text-3xl font-black tracking-tight dark:text-white/90 lg:mb-4 lg:text-4xl">
+                    <h1
+                        class="mt-2 text-3xl font-bold leading-snug tracking-normal dark:text-white/90 lg:mb-4 lg:text-4xl">
                         {{ $page->title }}
                     </h1>
                     {{-- Subtitle --}}
