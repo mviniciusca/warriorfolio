@@ -40,14 +40,14 @@
 
     .text-gradient,
     .tg {
-        @apply bg-gradient-to-b from-secondary-100 to-secondary-300 bg-clip-text p-1 text-transparent dark:from-secondary-200 dark:to-secondary-700;
+        @apply bg-gradient-to-b from-secondary-100 to-secondary-300 bg-clip-text pr-1 text-transparent dark:from-secondary-200 dark:to-secondary-700;
     }
 
     /** Highlighted text **/
     .text-highlight,
     .heading-module-title strong,
     .tl {
-        @apply bg-gradient-to-r from-primary-600 to-tertiary-400 bg-clip-text p-1 text-transparent;
+        @apply bg-gradient-to-r from-primary-600 to-tertiary-400 bg-clip-text pr-1 text-transparent;
     }
 
     .heading-module-title strong {
