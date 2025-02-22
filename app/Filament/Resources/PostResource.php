@@ -24,6 +24,7 @@ use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 
@@ -69,6 +70,9 @@ class PostResource extends Resource
                     ->columnSpan(3)
                     ->icon('heroicon-o-pencil')
                     ->schema([
+                        Hidden::make('user_id')
+                            ->dehydrated()
+                            ->default(Auth::user()->id),
                         TextInput::make('title')
                             ->label(__('Post Title'))
                             ->live(onBlur: true)
@@ -107,6 +111,9 @@ class PostResource extends Resource
                     ->columnSpan(1)
                     ->relationship('post')
                     ->schema([
+                        Hidden::make('user_id')
+                            ->dehydrated()
+                            ->default(Auth::user()->id),
                         Section::make(__('Featured Image'))
                             ->icon('heroicon-o-photo')
                             ->schema([

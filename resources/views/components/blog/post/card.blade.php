@@ -1,4 +1,6 @@
 @props(['item' => null])
+
+
 <div wire:key="{{ $item->id }}">
     <a class="opacity-80 transition-all duration-100 hover:opacity-100 active:opacity-20"
         href="{{ env('APP_URL') . '/' . $item->slug }}">
