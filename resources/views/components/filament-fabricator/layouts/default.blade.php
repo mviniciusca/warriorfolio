@@ -1,18 +1,3 @@
-@props([
-    'page',
-    'maintenance' => null,
-    'discovery' => null,
-    'header_core' => null,
-    'hero_core' => null,
-    'about_core' => null,
-    'portfolio_core' => null,
-    'clients_core' => null,
-    'contact_core' => null,
-    'newsletter_core' => null,
-    'footer_core' => null,
-    'background_core' => null,
-])
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="{{ session('theme') == 'dark' ? 'dark' : '' }}">
 
@@ -21,14 +6,13 @@
         <x-header.scripts />
     </head>
 
-    <body class="default-theme app-core" id="app">
-        @if (!$maintenance || ($discovery && auth()->user()))
 
+    <body class="default-theme app-core flex min-h-screen flex-col" id="app">
+        @if (!$maintenance || ($discovery && auth()->user()))
 
             {{-- Over Modules --}}
             <x-core.alert />
             <x-ui.chatbox />
-
 
             @if ($header_core)
                 <header class="header-section" id="app-header">
@@ -37,10 +21,8 @@
             @endif
 
 
-            <main class="main-section" id="app-main">
-
+            <main class="main-section flex-grow" id="app-main">
                 <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
-
 
                 @if ($hero_core)
                     <x-hero.section />
@@ -65,11 +47,11 @@
                 @if ($newsletter_core)
                     <x-newsletter.section />
                 @endif
-
             </main>
 
+
             @if ($footer_core)
-                <footer class="footer-section" id="app-footer">
+                <footer class="footer-section mt-auto" id="app-footer">
                     <x-footer.section />
                 </footer>
             @endif
