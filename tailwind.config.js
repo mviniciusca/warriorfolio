@@ -16,7 +16,7 @@ export default {
         extend: {
             colors: {
                 primary: colors.purple,     //accent color
-                secondary: colors.zinc,     //dark color.
+                secondary: colors.zinc,     //dark color
                 tertiary: colors.pink,      //highlight effects color
             }
         },
