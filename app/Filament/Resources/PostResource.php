@@ -155,7 +155,7 @@ class PostResource extends Resource
                     ->badge()
                     ->limit(30)
                     ->searchable(),
-                ToggleColumn::make('is_active')
+                ToggleColumn::make('post.is_active')
                     ->alignCenter()
                     ->label(__('Published')),
                 TextColumn::make('created_at')
