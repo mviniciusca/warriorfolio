@@ -56,14 +56,17 @@ class PostsWidget extends BaseWidget
             )
             ->recordUrl(fn (Post $record) => route('filament.admin.resources.posts.edit', $record->page->id))
             ->columns([
+                TextColumn::make('page.title')
+                    ->label(__('Post Title'))
+                    ->limit(50),
+                TextColumn::make('category.name')
+                    ->label(__('Category'))
+                    ->badge(),
                 IconColumn::make('is_active')
+                    ->label(__('Published'))
                     ->alignCenter()
                     ->boolean()
                     ->label(__('Published')),
-                TextColumn::make('category.name')
-                    ->badge(),
-                TextColumn::make('page.title')
-                    ->limit(50),
             ]);
     }
 }
