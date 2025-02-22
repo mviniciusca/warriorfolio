@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,12 +19,9 @@ return new class extends Migration {
             $table->string('style')->default('default');
             $table->foreignId('parent_id')->nullable()->constrained('pages')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignIdFor(Post::class)->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
             $table->softDeletes();
-            // $table->text('content')->nullable();
-            // $table->text('resume')->nullable();
-            // $table->foreignIdFor(Category::class)->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            // $table->string('img_cover')->nullable();
         });
     }
 

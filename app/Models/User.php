@@ -3,11 +3,15 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Page;
+use App\Models\Post;
 use App\Models\Profile;
 use App\Models\Setting;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -46,14 +50,24 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at' => 'datetime',
     ];
 
-    public function profile()
+    public function profile(): HasOne
     {
         return $this->hasOne(Profile::class)->withDefault();
     }
 
-    public function setting()
+    public function setting(): HasOne
     {
         return $this->hasOne(Setting::class);
+    }
+
+    public function post(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function page(): HasMany
+    {
+        return $this->hasMany(Page::class);
     }
 
     /**

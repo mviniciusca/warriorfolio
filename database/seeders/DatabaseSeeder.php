@@ -53,6 +53,7 @@ class DatabaseSeeder extends Seeder
 
         $post = Post::create([
             'category_id' => 1,
+            'user_id'     => 1,
             'resume'      => 'Welcome to Your First Note!',
             'content'     => 'Hello there! 🌟
             <p></p>
@@ -67,6 +68,7 @@ Here\'s to many more notes ahead! 🚀',
 
         Page::insert([
             'post_id'    => $post->id,
+            'user_id'    => 1,
             'title'      => 'First Note',
             'slug'       => 'blog/post/first-note.html',
             'created_at' => now(),
