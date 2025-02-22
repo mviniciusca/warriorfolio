@@ -28,6 +28,7 @@ class Feed extends Component
     {
         $query = Page::where('is_active', true)
             ->where('style', 'blog')
+            ->with('user')
             ->with('post');
 
         if (! is_null($this->category)) {
