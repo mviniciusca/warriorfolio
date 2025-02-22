@@ -17,7 +17,7 @@ export default {
             colors: {
                 primary: colors.purple,     //accent color
                 secondary: colors.zinc,     //dark color
-                tertiary: colors.pink,      //highlight effects color
+                tertiary: colors.pink,      //highlight fx color
             }
         },
     },
