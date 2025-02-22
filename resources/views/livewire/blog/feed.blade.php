@@ -1,5 +1,5 @@
 <div>
-    <div class="my-12 flex gap-5 border-b border-b-secondary-200 pb-3 dark:border-b-secondary-800">
+    <div class="my-12 flex gap-5 border-b border-b-secondary-200 pb-3 font-mono uppercase dark:border-b-secondary-800">
         <span class="flex items-center gap-5">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
