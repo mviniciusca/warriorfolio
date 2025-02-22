@@ -141,19 +141,15 @@ class PostResource extends Resource
     {
         return $table
             ->query(
-                Post::query()
-                    ->select()
+                PageContract::query()
                     ->where('style', '=', 'blog')
+                    ->orderByDesc('created_at')
             )
-            ->recordClasses(fn (Post $record) => match ($record->is_active) {
-                0       => 'opacity-50 dark:opacity-30',
-                default => null,
-            })
             ->columns([
                 TextColumn::make('title')
                     ->limit(40)
                     ->searchable(),
-                TextColumn::make('category.name')
+                TextColumn::make('post.category.name')
                     ->badge()
                     ->limit(30)
                     ->searchable(),
