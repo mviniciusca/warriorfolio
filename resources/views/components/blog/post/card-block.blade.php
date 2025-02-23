@@ -1,6 +1,5 @@
 @props(['item'])
 
-
 <article class="rounded-lg border border-secondary-300 bg-transparent p-6 dark:border-secondary-700">
     <div class="mb-5 flex items-center justify-between">
         <span class="flex items-center gap-1 text-sm">
