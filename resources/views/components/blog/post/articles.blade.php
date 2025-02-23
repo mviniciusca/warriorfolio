@@ -13,9 +13,11 @@
                     <p class="font-semibold">{{ __('Latest Stories') }}</p>
                 </span>
                 <span>
-                    <x-ui.button-alt class="p-1" :size="'sm'">
-                        {{ __('View All') }}
-                    </x-ui.button-alt>
+                    <a href="{{ env('APP_URL') . '/blog' }}">
+                        <x-ui.button-alt class="p-1" :size="'sm'">
+                            {{ __('View All') }}
+                        </x-ui.button-alt>
+                    </a>
                 </span>
             </h2>
             <div class="w-full">
