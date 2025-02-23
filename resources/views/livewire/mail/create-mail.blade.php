@@ -3,7 +3,7 @@
 
         {{ $this->form }}
 
-        <x-ui.button :type="'submit'" :icon="'chevron-forward-outline'">
+        <x-ui.button class="mt-6" :type="'submit'" :icon="'chevron-forward-outline'">
             {{ __('Send Message') }}
         </x-ui.button>
 
