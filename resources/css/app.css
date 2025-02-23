@@ -63,7 +63,7 @@
     /** Header for each section **/
     .header-title,
     .module-title {
-        @apply bg-gradient-to-tr pt-8 md:pt-12 lg:pt-16 from-secondary-300 to-secondary-900 bg-clip-text text-center text-3xl font-bold leading-none tracking-tight text-transparent dark:from-secondary-200 dark:to-secondary-700 lg:text-4xl;
+        @apply bg-gradient-to-b pt-8 md:pt-12 lg:pt-16 from-secondary-400 to-secondary-950 bg-clip-text text-center text-3xl font-bold leading-none tracking-tight text-transparent dark:from-secondary-300 dark:to-secondary-800 lg:text-4xl;
     }
 
     .subtitle,
