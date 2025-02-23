@@ -1,4 +1,3 @@
-@props(['current' => 'laravel-cloud-is-here', 'page' => null])
 <div>
     <aside aria-label="Related articles" class="py-4 lg:py-12">
         <div class="mx-auto max-w-screen-xl">
