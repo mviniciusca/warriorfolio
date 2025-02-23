@@ -39,8 +39,8 @@ class SettingResource extends Resource
         return $page->generateNavigationItems([
             Pages\EditSetting::class,
             Pages\EditAppearance::class,
-            Pages\EditBlogSettings::class,
             Pages\EditNavigation::class,
+            Pages\EditBlogSettings::class,
             Pages\EditAboutSection::class,
             Pages\EditClientSection::class,
             Pages\EditContactSection::class,

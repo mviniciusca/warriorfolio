@@ -19,7 +19,7 @@
             </div>
         @endif
         @if ($module_subtitle)
-            <div class="subtitle mx-auto mt-4 max-w-2xl text-center">
+            <div class="subtitle mx-auto mt-4 max-w-3xl text-center text-lg">
                 {{ $module_subtitle }}
             </div>
         @endif
