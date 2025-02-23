@@ -25,10 +25,13 @@ class SettingFactory extends Factory
                 'empty_section' => true,
             ],
             'blog' => [
-                'is_active'      => true,
-                'is_logo_active' => true,
-                'name'           => 'Warriorfolio <br/> <span class="tl font-black">Notes</span>',
-                'description'    => 'This is your blog.',
+                'module_is_active' => true,
+                'button'           => 'View All',
+                'button_url'       => '/blog',
+                'is_active'        => true,
+                'is_logo_active'   => true,
+                'name'             => 'Warriorfolio <br/> <span class="tl font-black">Notes</span>',
+                'description'      => 'This is your blog.',
             ],
             //
             'meta' => [
