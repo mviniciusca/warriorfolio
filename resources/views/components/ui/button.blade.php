@@ -1,7 +1,10 @@
-@props(['type' => 'button', 'icon' => null])
-
+@props(['type' => 'button', 'icon' => null, 'size' => 'sm'])
 <button type="{{ $type }}"
-    class="mt-4 inline-flex items-center gap-1 rounded-md bg-primary-700 p-3 text-center text-sm font-medium text-white transition-all duration-100 hover:opacity-90 focus:ring-4 focus:ring-primary-500 dark:focus:ring-primary-950">
+    {{ $attributes->class([
+        'btn inline-flex items-center gap-1 rounded-md bg-primary-700 text-center font-medium text-white transition-all duration-100 hover:opacity-90 focus:ring-4 focus:ring-primary-500 dark:focus:ring-primary-950',
+        'px-2 py-1 text-xs' => $size === 'xs',
+        'p-2 text-sm' => $size !== 'xs',
+    ]) }}>
 
     <span>
         {{ $slot }}
