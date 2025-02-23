@@ -1,6 +1,6 @@
-<x-core.layout class="">
+<x-core.layout>
     <x-slot name="module_title">
-        From Notes
+
         <x-slot name="button_header">
             Visit Blog
         </x-slot>
