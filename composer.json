@@ -22,7 +22,7 @@
         "awcodes/filament-curator": "*",
         "filament/filament": "^3.2",
         "flowframe/laravel-trend": "^0.3.0",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^11.44.0",
         "laravel/sanctum": "^4.0",
         "opcodesio/log-viewer": "^3.12",
         "pxlrbt/filament-excel": "^2.3",
