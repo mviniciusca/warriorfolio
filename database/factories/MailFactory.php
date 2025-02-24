@@ -17,14 +17,14 @@ class MailFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'         => $this->faker->name,
-            'phone'        => $this->faker->phoneNumber,
-            'email'        => $this->faker->unique()->safeEmail,
-            'subject'      => $this->faker->sentence,
-            'body'         => $this->faker->paragraph,
-            'is_read'      => $this->faker->boolean,
-            'is_important' => $this->faker->boolean,
-            'created_at'   => $this->faker->dateTimeThisYear(),
+            'name'         => 'Warrior Mail',
+            'phone'        => '999999-9999',
+            'email'        => 'test@warriormail.dev',
+            'subject'      => 'This is a just test',
+            'body'         => 'This is just test message',
+            'is_read'      => false,
+            'is_important' => false,
+            'created_at'   => now(),
         ];
     }
 }
