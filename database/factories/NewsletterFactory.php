@@ -17,9 +17,9 @@ class NewsletterFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'       => $this->faker->name(),
-            'email'      => $this->faker->unique()->safeEmail(),
-            'created_at' => $this->faker->dateTimeBetween(date('2024-01-01')),
+            'name'       => 'Warriorfolio',
+            'email'      => 'warriorfolio@test.dev',
+            'created_at' => now(),
         ];
     }
 }
