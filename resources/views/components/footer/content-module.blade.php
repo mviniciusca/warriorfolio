@@ -40,6 +40,7 @@
                                     <li class="mb-4 flex items-center">
                                         <a target="_blank" href="{{ $item['profile_link'] }}"
                                             class="hover:underline">{{ ucfirst($item['social_network']) }}
+
                                         </a>
                                     </li>
                                 @endif
