@@ -40,7 +40,7 @@ class Section extends Component
             'navigation' => Navigation::select('content')
                 ->get(),
             'social' => Profile::select('social')
-                ->get(),
+                ->first()->social,
         ]);
     }
 }

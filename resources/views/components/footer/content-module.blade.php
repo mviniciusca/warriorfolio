@@ -29,26 +29,24 @@
                         @endforeach
                     </ul>
                 </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold uppercase">
-                        {{ __('Follow') }}
-                    </h2>
-                    <ul class="font-medium">
-                        @foreach ($social as $item)
-                            @isset($item['social'])
-                                @foreach ($item['social'] as $item)
-                                    @if ($item['is_active'])
-                                        <li class="mb-4 flex items-center">
-                                            <a target="_blank" href="{{ $item['profile_link'] }}"
-                                                class="hover:underline">{{ ucfirst($item['social_network']) }}
-                                            </a>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            @endisset
-                        @endforeach
-                    </ul>
-                </div>
+                @if ($social != null)
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold uppercase">
+                            {{ __('Follow') }}
+                        </h2>
+                        <ul class="font-medium">
+                            @foreach ($social as $item)
+                                @if ($item['is_active'])
+                                    <li class="mb-4 flex items-center">
+                                        <a target="_blank" href="{{ $item['profile_link'] }}"
+                                            class="hover:underline">{{ ucfirst($item['social_network']) }}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
         <hr class="my-6 border-secondary-200 dark:border-secondary-800 sm:mx-auto" />
@@ -61,7 +59,6 @@
             </span>
             <div class="mt-4 flex sm:mt-0 sm:justify-center">
                 <x-ui.social-network />
-
             </div>
         </div>
     </div>
