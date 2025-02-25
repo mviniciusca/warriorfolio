@@ -13,11 +13,11 @@ class Homepage extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('blog.homepage')
-            ->label(__('Blog'))
+            ->label(__('Notes'))
             ->icon('heroicon-o-pencil')
             ->schema([
-                Section::make('Core: Blog Homepage')
-                    ->description('Add a homepage feed from your blog.')
+                Section::make('Core: Notes Homepage')
+                    ->description('Add a homepage feed from your Notes.')
                     ->icon('heroicon-o-pencil')
                     ->collapsed()
                     ->schema([

@@ -1,2 +1,3 @@
-{{-- Load the Hero Section Component --}}
+@aware(['page'])
+
 <x-hero.section />
