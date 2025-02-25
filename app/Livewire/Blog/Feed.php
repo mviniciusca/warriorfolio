@@ -28,8 +28,7 @@ class Feed extends Component
     {
         $query = Page::where('is_active', true)
             ->where('style', 'blog')
-            ->with('user')
-            ->with('post');
+            ->with('user', 'post');
 
         if (! is_null($this->category)) {
             $query->whereHas('post', function ($query) {
@@ -41,11 +40,23 @@ class Feed extends Component
             ->paginate(5);
     }
 
+    public function getActivePostsCount()
+    {
+        // Contar os posts ativos filtrando por is_active dentro do relacionamento post
+        return Page::where('is_active', true)
+            ->where('style', 'blog')
+            ->whereHas('post', function ($query) {
+                $query->where('is_active', true);  // Filtra os posts ativos
+            })
+            ->count();
+    }
+
     public function render()
     {
         return view('livewire.blog.feed', [
-            'data'       => $this->data,
-            'categories' => Category::
+            'data'             => $this->data,
+            'activePostsCount' => $this->getActivePostsCount(),
+            'categories'       => Category::
                 where('is_active', true)
                     ->where('is_blog', '=', true)
                     ->whereHas('post')
