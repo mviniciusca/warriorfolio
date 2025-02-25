@@ -1,11 +1,11 @@
-<a href="{{ env('APP_URL') }}">
+<a class="cursor-pointer transition-all duration-100 hover:opacity-70 active:opacity-20" href="{{ env('APP_URL') }}">
     @if (($design['logo'] ?? null) || ($design['logo_dark_mode'] ?? null))
         <x-curator-glider :media="$design['logo']"
             class="{{ $design['logo_size'] ? $design['logo_size'] : 'max-w-11' }} {{ $design['logo_dark_mode'] ? 'dark:hidden' : '' }} block object-contain" />
         <x-curator-glider :media="$design['logo_dark_mode']"
             class="{{ $design['logo_size'] ? $design['logo_size'] : 'max-w-11' }} hidden object-contain dark:block" />
     @else
-        <svg class="w-12 fill-primary-600 dark:fill-white" style="fill: {{ $color ?? '' }}"
+        <svg class="h-10 w-auto fill-primary-600 dark:fill-white" style="fill: {{ $color ?? '' }}"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 159.38 106.35">
             <g id="Layer_2" data-name="Layer 2">
                 <g id="Layer_1-2" data-name="Layer 1">
