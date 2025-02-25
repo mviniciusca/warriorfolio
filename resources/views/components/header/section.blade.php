@@ -6,18 +6,7 @@
     <div class="app-header mt-8 flex w-full flex-wrap items-center justify-between">
         <div class="app-logo flex flex-wrap items-center gap-4">
             <div>
-                <a href="/">
-                    @isset($design['logo'])
-                        @if ($design['logo'] || $design['logo_dark_mode'])
-                            <x-curator-glider :media="$design['logo']"
-                                class="{{ $design['logo_size'] ? $design['logo_size'] : 'max-w-11' }} {{ $design['logo_dark_mode'] ? 'dark:hidden' : '' }} block object-contain" />
-                            <x-curator-glider :media="$design['logo_dark_mode']"
-                                class="{{ $design['logo_size'] ? $design['logo_size'] : 'max-w-11' }} hidden object-contain dark:block" />
-                        @endisset
-                    @else
-                        <x-ui.logo />
-                    @endif
-                </a>
+                <x-ui.logo />
             </div>
             <div>
                 <button data-collapse-toggle="mobile-menu-2" type="button"
