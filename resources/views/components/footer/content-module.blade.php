@@ -2,13 +2,7 @@
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
-                @if (data_get($setting, 'design.logo'))
-                    <img src="{{ asset('storage/' . data_get($setting, 'design.logo')) }}"
-                        alt="{{ data_get($setting, 'application.name', env('APP_NAME')) . 'logo-image' }}"
-                        class="mr-4 h-8 w-8">
-                @else
-                    <x-ui.logo />
-                @endif
+                <x-ui.logo />
             </div>
             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6">
                 <div>
