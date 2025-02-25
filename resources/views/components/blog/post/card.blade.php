@@ -50,7 +50,7 @@
                 </span>
             </div>
             <div
-                class="flex h-24 w-24 items-center justify-center rounded-lg border border-secondary-200 bg-secondary-100 object-center p-4 text-center dark:border-secondary-700 dark:bg-secondary-800 lg:h-32 lg:w-32">
+                class="flex h-24 w-24 items-center justify-center rounded-lg border border-secondary-300 bg-secondary-50 object-center p-4 text-center dark:border-secondary-700 dark:bg-secondary-800 lg:h-32 lg:w-32">
                 @if ($item->post->img_cover)
                     <x-curator-glider class="rounded-lg object-cover" :media="$item->post->img_cover" />
                 @else
