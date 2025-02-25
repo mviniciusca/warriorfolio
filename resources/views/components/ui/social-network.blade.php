@@ -6,10 +6,8 @@
             @endif
         @endforeach
     @endif
-
     {{-- Empty Section --}}
     @if ($items == null)
         <x-ui.empty-section :auth="__('Go to your Dashboard and update your Social Network.')" />
     @endif
-
 </div>
