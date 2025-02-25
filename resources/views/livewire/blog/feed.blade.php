@@ -14,11 +14,20 @@
             </p>
         @endforeach
     </div>
-    @foreach ($data as $item)
-        @if ($item->post->is_active)
-            <x-blog.post.card :$item />
-        @endif
-    @endforeach
+
+    @if ($activePostsCount > 0)
+        @foreach ($data as $item)
+            @if ($item->post->is_active)
+                <x-blog.post.card :$item />
+            @endif
+        @endforeach
+    @else
+        <x-ui.empty-section />
+    @endif
+
+
+
+
     <div class="py-8">
         {{ $data->links() }}
     </div>

@@ -1,4 +1,4 @@
-@props(['message' => 'This section is empty.', 'auth' => null, 'icon' => 'folder-open-outline'])
+@props(['message' => 'No content. ', 'auth' => null, 'icon' => 'folder-open-outline'])
 
 @isset($info['empty_section'])
     @if ($info['empty_section'])
