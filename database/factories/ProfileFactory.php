@@ -18,11 +18,22 @@ class ProfileFactory extends Factory
     {
         return [
             'localization' => 'Rio de Janeiro, Brazil',
-            'job_position' => 'Full Stack Developer',
-
-            'skills' => 'PHP, Laravel, Filament, Tailwind, Livewire, Python',
-            'about'  => '<p>Enthusiastic full-stack developer with a robust skill set encompassing front-end technologies such as HTML, CSS, and JavaScript, coupled with proficiency in back-end languages like Node.js and Python.</p><p>Experienced in designing and implementing database structures, API integrations, and responsive user interfaces.</p><br><p>Committed to writing clean, modular code, I bring a detail-oriented approach to development projects.</p><br><p>Versatile in utilizing frameworks like React and Express, I am equally adept at crafting scalable, efficient solutions on both ends of the tech stack.</p><br><p>With a keen eye for user experience and a passion for staying abreast of industry trends, I thrive in collaborative environments that encourage innovation. Ready to leverage my expertise to create impactful, high-performance applications and contribute to cutting-edge projects in a dynamic team setting.</p>
-',
+            'job_position' => 'Laravel Product Developer',
+            'skills'       => 'PHP, Laravel, Filament, Tailwind, Livewire',
+            'about'        => '
+🚀 Welcome to Warriorfolio! Showcase Your Journey! <p></p>
+Welcome to Warriorfolio—your personal space to share your journey, skills, and achievements. Whether you\'re a developer, designer, writer, or entrepreneur, this is where your story comes to life.<p></p>🔹 Bio <p></p>
+Introduce yourself! Share a bit about your background, passions, and what drives you. Warriorfolio is the perfect place to express who you are and what you do.<p></p>
+🎓 Courses & Education<p></p>
+Showcase your learning journey! Add degrees, certifications, bootcamps, or online courses that have helped shape your expertise. Continuous learning is key to growth!
+<p></p>
+🛠️ Skills
+<p></p>
+Highlight the technologies, tools, and frameworks you excel in. Whether it\'s front-end development with HTML, CSS, and JavaScript, back-end expertise in Node.js and Python, or database management and API integrations—this is your space to shine.
+<p></p>
+Start building your Warriorfolio today and let the world see your journey!
+<p></p>
+— The Warriorfolio Team',
         ];
     }
 }
