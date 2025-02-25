@@ -31,7 +31,6 @@ class Section extends Component
                 'footer',
             ]),
             'setting' => Setting::first([
-                'design',
                 'application',
             ]),
             'module' => Module::first([
