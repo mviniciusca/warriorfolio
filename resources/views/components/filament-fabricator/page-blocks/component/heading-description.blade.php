@@ -20,7 +20,6 @@
                                 {!! $heading !!}
                             </h2>
                         @endif
-
                         @if ($content)
                             <div class="heading-module-subtitle {{ $content_text_size }} mb-4 font-light">
                                 {!! $content !!}
@@ -32,7 +31,6 @@
                             <img src="{{ asset('storage/' . $image) }}" />
                         </div>
                     @endif
-
                 </div>
             </div>
     </x-core.layout>

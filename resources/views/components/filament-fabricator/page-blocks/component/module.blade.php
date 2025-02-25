@@ -9,8 +9,7 @@
 ])
 
 @if ($is_active)
-
-    <x-core.layout>
+    <x-core.layout id="{{ $slug }}" class="{{ $tailwind_css_attributes }}">
         <section>
             @if ($title)
                 <div class="header-title">
