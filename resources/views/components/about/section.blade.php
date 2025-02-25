@@ -21,7 +21,7 @@
             </div>
 
             {{-- About Section --}}
-            <div class="w-full p-4 leading-loose md:w-2/3 lg:w-2/4 lg:p-8" id="about-you">
+            <div class="about-you-section w-full p-4 leading-relaxed md:w-2/3 lg:w-2/4 lg:p-8" id="about-you">
                 {!! $profile->about !!}
 
                 @if (!$profile->about)

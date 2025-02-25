@@ -54,7 +54,7 @@ class LayoutFactory extends Factory
             'about' => [
                 'section_fill'     => true,
                 'section_title'    => 'About Me',
-                'section_subtitle' => 'I\'m a full-stack developer based in Rio de Janeiro, Brazil specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.',
+                'section_subtitle' => 'The About You section is where you introduce yourself and share your background, experiences, and passions. Highlight your career journey, skills, and what drives you. This is your space to make a strong impression and connect with others.',
             ],
 
             /** Contact Section */
