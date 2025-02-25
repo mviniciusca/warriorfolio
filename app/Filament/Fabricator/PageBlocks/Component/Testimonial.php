@@ -28,36 +28,39 @@ class Testimonial extends PageBlock
                         Group::make()->schema([
                             Toggle::make('is_active')
                                 ->default(true)
+                                ->helperText(__('Show this Module'))
                                 ->label('Active'),
                             Toggle::make('bg_transparent')
-                                ->label('Transparent Background')
+                                ->helperText(__('Set the transparent background'))
+                                ->label('No Background')
                                 ->default(false),
                         ])
                             ->columnSpanFull()
                             ->columns(2),
-                        Group::make()->schema([
-                            TextInput::make('author')
-                                ->required()
-                                ->label('Author')
-                                ->helperText('The author of the testimonial'),
-                            TextInput::make('author_info')
-                                ->label('Author Info')
-                                ->helperText('Info about the author. E.g. CEO of company'),
-                            Textarea::make('testimonial')
-                                ->label('Testimonial')
-                                ->rows(3)
-                                ->required()
-                                ->columnSpanFull()
-                                ->helperText('The testimonial text'),
-                        ]),
+                        Group::make()
+                            ->schema([
+                                TextInput::make('author')
+                                    ->required()
+                                    ->label('Author')
+                                    ->helperText(__('The author of the testimonial')),
+                                TextInput::make('author_info')
+                                    ->label('Author Info')
+                                    ->helperText(__('Info about the author. E.g. CEO of Company')),
+                                Textarea::make('testimonial')
+                                    ->label('Testimonial')
+                                    ->rows(3)
+                                    ->required()
+                                    ->columnSpanFull()
+                                    ->helperText(__('The testimonial.')),
+                            ]),
                         Group::make()->schema([
                             CuratorPicker::make('picture')
                                 ->size('sm')
-                                ->buttonLabel('Select picture')
+                                ->buttonLabel(__('Select picture'))
                                 ->columnSpanFull()
                                 ->directory('public/testimonial')
-                                ->label('Author picture')
-                                ->helperText('The picture of the author'),
+                                ->label(__('Author Picture'))
+                                ->helperText(__('The picture of the author')),
                         ]),
 
                     ]),
