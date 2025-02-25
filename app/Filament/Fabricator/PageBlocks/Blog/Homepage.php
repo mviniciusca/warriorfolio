@@ -21,12 +21,13 @@ class Homepage extends PageBlock
                     ->icon('heroicon-o-pencil')
                     ->collapsed()
                     ->schema([
-                        Info::make()->schema([
-                            TextInput::make('active')
-                                ->hidden()
-                                ->label('Title')
-                                ->maxLength(1),
-                        ]),
+                        Info::make()
+                            ->schema([
+                                TextInput::make('active')
+                                    ->hidden()
+                                    ->label('Title')
+                                    ->maxLength(1),
+                            ]),
                     ]),
             ]);
     }
