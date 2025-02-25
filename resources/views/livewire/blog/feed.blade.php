@@ -15,14 +15,14 @@
         @endforeach
     </div>
 
-    @if ($activePostsCount > 0)
+    @if ($activePostsCount != 0)
         @foreach ($data as $item)
             @if ($item->post->is_active)
                 <x-blog.post.card :$item />
             @endif
         @endforeach
     @else
-        <x-ui.empty-section />
+        <x-ui.empty-section :message="'No posts yet.'" />
     @endif
 
 
