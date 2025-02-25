@@ -32,7 +32,8 @@ class Feed extends Component
 
         if (! is_null($this->category)) {
             $query->whereHas('post', function ($query) {
-                $query->where('category_id', $this->category);
+                $query
+                    ->where('category_id', $this->category);
             });
         }
 
@@ -42,11 +43,11 @@ class Feed extends Component
 
     public function getActivePostsCount()
     {
-        // Contar os posts ativos filtrando por is_active dentro do relacionamento post
         return Page::where('is_active', true)
+            ->with('category')
             ->where('style', 'blog')
             ->whereHas('post', function ($query) {
-                $query->where('is_active', true);  // Filtra os posts ativos
+                $query->where('is_active', true);
             })
             ->count();
     }
@@ -56,11 +57,13 @@ class Feed extends Component
         return view('livewire.blog.feed', [
             'data'             => $this->data,
             'activePostsCount' => $this->getActivePostsCount(),
-            'categories'       => Category::
-                where('is_active', true)
-                    ->where('is_blog', '=', true)
-                    ->whereHas('post')
-                    ->get(),
+            'categories'       => Category::where('is_active', true)
+                ->whereHas('post', function ($query) {
+                    $query->where('is_active', true);
+                })
+                ->where('is_blog', true)
+                ->get(),
+
         ]);
     }
 }
