@@ -193,7 +193,7 @@ class MailResource extends Resource
                     ->offIcon('heroicon-m-eye')
                     ->label(__('')),
             ])
-            ->defaultSort('id', 'desc')
+            ->defaultSort('created_at', 'desc')
             ->defaultPaginationPageOption(25)
             ->filters([
                 TernaryFilter::make('is_read')
@@ -214,12 +214,14 @@ class MailResource extends Resource
                 ActionGroup::make([
                     Tables\Actions\EditAction::make()
                         ->modalHeading(__('Mail')),
-                    Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\DeleteAction::make()
+                        ->label(__('Move to Trash')),
                 ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->label(__('Move to Trash')),
                 ]),
 
             ]);
@@ -229,6 +231,7 @@ class MailResource extends Resource
     {
         return [
             'index' => Pages\ManageMails::route('/'),
+            'view'  => Pages\ViewMail::route('{record}/read'),
             'bin'   => Pages\MailTrashed::route('/bin'),
         ];
     }
