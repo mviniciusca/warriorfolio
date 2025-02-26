@@ -26,12 +26,14 @@ class SettingFactory extends Factory
             ],
             'blog' => [
                 'module_is_active' => true,
+                'header_title'     => 'From Notes ...',
+                'header_subtitle'  => 'Latest posts from Notes',
                 'button'           => 'View All',
                 'button_url'       => '/blog',
                 'is_active'        => true,
                 'is_logo_active'   => true,
-                'name'             => 'Warriorfolio <br/> <span class="tl font-black">Notes</span>',
-                'description'      => 'This is your blog.',
+                'name'             => 'Warriorfolio<br/><span class="tl font-black">Notes</span>',
+                'description'      => 'Free your mind with Notes.',
             ],
             //
             'meta' => [
