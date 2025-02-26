@@ -40,7 +40,7 @@
             </div>
         </header>
         <article class="mt-6">
-            <h1 class="text-xl font-bold lg:text-3xl">
+            <h1 class="text-xl font-bold lg:text-2xl">
                 {!! $getRecord()->subject ?? __('No Subject') !!}
             </h1>
             <div class="body-message mt-4 space-y-4 leading-relaxed text-gray-800 dark:text-gray-300">
