@@ -102,7 +102,9 @@ class MailResource extends Resource
             ->striped(false)
             ->headerActions([
                 CreateAction::make('write_message')
-                    ->label(__('Write'))
+                    ->modalHeading(__('New Message'))
+                    ->modalDescription(__('Write a new mail message. Be sure that SMTP services are enable.'))
+                    ->label(__('New Message'))
                     ->closeModalByClickingAway(false)
                     ->color('primary')
                     ->icon('heroicon-o-pencil')
