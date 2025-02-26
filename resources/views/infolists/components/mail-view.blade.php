@@ -11,9 +11,9 @@
                     <p class="text-sm text-gray-500 dark:text-gray-400">
                         {{ $getRecord()->email }}
                     </p>
-                    <p class="text-xs text-gray-400 dark:text-gray-500">
+                    <p class="mt-1 text-xs text-gray-500">
                         <time datetime="{{ $getRecord()->created_at }}">
-                            {{ __('Received in: ') . $getRecord()->created_at }}
+                            {{ __('Received in: ') . \Carbon\Carbon::parse($getRecord()->created_at)->format('F d, Y ') }}
                         </time>
                     </p>
                 </div>
