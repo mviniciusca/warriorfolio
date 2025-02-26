@@ -18,19 +18,22 @@ class ViewMail extends ViewRecord
 
     public function getTitle(): string | Htmlable
     {
-        return '­';
+        return __('Mail');
     }
 
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('view_post')
-                ->label(__('View Post'))
-                ->url(env('APP_URL').'/'.$this->record->slug)
-                ->openUrlInNewTab(true)
-                ->icon('heroicon-o-arrow-top-right-on-square')
-                ->color('success'),
+
+            Action::make('back_to_inbox')
+                ->color('gray')
+                ->label(__('Back'))
+                ->url(route('filament.admin.resources.mails.index'))
+                ->icon('heroicon-o-arrow-left'),
+
             DeleteAction::make()
+                ->icon('heroicon-o-trash')
+                ->label(__('Move to Trash'))
                 ->icon('heroicon-o-trash'),
         ];
     }

@@ -1,6 +1,6 @@
 <div {{ $attributes }}>
     {{ $getChildComponentContainer() }}
-    <main class="mx-auto max-w-3xl rounded-lg bg-white pb-16 pt-8 antialiased dark:bg-gray-900 lg:pb-24 lg:pt-16">
+    <main class="mx-auto max-w-3xl rounded-lg pb-16 pt-8 antialiased lg:pb-24 lg:pt-16">
         <div class="mx-auto flex max-w-screen-xl justify-between px-4">
             <article
                 class="format format-sm sm:format-base lg:format-lg format-blue dark:format-invert mx-auto w-full max-w-2xl">
