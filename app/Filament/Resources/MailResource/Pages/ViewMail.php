@@ -3,10 +3,8 @@
 namespace App\Filament\Resources\MailResource\Pages;
 
 use App\Filament\Resources\MailResource;
-use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
-use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\View;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;

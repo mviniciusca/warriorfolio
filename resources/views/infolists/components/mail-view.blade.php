@@ -1,32 +1,39 @@
-<div {{ $attributes }}>
+<div {{ $attributes }} class="flex justify-center px-4">
     {{ $getChildComponentContainer() }}
-    <main class="mx-auto max-w-3xl rounded-lg pb-16 pt-8 antialiased lg:pb-24 lg:pt-16">
-        <div class="mx-auto flex max-w-screen-xl justify-between px-4">
-            <article
-                class="format format-sm sm:format-base lg:format-lg format-blue dark:format-invert mx-auto w-full max-w-2xl">
-                <header class="not-format mb-4 lg:mb-6">
-                    <address class="mb-6 flex items-center not-italic">
-                        <div class="mr-3 inline-flex items-center text-sm text-gray-900 dark:text-white">
-                            <div>
-                                <p class="text-base font-bold text-gray-800 dark:text-white">
-                                    {{ $getRecord()->name }}</p>
-                                <p class="text-base text-gray-500 dark:text-gray-400">{{ $getRecord()->email }}</p>
-                                <p class="text-base text-gray-500 dark:text-gray-400">
-                                    <time pubdate datetime="{{ $getRecord()->created_at }}"
-                                        title="date">{{ $getRecord()->created_at }}
-                                    </time>
-                                </p>
-                            </div>
-                        </div>
-                    </address>
-                    <h1
-                        class="mb-4 text-3xl font-extrabold leading-tight text-gray-600 dark:text-gray-200 lg:mb-6 lg:text-3xl">
-                        {!! $getRecord()->subject ?? null !!}</h1>
-                </header>
-                <div class="body-message leading-relaxed">{!! $getRecord()->body !!}</div>
-        </div>
+
+    <main class="w-full max-w-3xl rounded-xl bg-white p-6 shadow-lg dark:bg-gray-900">
+        <header class="border-b border-gray-200 pb-4 dark:border-gray-800">
+            <div class="flex items-center gap-4">
+                <div class="flex flex-col">
+                    <p class="text-lg font-semibold text-gray-800 dark:text-white">
+                        {{ $getRecord()->name }}
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        {{ $getRecord()->email }}
+                    </p>
+                    <p class="text-xs text-gray-400 dark:text-gray-500">
+                        <time datetime="{{ $getRecord()->created_at }}">
+                            {{ __('Received in: ') . $getRecord()->created_at }}
+                        </time>
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <article class="mt-6">
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
+                {!! $getRecord()->subject ?? __('No Subject') !!}
+            </h1>
+
+            <div class="body-message mt-4 space-y-4 leading-relaxed text-gray-700 dark:text-gray-300">
+                {!! $getRecord()->body !!}
+            </div>
+        </article>
     </main>
 </div>
+
 <script>
-    document.querySelectorAll('.body-message p').forEach(p => p.classList.add('mt-4'));
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.body-message p').forEach(p => p.classList.add('mt-2'));
+    });
 </script>
