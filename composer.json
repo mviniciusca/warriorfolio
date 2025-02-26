@@ -20,7 +20,7 @@
     "require": {
         "php": "^8.2",
         "awcodes/filament-curator": "*",
-        "filament/filament": "^3.2",
+        "filament/filament": "^3.3",
         "flowframe/laravel-trend": "^0.3.0",
         "laravel/framework": "^11.44.0",
         "laravel/sanctum": "^4.0",
