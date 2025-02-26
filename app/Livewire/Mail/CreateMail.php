@@ -6,6 +6,7 @@ use App\Models\Mail;
 use App\Models\User;
 use App\Notifications\NewMailNotification;
 use Exception;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -61,13 +62,16 @@ class CreateMail extends Component implements HasForms
                     ->label(__('Message Subject'))
                     ->required()
                     ->columnSpanFull(),
-                Textarea::make('body')
+                RichEditor::make('body')
+                    ->toolbarButtons([
+                        'bold',
+                        'italic',
+                    ])
                     ->required()
-                    ->rows(5)
                     ->label(__('Message'))
                     ->minLength(20)
-                    ->maxLength(300)
-                    ->placeholder(__('Your Message. Min 20 and Max 300 characters.'))
+                    ->maxLength(1200)
+                    ->placeholder(__('Your Message. Min 20 and Max 1200 characters.'))
                     ->columnSpanFull(),
             ])
             ->statePath('data')
