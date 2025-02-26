@@ -22,12 +22,12 @@ class EditBlogSettings extends EditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('Blog Section');
+        return __('Notes Section');
     }
 
     public function getTitle(): string | Htmlable
     {
-        return __('Blog Section');
+        return __('Notes Section');
     }
 
     public function getSubheading(): string | Htmlable | null
@@ -44,10 +44,10 @@ class EditBlogSettings extends EditRecord
                         Toggle::make('blog.module_is_active')
                             ->default(true)
                             ->helperText(__('Show or hide the blog section on the website. This not affects your publications.'))
-                            ->label(__('Show Blog Module')),
+                            ->label(__('Show Notes Module')),
                     ]),
-                Section::make(__('Blog Section'))
-                    ->description(__('This module shows your latest posts from your blog. All fields are optional.'))
+                Section::make(__('Notes Section'))
+                    ->description(__('This module shows your latest posts from your Notes. All fields are optional.'))
                     ->icon('heroicon-o-pencil')
                     ->columns(2)
                     ->schema([
@@ -70,8 +70,8 @@ class EditBlogSettings extends EditRecord
                             ->label(__('URL'))
                             ->helperText(__('Define the Header Button URL')),
                     ]),
-                Section::make(__('Blog Settings'))
-                    ->description(__('Manage your Blog Settings and Public Definitions.'))
+                Section::make(__('Notes Settings'))
+                    ->description(__('Manage your Notes Settings and Public Definitions.'))
                     ->icon('heroicon-o-cog-6-tooth')
                     ->columns(3)
                     ->schema([
