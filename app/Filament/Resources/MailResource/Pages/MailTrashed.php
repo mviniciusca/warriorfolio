@@ -5,6 +5,7 @@ namespace App\Filament\Resources\MailResource\Pages;
 use App\Filament\Resources\MailResource;
 use App\Models\Mail;
 use Filament\Actions;
+use Filament\Actions\RestoreAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\BulkActionGroup;
@@ -13,6 +14,7 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ForceDeleteAction;
 use Filament\Tables\Actions\ForceDeleteBulkAction;
+use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
@@ -40,34 +42,28 @@ class MailTrashed extends ListRecords
         return $table
             ->query(Mail::query()->onlyTrashed())
             ->columns([
-                IconColumn::make('is_important')
-                    ->label('')
-                    ->boolean()
-                    ->trueIcon('heroicon-s-star')
-                    ->falseIcon('heroicon-o-star')
-                    ->falseColor('gray')
-                    ->trueColor('warning'),
-                ToggleColumn::make('is_read')
-                    ->alignCenter()
-                    ->label(__('Mark as Read')),
                 TextColumn::make('name')
-                    ->label(__('From'))
+                    ->label(__('From:'))
+                    ->limit(30)
                     ->searchable(),
                 TextColumn::make('email')
-                    ->label(__('Email'))
+                    ->label(__('Email:'))
+                    ->limit(20)
                     ->searchable(),
                 TextColumn::make('subject')
-                    ->label(__('Subject'))
-                    ->words(5)
+                    ->label(__('Subject:'))
+                    ->limit(50)
                     ->searchable(),
             ])
             ->actions([
                 ActionGroup::make([
+                    RestoreAction::make(),
                     ForceDeleteAction::make(),
                 ]),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
+                    RestoreBulkAction::make(),
                     ForceDeleteBulkAction::make(),
                 ]),
             ]);

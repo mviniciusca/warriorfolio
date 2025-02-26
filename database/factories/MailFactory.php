@@ -20,21 +20,22 @@ class MailFactory extends Factory
             'name'    => 'Warrior Mail',
             'phone'   => '999999-9999',
             'email'   => 'test@warriormail.dev',
-            'subject' => 'Welcome to Warriorfolio 2 🎉',
+            'subject' => 'Welcome to Warriorfolio 2.1.0 🎉',
             'body'    => 'We\'re excited to have you onboard! 🎉
-
+<br/>
 This is a test email from Warriroflio, making sure everything is working smoothly.
-
+<p></p>
 ✅ What\'s new?
-
-Your personal blog is ready! 📝
-Dark mode is now the default. 🌙✨
-Improved performance and smoother experience. ⚡
-Customizable background images across the app! 🌍
+<p></p>
+Your personal blog is ready! 📝 <br/>
+New Mail View Layout. ✨<br/>
+Dark mode is now the default. 🌙<br/>
+Improved performance and smoother experience. ⚡ <br/>
+Customizable background images across the app! 🌍<br/>
 Start exploring and let us know what you think! If you have any questions, we\'re here to help.
-
+<p></p>
 Happy exploring! 🚀
-
+<p></p>
 — Marcos Coelho',
             'is_read'      => false,
             'is_important' => false,
