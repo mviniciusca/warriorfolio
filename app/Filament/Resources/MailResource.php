@@ -165,13 +165,12 @@ class MailResource extends Resource
                 default => null,
             })
             ->columns([
-                IconColumn::make('is_important')
-                    ->label(__(''))
-                    ->boolean()
-                    ->trueIcon('heroicon-s-star')
-                    ->falseIcon('heroicon-o-star')
-                    ->falseColor('gray')
-                    ->trueColor('primary'),
+                ToggleColumn::make('is_important')
+                    ->label(__('Favorite'))
+                    ->onIcon('heroicon-o-star')
+                    ->offColor('primary')
+                    ->onColor('gray')
+                    ->offIcon('heroicon-m-star'),
                 TextColumn::make('name')
                     ->label(__('From:'))
                     ->limit(15)
@@ -183,15 +182,7 @@ class MailResource extends Resource
                 TextColumn::make('subject')
                     ->label(__('Subject:'))
                     ->limit(50)
-                    ->words(5)
                     ->searchable(),
-                ToggleColumn::make('is_read')
-                    ->alignEnd()
-                    ->onIcon('heroicon-o-eye-slash')
-                    ->offColor('primary')
-                    ->onColor('gray')
-                    ->offIcon('heroicon-m-eye')
-                    ->label(__('')),
             ])
             ->defaultSort('created_at', 'desc')
             ->defaultPaginationPageOption(25)

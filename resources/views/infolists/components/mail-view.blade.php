@@ -19,7 +19,7 @@
                 </div>
                 <div class="absolute right-2 top-2 flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
-                        class="{{ $getRecord()->is_favorite ? '' : 'hidden' }} h-6 w-6 text-yellow-500">
+                        class="{{ $getRecord()->is_important ? '' : 'hidden' }} h-6 w-6 text-yellow-500">
                         <path
                             d="M12 17.75l-5.623 3.382 1.074-6.26L2.9 9.868l6.285-.914L12 3l2.814 5.954 6.285.914-4.55 4.004 1.074 6.26z" />
                     </svg>
