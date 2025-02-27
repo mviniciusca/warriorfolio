@@ -21,7 +21,7 @@
                 </div>
                 <div class="text-center" id="project-category">
                     <span class="rounded-md bg-primary-500 px-3 py-1 text-sm text-secondary-50">
-                        {!! $project->category->name!!}
+                        {!! $project->category->name !!}
                     </span>
                 </div>
                 <div class="my-4 text-center text-3xl font-semibold tracking-tight" id="project-title">
@@ -33,14 +33,15 @@
                 <div class="project-content my-4 leading-loose" id="project-content">
                     {!! $project->content !!}
                 </div>
-                @if($project->external_link)
-                <div id="external-link">
-                    <button id="external-link" type="button" onclick="window.open('{{ $project->external_link }}');"
-                        class="flex items-center gap-1 rounded-md border border-black border-opacity-40 bg-primary-500 px-3 py-2 text-sm text-secondary-50 transition-all duration-100 hover:opacity-80 active:opacity-70">
-                        <ion-icon name="open-outline"></ion-icon>
-                        <span>{{ __('Open Full Project') }}</span>
-                    </button>
-                </div>
+                @if ($project->external_link)
+                    <div id="external-link">
+                        <button id="external-link" type="button"
+                            onclick="window.open('{{ $project->external_link }}');"
+                            class="flex items-center gap-1 rounded-md border border-black border-opacity-40 bg-primary-500 px-3 py-2 text-sm text-secondary-50 transition-all duration-100 hover:opacity-80 active:opacity-70">
+                            <ion-icon name="open-outline"></ion-icon>
+                            <span>{{ __('Open Full Project') }}</span>
+                        </button>
+                    </div>
                 @endif
             </div>
         </div>

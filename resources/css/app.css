@@ -185,7 +185,7 @@
         @apply rounded-lg my-4;
     }
 
-    .content figcaption {
+    figcaption {
         @apply hidden;
     }
 
