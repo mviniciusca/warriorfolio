@@ -2,14 +2,14 @@
 <!-- Main modal -->
 <div id="{{ $project->id }}" tabindex="-1" aria-hidden="true"
     class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-10 md:inset-0">
-    <div class="relative mb-12 max-h-full w-full max-w-5xl p-12">
+    <div class="relative mb-12 max-h-full max-w-5xl p-12">
         <!-- Modal content -->
         <div class="relative rounded-lg bg-secondary-50 shadow-md dark:bg-secondary-900">
             <!-- Modal body -->
             <div class="mb-4 space-y-4 p-12">
                 <div class="flex items-end">
                     <button type="button"
-                        class="ms-auto inline-flex h-8 w-8 items-center justify-center rounded-full bg-transparent text-sm text-secondary-400 hover:bg-secondary-200 hover:text-secondary-900 dark:hover:bg-secondary-600 dark:hover:text-secondary-50"
+                        class="ms-auto inline-flex h-8 w-8 items-center justify-center rounded-full bg-transparent text-sm text-secondary-400 hover:bg-secondary-200 hover:text-secondary-900 dark:hover:bg-secondary-600 dark:hover:text-white"
                         data-modal-hide="{{ $project->id }}">
                         <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">
@@ -20,7 +20,7 @@
                     </button>
                 </div>
                 <div class="text-center" id="project-category">
-                    <span class="rounded-md bg-primary-500 px-3 py-1 text-sm text-secondary-50">
+                    <span class="rounded-md bg-primary-500 px-3 py-1 text-sm text-white">
                         {!! $project->category->name !!}
                     </span>
                 </div>
