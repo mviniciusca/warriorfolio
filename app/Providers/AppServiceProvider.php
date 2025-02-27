@@ -23,12 +23,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if (Schema::hasTable('settings')) {
-        $maintenance = optional(Maintenance::first(['is_active', 'is_discovery']));
-        view()->share([
-            'discovery'   => $maintenance->is_discovery ?? false,
-            'maintenance' => $maintenance->is_active ?? false,
-        ]);
-    };
+            $maintenance = optional(Maintenance::first(['is_active', 'is_discovery']));
+            view()->share([
+                'discovery'   => $maintenance->is_discovery ?? false,
+                'maintenance' => $maintenance->is_active ?? false,
+            ]);
+        }
 
         if (Schema::hasTable('cores')) {
             $data = Core::first([
