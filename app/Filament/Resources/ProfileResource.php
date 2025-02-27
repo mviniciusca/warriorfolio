@@ -26,6 +26,13 @@ class ProfileResource extends Resource
         return __('Core Features');
     }
 
+    public static function getNavigationUrl(): string
+    {
+        return static::getUrl('edit', ['record' => filament()->auth()->user()?->id]);
+    }
+
+    protected static bool $shouldRegisterNavigation = true;
+
     protected static ?int $navigationSort = 3;
 
     public static function getRecordSubNavigation(Page $page): array

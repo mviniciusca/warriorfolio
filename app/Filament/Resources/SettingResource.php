@@ -34,6 +34,11 @@ class SettingResource extends Resource
         return __('Application Settings');
     }
 
+    public static function getNavigationUrl(): string
+    {
+        return static::getUrl('edit', ['record' => Setting::first('id')->id]);
+    }
+
     public static function getRecordSubNavigation(Page $page): array
     {
         return $page->generateNavigationItems([
