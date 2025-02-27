@@ -19,14 +19,14 @@ class ListPosts extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\Action::make('view_blog_settings')
-                ->url(route('filament.admin.resources.settings.edit-blog', 1))
-                ->color('secondary')
-                ->icon('heroicon-o-cog-6-tooth')
-                ->label(__('Settings')),
             Actions\CreateAction::make()
                 ->icon('heroicon-o-pencil')
                 ->label(__('New Post')),
+            Actions\Action::make('view_blog_settings')
+                ->url(route('filament.admin.resources.settings.edit-blog', 1))
+                ->color('gray')
+                ->icon('heroicon-o-cog-6-tooth')
+                ->label(__('Settings')),
         ];
     }
 }
