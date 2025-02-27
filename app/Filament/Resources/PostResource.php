@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Category;
-use App\Models\Page as PageModel;
+use App\Models\Page;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
@@ -146,11 +146,11 @@ class PostResource extends Resource
     {
         return $table
             ->query(
-                PageModel::query()
+                Page::query()
                     ->where('style', '=', 'blog')
                     ->orderByDesc('created_at')
             )
-            ->recordClasses(fn (PageModel $record) => match ($record->is_active) {
+            ->recordClasses(fn (Page $record) => match ($record->is_active) {
                 0       => 'opacity-50 dark:opacity-30',
                 default => null,
             })
@@ -159,8 +159,8 @@ class PostResource extends Resource
                     ->limit(40)
                     ->searchable(),
                 TextColumn::make('post.category.name')
-                    ->badge()
-                    ->limit(30)
+                    ->getStateUsing(fn (Page $record) => $record->post?->category?->name ?? '-')
+                    ->sortable()
                     ->searchable(),
                 ToggleColumn::make('post.is_active')
                     ->alignCenter()
@@ -185,7 +185,7 @@ class PostResource extends Resource
                 ActionGroup::make([
                     Action::make('visit')
                         ->label(__('filament-fabricator::page-resource.actions.visit'))
-                        ->url(fn (?PageModel $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
+                        ->url(fn (?Page $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
                         ->icon('heroicon-o-arrow-top-right-on-square')
                         ->openUrlInNewTab()
                         ->color('success')
@@ -193,7 +193,11 @@ class PostResource extends Resource
                     Tables\Actions\EditAction::make()
                         ->label(__('Edit')),
                     DeleteAction::make()
-                        ->label('Delete'),
+                        ->label('Delete')
+                        ->before(function (Page $record) {
+                            $record->post?->delete(); // Apaga o post relacionado
+                        })
+                        ->successNotificationTitle('Página e postagem deletadas com sucesso!'),
                 ]),
             ])
             ->bulkActions([
