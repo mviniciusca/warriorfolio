@@ -2,26 +2,27 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Pages;
-use Filament\Panel;
-use Filament\Widgets;
 use App\Models\Setting;
-use Filament\PanelProvider;
 use Awcodes\Curator\CuratorPlugin;
-use Filament\Support\Colors\Color;
-use Illuminate\Support\Facades\Schema;
-use Filament\Navigation\NavigationItem;
 use Filament\Http\Middleware\Authenticate;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\Cookie\Middleware\EncryptCookies;
-use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\Session\Middleware\AuthenticateSession;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Z3d0X\FilamentFabricator\FilamentFabricatorPlugin;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Filament\Navigation\NavigationItem;
+use Filament\Pages;
+use Filament\Panel;
+use Filament\PanelProvider;
+use Filament\Support\Colors\Color;
+use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Routing\Middleware\SubstituteBindings;
+use Illuminate\Session\Middleware\AuthenticateSession;
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Z3d0X\FilamentFabricator\FilamentFabricatorPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -47,7 +48,7 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-o-bolt')
                     ->url('/admin/settings/'.$this->getSetting().'/edit-hero-section')
                     ->group(__('Website Design'))
-                    ->sort(1),
+                    ->sort(0),
                 NavigationItem::make(__('Background & Logo'))
                     ->icon('heroicon-o-paint-brush')
                     ->url('/admin/settings/'.$this->getSetting().'/edit-appearance')
@@ -136,8 +137,10 @@ class AdminPanelProvider extends PanelProvider
     {
         if (Schema::hasTable('settings')) {
             $setting = Setting::first(['id']);
+
             return $setting ? $setting->value('id') : null;
         }
+
         return null;
     }
 }
