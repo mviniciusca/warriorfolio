@@ -5,7 +5,6 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\MailResource\Pages;
 use App\Models\Mail;
 use App\Services\MailService;
-use Filament\Forms;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
