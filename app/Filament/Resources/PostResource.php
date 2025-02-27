@@ -39,7 +39,7 @@ class PostResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('Blog');
+        return __('Notes');
     }
 
     public static function getNavigationGroup(): ?string
@@ -65,8 +65,8 @@ class PostResource extends Resource
         return $form
             ->columns(4)
             ->schema([
-                Section::make(__('Blog Post'))
-                    ->description(__('Write, edit and manage your Blog Post.'))
+                Section::make(__('Notes Post'))
+                    ->description(__('Write, edit and manage your Notes Post.'))
                     ->columnSpan(3)
                     ->icon('heroicon-o-pencil')
                     ->schema([
@@ -104,7 +104,7 @@ class PostResource extends Resource
                             ->dehydrated()
                             ->label(__('Post Slug'))
                             ->required()
-                            ->helperText(__('Automatic generated.'))
+                            ->helperText(__('Unique. Automatic generated.'))
                             ->maxLength(255),
                     ]),
                 Group::make()

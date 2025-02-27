@@ -13,7 +13,7 @@ class ListPosts extends ListRecords
 
     public function getTitle(): string | Htmlable
     {
-        return __('Blog Posts');
+        return __('Notes');
     }
 
     protected function getHeaderActions(): array
