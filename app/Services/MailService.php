@@ -17,7 +17,7 @@ class MailService
 
     public function __construct(public array $data)
     {
-        $this->fromEmail = env('MAIL_FROM_ADDRESS') ?? Auth::user()->email;
+        $this->fromEmail = env('MAIL_FROM_ADDRESS', config('mail.from.address')) ?? Auth::user()?->email;
     }
 
     /**
