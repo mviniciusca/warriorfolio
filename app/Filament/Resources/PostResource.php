@@ -181,6 +181,7 @@ class PostResource extends Resource
             })
             ->headerActions([
                 Action::make('view_posts_trash')
+                    ->url(route('filament.admin.resources.posts.bin'))
                     ->color('gray')
                     ->label(__('Trash'))
                     ->size('sm')
