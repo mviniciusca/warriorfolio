@@ -1,4 +1,4 @@
-<title>{{ ($app['name'] ?? env('APP_NAME', '')) . ($meta['meta_title'] ?? '') }}</title>
+<title>{{ ($app['name'] ?? env('APP_NAME', '')) . ' - ' . ($meta['meta_title'] ?? '') }}</title>
 
 @isset($meta['meta_author'])
     <meta name="author" content="{{ e($meta['meta_author']) }}">
