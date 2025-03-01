@@ -128,9 +128,34 @@ class PostResource extends Resource
                                     ->label(__('Category'))
                                     ->helperText(__('Main category of your post.'))
                                     ->required()
-                                    ->options(Category::
-                                    where('is_blog', '=', true)
-                                        ->pluck('name', 'id')),
+                                    ->options(Category::where('is_blog', true)->pluck('name', 'id'))
+                                    ->createOptionUsing(fn (array $data) => Category::create($data + [
+                                        'is_blog'    => true,
+                                        'is_project' => false,
+                                    ])->getKey())
+                                    ->createOptionForm([
+                                        Section::make('Fast Create Category.')
+                                            ->icon('heroicon-o-tag')
+                                            ->description('Create a new category for the project. Edit other settings of this category later.')
+                                            ->schema([
+                                                TextInput::make('name')
+                                                    ->lazy()
+                                                    ->unique(Category::class, 'name')
+                                                    ->maxLength(200)
+                                                    ->helperText('The name of the category. Max: 200 characters.')
+                                                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                                    ->required()
+                                                    ->label(__('Category Name')),
+
+                                                TextInput::make('slug')
+                                                    ->disabled()
+                                                    ->unique(Category::class, 'slug')
+                                                    ->maxLength(200)
+                                                    ->dehydrated()
+                                                    ->placeholder(__('Generated automatically'))
+                                                    ->label(__('Slug')),
+                                            ]),
+                                    ]),
                                 Toggle::make('is_active')
                                     ->label(__('Status'))
                                     ->required()
