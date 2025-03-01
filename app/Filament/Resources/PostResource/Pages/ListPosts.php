@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\PostResource\Pages;
 
 use App\Filament\Resources\PostResource;
+use App\Models\Setting;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Contracts\Support\Htmlable;
@@ -23,7 +24,7 @@ class ListPosts extends ListRecords
                 ->icon('heroicon-o-pencil')
                 ->label(__('New Post')),
             Actions\Action::make('view_blog_settings')
-                ->url(route('filament.admin.resources.settings.edit-blog', 1))
+                ->url(route('filament.admin.resources.settings.edit-blog', Setting::first('id')->id))
                 ->color('gray')
                 ->icon('heroicon-o-cog-6-tooth')
                 ->label(__('Settings')),

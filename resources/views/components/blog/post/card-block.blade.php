@@ -24,22 +24,16 @@
     </a>
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
-
-
-
             @if ($item->user->profile->avatar)
                 <x-curator-glider class="mx-1 h-7 w-7 rounded-full" :media="$item->user->profile->avatar" />
             @else
                 <img class="mx-1 h-7 w-7 rounded-full invert-0 dark:invert"
                     src="{{ asset('img/core/profile-picture.png') }}" />
             @endif
-
             <span class="text-sm font-medium">
                 {{ $item->user->name }}
             </span>
         </div>
-
-
         <a href="{{ env('APP_URL') . '/' . $item->page->slug }}"
             class="inline-flex items-center font-medium text-primary-600 hover:underline dark:text-primary-500">
             {{ __('Read more') }}

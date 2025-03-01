@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Blog;
 
+use App\Models\Page;
 use App\Models\Post;
 use App\Models\Setting;
 use Closure;
@@ -25,10 +26,10 @@ class FeaturedPosts extends Component
     {
         return view('components.blog.featured-posts', [
             'info'  => Setting::first('blog')->blog,
-            'posts' => Post::with('category')
+            'posts' => Page::with('post')
                 ->with('user')
-                ->with('page')
                 ->where('is_active', '=', true)
+                ->where('style', '=', 'blog')
                 ->limit(2)
                 ->orderByDesc('created_at')
                 ->get(),

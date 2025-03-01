@@ -179,6 +179,13 @@ class PostResource extends Resource
                 0       => 'opacity-50 dark:opacity-30',
                 default => null,
             })
+            ->headerActions([
+                Action::make('view_posts_trash')
+                    ->color('gray')
+                    ->label(__(''))
+                    ->icon('heroicon-o-trash')
+                    ->outlined(),
+            ])
             ->columns([
                 TextColumn::make('title')
                     ->limit(40)
@@ -245,6 +252,7 @@ class PostResource extends Resource
             'index'  => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
             'edit'   => Pages\EditPost::route('/{record}/edit'),
+            'bin'    => Pages\BinPost::route('/bin'),
         ];
     }
 }
