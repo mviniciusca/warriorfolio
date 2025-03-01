@@ -59,7 +59,10 @@ class Feed extends Component
             'activePostsCount' => $this->getActivePostsCount(),
             'categories'       => Category::where('is_active', true)
                 ->whereHas('post', function ($query) {
-                    $query->where('is_active', true);
+                    $query->where('is_active', true)
+                        ->whereHas('page', function ($query) {
+                            $query->where('is_active', true);
+                        });
                 })
                 ->where('is_blog', true)
                 ->get(),
