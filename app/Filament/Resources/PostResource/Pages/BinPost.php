@@ -15,10 +15,21 @@ use Filament\Tables\Actions\ForceDeleteAction;
 use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
 
 class BinPost extends ListRecords
 {
     protected static string $resource = PostResource::class;
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Trashed Notes');
+    }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('');
+    }
 
     public function table(Table $table): Table
     {
@@ -31,10 +42,13 @@ class BinPost extends ListRecords
             ->headerActions([
                 Action::make('back_to_posts')
                     ->outlined()
+                    ->size('sm')
                     ->label(__('Back to Notes'))
                     ->icon('heroicon-o-arrow-left')
                     ->url(route('filament.admin.resources.posts.index')),
             ])
+            ->heading(__('Trashed Notes'))
+            ->description(__('Manage your deleted notes.'))
             ->bulkActions([
                 BulkActionGroup::make([
                     RestoreBulkAction::make(),
@@ -51,7 +65,13 @@ class BinPost extends ListRecords
                 ]),
             ])
             ->columns([
-                TextColumn::make('title'),
+                TextColumn::make('title')
+                    ->limit(60)
+                    ->label(__('Title')),
+                TextColumn::make('post.category.name')
+                    ->limit(30)
+                    ->badge()
+                    ->label(__('Category')),
             ]);
     }
 }
