@@ -102,6 +102,7 @@ class MailResource extends Resource
             ->headerActions([
                 CreateAction::make('write_message')
                     ->modalHeading(__('New Message'))
+                    ->size('sm')
                     ->modalIcon('heroicon-o-envelope')
                     ->modalDescription(__('Write a new mail message. Be sure that SMTP services are enabled.'))
                     ->modalSubmitActionLabel(__('Send Message'))
@@ -159,6 +160,7 @@ class MailResource extends Resource
                 Action::make('view_trashed_mails')
                     ->color('gray')
                     ->label(__('View Trash'))
+                    ->size('sm')
                     ->icon('heroicon-o-trash')
                     ->url(route('filament.admin.resources.mails.bin')),
             ])

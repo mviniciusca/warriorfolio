@@ -26,11 +26,12 @@ class ViewMail extends ViewRecord
             Action::make('back_to_inbox')
                 ->color('gray')
                 ->label(__('Back'))
+                ->size('sm')
                 ->url(route('filament.admin.resources.mails.index'))
                 ->icon('heroicon-o-arrow-left'),
-
             DeleteAction::make()
                 ->icon('heroicon-o-trash')
+                ->size('sm')
                 ->label(__('Move to Trash'))
                 ->icon('heroicon-o-trash'),
         ];

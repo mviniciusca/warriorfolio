@@ -16,7 +16,8 @@ class ListCourses extends ListRecords
     {
         return [
             Actions\CreateAction::make()
-                ->label(__('New Couse'))
+                ->label(__('New Course'))
+                ->size('sm')
                 ->icon('heroicon-o-academic-cap'),
         ];
     }

@@ -15,6 +15,7 @@ class ManageCustomers extends ManageRecords
         return [
             Actions\CreateAction::make()
                 ->label(__('New Customer'))
+                ->size('sm')
                 ->icon('heroicon-o-building-office'),
         ];
     }

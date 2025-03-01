@@ -182,7 +182,8 @@ class PostResource extends Resource
             ->headerActions([
                 Action::make('view_posts_trash')
                     ->color('gray')
-                    ->label(__(''))
+                    ->label(__('Trash'))
+                    ->size('sm')
                     ->icon('heroicon-o-trash')
                     ->outlined(),
             ])
