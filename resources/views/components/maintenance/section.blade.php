@@ -10,12 +10,12 @@
                 class="{{ $maintenance->is_contact ? 'lg:w-1/2' : 'lg:w-full' }} w-full content-center justify-center p-8 text-center md:w-1/2">
                 <div class="mx-auto text-center">
                     @if ($maintenance->image)
-                        <img class="mb-6 max-w-96 rounded-md text-center"
+                        <img class="mx-auto max-w-72 rounded-md text-center"
                             src="{{ asset('storage/' . $maintenance->image) }}" alt="Maintenance" />
                     @else
                         <x-ui.logo :size="'w-36'" :link="false" />
                     @endif
-                    <div id="maintenance-content" class="pt-6 text-base">
+                    <div id="maintenance-content" class="pt-4 text-base">
                         {!! $maintenance->content !!}
                     </div>
                     @if ($maintenance->is_social)
