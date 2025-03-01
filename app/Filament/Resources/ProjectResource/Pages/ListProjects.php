@@ -15,6 +15,7 @@ class ListProjects extends ListRecords
         return [
             Actions\CreateAction::make()
                 ->label(__('New Project'))
+                ->size('sm')
                 ->icon('heroicon-o-rocket-launch'),
         ];
     }

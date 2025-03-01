@@ -22,10 +22,12 @@ class ListPosts extends ListRecords
         return [
             Actions\CreateAction::make()
                 ->icon('heroicon-o-pencil')
+                ->size('sm')
                 ->label(__('New Post')),
             Actions\Action::make('view_blog_settings')
                 ->url(route('filament.admin.resources.settings.edit-blog', Setting::first('id')->id))
                 ->color('gray')
+                ->size('sm')
                 ->icon('heroicon-o-cog-6-tooth')
                 ->label(__('Settings')),
         ];

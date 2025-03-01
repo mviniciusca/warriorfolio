@@ -15,6 +15,7 @@ class ListCategories extends ListRecords
         return [
             Actions\CreateAction::make()
                 ->label(__('New Category'))
+                ->size('sm')
                 ->icon('heroicon-o-tag'),
         ];
     }

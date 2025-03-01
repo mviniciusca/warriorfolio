@@ -48,14 +48,15 @@ class CustomerResource extends Resource
     {
         return $form
             ->schema([
-                Group::make()->schema([
-                    CuratorPicker::make('logo')
-                        ->maxSize(2000)
-                        ->directory('public/customer')
-                        ->helperText('The logo of the customer. Max 2MB')
-                        ->label('Brand Logo')
-                        ->required(),
-                ]),
+                Group::make()
+                    ->schema([
+                        CuratorPicker::make('logo')
+                            ->maxSize(2000)
+                            ->directory('public/customer')
+                            ->helperText('The logo of the customer. Max 2MB')
+                            ->label('Brand Logo')
+                            ->required(),
+                    ]),
                 Group::make()->schema([
                     Forms\Components\TextInput::make('name')
                         ->maxLength(100)
@@ -70,7 +71,8 @@ class CustomerResource extends Resource
                         ->label('Website URL (optional)')
                         ->columnSpanFull(),
                 ]),
-            ])->columns(2);
+            ])
+            ->columns(2);
     }
 
     public static function table(Table $table): Table
