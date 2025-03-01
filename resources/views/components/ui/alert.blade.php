@@ -8,13 +8,10 @@
     <div class="py-5">
         <div class="mx-auto max-w-7xl">
             <div class="flex flex-wrap items-center gap-2">
-
                 @if ($icon)
                     <ion-icon class="text-xl" name="{{ $icon }}"></ion-icon>
                 @endif
-
                 <div class="flex flex-wrap items-center gap-2">{{ $slot }}</div>
-
             </div>
         </div>
     </div>
