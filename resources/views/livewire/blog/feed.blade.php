@@ -22,7 +22,7 @@
             @endif
         @endforeach
     @else
-        <x-ui.empty-section :message="'No posts yet.'" />
+        <x-ui.empty-section :message="'No posts yet.'" :auth="'Create a new Note in your Dashboard.'" />
     @endif
 
 
