@@ -129,10 +129,6 @@ class PostResource extends Resource
                                     ->helperText(__('Main category of your post.'))
                                     ->required()
                                     ->options(Category::where('is_blog', true)->pluck('name', 'id'))
-                                    ->createOptionUsing(fn (array $data) => Category::create($data + [
-                                        'is_blog'    => true,
-                                        'is_project' => false,
-                                    ])->getKey())
                                     ->createOptionForm([
                                         Section::make('Fast Create Category.')
                                             ->icon('heroicon-o-tag')
@@ -155,7 +151,11 @@ class PostResource extends Resource
                                                     ->placeholder(__('Generated automatically'))
                                                     ->label(__('Slug')),
                                             ]),
-                                    ]),
+                                    ])
+                                    ->createOptionUsing(fn (array $data) => Category::create($data + [
+                                        'is_blog'    => true,
+                                        'is_project' => false,
+                                    ])->getKey()),
                                 Toggle::make('is_active')
                                     ->label(__('Status'))
                                     ->required()
