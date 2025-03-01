@@ -13,7 +13,7 @@
                         <img class="mx-auto max-w-72 rounded-md text-center"
                             src="{{ asset('storage/' . $maintenance->image) }}" alt="Maintenance" />
                     @else
-                        <x-ui.logo :size="'w-36'" :link="false" />
+                        <x-ui.logo :size="'max-w-36'" :link="false" />
                     @endif
                     <div id="maintenance-content" class="pt-4 text-base">
                         {!! $maintenance->content !!}
