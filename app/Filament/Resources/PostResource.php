@@ -131,8 +131,9 @@ class PostResource extends Resource
                                     ->options(Category::where('is_blog', true)->pluck('name', 'id'))
                                     ->createOptionForm([
                                         Section::make('Fast Create Category.')
+                                            ->columns(2)
                                             ->icon('heroicon-o-tag')
-                                            ->description('Create a new category for the project. Edit other settings of this category later.')
+                                            ->description('Create a new category for Notes. Edit other settings of this category later.')
                                             ->schema([
                                                 TextInput::make('name')
                                                     ->lazy()
@@ -142,7 +143,6 @@ class PostResource extends Resource
                                                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                                                     ->required()
                                                     ->label(__('Category Name')),
-
                                                 TextInput::make('slug')
                                                     ->disabled()
                                                     ->unique(Category::class, 'slug')
