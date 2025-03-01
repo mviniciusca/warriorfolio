@@ -126,6 +126,10 @@ class ProjectResource extends Resource
                                 where('is_project', '=', true)
                                     ->pluck('name', 'id'))
                                 ->helperText(__('Project Category'))
+                                ->createOptionUsing(fn (array $data) => Category::create($data + [
+                                    'is_blog'    => false,
+                                    'is_project' => true,
+                                ])->getKey())
                                 ->createOptionForm([
                                     Section::make('Fast Create Category.')
                                         ->icon('heroicon-o-tag')
