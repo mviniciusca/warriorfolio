@@ -3,7 +3,6 @@
 namespace App\View\Components\Blog;
 
 use App\Models\Page;
-use App\Models\Post;
 use App\Models\Setting;
 use Closure;
 use Illuminate\Contracts\View\View;
