@@ -36,7 +36,7 @@ class NewMailNotification extends Notification
     {
         return (new MailMessage)
             ->line(__('You received a new message form your website!'))
-            ->action(__('Inbox'), url(env('APP_URL').'/mails'))
+            ->action(__('Inbox'), url(env('APP_URL').'/admin/mails'))
             ->line(__('This is a notification message!'));
     }
 
