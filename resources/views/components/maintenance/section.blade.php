@@ -1,6 +1,6 @@
 @props(['maintenance' => null])
 
-<section class="h-screen w-full">
+<section class="maintenance-mode h-screen w-full">
     <div class="mx-auto grid h-full max-w-screen-xl items-center px-4 py-8 lg:px-6 lg:py-16">
         <div class="mt-5 flex flex-col items-center md:flex-row">
             <div class="absolute left-0 right-0 top-0 mt-5 inline-block items-center justify-center text-center">
@@ -9,10 +9,10 @@
             <div id="col-a"
                 class="{{ $maintenance->is_contact ? 'lg:w-1/2' : 'lg:w-full' }} w-full content-center justify-center p-8 text-center md:w-1/2">
                 <div>
-                    <img class="mx-auto mb-12 text-center"
+                    <img class="mx-auto mb-6 max-w-96 rounded-md bg-red-200 text-center"
                         src="{{ $maintenance->image ? asset('storage/' . $maintenance->image) : asset('img/core/maintenance-main.png') }}"
                         alt="Maintenance">
-                    <div id="maintenance-content" class="text-lg">
+                    <div id="maintenance-content" class="text-xl">
                         {!! $maintenance->content !!}
                     </div>
                     @if ($maintenance->is_social)
