@@ -8,11 +8,14 @@
             </div>
             <div id="col-a"
                 class="{{ $maintenance->is_contact ? 'lg:w-1/2' : 'lg:w-full' }} w-full content-center justify-center p-8 text-center md:w-1/2">
-                <div>
-                    <img class="mx-auto mb-6 max-w-96 rounded-md text-center"
-                        src="{{ $maintenance->image ? asset('storage/' . $maintenance->image) : asset('img/core/maintenance-main.png') }}"
-                        alt="Maintenance">
-                    <div id="maintenance-content" class="text-base">
+                <div class="mx-auto text-center">
+                    @if ($maintenance->image)
+                        <img class="mb-6 max-w-96 rounded-md text-center"
+                            src="{{ asset('storage/' . $maintenance->image) }}" alt="Maintenance" />
+                    @else
+                        <x-ui.logo :size="'w-36'" :link="false" />
+                    @endif
+                    <div id="maintenance-content" class="pt-6 text-base">
                         {!! $maintenance->content !!}
                     </div>
                     @if ($maintenance->is_social)
