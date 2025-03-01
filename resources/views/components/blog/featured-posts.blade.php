@@ -20,6 +20,9 @@
                     @endforeach
                 </div>
                 </div>
+                @if ($posts->count() === 0)
+                    <x-ui.empty-section :message="'No Posts Yet.'" :auth="'Create a new Post in your Dashboard.'" />
+                @endif
             </section>
         </x-core.layout>
     @endif
