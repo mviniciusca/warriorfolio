@@ -8,18 +8,18 @@
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
             </svg>
-            {{ $item->category->name }}
+            {{ $item->post->category->name }}
         </span>
         <span class="text-sm">
             {{ $item->created_at->diffForHumans() }}
         </span>
     </div>
     <h2 class="mb-2 text-2xl font-bold tracking-tight">
-        <a class="hover:underline" href="{{ env('APP_URL') . '/' . $item->page->slug }}">
-            {{ Str::words($item->page->title, 13, '...') }}
+        <a class="hover:underline" href="{{ env('APP_URL') . '/' . $item->slug }}">
+            {{ Str::words($item->title, 13, '...') }}
     </h2>
     <p class="mb-5 font-light">
-        {!! Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->content)), 25, '...') !!}.
+        {!! Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->post->content)), 25, '...') !!}.
     </p>
     </a>
     <div class="flex items-center justify-between">
@@ -34,7 +34,7 @@
                 {{ $item->user->name }}
             </span>
         </div>
-        <a href="{{ env('APP_URL') . '/' . $item->page->slug }}"
+        <a href="{{ env('APP_URL') . '/' . $item->slug }}"
             class="inline-flex items-center font-medium text-primary-600 hover:underline dark:text-primary-500">
             {{ __('Read more') }}
             <svg class="ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

@@ -1,3 +1,4 @@
+@if ($posts)
     @if ($info['module_is_active'] ?? false)
         <x-core.layout>
             <x-slot name="module_title">
@@ -26,3 +27,4 @@
             </section>
         </x-core.layout>
     @endif
+@endif
