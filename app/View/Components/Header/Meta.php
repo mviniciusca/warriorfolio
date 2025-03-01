@@ -25,7 +25,6 @@ class Meta extends Component
         $setting = Setting::first(['meta', 'application', 'design', 'google', 'scripts']);
 
         return view('components.header.meta', [
-
             'meta'    => $setting?->meta,
             'app'     => $setting?->application,
             'design'  => $setting?->design,
