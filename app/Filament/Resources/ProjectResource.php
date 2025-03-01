@@ -163,7 +163,8 @@ class ProjectResource extends Resource
                                 ->inline(),
                         ]),
                 ]),
-            ])->columns(4);
+            ])
+            ->columns(4);
     }
 
     public static function table(Table $table): Table
