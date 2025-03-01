@@ -9,10 +9,10 @@
             <div id="col-a"
                 class="{{ $maintenance->is_contact ? 'lg:w-1/2' : 'lg:w-full' }} w-full content-center justify-center p-8 text-center md:w-1/2">
                 <div>
-                    <img class="mx-auto mb-6 max-w-96 rounded-md bg-red-200 text-center"
+                    <img class="mx-auto mb-6 max-w-96 rounded-md text-center"
                         src="{{ $maintenance->image ? asset('storage/' . $maintenance->image) : asset('img/core/maintenance-main.png') }}"
                         alt="Maintenance">
-                    <div id="maintenance-content" class="text-xl">
+                    <div id="maintenance-content" class="text-base">
                         {!! $maintenance->content !!}
                     </div>
                     @if ($maintenance->is_social)
