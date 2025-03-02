@@ -38,7 +38,7 @@ class EditSecurity extends EditRecord
     public function form(Form $form): Form
     {
         return $form->schema([
-            Section::make('Change E-mail')
+            Section::make('E-mail')
                 ->relationship('user')
                 ->description('This section is used to manage your account e-mail. This affects your login e-mail next time you login.')
                 ->icon('heroicon-o-lock-closed')
@@ -61,7 +61,7 @@ class EditSecurity extends EditRecord
                         ->minLength(3)
                         ->maxLength(50),
                 ])->columns(2),
-            Section::make('Change Password')
+            Section::make('Password')
                 ->relationship('user')
                 ->description('This section is used to manage your account password. This affects your login password after reload the page.')
                 ->icon('heroicon-o-lock-closed')
