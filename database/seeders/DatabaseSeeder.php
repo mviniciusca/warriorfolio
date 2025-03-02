@@ -69,7 +69,7 @@ Here\'s to many more notes ahead! 🚀',
         Page::insert([
             'post_id'    => $post->id,
             'user_id'    => 1,
-            'title'      => 'First Note',
+            'title'      => 'First Note 📝',
             'slug'       => 'blog/post/first-note.html',
             'created_at' => now(),
             'updated_at' => now(),
