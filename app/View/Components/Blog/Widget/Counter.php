@@ -27,13 +27,40 @@ class Counter extends Component
         ]);
     }
 
-    public function getData()
+    /**
+     * Connects to Page and check the Category from the Post
+     * @return array
+     */
+    public function getData(): array
     {
-        return Category::withCount('post')->get()->map(function ($category) {
-            return [
-                'label' => $category->name,
-                'count' => $category->count(),
-            ];
-        })->toArray();
+        return Category::withCount(['post' => function ($query) {
+            $query->whereHas('page', function ($query) {
+                $query->whereNull('deleted_at');
+            });
+        }])
+            ->where('is_active', true)
+            ->limit(10)
+            ->orderByDesc('post_count')
+            ->get()
+            ->filter(function (Category $category) {
+                return $category->post_count > 0;
+            })
+            ->map(function (Category $category): array {
+                return [
+                    'label' => $category->name,
+                    'count' => $this->counterGuide($category->post_count),
+                ];
+            })
+            ->toArray();
+    }
+
+    /**
+     * Get the total of posts and return the value
+     * @param int $counter
+     * @return int|string
+     */
+    public function counterGuide(int $counter): int|string
+    {
+        return $counter <= 99 ? $counter : '+99';
     }
 }

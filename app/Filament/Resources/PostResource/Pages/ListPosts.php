@@ -23,7 +23,7 @@ class ListPosts extends ListRecords
             Actions\CreateAction::make()
                 ->icon('heroicon-o-pencil')
                 ->size('sm')
-                ->label(__('New Post')),
+                ->label(__('New Note')),
             Actions\Action::make('view_blog_settings')
                 ->url(route('filament.admin.resources.settings.edit-blog', Setting::first('id')->id))
                 ->color('gray')
