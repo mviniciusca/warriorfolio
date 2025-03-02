@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileStatus extends BaseWidget
 {
-    protected static ?int $sort = 4;
+    protected static ?int $sort = 2;
 
     public function table(Table $table): Table
     {
         return $table
             ->query(
-                Profile::query()->select()
+                Profile::query(),
             )
             ->heading(__('Profile Overview'))
             ->description(__('A quick view about your profile.'))
@@ -38,14 +38,15 @@ class ProfileStatus extends BaseWidget
             ->heading('Profile Status')
             ->columns([
                 TextColumn::make('user.name')
-                    ->label('Manager'),
+                    ->label(__('Name')),
                 TextColumn::make('job_position')
-                    ->label('Job Position'),
+                    ->limit(15)
+                    ->label(__('Job Position')),
                 ToggleColumn::make('is_open_to_work')
-                    ->label('Open to Work')
+                    ->label(__('Open to Work'))
                     ->alignCenter(),
                 ToggleColumn::make('is_downloadable')
-                    ->label('Resume')
+                    ->label(__('Downl. Resume'))
                     ->alignCenter(),
             ]);
     }

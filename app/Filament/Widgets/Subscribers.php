@@ -13,7 +13,7 @@ class Subscribers extends ChartWidget
 
     protected static ?string $description = 'Your mailing list subscribers.';
 
-    protected static ?int $sort = 2;
+    protected static ?int $sort = 9;
 
     protected function getData(): array
     {
