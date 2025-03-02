@@ -54,10 +54,10 @@ class DatabaseSeeder extends Seeder
         $post = Post::create([
             'category_id' => 1,
             'user_id'     => 1,
-            'resume'      => 'Welcome to Your First Note!',
+            'resume'      => 'Notes is your go-to tool to organize ideas, tasks, and inspirations in one simple and efficient place!',
             'content'     => 'Hello there! 🌟
                             <p></p>
-                            This is the beginning of something new—your very first note! Whether you\'re jotting down thoughts, capturing ideas, or simply reminding yourself of something important, this space is yours to explore.
+                            This is the beginning of something new—your very first note! <br/> Whether you\'re jotting down thoughts, capturing ideas, or simply reminding yourself of something important, this space is yours to explore.
                             <p></p>
                             Feel free to write freely, without worrying about perfection. Notes can be messy, creative, practical, or poetic—they\'re a reflection of you. Use them to brainstorm, plan your day, track goals, or even vent when needed. Every journey starts with a single step, and this note is yours.
                             <p></p>
