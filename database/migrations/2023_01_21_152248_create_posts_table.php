@@ -23,7 +23,6 @@ return new class extends Migration {
             $table->string('img_cover')->nullable();
             $table->foreignIdFor(User::class)->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
