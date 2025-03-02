@@ -10,10 +10,10 @@
     <span class="">{!! $icon !!}</span>
     @if (!$status->is_active)
         <span
-            class="animate-pulse rounded-md bg-green-600 px-3 py-1 text-xs leading-normal tracking-normal text-white">{{ __('Live') }}</span>
+            class="animate-pulse rounded-md bg-green-700 px-3 py-1 text-xs leading-normal tracking-normal text-white">{{ __('Live') }}</span>
     @else
         <span
-            class="animate-pulse rounded-md bg-red-600 px-3 py-1 text-xs leading-normal tracking-normal text-white">{{ __('Off') }}</span>
+            class="animate-pulse rounded-md bg-red-700 px-3 py-1 text-xs leading-normal tracking-normal text-white">{{ __('Off') }}</span>
         @if ($status->is_discovery)
             <span
                 class="animate-pulse rounded-md bg-primary-600 px-3 py-1 text-xs leading-normal tracking-normal text-white">{{ __('Discovery') }}</span>
