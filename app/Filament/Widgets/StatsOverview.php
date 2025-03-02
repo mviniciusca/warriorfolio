@@ -8,6 +8,7 @@ use App\Models\Newsletter;
 use App\Models\Project;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use Illuminate\Support\Facades\Auth;
 
 class StatsOverview extends BaseWidget
 {
@@ -16,9 +17,10 @@ class StatsOverview extends BaseWidget
     {
         return [
             Stat::make(__('Website Status'), '')
+                ->url(route('filament.admin.resources.settings.edit', Auth::user()?->id))
                 ->icon('heroicon-o-wifi')
                 ->value(view('components.badge', ['status' => Maintenance::first()]))
-                ->description(Maintenance::first()->is_active ? 'Maintenance Mode' : 'Website is Live')
+                ->description(Maintenance::first()->is_active ? __('Maintenance Mode') : __('Website is Live'))
                 ->color('primary'),
 
             Stat::make(__('Mailing List'), Newsletter::counter())
