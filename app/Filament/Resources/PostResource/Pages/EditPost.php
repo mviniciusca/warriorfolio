@@ -14,7 +14,7 @@ class EditPost extends EditRecord
 
     public function getTitle(): string | Htmlable
     {
-        return __('Edit Post');
+        return __('Edit Note');
     }
 
     protected function getHeaderActions(): array

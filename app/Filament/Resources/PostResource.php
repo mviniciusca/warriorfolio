@@ -195,6 +195,7 @@ class PostResource extends Resource
                 TextColumn::make('post.category.name')
                     ->getStateUsing(fn (Page $record) => $record->post?->category?->name ?? '-')
                     ->sortable()
+                    ->badge()
                     ->searchable(),
                 ToggleColumn::make('post.is_active')
                     ->alignCenter()
