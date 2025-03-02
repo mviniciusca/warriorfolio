@@ -8,6 +8,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileStatus extends BaseWidget
 {
@@ -25,7 +26,7 @@ class ProfileStatus extends BaseWidget
             ->headerActions(
                 [
                     ViewAction::make()
-                        ->url(route('filament.admin.resources.profiles.edit', auth()->user()->profile->id))
+                        ->url(route('filament.admin.resources.profiles.edit', Auth::user()->id))
                         ->label('Manager')
                         ->icon('heroicon-o-arrow-up-right')
                         ->outlined()
