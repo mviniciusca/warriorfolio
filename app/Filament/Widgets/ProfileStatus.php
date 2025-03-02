@@ -4,8 +4,8 @@ namespace App\Filament\Widgets;
 
 use App\Models\Profile;
 use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
@@ -40,14 +40,12 @@ class ProfileStatus extends BaseWidget
                     ->label('Manager'),
                 TextColumn::make('job_position')
                     ->label('Job Position'),
-                IconColumn::make('is_open_to_work')
+                ToggleColumn::make('is_open_to_work')
                     ->label('Open to Work')
-                    ->alignCenter()
-                    ->boolean(),
-                IconColumn::make('is_downloadable')
+                    ->alignCenter(),
+                ToggleColumn::make('is_downloadable')
                     ->label('Resume')
-                    ->alignCenter()
-                    ->boolean(),
+                    ->alignCenter(),
             ]);
     }
 }

@@ -22,7 +22,7 @@ class LatestMails extends BaseWidget
                     ->latest('id')
                     ->limit(5)
             )
-            ->recordUrl(fn (Mail $record) => route('filament.admin.resources.mails.index', $record))
+            ->recordUrl(fn (Mail $record) => route('filament.admin.resources.mails.view', $record->id))
             ->heading(__('Inbox'))
             ->description(__('Your new and unread messages.'))
             ->headerActions(
