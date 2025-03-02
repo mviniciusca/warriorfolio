@@ -8,8 +8,9 @@
                 <x-blog.homepage />
             </div>
             <div class="order-1 hidden w-full lg:order-2 lg:block lg:w-1/4 lg:pl-8">
-                <aside>
+                <aside class="">
                     <x-blog.widget.profile />
+                    <x-blog.widget.counter />
                 </aside>
             </div>
         </div>
