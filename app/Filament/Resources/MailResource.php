@@ -17,7 +17,6 @@ use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\CreateAction;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TernaryFilter;
@@ -173,10 +172,10 @@ class MailResource extends Resource
             ->columns([
                 ToggleColumn::make('is_important')
                     ->label(__('Favorite'))
-                    ->onIcon('heroicon-o-star')
-                    ->offColor('primary')
-                    ->onColor('gray')
-                    ->offIcon('heroicon-m-star'),
+                    ->onIcon('heroicon-m-star')
+                    ->offColor('gray')
+                    ->onColor('primary')
+                    ->offIcon('heroicon-o-star'),
                 TextColumn::make('name')
                     ->label(__('From:'))
                     ->limit(15)
