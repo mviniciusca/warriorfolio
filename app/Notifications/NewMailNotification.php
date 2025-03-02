@@ -35,9 +35,12 @@ class NewMailNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line(__('You received a new message from your website!'))
-            ->action(__('Inbox'), url(env('APP_URL').'/admin/mails'))
-            ->line(__('This is a notification message!'));
+            ->greeting(__('Hello! 🚀'))
+            ->line(__('You have received a new message from your website.'))
+            ->line(__('Click the button below to view the message:'))
+            ->action(__('View Inbox'), url(config('app.url').'/admin/mails'))
+            ->line(__('If you did not request this, no further action is required.'))
+            ->salutation(__('Thank you for using our website!'));
     }
 
     /**
