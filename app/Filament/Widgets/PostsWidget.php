@@ -44,12 +44,13 @@ class PostsWidget extends BaseWidget
                         ->icon('heroicon-o-pencil')
                         ->color('primary')
                         ->size('xs')
+                        ->outlined()
                         ->url(route('filament.admin.resources.posts.create'))
                         ->label(__('New Post')),
                     ViewAction::make()
                         ->url(route('filament.admin.resources.posts.index'))
                         ->label(__('View All'))
-                        ->icon('heroicon-o-pencil')
+                        ->icon('heroicon-o-arrow-up-right')
                         ->outlined()
                         ->size('xs'),
                 ]
