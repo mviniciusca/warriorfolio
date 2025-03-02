@@ -35,7 +35,7 @@ class NewMailNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line(__('You received a new message form your website!'))
+            ->line(__('You received a new message from your website!'))
             ->action(__('Inbox'), url(env('APP_URL').'/admin/mails'))
             ->line(__('This is a notification message!'));
     }
