@@ -172,9 +172,9 @@ class MailResource extends Resource
             ->columns([
                 ToggleColumn::make('is_important')
                     ->label(__('Favorite'))
-                    ->onIcon('heroicon-m-star')
-                    ->offColor('gray')
                     ->onColor('primary')
+                    ->offColor('gray')
+                    ->onIcon('heroicon-m-star')
                     ->offIcon('heroicon-o-star'),
                 TextColumn::make('name')
                     ->label(__('From:'))
