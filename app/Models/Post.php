@@ -9,14 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
-
-    // use SoftDeletes;
 
     protected $guarded = [];
 
@@ -25,9 +22,9 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function page(): HasOne
+    public function page()
     {
-        return $this->hasOne(Page::class);
+        return $this->hasMany(Page::class);
     }
 
     public function user(): BelongsTo

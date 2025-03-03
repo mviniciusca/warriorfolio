@@ -31,7 +31,7 @@ class PostsWidget extends BaseWidget
             ->striped()
             ->paginated(false)
             ->searchable(false)
-            ->recordClasses(fn (Page $record) => match ($record->is_active) {
+            ->recordClasses(fn (Page $record): string|null => match ($record->is_active) {
                 0       => 'opacity-50 dark:opacity-30',
                 default => null,
             })
@@ -44,7 +44,7 @@ class PostsWidget extends BaseWidget
                     ->latest('created_at')
                     ->take(5)
             )
-            ->recordUrl(fn (Page $record) => route('filament.admin.resources.posts.edit', $record->id))
+            ->recordUrl(fn (Page $record) => route('filament.admin.resources.posts.edit', $record?->id))
             ->headerActions(
                 [
                     ViewAction::make('new')

@@ -34,9 +34,7 @@ class Counter extends Component
     public function getData(): array
     {
         return Category::withCount(['post' => function ($query) {
-            $query->whereHas('page', function ($query) {
-                $query->whereNull('deleted_at');
-            });
+            $query->whereHas('page');
         }])
             ->where('is_active', true)
             ->limit(10)
