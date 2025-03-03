@@ -27,6 +27,7 @@ use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 
 class PostResource extends Resource
 {
@@ -125,8 +126,7 @@ class PostResource extends Resource
                                     ->label(__('Category'))
                                     ->helperText(__('Main category of your post.'))
                                     ->required()
-                                    ->options(Category::where('is_blog', true)
-                                        ->pluck('name', 'id'))
+                                    ->options(Category::where('is_blog', true)->pluck('name', 'id'))
                                     ->createOptionForm([
                                         Section::make('Fast Create Category.')
                                             ->columns(2)
