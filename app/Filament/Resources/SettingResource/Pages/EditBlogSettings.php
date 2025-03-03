@@ -70,6 +70,16 @@ class EditBlogSettings extends EditRecord
                             ->label(__('URL'))
                             ->helperText(__('Define the Header Button URL')),
                     ]),
+                Section::make(__('Notes Pages Settings'))
+                    ->description(__('Manage your Notes Pages Settings'))
+                    ->icon('heroicon-o-document')
+                    ->columns(3)
+                    ->schema([
+                        Toggle::make('blog.is_share_active')
+                            ->default(true)
+                            ->label(__('Show Share Feature'))
+                            ->helperText(__('Enable or disable the share feature for this page')),
+                    ]),
                 Section::make(__('Notes Settings'))
                     ->description(__('Manage your Notes Settings and Public Definitions.'))
                     ->icon('heroicon-o-cog-6-tooth')
