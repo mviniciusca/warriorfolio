@@ -6,12 +6,9 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Page extends \Z3d0X\FilamentFabricator\Models\Page
 {
-    use SoftDeletes;
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -25,5 +22,14 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    protected static function booted()
+    {
+        static::deleted(function ($page) {
+            if ($page->post) {
+                $page->post->delete();
+            }
+        });
     }
 }

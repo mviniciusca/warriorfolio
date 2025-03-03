@@ -5,7 +5,9 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Category;
 use App\Models\Page;
+use App\Models\Post;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Filament\Actions\ForceDeleteAction;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
@@ -31,6 +33,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Log;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 
 class PostResource extends Resource
@@ -74,7 +77,7 @@ class PostResource extends Resource
                     ->schema([
                         Hidden::make('user_id')
                             ->dehydrated()
-                            ->default(Auth::user()->id),
+                            ->default(Auth::user()?->id),
                         TextInput::make('title')
                             ->label(__('Post Title'))
                             ->live(onBlur: true)
@@ -157,7 +160,8 @@ class PostResource extends Resource
                                     ->createOptionUsing(fn (array $data) => Category::create($data + [
                                         'is_blog'    => true,
                                         'is_project' => false,
-                                    ])->getKey()),
+                                    ])
+                                        ->getKey()),
                                 Toggle::make('is_active')
                                     ->label(__('Status'))
                                     ->required()
@@ -173,9 +177,10 @@ class PostResource extends Resource
     {
         return $table
             ->query(
-                Page::query()->where('style', 'blog')
+                Page::query()
+                    ->where('style', 'blog')
             )
-            ->recordClasses(fn (Page $record) => match ($record->is_active) {
+            ->recordClasses(fn (Page $record) => match ($record?->is_active) {
                 0       => 'opacity-50 dark:opacity-30',
                 default => null,
             })
@@ -205,7 +210,7 @@ class PostResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                Tables\Filters\TrashedFilter::make(),
+                //
             ])
             ->actions([
                 ActionGroup::make([
@@ -216,30 +221,32 @@ class PostResource extends Resource
                         ->openUrlInNewTab()
                         ->color('success')
                         ->visible(config('filament-fabricator.routing.enabled')),
-                    Tables\Actions\EditAction::make()
-                        ->label(__('Edit')),
                     DeleteAction::make()
                         ->label('Delete')
                         ->before(function (Page $record) {
                             $record->post?->delete();
                         })
-                        ->successNotificationTitle(__('Moved to Trash')),
+                        ->successNotificationTitle('Página e postagem deletadas com sucesso!'),
+                    Tables\Actions\ForceDeleteAction::make(),
+                    Tables\Actions\RestoreAction::make(),
                 ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\ForceDeleteBulkAction::make(),
+                    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }
 
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
-    }
+    // public static function getEloquentQuery(): Builder
+    // {
+    //     return parent::getEloquentQuery()
+    //         ->withoutGlobalScopes([
+    //             SoftDeletingScope::class,
+    //         ]);
+    // }
 
     public static function getRelations(): array
     {
