@@ -3,9 +3,11 @@
 namespace App\View\Components\Blog\Widget;
 
 use App\Models\Category;
+use App\Models\Setting;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use OpenSpout\Reader\ODS\Helper\SettingsHelper;
 
 class Counter extends Component
 {
@@ -23,7 +25,8 @@ class Counter extends Component
     public function render(): View|Closure|string
     {
         return view('components.blog.widget.counter', [
-            'data' => $this->getData(),
+            'data'      => $this->getData(),
+            'blog_data' => Setting::first('blog')->blog,
         ]);
     }
 
