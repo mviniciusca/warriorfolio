@@ -30,13 +30,9 @@ class EditPost extends EditRecord
                 ->color('info'),
             Actions\DeleteAction::make()
                 ->size('xs')
-                ->label(__('Move to Trash'))
-                ->outlined()
+                ->label(__('Delete'))
+                ->requiresConfirmation()
                 ->icon('heroicon-o-trash'),
-            Actions\ForceDeleteAction::make()
-                ->label(__('Delete from Trash'))
-                ->icon('heroicon-o-trash')
-                ->size('xs'),
             Actions\RestoreAction::make()
                 ->icon('heroicon-o-arrow-uturn-left')
                 ->label(__('Restore'))

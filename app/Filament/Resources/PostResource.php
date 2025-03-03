@@ -23,6 +23,7 @@ use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\ForceDeleteBulkAction;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
@@ -176,6 +177,8 @@ class PostResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->emptyStateHeading(__('No Notes'))
+            ->emptyStateIcon('heroicon-o-pencil')
             ->query(
                 Page::query()
                     ->where('style', 'blog')
@@ -222,31 +225,17 @@ class PostResource extends Resource
                         ->color('success')
                         ->visible(config('filament-fabricator.routing.enabled')),
                     DeleteAction::make()
-                        ->label('Delete')
-                        ->before(function (Page $record) {
-                            $record->post?->delete();
-                        })
-                        ->successNotificationTitle('Página e postagem deletadas com sucesso!'),
+                        ->label('Delete'),
                     Tables\Actions\ForceDeleteAction::make(),
-                    Tables\Actions\RestoreAction::make(),
+
                 ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\ForceDeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
+                    ForceDeleteBulkAction::make(),
                 ]),
             ]);
     }
-
-    // public static function getEloquentQuery(): Builder
-    // {
-    //     return parent::getEloquentQuery()
-    //         ->withoutGlobalScopes([
-    //             SoftDeletingScope::class,
-    //         ]);
-    // }
 
     public static function getRelations(): array
     {
