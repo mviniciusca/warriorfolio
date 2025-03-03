@@ -17,9 +17,6 @@
                             class="mt-2 text-3xl font-bold leading-snug tracking-normal dark:text-white/90 lg:mb-4 lg:text-4xl">
                             {{ $page->title }}
                         </h1>
-                        <div class="pb-8 pt-4">
-                            <x-blog.post.share />
-                        </div>
                         {{-- Subtitle --}}
                         <h2 class="text-md pb-4 leading-tight tracking-tight">
                             {{ $page->post->resume }}
@@ -28,6 +25,10 @@
                     </section>
                     {{-- Profile --}}
                     <x-blog.profile :$page />
+                    {{-- Share --}}
+                    <div class="pb-8 pt-4">
+                        <x-blog.post.share />
+                    </div>
                     <div class="content py-4 font-serif text-xl leading-relaxed">
                         {!! $page->post->content !!}
                     </div>
