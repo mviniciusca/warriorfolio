@@ -21,19 +21,21 @@ use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 
 class PostResource extends Resource
 {
-    public static function getModel(): string
-    {
-        return FilamentFabricator::getPageModel();
-    }
+    protected static ?string $model = Page::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-pencil';
 
@@ -171,31 +173,20 @@ class PostResource extends Resource
     {
         return $table
             ->query(
-                Page::query()
-                    ->where('style', '=', 'blog')
-                    ->orderByDesc('created_at')
+                Page::query()->where('style', 'blog')
             )
             ->recordClasses(fn (Page $record) => match ($record->is_active) {
                 0       => 'opacity-50 dark:opacity-30',
                 default => null,
             })
-            ->headerActions([
-                Action::make('view_posts_trash')
-                    ->url(route('filament.admin.resources.posts.bin'))
-                    ->color('gray')
-                    ->label(__('Trash'))
-                    ->size('sm')
-                    ->icon('heroicon-o-trash')
-                    ->outlined(),
-            ])
             ->columns([
                 TextColumn::make('title')
                     ->limit(40)
                     ->searchable(),
                 TextColumn::make('post.category.name')
+                    ->badge()
                     ->getStateUsing(fn (Page $record) => $record->post?->category?->name ?? '-')
                     ->sortable()
-                    ->badge()
                     ->searchable(),
                 ToggleColumn::make('post.is_active')
                     ->alignCenter()
@@ -214,7 +205,7 @@ class PostResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
                 ActionGroup::make([
@@ -242,6 +233,14 @@ class PostResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
+    }
+
     public static function getRelations(): array
     {
         return [
@@ -255,7 +254,6 @@ class PostResource extends Resource
             'index'  => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
             'edit'   => Pages\EditPost::route('/{record}/edit'),
-            'bin'    => Pages\BinPost::route('/bin'),
         ];
     }
 }

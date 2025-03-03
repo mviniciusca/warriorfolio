@@ -61,7 +61,20 @@ class BinPost extends ListRecords
                     RestoreAction::make()
                         ->label(__('Restore Note')),
                     ForceDeleteAction::make()
-                        ->label(__('Force Delete')),
+                        ->label(__('Force Delete'))
+                        ->action(function (Page $record) {
+                            if ($record->post) {
+                                $record->post->forceDelete(); // Primeiro apaga o filho
+                            }
+
+                            $record->forceDelete(); // Depois apaga o pai
+                        })
+                        ->after(function () {
+                            $this->getTable()->getRecords()->refresh(); // REFRESH automático só na tabela
+                        })
+                        ->successNotificationTitle(__('Página e postagem destruídas permanentemente!'))
+                        ->requiresConfirmation(),
+
                 ]),
             ])
             ->columns([
