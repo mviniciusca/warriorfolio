@@ -31,6 +31,7 @@ class EditPost extends EditRecord
             Actions\DeleteAction::make()
                 ->size('xs')
                 ->label(__('Delete'))
+                ->modalHeading(__('Delete Note'))
                 ->requiresConfirmation()
                 ->icon('heroicon-o-trash'),
             Actions\RestoreAction::make()
