@@ -221,9 +221,9 @@ class PostResource extends Resource
                     DeleteAction::make()
                         ->label('Delete')
                         ->before(function (Page $record) {
-                            $record->post?->delete(); // Apaga o post relacionado
+                            $record->post?->delete();
                         })
-                        ->successNotificationTitle('Página e postagem deletadas com sucesso!'),
+                        ->successNotificationTitle(__('Moved to Trash')),
                 ]),
             ])
             ->bulkActions([
