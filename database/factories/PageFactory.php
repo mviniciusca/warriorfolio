@@ -12,11 +12,11 @@ class PageFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'       => $this->faker->sentence,
+            'title'       => 'Blog Page',
             'style'       => 'blog',
-            'resume'      => $this->faker->paragraph(),
-            'content'     => $this->faker->paragraph(50),
-            'slug'        => env('APP_BLOG_PATH').$this->faker->slug.env('APP_BLOG_URL_END'),
+            'resume'      => 'This is a resume test!',
+            'content'     => 'Some content goes here',
+            'slug'        => env('APP_BLOG_PATH', 'blog/post/').'blog-page'.env('APP_BLOG_URL_END', '.html'),
             'category_id' => 1,
             'is_active'   => true,
             'blocks'      => [

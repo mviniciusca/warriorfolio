@@ -9,8 +9,6 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\Mail;
 use App\Models\Newsletter;
-use App\Models\Page;
-use App\Models\Post;
 use App\Models\Setting;
 use App\Models\User;
 use Database\Seeders\DocumentationPageSeeder;
