@@ -77,8 +77,12 @@ class EditBlogSettings extends EditRecord
                     ->schema([
                         Toggle::make('blog.is_share_active')
                             ->default(true)
-                            ->label(__('Show Share Feature'))
-                            ->helperText(__('Enable or disable the share feature for this page')),
+                            ->label(__('Share Feature'))
+                            ->helperText(__('Enable or disable the share feature.')),
+                        Toggle::make('blog.is_trend_widget_active')
+                            ->default(true)
+                            ->label(__('Trend Widget Feature'))
+                            ->helperText(__('Enable or disable the trend widget feature.')),
                     ]),
                 Section::make(__('Notes Settings'))
                     ->description(__('Manage your Notes Settings and Public Definitions.'))
