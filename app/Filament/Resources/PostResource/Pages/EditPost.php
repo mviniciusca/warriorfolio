@@ -34,10 +34,6 @@ class EditPost extends EditRecord
                 ->modalHeading(__('Delete Note'))
                 ->requiresConfirmation()
                 ->icon('heroicon-o-trash'),
-            Actions\RestoreAction::make()
-                ->icon('heroicon-o-arrow-uturn-left')
-                ->label(__('Restore'))
-                ->size('xs'),
         ];
     }
 }
