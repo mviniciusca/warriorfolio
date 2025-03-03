@@ -1,4 +1,4 @@
-@if ($blog_data['is_trend_widget_active'])
+@if ($blog_data['is_trend_widget_active'] ?? false)
     @if ($data)
         <div>
             <h1 class="my-6 flex justify-between text-base font-bold">
