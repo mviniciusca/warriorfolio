@@ -10,7 +10,7 @@ use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Support\Facades\Auth;
 
-class ProfileStatus extends BaseWidget
+class ProfileWidget extends BaseWidget
 {
     protected static ?int $sort = 2;
 

@@ -8,7 +8,7 @@ use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Spatie\Activitylog\Models\Activity as ActivityLogger;
 
-class LogActivity extends BaseWidget
+class LogActivityWidget extends BaseWidget
 {
     protected int|string|array $columnSpan = 'full';
 

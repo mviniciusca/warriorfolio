@@ -3,13 +3,12 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Mail;
-use Filament\Actions\Action;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
-class LatestMails extends BaseWidget
+class MailWidget extends BaseWidget
 {
     protected static ?int $sort = 1;
 

@@ -8,9 +8,8 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
-use Z3d0X\FilamentLogger\Resources\ActivityResource\Pages\ViewActivity;
 
-class SystemStatus extends BaseWidget
+class SystemStatusWidget extends BaseWidget
 {
     protected static ?int $sort = 2;
 

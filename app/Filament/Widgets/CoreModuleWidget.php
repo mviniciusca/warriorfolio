@@ -9,7 +9,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
-class CoreModules extends BaseWidget
+class CoreModuleWidget extends BaseWidget
 {
     protected int|string|array $columnSpan = 'full';
 

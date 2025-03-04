@@ -9,7 +9,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
-class Alerts extends BaseWidget
+class AlertWidget extends BaseWidget
 {
     protected static ?int $sort = 6;
 
