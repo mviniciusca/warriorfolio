@@ -3,15 +3,9 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Page;
-use App\Models\Post;
-use Filament\Actions\CreateAction;
-use Filament\Forms\Components\Toggle;
-use Filament\Tables;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
