@@ -36,11 +36,12 @@ class StatsOverview extends BaseWidget
                 ->color('primary')
                 ->description(__('Unread Messages'))
                 ->chart(Mail::chartInbox()),
-            Stat::make(__('Projects'), Project::published()->count())
+            Stat::make(__('Projects'), Project::published()->count() ?: '--')
                 ->icon('heroicon-o-rocket-launch')
                 ->url(route('filament.admin.resources.projects.index'))
-                ->description(__('Published Projects'))
+                ->description(Project::published()->count() ? __('Published Projects') : __('Create your first project'))
                 ->color('primary'),
+
         ];
     }
 }
