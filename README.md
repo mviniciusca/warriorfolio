@@ -6,15 +6,6 @@
   <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/main/public/img/gif/ezgif-7-41f5195607.gif" alt="Warriorfolio 2 Preview">
 </p>
 
-<p align="center">
-  <a href="#introduction">Introduction</a> •
-  <a href="#features">Features</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#additional-resources">Additional Resources</a> •
-  <a href="#requirements">Requirements</a> •
-  <a href="#documentation">Documentation</a> •
-  <a href="#technologies">Technologies</a>
-</p>
 
 ## 📋 Introduction
 
