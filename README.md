@@ -46,7 +46,7 @@ Developed to be 100% managed through the Control Panel, without the need for dee
 - 📧 Email capture for mailing lists
 - 📈 Google Analytics integration
 - 📄 Downloadable resume
-- 🟢 "Open to Work" icon
+- 🟢 Linkedin "Open to Work" icon
 - 📚 Bio, certificates, and courses
 - 💬 WhatsApp Web contact
 - ✉️ Contact form
