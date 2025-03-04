@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/dev/public/img/gif/ezgif-7-41f5195607.gif" alt="Warriorfolio 2 Preview">
+  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/main/public/img/gif/ezgif-7-41f5195607.gif" alt="Warriorfolio 2 Preview">
 </p>
 
 
