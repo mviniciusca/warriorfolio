@@ -22,7 +22,6 @@
                                                     'danger' => 'text-danger-500',
                                                 ][$notification['color']] ?? 'text-primary-500';
                                         @endphp
-
                                         <x-dynamic-component :component="$notification['icon']" class="{{ $iconClasses }} h-6 w-6" />
                                     </div>
 
