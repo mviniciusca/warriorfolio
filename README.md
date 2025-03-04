@@ -1,118 +1,124 @@
-## <p align="center"> Warriorfolio 2.1 </p>
-
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/main/public/img/gif/ezgif-7-41f5195607.gif"  alt="Warriorfolio 2 wip">
+  <h1 align="center">⚔️ Warriorfolio 2.1 ⚔️</h1>
 </p>
 
-___
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/main/public/img/gif/ezgif-7-41f5195607.gif" alt="Warriorfolio 2 Preview">
+</p>
 
-### Installation
-```
+<p align="center">
+  <a href="#introduction">Introduction</a> •
+  <a href="#features">Features</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#additional-resources">Additional Resources</a> •
+  <a href="#requirements">Requirements</a> •
+  <a href="#documentation">Documentation</a> •
+  <a href="#technologies">Technologies</a>
+</p>
+
+## 📋 Introduction
+
+**Warriorfolio** is a modern and flexible application for creating professional portfolios. In version 2.1, it brings a more robust, intelligent, and intuitive platform, designed with a modular concept that allows you to easily customize the structure and appearance of your site.
+
+From a simple Landing Page to a complete site with multiple pages, the modules integrate like true LEGO pieces, making Warriorfolio 2 the ideal tool for those seeking a simple, fast, and effective portfolio.
+
+Developed to be 100% managed through the Control Panel, without the need for deep technical knowledge in programming, PHP, or Laravel.
+
+## ✨ Features
+
+### New in version 2.1
+- 📝 Complete Blog system
+- 📨 Message sending via SMTP
+- 🔔 System Notifications
+- 📊 Log reports
+- 🌍 Multi-language support
+- 🎨 Hero section themes
+
+### Core features
+- 🛠️ Robust and flexible Control Panel
+- 🔄 Maintenance Mode and Discovery Mode
+- 🧩 Customizable core modules
+- 📱 Responsive and optimized design
+- 📷 Portfolio image gallery
+- 🖼️ Image slideshow
+- 👥 Customer showcase
+- 🎯 Skills display
+- 📧 Email capture for mailing lists
+- 📈 Google Analytics integration
+- 📄 Downloadable resume
+- 🟢 "Open to Work" icon
+- 📚 Bio, certificates, and courses
+- 💬 WhatsApp Web contact
+- ✉️ Contact form
+- 📥 Inbox
+
+## 🚀 Installation
+
+```bash
 composer create-project mviniciusca/warriorfolio
 ```
-### Quick Documentation
-- [ Warriorfolio 2.1 ](#-warriorfolio-21-)
-  - [Installation](#installation)
-  - [Quick Documentation](#quick-documentation)
-  - [Introduction to Warriorfolio 2](#introduction-to-warriorfolio-2)
-  - [Features](#features)
-  - [Additional Resources](#additional-resources)
-    - [Content Blocks](#content-blocks)
-    - [Maintenance Mode](#maintenance-mode)
-    - [Discovery Mode](#discovery-mode)
-    - [Core Modules Decoupling](#core-modules-decoupling)
-  - [Gear \& Core](#gear--core)
-  - [Requirements](#requirements)
-  - [Documentation](#documentation)
-  - [Contributions, Feedback, and Bugs Report](#contributions-feedback-and-bugs-report)
-  - [Support](#support)
-  - [Acknowledgments](#acknowledgments)
-  - [License](#license)
 
-### Introduction to Warriorfolio 2
-Warriorfolio aims to be simple, fast, and effective in creating your portfolio. Arriving in its new version more robust, smarter, flexible, and with new intuitive features. Designed with a modular concept, you can easily choose the order in which your page will be assembled and displayed to the public. From a Landing Page to a complete site with separate pages, but with modules that integrate with each other, like a true LEGO, Warriorfolio 2 is the ideal tool for you who want to have a simple, fast, and effective portfolio.
+The installation will automatically:
+- Generate application key
+- Create symbolic links for storage
+- Run migrations and seeds
+- Install NPM dependencies
+- Start the local server
 
-Designed to be 100% managed by the Control Panel, without the need for deep technical knowledge in programming, PHP, or even in Laravel.
+## 🔧 Additional Resources
 
-Feel free to contribute to the project and fork it, but don't forget to give credit to the creators of Laravel, Filament, and Livewire.
+### Content Blocks
+You don't need to stick to Warriorfolio's default design. The application offers extremely versatile code blocks and structural components that allow countless combinations and customizations. These elements are divided into: Components, Design, and Core.
 
-And me, of course! 😁
+### Maintenance Mode
+Put your application in maintenance mode with the option to keep the contact form and social networks active.
 
-### Features
-- Blog - v2.1.0
-- Write Messages via SMTP - v2.0.4
-- Notifications via SMTP - v2.0.4
-- Log Reports - v2.0.4
-- Multi-language Support - v2.0.4
-- Hero Section Themes - v2.0.4
-- Robust and Flexible Control Panel;
-- Maintenance Mode and Discovery Mode;
-- Core Modules;
-- Flexible, Customizable, and Sortable Free Modules;
-- Portfolio Image Gallery;
-- Image Slideshow;
-- Customer Showcase;
-- Skills Display;
-- Email catcher for mailing list;
-- Integration with Google Analytics;
-- Curriculum for download;
-- Open to Work icon;
-- Bio, Certificates, and Courses;
-- Contact via WhatsApp Web;
-- Contact Form;
-- Inbox;
+### Discovery Mode
+Activate this feature to view your application while it's in maintenance mode. An informative stripe will be displayed at the top indicating that Discovery Mode is enabled.
 
-and more...
+### Core Modules Decoupling
+Customize which main modules will be displayed on your site. By default, Warriorfolio includes: Header, Hero Section, About You, Projects, Customers, Contact, Newsletter, and Footer. You can enable or disable these modules in the application settings.
 
-### Additional Resources
+## 🖥️ Requirements
 
-#### Content Blocks
-- You don't need to stick to the way Warriorfolio is designed. Designed with modularity in mind, the app offers extremely versatile code blocks, or structural components. You can make countless combinations and further customize your project. These elements are divided into: Components, Design, and Core.
-#### Maintenance Mode
-- Put your app in maintenance mode. You have the option to activate the contact form and your social networks;
-#### Discovery Mode
-- Activate this feature and you will be able to view your app while it is in maintenance mode; In addition, a stripe with the notice that Discovery Mode is enabled will be displayed at the top of your app.
-  
-#### Core Modules Decoupling
-- You can decouple the Core modules. This means you can build your app's layout your way. By default, Warriorfolio is assembled as follows: Header, Hero Section, About You, Projects, Customers, Contact, Newsletter (Email Catcher), and Footer. If you want to create a new page, these modules will automatically be available in this order for you globally. However, you may only want the Header and Footer to be displayed. To do this, just go to App Settings > Core Modules Decoupling and disable the modules you don't want to be displayed.
+- 🐘 PHP 8.2 or higher
+- 🧪 PHP Extensions: OpenSSL, PDO, Zip
+- 💾 Database: MySQL, PostgreSQL, SQLite
+- 🤵🏻 Composer 2.0 or higher
+- 🌱 NPM 10.2 or higher
+- 💎 2GB disk space or more
 
-### Gear & Core
-This is a PHP application with Laravel and Filament at its Core. Filament is a set of tools that allows the creation of a control panel or content manager for Laravel. Conceived by Dan Harrin, Zep Fietje, and the entire PHP community. Filament is constantly evolving and is a highly tested, secure, robust, scalable product with complete and easy-to-understand documentation.
+## 📚 Documentation
 
-Filament is powered by Livewire technology, which is a framework for Laravel that allows the creation of real-time applications without the need for deep JavaScript knowledge. Livewire is a product of Caleb Porzio, creator of AlpineJs.
+[Visit the Official Documentation](https://warriorfolio.vercel.app/) for Warriorfolio hosted on Vercel.
 
-Warriorfolio 2 is also under the guardianship of one of the world's largest frameworks, Laravel. Created by Taylor Otwell, Laravel is a robust, secure, scalable framework with complete and easy-to-understand documentation. Laravel is a framework that is constantly evolving and is a highly tested product with an active and engaged community.
+## ⚙️ Technologies
 
-### Requirements 
-- 🐘 PHP 8.1 or higher;
-- 🧪 PHP Extensions enabled mainly OpenSSL, PDO and Zip;
-- 💾 DB such as MySQL, PostgreSQL, SQLite ...;
-- 🤵🏻 Composer 2.0 or higher;
-- 🌱 NPM 10.2 or higher;
-- 💎 2GB of disk space or higher;
+Warriorfolio is built with modern and robust technologies:
 
-### Documentation
-[Visit the Official Documentation](https://warriorfolio.vercel.app/) from Warriorfolio on Vercel
+- **Laravel**: PHP framework created by Taylor Otwell
+- **Filament**: Toolkit for creating admin panels, developed by Dan Harrin, Zep Fietje, and the community
+- **Livewire**: Laravel framework that allows the creation of real-time applications, by Caleb Porzio
 
+## 🤝 Contributions and Feedback
 
-### Contributions, Feedback, and Bugs Report
-If you have found a bug, or want to contribute to the project, or even give feedback, feel free to open an issue or a pull request.
+If you've found a bug, want to contribute, or provide feedback, feel free to open an issue or a pull request. Your opinion is very important!
 
-Feel free to contribute, fork, and leave your feedback.
+## 👏 Acknowledgments
 
-### Support
-Feel free to open an issue or a pull request. Your feedback is very important to me.
+- To Warriorfolio 1 users
+- For feedback and contributions received
+- To Taylor Otwell, creator of Laravel
+- To Dan Harrin, Zep Fietje, and the entire PHP community, creators of Filament
+- To Caleb Porzio, creator of Livewire
+- To the entire PHP and Laravel community
 
-### Acknowledgments
-- To the users of Warriorfolio 1;
-- To the feedback and contributions of Warriorfolio 1 users;
-- Taylor Otwell, creator of Laravel;
-- Dan Harrin, Zep Fietje, and the entire PHP community, creators of Filament;
-- Caleb Porzio, creator of Livewire;
-- To the entire PHP and Laravel community;
+## 📄 License
 
-### License
-Warriorfolio 2 is an Open Source application and is under the MIT license.
+Warriorfolio 2 is an Open Source application under the MIT license.
 
+---
 
-
+<p align="center">
+  Developed with ❤️ by <a href="http://twitter.com/marcosvca_">Marcos Coelho</a>
+</p>
