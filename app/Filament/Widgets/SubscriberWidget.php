@@ -7,7 +7,7 @@ use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 
-class Subscribers extends ChartWidget
+class SubscriberWidget extends ChartWidget
 {
     protected static ?string $heading = 'Mailing List';
 
