@@ -27,6 +27,7 @@ Developed to be 100% managed through the Control Panel, without the need for dee
 ## ✨ Features
 
 ### New in version 2.1 - March, 2025
+- 🚀 Core updated to Laravel 11
 - 📝 Complete Blog system
 - 📨 Message sending via SMTP
 - 🔔 System Notifications
@@ -54,6 +55,8 @@ Developed to be 100% managed through the Control Panel, without the need for dee
 
 ## 🚀 Installation
 
+### Composer
+
 ```bash
 composer create-project mviniciusca/warriorfolio
 ```
@@ -64,6 +67,23 @@ The installation will automatically:
 - Run migrations and seeds
 - Install NPM dependencies
 - Start the local server
+
+### Clone and setup
+```
+git clone https://github.com/mviniciusca/warriorfolio.git
+cd warriorfolio
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate
+php artisan storage:link
+php artisan migrate:fresh --seed
+php artisan serve
+
+In a new terminal:
+npm run dev
+```
+
 
 ## 🔧 Additional Resources
 
