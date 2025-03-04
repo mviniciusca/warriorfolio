@@ -2,19 +2,24 @@
     "name": "mviniciusca/warriorfolio",
     "authors": [
         {
-            "name": "Marcos Coelho",
+            "name": "Marcos Vinicius Coelho",
             "email": "mviniciusca@gmail.com",
-            "homepage": "http://twitter.com/marcosvca_",
-            "role": "Developer"
+            "homepage": "https://github.com/mviniciusca",
+            "role": "Laravel Product Developer"
         }
     ],
-    "description": "Warriorfolio 2 is a portfolio application for developers. Built with Laravel and Filament",
+    "description": "Warriorfolio 2 is a modern portfolio application designed for developers. Built with Laravel and Filament, it provides a sleek, user-friendly interface to showcase your skills, projects, and achievements. Whether you're a beginner or an experienced developer, Warriorfolio 2 offers a seamless and efficient way to present your work online.",
     "keywords": [
         "laravel",
-        "framework",
         "filament",
         "portfolio",
-        "application"
+        "developer portfolio",
+        "web application",
+        "laravel framework",
+        "developer showcase",
+        "project portfolio",
+        "tech portfolio",
+        "personal website"
     ],
     "license": "MIT",
     "require": {
