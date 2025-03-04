@@ -4,7 +4,6 @@
             <div class="filament-notifications-widget">
                 <div class="space-y-4 p-2">
                     <h2 class="text-lg font-bold">{{ __('System Notifications') }}</h2>
-
                     <div class="notification-stack relative">
                         @foreach ($notifications as $index => $notification)
                             <div class="notification-card w-full rounded-lg border border-gray-200 bg-white p-3 shadow-md transition-all duration-200 ease-in-out dark:border-gray-900 dark:bg-gray-800"
@@ -28,9 +27,10 @@
                                     </div>
 
                                     <div class="grow">
-                                        <p class="font-medium">{{ $notification['title'] }}</p>
-                                        <p class="text-sm text-gray-500">{{ $notification['message'] }}</p>
-                                        <p class="mt-1 text-xs text-gray-400">{{ $notification['time'] }}</p>
+                                        <a href="{{ $notification['url'] ?? '#' }}">
+                                            <p class="font-medium">{{ $notification['title'] }}</p>
+                                            <p class="text-sm text-gray-500">{{ $notification['message'] }}</p>
+                                        </a>
                                     </div>
 
                                     <button wire:click="dismissNotification('{{ $notification['id'] }}')"
