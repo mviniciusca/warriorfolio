@@ -56,7 +56,7 @@ class NotificationsWidget extends Widget
                 'time'    => now()->diffForHumans(),
                 'icon'    => 'heroicon-o-shield-exclamation',
                 'color'   => 'danger',
-                'url'     => route('filament.admin.resources.settings.edit-security', Setting::first('id')?->id),
+                'url'     => route('filament.admin.resources.settings.edit-security', Setting::query()->value('id')),
             ];
         }
 
