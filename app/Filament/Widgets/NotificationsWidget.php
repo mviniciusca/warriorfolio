@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\Setting;
 use Filament\Facades\Filament;
 use Filament\Widgets\Widget;
 use Illuminate\Support\Facades\Cache;
@@ -35,7 +36,7 @@ class NotificationsWidget extends Widget
         $notifications = [];
         $user = Filament::auth()->user();
 
-        if (empty(config('mail.mailers.smtp.host')) || empty(env('SMTP_SERVICE'))) {
+        if (empty(config('mail.mailers.smtp.host')) || empty(env('SMTP_SERVICES'))) {
             $notifications[] = [
                 'id'      => 'smtp-missing',
                 'title'   => 'SMTP Service Disabled',
@@ -55,7 +56,7 @@ class NotificationsWidget extends Widget
                 'time'    => now()->diffForHumans(),
                 'icon'    => 'heroicon-o-shield-exclamation',
                 'color'   => 'danger',
-                'url'     => null,
+                'url'     => route('filament.admin.resources.settings.edit-security', Setting::first('id')?->id),
             ];
         }
 
