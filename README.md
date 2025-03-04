@@ -19,7 +19,7 @@ Developed to be 100% managed through the Control Panel, without the need for dee
 
 ### New in version 2.1 - March, 2025
 - 🚀 Core updated to Laravel 11
-- 📝 Complete Blog system
+- 📝 Notes: your blog
 - 📨 Message sending via SMTP
 - 🔔 System Notifications
 - 📊 Log reports
