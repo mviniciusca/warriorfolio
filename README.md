@@ -26,7 +26,7 @@ Developed to be 100% managed through the Control Panel, without the need for dee
 
 ## ✨ Features
 
-### New in version 2.1
+### New in version 2.1 - March, 2025
 - 📝 Complete Blog system
 - 📨 Message sending via SMTP
 - 🔔 System Notifications
