@@ -1,12 +1,11 @@
 <x-filament-widgets::widget>
     @if (count($notifications))
-        <x-filament::section>
+        <x-filament::section :heading="__('System Notifications')" :description="__('Notifications from your application.')" :icon="'heroicon-o-bell'" :collapsible='true'>
             <div class="filament-notifications-widget">
                 <div class="space-y-4 p-2">
-                    <h2 class="text-lg font-bold">{{ __('System Notifications') }}</h2>
                     <div class="notification-stack relative">
                         @foreach ($notifications as $index => $notification)
-                            <div class="notification-card w-full rounded-lg border border-gray-200 bg-white p-3 shadow-md transition-all duration-200 ease-in-out dark:border-gray-900 dark:bg-gray-800"
+                            <div class="notification-card w-full rounded-lg border-none bg-transparent p-3 transition-all duration-200 ease-in-out"
                                 style="z-index: {{ count($notifications) - $index }}; top: {{ $index * 6 }}px; opacity: {{ 1 - $index * 0.15 }};"
                                 x-data="{ hovered: false }" x-on:mouseenter="hovered = true" x-on:mouseleave="hovered = false"
                                 x-bind:style="hovered ? 'top: 0px; z-index: 100; opacity: 1;' :
