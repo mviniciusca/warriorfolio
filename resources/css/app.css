@@ -28,7 +28,7 @@
         font-family: system-ui, sans-serif;
     }
 
-
+    /** Default Theme **/
     body {
         @apply overflow-x-hidden antialiased scroll-smooth bg-white text-secondary-900 dark:bg-secondary-950 dark:text-secondary-300
     }
@@ -38,25 +38,25 @@
     }
 
 
+    /** Highlighted text **/
     .text-gradient,
     .tg {
         @apply bg-gradient-to-b from-secondary-100 to-secondary-300 bg-clip-text pr-1 text-transparent dark:from-secondary-200 dark:to-secondary-700;
     }
 
-    /** Highlighted text **/
     .text-highlight,
     .heading-module-title strong,
     .tl {
         @apply bg-gradient-to-r from-primary-600 to-tertiary-400 bg-clip-text pr-1 text-transparent;
     }
 
+    /** Modules **/
     .heading-module-title strong {
         @apply font-bold;
 
     }
 
     /** About Section **/
-
     .about-you-section p {
         @apply pt-4;
     }
@@ -71,9 +71,10 @@
     }
 
     /** Header for each section **/
+
     .header-title,
     .module-title {
-        @apply bg-gradient-to-b pt-8 md:pt-12 lg:pt-16 from-secondary-400 to-secondary-950 bg-clip-text text-center text-3xl font-bold leading-none tracking-tight text-transparent dark:from-secondary-300 dark:to-secondary-800 lg:text-4xl;
+        @apply bg-gradient-to-b from-secondary-400 to-secondary-950 bg-clip-text text-center text-3xl font-bold leading-none tracking-tight text-transparent dark:from-secondary-300 dark:to-secondary-800 lg:text-4xl;
     }
 
     .subtitle,
@@ -96,10 +97,6 @@
         @apply h-10;
     }
 
-    trix-editor {
-        @apply text-left;
-    }
-
     /** Form Input Label **/
     .fi-input-label {
         @apply absolute left-0 top-0 text-sm font-semibold text-secondary-400;
@@ -108,7 +105,7 @@
 
     /** Form Input Error **/
     .fi-input-error {
-        @apply text-sm font-semibold text-red-500;
+        @apply text-sm font-semibold text-red-600;
     }
 
     /** Project Content **/
@@ -172,11 +169,17 @@
         @apply font-semibold;
     }
 
+    /** UI Components: Tags **/
     .tag {
         @apply font-light bg-primary-700 animate-pulse lowercase text-xs px-2 text-white rounded-md;
     }
 
-    /** Blog Post Main Content **/
+    /** Global Settings  **/
+
+    trix-editor {
+        @apply text-left;
+    }
+
     .content p {
         @apply pt-6;
     }
@@ -187,6 +190,7 @@
 
     figcaption {
         @apply hidden;
+        /** this affects the figcaption in the trix editor **/
     }
 
     .attachment__caption {

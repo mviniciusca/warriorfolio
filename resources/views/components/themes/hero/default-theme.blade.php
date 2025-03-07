@@ -46,9 +46,9 @@
         <div class="animate__animated animate__fadeInUp animate__delay-2s hidden lg:col-span-5 lg:mt-0 lg:flex">
             {{-- Hero Section: Image --}}
             @if (data_get($hero, 'hero.featured_image'))
-                <div class="mt-8" id="hero-featured-image">
-                    <img class="h-auto p-4 lg:max-h-max" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
-                        alt="hero-section-image" />
+                <div class="mx-auto mt-8" id="hero-featured-image">
+                    <img class="mx-auto mt-8 rounded-2xl bg-secondary-300 bg-opacity-20 p-2 shadow-lg dark:shadow-secondary-500"
+                        src="{{ asset('storage/' . $hero->hero['featured_image']) }}" alt="hero-section-image" />
                 @else
                     <img class="mx-auto mt-8 rounded-2xl bg-secondary-300 bg-opacity-20 p-2 shadow-lg dark:shadow-secondary-500"
                         src="{{ asset('img/core/demo/default-landing-image.png') }}" alt="hero-section-image" />
