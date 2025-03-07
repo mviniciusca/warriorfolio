@@ -3,6 +3,7 @@
 namespace App\Filament\Fabricator\PageBlocks\Component;
 
 use Filament\Forms\Components\Builder\Block;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
@@ -26,35 +27,59 @@ class FeatureList extends PageBlock
                     ->schema([
                         Group::make()
                             ->schema([
+                                Section::make(__('Title and Subtitle'))
+                                    ->description(__('Feature List Title and Subtitle'))
+                                    ->collapsed()
+                                    ->columns(2)
+                                    ->icon('heroicon-o-pencil')
+                                    ->schema([
+                                        TextInput::make('module_title')
+                                            ->label(__('Title. (Optional)'))
+                                            ->prefixIcon('heroicon-o-pencil')
+                                            ->maxLength(255)
+                                            ->placeholder('hackable ♠')
+                                            ->helperText(__('The title of the feature list.')),
+                                        TextInput::make('module_subtitle')
+                                            ->label(__('Subtitle. (Optional)'))
+                                            ->prefixIcon('heroicon-o-pencil')
+                                            ->maxLength(255)
+                                            ->placeholder('hackable ♠')
+                                            ->helperText(__('The subtitle of the feature list.')),
+                                    ]),
                                 Section::make(__('Settings'))
-                                    ->description(__('Module Settings'))
+                                    ->description(__('Feature List Settings'))
                                     ->collapsed()
                                     ->columns(3)
                                     ->icon('heroicon-o-cog-6-tooth')
                                     ->schema([
-                                        Toggle::make('is_active')
+                                        Checkbox::make('is_active')
                                             ->default(true)
-                                            ->inline(false)
+                                            ->inline()
                                             ->helperText(__('Show / Hide this module.'))
                                             ->label(__('Show Module')),
-                                        Toggle::make('is_center')
+                                        Checkbox::make('is_section_filled')
+                                            ->default(false)
+                                            ->inline()
+                                            ->helperText(__('Fill background with dark color.'))
+                                            ->label(__('Filled Section Background')),
+                                        Checkbox::make('is_center')
                                             ->default(true)
-                                            ->inline(false)
+                                            ->inline()
                                             ->helperText(__('Align content in the center.'))
                                             ->label(__('Centered')),
-                                        Toggle::make('is_filled')
+                                        Checkbox::make('is_filled')
                                             ->default(false)
-                                            ->inline(false)
+                                            ->inline()
                                             ->helperText(__('Fill background with dark color.'))
                                             ->label(__('Filled Background')),
-                                        Toggle::make('is_animated')
+                                        Checkbox::make('is_animated')
                                             ->default(false)
-                                            ->inline(false)
+                                            ->inline()
                                             ->helperText(__('Hover Animation.'))
                                             ->label(__('Animated')),
-                                        Toggle::make('is_border')
+                                        Checkbox::make('is_border')
                                             ->default(false)
-                                            ->inline(false)
+                                            ->inline()
                                             ->helperText(__('Show border in each card.'))
                                             ->label(__('Border')),
                                     ]),

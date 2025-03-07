@@ -24,7 +24,7 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.header.section', [
-            'navigation' => Navigation::first()->content,
+            'navigation' => Navigation::first('content')->value('content'),
         ]);
     }
 }
