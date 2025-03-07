@@ -14,10 +14,10 @@
 ])
 
 @if ($is_active)
-    <x-core.layout class="{{ $is_section_filled ? 'bg-secondary-50 dark:bg-black' : '' }}">
+    <x-core.layout class="{{ $is_section_filled ? 'section-filled' : '' }}">
         <section>
             @if ($module_title || $module_subtitle)
-                <div class="mb-4 md:mb-8 lg:mb-12">
+                <div>
                     <x-slot name="module_title">
                         {!! $module_title !!}
                     </x-slot>
@@ -26,7 +26,7 @@
                     </x-slot>
                 </div>
             @endif
-            <div class="mx-auto pb-8">
+            <div class="mx-auto py-4 md:py-8 lg:py-12">
                 <div class="{{ $is_center ? 'text-center' : 'text-left' }} grid grid-cols-1 gap-6 md:grid-cols-3">
                     @foreach ($features as $key => $item)
                         @if ($link)
