@@ -1,3 +1,4 @@
+{{--  Header Section  --}}
 {{-- background Image --}}
 <x-ui.background />
 
