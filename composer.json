@@ -1,5 +1,7 @@
 {
     "name": "mviniciusca/warriorfolio",
+    "version": "2.1.2",
+    "type": "project",
     "authors": [
         {
             "name": "Marcos Vinicius Coelho",
