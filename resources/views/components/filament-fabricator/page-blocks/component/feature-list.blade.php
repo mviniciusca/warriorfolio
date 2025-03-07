@@ -6,6 +6,7 @@
     'link' => null,
     'is_new_window' => null,
     'is_filled' => false,
+    'is_section_filled' => false,
     'is_animated' => null,
     'is_border' => null,
     'module_title' => null,
@@ -13,7 +14,7 @@
 ])
 
 @if ($is_active)
-    <x-core.layout class="{{ $is_filled ? 'bg-secondary-50 dark:bg-black' : '' }}">
+    <x-core.layout class="{{ $is_section_filled ? 'bg-secondary-50 dark:bg-black' : '' }}">
         <section>
             @if ($module_title || $module_subtitle)
                 <div class="mb-4 md:mb-8 lg:mb-12">
