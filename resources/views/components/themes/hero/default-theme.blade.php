@@ -47,11 +47,12 @@
             {{-- Hero Section: Image --}}
             @if (data_get($hero, 'hero.featured_image'))
                 <div class="mx-auto mt-8" id="hero-featured-image">
-                    <img class="mx-auto mt-8 rounded-2xl bg-secondary-300 bg-opacity-20 p-2 shadow-lg dark:shadow-secondary-500"
-                        src="{{ asset('storage/' . $hero->hero['featured_image']) }}" alt="hero-section-image" />
+                    <img class="mx-auto mt-8 rounded-2xl" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
+                        alt="hero-section-featured-image" />
                 @else
                     <img class="mx-auto mt-8 rounded-2xl bg-secondary-300 bg-opacity-20 p-2 shadow-lg dark:shadow-secondary-500"
-                        src="{{ asset('img/core/demo/default-landing-image.png') }}" alt="hero-section-image" />
+                        src="{{ asset('img/core/demo/default-landing-image.png') }}"
+                        alt="hero-section-default-landing-image" />
             @endif
         </div>
     @endif

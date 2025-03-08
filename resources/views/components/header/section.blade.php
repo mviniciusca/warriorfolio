@@ -3,7 +3,8 @@
 <x-ui.background />
 
 {{--  Navigation / Logo / Dark Mode  --}}
-<x-core.layout>
+<x-core.layout :with_padding='false'>
+    {{-- Header Section --}}
     <div class="app-header mt-8 flex w-full flex-wrap items-center justify-between">
         <div class="app-logo flex flex-wrap items-center gap-4">
             <div>

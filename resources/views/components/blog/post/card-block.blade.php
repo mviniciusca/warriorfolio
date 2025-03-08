@@ -1,6 +1,7 @@
 @props(['item'])
 
-<article class="rounded-lg border border-secondary-300 bg-transparent p-6 dark:border-secondary-700">
+<article
+    class="rounded-lg border border-secondary-300 bg-white/30 p-6 transition duration-200 ease-in-out hover:bg-gradient-to-br hover:from-primary-100/0 hover:to-secondary-200/30 dark:border-secondary-800 dark:bg-black/30 dark:hover:from-primary-600/0 dark:hover:to-secondary-700/30">
     <div class="mb-5 flex items-center justify-between">
         <span class="flex items-center gap-1 text-sm">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -14,11 +15,11 @@
             {{ $item->created_at->diffForHumans() }}
         </span>
     </div>
-    <h2 class="mb-2 text-2xl font-bold tracking-tight">
+    <h2 class="mb-2 text-xl font-bold tracking-tight md:text-2xl">
         <a class="hover:underline" href="{{ env('APP_URL') . '/' . $item->slug }}">
             {{ Str::words($item->title, 13, '...') }}
     </h2>
-    <p class="mb-5 font-light">
+    <p class="mb-5 text-sm font-light md:text-base">
         {!! Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->post->content)), 25, '...') !!}.
     </p>
     </a>

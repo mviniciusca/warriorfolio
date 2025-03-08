@@ -15,7 +15,7 @@
                 {{ $info['header_subtitle'] ?? null }}
             </x-slot>
             <section class="mt-8">
-                <div class="grid gap-8 lg:grid-cols-2">
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($posts as $item)
                         <x-blog.post.card-block :$item />
                     @endforeach
