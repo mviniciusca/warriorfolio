@@ -25,9 +25,6 @@
         <x-ui.empty-section :message="'No posts yet.'" :auth="'Create a new Note in your Dashboard.'" />
     @endif
 
-
-
-
     <div class="py-8">
         {{ $data->links() }}
     </div>

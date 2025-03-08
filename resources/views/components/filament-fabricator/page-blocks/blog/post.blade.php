@@ -1,7 +1,7 @@
 @aware(['page'])
 @props(['title' => $page->title])
 
-<x-core.layout>
+<x-core.layout :with_padding="false">
     @if ($page->post->is_active)
         <main class="antialiased">
             <div class="mx-auto flex max-w-screen-xl justify-between">

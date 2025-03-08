@@ -2,7 +2,7 @@
 
 @if ($data->blog['is_active'] ?? false)
     <section id="blog-header-components" class="w-full overflow-hidden rounded-xl">
-        <div class="flex flex-initial items-center gap-2">
+        <div class="flex flex-initial items-center gap-5">
             @if ($data->blog['is_logo_active'] ?? true)
                 <div
                     class="hidden h-16 w-16 overflow-hidden rounded-lg bg-secondary-200/50 object-cover object-center p-2 dark:bg-secondary-800 sm:block sm:h-32 sm:w-32">

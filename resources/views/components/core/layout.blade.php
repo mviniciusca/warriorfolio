@@ -8,7 +8,7 @@
 ])
 
 <section {{ $attributes->merge(['class' => 'w-full antialiased']) }}>
-    <div class="{{ $with_padding ? 'py-16' : 'py-4' }} mx-auto max-w-7xl px-8">
+    <div class="{{ $with_padding ? 'py-16' : 'py-6' }} mx-auto max-w-7xl px-8">
 
         @if ($module_title)
             <div class="{{ $button_header ? 'flex justify-between flex-initial' : '' }}py-4">
