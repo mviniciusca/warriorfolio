@@ -8,11 +8,11 @@
 ])
 
 <section {{ $attributes->merge(['class' => 'w-full antialiased']) }}>
-    <div class="{{ $with_padding ? 'py-16' : 'py-6' }} mx-auto max-w-7xl px-8">
+    <div class="{{ $with_padding ? 'py-16' : 'py-2' }} mx-auto max-w-7xl px-8">
 
         @if ($module_title)
             <div class="{{ $button_header ? 'flex justify-between flex-initial' : '' }}py-4">
-                <p class="header-title">{{ $module_title }}</p>
+                <p class="header-title text-center">{{ $module_title }}</p>
                 @if ($button_header)
                     <x-ui.button-alt :$icon>
                         {{ $button_header }}

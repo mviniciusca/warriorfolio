@@ -22,7 +22,9 @@
 
 
             <main class="main-section flex-grow" id="app-main">
-                <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
+                <x-core.layout :with_padding='false'>
+                    <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
+                </x-core.layout>
 
                 @if ($hero_core)
                     <x-hero.section />

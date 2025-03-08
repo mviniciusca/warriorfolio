@@ -36,10 +36,10 @@ class DocumentationPageSeeder extends Seeder
                         'data' => ['color' => 'blur'],
                         'type' => 'design.blur-beam',
                     ],
-                    [
-                        'data' => ['vertical_space' => 'xs'],
-                        'type' => 'design.empty-separator',
-                    ],
+                    // [
+                    //     'data' => ['vertical_space' => 'xs'],
+                    //     'type' => 'design.empty-separator',
+                    // ],
                     [
                         'data' => [
                             'image'             => null,
@@ -135,10 +135,10 @@ class DocumentationPageSeeder extends Seeder
                         'data' => ['color' => 'pink'],
                         'type' => 'design.blur-beam',
                     ],
-                    [
-                        'data' => ['vertical_space' => 'xs'],
-                        'type' => 'design.empty-separator',
-                    ],
+                    // [
+                    //     'data' => ['vertical_space' => 'xs'],
+                    //     'type' => 'design.empty-separator',
+                    // ],
                     [
                         'data' => [
                             'image'             => null,
@@ -213,10 +213,10 @@ class DocumentationPageSeeder extends Seeder
                         'data' => ['color' => 'pink'],
                         'type' => 'design.blur-beam',
                     ],
-                    [
-                        'data' => ['vertical_space' => 'xs'],
-                        'type' => 'design.empty-separator',
-                    ],
+                    // [
+                    //     'data' => ['vertical_space' => 'xs'],
+                    //     'type' => 'design.empty-separator',
+                    // ],
                     [
                         'data' => [
                             'image'             => null,

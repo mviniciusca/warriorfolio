@@ -13,11 +13,16 @@ use Filament\Forms\Set;
 use Illuminate\Support\Str;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
+/**
+ * @deprecated since v2.1.3 use Module Creator instead. This component still works but will be removed in future versions.
+ * @see App\Filament\Fabricator\PageBlocks\Component\ModuleCreator
+ */
 class Module extends PageBlock
 {
     public static function getBlockSchema(): Block
     {
         return Block::make('component.module')
+            ->hidden()
             ->label('Module Header')
             ->icon('heroicon-o-bars-arrow-down')
             ->schema([

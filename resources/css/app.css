@@ -41,7 +41,7 @@
     /** Highlighted text **/
     .text-gradient,
     .tg {
-        @apply bg-gradient-to-b from-secondary-100 to-secondary-300 bg-clip-text pr-1 text-transparent dark:from-secondary-200 dark:to-secondary-700;
+        @apply bg-gradient-to-b from-secondary-100 to-secondary-300 bg-clip-text pr-1 text-transparent dark:from-secondary-200 dark:to-secondary-600;
     }
 
     .text-highlight,
@@ -51,9 +51,12 @@
     }
 
     /** Modules **/
-    .heading-module-title strong {
-        @apply font-bold;
+    .heading-module-title {
+        @apply font-bold text-center text-4xl tracking-tighter bg-gradient-to-b from-secondary-400 to-secondary-950 bg-clip-text leading-none text-transparent dark:from-secondary-300 dark:to-secondary-600;
+    }
 
+    .heading-module-subtitle {
+        @apply text-base text-center;
     }
 
     /** About Section **/

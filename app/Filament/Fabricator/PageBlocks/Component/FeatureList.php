@@ -7,6 +7,7 @@ use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -52,6 +53,16 @@ class FeatureList extends PageBlock
                                     ->columns(3)
                                     ->icon('heroicon-o-cog-6-tooth')
                                     ->schema([
+                                        Select::make('columns')
+                                            ->options([
+                                                '1' => '1 Column',
+                                                '2' => '2 Columns',
+                                                '3' => '3 Columns',
+                                                '4' => '4 Columns',
+                                            ])
+                                            ->default('grid-cols-3')
+                                            ->label(__('Grid Columns'))
+                                            ->helperText(__('Select the number of columns to display the cards.')),
                                         Checkbox::make('is_active')
                                             ->default(true)
                                             ->inline()

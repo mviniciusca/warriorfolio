@@ -10,7 +10,7 @@
 
 
 @if ($is_active)
-    <x-core.layout>
+    <x-core.layout :with_padding='false'>
         <section class="{{ $bg_transparent ? 'bg-transparent' : 'bg-secondary-100  dark:bg-secondary-950' }} py-4">
             <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-6 lg:py-16">
                 <figure class="mx-auto max-w-screen-xl">

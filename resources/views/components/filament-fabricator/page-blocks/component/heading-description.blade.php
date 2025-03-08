@@ -1,37 +1,32 @@
-@aware(['page'])
 @props([
-    'is_active' => true,
-    'heading' => null,
-    'content' => null,
-    'is_center' => false,
-    'heading_text_size' => 'text-3xl',
-    'content_text_size' => 'text-xl',
-    'image' => null,
+    'image',
+    'is_featured_image_active',
+    'heading',
+    'content',
+    'module_id',
+    'is_active',
+    'is_center',
+    'with_padding',
 ])
 
 @if ($is_active)
-    <x-core.layout>
-        <div class="{{ $is_center ? 'text-center' : 'text-left' }} mx-auto max-w-screen-xl">
-            <div id="heading-component">
-                <div class="mx-auto grid py-6 lg:grid-cols-12 lg:gap-8">
-                    <div class="{{ $image ? 'col-span-7' : 'col-span-full' }}">
-                        @if ($heading)
-                            <h2 class="heading-module-title {{ $heading_text_size }} mb-8 font-bold tracking-tighter">
-                                {!! $heading !!}
-                            </h2>
-                        @endif
-                        @if ($content)
-                            <div class="heading-module-subtitle {{ $content_text_size }} mb-4 font-light">
-                                {!! $content !!}
-                            </div>
-                        @endif
-                    </div>
-                    @if ($image)
-                        <div class="hidden lg:col-span-5 lg:mt-0 lg:flex">
-                            <img src="{{ asset('storage/' . $image) }}" />
-                        </div>
-                    @endif
-                </div>
+    <section>
+        <div
+            class="{{ $is_center && (!$image || !$is_featured_image_active) ? 'text-center' : 'text-left' }} {{ $image && $is_featured_image_active ? 'md:grid-cols-5' : 'md:grid-cols-1' }} mx-auto max-w-screen-xl items-start justify-between gap-8 px-4 py-8 sm:py-16 md:grid xl:gap-16">
+            <div class="md:col-span-3">
+                <h2
+                    class="heading-module-title {{ $is_center && (!$image || !$is_featured_image_active) ? 'text-center' : 'text-left' }}">
+                    {!! $heading !!}</h2>
+                <p
+                    class="heading-module-subtitle {{ $is_center && (!$image || !$is_featured_image_active) ? 'text-center' : 'text-left' }} mb-6 font-light md:text-lg">
+                    {!! $content !!}</p>
             </div>
-    </x-core.layout>
+            @if ($is_featured_image_active && $image)
+                <div
+                    class="{{ !$image || ($image || !$is_featured_image_active) ? 'hidden' : '' }} mx-auto sm:hidden md:col-span-2 md:block">
+                    <img class="max-h-64 w-full" src="{{ asset('storage/' . $image) }}" alt="dashboard image">
+                </div>
+            @endif
+        </div>
+    </section>
 @endif

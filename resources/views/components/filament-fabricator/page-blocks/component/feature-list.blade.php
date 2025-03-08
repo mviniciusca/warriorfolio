@@ -1,20 +1,22 @@
 @aware(['page'])
 @props([
-    'features' => null,
-    'is_active' => null,
-    'is_center' => null,
-    'link' => null,
-    'is_new_window' => null,
-    'is_filled' => false,
-    'is_section_filled' => false,
-    'is_animated' => null,
-    'is_border' => null,
-    'module_title' => null,
-    'module_subtitle' => null,
+    'link' => null, // Add link to a card
+    'columns' => null ?? 3, // Cards grid columns
+    'features' => null, // Cards data
+    'is_active' => null, // Enable or disable the component
+    'is_center' => null, // Align the cards to the center
+    'is_filled' => false, // Fill the cards with a color
+    'is_border' => null, // Add border to the cards
+    'is_animated' => null, // Add animation to the cards
+    'module_title' => null, // Module title
+    'with_padding' => false, // Add padding to the component
+    'is_new_window' => null, // Open the link in a new window
+    'module_subtitle' => null, // Module subtitle
+    'is_section_filled' => null, // Fill the section with a color
 ])
 
 @if ($is_active)
-    <x-core.layout class="{{ $is_section_filled ? 'section-filled' : '' }}">
+    <x-core.layout :$with_padding class="{{ $is_section_filled ? 'section-filled' : '' }}">
         <section>
             @if ($module_title || $module_subtitle)
                 <div>
@@ -27,7 +29,8 @@
                 </div>
             @endif
             <div class="mx-auto py-4 md:py-8 lg:py-12">
-                <div class="{{ $is_center ? 'text-center' : 'text-left' }} grid grid-cols-1 gap-6 md:grid-cols-3">
+                <div
+                    class="{{ $is_center ? 'text-center' : 'text-left' }} {{ $columns == 2 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : '' }} {{ $columns == 3 ? 'grid grid-cols-1 md:grid-cols-3 gap-4' : '' }} {{ $columns == 4 ? 'grid grid-cols-1 md:grid-cols-4 gap-4' : '' }} grid grid-cols-1 gap-4">
                     @foreach ($features as $key => $item)
                         @if ($link)
                             <a target="{{ $is_new_window ? '_blank' : '_self' }}" href="{{ $link }}">
