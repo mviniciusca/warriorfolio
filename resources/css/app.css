@@ -171,7 +171,7 @@
 
     /** UI Components: Tags **/
     .tag {
-        @apply font-light bg-primary-700 animate-pulse lowercase text-xs px-2 text-white rounded-md;
+        @apply bg-primary-600 animate-pulse lowercase text-xs px-2 font-semibold text-white rounded-full;
     }
 
     /** Global Settings  **/
