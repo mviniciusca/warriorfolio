@@ -1,12 +1,12 @@
 @props([
-    'image',
-    'is_featured_image_active',
-    'heading',
-    'content',
-    'module_id',
-    'is_active',
-    'is_center',
-    'with_padding',
+    'image' => null,
+    'is_featured_image_active' => null,
+    'heading' => null,
+    'content' => null,
+    'module_id' => null,
+    'is_active' => null,
+    'is_center' => null,
+    'with_padding' => null,
 ])
 
 @if ($is_active)

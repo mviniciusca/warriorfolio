@@ -52,11 +52,11 @@
 
     /** Modules **/
     .heading-module-title {
-        @apply font-bold text-center text-4xl tracking-tighter bg-gradient-to-b from-secondary-400 to-secondary-950 bg-clip-text leading-none text-transparent dark:from-secondary-300 dark:to-secondary-600;
+        @apply font-bold text-4xl tracking-tighter bg-gradient-to-b from-secondary-400 to-secondary-950 bg-clip-text leading-none text-transparent dark:from-secondary-300 dark:to-secondary-600;
     }
 
     .heading-module-subtitle {
-        @apply text-base text-center;
+        @apply text-base;
     }
 
     /** About Section **/
