@@ -9,8 +9,8 @@
     <x-curator-glider :media="$design['logo_dark_mode']"
         class="{{ $design['logo_size'] ? $design['logo_size'] : 'max-w-11' }} hidden object-contain dark:block" />
 @else
-    <svg class="{{ $size ?? 'h-10' }} mx-auto w-auto fill-primary-600 dark:fill-white" style="fill: {{ $color ?? '' }}"
-        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 159.38 106.35">
+    <svg width="100" class="{{ $size ?? 'h-10' }} mx-auto w-auto fill-primary-600 dark:fill-white"
+        style="fill: {{ $color ?? '' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 159.38 106.35">
         <g id="Layer_2" data-name="Layer 2">
             <g id="Layer_1-2" data-name="Layer 1">
                 <polygon class="cls-1"

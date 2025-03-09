@@ -53,6 +53,11 @@ class FeatureList extends PageBlock
                                     ->columns(3)
                                     ->icon('heroicon-o-cog-6-tooth')
                                     ->schema([
+                                        Toggle::make('is_active')
+                                            ->default(true)
+                                            ->inline()
+                                            ->helperText(__('Show / Hide this module.'))
+                                            ->label(__('Show Module')),
                                         Select::make('columns')
                                             ->options([
                                                 '1' => '1 Column',
@@ -60,29 +65,29 @@ class FeatureList extends PageBlock
                                                 '3' => '3 Columns',
                                                 '4' => '4 Columns',
                                             ])
-                                            ->default('grid-cols-3')
+                                            ->default('3')
                                             ->label(__('Grid Columns'))
                                             ->helperText(__('Select the number of columns to display the cards.')),
-                                        Checkbox::make('is_active')
-                                            ->default(true)
+                                        Checkbox::make('is_light_fx')
+                                            ->default(false)
                                             ->inline()
-                                            ->helperText(__('Show / Hide this module.'))
-                                            ->label(__('Show Module')),
-                                        Checkbox::make('is_section_filled')
+                                            ->helperText(__('Light fx on top of the card.'))
+                                            ->label(__('Light FX')),
+                                        Checkbox::make('is_filled')
                                             ->default(false)
                                             ->inline()
                                             ->helperText(__('Fill background with dark color.'))
-                                            ->label(__('Filled Section Background')),
+                                            ->label(__('Fill Section Background')),
                                         Checkbox::make('is_center')
                                             ->default(true)
                                             ->inline()
                                             ->helperText(__('Align content in the center.'))
                                             ->label(__('Centered')),
-                                        Checkbox::make('is_filled')
+                                        Checkbox::make('is_card_filled')
                                             ->default(false)
                                             ->inline()
                                             ->helperText(__('Fill background with dark color.'))
-                                            ->label(__('Filled Background')),
+                                            ->label(__('Fill Card Background')),
                                         Checkbox::make('is_animated')
                                             ->default(false)
                                             ->inline()

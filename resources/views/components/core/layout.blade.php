@@ -7,13 +7,14 @@
     'with_padding' => true,
     'is_filled' => null,
     'icon' => 'arrow-forward-sharp',
+    'is_center' => true,
 ])
 
-<div class="{{ $with_padding ? 'md:py-8 lg:py-16' : 'py-2' }} {{ $is_filled ? 'section-filled' : '' }} px-4">
+<div class="{{ $with_padding ? 'py-12 md:py-16 lg:py-20' : 'py-4' }} {{ $is_filled ? 'section-filled' : '' }} px-4">
     <div class="mx-auto max-w-7xl">
         @if ($module_title)
             <div class="{{ $button_header ? 'flex justify-between flex-initial' : '' }}py-4">
-                <p class="header-title">{{ $module_title }}</p>
+                <p class="dg header-title {{ $is_center ? 'text-center' : 'text-left' }}">{{ $module_title }}</p>
                 @if ($button_header)
                     @if ($button_url)
                         <a href="{{ $button_url }}">
@@ -28,7 +29,7 @@
             </div>
         @endif
         @if ($module_subtitle)
-            <div class="subtitle mx-auto mt-2 max-w-3xl text-center text-lg">
+            <div class="subtitle {{ $is_center ? 'text-center' : 'text-left' }} subtitle">
                 {{ $module_subtitle }}
             </div>
         @endif

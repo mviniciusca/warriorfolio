@@ -74,15 +74,18 @@
     }
 
     /** Header for each section **/
+    .dg {
+        @apply dark:bg-gradient-to-b dark:from-white dark:to-gray-400 bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent;
+    }
 
     .header-title,
     .module-title {
-        @apply bg-gradient-to-b from-secondary-400 to-secondary-950 bg-clip-text text-center text-3xl font-bold leading-none tracking-tight text-transparent dark:from-secondary-300 dark:to-secondary-800 lg:text-4xl;
+        @apply lg:text-4xl md:text-3xl text-2xl leading-none tracking-tight font-bold;
     }
 
     .subtitle,
     .module-subtitle {
-        @apply text-center;
+        @apply text-center text-sm md:text-base max-w-5xl mx-auto;
     }
 
     /** Form Input **/

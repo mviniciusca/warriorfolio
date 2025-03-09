@@ -8,10 +8,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Illuminate\Support\Str;
@@ -69,27 +66,6 @@ class HeadingDescription extends PageBlock
                                                     ->helperText(__('You can use this ID to link to this module in navigation or other pages.')),
                                             ]),
                                     ]),
-                                // Select::make('heading_text_size')
-                                //     ->label('Heading Text Size')
-                                //     ->options([
-                                //         'sm:text-lg md:text-lg lg:text-2xl'  => __('Large 2XL'),
-                                //         'sm:text-lg md:text-xl lg:text-3xl'  => __('Default 3XL'),
-                                //         'sm:text-lg md:text-2xl lg:text-4xl' => __('Text 4XL'),
-                                //         'sm:text-lg md:text-3xl lg:text-5xl' => __('Text 5XL'),
-                                //         'sm:text-lg md:text-4xl lg:text-6xl' => __('Text 6XL'),
-                                //     ])
-                                //     ->default('text-3xl'),
-                                // Select::make('content_text_size')
-                                //     ->label('Description Text Size')
-                                //     ->options([
-                                //         'text-xs'   => __('Extra Small'),
-                                //         'text-sm'   => __('Small'),
-                                //         'text-base' => __('Default'),
-                                //         'text-lg'   => __('Large'),
-                                //         'text-xl'   => __('Extra Large'),
-                                //         'text-2xl'  => __('Super Large'),
-                                //     ])
-                                //     ->default('text-base'),
                             ]),
 
                         TextInput::make('heading')
