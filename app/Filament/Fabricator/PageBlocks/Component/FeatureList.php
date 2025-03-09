@@ -8,7 +8,6 @@ use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -76,7 +75,6 @@ class FeatureList extends PageBlock
                                     ->columns(2)
                                     ->icon('heroicon-o-cog-6-tooth')
                                     ->schema([
-
                                         Group::make()
                                             ->schema([
                                                 Radio::make('columns')
@@ -100,9 +98,7 @@ class FeatureList extends PageBlock
                                                     ->default(true)
                                                     ->helperText(__('Color the icon with the primary color.'))
                                                     ->label(__('Color Icon')),
-
                                             ]),
-
                                         Group::make()
                                             ->schema([
                                                 Checkbox::make('is_card_filled')
