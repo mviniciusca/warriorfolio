@@ -120,6 +120,7 @@ class SlideshowResource extends Resource
                     ->icon('heroicon-o-camera')
                     ->schema([
                         Repeater::make('content')
+                            ->cloneable()
                             ->label('Slider Content')
                             ->defaultItems(1)
                             ->schema([

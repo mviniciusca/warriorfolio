@@ -10,9 +10,9 @@
 ])
 
 @if ($is_active)
-    <section>
+    <section class="px-8">
         <div
-            class="{{ $is_center && (!$image || !$is_featured_image_active) ? 'text-center' : 'text-left' }} {{ $image && $is_featured_image_active ? 'md:grid-cols-5' : 'md:grid-cols-1' }} mx-auto max-w-screen-xl items-start justify-between gap-8 px-4 py-8 sm:py-16 md:grid xl:gap-16">
+            class="{{ $is_center && (!$image || !$is_featured_image_active) ? 'text-center' : 'text-left' }} {{ $image && $is_featured_image_active ? 'md:grid-cols-5' : 'md:grid-cols-1' }} mx-auto max-w-screen-xl items-start justify-between gap-8 py-8 sm:py-16 md:grid xl:gap-16">
             <div class="md:col-span-3">
                 <h2
                     class="heading-module-title {{ $is_center && (!$image || !$is_featured_image_active) ? 'text-center' : 'text-left' }}">

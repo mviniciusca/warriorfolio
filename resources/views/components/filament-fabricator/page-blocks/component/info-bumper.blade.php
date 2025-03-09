@@ -12,7 +12,7 @@
 ])
 
 @if ($is_active)
-    <div class="{{ $is_center ? 'text-center' : 'text-left' }} mx-auto max-w-7xl pb-4 pt-16">
+    <div class="{{ $is_center ? 'text-center' : 'text-left' }} mx-auto">
         @if ($bumper_link && $bumper_target)
             <a target="{{ $bumper_target }}" href="{{ $bumper_link ?? '#' }}">
         @endif

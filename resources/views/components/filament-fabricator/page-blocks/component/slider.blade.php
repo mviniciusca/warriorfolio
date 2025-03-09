@@ -2,7 +2,7 @@
 @props(['slides' => null, 'is_active' => false, 'title' => null])
 
 @if ($is_active)
-    <div class="mx-auto max-w-7xl py-4">
+    <div class="mx-auto py-4">
         <div class="mx-auto">
             @if ($title)
                 <h2 class="mx-auto py-1 text-center font-bold">

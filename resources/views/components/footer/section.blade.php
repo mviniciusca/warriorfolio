@@ -1,4 +1,8 @@
-@props(['setting' => null, 'navigation' => null])
+@props([
+    'setting' => null,
+    'navigation' => null,
+    'social' => null,
+])
 
 @if ($module->footer)
     <div class="{{ data_get($data, 'footer.section_fill') ? 'section-filled' : '' }} bg-cover bg-center bg-no-repeat"

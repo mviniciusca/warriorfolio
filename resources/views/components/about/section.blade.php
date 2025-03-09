@@ -1,5 +1,12 @@
+@props([
+    'with_padding' => true,
+    'is_filled' => $data->about['section_fill'] ?? false,
+    'button_header' => null,
+    'button_url' => null,
+])
+
 @if ($module->about)
-    <x-core.layout class="{{ data_get($data, 'about.section_fill') ? 'section-filled' : null }}" id="about">
+    <x-core.layout :$with_padding :$is_filled :$button_header :$button_url id="about">
 
         @if ($data->about['section_title'])
             <x-slot name="module_title">
