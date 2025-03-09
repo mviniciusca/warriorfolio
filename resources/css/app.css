@@ -85,7 +85,7 @@
 
     .subtitle,
     .module-subtitle {
-        @apply text-center text-sm md:text-base max-w-5xl mx-auto;
+        @apply text-center text-sm md:text-base mx-auto;
     }
 
     /** Form Input **/

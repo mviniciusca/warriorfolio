@@ -1,21 +1,23 @@
 @aware(['page'])
 @props([
     'link' => null,
+    'is_active' => null,
+    'is_animated' => null,
+    'is_border' => null,
+    'is_card_filled' => null,
+    'is_center' => null,
+    'is_color_icon' => null,
+    'is_content_center' => true,
+    'is_filled' => null,
+    'is_light_fx' => null,
+    'is_new_window' => null,
+    'button_header' => null,
+    'button_url' => null,
     'columns' => null ?? 3,
     'features' => null,
-    'is_active' => null,
-    'is_center' => null,
-    'is_filled' => null,
-    'is_card_filled' => null,
-    'is_border' => null,
-    'is_animated' => null,
-    'module_title' => null,
     'module_subtitle' => null,
+    'module_title' => null,
     'with_padding' => true,
-    'is_new_window' => null,
-    'button_url' => null,
-    'button_header' => null,
-    'is_light_fx' => null,
 ])
 
 @if ($is_active)
@@ -33,7 +35,7 @@
 
         <div class="mx-auto">
             <div
-                class="{{ $is_center ? 'text-center' : 'text-left' }} {{ $columns == 2 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : '' }} {{ $columns == 3 ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4' : '' }} {{ $columns == 4 ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6' : '' }} grid grid-cols-1 gap-4">
+                class="{{ $is_content_center ? 'text-center justify-center' : 'text-left' }} {{ $columns == 2 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : '' }} {{ $columns == 3 ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4' : '' }} {{ $columns == 4 ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6' : '' }} grid grid-cols-1 gap-4">
                 @foreach ($features as $key => $item)
                     @if ($link)
                         <a target="{{ $is_new_window ? '_blank' : '_self' }}" href="{{ $link }}">
@@ -49,9 +51,9 @@
                         @endif
 
                         <div
-                            class="{{ $is_center ? 'items-center justify-center' : 'items-start justify-normal' }} mx-auto -mt-1 mb-2 flex">
+                            class="{{ $is_content_center ? 'items-center justify-center' : 'items-start justify-normal' }} mx-auto -mt-1 mb-2 flex">
                             <ion-icon
-                                class="{{ $is_animated ? 'animate-pulse' : '' }} h-10 w-10 rounded-full p-3 text-primary-500 opacity-90 lg:h-11 lg:w-11"
+                                class="{{ $is_animated ? 'animate-pulse' : '' }} {{ $is_color_icon ? 'text-primary-500 ' : '' }}opacity-90 h-10 w-10 rounded-full p-3 lg:h-11 lg:w-11"
                                 name="{{ $item['icon'] }}" />
                         </div>
 
