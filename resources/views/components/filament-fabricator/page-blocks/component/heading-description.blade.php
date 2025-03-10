@@ -6,7 +6,6 @@
     'is_active' => null,
     'is_center' => null,
     'with_padding' => null,
-    'break_point' => true, #TODO: apply this to the image
     'is_featured_image_active' => null,
 ])
 
