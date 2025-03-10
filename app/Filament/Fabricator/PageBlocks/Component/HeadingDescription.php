@@ -48,6 +48,10 @@ class HeadingDescription extends PageBlock
                                                     ->label(__('Align to Center'))
                                                     ->helperText(__('Align the content to the center.'))
                                                     ->default(true),
+                                                Checkbox::make('is_filled')
+                                                    ->label(__('Fill Section Background'))
+                                                    ->helperText(__('Fill the section background with a color.'))
+                                                    ->default(true),
                                             ]),
                                         Group::make()
                                             ->columnSpan(2)
