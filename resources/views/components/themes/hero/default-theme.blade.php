@@ -4,20 +4,20 @@
     <div class="text-center">
         @if ($hero->hero['section_title'])
             <h1
-                class="animate__animated animate__fadeInUp animate mb-4 max-w-5xl text-4xl font-extrabold leading-none tracking-tighter dark:text-white md:text-5xl lg:text-7xl">
+                class="animate__animated animate__slideInUp animate__delay-0s mb-2 py-1 text-6xl font-bold leading-none tracking-tighter">
                 {!! $hero->hero['section_title'] !!}
             </h1>
         @endif
 
         @if ($hero->hero['section_subtitle'])
             <h2
-                class="animate__animated animate__fadeInUp animate__delay-1s mb-6 text-lg leading-tight tracking-tight shadow-current lg:text-xl">
+                class="animate__animated animate__fadeInUp animate__delay-0s mb-6 text-lg leading-tight tracking-tight shadow-current lg:text-xl">
                 {!! $hero->hero['section_subtitle'] !!}
             </h2>
         @endif
 
         {{-- Hero Section: Buttons --}}
-        <div class="animate__animated animate__fadeInUp animate__delay-2s z-10 flex justify-center gap-4">
+        <div class="animate__animated animate__fadeInUp animate__delay-0s z-10 flex justify-center gap-4">
 
             {{-- Hero Section Button --}}
             @foreach ($hero->hero['buttons'] as $button)
@@ -43,7 +43,7 @@
     </div>
     </div>
     @if (data_get($hero, 'hero.featured_image_is_active'))
-        <div class="animate__animated animate__fadeInUp animate__delay-2s hidden lg:col-span-5 lg:mt-0 lg:flex">
+        <div class="animate__animated animate__fadeInUp animate__delay-1s hidden lg:col-span-5 lg:mt-0 lg:flex">
             {{-- Hero Section: Image --}}
             @if (data_get($hero, 'hero.featured_image'))
                 <div class="mx-auto mt-8" id="hero-featured-image">

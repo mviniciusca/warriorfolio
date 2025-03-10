@@ -29,12 +29,15 @@ class InfoBumper extends PageBlock
                             ->columnSpanFull()
                             ->schema([
                                 Toggle::make('is_active')
+                                    ->helperText(__('Active or Inactive.'))
                                     ->label('Active')
                                     ->default(true),
                                 Toggle::make('is_animated')
                                     ->label('Animated')
+                                    ->helperText(__('Animated or Static.'))
                                     ->default(true),
                                 Toggle::make('is_center')
+                                    ->helperText(__('Align to center.'))
                                     ->label('Align to Center')
                                     ->default(false),
                             ]),

@@ -47,7 +47,7 @@
     .text-highlight,
     .heading-module-title strong,
     .tl {
-        @apply bg-gradient-to-r from-primary-600 to-tertiary-400 bg-clip-text pr-1 text-transparent;
+        @apply bg-gradient-to-r from-primary-500 to-tertiary-500 bg-clip-text pr-1 text-transparent;
     }
 
     /** Modules **/
@@ -75,7 +75,7 @@
 
     /** Header for each section **/
     .dg {
-        @apply dark:bg-gradient-to-b dark:from-white dark:to-gray-400 bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent;
+        @apply dark:bg-gradient-to-b dark:from-white dark:to-gray-600 bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent;
     }
 
     .header-title,

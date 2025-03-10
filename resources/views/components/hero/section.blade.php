@@ -1,6 +1,6 @@
 @if ($module->hero)
 
-    <x-core.layout :with_padding='false'>
+    <x-core.layout :with_padding="false">
         {{-- Background Module --}}
         <x-hero.background :hero='$hero' />
         {{-- Hero Section --}}
@@ -9,9 +9,7 @@
                 {{-- Hero Section Themes --}}
                 @if ($hero->hero['theme'] === 'default')
                     <x-themes.hero.default-theme :$hero />
-                @endif
-
-                @if ($hero->hero['theme'] === 'sierra')
+                @elseif($hero->hero['theme'] === 'sierra')
                     <x-themes.hero.sierra-theme :$hero />
                 @endif
                 {{-- Static Slider --}}
