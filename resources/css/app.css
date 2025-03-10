@@ -80,7 +80,7 @@
 
     .header-title,
     .module-title {
-        @apply lg:text-4xl md:text-3xl text-2xl leading-none tracking-tight font-bold;
+        @apply lg:text-3xl md:text-3xl text-2xl leading-none tracking-tight font-bold;
     }
 
     .subtitle,

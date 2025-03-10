@@ -15,9 +15,13 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: colors.purple,     //accent color
-                secondary: colors.zinc,     //dark color
-                tertiary: colors.pink,      //highlight fx color
+                primary: colors.purple,//accent color: default purple
+                secondary: colors.zinc,//dark color: default zinc
+                tertiary: colors.pink,//highlight fx color: default pink
+                danger: colors.red,//danger color: default red
+                success: colors.green,//success color: default green
+                info: colors.blue,//info color: default blue
+                warning: colors.yellow,//warning color: default yellow
             }
         },
     },

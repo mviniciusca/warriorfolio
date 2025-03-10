@@ -27,7 +27,7 @@ class FeatureList extends PageBlock
                     ->collapsed()
                     ->schema([
                         Group::make()
-                            ->columns(2)
+                            ->columns(3)
                             ->schema([
                                 Checkbox::make('is_active')
                                     ->default(true)
@@ -39,6 +39,11 @@ class FeatureList extends PageBlock
                                     ->inline()
                                     ->helperText(__('Fill background with dark color.'))
                                     ->label(__('Fill Section Background')),
+                                Checkbox::make('with_padding')
+                                    ->default(true)
+                                    ->inline()
+                                    ->helperText(__('Remove padding from the top and bottom of the section. Default is true.'))
+                                    ->label(__('Section Vertical Padding')),
                             ]),
                         Group::make()
                             ->schema([

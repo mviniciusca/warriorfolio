@@ -1,17 +1,18 @@
 @props([
     'image' => null,
-    'is_featured_image_active' => null,
     'heading' => null,
     'content' => null,
     'module_id' => null,
     'is_active' => null,
     'is_center' => null,
     'with_padding' => null,
+    'break_point' => true, #TODO: apply this to the image
+    'is_featured_image_active' => null,
 ])
 
 @if ($is_active)
     <section class="px-8">
-        <div
+        <div id="card-{{ rand(1, 2) }}"
             class="{{ $is_center && (!$image || !$is_featured_image_active) ? 'text-center' : 'text-left' }} {{ $image && $is_featured_image_active ? 'md:grid-cols-5' : 'md:grid-cols-1' }} mx-auto max-w-screen-xl items-start justify-between gap-8 py-8 sm:py-16 md:grid xl:gap-16">
             <div class="md:col-span-3">
                 <h2
