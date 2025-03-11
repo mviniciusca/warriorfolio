@@ -8,6 +8,7 @@
 
         <div class="mr-auto place-self-center lg:col-span-1">
 
+
             <h1
                 class="animate__animated animate__fadeInUp animate {{ $hero->hero['bg_image'] && ($hero->hero['is_highlight'] ?? null) ? 'bg-white dark:bg-black px-2' : '' }} mb-4 max-w-xl text-3xl font-extrabold leading-none tracking-tighter dark:text-white md:text-4xl xl:text-5xl">
                 {!! $hero->hero['section_title'] !!}

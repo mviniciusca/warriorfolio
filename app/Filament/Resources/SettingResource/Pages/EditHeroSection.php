@@ -168,7 +168,7 @@ class EditHeroSection extends EditRecord
                                         FileUpload::make('hero.featured_image')
                                             ->label('Featured Image')
                                             ->directory('hero')
-                                            ->maxSize(20000)
+                                            ->maxSize(60000)
                                             ->columnSpan(2)
                                             ->imageEditor()
                                             ->imageResizeMode('cover')
