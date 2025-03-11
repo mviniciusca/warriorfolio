@@ -31,7 +31,7 @@
             </div>
             {{-- Navigation --}}
             @if ($navigation)
-                <div class="nav-bar hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
+                <div class="nav-bar hidden w-full items-center justify-between font-mono lg:order-1 lg:flex lg:w-auto"
                     id="mobile-menu-2">
                     <x-header.navigation :$navigation />
                 </div>
