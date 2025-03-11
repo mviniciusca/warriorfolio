@@ -31,6 +31,10 @@ class DarkMode extends Component
         ]);
     }
 
+    /**
+     * Toggle dark mode.
+     * @return void
+     */
     public function toggleDarkMode(): void
     {
         if ($this->active) {
