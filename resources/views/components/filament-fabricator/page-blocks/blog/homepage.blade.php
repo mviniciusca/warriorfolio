@@ -3,7 +3,7 @@
 
 <x-core.layout :with_padding="false">
     <div class="mx-auto">
-        <div class="-mx-4 flex flex-wrap">
+        <div class="flex flex-wrap">
             <div class="order-2 mx-auto w-full lg:order-1 lg:w-3/4 lg:pr-24">
                 <x-blog.homepage />
             </div>
