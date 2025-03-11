@@ -4,21 +4,18 @@
     <div class="text-center">
         @if ($hero->hero['section_title'])
             <h1
-                class="animate__animated animate__fadeInUp animate mb-4 max-w-xl text-3xl font-extrabold leading-none tracking-tighter dark:text-white md:text-4xl xl:text-5xl">
+                class="animate__animated animate__fadeInUp animate mb-4 max-w-5xl text-3xl font-bold leading-none tracking-tighter dark:text-white md:text-4xl xl:text-5xl">
                 {!! $hero->hero['section_title'] !!}
             </h1>
         @endif
-
         @if ($hero->hero['section_subtitle'])
             <h2
-                class="animate__animated animate__fadeInUp animate__delay-0s mb-6 max-w-5xl text-lg leading-tight tracking-tight shadow-current">
+                class="animate__animated animate__fadeInUp animate__delay-0s mb-6 max-w-3xl text-lg leading-tight tracking-tight shadow-current">
                 {!! $hero->hero['section_subtitle'] !!}
             </h2>
         @endif
-
         {{-- Hero Section: Buttons --}}
         <div class="animate__animated animate__fadeInUp animate__delay-0s z-10 flex justify-center gap-4">
-
             {{-- Hero Section Button --}}
             @foreach ($hero->hero['buttons'] as $button)
                 <a target="{{ $button['button_target'] ?? '_self' }}" href="{{ $button['button_url'] ?? '#' }}">
@@ -57,5 +54,4 @@
     @endif
     </div>
     </div>
-
 </section>
