@@ -3,8 +3,6 @@
 namespace App\Filament\Fabricator\PageBlocks;
 
 use App\Forms\Components\Core\Info;
-use App\Models\Layout;
-use App\Models\Setting;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
@@ -35,11 +33,6 @@ class Hero extends PageBlock
 
     public static function mutateData(array $data): array
     {
-        $data = [
-            'info' => Layout::all()->first(),
-            'hero' => Setting::all()->first(),
-        ];
-
         return $data;
     }
 }

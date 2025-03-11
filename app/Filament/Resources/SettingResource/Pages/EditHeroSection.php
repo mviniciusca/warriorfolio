@@ -3,15 +3,16 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;
 
@@ -68,11 +69,13 @@ class EditHeroSection extends EditRecord
                                             ->helperText(__('Select the theme of your Hero Section.'))
                                             ->prefixIcon('heroicon-o-window')
                                             ->options([
-                                                'sierra'  => __('Sierra'),
-                                                'default' => __('Default'),
+                                                'sierra'    => __('Sierra'),
+                                                'default'   => __('Default'),
+                                                'vercel'    => __('Vercel'),
+                                                'spotlight' => __('Spotlight'),
                                             ])
                                             ->default('sierra'),
-                                        Toggle::make('hero.is_mailing_active')
+                                        Checkbox::make('hero.is_mailing_active')
                                             ->default(true)
                                             ->live()
                                             ->helperText(__('Enable the Mailing List Module on Hero Sections where this option is available.'))
@@ -158,18 +161,19 @@ class EditHeroSection extends EditRecord
                                     ->collapsed()
                                     ->columns(3)
                                     ->schema([
-                                        Toggle::make('hero.featured_image_is_active')
+                                        Checkbox::make('hero.featured_image_is_active')
                                             ->default(true)
                                             ->helperText(__('Show / hide featured image.'))
                                             ->label(__('Active')),
                                         FileUpload::make('hero.featured_image')
                                             ->label('Featured Image')
                                             ->directory('hero')
-                                            ->maxSize(10000)
-                                            ->image()
+                                            ->maxSize(20000)
                                             ->columnSpan(2)
                                             ->imageEditor()
-                                            ->helperText(__('This is your featured image for the hero section.')),
+                                            ->imageResizeMode('cover')
+                                            ->preserveFilenames()
+                                            ->helperText(__('💡 This is crop your image to fit in 16:9 aspect ratio')),
                                     ]),
                                 Section::make(__('Background'))
                                     ->description(__('Controls for Background Image for your Hero Section.'))
@@ -177,9 +181,22 @@ class EditHeroSection extends EditRecord
                                     ->collapsed()
                                     ->columns(2)
                                     ->schema([
-                                        Toggle::make('hero.is_active')
+                                        Checkbox::make('hero.is_active')
                                             ->label(__('Show Background Image'))
                                             ->helperText(__('Show or hide the background image.')),
+                                        Checkbox::make('hero.is_highlight')
+                                            ->label(__('Highlight Text'))
+                                            ->helperText(__('Highlight the text in the hero section.')),
+                                        Checkbox::make('hero.is_pattern_bg')
+                                            ->label(__('Pattern Background'))
+                                            ->helperText(__('Enable this option to show a pattern background in the hero section. This overrides the background image if uploaded.')),
+                                        Radio::make('hero.pattern_name')
+                                            ->options([
+                                                'dot'   => 'Dot',
+                                                'cross' => 'Cross',
+                                            ])
+                                            ->default('cross')
+                                            ->label(__('Pattern Type')),
                                         FileUpload::make('hero.bg_image')
                                             ->label(__('Hero Section Background Image'))
                                             ->directory('hero/bg')
@@ -226,10 +243,10 @@ class EditHeroSection extends EditRecord
                                     ->collapsed()
                                     ->columns(2)
                                     ->schema([
-                                        Toggle::make('hero.slider_is_active')
+                                        Checkbox::make('hero.slider_is_active')
                                             ->label(__('Active'))
                                             ->helperText(__('Enable this static slider in your Hero Section.')),
-                                        Toggle::make('hero.is_invert')
+                                        Checkbox::make('hero.is_invert')
                                             ->default(true)
                                             ->label(__('Invert Filter'))
                                             ->helperText(__('When enabled, invert the color of image in dark mode. If the image is black in white mode, turns to white in dark mode.')),
@@ -242,6 +259,7 @@ class EditHeroSection extends EditRecord
                                             ->schema([
                                                 FileUpload::make('hero.slider_image')
                                                     ->label(__('Image'))
+                                                    ->required()
                                                     ->helperText(__('PNG format will look great.')),
                                                 Group::make()
                                                     ->schema([

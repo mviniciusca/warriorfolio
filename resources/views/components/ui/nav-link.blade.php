@@ -2,9 +2,9 @@
 
 <a href="{{ $href }}" target="{{ $target }}">
     <button
-        class="flex cursor-pointer flex-wrap items-center gap-1 py-2 text-sm font-bold transition-all duration-100 hover:border-b-2 hover:border-b-primary-600 hover:font-bold hover:text-primary-600 hover:opacity-95 active:opacity-50 dark:hover:text-primary-500 lg:mx-2 lg:py-0">
+        class="flex flex-initial cursor-pointer items-center gap-1 rounded-xl bg-transparent px-2 text-sm transition-all duration-200 hover:bg-black hover:text-white active:opacity-10 dark:hover:bg-white dark:hover:text-black">
         {!! $text !!}
-        @if ($target == '_blank')
+        @if ($target === '_blank')
             <ion-icon class="h-5 w-5" name="trending-up-outline"></ion-icon>
         @endif
     </button>

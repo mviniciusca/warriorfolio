@@ -4,14 +4,14 @@
     <div class="text-center">
         @if ($hero->hero['section_title'])
             <h1
-                class="animate__animated animate__slideInUp animate__delay-0s mb-2 py-1 text-6xl font-bold leading-none tracking-tighter">
+                class="animate__animated animate__fadeInUp animate mb-4 max-w-xl text-3xl font-extrabold leading-none tracking-tighter dark:text-white md:text-4xl xl:text-5xl">
                 {!! $hero->hero['section_title'] !!}
             </h1>
         @endif
 
         @if ($hero->hero['section_subtitle'])
             <h2
-                class="animate__animated animate__fadeInUp animate__delay-0s mb-6 text-lg leading-tight tracking-tight shadow-current lg:text-xl">
+                class="animate__animated animate__fadeInUp animate__delay-0s mb-6 max-w-5xl text-lg leading-tight tracking-tight shadow-current">
                 {!! $hero->hero['section_subtitle'] !!}
             </h2>
         @endif
@@ -43,16 +43,15 @@
     </div>
     </div>
     @if (data_get($hero, 'hero.featured_image_is_active'))
-        <div class="animate__animated animate__fadeInUp animate__delay-1s hidden lg:col-span-5 lg:mt-0 lg:flex">
+        <div class="animate__animated animate__fadeInUp animate__delay-0s hidden lg:col-span-5 lg:mt-0 lg:flex">
             {{-- Hero Section: Image --}}
             @if (data_get($hero, 'hero.featured_image'))
                 <div class="mx-auto mt-8" id="hero-featured-image">
-                    <img class="mx-auto mt-8 rounded-2xl" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
+                    <img class="mx-auto rounded-2xl" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
                         alt="hero-section-featured-image" />
                 @else
-                    <img class="mx-auto mt-8 rounded-2xl bg-secondary-300 bg-opacity-20 p-2 shadow-lg dark:shadow-secondary-500"
-                        src="{{ asset('img/core/demo/default-landing-image.png') }}"
-                        alt="hero-section-default-landing-image" />
+                    <img src="https://placehold.co/1200x600" alt="Hero Image"
+                        class="h-auto w-full rounded-lg shadow-xl" />
             @endif
         </div>
     @endif
