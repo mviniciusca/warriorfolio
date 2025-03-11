@@ -1,7 +1,7 @@
 @props(['hero', 'icon' => null])
 
 <section>
-    <div class="text-center">
+    <div class="mx-auto mt-4 grid items-center justify-center text-center">
         @if ($hero->hero['section_title'])
             <h1
                 class="animate__animated animate__fadeInUp animate mb-4 max-w-5xl text-3xl font-bold leading-none tracking-tighter dark:text-white md:text-4xl xl:text-5xl">

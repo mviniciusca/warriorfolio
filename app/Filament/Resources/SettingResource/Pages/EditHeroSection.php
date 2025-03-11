@@ -81,6 +81,74 @@ class EditHeroSection extends EditRecord
                                             ->helperText(__('Enable the Mailing List Module on Hero Sections where this option is available.'))
                                             ->label(__('Show Mailing List Module')),
                                     ]),
+                                Section::make(__('Info Bumper'))
+                                    ->columns(3)
+                                    ->description(__('A simple info bumper component.'))
+                                    ->icon('heroicon-o-megaphone')
+                                    ->collapsed()
+                                    ->schema([
+                                        Group::make()
+                                            ->columns(3)
+                                            ->columnSpanFull()
+                                            ->schema([
+                                                Toggle::make('hero.bumper_is_active')
+                                                    ->helperText(__('Active or Inactive.'))
+                                                    ->label('Active')
+                                                    ->default(true),
+                                                Toggle::make('hero.bumper_is_animated')
+                                                    ->label('Animated')
+                                                    ->helperText(__('Animated or Static.'))
+                                                    ->default(true),
+                                                Toggle::make('hero.bumper_is_center')
+                                                    ->helperText(__('Align to center.'))
+                                                    ->label('Align to Center')
+                                                    ->default(false),
+                                            ]),
+                                        TextInput::make('hero.bumper_tag')
+                                            ->label(__('Tag'))
+                                            ->prefixIcon('heroicon-o-tag')
+                                            ->helperText(__('Featured Tag'))
+                                            ->required(),
+                                        TextInput::make('hero.bumper_title')
+                                            ->label(__('Title'))
+                                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                            ->helperText(__('Main content of the bumper.'))
+                                            ->columnSpan(2)
+                                            ->required(),
+                                        Group::make()
+                                            ->columnSpanFull()
+                                            ->columns(2)
+                                            ->schema([
+                                                TextInput::make('hero.bumper_icon')
+                                                    ->label('Ionicon')
+                                                    ->helperText(__('Ionicon.(Optional)'))
+                                                    ->suffixIcon('heroicon-o-window')
+                                                    ->prefix('ion-icon'),
+                                                TextInput::make('hero.bumper_link')
+                                                    ->label('Link')
+                                                    ->prefixIcon('heroicon-o-link')
+                                                    ->helperText(__('URL Link. (Optional)')),
+                                                Select::make('hero.bumper_target')
+                                                    ->label('Link Target')
+                                                    ->prefixIcon('heroicon-o-window')
+                                                    ->helperText(__('It opens in a new or same window.'))
+                                                    ->options([
+                                                        '_self'  => __('Self'),
+                                                        '_blank' => __('New'),
+                                                    ])
+                                                    ->default('_self'),
+                                                Select::make('hero.bumper_role')
+                                                    ->label('Role')
+                                                    ->prefixIcon('heroicon-o-bell')
+                                                    ->helperText(__('Select a role of this bumper.'))
+                                                    ->options([
+                                                        'primary' => 'Primary',
+                                                        'danger'  => 'Danger',
+                                                        'info'    => 'Info',
+                                                    ])
+                                                    ->default('primary'),
+                                            ]),
+                                    ]),
                                 Section::make(__('Title & Subtitle'))
                                     ->description(__('Configure the title and subtitle of your Hero Section'))
                                     ->icon('heroicon-o-bars-3-bottom-left')
