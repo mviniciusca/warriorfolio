@@ -11,7 +11,6 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;
@@ -42,12 +41,12 @@ class EditHeroSection extends EditRecord
         return $form
             ->schema([
                 Section::make()
-                    ->columns(2)
+                    ->columns(1)
                     ->schema([
                         Group::make()
                             ->relationship('module')
                             ->schema([
-                                Toggle::make('hero')
+                                Checkbox::make('hero')
                                     ->label(__('Show Hero Section'))
                                     ->helperText(__('Show or hide the hero section on the website.')),
                             ]),
@@ -75,6 +74,11 @@ class EditHeroSection extends EditRecord
                                                 'spotlight' => __('Spotlight'),
                                             ])
                                             ->default('sierra'),
+                                        Checkbox::make('hero.is_filled')
+                                            ->default(true)
+                                            ->live()
+                                            ->label(__('Fill Section Background'))
+                                            ->helperText(__('Add a dark color to section. This can override the background image.')),
                                         Checkbox::make('hero.is_mailing_active')
                                             ->default(true)
                                             ->live()
@@ -91,15 +95,15 @@ class EditHeroSection extends EditRecord
                                             ->columns(3)
                                             ->columnSpanFull()
                                             ->schema([
-                                                Toggle::make('hero.bumper_is_active')
+                                                Checkbox::make('hero.bumper_is_active')
                                                     ->helperText(__('Active or Inactive.'))
                                                     ->label('Active')
                                                     ->default(true),
-                                                Toggle::make('hero.bumper_is_animated')
+                                                Checkbox::make('hero.bumper_is_animated')
                                                     ->label('Animated')
                                                     ->helperText(__('Animated or Static.'))
                                                     ->default(true),
-                                                Toggle::make('hero.bumper_is_center')
+                                                Checkbox::make('hero.bumper_is_center')
                                                     ->helperText(__('Align to center.'))
                                                     ->label('Align to Center')
                                                     ->default(false),
@@ -336,7 +340,7 @@ class EditHeroSection extends EditRecord
                                                             ->helperText(__('URL Link.'))
                                                             ->columnSpan(2)
                                                             ->prefixIcon('heroicon-o-link'),
-                                                        Toggle::make('hero.is_new_window')
+                                                        Checkbox::make('hero.is_new_window')
                                                             ->label(__('New Window'))
                                                             ->default(false),
                                                     ]),
