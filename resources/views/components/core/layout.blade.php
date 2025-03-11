@@ -21,9 +21,9 @@
             @if ($button_url)
             <a href="{{ $button_url }}">
                 @endif
-                <x-ui.button-alt :$icon>
+                <x-ui.button :$icon :style="'outlined'">
                     {!! $button_header !!}
-                </x-ui.button-alt>
+                </x-ui.button>
                 @endif
                 @if ($button_url)
             </a>
