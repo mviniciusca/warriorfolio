@@ -179,6 +179,7 @@ class EditHeroSection extends EditRecord
                                     ->collapsed()
                                     ->schema([
                                         Repeater::make('hero.buttons')
+                                            ->cloneable()
                                             ->label(__('Buttons'))
                                             ->itemLabel(function (array $state): string {
                                                 $title = $state['button_title'] ?? __('Button');
