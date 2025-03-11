@@ -1,27 +1,23 @@
+@props(['data', 'module'])
+
+{{-- Livewire Component: Newsletter / Email Catcher --}}
+
 @if ($module->newsletter)
-    <x-core.layout>
-        <div class="mx-auto">
-            <div
-                class="flex flex-wrap items-center justify-center rounded-lg border border-white bg-secondary-50 px-4 py-6 text-center dark:border-secondary-900 dark:bg-secondary-900 lg:py-12">
-                <div class="image w-full px-4 lg:w-1/4">
-                    <img class="mx-auto max-h-48"
-                        src="{{ data_get($data, 'mailing.image') ? asset('storage/' . $data->mailing['image']) : asset('img/core/svg/developer.svg') }}"
-                        alt="newsletter-image" />
-                </div>
-                <div class="text w-full p-4 lg:w-2/4">
-                    <span class="text-2xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
-                        <p>
-                            {!! $data->mailing['section_title'] !!}
-                        </p>
-                        <p class="text-xs font-normal tracking-normal md:text-base">
-                            {!! $data->mailing['section_subtitle'] !!}
-                        </p>
-                    </span>
-                </div>
-                <div class="form mx-auto flex flex-wrap justify-start text-center lg:w-1/4 lg:text-left">
-                    <livewire:newsletter :buttonText="$data->mailing['button_text']">
+<x-core.layout :with_padding="true">
+    <div class="container w-full mx-auto">
+        <div
+            class="py-16  px-8 items-center border border-secondary-100 dark:border-secondary-900 rounded-3xl bg-white dark:bg-black text-left bg-dots relative overflow-hidden">
+            <div class="absolute inset-0 bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-70 z-0"></div>
+            <div class="mx-auto relative z-10 max-w-md">
+                <h2 class="text-3xl font-bold">{!! $data->mailing['section_title'] !!}</h2>
+                <p class="my-2">{!! $data->mailing['section_subtitle'] !!}</p>
+                <div class="mt-1 mx-auto grid">
+                    <livewire:newsletter />
                 </div>
             </div>
         </div>
-    </x-core.layout>
+    </div>
+    <img src="{{ asset('img/core/core-ui-elements/beams/blur-beam.png') }}"
+        class="absolute -z-10 -mt-4 animate-pulse " />
+</x-core.layout>
 @endif

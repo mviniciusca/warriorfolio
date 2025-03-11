@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Newsletter as ModelNewsletter;
 use Exception;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -37,7 +38,6 @@ class Newsletter extends Component implements HasForms
                     ->minLength(5)
                     ->maxLength(255)
                     ->hiddenLabel()
-                    ->helperText(__('We hate spam.'))
                     ->email()
                     ->unique('newsletters', 'email')
                     ->required(),
@@ -46,6 +46,11 @@ class Newsletter extends Component implements HasForms
             ->model(self::class);
     }
 
+    /**
+     * Subscribe to the newsletter.
+     *
+     * @return void
+     */
     public function create(): void
     {
         $data = $this->form->getState();
