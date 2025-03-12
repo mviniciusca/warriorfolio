@@ -12,6 +12,9 @@ export default {
         "./resources/**/*.vue",
     ],
     darkMode: 'class',
+    safelist: [
+        'notify', 'tag', 'dg', 'tl', 'ht', 'animate-pulse',
+    ],
     theme: {
         extend: {
             colors: {

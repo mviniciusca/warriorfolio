@@ -20,21 +20,28 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'    => 'Free your mind with <span class="tl">Notes</span>',
-                'section_subtitle' => 'Warriorfolio '.env('APP_VERSION').' is here with your blog. Write something amazing right now! ✨',
+                'section_title'    => 'clone, setup & <span class="dg">deploy</span>🚀',
+                'section_subtitle' => 'Warriorfolio '.env('APP_VERSION').' is here with a UI refresh, new features, and improvements. <br/>Clone, setup, and deploy your portfolio in minutes.',
                 /** Buttons */
                 'buttons' => [
                     [
-                        'button_title'  => 'Meet Notes',
-                        'icon'          => 'musical-note-sharp',
-                        'button_url'    => '/blog',
+                        'button_title'  => 'Get Started',
+                        'icon'          => 'rocket',
+                        'button_url'    => '/admin',
+                        'button_style'  => 'filled',
+                        'button_target' => '_self',
+                    ],
+                    [
+                        'button_title'  => 'Documentation',
+                        'icon'          => 'book',
+                        'button_url'    => '/docs',
                         'button_style'  => 'outlined',
                         'button_target' => '_self',
                     ],
                 ],
                 /** Themes */
-                'theme'                    => 'default',
-                'is_mailing_active'        => true,
+                'theme'                    => 'sierra',
+                'is_mailing_active'        => false,
                 'featured_image_is_active' => true,
                 /** Background */
                 'is_active'   => false,
@@ -46,8 +53,8 @@ class LayoutFactory extends Factory
             /** Portfolio Section */
             'portfolio' => [
                 'section_fill'     => false,
-                'section_title'    => 'Projects',
-                'section_subtitle' => 'Here are some of my projects I\'ve worked on recently.',
+                'section_title'    => 'Projects Showcase',
+                'section_subtitle' => 'Here are some of the projects I\'ve worked on',
             ],
 
             /** About Section */
@@ -60,7 +67,7 @@ class LayoutFactory extends Factory
             /** Contact Section */
             'contact' => [
                 'section_fill'     => false,
-                'section_title'    => 'Get in Touch',
+                'section_title'    => 'Contact Me',
                 'section_subtitle' => 'I\'m currently available for freelance work',
                 'public_address'   => 'Rio-GIG Airport </br> Av. 20 de Janeiro, S/N <br/> Rio de Janeiro, RJ <br/> Brazil',
                 'public_email'     => 'warriorfolio@test.dev',
@@ -77,8 +84,8 @@ class LayoutFactory extends Factory
 
             /** Newsletter Module */
             'mailing' => [
-                'section_title'    => 'the<span class="tl">next</span>',
-                'section_subtitle' => 'join our mailing list',
+                'section_title'    => '<span class="dg">Warriornotes</span> Mailing List',
+                'section_subtitle' => 'Join our mailing list.',
                 'button_text'      => 'Subscribe',
             ],
 

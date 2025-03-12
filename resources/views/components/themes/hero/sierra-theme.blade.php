@@ -8,14 +8,13 @@
 
         <div class="mr-auto place-self-center lg:col-span-1">
 
-
             <h1
-                class="animate__animated animate__fadeInUp animate {{ $hero->hero['bg_image'] && ($hero->hero['is_highlight'] ?? null) ? 'bg-white dark:bg-black px-2' : '' }} mb-4 max-w-xl text-3xl font-extrabold leading-none tracking-tighter dark:text-white md:text-4xl xl:text-5xl">
+                class="animate__animated animate__fadeInUp animate {{ ($hero->hero['bg_image'] ?? null) && ($hero->hero['is_highlight'] ?? null) ? 'bg-white dark:bg-black px-2' : '' }} mb-4 max-w-xl text-3xl font-extrabold leading-none tracking-tighter dark:text-white md:text-4xl xl:text-5xl">
                 {!! $hero->hero['section_title'] !!}
             </h1>
 
             <span
-                class="animate__animated animate__fadeInUp animate__delay-1s {{ $hero->hero['bg_image'] && ($hero->hero['is_highlight'] ?? null) ? 'bg-white dark:bg-black p-2' : '' }} mb-6 max-w-2xl md:text-lg lg:mb-8 lg:text-xl">
+                class="animate__animated animate__fadeInUp animate__delay-1s {{ ($hero->hero['bg_image'] ?? null) && ($hero->hero['is_highlight'] ?? null) ? 'bg-white dark:bg-black p-2' : '' }} mb-6 max-w-2xl lg:mb-8 hero-subtitle">
                 {!! $hero->hero['section_subtitle'] !!}
             </span>
 

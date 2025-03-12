@@ -55,7 +55,7 @@
     }
 
     .section-filled {
-        @apply bg-secondary-50 dark:bg-black bg-opacity-70
+        @apply bg-secondary-50 dark:bg-black;
     }
 
 
@@ -85,7 +85,7 @@
         @apply pt-4;
     }
 
-    /** Hero section **/
+    /** Hero Section **/
     .hero-section-title {
         @apply mb-8 text-center text-4xl font-bold leading-none tracking-tighter lg:text-5xl;
     }
@@ -94,10 +94,20 @@
         @apply bg-gradient-to-t from-secondary-400 text-transparent to-secondary-950 dark:from-secondary-300 dark:to-secondary-800 bg-clip-text;
     }
 
-    /** Header for each section **/
+    .hero-title {
+        @apply font-bold text-4xl tracking-tighter leading-none;
+    }
+
+    .hero-subtitle {
+        @apply text-base;
+    }
+
+    /** Default Gradient **/
     .dg {
         @apply dark:bg-gradient-to-b dark:from-white dark:to-gray-600 bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent;
     }
+
+    /** Module Header **/
 
     .header-title,
     .module-title {
@@ -196,9 +206,14 @@
         @apply font-semibold;
     }
 
-    /** UI Components: Tags **/
+    /** UI Components: Tag, Notification Tag**/
     .tag {
         @apply bg-primary-600 animate-pulse lowercase text-xs px-2 font-semibold text-white rounded-full;
+    }
+
+    .notify {
+        @apply bg-black dark:bg-white animate-pulse lowercase w-1 h-1 -mt-2 rounded-full;
+
     }
 
     /** Global Settings  **/
