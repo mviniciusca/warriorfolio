@@ -111,14 +111,12 @@ class EditHeroSection extends EditRecord
                                         TextInput::make('hero.bumper_tag')
                                             ->label(__('Tag'))
                                             ->prefixIcon('heroicon-o-tag')
-                                            ->helperText(__('Featured Tag'))
-                                            ->required(),
+                                            ->helperText(__('Featured Tag')),
                                         TextInput::make('hero.bumper_title')
                                             ->label(__('Title'))
                                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                             ->helperText(__('Main content of the bumper.'))
-                                            ->columnSpan(2)
-                                            ->required(),
+                                            ->columnSpan(2),
                                         Group::make()
                                             ->columnSpanFull()
                                             ->columns(2)

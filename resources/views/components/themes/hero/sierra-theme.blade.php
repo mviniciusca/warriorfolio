@@ -4,7 +4,7 @@
 
 <section class="sierra-theme" id="sierra-theme">
     <div
-        class="{{ $hero->hero['is_mailing_active'] ? 'items-start' : 'items-center' }} mx-auto grid max-w-screen-xl gap-8 lg:grid-cols-2">
+        class="{{ $hero->hero['is_mailing_active'] ? 'items-start' : 'items-center' }} mx-auto grid max-w-screen-xl gap-8 md:gap-16 lg:grid-cols-2">
 
         <div class="mr-auto place-self-center lg:col-span-1">
 

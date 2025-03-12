@@ -21,6 +21,8 @@ class Section extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.core.modules.section');
+        return view('components.core.modules.section', [
+            //
+        ]);
     }
 }

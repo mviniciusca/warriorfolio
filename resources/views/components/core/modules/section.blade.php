@@ -1,25 +1,29 @@
 <div>
-    @if ($hero_core)
-        <x-hero.section />
+    @if ($hero_core ?? false)
+    <x-hero.section />
     @endif
 
-    @if ($about_core)
-        <x-about.section />
+    @if($blog_core ?? false)
+    <x-blog.featured-posts />
     @endif
 
-    @if ($portfolio_core)
-        <x-project.section />
+    @if ($about_core ?? false)
+    <x-about.section />
     @endif
 
-    @if ($clients_core)
-        <x-client.section />
+    @if ($portfolio_core ?? false)
+    <x-project.section />
     @endif
 
-    @if ($contact_core)
-        <x-contact.section />
+    @if ($clients_core ?? false)
+    <x-client.section />
     @endif
 
-    @if ($newsletter_core)
-        <x-newsletter.section />
+    @if ($contact_core ?? false)
+    <x-contact.section />
+    @endif
+
+    @if ($newsletter_core ?? false)
+    <x-newsletter.section />
     @endif
 </div>
