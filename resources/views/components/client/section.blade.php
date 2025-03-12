@@ -6,7 +6,7 @@
 ])
 
 @if ($module->clients)
-<x-core.layout :$with_padding :$is_filled :$button_header :$button_url id="clients">
+<x-core.layout :$with_padding :$is_filled :$button_header :$button_url :module_name="'customers'">
 
     @if ($data->customer['section_title'])
     <x-slot name="module_title">

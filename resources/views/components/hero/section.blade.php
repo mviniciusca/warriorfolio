@@ -4,7 +4,7 @@
 {{-- Hero Section Background --}}
 <x-hero.background :hero='$hero' />
 {{-- Hero Section --}}
-<x-core.layout :with_padding="false" :is_filled="$hero->hero['is_filled'] ?? false">
+<x-core.layout :module_name="'hero-section'" :with_padding="false" :is_filled="$hero->hero['is_filled'] ?? false">
     <section class="hero-section-section py-6 md:py-12 lg:py-24">
         <div class="{{ ($hero->hero['bumper_is_center'] ?? false) ?
         'mx-auto flex flex-col items-center justify-center' : ''

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
@@ -60,18 +61,25 @@ class EditNavigation extends EditRecord
                                     ->reorderable()
                                     ->columns(7)
                                     ->schema([
+                                        Checkbox::make('is_active')
+                                            ->helperText(__('Status'))
+                                            ->label(__('Visible'))
+                                            ->inline(false)
+                                            ->default(true)
+                                            ->columnSpan(1)
+                                            ->required(),
                                         TextInput::make('name')
                                             ->label(__('Title'))
                                             ->placeholder(__('hackable ♠'))
                                             ->prefixIcon('heroicon-o-window')
                                             ->helperText(__('Link Title'))
-                                            ->columnSpan(2)
+                                            ->columnSpan(3)
                                             ->required(),
                                         TextInput::make('url')
                                             ->label(__('URL'))
                                             ->prefixIcon('heroicon-o-link')
                                             ->helperText(__('Link URL'))
-                                            ->columnSpan(3)
+                                            ->columnSpan(2)
                                             ->required(),
                                         Select::make('target')
                                             ->columnSpan(1)
@@ -82,12 +90,6 @@ class EditNavigation extends EditRecord
                                                 '_blank' => __('New'),
                                             ])
                                             ->default('_self')
-                                            ->required(),
-                                        Toggle::make('is_active')
-                                            ->helperText(__('Status'))
-                                            ->label(__('Visible'))
-                                            ->inline(false)
-                                            ->default(true)
                                             ->required(),
                                     ]),
                             ]),

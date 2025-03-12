@@ -6,7 +6,7 @@
 ])
 
 @if ($module->contact)
-<x-core.layout :$with_padding :$is_filled :$button_header :$button_url id="contact">
+<x-core.layout :$with_padding :$is_filled :$button_header :$button_url :module_name="'contact'">
     @if ($data->contact['section_title'])
     <x-slot name="module_title">
         {!! $data->contact['section_title'] !!}
