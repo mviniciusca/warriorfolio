@@ -1,8 +1,8 @@
 <div>
-    <form wire:submit="create">
+    <form class="grid sm:flex items-center gap-3" wire:submit="create">
         {{ $this->form }}
-        <span class="mt-4">
-            <x-ui.button class="p-2 mt-4" type="submit" icon="chevron-forward-outline">
+        <span>
+            <x-ui.button class="mt-1 sm:-mt-2" type="submit" icon="mail-outline">
                 {{ $buttonText ?? __('Subscribe') }}
             </x-ui.button>
         </span>
