@@ -42,7 +42,7 @@
                     </div>
 
                     <x-curator-glider
-                        class="mx-auto h-40 w-full rounded-xl object-cover object-center sm:h-48 md:h-52 lg:h-60"
+                        class="mx-auto h-40 w-full rounded-xl dark:filter dark:grayscale dark:opacity-30 dark:hover:filter-none dark:hover:opacity-100 transition-all duration-100 object-cover object-center sm:h-48 md:h-52 lg:h-60"
                         :media="$project->image_cover" />
 
                     <div class="mt-4 flex flex-col justify-between gap-2 pb-4 text-xs">

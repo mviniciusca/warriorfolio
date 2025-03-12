@@ -5,8 +5,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/** Background Animation FX **/
 
+/** Background Animation FX **/
 .animate-opacity {
     animation: animateOpacity 2s ease-in;
 }
@@ -40,6 +40,44 @@
 .dark .bg-dots {
     background-image: radial-gradient(circle, #4b5563 1px, transparent 1px);
     background-size: 20px 20px;
+}
+
+/** Rocket Animation **/
+.rocket {
+    font-size: 48px;
+    margin-top: -50px;
+    animation: float 4s ease-in-out infinite;
+    position: absolute;
+    right: 10px;
+    z-index: 2;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(2deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.7;
+        transform: translateX(-50%) rotate(180deg) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) rotate(180deg) scale(1.1);
+    }
 }
 
 /** Main App **/
@@ -212,7 +250,7 @@
     }
 
     .notify {
-        @apply bg-black dark:bg-white animate-pulse lowercase w-1 h-1 -mt-2 rounded-full;
+        @apply bg-primary-500 animate-ping lowercase w-1 h-1 -mt-2 rounded-full;
 
     }
 

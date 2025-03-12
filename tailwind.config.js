@@ -13,7 +13,7 @@ export default {
     ],
     darkMode: 'class',
     safelist: [
-        'notify', 'tag', 'dg', 'tl', 'ht', 'animate-pulse',
+        'notify', 'tag', 'dg', 'tl', 'ht', 'animate-pulse', 'animate-ping', 'rocket'
     ],
     theme: {
         extend: {
