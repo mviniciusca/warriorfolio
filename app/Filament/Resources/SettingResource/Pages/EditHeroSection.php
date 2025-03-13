@@ -68,10 +68,8 @@ class EditHeroSection extends EditRecord
                                             ->helperText(__('Select the theme of your Hero Section.'))
                                             ->prefixIcon('heroicon-o-window')
                                             ->options([
-                                                'sierra'    => __('Sierra'),
-                                                'default'   => __('Default'),
-                                                'vercel'    => __('Vercel'),
-                                                'spotlight' => __('Spotlight'),
+                                                'sierra'  => __('Sierra'),
+                                                'default' => __('Default'),
                                             ])
                                             ->default('sierra'),
                                         Checkbox::make('hero.is_filled')

@@ -47,7 +47,7 @@
     font-size: 48px;
     margin-top: -50px;
     animation: float 4s ease-in-out infinite;
-    position: absolute;
+    position: relative;
     right: 10px;
     z-index: 2;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
