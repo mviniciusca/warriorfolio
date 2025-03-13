@@ -31,7 +31,7 @@
         </div>
         @endif
         @if ($module_subtitle)
-        <div class="subtitle {{ $is_center ? 'text-center max-w-5xl' : 'text-left w-full' }} subtitle">
+        <div class="subtitle {{ $is_center ? 'text-center max-w-4xl' : 'text-left w-full' }} text-sm subtitle">
             {{ $module_subtitle }}
         </div>
         @endif
