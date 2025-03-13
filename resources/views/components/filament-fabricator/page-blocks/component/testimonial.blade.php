@@ -1,17 +1,18 @@
 @aware(['page'])
 @props([
-    'bg_transparent' => null,
     'author' => null,
     'testimonial' => null,
     'author_info' => null,
     'picture' => null,
     'is_active' => null,
+    'is_bg_filled' => null,
+    'is_filled_full_width' => null,
+    'text_size' => null,1
 ])
 
-
 @if ($is_active)
-    <x-core.layout :with_padding='false'>
-        <section class="{{ $bg_transparent ? 'bg-transparent' : 'bg-secondary-100  dark:bg-secondary-950' }} py-4">
+    <x-core.layout :is_filled="$is_filled_full_width" :with_padding="false">
+        <section class="{{ $is_bg_filled ? 'section-filled' : 'bg-transparent' }} rounded-2xl py-4">
             <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-6 lg:py-16">
                 <figure class="mx-auto max-w-screen-xl">
                     <svg class="mx-auto mb-3 h-12" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,14 +22,14 @@
                     </svg>
                     @if ($testimonial)
                         <blockquote>
-                            <p class="font-serif text-2xl italic leading-tight tracking-tight">
+                            <p class="font-serif {{ $text_size ?? 'text-lg md:text-xl lg:text-2xl' }} italic leading-tight tracking-tight">
                                 "{!! $testimonial !!}"
                             </p>
                         </blockquote>
                     @endif
                     <figcaption class="mt-6 flex items-center justify-center gap-2 space-x-3">
                         @if ($picture)
-                            <x-curator-glider :media="$picture" class="h-7 w-7 rounded-full object-cover" />
+                            <x-curator-glider :media="$picture" class="h-10 w-10 rounded-full object-cover" />
                         @endif
                         <div class="flex items-center gap-1">
                             @if ($author)
@@ -43,7 +44,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
                                     </svg>
                                 </div>
-                                <div class="pl-3 text-sm font-light">
+                                <div class="pl-3 text-sm">
                                     {{ $author_info }}
                                 </div>
                             @endif
