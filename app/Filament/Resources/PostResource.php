@@ -100,7 +100,7 @@ class PostResource extends Resource
                         TextInput::make('slug')
                             ->prefixIcon('heroicon-o-link')
                             ->dehydrated()
-                            ->unique('pages', 'slug')
+                            ->unique('pages', 'slug', fn ($record) => $record)
                             ->label(__('Post Slug'))
                             ->required()
                             ->helperText(__('Unique. Automatic generated.'))

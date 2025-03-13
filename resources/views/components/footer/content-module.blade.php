@@ -1,5 +1,5 @@
 <section id="footer-content">
-    <div class="mx-auto p-4 py-6 lg:py-8">
+    <div class="mx-auto p-4 py-6 lg:py-8 text-sm">
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
                 <x-ui.logo />
@@ -8,39 +8,39 @@
                 <div>
                     <h2 class="mb-6 text-sm font-semibold uppercase">{{ __('Pages') }}
                     </h2>
-                    <ul class="font-medium">
+                    <ul class="font-medium text-sm">
                         @foreach ($navigation as $item)
-                            @isset($item['content'])
-                                @foreach ($item['content'] as $content)
-                                    @if ($content['is_active'])
-                                        <li class="mb-4">
-                                            <a target="{{ $content['target'] }}" href="{{ $content['url'] }}"
-                                                class="hover:underline">{!! $content['name'] !!}</a>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            @endisset
+                        @isset($item['content'])
+                        @foreach ($item['content'] as $content)
+                        @if ($content['is_active'])
+                        <li class="mb-4">
+                            <a target="{{ $content['target'] }}" href="{{ $content['url'] }}"
+                                class="hover:underline">{!! $content['name'] !!}</a>
+                        </li>
+                        @endif
+                        @endforeach
+                        @endisset
                         @endforeach
                     </ul>
                 </div>
                 @if ($social != null)
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold uppercase">
-                            {{ __('Follow') }}
-                        </h2>
-                        <ul class="font-medium">
-                            @foreach ($social as $item)
-                                @if ($item['is_active'])
-                                    <li class="mb-4 flex items-center">
-                                        <a target="_blank" href="{{ $item['profile_link'] }}"
-                                            class="hover:underline">{{ ucfirst($item['social_network']) }}
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold uppercase">
+                        {{ __('Follow') }}
+                    </h2>
+                    <ul class="font-medium">
+                        @foreach ($social as $item)
+                        @if ($item['is_active'])
+                        <li class="mb-4 flex items-center">
+                            <a target="_blank" href="{{ $item['profile_link'] }}" class="hover:underline">{{
+                                ucfirst($item['social_network']) }}
 
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
-                    </div>
+                            </a>
+                        </li>
+                        @endif
+                        @endforeach
+                    </ul>
+                </div>
                 @endif
             </div>
         </div>

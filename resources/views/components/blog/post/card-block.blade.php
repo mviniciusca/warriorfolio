@@ -19,8 +19,12 @@
         <a class="hover:underline" href="{{ env('APP_URL') . '/' . $item->slug }}">
             {{ Str::words($item->title, 13, '...') }}
     </h2>
-    <p class="mb-5 text-sm font-light md:text-base">
-        {!! Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->post->content)), 25, '...') !!}.
+    <p class="mb-5 text-sm">
+        {{ Str::words(
+    preg_replace('/<figure[^>]*>.*?<\/figure>/s', '', strip_tags($item->post->content, '<figure>')),
+    20,
+    '...'
+) }}
     </p>
     </a>
     <div class="flex items-center justify-between">
