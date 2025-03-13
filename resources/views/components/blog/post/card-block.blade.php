@@ -15,11 +15,11 @@
             {{ $item->created_at->diffForHumans() }}
         </span>
     </div>
-    <h2 class="mb-2 text-xl font-bold tracking-tight md:text-2xl">
+    <h2 class="mb-2 text-xl font-bold tracking-tight md:text-lg">
         <a class="hover:underline" href="{{ env('APP_URL') . '/' . $item->slug }}">
             {{ Str::words($item->title, 13, '...') }}
     </h2>
-    <p class="mb-5 text-sm">
+    <p class="mb-5 text-sm opacity-70">
         {{ Str::words(
     preg_replace('/<figure[^>]*>.*?<\/figure>/s', '', strip_tags($item->post->content, '<figure>')),
     20,

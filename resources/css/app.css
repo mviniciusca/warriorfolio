@@ -44,7 +44,7 @@
 
 /** Rocket Animation **/
 .rocket {
-    font-size: 48px;
+    font-size: 42px;
     margin-top: -50px;
     animation: float 4s ease-in-out infinite;
     position: relative;
@@ -149,7 +149,7 @@
 
     .header-title,
     .module-title {
-        @apply lg:text-3xl md:text-3xl text-2xl leading-none tracking-tight font-bold;
+        @apply text-2xl leading-none tracking-tight font-bold;
     }
 
     .subtitle,
