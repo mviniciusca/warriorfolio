@@ -1,9 +1,11 @@
 {{-- Courses Timeline Feed --}}
 
-<div id="profile-course-header" class="text-sm font-semibold mb-8 profile-course-header">{{ __('Courses &
-    Certifications') }}</div>
+<div id="profile-course-header" class="text-sm font-semibold mb-8 flex items-center gap-2 profile-course-header">
+    <x-ui.ionicon :icon="'school-sharp'" />
+    {{ __('Certifications') }}
+</div>
 
-<ol class="relative border-s border-secondary-100 dark:border-secondary-800">
+<ol class="relative border-s border-secondary-100 dark:border-secondary-800 p-4">
     @foreach ($courses as $course)
     <li class="mb-10 ms-4">
         <div

@@ -6,7 +6,6 @@ $linkedin = collect($profile->social)->firstWhere('social_network', 'linkedin')[
 
 <div
     class="my-4 lg:my-0 flex flex-wrap items-center justify-between gap-2 rounded-lg border-none border-secondary-100 bg-transparent p-6 lg:p-0 dark:border dark:border-secondary-900 dark:bg-transparent lg:inline-block lg:items-start lg:justify-normal lg:border-none lg:bg-transparent dark:lg:bg-transparent">
-
     <section id="profile-section-one" class="mx-auto">
         <div class="mb-8" id="profile-avatar">
             @if ($profile->avatar)
@@ -20,8 +19,6 @@ $linkedin = collect($profile->social)->firstWhere('social_network', 'linkedin')[
             @if ($profile->count() === 0)
             <x-ui.empty-section :auth="'Update your Profile'" />
             @endif
-
-
             @if ($profile->is_open_to_work)
             @if ($linkedin)
             <a href="{{ 'https://' . $linkedin }}" target="_blank">
@@ -35,19 +32,9 @@ $linkedin = collect($profile->social)->firstWhere('social_network', 'linkedin')[
                 </div>
                 @if ($linkedin)
             </a>
-
-
             @endif
             @endif
         </div>
-
-
-
-
-
-
-
-
         @if ($profile->user->name)
         <div class="mb-1 text-lg font-semibold tracking-tight">
             <span>{{ $profile->user->name }}</span>
@@ -56,7 +43,6 @@ $linkedin = collect($profile->social)->firstWhere('social_network', 'linkedin')[
     </section>
     <section id="profile-section-two" class="mx-auto">
         <div class="flex flex-wrap items-center justify-center gap-4 md:justify-between lg:inline-block">
-
             @if ($profile->job_position || $profile->localization)
             <div class="md:mb-4 tracking-tight">
                 @if ($profile->job_position)
@@ -69,11 +55,6 @@ $linkedin = collect($profile->social)->firstWhere('social_network', 'linkedin')[
                 @endif
             </div>
             @endif
-
-
-
-
-
             @if ($profile->is_downloadable && $profile->document)
             <div class="py-2">
                 <a target="new" href="{{ asset('storage/' . $profile->document) }}">
@@ -82,11 +63,7 @@ $linkedin = collect($profile->social)->firstWhere('social_network', 'linkedin')[
                 </a>
             </div>
             @endif
-
-
         </div>
-
-
         <div class="mx-auto my-8" id="social-network">
             <x-ui.social-network />
         </div>
