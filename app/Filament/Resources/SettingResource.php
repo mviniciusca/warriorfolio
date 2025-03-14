@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\SettingResource\Pages;
 use App\Filament\Resources\SettingResource\RelationManagers;
 use App\Models\Setting;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
@@ -118,26 +119,28 @@ class SettingResource extends Resource
                     ]),
                 Section::make(__('Core Module Decoupling'))
                     ->relationship('core')
-                    ->columns(4)
+                    ->columns(5)
                     ->description(__('Couple or decouple core modules from your default layout.'))
                     ->icon('heroicon-o-cpu-chip')
                     ->schema([
-                        Toggle::make('header')
+                        Checkbox::make('header')
                             ->label(__('Header')),
-                        Toggle::make('footer')
+                        Checkbox::make('footer')
                             ->label(__('Footer')),
-                        Toggle::make('newsletter')
+                        Checkbox::make('newsletter')
                             ->label(__('Newsletter')),
-                        Toggle::make('contact')
+                        Checkbox::make('contact')
                             ->label(__('Contact')),
-                        Toggle::make('about')
+                        Checkbox::make('about')
                             ->label(__('About')),
-                        Toggle::make('clients')
+                        Checkbox::make('clients')
                             ->label(__('Clients')),
-                        Toggle::make('hero')
+                        Checkbox::make('hero')
                             ->label(__('Hero Section')),
-                        Toggle::make('portfolio')
+                        Checkbox::make('portfolio')
                             ->label(__('Portfolio')),
+                        Checkbox::make('blog')
+                            ->label(__('Blog')),
                     ]),
                 Section::make(__('Core Modules Global Visibility Control'))
                     ->description(__('Enable or disable modules. This is a global setting and will hide the module from entire application.'))
@@ -147,25 +150,28 @@ class SettingResource extends Resource
                             ->columns(4)
                             ->relationship('module')
                             ->schema([
-                                Toggle::make('about')
+                                Checkbox::make('about')
                                     ->label(__('About'))
                                     ->inline(),
-                                Toggle::make('clients')
+                                Checkbox::make('blog')
+                                    ->label(__('Blog'))
+                                    ->inline(),
+                                Checkbox::make('clients')
                                     ->label(__('Clients'))
                                     ->inline(),
-                                Toggle::make('contact')
+                                Checkbox::make('contact')
                                     ->label(__('Contact'))
                                     ->inline(),
-                                Toggle::make('footer')
+                                Checkbox::make('footer')
                                     ->label(__('Footer'))
                                     ->inline(),
-                                Toggle::make('hero')
+                                Checkbox::make('hero')
                                     ->label(__('Hero Section'))
                                     ->inline(),
-                                Toggle::make('newsletter')
+                                Checkbox::make('newsletter')
                                     ->label(__('Newsletter'))
                                     ->inline(),
-                                Toggle::make('portfolio')
+                                Checkbox::make('portfolio')
                                     ->label(__('Portfolio'))
                                     ->inline(),
                             ]),

@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Blog;
 
+use App\Models\Module;
 use App\Models\Page;
 use App\Models\Setting;
 use Closure;
@@ -24,8 +25,9 @@ class FeaturedPosts extends Component
     public function render(): View|Closure|string
     {
         return view('components.blog.featured-posts', [
-            'info'  => Setting::first('blog')->blog,
-            'posts' => Page::with('post')
+            'module_blog' => Module::first('blog')->blog,
+            'info'        => Setting::first('blog')->blog,
+            'posts'       => Page::with('post')
                 ->with('user')
                 ->where('is_active', '=', true)
                 ->where('style', '=', 'blog')
