@@ -5,18 +5,12 @@
     <x-hero.background :hero='$hero' />
     {{-- Hero Section --}}
     <x-core.layout :module_name="'hero-section'" :with_padding="false" :is_filled="$hero->hero['is_filled'] ?? false">
-        <section class="hero-section-section py-6 md:py-12 lg:py-24">
+        <section class="hero-section-section py-8">
             <div class="{{ ($hero->hero['bumper_is_center'] ?? false) ?
             'mx-auto flex flex-col items-center justify-center' : ''
-            }}">
+                                                                            }}">
 
-                {{-- Info Bumper --}}
-                <x-ui.info-bumper :is_active="$hero->hero['bumper_is_active'] ?? null"
-                    :is_animated="$hero->hero['bumper_is_animated'] ?? null"
-                    :bumper_icon="$hero->hero['bumper_icon'] ?? null" :bumper_title="$hero->hero['bumper_title'] ?? null"
-                    :bumper_tag="$hero->hero['bumper_tag'] ?? null" :is_center="$hero->hero['bumper_is_center'] ?? null"
-                    :bumper_link="$hero->hero['bumper_link'] ?? null" :bumper_target="$hero->hero['bumper_target'] ?? null"
-                    :bumper_role="$hero->hero['bumper_role'] ?? null" />
+
 
                 {{-- Theme --}}
                 @if ($hero->hero['theme'])

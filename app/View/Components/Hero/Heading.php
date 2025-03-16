@@ -1,13 +1,12 @@
 <?php
 
-namespace App\View\Components\Blog;
+namespace App\View\Components\Hero;
 
-use App\Models\Module;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Notes extends Component
+class Heading extends Component
 {
     /**
      * Create a new component instance.
@@ -22,8 +21,6 @@ class Notes extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.blog.notes', [
-            'module_blog' => Module::first('blog')->blog,
-        ]);
+        return view('components.hero.heading');
     }
 }

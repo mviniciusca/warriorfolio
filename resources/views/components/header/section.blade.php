@@ -1,9 +1,9 @@
 @props(['is_filled' => false, 'navigation' => null])
 
-{{-- Header Section  --}}
+{{-- Header Section --}}
 {{-- Background Image --}}
 <x-ui.background />
-{{--  Navigation / Logo / Dark Mode  --}}
+{{-- Navigation / Logo / Dark Mode --}}
 <x-core.layout :with_padding="false" :$is_filled>
     {{-- Header Section --}}
     <div class="-mt-4 flex items-center justify-between py-2">
@@ -43,7 +43,7 @@
         </div>
     </div>
     {{-- Light Beam --}}
-    <div class="z-50 mx-auto -mt-3 animate-pulse">
+    <div class="z-50 h-2 mx-auto -mt-5 animate-pulse">
         <img src="{{ asset('img/core/core-ui-elements/beams/pink-beam.png') }}" alt="light-beam" id="menu-gipper-board">
     </div>
 </x-core.layout>
