@@ -3,6 +3,7 @@
 namespace App\View\Components\Blog;
 
 use App\Models\Module;
+use App\Models\Profile;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -24,6 +25,7 @@ class Notes extends Component
     {
         return view('components.blog.notes', [
             'module_blog' => Module::first('blog')->blog,
+            'profile'     => Profile::first(),
         ]);
     }
 }

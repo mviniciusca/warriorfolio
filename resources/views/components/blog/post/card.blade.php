@@ -1,12 +1,11 @@
 @props(['item' => null])
 
 <div wire:key="{{ $item->id }}">
-    <a class="opacity-80 transition-all duration-100 hover:opacity-100 active:opacity-20"
-        href="{{ env('APP_URL') . '/' . $item->slug }}">
+    <a class="hover:opacity-80 active:opacity-20 transition-all duration-100"
+        href="{{ config('app.url', env('APP_URL')) . '/' . $item->slug }}">
         <div
-            class="flex w-full justify-between overflow-hidden border-b border-b-secondary-100 py-8 dark:border-b-secondary-800">
+            class="flex w-full justify-between overflow-hidden border-b border-b-secondary-100 py-6 dark:border-b-secondary-800">
             <div class="w-2/3">
-
                 <div class="mb-4 flex items-center gap-1 font-mono text-xs uppercase">
                     <span>
                         @if ($item->user->profile->avatar)
@@ -20,16 +19,13 @@
                         {{ $item->user->name . ' • ' . $item->created_at->diffForHumans() }}
                     </span>
                 </div>
-
-
-
-                <div class="text-md mb-2 font-bold leading-tight tracking-tighter md:text-2xl">
+                <div class="text-md mb-2 font-bold leading-tight tracking-tighter md:text-lg">
                     {{ Str::words($item->title, 18, '...') }}
                 </div>
-                <p class="text-xs opacity-80 md:text-base">
+                <p class="text-xs md:text-sm">
                     {{ Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->post->content)), 15, '...') }}
                 </p>
-                <span class="mt-4 flex items-center justify-between font-mono text-sm uppercase">
+                <span class="mt-4 flex items-center justify-between font-mono text-xs uppercase">
                     <span class="flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
@@ -38,7 +34,7 @@
                         </svg>
                         <p>{{ $item->post->category->name }}</p>
                     </span>
-                    <span class="flex items-center gap-1 font-mono uppercase">
+                    <span class="flex items-center gap-1 font-mono text-xs uppercase">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -50,7 +46,7 @@
                 </span>
             </div>
             <div
-                class="flex h-24 w-24 items-center justify-center rounded-lg border border-secondary-300 bg-secondary-50 object-center p-4 text-center dark:border-secondary-700 dark:bg-secondary-800 lg:h-32 lg:w-32">
+                class="flex h-20 w-20 justify-center rounded-lg border border-secondary-300 bg-secondary-50 object-center items-center p-4 text-center dark:border-secondary-900 dark:bg-secondary-950 lg:h-24 lg:w-24">
                 @if ($item->post->img_cover)
                     <x-curator-glider class="rounded-lg object-cover" :media="$item->post->img_cover" />
                 @else

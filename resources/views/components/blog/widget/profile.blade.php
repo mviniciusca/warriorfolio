@@ -1,3 +1,4 @@
+{{-- Deprecated: use profile about profile component --}}
 @props(['profile' => null])
 
 <div
@@ -19,16 +20,16 @@
                 @if ($data->profile->linkedin)
                     <a href="{{ 'https://' . $data->profile->linkedin }}" target="_blank">
                 @endif
-                <div
-                    class="absolute -ml-12 -mt-10 inline-block w-auto rounded-sm bg-gradient-to-tl from-primary-500 to-indigo-500 p-1 text-xs text-white lg:-mt-16">
-                    <span class="flex items-center gap-1 font-semibold">
-                        <ion-icon class="h-3 w-3" name="logo-linkedin"></ion-icon>
-                        {{ __('Open to Work') }}
-                    </span>
-                </div>
-                @if ($data->profile->linkedin)
-                    </a>
-                @endif
+                    <div
+                        class="absolute -ml-12 -mt-10 inline-block w-auto rounded-sm bg-gradient-to-tl from-primary-500 to-indigo-500 p-1 text-xs text-white lg:-mt-16">
+                        <span class="flex items-center gap-1 font-semibold">
+                            <ion-icon class="h-3 w-3" name="logo-linkedin"></ion-icon>
+                            {{ __('Open to Work') }}
+                        </span>
+                    </div>
+                    @if ($data->profile->linkedin)
+                        </a>
+                    @endif
             @endif
         </div>
         @if ($data->profile->user->name)
@@ -61,13 +62,12 @@
                 </div>
             @endif
         </div>
-        {{--  Social Icons --}}
+        {{-- Social Icons --}}
         <div class="mx-auto my-8" id="social-network">
             <x-ui.social-network />
         </div>
-        {{--  Skills --}}
-        <div id="skills"
-            class="my-4 flex flex-wrap content-center items-center justify-center text-sm tracking-tight">
+        {{-- Skills --}}
+        <div id="skills" class="my-4 flex flex-wrap content-center items-center justify-center text-sm tracking-tight">
             @if ($data->profile->skills)
                 @foreach (explode(',', $data->profile->skills) as $skill)
                     <span

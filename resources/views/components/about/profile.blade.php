@@ -5,15 +5,15 @@
 @endphp
 
 <div
-    class="my-4 lg:my-0 flex flex-wrap items-center justify-between gap-2 rounded-lg border-none border-secondary-100 bg-transparent p-6 lg:p-0 dark:border dark:border-secondary-900 dark:bg-transparent lg:inline-block lg:items-start lg:justify-normal lg:border-none lg:bg-transparent dark:lg:bg-transparent">
+    class="my-4 lg:my-0 flex flex-wrap items-center justify-between gap-2 rounded-lg border-none border-secondary-100 bg-transparent px-6 lg:p-0 dark:border dark:border-secondary-900 dark:bg-transparent lg:inline-block lg:items-start lg:justify-normal lg:border-none lg:bg-transparent dark:lg:bg-transparent">
     <section id="profile-section-one" class="mx-auto">
         <div class="mb-8" id="profile-avatar">
             @if ($profile->avatar)
                 <x-curator-glider
-                    class="relative mx-auto my-2  lg:w-36 md:w-28 w-28 p-2 rounded-full object-cover dark:bg-secondary-800 bg-secondary-100 lg:my-8"
+                    class="relative mx-auto my-2 lg:w-32 md:w-28 w-28 p-2 rounded-full object-cover dark:bg-secondary-800 bg-secondary-100 lg:my-2"
                     :media="$profile->avatar" />
             @else
-                <img class="relative mx-auto my-2  lg:w-36 md:w-28 w-28  p-2 rounded-full object-cover dark:bg-secondary-800 bg-secondary-100 lg:my-8"
+                <img class="relative mx-auto my-2 lg:w-32 md:w-28 w-28  p-2 rounded-full object-cover dark:bg-secondary-800 bg-secondary-100 lg:my-2"
                     src="{{ asset('img/core/profile-picture.png') }}" />
             @endif
             @if ($profile->count() === 0)
