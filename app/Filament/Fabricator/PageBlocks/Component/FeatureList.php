@@ -56,6 +56,10 @@ class FeatureList extends PageBlock
                                         Group::make()
                                             ->columns(2)
                                             ->schema([
+                                                Checkbox::make('is_heading_active')
+                                                    ->default(true)
+                                                    ->helperText(__('Show / Hide the title and subtitle.'))
+                                                    ->label(__('Show Title and Subtitle')),
                                                 Checkbox::make('is_center')
                                                     ->default(true)
                                                     ->helperText(__('Align the Title and Subtitle to the center.'))

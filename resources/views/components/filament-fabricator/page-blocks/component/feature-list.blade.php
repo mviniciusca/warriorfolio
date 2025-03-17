@@ -18,11 +18,12 @@
     'module_subtitle' => null,
     'module_title' => null,
     'with_padding' => true,
+    'is_heading_active' => true,
 ])
 
 @if ($is_active)
     <x-core.layout :$with_padding :$is_filled :$button_header :$button_url :$is_center>
-        @if ($module_title || $module_subtitle)
+           @if (($module_title || $module_subtitle) && $is_heading_active)
             <div>
                 <x-slot name="module_title" class="py-8 text-center">
                     {!! $module_title !!}
@@ -32,7 +33,7 @@
                 </x-slot>
             </div>
         @endif
-        <div class="mx-auto mt-8 lg:mt-16">
+            <div class="mx-auto mt-8 lg:mt-16">
             <div
                 class="{{ $is_content_center ? 'text-center justify-center' : 'text-left' }} {{ $columns == 2 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : '' }} {{ $columns == 3 ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4' : '' }} {{ $columns == 4 ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6' : '' }} grid grid-cols-1 gap-4">
                 @foreach ($features as $key => $item)
