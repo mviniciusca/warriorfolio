@@ -7,6 +7,21 @@
 @tailwind utilities;
 
 /** Background Animation FX **/
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animation-bg-spin {
+    animation: spin 60s linear infinite;
+}
+
 .animate-opacity {
     animation: animateOpacity 2s ease-in;
 }
@@ -246,7 +261,7 @@
 
     /** UI Components: Tag, Notification Tag**/
     .tag {
-        @apply bg-primary-600 animate-pulse lowercase text-xs px-2 font-semibold text-white rounded-full;
+        @apply bg-primary-600 animate-pulse uppercase font-mono text-xs px-1 font-semibold text-white;
     }
 
     .notify {
