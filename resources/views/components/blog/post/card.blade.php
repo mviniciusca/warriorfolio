@@ -4,7 +4,7 @@
     <a class="hover:opacity-80 active:opacity-20 transition-all duration-100"
         href="{{ config('app.url', env('APP_URL')) . '/' . $item->slug }}">
         <div
-            class="flex w-full justify-between overflow-hidden border-b border-b-secondary-100 py-6 dark:border-b-secondary-800">
+            class="flex w-full justify-between overflow-hidden border-b border-b-secondary-200/50 py-6 dark:border-b-secondary-800/50">
             <div class="w-2/3">
                 <div class="mb-4 flex items-center gap-1 font-mono text-xs uppercase">
                     <span>
@@ -46,11 +46,11 @@
                 </span>
             </div>
             <div
-                class="flex h-20 w-20 justify-center rounded-lg border border-secondary-300 bg-secondary-50 object-center items-center p-4 text-center dark:border-secondary-900 dark:bg-secondary-950 lg:h-24 lg:w-24">
+                class="flex h-20 w-20 justify-center rounded-lg border border-secondary-200 bg-secondary-50 object-center items-center p-4 text-center dark:border-secondary-800 dark:bg-secondary-950 lg:h-24 lg:w-24">
                 @if ($item->post->img_cover)
                     <x-curator-glider class="rounded-lg object-cover" :media="$item->post->img_cover" />
                 @else
-                    <img class="mb-5 rounded-lg opacity-50 grayscale filter dark:invert"
+                    <img class="rounded-lg opacity-50 grayscale filter dark:invert"
                         src="{{ asset('img/core/logo-app.svg') }}" />
                 @endif
             </div>

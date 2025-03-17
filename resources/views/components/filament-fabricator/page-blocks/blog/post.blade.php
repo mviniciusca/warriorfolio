@@ -1,9 +1,9 @@
 @aware(['page'])
-@props(['title' => $page->title])
+@props(['title' => $page->title ?? null])
 
-<x-core.layout :with_padding="true">
+<x-core.layout :with_padding="false">
     @if ($page->post->is_active)
-        <main class="antialiased">
+        <main class="antialiased my-16">
             <div class="mx-auto flex max-w-screen-xl justify-between">
                 <article
                     class="format format-sm sm:format-base lg:format-lg format-blue dark:format-invert mx-auto w-full max-w-3xl">
@@ -13,27 +13,21 @@
                             {{ \Carbon\Carbon::parse($page->created_at)->format('F d, Y ') . __('in ') .
             $page->post->category->name }}
                         </p>
-                        {{-- Title --}}
                         <h1
-                            class="mt-2 text-3xl font-bold leading-snug tracking-tighter dark:text-white/90 lg:mb-4 lg:text-4xl">
+                            class="mt-2 text-3xl font-bold leading-snug tracking-tighter dark:text-white/90 lg:mb-4 lg:text-3xl">
                             {{ $page->title }}
                         </h1>
-                        {{-- Subtitle --}}
-                        <h2 class="text-md pb-4 leading-tight tracking-tight">
+                        <h2 class="text-sm pb-4 leading-tight tracking-tight">
                             {{ $page->post->resume }}
                         </h2>
-                        {{-- Info --}}
                     </section>
-                    {{-- Profile --}}
                     <x-blog.profile :$page />
-                    {{-- Share --}}
-                    <div class="pb-8 pt-4">
-                        <x-blog.post.share />
-                    </div>
-                    <div class="content py-4 font-serif text-xl leading-relaxed">
+                    <div class="content py-4 font-serif text-base leading-relaxed">
                         {!! $page->post->content !!}
                     </div>
-                    {{-- Article --}}
+                    <div class="py-4 opacity-30 hover:opacity-100 transition-all duration-300">
+                        <x-blog.post.share />
+                    </div>
                     <x-blog.post.articles :page="$page" />
                 </article>
             </div>

@@ -1,7 +1,8 @@
 @props(['page' => null])
 
-<div>
-    <section class="my-3 flex items-start border-b border-b-secondary-200 not-italic dark:border-b-secondary-800">
+<div class="opacity-90 hover:opacity-100 transition-all duration-300">
+    <section
+        class="my-3 flex items-start border-b-none border-b-secondary-200/50 pb-4 not-italic dark:border-b-secondary-800/50">
         <div class="mr-3 inline-flex items-start py-4 text-sm">
             @if ($page->user->profile->avatar)
                 <x-curator-glider class="relative mx-auto my-2 mr-4 max-h-14 max-w-14 rounded-full object-cover"
@@ -11,11 +12,12 @@
                     src="{{ asset('img/core/profile-picture.png') }}" />
             @endif
             <div>
-                <p rel="author" class="mt-1 font-mono text-base font-semibold uppercase">
+                <p rel="author" class="my-1  text-sm font-semibold">
                     {{ $page->user->name }}
                 </p>
-                <p class="-mt-1 pb-1 font-mono text-xs uppercase">{!! $page->user->profile->job_position !!} -
-                    {{ $page->user->profile->localization }}</p>
+                <p class="mb-2 text-xs">
+                    {!! $page->user->profile->job_position !!} - {{ $page->user->profile->localization }}
+                </p>
                 <p> <x-ui.social-network /></p>
             </div>
         </div>

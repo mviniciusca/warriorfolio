@@ -1,8 +1,8 @@
 {{-- Notes (Blog) --}}
 
 @if($module_blog ?? false)
-    <x-core.layout :with_padding="true">
-        <div class="mx-auto">
+    <x-core.layout :with_padding="false">
+        <div class="mx-auto my-16">
             <div class="flex flex-wrap">
                 <div class="order-2 mx-auto w-full lg:order-1 lg:w-3/4 lg:pr-24">
                     <x-blog.homepage />
