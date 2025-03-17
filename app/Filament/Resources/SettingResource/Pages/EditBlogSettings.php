@@ -4,10 +4,9 @@ namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
-use Filament\Actions;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -119,6 +118,10 @@ class EditBlogSettings extends EditRecord
                                     ->label(__('Show Logo')),
                                 CuratorPicker::make('blog.logo')
                                     ->label(__('Blog Logo')),
+                                Checkbox::make('blog.is_invert_logo')
+                                    ->default(false)
+                                    ->helperText(__('Invert the logo color when dark mode is active.'))
+                                    ->label(__('Invert Logo Color')),
                             ]),
                     ]),
             ]);

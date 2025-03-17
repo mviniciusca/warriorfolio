@@ -10,10 +10,10 @@
         <div class="mb-8" id="profile-avatar">
             @if ($profile->avatar)
                 <x-curator-glider
-                    class="relative mx-auto my-2 lg:w-32 md:w-28 w-28 p-2 rounded-full object-cover dark:bg-secondary-800 bg-secondary-100 lg:my-2"
+                    class="relative mx-auto my-2 lg:w-36 md:w-28 w-28 p-2 rounded-full object-cover dark:bg-secondary-800 bg-secondary-100 lg:my-2"
                     :media="$profile->avatar" />
             @else
-                <img class="relative mx-auto my-2 lg:w-32 md:w-28 w-28  p-2 rounded-full object-cover dark:bg-secondary-800 bg-secondary-100 lg:my-2"
+                <img class="relative mx-auto my-2 lg:w-36 md:w-28 w-28 p-2 rounded-full object-cover dark:bg-secondary-800 bg-secondary-100 lg:my-2"
                     src="{{ asset('img/core/profile-picture.png') }}" />
             @endif
             @if ($profile->count() === 0)
@@ -24,8 +24,8 @@
                     <a href="{{ 'https://' . $linkedin }}" target="_blank">
                 @endif
                     <div
-                        class="absolute -ml-14 -mt-6 md:-ml-14 md:-mt-8 lg:-ml-14 lg:-mt-14 inline-block bg-black border border-white/20 rounded p-1 text-xs text-white">
-                        <span class="flex items-center font-xs gap-1">
+                        class="absolute -ml-14 -mt-6 md:-ml-14 md:-mt-8 lg:-ml-14 lg:-mt-9 inline-block bg-black border border-white/20 rounded p-1 text-xs text-white">
+                        <span class="flex items-center text-xs font-semibold gap-1">
                             <ion-icon class="h-4 w-4" name="logo-linkedin"></ion-icon>
                             {{ __('Open to Work') }}
                         </span>

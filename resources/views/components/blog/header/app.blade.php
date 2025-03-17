@@ -7,7 +7,8 @@
                 <div
                     class="hidden h-16 w-16 overflow-hidden rounded-lg bg-secondary-100/50 object-cover object-center p-2 dark:bg-secondary-900 sm:block sm:h-24 sm:w-24">
                     @if ($data->blog['logo'] ?? false)
-                        <x-curator-glider class="h-20 w-20 overflow-hidden object-cover object-center"
+                        <x-curator-glider
+                            class="h-20 w-20 overflow-hidden object-cover object-center {{ ($data->blog['is_invert_logo'] ?? false) ? 'invert-0 dark:invert' : ''}}"
                             :media="$data->blog['logo']" />
                     @else
                         <img class="invert dark:invert-0" src="{{ asset('img/core/profile-picture.png') }}" alt="warriorfolio-logo">
