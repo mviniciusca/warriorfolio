@@ -1,5 +1,3 @@
-{{-- Info Bumper Component --}}
-
 @props([
     'bumper_icon',
     'bumper_title',
@@ -12,6 +10,7 @@
     'is_animated' => true
 ])
 
+{{-- Info Bumper Component --}}
 @if ($is_active)
     <div class="{{ $is_center ? 'text-center' : 'text-left' }} my-4 mx-auto">
         @if ($bumper_link && $bumper_target)
