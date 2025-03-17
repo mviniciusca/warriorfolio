@@ -58,7 +58,7 @@
             @if ($profile->is_downloadable && $profile->document)
                 <div class="py-2">
                     <a target="new" href="{{ asset('storage/' . $profile->document) }}">
-                        <x-hero.button-group class="text-xs" :style="'filled'" :title="__('Download Resume')"
+                        <x-hero.button-group class="text-xs" :style="'outlined'" :title="__('Download Resume')"
                             :icon="'download-outline'" />
                     </a>
                 </div>
