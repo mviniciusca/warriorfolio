@@ -111,6 +111,11 @@
         @apply bg-secondary-50 dark:bg-black;
     }
 
+    /** Saturn UI **/
+    .saturn-ui,
+    .saturn-ui-primary {
+        @apply bg-black text-white dark:bg-white dark:text-black;
+    }
 
     /** Highlighted text **/
     .text-gradient,
