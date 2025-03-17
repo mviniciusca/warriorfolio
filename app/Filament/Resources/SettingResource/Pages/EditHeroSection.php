@@ -237,10 +237,9 @@ class EditHeroSection extends EditRecord
                                         FileUpload::make('hero.featured_image')
                                             ->label('Featured Image')
                                             ->directory('hero')
-                                            ->maxSize(60000)
                                             ->columnSpan(2)
                                             ->imageEditor()
-                                            ->helperText(__('💡 1200 x 600 px is the perfect match!')),
+                                            ->helperText(__('💡 1200 x 600 px and 16:9 is the perfect match!')),
                                     ]),
                                 Section::make(__('Background'))
                                     ->description(__('Controls for Background Image for your Hero Section.'))

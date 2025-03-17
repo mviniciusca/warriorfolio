@@ -1,7 +1,6 @@
 @props(['hero'])
 
 {{-- Hero Section: Sierra Theme --}}
-
 <section class="sierra-theme {{ (!$hero->hero['featured_image_is_active'] ?? false) ? 'mb-8' : '' }}" id="sierra-theme">
     <div
         class="{{ $hero->hero['is_mailing_active'] ? 'items-start' : 'items-center' }} mx-auto grid max-w-screen-xl gap-8 md:gap-16 lg:grid-cols-2 mt-8">
@@ -14,7 +13,6 @@
                         :target="$button['button_target']" :url="$button['button_url']" :icon="$button['icon']" />
                 @endforeach
             </div>
-
             {{-- Newsletter Module --}}
             @if (data_get($hero, 'hero.is_mailing_active') ?? true)
                 <div class="animate__animated animate__slideInDown max-w-80 py-4">
@@ -22,7 +20,6 @@
                     @livewire('newsletter')
                 </div>
             @endif
-
         </div>
         {{-- Hero Section: Featured Image --}}
         @if (data_get($hero, 'hero.featured_image_is_active'))
@@ -40,5 +37,4 @@
         </div>
     </div>
     </div>
-
 </section>

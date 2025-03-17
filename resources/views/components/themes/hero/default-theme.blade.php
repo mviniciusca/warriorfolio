@@ -13,15 +13,16 @@
         </div>
     </div>
     </div>
-    @if (data_get($hero, 'hero.featured_image_is_active'))
+    @if ($hero->hero['featured_image_is_active'] ?? false)
         <div class="animate__animated animate__fadeInUp animate__delay-0s hidden lg:col-span-5 lg:mt-0 lg:flex">
             {{-- Hero Section: Image --}}
-            @if (data_get($hero, 'hero.featured_image'))
+            @if ($hero->hero['featured_image'] ?? false)
                 <div class="mx-auto mt-8" id="hero-featured-image">
                     <img class="mx-auto rounded-2xl" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
                         alt="hero-section-featured-image" />
             @else
-                <img src="https://placehold.co/1200x600" alt="Hero Image" class="h-auto w-full rounded-lg shadow-xl" />
+                <img src="{{ asset('img/core/bg/hero-default-bg.png') }}" alt="Default Hero Image"
+                    class="h-auto w-full rounded-lg shadow-xl" />
             @endif
             </div>
     @endif
