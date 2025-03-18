@@ -42,10 +42,32 @@ class EditBlogSettings extends EditRecord
                     ->schema([
                         Toggle::make('blog.module_is_active')
                             ->default(true)
-                            ->helperText(__('Show or hide the blog section on the website. This not affects your publications.'))
-                            ->label(__('Show Notes Module')),
+                            ->helperText(__('To hide your blog system completely, you can disable the module in Application Settings > Core Modules Global Visibility Control '))
+                            ->label(__('Show Featured Posts from Notes Module')),
                     ]),
-                Section::make(__('Notes Section'))
+                Section::make('Articles Settings')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->icon('heroicon-o-book-open')
+                    ->description(__('This module shows your latest posts in your Post Page. All fields are optional.'))
+                    ->schema([
+                        TextInput::make('blog.more_articles_title')
+                            ->label(__('More Articles Title'))
+                            ->placeholder(__('hackable ♠'))
+                            ->prefixIcon('heroicon-o-pencil')
+                            ->default(__('Latest Stories'))
+                            ->helperText(__('HTML allowed. Use the class "tl" to highlight a word')),
+                        TextInput::make('blog.more_articles_btn_title')
+                            ->label(__('More Articles Button Title'))
+                            ->placeholder(__('hackable ♠'))
+                            ->prefixIcon('heroicon-o-pencil')
+                            ->default(__('More Stories'))
+                            ->helperText(__('HTML allowed. Use the class "tl" to highlight a word')),
+                    ]),
+                Section::make(__('Featured Posts from Notes Section'))
+                    ->collapsible()
+                    ->collapsed()
                     ->description(__('This module shows your latest posts from your Notes. All fields are optional.'))
                     ->icon('heroicon-o-pencil')
                     ->columns(2)
@@ -69,9 +91,11 @@ class EditBlogSettings extends EditRecord
                             ->label(__('URL'))
                             ->helperText(__('Define the Header Button URL')),
                     ]),
-                Section::make(__('Notes Pages Settings'))
+                Section::make(__('Additional Features'))
+                    ->collapsible()
+                    ->collapsed()
                     ->description(__('Manage your Notes Pages Settings'))
-                    ->icon('heroicon-o-document')
+                    ->icon('heroicon-o-bolt')
                     ->columns(3)
                     ->schema([
                         Toggle::make('blog.is_share_active')
@@ -83,9 +107,11 @@ class EditBlogSettings extends EditRecord
                             ->label(__('Trend Widget Feature'))
                             ->helperText(__('Enable or disable the trend widget feature.')),
                     ]),
-                Section::make(__('Notes Settings'))
+                Section::make(__('Header Settings'))
+                    ->collapsible()
+                    ->collapsed()
                     ->description(__('Manage your Notes Settings and Public Definitions.'))
-                    ->icon('heroicon-o-cog-6-tooth')
+                    ->icon('heroicon-o-photo')
                     ->columns(3)
                     ->schema([
                         Group::make()

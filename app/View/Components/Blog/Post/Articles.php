@@ -3,6 +3,7 @@
 namespace App\View\Components\Blog\Post;
 
 use App\Models\Page;
+use App\Models\Setting;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -27,6 +28,7 @@ class Articles extends Component
                 ->where('is_active', '=', true)
                 ->sortByDesc('created_at')
                 ->take(5),
+                'setting' => Setting::first('blog')->blog,
             ]);
     }
 }
