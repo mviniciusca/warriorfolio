@@ -296,4 +296,10 @@
     .attachment__caption {
         @apply hidden;
     }
+
+    /** Heading Description **/
+
+    #heading-description-content p {
+        @apply my-4;
+    }
 }

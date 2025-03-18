@@ -19,7 +19,7 @@
                 class="dg header-title {{ $is_center && (!$image || !$is_featured_image_active) ? 'text-center' : 'text-left' }}">
                 {!! $heading !!}
             </h2>
-            <div
+            <div id="heading-description-content"
                 class="{{ $is_center && (!$image || !$is_featured_image_active) ? 'text-center' : 'text-left' }} mb-6 my-8 text-sm leading-snug">
                 {!! $content !!}
             </div>
