@@ -18,7 +18,7 @@
                 </span>
                 <span>
                     <a href="{{ config('app.url') . '/' . config('warriorfolio.app_blog_basepath', 'blog/') }}">
-                        <x-ui.button :style="'outlined'" :icon="'arrow-forward-sharp'">
+                        <x-ui.button class="text-xs font-semibold" :style="'outlined'" :icon="'arrow-forward-sharp'">
                             {{ ($setting['more_articles_btn_title'] ?? null) ?? __('View All') }}
                         </x-ui.button>
                     </a>
