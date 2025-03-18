@@ -9,10 +9,15 @@
     'icon' => 'arrow-forward-sharp',
     'is_center' => true,
     'module_name' => null,
+    'is_section_filled_inverted' => false,
 ])
 
-<div id="{{ $module_name ?? 'app' . rand(1, 2) }}"
-    class="{{ $with_padding ? 'py-12 md:py-16 lg:py-20' : 'py-4' }} {{ $is_filled ? 'section-filled' : '' }} px-4">
+<div id="{{ $module_name ?? 'app-' . rand(1, 10) }}"
+    class="{{ $with_padding ? 'py-12 md:py-16 lg:py-20' : 'py-4' }}
+    {{ $is_section_filled_inverted ? 'bg-black text-white dark:bg-white dark:text-black' : '' }}
+     {{ $is_filled ? 'section-filled duration-300 transition-all' : '' }}
+
+     px-4">
     <div class="mx-auto max-w-7xl">
         @if ($module_title)
             <div class="{{ $button_header ? 'flex justify-between flex-initial' : '' }}py-4">
@@ -35,7 +40,7 @@
                 {{ $module_subtitle }}
             </div>
         @endif
-        <div class="{{ $with_padding ? 'mt-4 md:mt-8 lg:mt-16' : 'mt-4' }}">
+        <div class="my-4">
             {!! $slot !!}
         </div>
     </div>

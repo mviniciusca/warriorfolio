@@ -11,6 +11,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Set;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class FeatureList extends PageBlock
@@ -27,7 +28,7 @@ class FeatureList extends PageBlock
                     ->collapsed()
                     ->schema([
                         Group::make()
-                            ->columns(3)
+                            ->columns(2)
                             ->schema([
                                 Checkbox::make('is_active')
                                     ->default(true)
@@ -37,17 +38,22 @@ class FeatureList extends PageBlock
                                 Checkbox::make('is_filled')
                                     ->default(false)
                                     ->inline()
-                                    ->helperText(__('Fill background with dark color.'))
+                                    ->helperText(__('Fill background with dark accent color. Works in light and dark mode.'))
                                     ->label(__('Fill Section Background')),
+                                Checkbox::make('is_section_filled_inverted')
+                                    ->default(false)
+                                    ->inline()
+                                    ->helperText(__('Fill background with light color in dark mode and dark color in light mode.'))
+                                    ->label(__('Fill Section Background Inverse')),
                                 Checkbox::make('with_padding')
                                     ->default(true)
                                     ->inline()
-                                    ->helperText(__('Remove padding from the top and bottom of the section. Default is true.'))
+                                    ->helperText(__('Add or Remove padding from the top and bottom of the section. Default is Active.'))
                                     ->label(__('Section Vertical Padding')),
                             ]),
                         Group::make()
                             ->schema([
-                                Section::make(__('Title and Subtitle'))
+                                Section::make(__('Section Title and Subtitle'))
                                     ->description(__('Feature List Title and Subtitle'))
                                     ->collapsed()
                                     ->columns(1)
@@ -76,7 +82,7 @@ class FeatureList extends PageBlock
                                             ->rows(3)
                                             ->helperText(__('The subtitle of the feature list.')),
                                     ]),
-                                Section::make(__('Settings'))
+                                Section::make(__('Cards Settings'))
                                     ->description(__('Feature List Settings'))
                                     ->collapsed()
                                     ->columns(2)
