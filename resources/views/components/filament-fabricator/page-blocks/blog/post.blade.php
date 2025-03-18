@@ -22,7 +22,7 @@
                         </h2>
                     </section>
                     <x-blog.profile :$page />
-                    <div class="content py-4 font-serif text-base leading-relaxed">
+                    <div class="content font-serif text-base leading-relaxed">
                         {!! $page->post->content !!}
                     </div>
                     <div class="py-4 opacity-30 hover:opacity-100 transition-all duration-300">
