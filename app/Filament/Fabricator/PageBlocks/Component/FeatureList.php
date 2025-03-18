@@ -71,11 +71,9 @@ class FeatureList extends PageBlock
                                             ->maxLength(255)
                                             ->placeholder('hackable ♠')
                                             ->helperText(__('The title of the feature list.')),
-                                        TextInput::make('module_subtitle')
+                                        Textarea::make('module_subtitle')
                                             ->label(__('Subtitle. (Optional)'))
-                                            ->prefixIcon('heroicon-o-pencil')
-                                            ->maxLength(500)
-                                            ->placeholder('hackable ♠')
+                                            ->rows(3)
                                             ->helperText(__('The subtitle of the feature list.')),
                                     ]),
                                 Section::make(__('Settings'))
@@ -97,12 +95,10 @@ class FeatureList extends PageBlock
                                                     ->default(3)
                                                     ->label(__('Card Grid'))
                                                     ->helperText(__('Select the number of columns to display the cards. Default is 3.')),
-
                                                 Checkbox::make('is_content_center')
                                                     ->default(true)
                                                     ->helperText(__('Align the card content to the center.'))
                                                     ->label(__('Align to Center')),
-
                                                 Checkbox::make('is_color_icon')
                                                     ->default(true)
                                                     ->helperText(__('Color the icon with the primary color.'))
@@ -130,7 +126,7 @@ class FeatureList extends PageBlock
                             ]),
                         Repeater::make('features')
                             ->columns(4)
-                            ->live()
+                            ->live(true)
                             ->label(__('Card'))
                             ->collapsed()
                             ->cloneable()
@@ -141,7 +137,7 @@ class FeatureList extends PageBlock
                             })
                             ->schema([
                                 TextInput::make('title')
-                                    ->live()
+                                    ->live(true)
                                     ->required()
                                     ->columnSpan(2)
                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
