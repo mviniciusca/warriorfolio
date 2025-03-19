@@ -57,6 +57,9 @@ class EditPortfolioSection extends EditRecord
                             ->default(false)
                             ->label('Fill Section Background')
                             ->helperText('Fill the background of this section with a secondary default color.'),
+                        Toggle::make('portfolio.is_section_filled_inverted')
+                            ->label(__('Fill Section Background Inverse'))
+                            ->helperText(__('Fill background with light color in dark mode and dark color in light mode.')),
                         TextInput::make('portfolio.section_title')
                             ->label('Portfolio Section Title')
                             ->placeholder(__('hackable ♠'))
