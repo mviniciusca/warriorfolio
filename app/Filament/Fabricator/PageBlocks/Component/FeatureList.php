@@ -27,34 +27,41 @@ class FeatureList extends PageBlock
                     ->icon('heroicon-o-squares-2x2')
                     ->collapsed()
                     ->schema([
-                        Group::make()
-                            ->columns(2)
+                        Section::make()
+                            ->description(__('Module Settings'))
+                            ->icon('heroicon-o-cog-6-tooth')
+                            ->collapsible()
+                            ->collapsed()
                             ->schema([
-                                Checkbox::make('is_active')
-                                    ->default(true)
-                                    ->inline()
-                                    ->helperText(__('Show / Hide this module.'))
-                                    ->label(__('Show Module')),
-                                Checkbox::make('is_filled')
-                                    ->default(false)
-                                    ->inline()
-                                    ->helperText(__('Fill background with dark accent color. Works in light and dark mode.'))
-                                    ->label(__('Fill Section Background')),
-                                Checkbox::make('is_section_filled_inverted')
-                                    ->default(false)
-                                    ->inline()
-                                    ->helperText(__('Fill background with light color in dark mode and dark color in light mode.'))
-                                    ->label(__('Fill Section Background Inverse')),
-                                Checkbox::make('with_padding')
-                                    ->default(true)
-                                    ->inline()
-                                    ->helperText(__('Add or Remove padding from the top and bottom of the section. Default is Active.'))
-                                    ->label(__('Section Vertical Padding')),
+                                Group::make()
+                                    ->columns(2)
+                                    ->schema([
+                                        Checkbox::make('is_active')
+                                            ->default(true)
+                                            ->inline()
+                                            ->helperText(__('Show / Hide this module.'))
+                                            ->label(__('Show Module')),
+                                        Checkbox::make('is_filled')
+                                            ->default(false)
+                                            ->inline()
+                                            ->helperText(__('Fill background with dark accent color. Works in light and dark mode.'))
+                                            ->label(__('Fill Section Background')),
+                                        Checkbox::make('is_section_filled_inverted')
+                                            ->default(false)
+                                            ->inline()
+                                            ->helperText(__('Fill background with light color in dark mode and dark color in light mode.'))
+                                            ->label(__('Fill Section Background Inverse')),
+                                        Checkbox::make('with_padding')
+                                            ->default(true)
+                                            ->inline()
+                                            ->helperText(__('Add or Remove padding from the top and bottom of the section. Default is Active.'))
+                                            ->label(__('Section Vertical Padding')),
+                                    ]),
                             ]),
                         Group::make()
                             ->schema([
-                                Section::make(__('Section Title and Subtitle'))
-                                    ->description(__('Feature List Title and Subtitle'))
+                                Section::make()
+                                    ->description(__('Title and Subtitle'))
                                     ->collapsed()
                                     ->columns(1)
                                     ->icon('heroicon-o-pencil')
@@ -82,11 +89,66 @@ class FeatureList extends PageBlock
                                             ->rows(3)
                                             ->helperText(__('The subtitle of the feature list.')),
                                     ]),
-                                Section::make(__('Cards Settings'))
-                                    ->description(__('Feature List Settings'))
+                                Section::make()
+                                    ->collapsed()
+                                    ->collapsible()
+                                    ->icon('heroicon-o-rectangle-stack')
+                                    ->description(__('Features'))
+                                    ->schema([
+                                        Repeater::make('features')
+                                            ->columns(4)
+                                            ->live(true)
+                                            ->label(__('Cards'))
+                                            ->addActionLabel(__('Add Card'))
+                                            ->collapsed()
+                                            ->cloneable()
+                                            ->itemLabel(function (array $state): string {
+                                                $title = $state['title'] ?? __('Card');
+
+                                                return preg_replace('/<.*?>.*?<\/.*?>/', '', $title);
+                                            })
+                                            ->schema([
+                                                TextInput::make('title')
+                                                    ->live(true)
+                                                    ->required()
+                                                    ->columnSpan(2)
+                                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                                    ->helperText(__('The title of the feature.'))
+                                                    ->maxLength(255)
+                                                    ->label(__('Title of the feature.')),
+                                                TextInput::make('icon')
+                                                    ->label(__('Icon (optional)'))
+                                                    ->placeholder('icon-name')
+                                                    ->columnSpan(2)
+                                                    ->prefixIcon('heroicon-o-cube')
+                                                    ->maxLength(255)
+                                                    ->helperText(__('Ionicon Name (e.g: heart-outline)')),
+                                                Textarea::make('description')
+                                                    ->columnSpanFull()
+                                                    ->rows(3)
+                                                    ->helperText(__('Here you can talk about the feature in detail.'))
+                                                    ->label('Description (optional)'),
+                                                Group::make()
+                                                    ->columnSpanFull()
+                                                    ->columns(3)
+                                                    ->schema([
+                                                        TextInput::make('link')
+                                                            ->columnSpan(2)
+                                                            ->label(__('Link (Optional)'))
+                                                            ->helperText(__('URL Link to this card. Optional.'))
+                                                            ->prefixIcon('heroicon-o-link'),
+                                                        Toggle::make('is_new_window')
+                                                            ->inline(false)
+                                                            ->label(__('New Window'))
+                                                            ->helperText(__('Opens in a new Window')),
+                                                    ]),
+                                            ]),
+                                    ]),
+                                Section::make()
+                                    ->description(__('Cards Settings'))
                                     ->collapsed()
                                     ->columns(2)
-                                    ->icon('heroicon-o-cog-6-tooth')
+                                    ->icon('heroicon-o-squares-2x2')
                                     ->schema([
                                         Group::make()
                                             ->schema([
@@ -128,53 +190,6 @@ class FeatureList extends PageBlock
                                                     ->helperText(__('Show border in each card.'))
                                                     ->label(__('With Border')),
                                             ]),
-                                    ]),
-                            ]),
-                        Repeater::make('features')
-                            ->columns(4)
-                            ->live(true)
-                            ->label(__('Card'))
-                            ->collapsed()
-                            ->cloneable()
-                            ->itemLabel(function (array $state): string {
-                                $title = $state['title'] ?? __('Card');
-
-                                return preg_replace('/<.*?>.*?<\/.*?>/', '', $title);
-                            })
-                            ->schema([
-                                TextInput::make('title')
-                                    ->live(true)
-                                    ->required()
-                                    ->columnSpan(2)
-                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                                    ->helperText(__('The title of the feature.'))
-                                    ->maxLength(255)
-                                    ->label(__('Title of the feature.')),
-                                TextInput::make('icon')
-                                    ->label(__('Icon (optional)'))
-                                    ->placeholder('icon-name')
-                                    ->columnSpan(2)
-                                    ->prefixIcon('heroicon-o-cube')
-                                    ->maxLength(255)
-                                    ->helperText(__('Ionicon Name (ex: heart-outline)')),
-                                Textarea::make('description')
-                                    ->columnSpanFull()
-                                    ->rows(3)
-                                    ->helperText(__('Here you can talk about the feature in detail.'))
-                                    ->label('Description (optional)'),
-                                Group::make()
-                                    ->columnSpanFull()
-                                    ->columns(3)
-                                    ->schema([
-                                        TextInput::make('link')
-                                            ->columnSpan(2)
-                                            ->label(__('Link (Optional)'))
-                                            ->helperText(__('URL Link to this card. Optional.'))
-                                            ->prefixIcon('heroicon-o-link'),
-                                        Toggle::make('is_new_window')
-                                            ->inline(false)
-                                            ->label(__('New Window'))
-                                            ->helperText(__('Opens in a new Window')),
                                     ]),
                             ]),
                     ]),

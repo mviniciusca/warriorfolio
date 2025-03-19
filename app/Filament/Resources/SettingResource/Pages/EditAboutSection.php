@@ -58,6 +58,9 @@ class EditAboutSection extends EditRecord
                         Toggle::make('about.section_fill')
                             ->label(__('Fill Section Background'))
                             ->helperText(__('Fill the background of this section with a secondary default color.')),
+                        Toggle::make('about.is_section_filled_inverted')
+                            ->label(__('Fill Section Background Inverse'))
+                            ->helperText(__('Fill background with light color in dark mode and dark color in light mode.')),
                         TextInput::make('about.section_title')
                             ->placeholder(__('hackable ♠'))
                             ->label(__('About Section Title'))
