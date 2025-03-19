@@ -57,6 +57,9 @@ class EditClientSection extends EditRecord
                     Toggle::make('customer.section_fill')
                         ->label(__('Fill Section Background'))
                         ->helperText(__('Fill the background of this section with a secondary default color.')),
+                    Toggle::make('customer.is_section_filled_inverted')
+                        ->label(__('Fill Section Background Inverse'))
+                        ->helperText(__('Fill background with light color in dark mode and dark color in light mode.')),
                     TextInput::make('customer.section_title')
                         ->label(__('Customers Section Text'))
                         ->helperText(__('HTML allowed. Use the class text-highlight to highlight a word in the text'))

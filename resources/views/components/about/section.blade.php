@@ -10,6 +10,10 @@ App\View\Components\About\Section.php
 --}}
 
 @props([
+    'profile' => null,
+    'courses' => null,
+    'sliders' => null,
+    'module' => null,
     'with_padding' => true,
     'button_header' => null,
     'button_url' => null,
@@ -17,18 +21,18 @@ App\View\Components\About\Section.php
     'is_section_filled_inverted' => $data->about['is_section_filled_inverted'] ?? false,
 ])
 
-@if ($module->about)
+@if ($module->about ?? false)
 
     <x-core.layout :module_name="'about'" :$is_section_filled_inverted :$with_padding :$is_filled :$button_header
         :$button_url>
-        @if ($data->about['section_title'])
+        @if ($data->about['section_title'] ?? false)
             <x-slot name="module_title">
-                {!! $data->about['section_title'] !!}
+                {!! $data->about['section_title'] ?? null !!}
             </x-slot>
         @endif
-        @if ($data->about['section_subtitle'])
+        @if ($data->about['section_subtitle'] ?? false)
             <x-slot name="module_subtitle">
-                {!! $data->about['section_subtitle'] !!}
+                {!! $data->about['section_subtitle'] ?? null !!}
             </x-slot>
         @endif
 

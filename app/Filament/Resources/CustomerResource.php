@@ -3,19 +3,17 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CustomerResource\Pages;
-use App\Filament\Resources\CustomerResource\RelationManagers;
 use App\Models\Customer;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
-use Filament\Forms;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CustomerResource extends Resource
 {
@@ -51,24 +49,23 @@ class CustomerResource extends Resource
                 Group::make()
                     ->schema([
                         CuratorPicker::make('logo')
-                            ->maxSize(2000)
                             ->directory('public/customer')
-                            ->helperText('The logo of the customer. Max 2MB')
-                            ->label('Brand Logo')
+                            ->helperText(__('💡 Transparent file will be best for the logo.'))
+                            ->label(__('Logo'))
                             ->required(),
                     ]),
                 Group::make()->schema([
-                    Forms\Components\TextInput::make('name')
+                    TextInput::make('name')
                         ->maxLength(100)
                         ->helperText('The name of the customer. Max 100 characters.')
-                        ->label('Customer Name (optional)'),
-                    Forms\Components\TextInput::make('url')
+                        ->label(__('Name (Optional)')),
+                    TextInput::make('url')
                         ->maxLength(240)
                         ->helperText('The website URL of the customer. Max 240 characters.')
                         ->prefixIcon('heroicon-o-link')
                         ->prefix('https://www.')
                         ->columnSpan(2)
-                        ->label('Website URL (optional)')
+                        ->label(__('Website URL (optional)'))
                         ->columnSpanFull(),
                 ]),
             ])
