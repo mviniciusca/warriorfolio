@@ -20,7 +20,7 @@
      px-4">
     <div class="mx-auto max-w-7xl">
         @if ($module_title)
-            <div class="{{ $button_header ? 'flex justify-between flex-initial' : '' }}py-4">
+            <div class="{{ $button_header ? 'flex justify-between flex-initial' : '' }} py-4">
                 <p class="dg header-title {{ $is_center ? 'text-center' : 'text-left' }}">{{ $module_title }}</p>
                 @if ($button_header)
                     @if ($button_url)
@@ -40,7 +40,7 @@
                 {{ $module_subtitle }}
             </div>
         @endif
-        <div class="my-4">
+        <div id="app-container-{{ rand(1,10) }}">
             {!! $slot !!}
         </div>
     </div>
