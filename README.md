@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">⚔️ Warriorfolio 2.1 ⚔️</h1>
+  <h1 align="center">🪐 Warriorfolio 2 - Saturn UI </h1>
 </p>
 
 <p align="center">
@@ -17,16 +17,11 @@ Developed to be 100% managed through the Control Panel, without the need for dee
 
 ## ✨ Features
 
-### New in version 2.1 - March, 2025
-- 🚀 Core updated to Laravel 11
-- 📝 Notes: your blog
-- 📨 Message sending via SMTP
-- 🔔 System Notifications
-- 📊 Log reports
-- 🌍 Multi-language support
-- 🎨 Hero section themes
+### New in version 2.1.3 - March, 2025
+- 🪐 Saturn UI
 
-### Core features
+
+### Core
 - 🛠️ Robust and flexible Control Panel
 - 🔄 Maintenance Mode and Discovery Mode
 - 🧩 Customizable core modules
