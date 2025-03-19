@@ -1,3 +1,12 @@
+{{--
+
+Core > View: Default Layout
+----------------------------------------------------------------
+This is the default layout component for the website. Used for website and components.
+-------------------------------------------------------------------
+
+--}}
+
 @aware(['page'])
 @props([
     'module_title' => null,
@@ -13,11 +22,7 @@
 ])
 
 <div id="{{ $module_name ?? 'app-' . rand(1, 10) }}"
-    class="{{ $with_padding ? 'py-12 md:py-16 lg:py-20' : 'py-4' }}
-    {{ $is_section_filled_inverted ? 'bg-secondary-950 text-secondary-300 dark:bg-secondary-50 dark:text-secondary-900' : '' }}
-     {{ $is_filled ? 'section-filled duration-300 transition-all' : '' }}
-
-     px-4">
+    class="{{ $with_padding ? 'py-12 md:py-16 lg:py-20' : 'py-4' }} {{ $is_section_filled_inverted ? 'bg-secondary-950 text-secondary-300 dark:bg-secondary-50 dark:text-secondary-900' : '' }} {{ $is_filled ? 'section-filled duration-300 transition-all' : '' }} px-4">
     <div class="mx-auto max-w-7xl">
         @if ($module_title)
             <div class="{{ $button_header ? 'flex justify-between flex-initial' : '' }} py-4">
@@ -26,21 +31,21 @@
                     @if ($button_url)
                         <a href="{{ $button_url }}">
                     @endif
-                        <x-ui.button :$icon :style="'outlined'">
-                            {!! $button_header !!}
-                        </x-ui.button>
+                    <x-ui.button :$icon :style="'outlined'">
+                        {!! $button_header !!}
+                    </x-ui.button>
                 @endif
-                    @if ($button_url)
-                        </a>
-                    @endif
+                @if ($button_url)
+                    </a>
+                @endif
             </div>
         @endif
         @if ($module_subtitle)
-            <div class="subtitle {{ $is_center ? 'text-center max-w-4xl' : 'text-left w-full' }} text-sm subtitle">
+            <div class="subtitle {{ $is_center ? 'text-center max-w-4xl' : 'text-left w-full' }} subtitle text-sm">
                 {{ $module_subtitle }}
             </div>
         @endif
-        <div id="app-container-{{ rand(1,10) }}">
+        <div id="app-container-{{ rand(1, 10) }}">
             {!! $slot !!}
         </div>
     </div>

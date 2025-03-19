@@ -1,3 +1,13 @@
+{{--
+
+View: Maintenance Mode
+----------------------------------------------------------------
+This component is responsible for rendering the maintenance mode section of the website.
+-------------------------------------------------------------------
+Data:
+App\View\Components\Maintenance\Section.php
+
+--}}
 @props(['maintenance' => null])
 
 <section class="maintenance-mode h-screen w-full">

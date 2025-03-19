@@ -1,3 +1,14 @@
+{{--
+
+Core Component: Project / Portfolio Section
+----------------------------------------------------------------
+This component is responsible for rendering the project / portfolio section of the website.
+-------------------------------------------------------------------
+Data:
+App\View\Components\Project\Section.php
+
+--}}
+
 @props([
     'button_header' => null,
     'button_url' => null,
@@ -8,14 +19,8 @@
 
 @if ($module->portfolio)
 
-    <x-core.layout
-        :module_name="'portfolio'"
-        :$with_padding
-        :$is_filled
-        :$is_section_filled_inverted
-        :$button_header
-        :$button_url
-     >
+    <x-core.layout :module_name="'portfolio'" :$with_padding :$is_filled :$is_section_filled_inverted :$button_header
+        :$button_url>
 
         @if ($data->portfolio['section_title'])
             <x-slot name="module_title">
@@ -33,8 +38,7 @@
                     @foreach ($projects as $project)
                         <div data-modal-target="{{ $project->id }}" data-modal-toggle="{{ $project->id }}"
                             class="{{ $project->content ? 'cursor-pointer' : 'cursor-auto' }} w-1/2 p-2 sm:w-1/2 md:w-1/3 lg:w-1/4">
-                            <div class="{{ $project->category->color ? '' : 'bg-primary-600' }} z-30 absolute ml-2 mt-2 flex flex-wrap items-center
-                                gap-1 rounded-md px-3 py-1 text-xs font-bold text-white"
+                            <div class="{{ $project->category->color ? '' : 'bg-primary-600' }} absolute z-30 ml-2 mt-2 flex flex-wrap items-center gap-1 rounded-md px-3 py-1 text-xs font-bold text-white"
                                 style="background-color: {{ $project->category->hex_color }}">
                                 @if ($project->category->icon)
                                     <x-ui.ionicon :icon="$project->category->icon" />
@@ -44,9 +48,7 @@
                                 {{ $project->category->name }}
                             </div>
                             <x-curator-glider
-                                class="mx-auto h-40 w-full rounded-xl dark:filter
-                                {{ $is_section_filled_inverted ? 'dark:grayscale-0 dark:opacity-100 opacity-30 grayscale hover:grayscale-0 hover:opacity-100' : 'dark:grayscale' }}
-                                dark:opacity-30 dark:hover:filter-none dark:hover:opacity-100 transition-all duration-100 object-cover object-center sm:h-48 md:h-52 lg:h-60"
+                                class="{{ $is_section_filled_inverted ? 'dark:grayscale-0 dark:opacity-100 opacity-30 grayscale hover:grayscale-0 hover:opacity-100' : 'dark:grayscale' }} mx-auto h-40 w-full rounded-xl object-cover object-center transition-all duration-100 dark:opacity-30 dark:filter dark:hover:opacity-100 dark:hover:filter-none sm:h-48 md:h-52 lg:h-60"
                                 :media="$project->image_cover" />
                             <div class="mt-4 flex flex-col justify-between gap-2 pb-4 text-xs">
                                 <p class="font-medium opacity-100">{{ $project->name }}</p>

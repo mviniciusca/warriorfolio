@@ -1,16 +1,26 @@
+{{--
+
+Core Component: Hero Section / Theme / Sierra Theme
+----------------------------------------------------------------
+This is the Sierra Theme for Hero Section
+-------------------------------------------------------------------
+Data:
+App\View\Components\Themes\Hero\Sierra-Theme.php
+
+--}}
+
 @props(['hero'])
 
-{{-- Hero Section: Sierra Theme --}}
-<section class="sierra-theme {{ (!$hero->hero['featured_image_is_active'] ?? false) ? 'mb-8' : '' }}" id="sierra-theme">
+<section class="sierra-theme {{ !$hero->hero['featured_image_is_active'] ?? false ? 'mb-8' : '' }}" id="sierra-theme">
     <div
-        class="{{ $hero->hero['is_mailing_active'] ? 'items-start' : 'items-center' }} mx-auto grid max-w-screen-xl gap-8 md:gap-16 lg:grid-cols-2 mt-8">
+        class="{{ $hero->hero['is_mailing_active'] ? 'items-start' : 'items-center' }} mx-auto mt-8 grid max-w-screen-xl gap-8 md:gap-16 lg:grid-cols-2">
         <div class="mr-auto place-self-center lg:col-span-1">
             <x-hero.heading :hero="$hero" />
             {{-- Hero Section Button --}}
             <div class="animate__animated animate__fadeInUp animate__delay-1s z-10 mt-8 flex gap-4">
                 @foreach ($hero->hero['buttons'] as $button)
-                    <x-hero.button-group :title="$button['button_title']" :style="$button['button_style']"
-                        :target="$button['button_target']" :url="$button['button_url']" :icon="$button['icon']" />
+                    <x-hero.button-group :title="$button['button_title']" :style="$button['button_style']" :target="$button['button_target']" :url="$button['button_url']"
+                        :icon="$button['icon']" />
                 @endforeach
             </div>
             {{-- Newsletter Module --}}
@@ -26,15 +36,15 @@
             <div class="animate__animated animate__fadeInUp animate__delay-1s flex justify-center lg:col-span-1">
                 <div class="mt-8 flex items-center" id="hero-featured-image">
                     @if (data_get($hero, 'hero.featured_image'))
-                        <img class="rounded-lg lg:max-h-max" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
-                            alt="hero-section-image" />
+                        <img class="rounded-lg lg:max-h-max"
+                            src="{{ asset('storage/' . $hero->hero['featured_image']) }}" alt="hero-section-image" />
                     @else
-                        <img class="rounded-lg lg:max-h-max" src="{{ asset('img/core/demo/default-landing-image.png') }}"
-                            alt="hero-section-image" />
+                        <img class="rounded-lg lg:max-h-max"
+                            src="{{ asset('img/core/demo/default-landing-image.png') }}" alt="hero-section-image" />
                     @endif
                 </div>
         @endif
-        </div>
+    </div>
     </div>
     </div>
 </section>
