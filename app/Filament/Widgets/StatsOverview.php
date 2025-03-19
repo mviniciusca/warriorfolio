@@ -18,7 +18,7 @@ class StatsOverview extends BaseWidget
             Stat::make(__('Website Status'), '')
                 ->url(route('filament.admin.resources.settings.edit', Auth::user()?->id))
                 ->icon('heroicon-o-wifi')
-                ->value(view('components.badge', ['status' => Maintenance::first()]))
+                ->value(view('components.filament.dashboard.badge', ['status' => Maintenance::first()]))
                 ->description(Maintenance::first()->is_active ? __('Maintenance Mode') : __('Website is Live'))
                 ->color('primary'),
             Stat::make(__('Mailing List'), Newsletter::counter())
