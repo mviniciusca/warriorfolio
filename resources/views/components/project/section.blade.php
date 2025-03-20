@@ -54,10 +54,10 @@ App\View\Components\Project\Section.php
                                 <p class="font-medium opacity-100">{{ $project->name }}</p>
 
                                 @if ($project->content)
-                                    <span class="flex items-center font-semibold hover:text-primary-500">
+                                    <div class="flex items-center font-semibold hover:opacity-50 active:opacity-10 mr-0 hover:ml-4 transition-all duration-300">
                                         {{ __('See Full Project') }}
-                                        <x-ui.ionicon :icon="'chevron-forward-outline'" />
-                                    </span>
+                                        <x-ui.ionicon :icon="'arrow-forward-sharp'" />
+                                    </div>
                                 @endif
                             </div>
                         </div>
