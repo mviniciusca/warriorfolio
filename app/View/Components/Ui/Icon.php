@@ -11,9 +11,11 @@ class Icon extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public ?string $name;
+
+    public function __construct($name = null)
     {
-        //
+        $this->name = $name ?? null;
     }
 
     /**

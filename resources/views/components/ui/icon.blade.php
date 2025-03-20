@@ -1,15 +1,15 @@
-@props(['name' => '', 'href' => null])
+@props(['name', 'href' => null])
 
 <div class="inline-flex">
     @if ($href)
-        <a href="https://{{ $href }}" target="_blank">
-    @endif
-    @if ($name)
+    <a href="https://{{ $href }}" target="_blank">
+        @endif
+        @if ($name)
         <ion-icon name="{{ 'logo-' . $name }}"
-            class="mr-4 text-2xl transition-all duration-100 hover:opacity-90 active:opacity-30">
+            class="mr-1 text-2xl transition-all duration-300 hover:opacity-40 active:opacity-20">
         </ion-icon>
         @if ($href)
-            </a>
-        @endif
+    </a>
+    @endif
     @endif
 </div>
