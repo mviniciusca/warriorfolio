@@ -6,7 +6,7 @@
     <div class="relative max-h-full max-w-screen-lg mx-auto">
         <!-- Modal content -->
         <div
-            class="relative rounded-lg {{ $is_section_filled_inverted ? 'bg-secondary-950 text-secondary-300 dark:bg-secondary-50 dark:text-secondary-950' : 'dark:bg-secondary-950 dark:text-white' }}">
+            class="relative rounded-lg {{ $is_section_filled_inverted ? 'bg-secondary-950 text-secondary-300 dark:bg-secondary-50 dark:text-secondary-950' : 'dark:bg-secondary-950 dark:text-white bg-secondary-50' }}">
             <!-- Modal body -->
             <div class="mb-4 space-y-4 p-12 my-12">
                 <div class="flex items-end">
