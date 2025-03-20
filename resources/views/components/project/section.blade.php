@@ -38,7 +38,7 @@ App\View\Components\Project\Section.php
                     @foreach ($projects as $project)
                         <div data-modal-target="{{ $project->id }}" data-modal-toggle="{{ $project->id }}"
                             class="{{ $project->content ? 'cursor-pointer' : 'cursor-auto' }} w-1/2 p-2 sm:w-1/2 md:w-1/3 lg:w-1/4">
-                            <div class="{{ $project->category->color ? '' : 'bg-primary-600' }} absolute z-30 ml-2 mt-2 flex flex-wrap items-center gap-1 rounded-md px-3 py-1 text-xs font-bold text-white"
+                            <div class="{{ $project->category->color ? '' : 'bg-secondary-950' }} absolute z-30 ml-2 mt-2 flex flex-wrap items-center gap-1 rounded-md px-3 py-1 text-xs font-bold text-white"
                                 style="background-color: {{ $project->category->hex_color }}">
                                 @if ($project->category->icon)
                                     <x-ui.ionicon :icon="$project->category->icon" />

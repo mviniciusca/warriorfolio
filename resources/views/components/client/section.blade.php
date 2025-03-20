@@ -35,10 +35,12 @@ App\View\Components\Customer\Section.php
                 {!! $data->customer['section_subtitle'] ?? null !!}
             </x-slot>
         @endif
-        <section id="clients" class="my-8 flex flex-wrap content-center items-center justify-center gap-8 pb-12">
+        <section id="clients" class="my-8 flex flex-wrap content-center items-center justify-items-center justify-center transition-all duration-300 gap-8 pb-12">
             @foreach ($customers as $client)
                 <div
-                    class="{{ !$is_section_filled_inverted ? 'dark:border-secondary-700 hover:opacity-100 dark:bg-secondary-900 dark:opacity-80 bg-white opacity-50 dark:hover:opacity-100' : 'border-secondary-700 dark:border-white hover:opacity-100 dark:hover:opacity-100 bg-secondary-900 dark:bg-white opacity-80 dark:opacity-50' }} flex min-h-24 w-1/4 items-center rounded-md border grayscale transition-all duration-300 hover:grayscale-0 md:w-1/4 lg:w-1/6">
+                    class="{{ !$is_section_filled_inverted ? 'dark:border-secondary-700 hover:opacity-100 dark:bg-secondary-50 dark:opacity-80 bg-white opacity-50 dark:hover:opacity-100' :
+                     'border-secondary-700 dark:border-white hover:opacity-100 dark:hover:opacity-100 bg-secondary-50 dark:bg-white opacity-80 dark:opacity-50' }}
+                     flex min-h-24 w-1/4 items-center rounded-md border transition-all duration-300  md:w-1/4 lg:w-1/6 hover:grayscale-0 grayscale">
                     <x-curator-glider :media="$client->logo" class="mx-auto max-w-24 object-contain object-center p-1" />
                 </div>
             @endforeach
