@@ -17,7 +17,7 @@ App\View\Components\Customer\Section.php
     'button_url' => null,
     'with_padding' => true,
     'is_filled' => $data->customer['section_fill'] ?? false,
-    'is_section_filled_inverted' => $data->customer['is_section_filled_inverted'] ?? true,
+    'is_section_filled_inverted' => $data->customer['is_section_filled_inverted'] ?? false,
 ])
 
 @if ($module->clients ?? false)
