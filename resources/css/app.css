@@ -304,7 +304,11 @@
     }
 
     /** Project Modal **/
-    .project-modal img {
+    /* .project-modal img {
         @apply rounded-lg mx-auto;
+    } */
+
+    .project-modal figure {
+        @apply -mx-6 md:-mx-12 lg:-mx-24 flex justify-center my-8;
     }
 }

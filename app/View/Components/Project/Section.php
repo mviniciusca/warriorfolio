@@ -25,8 +25,7 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.project.section', [
-            'module' => Module::query()
-                ->first(['portfolio']),
+            'module'   => Module::first(['portfolio']),
             'data'     => Layout::first(['portfolio']),
             'projects' => Project::query()
                 ->where('is_active', true)

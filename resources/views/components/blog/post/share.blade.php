@@ -1,8 +1,10 @@
 @aware(['page'])
 
 @if ($data['is_share_active'] ?? false)
-    <div class="flex flex-initial items-center gap-1 py-4">
-        <p class="mr-4 font-mono text-xs uppercase">{{ __('Share') }}</p>
+    <div {{ $attributes->class(['flex flex-initial items-center gap-5 py-4 opacity-20 hover:opacity-100 transition-all duration-300']) }}>
+
+        <p class="font-mono text-xs uppercase">{{ __('Share') }}</p>
+
         <!-- Facebook -->
         <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}&quote={{ urlencode($page->title) }}"
             target="_blank">

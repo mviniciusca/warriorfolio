@@ -25,9 +25,7 @@
                     <div class="content font-serif text-base leading-relaxed">
                         {!! $page->post->content !!}
                     </div>
-                    <div class="py-4 opacity-30 hover:opacity-100 transition-all duration-300">
-                        <x-blog.post.share />
-                    </div>
+                    <x-blog.post.share class="mt-8" />
                     <x-blog.post.articles :page="$page" />
                 </article>
             </div>

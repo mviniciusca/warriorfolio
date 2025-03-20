@@ -43,7 +43,7 @@ App\View\Components\Project\Section.php
                                 @if ($project->category->icon)
                                     <x-ui.ionicon :icon="$project->category->icon" />
                                 @else
-                                    <x-ui.ionicon :icon="'bookmark-outline'" />
+                                    <x-ui.ionicon :icon="'bookmark-sharp'" />
                                 @endif
                                 {{ $project->category->name }}
                             </div>
