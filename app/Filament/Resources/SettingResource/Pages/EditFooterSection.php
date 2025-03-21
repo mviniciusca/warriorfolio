@@ -54,6 +54,9 @@ class EditFooterSection extends EditRecord
                     Toggle::make('footer.section_fill')
                         ->label(__('Fill Section Background'))
                         ->helperText(__('Fill the background of this section with a secondary default color.')),
+                    Toggle::make('footer.is_section_filled_inverted')
+                        ->label(__('Fill Section Background Inverse'))
+                        ->helperText(__('Fill background with light color in dark mode and dark color in light mode.')),
                 ]),
         ]);
     }
