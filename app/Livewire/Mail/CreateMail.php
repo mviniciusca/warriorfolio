@@ -6,7 +6,7 @@ use App\Models\Mail;
 use App\Models\User;
 use App\Notifications\NewMailNotification;
 use Exception;
-use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -22,6 +22,8 @@ class CreateMail extends Component implements HasForms
 
     public ?array $data = [];
 
+    public $is_section_filled_inverted = '';
+
     public function mount(): void
     {
         $this->form->fill();
@@ -35,37 +37,44 @@ class CreateMail extends Component implements HasForms
                     ->maxLength(50)
                     ->minLength(5)
                     ->required()
-                    ->label(__('Full Name'))
+                    ->extraAttributes(['class' => 'border'])
+                    ->hiddenLabel()
+                    ->placeholder(__('Full Name'))
                     ->prefixIcon('heroicon-o-user')
                     ->columnSpanFull(),
                 TextInput::make('email')
-                    ->label(__('Email Address'))
+                    ->placeholder(__('Email Address'))
                     ->email()
+                    ->extraAttributes(['class' => 'border'])
+                    ->hiddenLabel()
                     ->prefixIcon('heroicon-o-envelope')
                     ->maxLength(140)
                     ->minLength(8)
                     ->columnSpanFull()
                     ->required(),
                 TextInput::make('phone')
-                    ->label(__('Phone Number'))
+                    ->extraAttributes(['class' => 'border'])
+                    ->placeholder(__('Phone Number'))
                     ->tel()
+                    ->hiddenLabel()
                     ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/')
                     ->maxLength(20)
                     ->columnSpanFull()
                     ->prefixIcon('heroicon-o-phone')
                     ->required(),
                 TextInput::make('subject')
+                    ->extraAttributes(['class' => 'border'])
+                    ->hiddenLabel()
                     ->prefixIcon('heroicon-o-tag')
                     ->maxLength(140)
                     ->minLength(5)
-                    ->label(__('Message Subject'))
+                    ->placeholder(__('Message Subject'))
                     ->required()
                     ->columnSpanFull(),
-                RichEditor::make('body')
-                    ->toolbarButtons([
-                        'bold',
-                        'italic',
-                    ])
+                Textarea::make('body')
+                    ->extraAttributes(['class' => 'border'])
+                    ->hiddenLabel()
+                    ->rows(5)
                     ->required()
                     ->label(__('Message'))
                     ->minLength(20)

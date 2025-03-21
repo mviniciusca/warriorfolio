@@ -60,6 +60,9 @@ class EditContactSection extends EditRecord
                                 Toggle::make('contact.section_fill')
                                     ->label(__('Fill Section Background'))
                                     ->helperText(__('Fill the background of this section with a secondary default color.')),
+                                Toggle::make('contact.is_section_filled_inverted')
+                                    ->label(__('Fill Section Background Inverse'))
+                                    ->helperText(__('Fill background with light color in dark mode and dark color in light mode.')),
                                 TextInput::make('contact.section_title')
                                     ->autoFocus()
                                     ->label(__('Contact Section Title'))

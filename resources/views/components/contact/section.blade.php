@@ -14,10 +14,11 @@ App\View\Components\Contact\Section.php
     'button_url' => null,
     'with_padding' => null,
     'is_filled' => $data->contact['section_fill'] ?? false,
+    'is_section_filled_inverted' => $data->contact['is_section_filled_inverted'] ?? false,
 ])
 
 @if ($module->contact)
-    <x-core.layout :$with_padding :$is_filled :$button_header :$button_url :module_name="'contact'">
+    <x-core.layout :$is_section_filled_inverted :$with_padding :$is_filled :$button_header :$button_url :module_name="'contact'">
         @if ($data->contact['section_title'])
             <x-slot name="module_title">
                 {!! $data->contact['section_title'] !!}
@@ -32,13 +33,13 @@ App\View\Components\Contact\Section.php
             <div class="w-full p-8 lg:w-2/3">
                 @if (data_get($data, 'contact.google_maps_code'))
                     <div
-                        class="relative flex h-96 items-end justify-start overflow-hidden rounded-lg bg-secondary-100 p-10 dark:bg-secondary-600 lg:h-full">
+                        class="relative flex h-96 items-end justify-start overflow-hidden rounded-lg p-10 lg:h-full {{ $is_section_filled_inverted ? 'bg-secondary-950 text-secondary-50 dark:bg-secondary-50 dark:text-secondary-950' : ' bg-secondary-50 dark:bg-secondary-950' }}">
                         <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map"
                             marginheight="0" marginwidth="0" scrolling="no"
                             src="{{ $data->contact['google_maps_code'] }}"
                             style="filter: grayscale(1) contrast(1) opacity(0.9);">
                         </iframe>
-                        <div class="relative flex flex-wrap rounded bg-secondary-50 py-6 text-xs dark:bg-secondary-950">
+                        <div class="relative flex flex-wrap rounded  py-6 text-xs {{ $is_section_filled_inverted ? 'bg-secondary-950 text-secondary-50 dark:bg-secondary-50 dark:text-secondary-950' : ' bg-secondary-50 dark:bg-secondary-950' }}">
                             <div class="px-6">
                                 <h2 class="font-semibold uppercase tracking-widest">{{ __('Address') }}</h2>
                                 <p class="mt-3">{!! $data->contact['public_address'] !!}</p>
@@ -94,7 +95,7 @@ App\View\Components\Contact\Section.php
             </div>
             {{-- Livewire: Message Form --}}
             <div class="w-full p-4 lg:w-1/3 lg:p-8">
-                <livewire:mail.create-mail />
+                <livewire:mail.create-mail :$is_section_filled_inverted />
             </div>
         </section>
     </x-core.layout>
