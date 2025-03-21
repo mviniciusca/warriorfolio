@@ -15,7 +15,7 @@ App\View\Components\Footer\Section.php
     'setting' => null,
     'navigation' => null,
     'social' => null,
-    'is_section_filled_inverted' => true,
+    'is_section_filled_inverted' => $data->footer['is_section_filled_inverted'] ?? false,
 ])
 @if ($module->footer ?? false)
     <div class="{{ ($data->footer['section_fill'] ?? false) ? 'section-filled' : '' }} bg-cover bg-center bg-no-repeat"

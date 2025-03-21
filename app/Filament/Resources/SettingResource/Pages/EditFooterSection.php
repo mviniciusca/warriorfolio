@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
-use Filament\Actions;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Toggle;
@@ -50,6 +49,7 @@ class EditFooterSection extends EditRecord
                 ->description(__('Define the design and layout of the footer section on the website.'))
                 ->icon('heroicon-o-bolt')
                 ->relationship('layout')
+                ->columns(2)
                 ->schema([
                     Toggle::make('footer.section_fill')
                         ->label(__('Fill Section Background'))
