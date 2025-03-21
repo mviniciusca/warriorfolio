@@ -6,7 +6,7 @@ of the website.
 
 --}}
 
-<section id="footer-content">
+<section class="py-8" id="footer-content">
     <div class="mx-auto p-4 py-6 text-sm lg:py-8">
         <div class="md:flex md:justify-between md:gap-12">
             <div class="mb-6 md:mb-0 text-center md:text-left">

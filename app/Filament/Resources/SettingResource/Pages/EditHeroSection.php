@@ -271,10 +271,14 @@ class EditHeroSection extends EditRecord
                                             ->imageEditor()
                                             ->helperText(__('Upload a background image for the hero section.')),
                                         Group::make()
-                                            ->columns(4)
+                                            ->columns(3)
                                             ->columnSpanFull()
                                             ->schema([
+                                                Checkbox::make('hero.is_upper')
+                                                    ->label(__('Move to Upper'))
+                                                    ->helperText(__('Move the background image to the upper side of website.')),
                                                 Checkbox::make('hero.is_bg_grayscale')
+                                                    ->columnSpan(2)
                                                     ->label(__('Grayscale'))
                                                     ->helperText(__('Enable this option to show the background image in grayscale.')),
                                                 Select::make('hero.bg_position')
@@ -285,7 +289,7 @@ class EditHeroSection extends EditRecord
                                                         'bg-left'   => 'Left',
                                                         'bg-right'  => 'Right',
                                                     ])
-                                                    ->label(__('BG Position'))
+                                                    ->label(__('Position'))
                                                     ->helperText(__('Choose the position of the background image.')),
                                                 Select::make('hero.bg_size')
                                                     ->options([
@@ -293,7 +297,7 @@ class EditHeroSection extends EditRecord
                                                         'bg-cover'   => 'Cover',
                                                         'bg-contain' => 'Contain',
                                                     ])
-                                                    ->label(__('BG Size'))
+                                                    ->label(__('Size'))
                                                     ->helperText(__('Choose the size of the background image.')),
                                                 Select::make('hero.bg_repeat')
                                                     ->options([
@@ -302,7 +306,7 @@ class EditHeroSection extends EditRecord
                                                         'bg-repeat-x'  => 'Repeat X',
                                                         'bg-repeat-y'  => 'Repeat Y',
                                                     ])
-                                                    ->label(__('BG Repeat'))
+                                                    ->label(__('Repeat'))
                                                     ->helperText(__('Choose the repeat of the background image.')),
                                             ]),
 

@@ -19,8 +19,8 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
             {{-- Hero Section Button --}}
             <div class="animate__animated animate__fadeInUp animate__delay-1s z-10 mt-8 flex gap-4">
                 @foreach ($hero->hero['buttons'] as $button)
-                    <x-hero.button-group :title="$button['button_title']" :style="$button['button_style']" :target="$button['button_target']" :url="$button['button_url']"
-                        :icon="$button['icon']" />
+                    <x-hero.button-group :title="$button['button_title']" :style="$button['button_style']"
+                        :target="$button['button_target']" :url="$button['button_url']" :icon="$button['icon']" />
                 @endforeach
             </div>
             {{-- Newsletter Module --}}
@@ -36,15 +36,15 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
             <div class="animate__animated animate__fadeInUp animate__delay-1s flex justify-center lg:col-span-1">
                 <div class="mt-8 flex items-center" id="hero-featured-image">
                     @if (data_get($hero, 'hero.featured_image'))
-                        <img class="rounded-lg lg:max-h-max"
-                            src="{{ asset('storage/' . $hero->hero['featured_image']) }}" alt="hero-section-image" />
+                        <img class="rounded-lg lg:max-h-max" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
+                            alt="hero-section-image" />
                     @else
-                        <img class="rounded-lg lg:max-h-max"
-                            src="{{ asset('img/core/demo/default-landing-image.png') }}" alt="hero-section-image" />
+                        <img class="rounded-lg lg:max-h-max" src="{{ asset('img/core/demo/default-landing-image.png') }}"
+                            alt="hero-section-image" />
                     @endif
                 </div>
         @endif
-    </div>
+        </div>
     </div>
     </div>
 </section>

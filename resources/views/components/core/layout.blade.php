@@ -22,7 +22,7 @@ This is the default layout component for the website. Used for website and compo
 ])
 
 <div id="{{ $module_name ?? 'app-' . rand(1, 10) }}"
-    class="{{ $with_padding ? 'py-12 md:py-16 lg:py-20' : 'py-4' }} {{ $is_section_filled_inverted ? 'bg-secondary-950 text-secondary-300 dark:bg-secondary-50 dark:text-secondary-900' : '' }} {{ $is_filled ? 'section-filled duration-300 transition-all' : '' }} px-4">
+    class="{{ $with_padding ? 'py-12 md:py-16 lg:py-20' : 'py-0' }} {{ $is_section_filled_inverted ? 'bg-secondary-950 text-secondary-300 dark:bg-secondary-50 dark:text-secondary-900' : '' }} {{ $is_filled ? 'section-filled duration-300 transition-all' : '' }} px-4">
     <div class="mx-auto max-w-7xl">
         @if ($module_title)
             <div class="{{ $button_header ? 'flex justify-between flex-initial' : '' }} py-4">

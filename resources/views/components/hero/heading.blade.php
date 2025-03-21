@@ -10,7 +10,7 @@
 {{-- Title --}}
 @if ($hero->hero['section_title'] ?? false)
     <h1
-        class="animate__animated animate__fadeInUp animate mb-2  max-w-5xl text-3xl font-bold leading-none tracking-tighter dark:text-white md:text-4xl xl:text-4xl hero-title {{ ($hero->hero['bg_image'] ?? null) && ($hero->hero['is_highlight'] ?? null) ? 'bg-white dark:bg-black px-2 text-left' : '' }}">
+        class="animate__animated animate__fadeInUp animate mb-2 max-w-5xl text-3xl font-bold leading-none tracking-tighter dark:text-white md:text-4xl xl:text-4xl hero-title {{ ($hero->hero['bg_image'] ?? null) && ($hero->hero['is_highlight'] ?? null) ? 'bg-white dark:bg-black px-2 text-left' : '' }}">
         {!! $hero->hero['section_title'] !!}
     </h1>
 @endif
