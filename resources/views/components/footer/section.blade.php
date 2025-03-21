@@ -9,8 +9,6 @@ App\View\Components\Footer\Section.php
 
 --}}
 
-
-
 @props([
     'data' => null,
     'module' => null,
