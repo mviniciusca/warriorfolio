@@ -18,8 +18,11 @@ App\View\Components\Header\Section.php
 {{-- Core: Background Image --}}
 <x-ui.background />
 {{-- Header: Navigation / Logo / Dark Mode --}}
-<div id="navbar-wrapper" class="z-50 bg-contain bg-no-repeat bg-bottom pb-2 pt-8 w-full"
-    style="background-image: url({{ asset('img/core/core-ui-elements/beams/pink-beam.png') }})">
+<div class="relative z-50 pb-2 pt-8 w-full">
+    {{-- Background Layer --}}
+    <div class="absolute inset-0 -z-10 bg-contain bg-no-repeat bg-bottom animate-pulse"
+        style="background-image: url({{ asset('img/core/core-ui-elements/beams/pink-beam.png') }})">
+    </div>
     <x-core.layout :with_padding="false" :$is_filled>
         {{-- Header Section --}}
         <div class="-mt-4 flex items-center justify-between py-4">
