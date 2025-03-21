@@ -14,7 +14,8 @@ App\View\Components\Header\Section.php
 {{-- Core: Background Image --}}
 <x-ui.background />
 {{-- Header: Navigation / Logo / Dark Mode --}}
-<div id="navbar-wrapper" class="bg-white/0 py-8 dark:bg-black/0 w-full">
+<div id="navbar-wrapper" class="bg-white/0 bg-contain bg-no-repeat bg-top pb-2 pt-8 dark:bg-black/0 z-50 w-full"
+    style="background-image: url({{ asset('img/core/core-ui-elements/beams/blur-beam.png') }})">
     <x-core.layout :with_padding="false" :$is_filled>
         {{-- Header Section --}}
         <div class="-mt-4 flex items-center justify-between py-4">
@@ -34,10 +35,5 @@ App\View\Components\Header\Section.php
                 <livewire:dark-mode wire:key='header-dark-mode' />
             </div>
         </div>
-        {{-- Light Beam --}}
-        {{-- <div class="z-50 mx-auto -mt-5 h-2 animate-pulse">
-            <img src="{{ asset('img/core/core-ui-elements/beams/pink-beam.png') }}" alt="light-beam"
-                id="menu-gipper-board">
-        </div> --}}
     </x-core.layout>
 </div>
