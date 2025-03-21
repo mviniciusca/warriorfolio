@@ -1,3 +1,15 @@
+{{--
+
+Component: Google Fonts
+----------------------------------------------------------------
+This component is responsible for rendering the Google Fonts for the website.
+-------------------------------------------------------------------
+Data:
+App\View\Components\Header\GoogleFonts.php
+
+--}}
+
+
 @if (data_get($fonts, 'google.fonts_code') && data_get($fonts, 'google.font_name'))
     {!! data_get($fonts, 'google.fonts_code') !!}
     <style>

@@ -1,4 +1,15 @@
-<title>{{ ($app['name'] ?? env('APP_NAME', '')) . ' - ' . ($meta['meta_title'] ?? '') }}</title>
+{{--
+
+View Component: Meta Tags
+----------------------------------------------------------------
+This component is responsible for rendering the meta tags for the website.
+-------------------------------------------------------------------
+Data:
+App\View\Components\Header\Meta.php
+
+--}}
+
+<title>{{ ($app['name'] ?? config('app.name', 'Warriorfolio')) . ' - ' . ($meta['meta_title'] ?? '') }}</title>
 
 @isset($meta['meta_author'])
     <meta name="author" content="{{ e($meta['meta_author']) }}">

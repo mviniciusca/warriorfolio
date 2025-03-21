@@ -1,3 +1,14 @@
+{{--
+
+View Component: Body Scripts
+----------------------------------------------------------------
+This component is responsible for rendering the body scripts for the website.
+-------------------------------------------------------------------
+Data:
+There is no data passed to this component.
+
+--}}
+
 @isset($scripts['body_scripts'])
     {!! $scripts['body_scripts'] !!}
 @endisset
