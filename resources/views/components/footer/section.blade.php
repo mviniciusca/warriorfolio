@@ -15,12 +15,12 @@ App\View\Components\Footer\Section.php
     'setting' => null,
     'navigation' => null,
     'social' => null,
-    'is_section_filled_inverted' => false,
+    'is_section_filled_inverted' => true,
 ])
 @if ($module->footer ?? false)
     <div class="{{ ($data->footer['section_fill'] ?? false) ? 'section-filled' : '' }} bg-cover bg-center bg-no-repeat"
             style="background-image: url({{ asset('img/core/demo/default-bg-footer.png') }})">
-            <x-core.layout :with_padding='false'>
+            <x-core.layout :$is_section_filled_inverted :with_padding='false'>
                 {{-- Footer Section --}}
                 <x-footer.content-module :$setting :$navigation :$social />
             </x-core.layout>
