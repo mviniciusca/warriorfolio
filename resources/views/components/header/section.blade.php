@@ -9,7 +9,11 @@ App\View\Components\Header\Section.php
 
 --}}
 
-@props(['is_filled' => false, 'navigation' => null])
+@props([
+'is_filled' => false,
+'navigation' => null,
+'is_menu_highlighted' => $design['is_menu_highlighted'] ?? false
+])
 
 {{-- Core: Background Image --}}
 <x-ui.background />
@@ -26,7 +30,7 @@ App\View\Components\Header\Section.php
                 @if ($navigation)
                     <div class="nav-bar hidden w-full items-center justify-between font-mono lg:order-1 lg:flex lg:w-auto"
                         id="mobile-menu-2">
-                        <x-header.navigation :$navigation />
+                        <x-header.navigation :$is_menu_highlighted :$navigation />
                     </div>
                 @endif
             </div>

@@ -25,6 +25,7 @@ class Section extends Component
     {
         return view('components.header.section', [
             'navigation' => Navigation::first('content')->value('content'),
+            'design'     => Setting::first('design')->value('design'),
         ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
@@ -64,6 +65,16 @@ class EditAppearance extends EditRecord
                             ->default('max-w-14')
                             ->helperText(__('Define the size of the logo on your website.')),
                     ]),
+                Section::make(__('Design Options'))
+                    ->description(__('Change the design and appearance of your website'))
+                    ->icon('heroicon-o-sparkles')
+                    ->columns(3)
+                    ->schema([
+                        Checkbox::make('design.is_menu_highlighted')
+                            ->label(__('Highlight Menu'))
+                            ->inline(false)
+                            ->helperText(__('Activate the highlight of the menu item on your website.')),
+                    ]),
                 Section::make(__('Background'))
                     ->description(__('Change the design and appearance of your website'))
                     ->icon('heroicon-o-photo')
@@ -92,7 +103,7 @@ class EditAppearance extends EditRecord
                             ])
                             ->directory('public/background')
                             ->label(__('Background Image'))
-                            ->helperText('Set the background of your website. 
+                            ->helperText('Set the background of your website.
                             Recommended size: 1920x1080px (16:9)'),
                         Group::make()
                             ->columns(3)
