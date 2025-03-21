@@ -18,8 +18,8 @@ App\View\Components\Header\Section.php
 {{-- Core: Background Image --}}
 <x-ui.background />
 {{-- Header: Navigation / Logo / Dark Mode --}}
-<div id="navbar-wrapper" class="z-50 bg-contain bg-no-repeat bg-top pb-2 pt-8 w-full"
-    style="background-image: url({{ asset('img/core/core-ui-elements/beams/blur-beam.png') }})">
+<div id="navbar-wrapper" class="z-50 bg-contain bg-no-repeat bg-bottom pb-2 pt-8 w-full"
+    style="background-image: url({{ asset('img/core/core-ui-elements/beams/pink-beam.png') }})">
     <x-core.layout :with_padding="false" :$is_filled>
         {{-- Header Section --}}
         <div class="-mt-4 flex items-center justify-between py-4">
