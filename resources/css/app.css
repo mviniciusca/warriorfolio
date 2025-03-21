@@ -312,4 +312,9 @@
         @apply -mx-6 md:-mx-12 lg:-mx-24 flex justify-center my-8;
     }
 
+    /** Forms Inputs Borders **/
+    .fi-input-wrp {
+        @apply border border-secondary-500/50;
+    }
+
 }
