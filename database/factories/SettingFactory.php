@@ -34,7 +34,7 @@ class SettingFactory extends Factory
                 'button_url'             => '/blog',
                 'is_active'              => true,
                 'is_logo_active'         => true,
-                'name'                   => 'Warriorfolio<br/><span class="tl font-black">Notes</span>',
+                'name'                   => 'Warriorfolio<br/><span class="dg">Notes</span>',
                 'description'            => 'Free your mind with Notes.',
             ],
             //
