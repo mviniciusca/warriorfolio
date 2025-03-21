@@ -14,7 +14,7 @@ App\View\Components\Header\Section.php
 {{-- Core: Background Image --}}
 <x-ui.background />
 {{-- Header: Navigation / Logo / Dark Mode --}}
-<div id="navbar-wrapper" class="bg-white/0 bg-contain bg-no-repeat bg-top pb-2 pt-8 dark:bg-black/0 z-50 w-full"
+<div id="navbar-wrapper" class="bg-contain bg-no-repeat bg-top pb-2 pt-8 z-50 w-full"
     style="background-image: url({{ asset('img/core/core-ui-elements/beams/blur-beam.png') }})">
     <x-core.layout :with_padding="false" :$is_filled>
         {{-- Header Section --}}
