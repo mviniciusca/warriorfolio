@@ -16,7 +16,7 @@ App\View\Components\Header\Section.php
 {{-- Header: Navigation / Logo / Dark Mode --}}
 <x-core.layout :with_padding="false" :$is_filled>
     {{-- Header Section --}}
-    <div class="-mt-4 flex items-center justify-between py-2 pb-5">
+    <div class="-mt-4 flex items-center justify-between py-4">
         <div class="app-logo flex flex-wrap items-center gap-4">
             <div>
                 <x-ui.logo />
