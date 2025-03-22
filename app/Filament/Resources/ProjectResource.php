@@ -116,6 +116,8 @@ class ProjectResource extends Resource
                         ->directory('public/project')
                         ->maxSize(4000)
                         ->required()
+                        ->maxItems(1)
+                        ->multiple(false)
                         ->label(__('Cover Image')),
                     Section::make('Category')
                         ->icon('heroicon-o-tag')
