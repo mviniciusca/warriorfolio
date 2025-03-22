@@ -1,3 +1,14 @@
+{{--
+
+Main Background Component
+----------------------------------------------------------------
+This component is used to display the background image of the page.
+
+Important: When visibility is set to true, the background image will be displayed. Even without a uploaded image, a
+default image will be displayed.
+
+--}}
+
 @if (data_get($design, 'background_image_visibility') === true)
     @if (data_get($design, 'background_image'))
         <div id="default-background" class="{{ $design['background_image'] ? '' : 'animate-pulse' }} {{ $design['animation'] ? 'animate-opacity opacity-10' : '' }} {{ $design['background_image_size'] .
