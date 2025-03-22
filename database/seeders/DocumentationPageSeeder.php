@@ -22,7 +22,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'component.heading-description',
                         'data' => [
                             'heading'                  => 'Fast Documentation',
-                            'content'                  => '<p>Welcome to Warriorfolio! This documentation will get you up and running quickly with the essential features and functionality of our application. Whether you\'re a new user or just need a refresher, this guide provides everything you need to start using Warriorfolio effectively right away.</p><p>In the following sections, you\'ll find step-by-step instructions for installation, account setup, core features, and troubleshooting. Let\'s get started!</p><p>Toda esta página foi criada com componentes do Warriorfolio.</p><p><br></p>',
+                            'content'                  => 'Welcome to Warriorfolio! 🚀 <p></p> This documentation will get you up and running quickly with the essential features and functionality of our application. Whether you\'re a new user or just need a refresher, this guide provides everything you need to start using Warriorfolio effectively right away.</p><p>In the following sections, you\'ll find step-by-step instructions for installation, account setup, core features, and troubleshooting. Let\'s get started!</p><p>This entire page was created with Warriorfolio components.</p><p>',
                             'is_active'                => true,
                             'is_center'                => false,
                             'is_filled'                => false,
