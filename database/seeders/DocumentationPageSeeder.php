@@ -96,14 +96,14 @@ class DocumentationPageSeeder extends Seeder
                                 ],
                                 [
                                     'icon'          => 'document-outline',
-                                    'title'         => 'Pages <span class="tag">updated</span>',
+                                    'title'         => 'Pages',
                                     'description'   => 'You can create as many pages as you want and, following the concept of modularity, add pre-built components to them or create your own through components that combine with each other.',
                                     'link'          => null,
                                     'is_new_window' => false,
                                 ],
                                 [
                                     'icon'          => 'rocket-outline',
-                                    'title'         => 'Portfolio Showcase',
+                                    'title'         => 'Portfolio Showcase <span class="tag">updated</span>',
                                     'description'   => 'Insert your recent projects, add tags, categories and display them to your visitors in a practical and fast way. Your work is displayed in a gallery of up to 12 components.',
                                     'link'          => null,
                                     'is_new_window' => false,
@@ -117,14 +117,14 @@ class DocumentationPageSeeder extends Seeder
                                 ],
                                 [
                                     'icon'          => 'hardware-chip-outline',
-                                    'title'         => 'Core Modules',
+                                    'title'         => 'Core Modules <span class="tag">updated</span>',
                                     'description'   => 'These are pre-build components that cannot be changed individually. This is designed to accelerate the development of new pages. Through these modules, you have access to several specific functionalities.',
                                     'link'          => null,
                                     'is_new_window' => false,
                                 ],
                                 [
                                     'icon'          => 'flash-outline',
-                                    'title'         => 'Hero Section',
+                                    'title'         => 'Hero Section <span class="tag">updated</span>',
                                     'description'   => 'Improved Hero Section, redesigned layout, more intuitive to use. It now comes with Sierra, a new interface with new presentation possibilities. Enchant your visitors from the first moment.',
                                     'link'          => null,
                                     'is_new_window' => false,
@@ -132,14 +132,14 @@ class DocumentationPageSeeder extends Seeder
                                 [
                                     'icon' => 'heart-outline',
                                     'title'
-                                                    => 'New Sidebar',
+                                                    => 'Sidebar',
                                     'description'   => 'Smarter Sidebar with main elements accessible for easy location. Don\'t waste your time looking for the number of unread messages, for example, just look at the badge on your sidebar.',
                                     'link'          => null,
                                     'is_new_window' => false,
                                 ],
                                 [
                                     'icon'          => 'terminal-outline',
-                                    'title'         => 'Hackable',
+                                    'title'         => 'Hackable Fields',
                                     'description'   => 'Have total control of your application. Smart shortcuts, functions distributed throughout the system for you to customize the layout of your application as you wish. Use special CSS classes like "tl" for text effects or "tag" to create an animated tag.',
                                     'link'          => null,
                                     'is_new_window' => false,
