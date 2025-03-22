@@ -36,21 +36,37 @@
             @endif
         </div>
         @if ($profile->user->name)
-            <div class="text-lg font-semibold tracking-tight">
+            <div class="text-lg  font-semibold tracking-tight">
                 <span>{{ $profile->user->name }}</span>
             </div>
         @endif
     </section>
     <section id="profile-section-two" class="mx-auto">
-        <div class="flex flex-wrap items-center justify-center gap-4 md:justify-between lg:inline-block">
+        <div class="flex flex-wrap items-center justify-center gap-4 md:justify-between lg:inline-block lg:mt-8">
             @if ($profile->job_position || $profile->localization)
                 <div class="tracking-tight">
-                    @if ($profile->job_position)
-                        <span class="text-sm font-semibold">{{ $profile->job_position }} </span>
+                    @if ($profile->company ?? null)
+                        <span class="flex items-center gap-2 justify-start py-1 text-sm font-semibold opacity-90">
+                            <x-ui.ionicon icon="business-outline" />
+                            <p>{{ $profile->company }}</p>
+                        </span>
                     @endif
-                    @if ($profile->localization)
-                        <span class="flex items-center gap-1 text-sm font-semibold opacity-60">
-                            <x-ui.ionicon icon="globe-outline" />{{ $profile->localization }}
+                    @if ($profile->job_position ?? null)
+                        <span class="flex items-center gap-2 justify-start py-1 text-sm font-semibold opacity-90">
+                            <x-ui.ionicon icon="briefcase-outline" />
+                            <p>{{ $profile->job_position }}</p>
+                        </span>
+                    @endif
+                    @if ($profile->localization ?? null)
+                        <span class="flex items-center gap-2 justify-start py-1 text-sm font-semibold opacity-90">
+                            <x-ui.ionicon icon="globe-outline" />
+                            <p>{{ $profile->localization }}</p>
+                        </span>
+                    @endif
+                    @if ($profile->public_email ?? null)
+                        <span class="flex items-center gap-2 justify-start py-1 text-sm font-semibold opacity-90">
+                            <x-ui.ionicon icon="mail-outline" />
+                            <p>{{ $profile->public_email ?? 'mviniciusca@gmail.com' }}</p>
                         </span>
                     @endif
                 </div>
