@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
@@ -53,12 +54,16 @@ class EditAboutSection extends EditRecord
                     ->relationship('layout')
                     ->description(__('This module is used to display your certifications, skills and your profile to the public.'))
                     ->icon('heroicon-o-user')
-                    ->columns(2)
+                    ->columns(3)
                     ->schema([
-                        Toggle::make('about.section_fill')
+                        Checkbox::make('about.is_heading_visible')
+                            ->label(__('Show Section Heading'))
+                            ->default(true)
+                            ->helperText(__('Show or hide the section title and subtitle.')),
+                        Checkbox::make('about.section_fill')
                             ->label(__('Fill Section Background'))
                             ->helperText(__('Fill the background of this section with a secondary default color.')),
-                        Toggle::make('about.is_section_filled_inverted')
+                        Checkbox::make('about.is_section_filled_inverted')
                             ->label(__('Fill Section Background Inverse'))
                             ->helperText(__('Fill background with light color in dark mode and dark color in light mode.')),
                         TextInput::make('about.section_title')
