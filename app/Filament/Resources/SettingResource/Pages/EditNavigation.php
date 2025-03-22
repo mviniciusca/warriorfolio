@@ -49,9 +49,9 @@ class EditNavigation extends EditRecord
                             ->schema([
                                 Repeater::make('content')
                                     ->collapsed()
-                                    ->label(__('Navigation Links'))
+                                    ->label(__('Main Navigation'))
                                     ->defaultItems(1)
-                                    ->addActionLabel(__('Add Link'))
+                                    ->addActionLabel(__('New Item'))
                                     ->cloneable()
                                     ->itemLabel(function (array $state): string {
                                         $title = $state['name'] ?? __('Navigation Card');
@@ -59,38 +59,39 @@ class EditNavigation extends EditRecord
                                         return preg_replace('/<.*?>.*?<\/.*?>/', '', $title);
                                     })
                                     ->reorderable()
-                                    ->columns(7)
+                                    ->columns(12)
                                     ->schema([
-                                        Checkbox::make('is_active')
-                                            ->helperText(__('Status'))
-                                            ->label(__('Visible'))
-                                            ->inline(false)
-                                            ->default(true)
-                                            ->columnSpan(1)
-                                            ->required(),
                                         TextInput::make('name')
                                             ->label(__('Title'))
                                             ->placeholder(__('hackable ♠'))
                                             ->prefixIcon('heroicon-o-window')
-                                            ->helperText(__('Link Title'))
-                                            ->columnSpan(3)
+                                            ->helperText(__('Navigation title'))
+                                            ->columnSpan(6)
                                             ->required(),
                                         TextInput::make('url')
                                             ->label(__('URL'))
                                             ->prefixIcon('heroicon-o-link')
-                                            ->helperText(__('Link URL'))
-                                            ->columnSpan(2)
+                                            ->helperText(__('Navigation URL'))
+                                            ->columnSpan(6)
                                             ->required(),
-                                        Select::make('target')
-                                            ->columnSpan(1)
-                                            ->helperText(__('Link Target'))
-                                            ->label(__('Target'))
-                                            ->options([
-                                                '_self'  => __('Self'),
-                                                '_blank' => __('New'),
-                                            ])
-                                            ->default('_self')
-                                            ->required(),
+                                        Toggle::make('target')
+                                            ->helperText(__('Open in new tab'))
+                                            ->label(__('New Tab'))
+                                            ->inline(true)
+                                            ->default(false)
+                                            ->columnSpan(4),
+                                        Toggle::make('is_secondary')
+                                            ->helperText(__('Show on secondary menu'))
+                                            ->label(__('Secondary Menu'))
+                                            ->inline(true)
+                                            ->default(false)
+                                            ->columnSpan(4),
+                                        Toggle::make('is_active')
+                                            ->helperText(__('Status'))
+                                            ->label(__('Visible'))
+                                            ->inline(true)
+                                            ->default(true)
+                                            ->columnSpan(4),
                                     ]),
                             ]),
                     ]),

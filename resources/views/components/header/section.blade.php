@@ -10,9 +10,9 @@ App\View\Components\Header\Section.php
 --}}
 
 @props([
-'is_filled' => false,
-'navigation' => null,
-'is_menu_highlighted' => $design['is_menu_highlighted'] ?? false
+    'is_filled' => false,
+    'navigation' => null,
+    'is_menu_highlighted' => $design['is_menu_highlighted'] ?? false
 ])
 
 {{-- Core: Background Image --}}
@@ -33,12 +33,13 @@ App\View\Components\Header\Section.php
                 @if ($navigation)
                     <div class="nav-bar hidden w-full items-center justify-between font-mono lg:order-1 lg:flex lg:w-auto"
                         id="mobile-menu-2">
-                        <x-header.navigation :$is_menu_highlighted :$navigation />
+                        <x-header.navigation :primary_navigation="true" :$is_menu_highlighted :$navigation />
                     </div>
                 @endif
             </div>
             {{-- Darkmode --}}
-            <div class="flex flex-wrap items-center">
+            <div class="flex font-mono text-sm flex-wrap items-center">
+                 <x-header.navigation :secondary_navigation="true" :$is_menu_highlighted :$navigation />
                 <livewire:dark-mode wire:key='header-dark-mode' />
             </div>
         </div>
