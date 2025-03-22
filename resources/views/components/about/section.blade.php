@@ -40,7 +40,7 @@ App\View\Components\About\Section.php
             @endif
         @endif
 
-        <div class="my-8 flex flex-wrap">
+        <div id="about-section-wrapper" class="my-12 flex flex-wrap">
             {{-- Profile Section --}}
             <div class="w-full p-4 text-center lg:w-1/4 lg:p-8" id="profile">
                 <x-about.profile :$is_section_filled_inverted :$profile />

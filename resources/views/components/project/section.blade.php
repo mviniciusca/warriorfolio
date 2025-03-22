@@ -15,6 +15,7 @@ App\View\Components\Project\Section.php
     'with_padding' => null,
     'is_filled' => $data->portfolio['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->portfolio['is_section_filled_inverted'] ?? false,
+    'is_heading_visible' => $data->portfolio['is_heading_visible'] ?? false,
 ])
 
 @if ($module->portfolio)
@@ -22,17 +23,20 @@ App\View\Components\Project\Section.php
     <x-core.layout :module_name="'portfolio'" :$with_padding :$is_filled :$is_section_filled_inverted :$button_header
         :$button_url>
 
-        @if ($data->portfolio['section_title'])
-            <x-slot name="module_title">
-                {!! $data->portfolio['section_title'] !!}
-            </x-slot>
+        @if($is_heading_visible ?? false)
+            @if ($data->portfolio['section_title'])
+                <x-slot name="module_title">
+                    {!! $data->portfolio['section_title'] !!}
+                </x-slot>
+            @endif
+            @if ($data->portfolio['section_subtitle'])
+                <x-slot name="module_subtitle">
+                    {!! $data->portfolio['section_subtitle'] !!}
+                </x-slot>
+            @endif
         @endif
-        @if ($data->portfolio['section_subtitle'])
-            <x-slot name="module_subtitle">
-                {!! $data->portfolio['section_subtitle'] !!}
-            </x-slot>
-        @endif
-        <section class="mt-20">
+
+        <section id="portfolio-wrapper" class="my-12">
             <div class="container mx-auto max-w-7xl px-5">
                 <div class="flex w-full flex-wrap content-center justify-start">
                     @foreach ($projects as $project)
