@@ -66,6 +66,7 @@ class EditProfile extends EditRecord
                                     ->maxLength(150),
                                 TextInput::make('public_email')
                                     ->label(__('Public Email'))
+                                    ->email()
                                     ->prefixIcon('heroicon-o-envelope-open')
                                     ->helperText(__('Your email will be displayed on your public profile. Max: 150 characters'))
                                     ->minLength(3)
