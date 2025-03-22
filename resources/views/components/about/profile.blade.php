@@ -89,7 +89,7 @@
             @if ($profile->skills)
                 @foreach (explode(',', $profile->skills) as $skill)
                     <span
-                        class="m-1 inline-flex rounded-full border border-secondary-500/50 bg-transparent px-3 py-1 text-xs transition-all duration-100 dark:bg-transparent">
+                        class="m-1 inline-flex rounded-full border border-secondary-500/50 bg-transparent px-2 py-1 text-xs transition-all duration-100 dark:bg-transparent">
                         {{ $skill }}
                     </span>
                 @endforeach
