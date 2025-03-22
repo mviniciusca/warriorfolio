@@ -72,6 +72,11 @@ class EditBlogSettings extends EditRecord
                     ->icon('heroicon-o-pencil')
                     ->columns(2)
                     ->schema([
+                        Checkbox::make('blog.is_heading_visible')
+                            ->columnSpanFull()
+                            ->label(__('Show Section Heading'))
+                            ->default(true)
+                            ->helperText(__('Show or hide the section title and subtitle.')),
                         TextInput::make('blog.header_title')
                             ->label(__('Title'))
                             ->placeholder(__('hackable ♠'))

@@ -1,19 +1,32 @@
+@props(['posts', 'module_blog', 'info'])
+
 @if ($posts && $module_blog)
     @if ($info['module_is_active'] ?? false)
         <x-core.layout>
+
             <x-slot name="module_title">
-                {{ $info['header_title'] ?? null }}
-                @if ($info['button'])
+
+                @if($info['header_title'] && ($info['is_heading_visible'] ?? false))
+                    {{ $info['header_title'] ?? null}}
+                @endif
+
+                @if ($info['button'] ?? null)
                     <x-slot name="button_header">
                         <a href="{{ $info['button_url'] ?? null }}">
                             {{ $info['button'] ?? null }}
                         </a>
                     </x-slot>
                 @endif
+
             </x-slot>
-            <x-slot name="module_subtitle">
-                {{ $info['header_subtitle'] ?? null }}
-            </x-slot>
+
+            @if($info['header_subtitle'] && ($info['is_heading_visible'] ?? false) ?? false)
+                <x-slot name="module_subtitle">
+                    {{ $info['header_subtitle'] ?? null }}
+                </x-slot>
+            @endif
+
+
             <section class="mt-8">
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($posts as $item)
