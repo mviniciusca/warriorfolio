@@ -103,11 +103,15 @@ class EditBlogSettings extends EditRecord
                     ->icon('heroicon-o-bolt')
                     ->columns(3)
                     ->schema([
-                        Toggle::make('blog.is_share_active')
+                        Checkbox::make('blog.is_show_profile')
+                            ->default(true)
+                            ->label(__('Show Profile'))
+                            ->helperText(__('Show or hide the profile section.')),
+                        Checkbox::make('blog.is_share_active')
                             ->default(true)
                             ->label(__('Share Feature'))
                             ->helperText(__('Enable or disable the share feature.')),
-                        Toggle::make('blog.is_trend_widget_active')
+                        Checkbox::make('blog.is_trend_widget_active')
                             ->default(true)
                             ->label(__('Trend Widget Feature'))
                             ->helperText(__('Enable or disable the trend widget feature.')),

@@ -9,7 +9,9 @@
                 </div>
                 <div class="order-1 hidden w-full lg:order-2 lg:block lg:w-1/4 lg:pl-8">
                     <aside class="px-4 text-center">
-                        <x-about.profile :$profile />
+                        @if($profile_widget_status ?? true)
+                            <x-about.profile :$profile />
+                        @endif
                         <x-blog.widget.counter />
                     </aside>
                 </div>
