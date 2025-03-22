@@ -18,24 +18,28 @@ App\View\Components\Customer\Section.php
     'with_padding' => true,
     'is_filled' => $data->customer['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->customer['is_section_filled_inverted'] ?? false,
+    'is_heading_visible' => $data->customer['is_heading_visible'] ?? false,
 ])
 
 @if ($module->clients ?? false)
 
     <x-core.layout :$is_section_filled_inverted :$with_padding :$is_filled :$button_header :$button_url
         :module_name="'customers'">
-        @if ($data->customer['section_title'] ?? false)
-            <x-slot name="module_title">
-                {!! $data->customer['section_title'] ?? null !!}
-            </x-slot>
+
+        @if($is_heading_visible ?? false)
+            @if ($data->customer['section_title'] ?? false)
+                <x-slot name="module_title">
+                    {!! $data->customer['section_title'] ?? null !!}
+                </x-slot>
+            @endif
+            @if ($data->customer['section_subtitle'] ?? false)
+                <x-slot name="module_subtitle">
+                    {!! $data->customer['section_subtitle'] ?? null !!}
+                </x-slot>
+            @endif
         @endif
 
-        @if ($data->customer['section_subtitle'] ?? false)
-            <x-slot name="module_subtitle">
-                {!! $data->customer['section_subtitle'] ?? null !!}
-            </x-slot>
-        @endif
-        <section id="clients" class="my-8 flex flex-wrap content-center items-center justify-items-center justify-center transition-all duration-300 gap-8 pb-12">
+        <section id="customer-wrapper" class="my-12 flex flex-wrap content-center items-center justify-items-center justify-center transition-all duration-300 gap-8">
             @foreach ($customers as $client)
                 <div
                     class="{{ !$is_section_filled_inverted ? 'dark:border-secondary-700 hover:opacity-100 dark:bg-secondary-50 dark:opacity-80 bg-white opacity-50 dark:hover:opacity-100' :
