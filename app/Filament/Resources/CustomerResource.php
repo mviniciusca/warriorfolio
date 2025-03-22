@@ -49,6 +49,8 @@ class CustomerResource extends Resource
                 Group::make()
                     ->schema([
                         CuratorPicker::make('logo')
+                            ->multiple(false)
+                            ->maxItems(1)
                             ->directory('public/customer')
                             ->helperText(__('💡 Transparent file will be best for the logo.'))
                             ->label(__('Logo'))
