@@ -82,7 +82,7 @@
                 </div>
             @endif
         </div>
-        <div class="mx-auto my-8 px-4 flex flex-wrap justify-between" id="social-network">
+        <div class="mx-auto my-8 px-4 flex flex-wrap justify-center" id="social-network">
             <x-ui.social-network />
         </div>
         <div id="skills" class="my-4 flex flex-wrap content-center items-center justify-center text-sm tracking-tight">
