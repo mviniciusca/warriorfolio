@@ -15,21 +15,26 @@ App\View\Components\Contact\Section.php
     'with_padding' => null,
     'is_filled' => $data->contact['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->contact['is_section_filled_inverted'] ?? false,
+    'is_heading_visible' => $data->contact['is_heading_visible'] ?? false,
 ])
 
 @if ($module->contact)
     <x-core.layout :$is_section_filled_inverted :$with_padding :$is_filled :$button_header :$button_url :module_name="'contact'">
-        @if ($data->contact['section_title'])
-            <x-slot name="module_title">
-                {!! $data->contact['section_title'] !!}
-            </x-slot>
+
+        @if($is_heading_visible ?? false)
+            @if ($data->contact['section_title'])
+                <x-slot name="module_title">
+                    {!! $data->contact['section_title'] !!}
+                </x-slot>
+            @endif
+            @if ($data->contact['section_subtitle'])
+                <x-slot name="module_subtitle">
+                    {!! $data->contact['section_subtitle'] !!}
+                </x-slot>
+            @endif
         @endif
-        @if ($data->contact['section_subtitle'])
-            <x-slot name="module_subtitle">
-                {!! $data->contact['section_subtitle'] !!}
-            </x-slot>
-        @endif
-        <section class="mx-auto flex flex-wrap justify-between" id="contact-section">
+
+        <section id="contact-wrapper" class="mx-auto my-12 flex flex-wrap justify-between">
             <div class="w-full p-8 lg:w-2/3">
                 @if (data_get($data, 'contact.google_maps_code'))
                     <div
