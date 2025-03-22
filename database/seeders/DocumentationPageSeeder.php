@@ -245,7 +245,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'component.feature-list',
                         'data' => [
                             'module_title'               => 'More Information',
-                            'module_subtitle'            => 'Stay connected with Warrirfolio',
+                            'module_subtitle'            => 'Stay connected with Warriorfolio',
                             'columns'                    => 3,
                             'is_active'                  => true,
                             'is_center'                  => false,
