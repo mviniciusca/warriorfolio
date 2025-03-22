@@ -18,7 +18,7 @@ App\View\Components\Header\Section.php
 {{-- Core: Background Image --}}
 <x-ui.background />
 {{-- Header --}}
-<div class="relative z-50 pb-2 pt-8 w-full">
+<nav class="relative z-50 pb-2 pt-8 w-full">
     {{-- Background Layer --}}
     <div class="absolute inset-0 -z-10 bg-contain bg-no-repeat bg-bottom animate-pulse"
         style="background-image: url({{ asset('img/core/core-ui-elements/beams/pink-beam.png') }})">
@@ -44,4 +44,4 @@ App\View\Components\Header\Section.php
             </div>
         </div>
     </x-core.layout>
-</div>
+</nav>
