@@ -71,11 +71,11 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'component.feature-list',
                         'data' => [
                             'module_title'               => 'Features',
-                            'module_subtitle'            => 'Check what\'s new in v2.1.3',
+                            'module_subtitle'            => 'Discover the features of Warriorfolio. With a modern and intuitive interface, you can easily manage your website and projects. ',
                             'columns'                    => '4',
                             'is_active'                  => true,
                             'is_center'                  => false,
-                            'is_filled'                  => false,
+                            'is_filled'                  => true,
                             'is_animated'                => false,
                             'is_light_fx'                => false,
                             'is_color_icon'              => false,
