@@ -64,10 +64,12 @@
                         </span>
                     @endif
                     @if ($profile->public_email ?? null)
-                        <span class="flex items-center gap-2 justify-start py-1 text-sm font-semibold opacity-90">
-                            <x-ui.ionicon icon="mail-outline" />
-                            <p>{{ $profile->public_email ?? 'mviniciusca@gmail.com' }}</p>
-                        </span>
+                        <a href="mailto:{{ $profile->public_email }}">
+                            <span class="flex items-center gap-2 justify-start py-1 text-sm font-semibold opacity-90">
+                                <x-ui.ionicon icon="mail-outline" />
+                                <p>{{ $profile->public_email ?? 'mviniciusca@gmail.com' }}</p>
+                            </span>
+                        </a>
                     @endif
                 </div>
             @endif
