@@ -71,7 +71,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'component.feature-list',
                         'data' => [
                             'module_title'               => 'Features',
-                            'module_subtitle'            => 'Discover the features of Warriorfolio. With a modern and intuitive interface, you can easily manage your website and projects. ',
+                            'module_subtitle'            => 'Discover the features of Warriorfolio. v2.1.3',
                             'columns'                    => '4',
                             'is_active'                  => true,
                             'is_center'                  => false,
@@ -88,9 +88,23 @@ class DocumentationPageSeeder extends Seeder
                             'with_padding'               => true,
                             'features'                   => [
                                 [
+                                    'icon'          => 'planet-outline',
+                                    'title'         => 'Saturn UI <span class="tag">new</span>',
+                                    'description'   => 'Saturn UI is a new interface for Warriorfolio. It is a modern and intuitive interface that allows you to manage your website and projects easily.',
+                                    'link'          => null,
+                                    'is_new_window' => false,
+                                ],
+                                [
                                     'icon'          => 'chatbox-outline',
-                                    'title'         => 'Notes (Blog) <span class="tag">new</span>',
+                                    'title'         => 'Notes (Blog) <span class="tag">updated</span>',
                                     'description'   => 'Write notes and let your ideas flow. Now, Warriorfolio has a blog ready for you to express yourself. It also features Core Modules, just like any other component of Warriorfolio.',
+                                    'link'          => null,
+                                    'is_new_window' => false,
+                                ],
+                                [
+                                    'icon'          => 'logo-whatsapp',
+                                    'title'         => 'Whatsapp Web <span class="tag">hidden treasure</span>',
+                                    'description'   => 'You can display a whatsapp web button on your website. This feature is hidden and can be activated in the settings.Works on mobile and desktop.',
                                     'link'          => null,
                                     'is_new_window' => false,
                                 ],
@@ -188,6 +202,13 @@ class DocumentationPageSeeder extends Seeder
                             'is_border'                  => true,
                             'with_padding'               => true,
                             'features'                   => [
+                                [
+                                    'icon'          => 'pencil-outline',
+                                    'title'         => 'Notes',
+                                    'description'   => 'The Notes module is a blog where you can write articles, tutorials, news and more. It is a powerful tool for content creation and sharing. In version 2.1.3, the Notes module has been updated with new features and improvements.',
+                                    'link'          => null,
+                                    'is_new_window' => false,
+                                ],
                                 [
                                     'icon'          => 'menu-outline',
                                     'title'         => 'Header',
