@@ -36,11 +36,17 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
             <div class="animate__animated animate__fadeInUp animate__delay-1s flex justify-center lg:col-span-1">
                 <div class="mt-8 flex items-center" id="hero-featured-image">
                     @if (data_get($hero, 'hero.featured_image'))
-                        <img class="rounded-lg lg:max-h-max" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
-                            alt="hero-section-image" />
+                        <div
+                            class="border rounded-2xl shadow-md border-white/50 dark:border-white/10 p-2 bg-white/20 dark:bg-black/20">
+                            <img class="rounded-2xl lg:max-h-max" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
+                                alt="hero-section-image" />
+                        </div>
                     @else
-                        <img class="rounded-lg lg:max-h-max" src="{{ asset('img/core/demo/default-landing-image.png') }}"
-                            alt="hero-section-image" />
+                        <div
+                            class="border rounded-2xl shadow-md border-white/50 dark:border-white/10 p-2 bg-white/20 dark:bg-black/20">
+                            <img class="rounded-2xl lg:max-h-max" src="{{ asset('img/core/demo/default-landing-image.png') }}"
+                                alt="hero-section-image" />
+                        </div>
                     @endif
                 </div>
         @endif
