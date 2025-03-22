@@ -6,7 +6,7 @@
     @endif
         @if ($name)
                 <ion-icon name="{{ 'logo-' . $name }}"
-                    class="mr-1 text-xl transition-all duration-300 hover:opacity-30 active:opacity-20">
+                    class="mr-1 text-2xl transition-all duration-300 hover:opacity-30 active:opacity-10">
                 </ion-icon>
                 @if ($href)
                     </a>

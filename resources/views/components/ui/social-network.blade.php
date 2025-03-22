@@ -1,6 +1,6 @@
 @props(['items' => null])
 
-<div class="flex flex-wrap justify-center items-center gap-2">
+<div class="flex flex-wrap justify-center items-center gap-4">
     @if ($items ?? false)
         @foreach ($items as $social)
             @if ($social['is_active'] ?? false)
