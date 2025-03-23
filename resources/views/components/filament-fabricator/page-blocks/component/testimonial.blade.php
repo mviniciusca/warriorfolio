@@ -6,14 +6,18 @@
     'picture' => null,
     'is_active' => null,
     'is_bg_filled' => null,
-    'is_filled_full_width' => null,
-    'text_size' => null,1
+    'is_filled_inverted' => null,
+    'text_size' => null,
+    'with_padding' => null ?? false,
 ])
 
 @if ($is_active)
-    <x-core.layout :is_filled="$is_filled_full_width" :with_padding="false">
-        <section class="{{ $is_bg_filled ? 'section-filled' : 'bg-transparent' }} rounded-2xl py-4">
-            <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-6 lg:py-16">
+    <x-core.layout :$with_padding>
+        <section class="
+        {{ $is_bg_filled & !$is_filled_inverted ? 'section-filled' : ''}}
+        {{ $is_filled_inverted ? 'bg-black text-white dark:text-black dark:bg-white' : ''}}
+        rounded-xl">
+            <div class="mx-auto max-w-screen-xl px-4 py-4 text-center lg:px-6 lg:py-12">
                 <figure class="mx-auto max-w-screen-xl">
                     <svg class="mx-auto mb-3 h-12" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -27,7 +31,7 @@
                             </p>
                         </blockquote>
                     @endif
-                    <figcaption class="mt-6 flex items-center justify-center gap-2 space-x-3">
+                    <figcaption class="mt-6 flex items-center justify-center gap-2 space-x-2">
                         @if ($picture)
                             <x-curator-glider :media="$picture" class="h-10 w-10 rounded-full object-cover" />
                         @endif

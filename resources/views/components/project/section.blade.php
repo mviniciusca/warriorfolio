@@ -52,7 +52,7 @@ App\View\Components\Project\Section.php
                                 {{ $project->category->name }}
                             </div>
                             <x-curator-glider
-                                class="{{ $is_section_filled_inverted ? 'dark:grayscale-0 dark:opacity-100 opacity-60 grayscale hover:grayscale-0 hover:opacity-100' : 'dark:grayscale' }} mx-auto h-40 w-full rounded-xl object-cover object-center transition-all duration-100 dark:opacity-60 dark:filter dark:hover:opacity-100 dark:hover:filter-none sm:h-48 md:h-52 lg:h-60"
+                                class="{{ $is_section_filled_inverted ? 'dark:grayscale-0 dark:opacity-100 opacity-30 grayscale hover:grayscale-0 hover:opacity-100' : 'dark:grayscale' }} mx-auto h-40 w-full rounded-xl object-cover object-center transition-all duration-100 dark:opacity-60 dark:filter dark:hover:opacity-100 dark:hover:filter-none sm:h-48 md:h-52 lg:h-60"
                                 :media="$project->image_cover" />
                             <div class="mt-4 flex flex-col justify-between gap-2 pb-4 text-xs">
                                 <p class="font-medium opacity-100">{{ $project->name }}</p>

@@ -27,19 +27,23 @@ class Testimonial extends PageBlock
                     ->collapsed()
                     ->schema([
                         Group::make()
-                            ->columns(3)
+                            ->columns(4)
                             ->schema([
                                 Checkbox::make('is_active')
                                     ->default(true)
                                     ->helperText(__('Show this Module'))
                                     ->label('Active'),
+                                Checkbox::make('with_padding')
+                                    ->helperText(__('Add/Remove vertical padding to the component'))
+                                    ->label('Vertical Padding')
+                                    ->default(false),
                                 Checkbox::make('is_bg_filled')
                                     ->helperText(__('Set the transparent background'))
                                     ->label('Filled Background')
                                     ->default(false),
-                                Checkbox::make('is_filled_full_width')
-                                    ->helperText(__('Fill the full width of the container'))
-                                    ->label('Filled Full Width')
+                                Checkbox::make('is_filled_inverted')
+                                    ->helperText(__('Invert the colors of component.'))
+                                    ->label('Filled Inverted')
                                     ->default(false),
                             ]),
                         Group::make()
