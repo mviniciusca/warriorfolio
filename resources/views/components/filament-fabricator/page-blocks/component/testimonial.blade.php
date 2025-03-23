@@ -17,7 +17,7 @@
         {{ $is_bg_filled & !$is_filled_inverted ? 'section-filled' : ''}}
         {{ $is_filled_inverted ? 'bg-black text-white dark:text-black dark:bg-white' : ''}}
         rounded-xl">
-            <div class="mx-auto max-w-screen-xl px-4 py-4 text-center lg:px-6 lg:py-12">
+            <div class="mx-auto max-w-screen-xl px-8 py-8 text-center lg:py-16">
                 <figure class="mx-auto max-w-screen-xl">
                     <svg class="mx-auto mb-3 h-12" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
