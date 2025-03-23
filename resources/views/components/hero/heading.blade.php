@@ -16,7 +16,7 @@
 @endif
 @if ($hero->hero['section_subtitle'] ?? false)
     <h2
-        class="animate__animated animate__fadeInUp animate__delay-0s mb-6 max-w-3xl hero-subtitle leading-tight tracking-tight shadow-current {{ ($hero->hero['bg_image'] ?? null) && ($hero->hero['is_highlight'] ?? null) ? 'bg-white text-left dark:bg-black px-2 max-w-auto' : '' }}">
+        class="animate__animated animate__fadeInUp animate__delay-1s mb-6 max-w-3xl hero-subtitle leading-tight tracking-tight shadow-current {{ ($hero->hero['bg_image'] ?? null) && ($hero->hero['is_highlight'] ?? null) ? 'bg-white text-left dark:bg-black px-2 max-w-auto' : '' }}">
         {!! $hero->hero['section_subtitle'] !!}
     </h2>
 @endif
