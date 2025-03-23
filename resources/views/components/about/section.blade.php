@@ -19,7 +19,7 @@ App\View\Components\About\Section.php
     'button_url' => null,
     'is_filled' => $data->about['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->about['is_section_filled_inverted'] ?? false,
-    'is_heading_visible' => $data->about['is_heading_visible'] ?? false,
+    'is_heading_visible' => $data->about['is_heading_visible'] ?? true,
 ])
 
 @if ($module->about ?? false)
@@ -27,7 +27,7 @@ App\View\Components\About\Section.php
     <x-core.layout :module_name="'about'" :$is_section_filled_inverted :$with_padding :$is_filled :$button_header
         :$button_url>
 
-        @if($data->about['is_heading_visible'] ?? false)
+        @if($is_heading_visible)
             @if ($data->about['section_title'] ?? false)
                 <x-slot name="module_title">
                     {!! $data->about['section_title'] ?? null !!}

@@ -6,7 +6,7 @@
 
             <x-slot name="module_title">
 
-                @if($info['header_title'] && ($info['is_heading_visible'] ?? false))
+                @if($info['header_title'] && ($info['is_heading_visible'] ?? true))
                     {{ $info['header_title'] ?? null}}
                 @endif
 
@@ -20,7 +20,7 @@
 
             </x-slot>
 
-            @if($info['header_subtitle'] && ($info['is_heading_visible'] ?? false) ?? false)
+            @if($info['header_subtitle'] && ($info['is_heading_visible'] ?? true) ?? false)
                 <x-slot name="module_subtitle">
                     {{ $info['header_subtitle'] ?? null }}
                 </x-slot>

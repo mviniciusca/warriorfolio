@@ -18,7 +18,7 @@ App\View\Components\Customer\Section.php
     'with_padding' => true,
     'is_filled' => $data->customer['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->customer['is_section_filled_inverted'] ?? false,
-    'is_heading_visible' => $data->customer['is_heading_visible'] ?? false,
+    'is_heading_visible' => $data->customer['is_heading_visible'] ?? true,
 ])
 
 @if ($module->clients ?? false)

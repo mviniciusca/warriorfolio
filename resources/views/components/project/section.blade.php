@@ -15,7 +15,7 @@ App\View\Components\Project\Section.php
     'with_padding' => null,
     'is_filled' => $data->portfolio['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->portfolio['is_section_filled_inverted'] ?? false,
-    'is_heading_visible' => $data->portfolio['is_heading_visible'] ?? false,
+    'is_heading_visible' => $data->portfolio['is_heading_visible'] ?? true,
 ])
 
 @if ($module->portfolio)

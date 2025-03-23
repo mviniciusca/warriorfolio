@@ -15,7 +15,7 @@ App\View\Components\Contact\Section.php
     'with_padding' => null,
     'is_filled' => $data->contact['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->contact['is_section_filled_inverted'] ?? false,
-    'is_heading_visible' => $data->contact['is_heading_visible'] ?? false,
+    'is_heading_visible' => $data->contact['is_heading_visible'] ?? true,
 ])
 
 @if ($module->contact)
