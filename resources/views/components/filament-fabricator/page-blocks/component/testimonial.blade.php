@@ -27,7 +27,7 @@
                     @if ($testimonial)
                         <blockquote>
                             <p class="font-serif {{ $text_size ?? 'text-lg md:text-xl lg:text-2xl' }} italic leading-tight tracking-tight">
-                                "{!! $testimonial !!}"
+                                " {!! $testimonial !!} "
                             </p>
                         </blockquote>
                     @endif
