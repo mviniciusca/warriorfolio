@@ -74,9 +74,9 @@
                 </div>
             @endif
             @if ($profile->is_downloadable && $profile->document)
-                <div class="py-2">
+                <div class="py-2 mx-auto text-center">
                     <a target="new" href="{{ asset('storage/' . $profile->document) }}">
-                        <x-ui.button class=" mt-4 text-xs" :style="'filled'" :$is_section_filled_inverted
+                        <x-ui.button class=" mt-4 text-xs mx-auto" :style="'filled'" :$is_section_filled_inverted
                             :icon="'download-outline'">
                             {{ __('Download Resume') }}
                         </x-ui.button>
