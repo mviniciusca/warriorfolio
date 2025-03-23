@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">🪐 Warriorfolio 2 - Saturn UI </h1>
+  <h1 align="center">🪐 Warriorfolio 2 </h1>
 </p>
 
 <p align="center">
@@ -7,54 +7,52 @@
 </p>
 
 
-## 📋 Introduction
+### 📋 Introduction
 
-**Warriorfolio** is a modern and flexible application for creating professional portfolios. In version 2.1, it brings a more robust, intelligent, and intuitive platform, designed with a modular concept that allows you to easily customize the structure and appearance of your site.
+Warriorfolio empowers users to craft personalized and professional portfolios with ease. Its modular architecture ensures flexibility and adaptability, enabling seamless customization to meet diverse needs and creative visions.
 
 From a simple Landing Page to a complete site with multiple pages, the modules integrate like true LEGO pieces, making Warriorfolio 2 the ideal tool for those seeking a simple, fast, and effective portfolio.
 
 Developed to be 100% managed through the Control Panel, without the need for deep technical knowledge in programming, PHP, or Laravel.
 
-## ✨ Features
+### ✨ Features
 
-### New in version 2.1.3 - March, 2025
-- 🪐 Saturn UI
+##### New in version 2.1.3 - March, 2025
+- 🪐 Saturn UI: A revamped and modernized user interface.
+- 🖼️ Portfolio Gallery Updated: A new and improved gallery layout with enhanced navigation and filtering options.
+- 🔄 Inverse Mode: Switch between light and dark themes effortlessly.
+- 🔥 Module Creator: Build and customize new modules with ease.
+- 👀 Section Heading Visibility Control: Toggle the visibility of section headings.
+- ⬇️ New Footer Layout: Enhanced and customizable footer design.
+- ⚡ Query Boost Performance: Improved database query performance for faster load times.
+- 📄 Files Documentation: Comprehensive documentation for managing files.
+- 🐛 Bug Fixes: Resolved various issues to improve stability and performance.
 
 
-### Core
-- 🛠️ Robust and flexible Control Panel
-- 🔄 Maintenance Mode and Discovery Mode
-- 🧩 Customizable core modules
-- 📱 Responsive and optimized design
-- 📷 Portfolio image gallery
-- 🖼️ Image slideshow
-- 👥 Customer showcase
-- 🎯 Skills display
-- 📧 Email capture for mailing lists
-- 📈 Google Analytics integration
-- 📄 Downloadable resume
-- 🟢 Linkedin "Open to Work" icon
-- 📚 Bio, certificates, and courses
-- 💬 WhatsApp Web contact
-- ✉️ Contact form
-- 📥 Inbox
+##### Inside the Box
+- 📝 Blog and Portfolio with advanced features  
+- 📊 Analytics and Newsletter integration  
+- 📄 Resume, Linkedin "Open to Work" badge and Skills display  
+- 📸 Gallery and Sliders for showcasing work  
+- 📚 Certificates, Courses, and Bio sections  
+- 🛠️ Flexible Control Panel with customizable modules  
+- 🔄 Maintenance and Discovery Modes  
+- 📱 Responsive, optimized design  
+- 👥 Customer showcase and Skills display  
+- 📧 Email capture and Google Analytics  
+- 💬 WhatsApp Web and Contact form  
+- 📥 Inbox 
+- 🔔 Notifications and Alerts  
 
-## 🚀 Installation
+### 🚀 Installation
 
-### Composer
+#### Composer
 
 ```bash
 composer create-project mviniciusca/warriorfolio
 ```
 
-The installation will automatically:
-- Generate application key
-- Create symbolic links for storage
-- Run migrations and seeds
-- Install NPM dependencies
-- Start the local server
-
-### Clone and setup
+#### Clone and setup
 ```
 git clone https://github.com/mviniciusca/warriorfolio.git
 cd warriorfolio
@@ -71,34 +69,34 @@ npm run dev
 ```
 
 
-## 🔧 Additional Resources
+### 🔧 Additional Resources
 
-### Content Blocks
+#### Content Blocks
 You don't need to stick to Warriorfolio's default design. The application offers extremely versatile code blocks and structural components that allow countless combinations and customizations. These elements are divided into: Components, Design, and Core.
 
-### Maintenance Mode
+#### Maintenance Mode
 Put your application in maintenance mode with the option to keep the contact form and social networks active.
 
-### Discovery Mode
+#### Discovery Mode
 Activate this feature to view your application while it's in maintenance mode. An informative stripe will be displayed at the top indicating that Discovery Mode is enabled.
 
-### Core Modules Decoupling
+#### Core Modules Decoupling
 Customize which main modules will be displayed on your site. By default, Warriorfolio includes: Header, Hero Section, About You, Projects, Customers, Contact, Newsletter, and Footer. You can enable or disable these modules in the application settings.
 
-## 🖥️ Requirements
+### 🖥️ Requirements
 
 - 🐘 PHP 8.2 or higher
-- 🧪 PHP Extensions: OpenSSL, PDO, Zip
+- 🧪 PHP Extensions: OpenSSL, PDO, Zip ...
 - 💾 Database: MySQL, PostgreSQL, SQLite
 - 🤵🏻 Composer 2.0 or higher
 - 🌱 NPM 10.2 or higher
-- 💎 2GB disk space or more
 
-## 📚 Documentation
+
+#### 📚 Documentation
 
 [Visit the Official Documentation](https://warriorfolio.vercel.app/) for Warriorfolio hosted on Vercel.
 
-## ⚙️ Technologies
+#### ⚙️ Technologies
 
 Warriorfolio is built with modern and robust technologies:
 
@@ -106,11 +104,11 @@ Warriorfolio is built with modern and robust technologies:
 - **Filament**: Toolkit for creating admin panels, developed by Dan Harrin, Zep Fietje, and the community
 - **Livewire**: Laravel framework that allows the creation of real-time applications, by Caleb Porzio
 
-## 🤝 Contributions and Feedback
+#### 🤝 Contributions and Feedback
 
 If you've found a bug, want to contribute, or provide feedback, feel free to open an issue or a pull request. Your opinion is very important!
 
-## 👏 Acknowledgments
+#### 👏 Acknowledgments
 
 - To Warriorfolio 1 users
 - For feedback and contributions received
@@ -119,9 +117,9 @@ If you've found a bug, want to contribute, or provide feedback, feel free to ope
 - To Caleb Porzio, creator of Livewire
 - To the entire PHP and Laravel community
 
-## 📄 License
+#### 📄 License
 
-Warriorfolio 2 is an Open Source application under the MIT license.
+Warriorfolio is an Open Source application under the MIT license.
 
 ---
 
