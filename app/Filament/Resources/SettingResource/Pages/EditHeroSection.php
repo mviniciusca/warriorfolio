@@ -84,7 +84,7 @@ class EditHeroSection extends EditRecord
                                     ]),
                                 Section::make(__('Info Bumper'))
                                     ->columns(3)
-                                    ->description(__('A simple info bumper component.'))
+                                    ->description(__('A simple info bumper component. All fields are optional.'))
                                     ->icon('heroicon-o-megaphone')
                                     ->collapsed()
                                     ->schema([
