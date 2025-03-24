@@ -148,8 +148,8 @@ class EditHeroSection extends EditRecord
                                                     ->default('primary'),
                                             ]),
                                     ]),
-                                Section::make(__('Title & Subtitle. All fields are optional.'))
-                                    ->description(__('Configure the title and subtitle of your Hero Section'))
+                                Section::make(__('Title & Subtitle'))
+                                    ->description(__('The main title and subtitle of your Hero Section. All fields are optional.'))
                                     ->icon('heroicon-o-bars-3-bottom-left')
                                     ->collapsed()
                                     ->schema([
