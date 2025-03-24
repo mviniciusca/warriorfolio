@@ -76,8 +76,7 @@
             "@php artisan key:generate --ansi",
             "@php artisan storage:link --ansi",
             "@php artisan migrate:fresh --seed --ansi",
-            "npm install",
-            "@php artisan serve & npm run dev"
+            "npm install"
         ]
     },
     "extra": {
