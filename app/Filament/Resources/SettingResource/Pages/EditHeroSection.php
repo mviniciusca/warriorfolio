@@ -63,14 +63,12 @@ class EditHeroSection extends EditRecord
                                 Group::make()
                                     ->columns(3)
                                     ->schema([
-                                        Select::make('hero.theme')
+                                        Radio::make('hero.theme')
                                             ->live()
                                             ->label(__('Theme'))
-                                            ->helperText(__('Select the theme of your Hero Section.'))
-                                            ->prefixIcon('heroicon-o-window')
                                             ->options([
-                                                'sierra'  => __('Sierra'),
                                                 'default' => __('Default'),
+                                                'sierra'  => __('Sierra'),
                                             ])
                                             ->default('sierra'),
                                         Checkbox::make('hero.is_filled')
