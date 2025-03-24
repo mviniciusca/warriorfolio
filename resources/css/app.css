@@ -124,8 +124,7 @@
     }
 
     .text-highlight,
-    .heading-module-title strong,
-    .tl {
+    .heading-module-title strong {
         @apply bg-gradient-to-r from-primary-500 to-tertiary-500 bg-clip-text pr-1 text-transparent;
     }
 
@@ -152,8 +151,16 @@
         @apply p-2 mx-auto bg-white/70 dark:bg-white/10 rounded-xl shadow-xl border border-black/20 dark:border-white/10;
     }
 
-    .ht {
-        @apply bg-gradient-to-t from-secondary-400 text-transparent to-secondary-950 dark:from-secondary-300 dark:to-secondary-800 bg-clip-text;
+    .hero-bg-overlay-default {
+        @apply bg-gradient-to-t dark:from-secondary-950 dark:via-black/80 dark:to-black/60 transition-all duration-300 from-white/100 via-white/70 to-white/60;
+    }
+
+    .hero-bg-overlay-middle {
+        @apply bg-gradient-to-t dark:from-secondary-950 dark:via-black/40 dark:to-black/20 transition-all duration-300 from-white/100 via-white/40 to-white/20;
+    }
+
+      .hero-bg-overlay-down {
+        @apply bg-gradient-to-t dark:from-secondary-950 dark:via-black/0 dark:to-black/0 transition-all duration-300 from-white/100 via-white/0 to-white/0;
     }
 
     .hero-title {
@@ -165,8 +172,17 @@
     }
 
     /** Default Gradient **/
+
+    .tl {
+        @apply bg-gradient-to-r from-primary-500 to-tertiary-500 bg-clip-text pr-1 text-transparent;
+    }
+
     .dg {
         @apply dark:bg-gradient-to-tr dark:from-secondary-400 dark:to-secondary-600 bg-gradient-to-tr from-secondary-400 to-secondary-700 bg-clip-text text-transparent;
+    }
+
+    .ht {
+        @apply bg-gradient-to-t from-secondary-400 text-transparent to-secondary-950 dark:from-secondary-300 dark:to-secondary-800 bg-clip-text;
     }
 
     /** Module Header **/

@@ -2,7 +2,7 @@
 
 @if ($hero->hero['is_active'] ?? false)
     <div id="hero-fading-overlay"
-        class="absolute -z-[30] m-auto md:h-[480px] lg:h-[900px] w-full bg-gradient-to-t dark:from-secondary-950 dark:via-black/80 dark:to-black/60 transition-all duration-300 from-white/100 via-white/70 to-white/60">
+        class="{{ ($hero->hero['is_bg_blur'] ?? true) ? 'backdrop-blur-3xl' : 'backdrop-blur-0' }} -z-[30] m-auto md:h-[480px] lg:h-[900px] w-full {{ ($hero->hero['bg_overlay'] ?? null) ?? 'hero-bg-overlay-default' }} {{ ($hero->hero['is_overlay_active'] ?? true) ? 'absolute' : 'hidden' }}">
     </div>
     @if ($hero->hero['is_pattern_bg'] ?? false)
         <div id="hero-background-image-pattern"

@@ -265,16 +265,36 @@ class EditHeroSection extends EditRecord
                                     ->description(__('Controls for Background Image for your Hero Section.'))
                                     ->icon('heroicon-o-sparkles')
                                     ->collapsed()
-                                    ->columns(2)
+                                    ->columns(3)
                                     ->schema([
                                         Checkbox::make('hero.is_active')
                                             ->label(__('Show Background Image'))
+                                            ->default(true)
                                             ->helperText(__('Show or hide the background image.')),
+                                        Checkbox::make('hero.is_bg_blur')
+                                            ->label(__('Blur Background'))
+                                            ->default(true)
+                                            ->helperText(__('Enable this option to blur the background image.')),
+                                        Checkbox::make('hero.is_overlay_active')
+                                            ->label(__('Show Background Overlay'))
+                                            ->default(true)
+                                            ->helperText(__('Enable this option to show a background overlay in the hero section.')),
+                                        Select::make('hero.bg_overlay')
+                                            ->options([
+                                                'hero-bg-overlay-default' => 'Default',
+                                                'hero-bg-overlay-middle'  => 'Middle',
+                                                'hero-bg-overlay-down'    => 'Down',
+                                            ])
+                                            ->default('default')
+                                            ->label(__('Overlay Opacity'))
+                                            ->helperText(__('Choose the opacity of the background overlay.')),
                                         Checkbox::make('hero.is_highlight')
                                             ->label(__('Highlight Text'))
+                                            ->default(false)
                                             ->helperText(__('Highlight the text in the hero section.')),
                                         Checkbox::make('hero.is_pattern_bg')
                                             ->label(__('Pattern Background'))
+                                            ->default(false)
                                             ->helperText(__('Enable this option to show a pattern background in the hero section. This overrides the background image if uploaded.')),
                                         Radio::make('hero.pattern_name')
                                             ->options([
