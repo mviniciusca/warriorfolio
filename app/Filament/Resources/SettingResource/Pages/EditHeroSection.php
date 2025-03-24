@@ -148,14 +148,14 @@ class EditHeroSection extends EditRecord
                                                     ->default('primary'),
                                             ]),
                                     ]),
-                                Section::make(__('Title & Subtitle'))
+                                Section::make(__('Title & Subtitle. All fields are optional.'))
                                     ->description(__('Configure the title and subtitle of your Hero Section'))
                                     ->icon('heroicon-o-bars-3-bottom-left')
                                     ->collapsed()
                                     ->schema([
                                         TextInput::make('hero.section_title')
                                             ->label(__('Hero Section Title'))
-                                            ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 140 characters.')
+                                            ->helperText('💡 Use gradient class e.g: tl or dg to highlight a word. Limit 140 characters.')
                                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                             ->columnSpanFull()
                                             ->placeholder(__('hackable ♠'))
@@ -165,8 +165,8 @@ class EditHeroSection extends EditRecord
                                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                             ->columnSpanFull()
                                             ->placeholder(__('hackable ♠'))
-                                            ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 160 characters.')
-                                            ->maxLength(160),
+                                            ->helperText('💡 Use gradient class e.g: tl or dg to highlight a word. Limit 140 characters.')
+                                            ->maxLength(140),
                                     ]),
                                 Section::make(__('Buttons'))
                                     ->description(__('A pair of buttons in your Hero Section.'))
