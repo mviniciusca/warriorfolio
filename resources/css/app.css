@@ -148,6 +148,10 @@
         @apply mb-8 text-center text-4xl font-bold leading-none tracking-tighter lg:text-5xl;
     }
 
+    .hero-section-featured-border {
+        @apply p-2 mx-auto bg-white/70 dark:bg-white/10 rounded-xl shadow-xl border border-black/20 dark:border-white/10;
+    }
+
     .ht {
         @apply bg-gradient-to-t from-secondary-400 text-transparent to-secondary-950 dark:from-secondary-300 dark:to-secondary-800 bg-clip-text;
     }

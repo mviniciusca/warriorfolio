@@ -9,7 +9,7 @@ App\View\Components\Themes\Hero\Default-Theme.php
 
 --}}
 
-@props(['hero', 'icon' => null])
+@props(['hero', 'icon' => null, 'browser_border_url' => $hero->hero['browser_border_url'] ?? null])
 
 <section>
     <div class="mx-auto mt-4 grid items-center justify-center text-center">
@@ -29,11 +29,18 @@ App\View\Components\Themes\Hero\Default-Theme.php
             {{-- Hero Section: Image --}}
             @if ($hero->hero['featured_image'] ?? false)
                 <div class="mx-auto mt-8" id="hero-featured-image">
-                    <img class="mx-auto rounded-2xl" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
-                        alt="hero-section-featured-image" />
+                    @if($hero->hero['browser_border_is_active'] ?? false)
+                        <x-ui.browser-border :url='$browser_border_url'>
+                            <img class="mx-auto rounded-none" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
+                                alt="hero-section-featured-image" />
+                        </x-ui.browser-border>
+                    @else
+                        <img class="mt-8 hero-section-featured-border" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
+                            alt="hero-section-featured-image" />
+                    @endif
             @else
                 <img src="{{ asset('img/core/bg/hero-default-bg.png') }}" alt="Default Hero Image"
-                    class="h-auto w-full rounded-lg shadow-xl" />
+                    class="h-auto w-full hero-section-featured-border" />
             @endif
             </div>
     @endif

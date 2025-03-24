@@ -228,16 +228,28 @@ class EditHeroSection extends EditRecord
                                     ->description(__('The featured image of your Hero Section.'))
                                     ->icon('heroicon-o-sparkles')
                                     ->collapsed()
-                                    ->columns(3)
+                                    ->columns(1)
                                     ->schema([
-                                        Checkbox::make('hero.featured_image_is_active')
-                                            ->default(true)
-                                            ->helperText(__('Show / hide featured image.'))
-                                            ->label(__('Active')),
+                                        Group::make()
+                                            ->columns(2)
+                                            ->schema([
+                                                Checkbox::make('hero.featured_image_is_active')
+                                                    ->default(true)
+                                                    ->helperText(__('Show / hide featured image.'))
+                                                    ->label(__('Active')),
+                                                Checkbox::make('hero.browser_border_is_active')
+                                                    ->default(true)
+                                                    ->helperText(__('Enable this option to display a browser border around the featured image. Applicable only for themes that support browser borders.'))
+                                                    ->label(__('Browser Border')),
+                                                TextInput::make('hero.browser_border_url')
+                                                    ->label(__('Browser Border URL'))
+                                                    ->helperText(__('URL of the browser border image.'))
+                                                    ->columnSpanFull()
+                                                    ->prefixIcon('heroicon-o-link'),
+                                            ]),
                                         FileUpload::make('hero.featured_image')
                                             ->label('Featured Image')
                                             ->directory('hero')
-                                            ->columnSpan(2)
                                             ->maxFiles(1)
                                             ->imageEditor()
                                             ->imageEditorAspectRatios([
