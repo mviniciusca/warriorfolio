@@ -4,6 +4,7 @@ namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Radio;
@@ -264,71 +265,44 @@ class EditHeroSection extends EditRecord
                                 Section::make(__('Background'))
                                     ->description(__('Controls for Background Image for your Hero Section.'))
                                     ->icon('heroicon-o-sparkles')
-                                    ->collapsed()
+                                    // ->collapsed()
                                     ->columns(3)
                                     ->schema([
-                                        Checkbox::make('hero.is_active')
-                                            ->label(__('Show Background Image'))
-                                            ->default(true)
-                                            ->helperText(__('Show or hide the background image.')),
-                                        Checkbox::make('hero.is_bg_blur')
-                                            ->label(__('Blur Background'))
-                                            ->default(true)
-                                            ->helperText(__('Enable this option to blur the background image.')),
-                                        Checkbox::make('hero.is_overlay_active')
-                                            ->label(__('Show Background Overlay'))
-                                            ->default(true)
-                                            ->helperText(__('Enable this option to show a background overlay in the hero section.')),
-                                        Select::make('hero.bg_overlay')
-                                            ->options([
-                                                'hero-bg-overlay-default' => 'Default',
-                                                'hero-bg-overlay-middle'  => 'Middle',
-                                                'hero-bg-overlay-down'    => 'Down',
-                                            ])
-                                            ->default('default')
-                                            ->label(__('Overlay Opacity'))
-                                            ->helperText(__('Choose the opacity of the background overlay.')),
-                                        Checkbox::make('hero.is_highlight')
-                                            ->label(__('Highlight Text'))
-                                            ->default(false)
-                                            ->helperText(__('Highlight the text in the hero section.')),
-                                        Checkbox::make('hero.is_pattern_bg')
-                                            ->label(__('Pattern Background'))
-                                            ->default(false)
-                                            ->helperText(__('Enable this option to show a pattern background in the hero section. This overrides the background image if uploaded.')),
-                                        Radio::make('hero.pattern_name')
-                                            ->options([
-                                                'dot'   => 'Dot',
-                                                'cross' => 'Cross',
-                                            ])
-                                            ->default('cross')
-                                            ->label(__('Pattern Type')),
-                                        FileUpload::make('hero.bg_image')
-                                            ->label(__('Hero Section Background Image'))
-                                            ->directory('hero/bg')
-                                            ->image()
-                                            ->maxFiles(1)
-                                            ->columnSpanFull()
-                                            ->imageEditorAspectRatios([
-                                                '1:1'  => '1:1',
-                                                '16:9' => '16:9',
-                                                '4:3'  => '4:3',
-                                                '3:2'  => '3:2',
-                                                '2:1'  => '2:1',
-                                            ])
-                                            ->imageEditor()
-                                            ->helperText(__('Upload a background image for the hero section. 16:9 aspect ratio is recommended.')),
                                         Group::make()
-                                            ->columns(3)
                                             ->columnSpanFull()
+                                            ->columns(3)
                                             ->schema([
+                                                Checkbox::make('hero.is_active')
+                                                    ->label(__('Show Background Image'))
+                                                    ->default(true)
+                                                    ->helperText(__('Show or hide the background image.')),
                                                 Checkbox::make('hero.is_upper')
                                                     ->label(__('Move to Upper'))
                                                     ->helperText(__('Move the background image to the upper side of website.')),
-                                                Checkbox::make('hero.is_bg_grayscale')
-                                                    ->columnSpan(2)
-                                                    ->label(__('Grayscale'))
-                                                    ->helperText(__('Enable this option to show the background image in grayscale.')),
+                                                Checkbox::make('hero.is_highlight')
+                                                    ->label(__('Highlight Text'))
+                                                    ->default(false)
+                                                    ->helperText(__('Highlight the text in the hero section.')),
+                                                FileUpload::make('hero.bg_image')
+                                                    ->label(__('Hero Section Background Image'))
+                                                    ->directory('hero/bg')
+                                                    ->image()
+                                                    ->maxFiles(1)
+                                                    ->columnSpanFull()
+                                                    ->imageEditorAspectRatios([
+                                                        '1:1'  => '1:1',
+                                                        '16:9' => '16:9',
+                                                        '4:3'  => '4:3',
+                                                        '3:2'  => '3:2',
+                                                        '2:1'  => '2:1',
+                                                    ])
+                                                    ->imageEditor()
+                                                    ->helperText(__('Upload a background image for the hero section. 16:9 aspect ratio is recommended.')),
+                                            ]),
+
+                                        Fieldset::make(__('Size'))
+                                            ->columns(4)
+                                            ->schema([
                                                 Select::make('hero.bg_position')
                                                     ->options([
                                                         'bg-center' => 'Center',
@@ -356,6 +330,46 @@ class EditHeroSection extends EditRecord
                                                     ])
                                                     ->label(__('Repeat'))
                                                     ->helperText(__('Choose the repeat of the background image.')),
+                                            ]),
+
+                                        Fieldset::make(__('Overlay & Effects'))
+                                            ->columns(4)
+                                            ->schema([
+                                                Checkbox::make('hero.is_bg_grayscale')
+                                                    ->label(__('Grayscale'))
+                                                    ->helperText(__('Add grayscale effect.')),
+                                                Checkbox::make('hero.is_bg_blur')
+                                                    ->label(__('Blur'))
+                                                    ->default(true)
+                                                    ->helperText(__('Blur the background image.')),
+                                                Checkbox::make('hero.is_overlay_active')
+                                                    ->label(__('Overlay'))
+                                                    ->default(true)
+                                                    ->helperText(__('Show a background overlay in the hero section.')),
+                                                Radio::make('hero.bg_overlay')
+                                                    ->options([
+                                                        'hero-bg-overlay-default' => 'Default',
+                                                        'hero-bg-overlay-middle'  => 'Middle',
+                                                        'hero-bg-overlay-down'    => 'Down',
+                                                    ])
+                                                    ->default('default')
+                                                    ->label(__('Overlay Opacity')),
+                                            ]),
+
+                                        Fieldset::make(__('Pattern Background'))
+                                            ->columns(3)
+                                            ->schema([
+                                                Checkbox::make('hero.is_pattern_bg')
+                                                    ->label(__('Pattern Background'))
+                                                    ->default(false)
+                                                    ->helperText(__('Use a pattern background in the hero section. Set bg-repeat, bg-auto, and remove blur effect.')),
+                                                Radio::make('hero.pattern_name')
+                                                    ->options([
+                                                        'dot'   => 'Dot',
+                                                        'cross' => 'Cross',
+                                                    ])
+                                                    ->default('cross')
+                                                    ->label(__('Pattern Type')),
                                             ]),
 
                                     ]),
