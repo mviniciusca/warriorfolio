@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">🪐 Warriorfolio 2 </h1>
+  <h1 align="center">Warriorfolio 2</h1>
 </p>
 
 <p align="center">
