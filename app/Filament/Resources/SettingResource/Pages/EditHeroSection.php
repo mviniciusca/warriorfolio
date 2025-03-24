@@ -238,6 +238,7 @@ class EditHeroSection extends EditRecord
                                             ->label('Featured Image')
                                             ->directory('hero')
                                             ->columnSpan(2)
+                                            ->maxFiles(1)
                                             ->imageEditor()
                                             ->imageEditorAspectRatios([
                                                 '1:1'  => '1:1',
@@ -274,9 +275,17 @@ class EditHeroSection extends EditRecord
                                             ->label(__('Hero Section Background Image'))
                                             ->directory('hero/bg')
                                             ->image()
+                                            ->maxFiles(1)
                                             ->columnSpanFull()
+                                            ->imageEditorAspectRatios([
+                                                '1:1'  => '1:1',
+                                                '16:9' => '16:9',
+                                                '4:3'  => '4:3',
+                                                '3:2'  => '3:2',
+                                                '2:1'  => '2:1',
+                                            ])
                                             ->imageEditor()
-                                            ->helperText(__('Upload a background image for the hero section.')),
+                                            ->helperText(__('Upload a background image for the hero section. 16:9 aspect ratio is recommended.')),
                                         Group::make()
                                             ->columns(3)
                                             ->columnSpanFull()
@@ -340,6 +349,7 @@ class EditHeroSection extends EditRecord
                                             ->schema([
                                                 FileUpload::make('hero.slider_image')
                                                     ->label(__('Image'))
+                                                    ->maxFiles(1)
                                                     ->required()
                                                     ->helperText(__('PNG format will look great.')),
                                                 Group::make()
