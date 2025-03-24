@@ -20,8 +20,19 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'    => 'clone, setup & <span class="dg">deploy</span>🚀',
-                'section_subtitle' => 'Warriorfolio '.env('APP_VERSION').' is here with a UI refresh, new features, and improvements. <br/>Clone, setup, and deploy your portfolio in minutes.',
+                'section_title'            => 'You start from <span class="dg">Here</span>',
+                'section_subtitle'         => 'Warriorfolio '.env('APP_VERSION').' is here with a new UI, new features, and improvements. Clone, setup, and deploy your portfolio in minutes.',
+                'is_upper'                 => true,
+                'is_filled'                => false,
+                'is_invert'                => true,
+                'bg_overlay'               => 'hero-bg-overlay-default',
+                'bumper_tag'               => 'Updated',
+                'bumper_is_active'         => true,
+                'is_bg_blur'               => false,
+                'bumper_role'              => 'primary',
+                'bumper_title'             => 'Welcome to Saturn UI.',
+                'bumper_is_animated'       => true,
+                'browser_border_is_active' => true,
                 /** Buttons */
                 'buttons' => [
                     [
@@ -40,14 +51,16 @@ class LayoutFactory extends Factory
                     ],
                 ],
                 /** Themes */
-                'theme'                    => 'sierra',
+                'theme'                    => 'default',
                 'is_mailing_active'        => false,
                 'featured_image_is_active' => true,
                 /** Background */
-                'is_active'   => false,
-                'bg_position' => 'bg-center',
-                'bg_size'     => 'bg-auto',
-                'bg_repeat'   => 'bg-no-repeat',
+                'pattern_name'  => 'cross',
+                'is_pattern_bg' => true,
+                'is_active'     => true,
+                'bg_position'   => 'bg-center',
+                'bg_size'       => 'bg-auto',
+                'bg_repeat'     => 'bg-repeat',
             ],
 
             /** Portfolio Section */
@@ -59,9 +72,10 @@ class LayoutFactory extends Factory
 
             /** About Section */
             'about' => [
-                'section_fill'     => true,
-                'section_title'    => 'About Me',
-                'section_subtitle' => 'The About You section is where you introduce yourself and share your background, experiences, and passions. Highlight your career journey, skills, and what drives you. This is your space to make a strong impression and connect with others.',
+                'section_fill'               => true,
+                'is_section_filled_inverted' => true,
+                'section_title'              => 'About Me',
+                'section_subtitle'           => 'The About You section is where you introduce yourself and share your background, experiences, and passions. Highlight your career journey, skills, and what drives you. This is your space to make a strong impression and connect with others.',
             ],
 
             /** Contact Section */

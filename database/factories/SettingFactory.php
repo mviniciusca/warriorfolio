@@ -26,6 +26,7 @@ class SettingFactory extends Factory
             ],
             'blog' => [
                 'module_is_active'       => true,
+                'is_show_profile'        => true,
                 'is_share_active'        => true,
                 'is_trend_widget_active' => true,
                 'header_title'           => 'From Notes ...',

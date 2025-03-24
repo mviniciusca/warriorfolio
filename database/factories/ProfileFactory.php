@@ -19,6 +19,8 @@ class ProfileFactory extends Factory
         return [
             'localization' => 'Rio de Janeiro, Brazil',
             'job_position' => 'Laravel Product Developer',
+            'public_email' => 'warriorfolio@test.dev',
+            'company'      => 'Warriorfolio Co.',
             'skills'       => 'PHP, Laravel, Filament, Tailwind, Livewire',
             'about'        => '
                                 🚀 Welcome to Warriorfolio! Showcase Your Journey! <p></p>
