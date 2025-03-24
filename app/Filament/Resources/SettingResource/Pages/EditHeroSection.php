@@ -239,7 +239,14 @@ class EditHeroSection extends EditRecord
                                             ->directory('hero')
                                             ->columnSpan(2)
                                             ->imageEditor()
-                                            ->helperText(__('💡 1200 x 600 px and 16:9 is the perfect match!')),
+                                            ->imageEditorAspectRatios([
+                                                '1:1'  => '1:1',
+                                                '16:9' => '16:9',
+                                                '4:3'  => '4:3',
+                                                '3:2'  => '3:2',
+                                                '2:1'  => '2:1',
+                                            ])
+                                            ->helperText(__('16:9 aspect ratio is recommended.')),
                                     ]),
                                 Section::make(__('Background'))
                                     ->description(__('Controls for Background Image for your Hero Section.'))
