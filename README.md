@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">Warriorfolio 2</h1>
+  <h3 align="center">Warriorfolio 2</h3>
 </p>
 
 <p align="center">
@@ -19,10 +19,11 @@ Developed to be 100% managed through the Control Panel, without the need for dee
 
 ##### New in version 2.1.3 - March, 2025
 - 🪐 Saturn UI: A revamped and modernized user interface.
-- 🖼️ Portfolio Gallery Updated: A new and improved gallery layout with enhanced navigation and filtering options.
+- 🖥️ Browser Mockup: Showcase your projects in a realistic browser mockup.  
+- 🖼️ Portfolio Gallery: A new and improved gallery layout.
 - 🔄 Inverse Mode: Switch between light and dark themes effortlessly.
-- 🔥 Module Creator: Build and customize new modules with ease.
-- 👀 Section Heading Visibility Control: Toggle the visibility of section headings.
+- 🔥 Module Creator: Build and customize new modules with ease.  
+- 👀 Section Heading Visibility Control: Toggle the visibility of section headings.  
 - ⬇️ New Footer Layout: Enhanced and customizable footer design.
 - ⚡ Query Boost Performance: Improved database query performance for faster load times.
 - 📄 Files Documentation: Comprehensive documentation for managing files.
