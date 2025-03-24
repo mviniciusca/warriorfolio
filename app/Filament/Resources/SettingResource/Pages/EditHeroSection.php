@@ -265,7 +265,7 @@ class EditHeroSection extends EditRecord
                                 Section::make(__('Background'))
                                     ->description(__('Controls for Background Image for your Hero Section.'))
                                     ->icon('heroicon-o-sparkles')
-                                    // ->collapsed()
+                                    ->collapsed()
                                     ->columns(3)
                                     ->schema([
                                         Group::make()
