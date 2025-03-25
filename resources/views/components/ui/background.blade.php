@@ -15,7 +15,7 @@ default image will be displayed.
                     ' ' .
                     $design['background_image_position'] .
                     ' ' .
-                    $design['background_image_repeat'] }} absolute -z-50 -mt-52 h-[1080px] w-full"
+                    $design['background_image_repeat'] }} absolute -z-50 -mt-52 h-[1080px] w-full "
             style="background-image: url('{{ asset('storage/' . $design['background_image']) }}')">
         </div>
     @else

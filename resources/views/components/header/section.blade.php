@@ -20,8 +20,8 @@ App\View\Components\Header\Section.php
 {{-- Header --}}
 <nav class="relative z-50 pb-2 pt-8 w-full">
     {{-- Background Layer --}}
-    <div class="absolute inset-0 -z-10 bg-contain bg-no-repeat bg-bottom animate-pulse"
-        style="background-image: url({{ asset('img/core/core-ui-elements/beams/pink-beam.png') }})">
+    <div class="absolute inset-0 -z-10 bg-contain bg-no-repeat bg-top animate-pulse"
+        style="background-image: url({{ asset('img/core/core-ui-elements/beams/blur-beam.png') }})">
     </div>
     <x-core.layout :with_padding="false" :$is_filled>
         {{-- Logo and Primary Navigation --}}
