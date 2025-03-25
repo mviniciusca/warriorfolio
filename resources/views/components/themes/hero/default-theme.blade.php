@@ -24,6 +24,7 @@ App\View\Components\Themes\Hero\Default-Theme.php
         </div>
     </div>
     </div>
+    {{-- Social Network --}}
     @if($hero->hero['social_network_module_is_active'] ?? false)
         <div id="social-network-module">
             <x-ui.social-network size="big" :justify="'center'"
