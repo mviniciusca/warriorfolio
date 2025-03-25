@@ -23,7 +23,7 @@
     ])
 
 @if ($is_active)
-    <x-core.layout :$is_filled :$button_header :$button_url :$is_center >
+    <x-core.layout :$is_filled :$is_section_filled_inverted :$button_header :$button_url :$is_center >
         @if (($module_title || $module_subtitle) && $is_heading_active)
         <div>
             <x-slot name="module_title" class="py-8 text-center">
