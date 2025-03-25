@@ -20,7 +20,7 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'            => 'You start from <span class="dg">Here</span>',
+                'section_title'            => '<span class="dg">Saturn</span> update is here.',
                 'section_subtitle'         => 'Warriorfolio '.env('APP_VERSION').' is here with a new UI, new features, and improvements. Clone, setup, and deploy your portfolio in minutes.',
                 'is_upper'                 => true,
                 'is_filled'                => false,
