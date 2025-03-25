@@ -24,18 +24,24 @@ App\View\Components\Themes\Hero\Default-Theme.php
         </div>
     </div>
     </div>
+    @if($hero->hero['social_network_module_is_active'] ?? false)
+        <div id="social-network-module">
+            <x-ui.social-network size="big" :justify="'center'"
+                class="mt-8 animate__animated animate__fadeInDown animate__delay-1s" />
+        </div>
+    @endif
     @if ($hero->hero['featured_image_is_active'] ?? false)
-        <div class="animate__animated animate__fadeInUp animate__delay-1s hidden lg:col-span-5 lg:mt-0 lg:flex">
+        <div class="animate__animated animate__fadeInUp animate__delay-1s lg:col-span-5 lg:mt-0 lg:flex mt-4">
             {{-- Hero Section: Image --}}
             @if ($hero->hero['featured_image'] ?? false)
-                <div class="mx-auto mt-8" id="hero-featured-image">
+                <div class="mx-auto" id="hero-featured-image">
                     @if(($hero->hero['browser_border_is_active'] ?? false) ?? false)
                         <x-ui.browser-border :url='$browser_border_url'>
                             <img class="mx-auto rounded-none" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
                                 alt="hero-section-featured-image" />
                         </x-ui.browser-border>
                     @else
-                        <img class="mt-8 hero-section-featured-border" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
+                        <img class=hero-section-featured-border" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
                             alt="hero-section-featured-image" />
                     @endif
             @else
@@ -46,7 +52,7 @@ App\View\Components\Themes\Hero\Default-Theme.php
                     </x-ui.browser-border>
                 @else
                     <img src="{{ asset('img/core/demo/default-landing-image.png') }}" alt="Default Hero Image"
-                        class="h-auto mt-8 w-full" />
+                        class="h-auto w-full" />
                 @endif
             @endif
             </div>

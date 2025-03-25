@@ -37,7 +37,7 @@ App\View\Components\Project\Section.php
         @endif
 
         <section id="portfolio-wrapper" class="my-12">
-            <div class="container mx-auto max-w-7xl px-5">
+            <div class="mx-auto">
                 <div class="flex w-full flex-wrap content-center justify-start">
                     @foreach ($projects as $project)
                         <div data-modal-target="{{ $project->id }}" data-modal-toggle="{{ $project->id }}"

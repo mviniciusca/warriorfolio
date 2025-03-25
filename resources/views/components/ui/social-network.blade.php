@@ -1,10 +1,14 @@
-@props(['items' => null])
+@props(['items' => null, 'justify' => 'center', 'size' => null])
 
-<div class="flex flex-wrap justify-center items-center gap-4">
+{{-- Social Network Component --}}
+<div {{ $attributes->class([
+    'flex flex-wrap gap-4',
+    $justify === 'center' ? 'justify-center items-center' : ($justify === 'start' ? 'justify-start items-start' : 'justify-end items-end')
+]) }}>
     @if ($items ?? false)
         @foreach ($items as $social)
             @if ($social['is_active'] ?? false)
-                <x-ui.icon :href="$social['profile_link']" :name="$social['social_network']" />
+                <x-ui.icon :$size :href="$social['profile_link']" :name="$social['social_network']" />
             @endif
         @endforeach
     @endif

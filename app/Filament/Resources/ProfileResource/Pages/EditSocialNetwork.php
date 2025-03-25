@@ -50,17 +50,23 @@ class EditSocialNetwork extends EditRecord
                                 ->helperText(__('Social Network'))
                                 ->prefixIcon('heroicon-o-user')
                                 ->options([
-                                    'linkedin'      => 'Linkedin',
+                                    'behance'       => 'Behance',
+                                    'codepen'       => 'Codepen',
                                     'discord'       => 'Discord',
-                                    'twitter'       => 'X / Twitter',
-                                    'instagram'     => 'Instagram',
-                                    'facebook'      => 'Facebook',
                                     'dribbble'      => 'Dribbble',
-                                    'youtube'       => 'Youtube',
-                                    'vercel'        => 'Vercel',
+                                    'facebook'      => 'Facebook',
                                     'github'        => 'Github',
-                                    'tiktok'        => 'Tiktok',
+                                    'instagram'     => 'Instagram',
+                                    'linkedin'      => 'Linkedin',
+                                    'medium'        => 'Medium',
+                                    'npm'           => 'NPM',
                                     'stackoverflow' => 'Stackoverflow',
+                                    'tiktok'        => 'Tiktok',
+                                    'twitch'        => 'Twitch',
+                                    'twitter'       => 'X / Twitter',
+                                    'vercel'        => 'Vercel',
+                                    'whatsapp'      => 'Whatsapp',
+                                    'youtube'       => 'Youtube',
                                 ])
                                 ->label(__('Social Network')),
                             TextInput::make('profile_link')

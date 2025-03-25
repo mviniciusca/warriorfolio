@@ -61,7 +61,7 @@ class EditHeroSection extends EditRecord
                             ->relationship('layout')
                             ->schema([
                                 Group::make()
-                                    ->columns(3)
+                                    ->columns(4)
                                     ->schema([
                                         Radio::make('hero.theme')
                                             ->live()
@@ -76,11 +76,16 @@ class EditHeroSection extends EditRecord
                                             ->live()
                                             ->label(__('Fill Section Background'))
                                             ->helperText(__('Add a dark color to section. This can override the background image.')),
+                                        Checkbox::make('hero.social_network_module_is_active')
+                                            ->default(true)
+                                            ->live()
+                                            ->helperText(__('Enable the Social Network Module on Hero Sections where this option is available.'))
+                                            ->label(__('Social Network Module')),
                                         Checkbox::make('hero.is_mailing_active')
                                             ->default(true)
                                             ->live()
                                             ->helperText(__('Enable the Mailing List Module on Hero Sections where this option is available.'))
-                                            ->label(__('Show Mailing List Module')),
+                                            ->label(__('Mailing List Module')),
                                     ]),
                                 Section::make(__('Info Bumper'))
                                     ->columns(3)

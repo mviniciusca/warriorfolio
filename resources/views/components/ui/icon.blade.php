@@ -1,4 +1,4 @@
-@props(['name', 'href' => null])
+@props(['name', 'href' => null, 'size' => 'default'])
 
 <div class="inline-flex">
     @if ($href)
@@ -6,7 +6,7 @@
     @endif
         @if ($name)
                 <ion-icon name="{{ 'logo-' . $name }}"
-                    class="mr-1 text-2xl transition-all duration-300 hover:opacity-30 active:opacity-10">
+                    class="{{ $size === 'default' ? 'text-2xl' : ($size === 'big' ? 'text-3xl' : 'text-xl') }} transition-all duration-300 hover:opacity-30 active:opacity-10">
                 </ion-icon>
                 @if ($href)
                     </a>
