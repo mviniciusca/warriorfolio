@@ -55,12 +55,13 @@ class LayoutFactory extends Factory
                 'is_mailing_active'        => false,
                 'featured_image_is_active' => true,
                 /** Background */
-                'pattern_name'  => 'cross',
-                'is_pattern_bg' => true,
-                'is_active'     => true,
-                'bg_position'   => 'bg-center',
-                'bg_size'       => 'bg-auto',
-                'bg_repeat'     => 'bg-repeat',
+                'pattern_name'      => 'cross',
+                'is_overlay_active' => false,
+                'is_pattern_bg'     => false,
+                'is_active'         => true,
+                'bg_position'       => 'bg-top',
+                'bg_size'           => 'bg-auto',
+                'bg_repeat'         => 'bg-no-repeat',
             ],
 
             /** Portfolio Section */

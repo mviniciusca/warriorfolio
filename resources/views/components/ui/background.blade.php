@@ -21,7 +21,7 @@ default image will be displayed.
     @else
         <div id="default-background"
             class="{{ $design['animation'] ? 'animate-opacity opacity-10' : '' }} absolute -z-50 -mt-52 h-[1080px] w-full bg-auto bg-scroll bg-center bg-no-repeat"
-            style="background-image: url('{{ asset('img/core/demo/default-bg.png') }}')">
+            style="background-image: url('{{ asset('img/core/bg/saturn-ui-more-lights.png') }}')">
         </div>
     @endif
 @endif

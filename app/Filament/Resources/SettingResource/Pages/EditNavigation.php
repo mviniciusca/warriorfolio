@@ -39,7 +39,27 @@ class EditNavigation extends EditRecord
     {
         return $form
             ->schema([
-                Section::make('Navigation')
+                Section::make(__('Header'))
+                    ->description(__('Define the header menu of your website.'))
+                    ->icon('heroicon-o-bars-3-bottom-left')
+                    ->collapsible()
+                    ->schema([
+                        Group::make()
+                            ->columns(2)
+                            ->schema([
+                                Checkbox::make('design.darkmode_is_active')
+                                    ->label(__('Dark/Light Mode Switch'))
+                                    ->helperText(__('Enable dark/light mode switch'))
+                                    ->inline(true)
+                                    ->default(true),
+                                Checkbox::make('design.line_beam_is_active')
+                                    ->label(__('Line Beam'))
+                                    ->helperText(__('Enable line beam'))
+                                    ->inline(true)
+                                    ->default(true),
+                            ]),
+                    ]),
+                Section::make(__('Navigation'))
                     ->icon('heroicon-o-bars-3-bottom-left')
                     ->description(__('Define the navigation menu of your website.'))
                     ->collapsible()
