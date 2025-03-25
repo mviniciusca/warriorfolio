@@ -4,6 +4,7 @@ namespace App\Filament\Fabricator\PageBlocks\Component;
 
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Repeater;
@@ -108,6 +109,19 @@ class FeatureList extends PageBlock
                                                 return preg_replace('/<.*?>.*?<\/.*?>/', '', $title);
                                             })
                                             ->schema([
+                                                Group::make()
+                                                    ->columnSpanFull()
+                                                    ->columns(2)
+                                                    ->schema([
+                                                        Fieldset::make(__('Individual Control'))
+                                                            ->schema([
+                                                                Checkbox::make('is_card_hidden')
+                                                                    ->default(false)
+                                                                    ->inline()
+                                                                    ->helperText(__('Hide this card.'))
+                                                                    ->label(__('Hide Card')),
+                                                            ]),
+                                                    ]),
                                                 TextInput::make('title')
                                                     ->live(true)
                                                     ->required()
