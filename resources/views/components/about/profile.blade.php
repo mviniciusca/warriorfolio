@@ -10,7 +10,7 @@
         <div class="mb-8" id="profile-avatar">
             @if ($profile->avatar)
                 <x-curator-glider
-                    class="relative mx-auto my-2 w-28 h-28 rounded-full bg-gradient-to-tr from-secondary-800/50 to-secondary-300/50 object-cover p-1 grayscale md:w-28 md:h-28 lg:w-36 lg:h-36"
+                    class="relative mx-auto my-2 w-28 h-28 rounded-full object-cover md:w-28 md:h-28 lg:w-36 lg:h-36 p-2 bg-white/10"
                     :media="$profile->avatar" style="object-fit: cover;" />
             @else
                 <img class="relative mx-auto my-2 w-28 rounded-full bg-gradient-to-tr from-secondary-800/50 to-secondary-300/50 object-cover p-1 grayscale md:w-28 lg:w-36"
