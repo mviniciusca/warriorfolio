@@ -39,25 +39,12 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
             @endif
         </div>
         {{-- Hero Section: Featured Image --}}
-        @if (data_get($hero, 'hero.featured_image_is_active'))
-            <div class="animate__animated animate__fadeInUp animate__delay-1s flex justify-center lg:col-span-1">
+        <div class="animate__animated animate__fadeInUp animate__delay-1s flex justify-center lg:col-span-1">
+            @if ($hero->hero['featured_image_is_active'] ?? false)
                 <div class="mt-8 flex items-center" id="hero-featured-image">
-                    @if (data_get($hero, 'hero.featured_image'))
-                        <div class="hero-section-featured-border">
-                            <img class="rounded-xl lg:max-h-max" src="{{ asset('storage/' . $hero->hero['featured_image']) }}"
-                                alt="hero-section-image" />
-                        </div>
-                    @else
-                        <div class="border hero-section-featured-border ">
-                            <img class="rounded-xl lg:max-h-max hidden dark:block"
-                                src="{{ asset('img/core/demo/default-landing-image.png') }}" alt="hero-section-image" />
-                            <img class="rounded-xl lg:max-h-max block dark:hidden"
-                                src="{{ asset('img/core/demo/default-landing-image-light.png') }}" alt="hero-section-image" />
-
-                        </div>
-                    @endif
+                    <x-themes.hero.partials.featured-image :hero="$hero" />
                 </div>
-        @endif
+            @endif
         </div>
     </div>
     </div>
