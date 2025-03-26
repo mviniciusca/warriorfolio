@@ -87,8 +87,10 @@ class EditProfile extends EditRecord
                         Group::make()
                             ->schema([
                                 CuratorPicker::make('avatar')
+                                    ->imageCropAspectRatio('1:1')
                                     ->label(__('Profile Picture'))
                                     ->helperText(__('Upload a profile picture.'))
+                                    ->maxItems(1)
                                     ->directory('public/profile'),
                             ]),
                     ]),
