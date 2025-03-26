@@ -49,8 +49,11 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
                         </div>
                     @else
                         <div class="border hero-section-featured-border ">
-                            <img class="rounded-xl lg:max-h-max" src="{{ asset('img/core/demo/default-landing-image.png') }}"
-                                alt="hero-section-image" />
+                            <img class="rounded-xl lg:max-h-max hidden dark:block"
+                                src="{{ asset('img/core/demo/default-landing-image.png') }}" alt="hero-section-image" />
+                            <img class="rounded-xl lg:max-h-max block dark:hidden"
+                                src="{{ asset('img/core/demo/default-landing-image-light.png') }}" alt="hero-section-image" />
+
                         </div>
                     @endif
                 </div>
