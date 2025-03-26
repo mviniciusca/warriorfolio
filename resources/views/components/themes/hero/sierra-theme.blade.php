@@ -11,7 +11,8 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
 
 @props(['hero'])
 
-<section class="sierra-theme {{ !$hero->hero['featured_image_is_active'] ?? false ? 'mb-8' : '' }}" id="sierra-theme">
+<section class="sierra-theme {{ !$hero->hero['featured_image_is_active'] ?? false ? 'mb-8' : '' }}"
+    id="sierra-hero-theme">
     <div
         class="{{ $hero->hero['is_mailing_active'] ? 'items-start' : 'items-center' }} mx-auto mt-8 grid max-w-screen-xl gap-8 md:gap-16 lg:grid-cols-2">
         <div class="mr-auto place-self-center lg:col-span-1">

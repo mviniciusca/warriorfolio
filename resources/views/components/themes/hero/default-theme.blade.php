@@ -6,7 +6,6 @@
         <div class="mx-auto mb-4 grid items-center justify-center text-center">
             <x-hero.heading :$hero />
         </div>
-
         {{-- Hero Section Button --}}
         <div class="animate__animated animate__fadeInUp animate__delay-1s flex justify-center gap-4 mb-8 w-full">
             @foreach ($hero->hero['buttons'] as $button)
@@ -14,7 +13,6 @@
                     :target="$button['button_target']" :url="$button['button_url']" :icon="$button['icon']" />
             @endforeach
         </div>
-
         {{-- Social Network --}}
         @if(($hero->hero['social_network_module_is_active'] ?? null) ?? false)
             <div id="social-network-module" class="mb-8">
@@ -22,7 +20,6 @@
                     class="animate__animated animate__fadeInDown animate__delay-1s" />
             </div>
         @endif
-
         {{-- Hero Section: Featured Image --}}
         @if ($hero->hero['featured_image_is_active'] ?? false)
             <div class="animate__animated animate__fadeInUp animate__delay-1s mx-auto mt-4">
