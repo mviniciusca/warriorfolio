@@ -22,6 +22,6 @@
     "dependencies": {
         "animate.css": "^4.1.1",
         "smoothscroll-polyfill": "^0.4.4",
-        "swiper": "^11.0.5"
+        "swiper": "^11.2.6"
     }
 }

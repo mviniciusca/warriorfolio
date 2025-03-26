@@ -49,11 +49,15 @@ App\View\Components\Themes\Hero\Default-Theme.php
                 @if(($hero->hero['browser_border_is_active'] ?? false) ?? false)
                     <x-ui.browser-border>
                         <img src="{{ asset('img/core/demo/default-landing-image.png') }}" alt="Default Hero Image"
-                            class="h-auto w-full" />
+                            class="h-auto w-full hidden dark:block" />
+                        <img src="{{ asset('img/core/demo/default-landing-image-light.png') }}" alt="Default Hero Image"
+                            class="h-auto w-full block dark:hidden" />
                     </x-ui.browser-border>
                 @else
                     <img src="{{ asset('img/core/demo/default-landing-image.png') }}" alt="Default Hero Image"
-                        class="h-auto w-full" />
+                        class="h-auto p-2 mx-auto hero-section-featured-border w-full mt-8 hidden dark:block" />
+                    <img src="{{ asset('img/core/demo/default-landing-image-light.png') }}" alt="Default Hero Image Light"
+                        class="h-auto p-2 mx-auto hero-section-featured-border w-full mt-8 block dark:hidden" />
                 @endif
             @endif
             </div>
