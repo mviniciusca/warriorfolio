@@ -251,19 +251,36 @@ class EditHeroSection extends EditRecord
                                                     ->columnSpanFull()
                                                     ->prefixIcon('heroicon-o-link'),
                                             ]),
-                                        FileUpload::make('hero.featured_image')
-                                            ->label('Featured Image')
-                                            ->directory('hero')
-                                            ->maxFiles(1)
-                                            ->imageEditor()
-                                            ->imageEditorAspectRatios([
-                                                '1:1'  => '1:1',
-                                                '16:9' => '16:9',
-                                                '4:3'  => '4:3',
-                                                '3:2'  => '3:2',
-                                                '2:1'  => '2:1',
-                                            ])
-                                            ->helperText(__('16:9 aspect ratio is recommended.')),
+                                        Group::make()
+                                            ->columns(2)
+                                            ->schema([
+                                                FileUpload::make('hero.featured_image')
+                                                    ->label('Featured Image')
+                                                    ->directory('hero')
+                                                    ->maxFiles(1)
+                                                    ->imageEditor()
+                                                    ->imageEditorAspectRatios([
+                                                        '1:1'  => '1:1',
+                                                        '16:9' => '16:9',
+                                                        '4:3'  => '4:3',
+                                                        '3:2'  => '3:2',
+                                                        '2:1'  => '2:1',
+                                                    ])
+                                                    ->helperText(__('16:9 aspect ratio is recommended.')),
+                                                FileUpload::make('hero.dark_mode_featured_image')
+                                                    ->label('Featured Image for Dark Mode')
+                                                    ->directory('hero')
+                                                    ->maxFiles(1)
+                                                    ->imageEditor()
+                                                    ->imageEditorAspectRatios([
+                                                        '1:1'  => '1:1',
+                                                        '16:9' => '16:9',
+                                                        '4:3'  => '4:3',
+                                                        '3:2'  => '3:2',
+                                                        '2:1'  => '2:1',
+                                                    ])
+                                                    ->helperText(__('16:9 aspect ratio is recommended.')),
+                                            ]),
                                     ]),
                                 Section::make(__('Background'))
                                     ->description(__('Controls for Background Image for your Hero Section.'))
