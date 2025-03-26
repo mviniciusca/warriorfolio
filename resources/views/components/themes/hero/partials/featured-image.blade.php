@@ -1,3 +1,10 @@
+{{--
+
+This is featured image partial for hero section.
+-------------------------------------------------------------------
+
+--}}
+
 @props(['hero', 'icon' => null, 'browser_border_url' => $hero->hero['browser_border_url'] ?? null])
 
 {{-- Hero Section: Image --}}
