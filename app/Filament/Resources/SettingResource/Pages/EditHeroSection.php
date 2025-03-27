@@ -208,8 +208,7 @@ class EditHeroSection extends EditRecord
                                                 TextInput::make('icon')
                                                     ->label(__('Icon'))
                                                     ->helperText(__('Ionicon. (Optional)'))
-                                                    ->prefixIcon('heroicon-o-cube')
-                                                    ->maxLength(140),
+                                                    ->prefixIcon('heroicon-o-cube'),
                                                 Select::make('button_style')
                                                     ->label(__('Button Style'))
                                                     ->prefixIcon('heroicon-o-window')
