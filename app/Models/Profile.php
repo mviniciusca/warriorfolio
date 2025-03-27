@@ -18,8 +18,9 @@ class Profile extends Model
     ];
 
     /**
-     * Summary of user
-     * @return BelongsTo
+     * Defines a relationship where the profile belongs to a user.
+     *
+     * @return BelongsTo The relationship instance linking the profile to a user.
      */
     public function user(): BelongsTo
     {
