@@ -2,9 +2,6 @@
 
 namespace App\View\Components\Footer;
 
-use App\Models\Layout;
-use App\Models\Module;
-use App\Models\Navigation;
 use App\Models\Profile;
 use App\Models\Setting;
 use Closure;
@@ -27,19 +24,8 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.footer.section', [
-            'data' => Layout::first([
-                'footer',
-            ]),
-            'setting' => Setting::first([
-                'application',
-            ]),
-            'module' => Module::first([
-                'footer',
-            ]),
-            'navigation' => Navigation::select('content')
-                ->get(),
-            'social' => Profile::select('social')
-                ->first()->social,
+            'data' => Setting::with(['module', 'layout', 'navigation'])
+                ->first(),
         ]);
     }
 }
