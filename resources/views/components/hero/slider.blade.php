@@ -1,3 +1,14 @@
+{{--
+
+Core Component: Dynamic Slideshow
+----------------------------------------------------------------
+This is the Dynamic Slideshow Component
+-------------------------------------------------------------------
+Data:
+App\View\Components\Hero\Slider.php
+
+--}}
+
 @props(['sliders' => null])
 
 @if ($sliders != null)
@@ -16,8 +27,9 @@
                             @if ($slider['image_url'])
                                 <a href="{{ $slider['image_url'] }}">
                             @endif
-                            <img class="{{ $sliders->image_size == 'small' ? 'h-10' : ($sliders->image_size == 'medium' ? 'h-14' : ($sliders->image_size == 'large' ? 'h-16' : ($sliders->image_size == 'extra-large' ? 'h-20' : 'h-12'))) }} {{ $sliders->is_invert ? 'filter  dark:invert dark:opacity-70' : 'filter-none' }}"
-                                src="{{ asset('storage/' . $slider['image_path']) }}" alt="{{ $slider['image_alt'] }}" />
+                            <img alt="{{ $slider['image_alt'] }}"
+                                class="{{ $sliders->image_size == 'small' ? 'h-10' : ($sliders->image_size == 'medium' ? 'h-14' : ($sliders->image_size == 'large' ? 'h-16' : ($sliders->image_size == 'extra-large' ? 'h-20' : 'h-12'))) }} {{ $sliders->is_invert ? 'filter  dark:invert dark:opacity-70' : 'filter-none' }}"
+                                src="{{ asset('storage/' . $slider['image_path']) }}" />
                             @if ($slider['image_url'])
                                 </a>
                             @endif
