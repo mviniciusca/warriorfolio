@@ -14,7 +14,7 @@ App\View\Components\Themes\Hero\Default-Theme.php
 <section class="relative w-full py-8" id="default-hero-section">
     <div class="container mx-auto">
         {{-- Hero Section Heading --}}
-        <div class="mx-auto mb-4 grid items-center justify-center text-center">
+        <div class="mx-auto mb-1 grid items-center justify-center text-center">
             <x-hero.heading :$hero />
         </div>
         {{-- Hero Section Button --}}
