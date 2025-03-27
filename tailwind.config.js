@@ -18,7 +18,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: colors.purple,//accent color: default purple
+                primary: colors.red,//accent color: default purple
                 secondary: colors.zinc,//dark color: default zinc
                 tertiary: colors.pink,//highlight fx color: default pink
                 danger: colors.red,//danger color: default red

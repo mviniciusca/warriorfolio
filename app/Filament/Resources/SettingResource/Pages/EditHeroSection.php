@@ -174,7 +174,7 @@ class EditHeroSection extends EditRecord
                                             ->maxLength(140),
                                     ]),
                                 Section::make(__('Buttons'))
-                                    ->description(__('A pair of buttons in your Hero Section.'))
+                                    ->description(__('The buttons of your Hero Section.'))
                                     ->icon('heroicon-o-bolt')
                                     ->collapsed()
                                     ->schema([
@@ -186,9 +186,9 @@ class EditHeroSection extends EditRecord
 
                                                 return preg_replace('/<.*?>.*?<\/.*?>/', '', $title);
                                             })
-                                            ->helperText(__('Max two buttons.'))
+                                            ->helperText(__('Max 4 buttons.'))
                                             ->reorderable()
-                                            ->maxItems(2)
+                                            ->maxItems(4)
                                             ->columnSpanFull()
                                             ->collapsed()
                                             ->columns(2)
@@ -218,6 +218,10 @@ class EditHeroSection extends EditRecord
                                                         'outlined' => __('Outlined'),
                                                     ])
                                                     ->default('filled'),
+                                                Checkbox::make('color')
+                                                    ->label(__('Primary Color'))
+                                                    ->helperText(__('Use primary color for the button.'))
+                                                    ->default(true),
                                                 Select::make('button_target')
                                                     ->label(__('Target'))
                                                     ->prefixIcon('heroicon-o-window')

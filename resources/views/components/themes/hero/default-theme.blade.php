@@ -20,8 +20,9 @@ App\View\Components\Themes\Hero\Default-Theme.php
         {{-- Hero Section Button --}}
         <div class="animate__animated animate__fadeInUp animate__delay-1s flex justify-center gap-4 mb-8 w-full">
             @foreach ($hero->hero['buttons'] as $button)
-                <x-hero.button-group :title="$button['button_title']" :style="$button['button_style']"
-                    :target="$button['button_target']" :url="$button['button_url']" :icon="$button['icon']" />
+                <x-hero.button-group :color="$button['color'] ?? null" :title="$button['button_title']"
+                    :style="$button['button_style']" :target="$button['button_target']" :url="$button['button_url']"
+                    :icon="$button['icon']" />
             @endforeach
         </div>
         {{-- Social Network --}}

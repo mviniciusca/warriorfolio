@@ -1,10 +1,12 @@
 @props([
-    'title' => null,
-    'url' => null,
+    'class' => null,
+    'color' => false,
     'icon' => null,
+    'size' => null,
     'style' => 'filled',
     'target' => '_self',
-    'class' => null,
+    'title' => null,
+    'url' => null,
 ])
 
 <div>
@@ -13,7 +15,7 @@
         @if ($url)
             <a target="{{ $target }}" href="{{ $url }}">
         @endif
-            <x-ui.button :icon="$icon" :style="'filled'" class="{{ $class }}">
+            <x-ui.button :$color :$icon :style="'filled'" class="{{ $class }}">
                 {{ $title }}
             </x-ui.button>
             @if ($url)
@@ -26,7 +28,7 @@
         @if ($url)
             <a target="{{ $target }}" href="{{ $url }}">
         @endif
-            <x-ui.button :icon="$icon" :style="'outlined'" class="{{ $class }}">
+            <x-ui.button :$color :$icon :style="'outlined'" class="{{ $class }}">
                 {{ $title }}
             </x-ui.button>
             @if ($url)
