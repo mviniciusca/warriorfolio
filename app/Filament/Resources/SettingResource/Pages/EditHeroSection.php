@@ -186,7 +186,7 @@ class EditHeroSection extends EditRecord
 
                                                 return preg_replace('/<.*?>.*?<\/.*?>/', '', $title);
                                             })
-                                            ->helperText(__('Max 4 buttons.'))
+                                            ->helperText(__('Max 4 buttons. Recommended: 2 buttons.'))
                                             ->reorderable()
                                             ->maxItems(4)
                                             ->columnSpanFull()
