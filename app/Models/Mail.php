@@ -77,12 +77,12 @@ class Mail extends Model
      */
     public static function counter(): int|string
     {
-        if (static::count() >= 1000) {
-            return round(static::count() / 1000, 1).'K';
-        } elseif (static::count() >= 1000000) {
-            return round(static::count() / 1000000, 1).'M';
-        }
+        $count = static::count();
 
-        return static::count();
+        return $count >= 1000000
+            ? round($count / 1000000, 1).'M'
+            : ($count >= 1000
+            ? round($count / 1000, 1).'K'
+            : $count);
     }
 }
