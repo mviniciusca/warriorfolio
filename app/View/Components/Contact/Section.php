@@ -2,8 +2,6 @@
 
 namespace App\View\Components\Contact;
 
-use App\Models\Layout;
-use App\Models\Module;
 use App\Models\Profile;
 use App\Models\Setting;
 use Closure;
@@ -27,9 +25,7 @@ class Section extends Component
     {
         return view('components.contact.section', [
             'social_network' => $this->isEmpty(),
-            // 'module'         => Module::first(['contact']),
-            // 'data'           => Layout::first(['contact']),
-            'data' => Setting::with(['module', 'layout'])
+            'data'           => Setting::with(['module', 'layout'])
                 ->first(),
         ]);
     }
