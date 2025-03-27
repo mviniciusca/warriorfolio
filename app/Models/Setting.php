@@ -31,8 +31,12 @@ class Setting extends Model
     ];
 
     /**
-     * Summary of user
-     * @return BelongsTo
+     * Get the user that owns the setting.
+     *
+     * This method defines an inverse one-to-many relationship between the Setting model
+     * and the User model. It indicates that each setting belongs to a single user.
+     *
+     * @return BelongsTo The relationship instance linking the Setting to its owning User.
      */
     public function user(): BelongsTo
     {
@@ -40,8 +44,12 @@ class Setting extends Model
     }
 
     /**
-     * Summary of module
-     * @return HasOne
+     * Get the module associated with the setting.
+     *
+     * This method defines a one-to-one relationship between the Setting model
+     * and the Module model.
+     *
+     * @return HasOne The relationship instance linking the Setting to its associated Module.
      */
     public function module(): HasOne
     {
@@ -49,8 +57,12 @@ class Setting extends Model
     }
 
     /**
-     * Summary of layout
-     * @return HasOne
+     * Get the layout associated with the setting.
+     *
+     * This method defines a one-to-one relationship between the Setting model
+     * and the Layout model.
+     *
+     * @return HasOne The relationship instance linking the Setting to its associated Layout.
      */
     public function layout(): HasOne
     {
@@ -58,8 +70,12 @@ class Setting extends Model
     }
 
     /**
-     * Summary of chatbox
-     * @return HasOne
+     * Get the chatbox associated with the setting.
+     *
+     * This method defines a one-to-one relationship between the Setting model
+     * and the Chatbox model.
+     *
+     * @return HasOne The relationship instance linking the Setting to its associated Chatbox.
      */
     public function chatbox(): HasOne
     {
@@ -67,8 +83,12 @@ class Setting extends Model
     }
 
     /**
-     * Summary of maintenance
-     * @return HasOne
+     * Get the maintenance settings associated with the setting.
+     *
+     * This method defines a one-to-one relationship between the Setting model
+     * and the Maintenance model.
+     *
+     * @return HasOne The relationship instance linking the Setting to its associated Maintenance settings.
      */
     public function maintenance(): HasOne
     {
@@ -76,8 +96,12 @@ class Setting extends Model
     }
 
     /**
-     * Summary of navigation
-     * @return HasOne
+     * Get the navigation settings associated with the setting.
+     *
+     * This method defines a one-to-one relationship between the Setting model
+     * and the Navigation model.
+     *
+     * @return HasOne The relationship instance linking the Setting to its associated Navigation settings.
      */
     public function navigation(): HasOne
     {
@@ -85,14 +109,27 @@ class Setting extends Model
     }
 
     /**
-     * Summary of core
-     * @return HasOne
+     * Get the core settings associated with the setting.
+     *
+     * This method defines a one-to-one relationship between the Setting model
+     * and the Core model.
+     *
+     * @return HasOne The relationship instance linking the Setting to its associated Core settings.
      */
     public function core(): HasOne
     {
         return $this->hasOne(Core::class);
     }
 
+    /**
+     * Get the system status based on maintenance settings.
+     *
+     * This method checks if the system is under maintenance by querying the associated
+     * Maintenance model. If maintenance is active, it returns a localized message indicating
+     * the system is under maintenance. Otherwise, it returns a message indicating the system is active.
+     *
+     * @return array|string|null A localized message indicating the system status.
+     */
     public function systemStatus(): array|string|null
     {
         $status = $this->maintenance()
