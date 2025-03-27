@@ -5,6 +5,7 @@ namespace App\View\Components\Client;
 use App\Models\Customer;
 use App\Models\Layout;
 use App\Models\Module;
+use App\Models\Setting;
 use App\Models\Slideshow;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -27,11 +28,11 @@ class Section extends Component
     {
         return view('components.client.section', [
             'sliders'   => getSlider('clients-section', new Slideshow),
-            'module'    => Module::first(['clients']),
             'customers' => Customer::orderBy('created_at', 'desc')
                 ->take(12)
                 ->get(),
-            'data' => Layout::first(['customer']),
+            'data' => Setting::with(['layout', 'module', 'user'])
+                ->first(),
         ]);
     }
 }

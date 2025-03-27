@@ -14,9 +14,10 @@ App\View\Components\About\Section.php
     'profile' => $data->user->profile ?? null,
     'courses' => null,
     'sliders' => null,
-    'with_padding' => true,
-    'button_header' => null,
-    'button_url' => null,
+    // Layout Relationship
+    'with_padding' => $data->layout->about['with_padding'] ?? true, // future
+    'button_header' => $data->layout->about['button_header'] ?? null, // future
+    'button_url' => $data->layout->about['button_url'] ?? null, // future
     'is_filled' => $data->layout->about['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->layout->about['is_section_filled_inverted'] ?? false,
     'is_heading_visible' => $data->layout->about['is_heading_visible'] ?? true,
