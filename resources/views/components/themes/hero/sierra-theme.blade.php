@@ -18,18 +18,17 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
         <div class="mr-auto place-self-center lg:col-span-1">
             <x-hero.heading :hero="$hero" />
             {{-- Social Network --}}
-            @if($hero->hero['social_network_module_is_active'] ?? false)
+            @if ($hero->hero['social_network_module_is_active'] ?? false)
                 <div id="social-network-module">
-                    <x-ui.social-network size="big" :justify="'start'"
-                        class="mt-8 animate__animated animate__fadeInDown animate__delay-1s" />
+                    <x-ui.social-network :justify="'start'"
+                        class="animate__animated animate__fadeInDown animate__delay-1s mt-8" size="big" />
                 </div>
             @endif
             {{-- Hero Section Button --}}
             <div class="animate__animated animate__fadeInUp animate__delay-1s z-10 mt-8 flex gap-4">
                 @foreach ($hero->hero['buttons'] as $button)
-                    <x-hero.button-group :color="$button['color'] ?? null" :title="$button['button_title']"
-                        :style="$button['button_style']" :target="$button['button_target']" :url="$button['button_url']"
-                        :icon="$button['icon']" />
+                    <x-hero.button-group :color="$button['color'] ?? null" :icon="$button['icon']" :style="$button['button_style']" :target="$button['button_target']"
+                        :title="$button['button_title']" :url="$button['button_url']" />
                 @endforeach
             </div>
             {{-- Newsletter Module --}}
