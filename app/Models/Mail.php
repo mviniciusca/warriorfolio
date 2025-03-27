@@ -9,16 +9,27 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 
+/**
+ * Class Mail
+ *
+ * Represents a mail model with various utility methods for querying and analyzing mail data.
+ */
 class Mail extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
     protected $guarded = [];
 
     /**
-     * Summary of unread
-     * @return mixed
+     * Retrieve all unread mails.
+     *
+     * @return Collection|array A collection or array of unread mails.
      */
     public static function unread(): array|Collection
     {
@@ -26,8 +37,9 @@ class Mail extends Model
     }
 
     /**
-     * Summary of important
-     * @return mixed
+     * Retrieve all important mails.
+     *
+     * @return Collection|array A collection or array of important mails.
      */
     public static function important(): array|Collection
     {
@@ -35,10 +47,11 @@ class Mail extends Model
     }
 
     /**
-     * Summary of chartInbox
-     * @return array
+     * Generate a chart of inbox data for the current year up to the current month.
+     *
+     * @return array An array of aggregated data for the inbox chart.
      */
-    public static function chartInbox()
+    public static function chartInbox(): array
     {
         $data = Trend::model(self::class)
             ->between(
@@ -55,8 +68,12 @@ class Mail extends Model
     }
 
     /**
-     * Summary of counter
-     * @return mixed
+     * Get a formatted count of all mails.
+     *
+     * If the count is 1000 or more, it is formatted as 'K' (thousands).
+     * If the count is 1,000,000 or more, it is formatted as 'M' (millions).
+     *
+     * @return int|string The formatted count of mails.
      */
     public static function counter(): int|string
     {
