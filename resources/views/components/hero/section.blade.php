@@ -9,9 +9,9 @@ Data:
 App\View\Components\Hero\Section.php
 
 --}}
-@props(['hero', 'sliders'])
+@props(['hero' => $data->layout ?? null, 'sliders'])
 
-@if ($module->hero)
+@if ($data->module->hero)
     {{-- Hero Section Background --}}
     <div class="{{ $hero->hero['is_upper'] ?? false ? '-mt-36' : 'mt-0' }}">
         <x-hero.background :hero='$hero' />
