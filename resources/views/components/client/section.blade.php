@@ -15,9 +15,9 @@ App\View\Components\Customer\Section.php
     // Module Relationship
     'module' => $data->module->clients ?? false,
     // Layout Relationship
-    'button_header' => $data->layout->customer['button_header'] ?? null,
-    'button_url' => $data->layout->customer['button_url'] ?? null,
-    'with_padding' => $data->layout->customer['with_padding'] ?? true,
+    'with_padding' => $data->layout->customer['with_padding'] ?? true, // future
+    'button_header' => $data->layout->customer['button_header'] ?? null, // future
+    'button_url' => $data->layout->customer['button_url'] ?? null, // future
     'is_filled' => $data->layout->customer['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->layout->customer['is_section_filled_inverted'] ?? false,
     'is_heading_visible' => $data->layout->customer['is_heading_visible'] ?? true,
