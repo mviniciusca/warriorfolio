@@ -10,45 +10,45 @@ App\View\Components\About\Section.php
 --}}
 
 @props([
-    'profile' => null,
+    'module' => $data->module->about ?? null,
+    'profile' => $data->user->profile ?? null,
     'courses' => null,
     'sliders' => null,
-    'module' => null,
     'with_padding' => true,
     'button_header' => null,
     'button_url' => null,
-    'is_filled' => $data->about['section_fill'] ?? false,
-    'is_section_filled_inverted' => $data->about['is_section_filled_inverted'] ?? false,
-    'is_heading_visible' => $data->about['is_heading_visible'] ?? true,
+    'is_filled' => $data->layout->about['section_fill'] ?? false,
+    'is_section_filled_inverted' => $data->layout->about['is_section_filled_inverted'] ?? false,
+    'is_heading_visible' => $data->layout->about['is_heading_visible'] ?? true,
 ])
 
-@if ($module->about ?? false)
+@if ($data->module->about ?? false)
 
-    <x-core.layout :module_name="'about'" :$is_section_filled_inverted :$with_padding :$is_filled :$button_header
-        :$button_url>
+    <x-core.layout :$button_header :$button_url :$is_filled :$is_section_filled_inverted :$with_padding
+        :module_name="'about'">
 
-        @if($is_heading_visible)
-            @if ($data->about['section_title'] ?? false)
+        @if ($is_heading_visible)
+            @if ($data->layout->about['section_title'] ?? false)
                 <x-slot name="module_title">
-                    {!! $data->about['section_title'] ?? null !!}
+                    {!! $data->layout->about['section_title'] ?? null !!}
                 </x-slot>
             @endif
-            @if ($data->about['section_subtitle'] ?? false)
+            @if ($data->layout->about['section_subtitle'] ?? false)
                 <x-slot name="module_subtitle">
-                    {!! $data->about['section_subtitle'] ?? null !!}
+                    {!! $data->layout->about['section_subtitle'] ?? null !!}
                 </x-slot>
             @endif
         @endif
 
-        <div id="about-section-wrapper" class="my-12 flex flex-wrap">
+        <div class="my-12 flex flex-wrap" id="about-section-wrapper">
             {{-- Profile Section --}}
             <div class="w-full p-4 text-center lg:w-1/4 lg:p-8" id="profile">
                 <x-about.profile :$is_section_filled_inverted :$profile />
             </div>
             {{-- About Section --}}
             <div class="about-you-section w-full p-8 text-sm leading-loose md:w-2/3 lg:w-2/4 lg:px-16">
-                <div id="profile-course-header"
-                    class="profile-course-header mb-8 flex items-center gap-2 text-sm font-semibold">
+                <div class="profile-course-header mb-8 flex items-center gap-2 text-sm font-semibold"
+                    id="profile-course-header">
                     <x-ui.ionicon :icon="'rocket-sharp'" />
                     {{ __('Bio') }}
                 </div>
