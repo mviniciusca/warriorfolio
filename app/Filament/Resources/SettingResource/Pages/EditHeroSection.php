@@ -207,7 +207,7 @@ class EditHeroSection extends EditRecord
                                                     ->maxLength(140),
                                                 TextInput::make('icon')
                                                     ->label(__('Icon'))
-                                                    ->helperText(__('Max: 140 characters.'))
+                                                    ->helperText(__('Ionicon. (Optional)'))
                                                     ->prefixIcon('heroicon-o-cube')
                                                     ->maxLength(140),
                                                 Select::make('button_style')
