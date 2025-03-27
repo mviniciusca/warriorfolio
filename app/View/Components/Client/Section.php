@@ -3,8 +3,6 @@
 namespace App\View\Components\Client;
 
 use App\Models\Customer;
-use App\Models\Layout;
-use App\Models\Module;
 use App\Models\Setting;
 use App\Models\Slideshow;
 use Closure;
