@@ -14,7 +14,8 @@ class Core extends Model
     protected $guarded = [];
 
     /**
-     * Summary of setting
+     * Define an inverse one-to-one or many relationship with the Setting model.
+     *
      * @return BelongsTo
      */
     public function setting(): BelongsTo
