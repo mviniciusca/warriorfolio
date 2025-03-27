@@ -18,8 +18,9 @@ class Navigation extends Model
     ];
 
     /**
-     * Summary of setting
-     * @return BelongsTo
+     * Get the associated setting for the navigation item.
+     *
+     * @return BelongsTo The relationship to the Setting model.
      */
     public function setting(): BelongsTo
     {
