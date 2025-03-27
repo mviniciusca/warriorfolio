@@ -18,12 +18,7 @@ App\View\Components\Themes\Hero\Default-Theme.php
             <x-hero.heading :$hero />
         </div>
         {{-- Hero Section Button --}}
-        <div class="animate__animated animate__fadeInUp animate__delay-1s mb-8 flex w-full justify-center gap-4">
-            @foreach ($hero->hero['buttons'] as $button)
-                <x-hero.button-group :color="$button['color'] ?? null" :icon="$button['icon']" :style="$button['button_style']" :target="$button['button_target']"
-                    :title="$button['button_title']" :url="$button['button_url']" />
-            @endforeach
-        </div>
+        <x-themes.hero.partials.buttons :hero="$hero" :justify="'center'" />
         {{-- Social Network --}}
         @if ($hero->hero['social_network_module_is_active'] ?? (null ?? false))
             <div class="mb-8" id="social-network-module">

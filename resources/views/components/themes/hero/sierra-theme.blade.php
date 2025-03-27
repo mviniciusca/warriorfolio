@@ -25,12 +25,7 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
                 </div>
             @endif
             {{-- Hero Section Button --}}
-            <div class="animate__animated animate__fadeInUp animate__delay-1s z-10 mt-8 flex gap-4">
-                @foreach ($hero->hero['buttons'] as $button)
-                    <x-hero.button-group :color="$button['color'] ?? null" :icon="$button['icon']" :style="$button['button_style']" :target="$button['button_target']"
-                        :title="$button['button_title']" :url="$button['button_url']" />
-                @endforeach
-            </div>
+            <x-themes.hero.partials.buttons :hero="$hero" :justify="'start'" />
             {{-- Newsletter Module --}}
             @if (data_get($hero, 'hero.is_mailing_active') ?? true)
                 <div class="animate__animated animate__slideInDown max-w-80 py-4">
