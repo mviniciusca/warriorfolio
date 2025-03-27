@@ -2,7 +2,6 @@
 
 namespace App\View\Components\Footer;
 
-use App\Models\Profile;
 use App\Models\Setting;
 use Closure;
 use Illuminate\Contracts\View\View;
