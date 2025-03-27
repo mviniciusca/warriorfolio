@@ -11,10 +11,16 @@ class Chatbox extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
     protected $guarded = [];
 
     /**
-     * Summary of settings
+     * Get the settings associated with the chatbox.
+     *
      * @return BelongsTo
      */
     public function settings(): BelongsTo
