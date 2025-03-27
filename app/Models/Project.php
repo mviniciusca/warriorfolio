@@ -15,7 +15,8 @@ class Project extends Model
     protected $guarded = [];
 
     /**
-     * Summary of category
+     * Get the category associated with the project.
+     *
      * @return BelongsTo
      */
     public function category(): BelongsTo
@@ -24,8 +25,9 @@ class Project extends Model
     }
 
     /**
-     * Summary of published
-     * @return mixed
+     * Retrieve all published (active) projects.
+     *
+     * @return Collection|array
      */
     public static function published(): array|Collection
     {
@@ -33,8 +35,9 @@ class Project extends Model
     }
 
     /**
-     * Summary of chartData
-     * @return mixed
+     * Retrieve chart data for active projects grouped by month.
+     *
+     * @return array
      */
     public static function chartData(): array
     {
