@@ -44,14 +44,22 @@ class HeadingDescription extends PageBlock
                                                     ->label(__('Show Module'))
                                                     ->helperText(__('Show or hide this module.'))
                                                     ->default(true),
+                                                Checkbox::make('is_heading_middle')
+                                                    ->label(__('Align to Middle'))
+                                                    ->helperText(__('Align the heading to the middle when Featured Image is Active.'))
+                                                    ->default(true),
+                                                Checkbox::make('is_heading_full_width')
+                                                    ->label(__('Full Width Heading'))
+                                                    ->helperText(__('Make the heading full width.'))
+                                                    ->default(false),
                                                 Checkbox::make('is_center')
                                                     ->label(__('Align to Center'))
                                                     ->helperText(__('Align the content to the center.'))
-                                                    ->default(true),
+                                                    ->default(false),
                                                 Checkbox::make('is_filled')
                                                     ->label(__('Fill Section Background'))
                                                     ->helperText(__('Fill the section background with a color.'))
-                                                    ->default(true),
+                                                    ->default(false),
                                             ]),
                                         Group::make()
                                             ->columnSpan(2)
@@ -87,24 +95,20 @@ class HeadingDescription extends PageBlock
                             ->maxLength(6000),
                         Group::make()
                             ->columnSpanFull()
-                            ->columns(3)
                             ->schema([
                                 Group::make()
-                                    ->columnSpan(2)
+                                    ->columns(2)
                                     ->schema([
                                         Checkbox::make('is_featured_image_active')
                                             ->label(__('Show Featured Image'))
                                             ->helperText(__('Show or hide the featured image.')),
-                                    ]),
-                                Group::make()
-                                    ->columnSpan(1)
-                                    ->schema([
-                                        FileUpload::make('image')
-                                            ->label(__('Featured Image. (Optional)'))
-                                            ->directory('content')
-                                            ->multiple(false)
-                                            ->helperText(__('Upload an image to display on the right side of the content.'))
-                                            ->columnSpanFull(),
+                                        FileUpload::make('featured_image')
+                                            ->imageEditor()
+                                            ->imageEditorAspectRatios([
+                                                '16:9' => '16:9',
+                                                '4:3'  => '4:3',
+                                            ])
+                                            ->label(__('Featured Image')),
                                     ]),
                             ]),
                     ]),
