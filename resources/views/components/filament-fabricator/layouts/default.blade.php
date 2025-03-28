@@ -3,9 +3,6 @@
 <!DOCTYPE html>
 <html class="{{ session('theme', 'light') == 'dark' ? 'dark' : '' }}"
     lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="ie=edge" http-equiv="X-UA-Compatible">
 
     <head>
         <x-core.modules.header />

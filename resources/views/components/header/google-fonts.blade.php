@@ -8,7 +8,7 @@ Data:
 App\View\Components\Header\GoogleFonts.php
 
 --}}
-
+<!-- Google Fonts -->
 @if (data_get($fonts, 'google.fonts_code') && data_get($fonts, 'google.font_name'))
     {!! data_get($fonts, 'google.fonts_code') !!}
     <style>
