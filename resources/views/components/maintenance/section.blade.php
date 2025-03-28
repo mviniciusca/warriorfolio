@@ -16,16 +16,16 @@ App\View\Components\Maintenance\Section.php
             <div class="absolute left-0 right-0 top-0 mt-12 inline-block items-center justify-center text-center">
                 <livewire:darkMode wire:key='maintenance-dark-mode' />
             </div>
-            <div id="col-a"
-                class="{{ $maintenance->is_contact ? 'lg:w-1/2' : 'lg:w-full' }} w-full content-center justify-center p-8 text-center md:w-1/2">
+            <div class="{{ $maintenance->is_contact ? 'lg:w-1/2' : 'lg:w-full' }} w-full content-center justify-center p-8 text-center md:w-1/2"
+                id="col-a">
                 <div class="mx-auto text-center">
                     @if ($maintenance->image)
-                        <img class="mx-auto max-w-72 rounded-md text-center"
-                            src="{{ asset('storage/' . $maintenance->image) }}" alt="Maintenance" />
+                        <img alt="Maintenance" class="mx-auto max-w-72 rounded-md text-center"
+                            src="{{ asset('storage/' . $maintenance->image) }}" />
                     @else
-                        <x-ui.logo :size="'max-w-36'" :link="false" />
+                        <x-ui.logo :link="false" :size="'max-w-36'" />
                     @endif
-                    <div id="maintenance-content" class="pt-4 text-base">
+                    <div class="pt-4 text-base" id="maintenance-content">
                         {!! $maintenance->content !!}
                     </div>
                     @if ($maintenance->is_social)
@@ -36,7 +36,7 @@ App\View\Components\Maintenance\Section.php
                 </div>
             </div>
             @if ($maintenance->is_contact)
-                <div id="col-b" class="w-full p-8 md:w-1/2">
+                <div class="w-full p-8 md:w-1/2" id="col-b">
                     <p class="mb-4 text-base font-bold">{{ __('Get in Touch') }}</p>
                     @livewire('mail.create-mail')
                 </div>

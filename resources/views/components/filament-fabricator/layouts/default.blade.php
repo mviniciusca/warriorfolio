@@ -3,12 +3,15 @@
 <!DOCTYPE html>
 <html class="{{ session('theme', 'light') == 'dark' ? 'dark' : '' }}"
     lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
 
     <head>
         <x-core.modules.header />
     </head>
 
-    <body class="default-theme app-core flex min-h-screen flex-col" id="app-wrapper">
+    <body class="default-theme app-core flex min-h-screen flex-col">
         @if (!$maintenance || ($discovery && auth()->user()))
             <x-core.modules.over />
             @if ($header_core)

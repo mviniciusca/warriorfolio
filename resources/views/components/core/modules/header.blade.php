@@ -1,4 +1,2 @@
-<div>
-    <x-header.meta />
-    <x-header.scripts />
-</div>
+<x-header.meta />
+<x-header.scripts />
