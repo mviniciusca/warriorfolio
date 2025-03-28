@@ -16,7 +16,7 @@ App\View\Components\Contact\Section.php
     'button_url' => $data->layout->contact['button_url'] ?? null, // future
     'is_filled' => $data->layout->contact['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->layout->contact['is_section_filled_inverted'] ?? false,
-    'is_heading_visible' => $data->layout->contact['is_heading_visible'] ?? true,
+    'is_heading_visible' => $data->layout->contact['is_heading_visible'] ?? false,
 ])
 
 @if ($data->module->contact)

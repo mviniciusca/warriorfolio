@@ -20,7 +20,7 @@ App\View\Components\About\Section.php
     'button_url' => $data->layout->about['button_url'] ?? null, // future
     'is_filled' => $data->layout->about['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->layout->about['is_section_filled_inverted'] ?? false,
-    'is_heading_visible' => $data->layout->about['is_heading_visible'] ?? true,
+    'is_heading_visible' => $data->layout->about['is_heading_visible'] ?? false,
 ])
 
 @if ($data->module->about ?? false)

@@ -48,6 +48,7 @@ class SettingFactory extends Factory
             //
             'design' => [
                 'animation'                   => false,
+                'line_beam_is_active'         => false,
                 'darkmode_is_active'          => true,
                 'background_image_visibility' => true,
                 'background_image_position'   => 'bg-center',

@@ -56,7 +56,7 @@ class EditNavigation extends EditRecord
                                     ->label(__('Line Beam'))
                                     ->helperText(__('Enable line beam'))
                                     ->inline(true)
-                                    ->default(true),
+                                    ->default(false),
                             ]),
                     ]),
                 Section::make(__('Navigation'))

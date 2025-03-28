@@ -20,7 +20,7 @@ App\View\Components\Customer\Section.php
     'button_url' => $data->layout->customer['button_url'] ?? null, // future
     'is_filled' => $data->layout->customer['section_fill'] ?? false,
     'is_section_filled_inverted' => $data->layout->customer['is_section_filled_inverted'] ?? false,
-    'is_heading_visible' => $data->layout->customer['is_heading_visible'] ?? true,
+    'is_heading_visible' => $data->layout->customer['is_heading_visible'] ?? false,
 ])
 
 @if ($data->module->clients ?? false)
