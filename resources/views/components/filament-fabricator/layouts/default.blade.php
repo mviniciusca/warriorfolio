@@ -9,7 +9,6 @@
     </head>
 
     <body class="default-theme app-core flex min-h-screen flex-col" id="app-wrapper">
-
         @if (!$maintenance || ($discovery && auth()->user()))
             <x-core.modules.over />
             @if ($header_core)
