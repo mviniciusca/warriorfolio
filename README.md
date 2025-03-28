@@ -2,9 +2,9 @@
   <h3 align="center">Warriorfolio 2</h3>
 </p>
 
-<<p align="center">
-  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/dev/public/img/core/featured.png" alt="Warriorfolio 2 Preview">
-</p>>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/dev/public/img/core/demo/featured.png" alt="Warriorfolio 2 Preview">
+</p>
 
 
 ### 📋 Introduction
