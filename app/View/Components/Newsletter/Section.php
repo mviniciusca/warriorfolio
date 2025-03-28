@@ -4,6 +4,7 @@ namespace App\View\Components\Newsletter;
 
 use App\Models\Layout;
 use App\Models\Module;
+use App\Models\Setting;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -24,8 +25,8 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.newsletter.section', [
-            'module' => Module::first(['newsletter']),
-            'data'   => Layout::first(['mailing']),
+            'data' => Setting::with(['layout', 'module'])->first(),
+
         ]);
     }
 }
