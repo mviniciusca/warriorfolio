@@ -32,17 +32,13 @@ class EditProfile extends EditRecord
         return $form
             ->schema([
                 Section::make(__('Personal Information'))
+                    ->collapsible()
                     ->description(__('This information will be displayed on your public profile page.'))
                     ->icon('heroicon-o-user')
                     ->columns(4)
                     ->schema([
-                        Group::make()->schema([
-                            CuratorPicker::make('avatar')
-                                ->label('Public Profile Picture')
-                                ->directory('public/profile'),
-                        ])
-                            ->columnSpan(1),
                         Group::make()
+                            ->columnSpan(3)
                             ->columns(2)
                             ->schema([
                                 Group::make()
@@ -62,6 +58,19 @@ class EditProfile extends EditRecord
                                     ->helperText(__('Your job position will be displayed on your public profile. Max: 150 characters'))
                                     ->minLength(3)
                                     ->maxLength(150),
+                                TextInput::make('company')
+                                    ->label(__('Company'))
+                                    ->prefixIcon('heroicon-o-building-office')
+                                    ->helperText(__('Your company will be displayed on your public profile. Max: 150 characters'))
+                                    ->minLength(3)
+                                    ->maxLength(150),
+                                TextInput::make('public_email')
+                                    ->label(__('Public Email'))
+                                    ->email()
+                                    ->prefixIcon('heroicon-o-envelope-open')
+                                    ->helperText(__('Your email will be displayed on your public profile. Max: 150 characters'))
+                                    ->minLength(3)
+                                    ->maxLength(150),
                                 TextInput::make('localization')
                                     ->label(__('Localization'))
                                     ->prefixIcon('heroicon-o-map-pin')
@@ -74,10 +83,20 @@ class EditProfile extends EditRecord
                                     ->placeholder(__('Your skills'))
                                     ->helperText(__('Add your skills. Press enter to add a new.')),
 
-                            ])
-                            ->columnSpan(3),
+                            ]),
+                        Group::make()
+                            ->schema([
+                                CuratorPicker::make('avatar')
+                                    ->imageCropAspectRatio('1:1')
+                                    ->label(__('Profile Picture'))
+                                    ->helperText(__('Upload a profile picture.'))
+                                    ->maxItems(1)
+                                    ->directory('public/profile'),
+                            ]),
                     ]),
-                Section::make(__('Resume'))
+                Section::make(__('Resume & Job Status'))
+                    ->collapsible()
+                    ->columns(5)
                     ->description(__('Manager information about your resume.'))
                     ->icon('heroicon-o-document')
                     ->schema([
@@ -90,18 +109,20 @@ class EditProfile extends EditRecord
                             ->acceptedFileTypes(['application/pdf'])
                             ->directory('public/profile/document'),
                         Toggle::make('is_downloadable')
-                            ->inline(false)
+                            ->inline(true)
+                            ->columnSpan(2)
                             ->label(__('Downloadable'))
                             ->helperText(__('If you want to allow users to download your CV, enable this option.')),
                         Toggle::make('is_open_to_work')
-                            ->inline(false)
+                            ->inline(true)
+                            ->columnSpan(2)
                             ->label(__('Open to Work'))
-                            ->helperText(__('If you are open to work, a icon will be displayed on your profile with a link to your linkedin profile.')),
-                    ])
-                    ->columns(3),
+                            ->helperText(__('If you are open to work, enable this option. Linkedin badge will be displayed on your profile.')),
+                    ]),
                 Section::make(__('About You'))
+                    ->collapsible()
                     ->description(__('This information will be displayed on your public profile page.'))
-                    ->icon('heroicon-o-information-circle')
+                    ->icon('heroicon-o-rocket-launch')
                     ->schema([
                         RichEditor::make('about')
                             ->label('')
@@ -114,7 +135,7 @@ class EditProfile extends EditRecord
                                 'redo',
                                 'underline',
                                 'undo',
-                            ])->columnSpanFull(),
+                            ]),
                     ]),
 
             ]);

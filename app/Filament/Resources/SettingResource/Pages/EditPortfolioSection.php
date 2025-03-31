@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
@@ -51,12 +52,19 @@ class EditPortfolioSection extends EditRecord
                     ->relationship('layout')
                     ->description(__('This section is used to display your portfolio to the public.'))
                     ->icon('heroicon-o-rocket-launch')
-                    ->columns(2)
+                    ->columns(3)
                     ->schema([
-                        Toggle::make('portfolio.section_fill')
+                        Checkbox::make('portfolio.is_heading_visible')
+                            ->label(__('Show Section Heading'))
+                            ->default(true)
+                            ->helperText(__('Show or hide the section title and subtitle.')),
+                        Checkbox::make('portfolio.section_fill')
                             ->default(false)
                             ->label('Fill Section Background')
                             ->helperText('Fill the background of this section with a secondary default color.'),
+                        Checkbox::make('portfolio.is_section_filled_inverted')
+                            ->label(__('Fill Section Background Inverse'))
+                            ->helperText(__('Fill background with light color in dark mode and dark color in light mode.')),
                         TextInput::make('portfolio.section_title')
                             ->label('Portfolio Section Title')
                             ->placeholder(__('hackable ♠'))

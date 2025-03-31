@@ -11,10 +11,16 @@ class Module extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
     protected $guarded = [];
 
     /**
-     * Summary of setting
+     * Get the setting associated with the module.
+     *
      * @return BelongsTo
      */
     public function setting(): BelongsTo

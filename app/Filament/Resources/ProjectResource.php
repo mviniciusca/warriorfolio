@@ -110,63 +110,66 @@ class ProjectResource extends Resource
                                     ->columnSpanFull(),
                             ]),
                     ]),
-                Group::make()->schema([
-                    CuratorPicker::make('image_cover')
-                        ->buttonLabel(__('Upload Cover Image'))
-                        ->directory('public/project')
-                        ->maxSize(4000)
-                        ->required()
-                        ->label(__('Cover Image')),
-                    Section::make('Category')
-                        ->icon('heroicon-o-tag')
-                        ->schema([
-                            Select::make('category_id')
-                                ->relationship('category', 'name')
-                                ->options(Category::
-                                where('is_project', '=', true)
-                                    ->pluck('name', 'id'))
-                                ->helperText(__('Project Category'))
-                                ->createOptionUsing(fn (array $data) => Category::create($data + [
-                                    'is_blog'    => false,
-                                    'is_project' => true,
-                                ])->getKey())
-                                ->createOptionForm([
-                                    Section::make('Fast Create Category.')
-                                        ->icon('heroicon-o-tag')
-                                        ->description('Create a new category for the project. Edit other settings of this category later.')
-                                        ->schema([
-                                            TextInput::make('name')
-                                                ->lazy()
-                                                ->unique()
-                                                ->maxLength(200)
-                                                ->helperText('The name of the category. Max: 200 characters.')
-                                                ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                                                ->required()
-                                                ->label(__('Category Name')),
-                                            TextInput::make('slug')
-                                                ->disabled()
-                                                ->unique()
-                                                ->maxLength(200)
-                                                ->dehydrated()
-                                                ->placeholder(__('generated automatically'))
-                                                ->label('Slug'),
-                                        ])->columns(2),
-                                ])
-                                ->optionsLimit(10)
-                                ->searchable()
-                                ->required(),
-                        ]),
-                    Section::make('Visibility')
-                        ->icon('heroicon-o-eye')
-                        ->schema([
-                            Toggle::make('is_active')
-                                ->label('Published')
-                                ->helperText(__('Project visibility.'))
-                                ->default(true)
-                                ->required()
-                                ->inline(),
-                        ]),
-                ]),
+                Group::make()
+                    ->schema([
+                        CuratorPicker::make('image_cover')
+                            ->buttonLabel(__('Upload Cover Image'))
+                            ->directory('public/project')
+                            ->maxSize(4000)
+                            ->required()
+                            ->maxItems(1)
+                            ->multiple(false)
+                            ->label(__('Cover Image')),
+                        Section::make('Category')
+                            ->icon('heroicon-o-tag')
+                            ->schema([
+                                Select::make('category_id')
+                                    ->relationship('category', 'name')
+                                    ->options(Category::
+                                    where('is_project', '=', true)
+                                        ->pluck('name', 'id'))
+                                    ->helperText(__('Project Category'))
+                                    ->createOptionUsing(fn (array $data) => Category::create($data + [
+                                        'is_blog'    => false,
+                                        'is_project' => true,
+                                    ])->getKey())
+                                    ->createOptionForm([
+                                        Section::make('Fast Create Category.')
+                                            ->icon('heroicon-o-tag')
+                                            ->description('Create a new category for the project. Edit other settings of this category later.')
+                                            ->schema([
+                                                TextInput::make('name')
+                                                    ->lazy()
+                                                    ->unique()
+                                                    ->maxLength(200)
+                                                    ->helperText('The name of the category. Max: 200 characters.')
+                                                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                                    ->required()
+                                                    ->label(__('Category Name')),
+                                                TextInput::make('slug')
+                                                    ->disabled()
+                                                    ->unique()
+                                                    ->maxLength(200)
+                                                    ->dehydrated()
+                                                    ->placeholder(__('generated automatically'))
+                                                    ->label('Slug'),
+                                            ])->columns(2),
+                                    ])
+                                    ->optionsLimit(10)
+                                    ->searchable()
+                                    ->required(),
+                            ]),
+                        Section::make('Visibility')
+                            ->icon('heroicon-o-eye')
+                            ->schema([
+                                Toggle::make('is_active')
+                                    ->label('Published')
+                                    ->helperText(__('Project visibility.'))
+                                    ->default(true)
+                                    ->required()
+                                    ->inline(),
+                            ]),
+                    ]),
             ])
             ->columns(4);
     }

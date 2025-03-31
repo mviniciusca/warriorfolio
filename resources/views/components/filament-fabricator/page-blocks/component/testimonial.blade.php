@@ -1,18 +1,23 @@
 @aware(['page'])
 @props([
-    'bg_transparent' => null,
     'author' => null,
     'testimonial' => null,
     'author_info' => null,
     'picture' => null,
     'is_active' => null,
+    'is_bg_filled' => null,
+    'is_filled_inverted' => null,
+    'text_size' => null,
+    'with_padding' => null ?? false,
 ])
 
-
 @if ($is_active)
-    <x-core.layout>
-        <section class="{{ $bg_transparent ? 'bg-transparent' : 'bg-secondary-100  dark:bg-secondary-950' }} py-4">
-            <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-6 lg:py-16">
+    <x-core.layout :$with_padding>
+        <section class="
+        {{ $is_bg_filled & !$is_filled_inverted ? 'section-filled' : ''}}
+        {{ $is_filled_inverted ? 'bg-black text-white dark:text-black dark:bg-white' : ''}}
+        rounded-xl">
+            <div class="mx-auto max-w-screen-xl px-8 py-8 text-center lg:py-16">
                 <figure class="mx-auto max-w-screen-xl">
                     <svg class="mx-auto mb-3 h-12" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -21,14 +26,14 @@
                     </svg>
                     @if ($testimonial)
                         <blockquote>
-                            <p class="font-serif text-2xl italic leading-tight tracking-tight">
-                                "{!! $testimonial !!}"
+                            <p class="font-serif {{ $text_size ?? 'text-lg md:text-xl lg:text-2xl' }} italic leading-tight tracking-tight">
+                                " {!! $testimonial !!} "
                             </p>
                         </blockquote>
                     @endif
-                    <figcaption class="mt-6 flex items-center justify-center gap-2 space-x-3">
+                    <figcaption class="mt-6 flex items-center justify-center gap-2 space-x-2">
                         @if ($picture)
-                            <x-curator-glider :media="$picture" class="h-7 w-7 rounded-full object-cover" />
+                            <x-curator-glider :media="$picture" class="h-10 w-10 rounded-full object-cover" />
                         @endif
                         <div class="flex items-center gap-1">
                             @if ($author)
@@ -43,7 +48,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
                                     </svg>
                                 </div>
-                                <div class="pl-3 text-sm font-light">
+                                <div class="pl-3 text-sm">
                                     {{ $author_info }}
                                 </div>
                             @endif

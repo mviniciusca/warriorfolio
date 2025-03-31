@@ -1,98 +1,105 @@
-@props(['profile' => null])
+@props(['profile' => null, 'is_section_filled_inverted' => null])
+
+@php
+    $linkedin = collect($profile->social)->firstWhere('social_network', 'linkedin')['profile_link'] ?? null;
+@endphp
+
 <div
-    class="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-secondary-300 bg-secondary-300 bg-opacity-20 px-4 py-2 dark:border dark:border-secondary-800 dark:bg-secondary-800 dark:bg-opacity-40 lg:inline-block lg:items-start lg:justify-normal lg:border-none lg:bg-transparent dark:lg:bg-transparent">
-
+    class="my-4 flex flex-wrap items-center justify-between gap-2 rounded-lg border-none border-secondary-100 bg-transparent px-6 dark:border dark:border-secondary-900 dark:bg-transparent lg:my-0 lg:inline-block lg:items-start lg:justify-normal lg:border-none lg:bg-transparent lg:p-0 dark:lg:bg-transparent">
     <section id="profile-section-one" class="mx-auto">
-
-        <div id="profile-avatar">
-
+        <div class="mb-8" id="profile-avatar">
             @if ($profile->avatar)
                 <x-curator-glider
-                    class="relative mx-auto my-2 max-h-40 max-w-40 rounded-full bg-secondary-300 bg-gradient-to-tl from-primary-500 to-tertiary-500 object-cover p-1 dark:bg-secondary-700 lg:my-8"
-                    :media="$profile->avatar" />
+                    class="relative mx-auto my-2 w-28 h-28 rounded-full object-cover md:w-28 md:h-28 lg:w-36 lg:h-36 p-2 bg-white/10"
+                    :media="$profile->avatar" style="object-fit: cover;" />
             @else
-                <img class="relative mx-auto my-2 max-h-40 max-w-40 rounded-full bg-secondary-300 bg-gradient-to-tl from-primary-500 to-tertiary-500 object-cover p-1 dark:bg-secondary-700 lg:my-8"
+                <img class="relative mx-auto my-2 w-28 rounded-full bg-gradient-to-tr from-secondary-800/50 to-secondary-300/50 object-cover p-1 grayscale md:w-28 lg:w-36"
                     src="{{ asset('img/core/profile-picture.png') }}" />
             @endif
-
             @if ($profile->count() === 0)
-                <x-ui.empty-section :auth="'Go to your Dashboard and create a New Profile.'" />
+                <x-ui.empty-section :auth="'Update your Profile'" />
             @endif
             @if ($profile->is_open_to_work)
-                @if ($profile->linkedin)
-                    <a href="{{ 'https://' . $profile->linkedin }}" target="_blank">
+                @if ($linkedin)
+                    <a href="{{ 'https://' . $linkedin }}" target="_blank">
                 @endif
-                <div
-                    class="absolute -ml-12 -mt-10 inline-block w-auto rounded-sm bg-gradient-to-tl from-primary-500 to-indigo-500 p-1 text-xs text-white lg:-mt-16">
-                    <span class="flex items-center gap-1 font-semibold">
-                        <ion-icon class="h-3 w-3" name="logo-linkedin"></ion-icon>
-                        {{ __('Open to Work') }}
-                    </span>
-                </div>
-                @if ($profile->linkedin)
-                    </a>
-                @endif
+                    <div
+                        class="absolute -ml-14 -mt-6 inline-block rounded border border-black/80 bg-gradient-to-tr from-secondary-600 to-secondary-950 p-1 text-xs text-white md:-ml-14 md:-mt-8 lg:-ml-14 lg:-mt-10">
+                        <span class="flex items-center gap-1 text-xs font-semibold">
+                            <ion-icon class="h-4 w-4" name="logo-linkedin"></ion-icon>
+                            {{ __('Open to Work') }}
+                        </span>
+                    </div>
+                    @if ($linkedin)
+                        </a>
+                    @endif
             @endif
         </div>
-
         @if ($profile->user->name)
-            <div class="mb-4 text-xl font-semibold tracking-tight">
+            <div class="text-lg  font-semibold tracking-tight">
                 <span>{{ $profile->user->name }}</span>
             </div>
         @endif
-
     </section>
-
     <section id="profile-section-two" class="mx-auto">
-
-        <div class="flex flex-wrap items-center justify-center gap-4 md:justify-between lg:inline-block">
+        <div class="flex flex-wrap items-center justify-center gap-4 md:justify-between lg:inline-block lg:mt-8">
             @if ($profile->job_position || $profile->localization)
-                <div class="mb-4 tracking-tight">
-                    @if ($profile->job_position)
-                        <span class="text-sm font-semibold">{{ $profile->job_position }} </span>
-                    @endif
-                    @if ($profile->localization)
-                        <span class="mt-2 flex items-center text-sm opacity-80">
-                            <x-ui.ionicon icon="location-outline" />{{ $profile->localization }}
+                <div class="tracking-tight">
+                    @if ($profile->company ?? null)
+                        <span class="flex items-center gap-2 justify-start py-1 text-sm font-semibold opacity-90">
+                            <x-ui.ionicon icon="business-outline" />
+                            <p>{{ $profile->company }}</p>
                         </span>
+                    @endif
+                    @if ($profile->job_position ?? null)
+                        <span class="flex items-center gap-2 justify-start py-1 text-sm font-semibold opacity-90">
+                            <x-ui.ionicon icon="briefcase-outline" />
+                            <p>{{ $profile->job_position }}</p>
+                        </span>
+                    @endif
+                    @if ($profile->localization ?? null)
+                        <span class="flex items-center gap-2 justify-start py-1 text-sm font-semibold opacity-90">
+                            <x-ui.ionicon icon="globe-outline" />
+                            <p>{{ $profile->localization }}</p>
+                        </span>
+                    @endif
+                    @if ($profile->public_email ?? null)
+                        <a href="mailto:{{ $profile->public_email }}">
+                            <span class="flex items-center gap-2 justify-start py-1 text-sm font-semibold opacity-90">
+                                <x-ui.ionicon icon="mail-outline" />
+                                <p>{{ $profile->public_email ?? 'mviniciusca@gmail.com' }}</p>
+                            </span>
+                        </a>
                     @endif
                 </div>
             @endif
-
-
             @if ($profile->is_downloadable && $profile->document)
-                <div class="py-2">
-                    <a target="new" href="{{ asset('storage/' . $profile->document) }}"
-                        class="inline-flex items-center gap-2 rounded-md bg-primary-500 px-4 py-2 align-middle text-sm font-medium text-secondary-50 transition-all duration-100 hover:opacity-60 active:opacity-40">
-                        <ion-icon class="text-2xl" name="download-outline"></ion-icon>
-                        {{ __('View Resume') }}
+                <div class="py-2 mx-auto text-center">
+                    <a target="new" href="{{ asset('storage/' . $profile->document) }}">
+                        <x-ui.button class=" mt-4 text-xs mx-auto" :style="'filled'" :$is_section_filled_inverted
+                            :icon="'download-outline'">
+                            {{ __('Download Resume') }}
+                        </x-ui.button>
                     </a>
                 </div>
             @endif
         </div>
-
-
-        <div class="mx-auto my-8" id="social-network">
+        <div class="mx-auto my-8 px-4 flex flex-wrap justify-center" id="social-network">
             <x-ui.social-network />
         </div>
-
-
-        <div id="skills"
-            class="my-4 flex flex-wrap content-center items-center justify-center text-sm tracking-tight">
+        <div id="skills" class="my-4 flex flex-wrap content-center items-center justify-center text-sm tracking-tight">
             @if ($profile->skills)
                 @foreach (explode(',', $profile->skills) as $skill)
                     <span
-                        class="m-1 inline-flex rounded-md border border-secondary-400 border-opacity-30 bg-secondary-200 px-2 py-1 text-xs transition-all duration-100 hover:opacity-80 dark:bg-secondary-800">
+                        class="m-1 inline-flex rounded-full border border-secondary-500/50 bg-transparent px-2 py-1 text-xs transition-all duration-100 dark:bg-transparent">
                         {{ $skill }}
                     </span>
                 @endforeach
             @endif
             {{-- Empty Section --}}
             @if (!$profile->skills)
-                <x-ui.empty-section :auth="'Go to your Dashboard and create a New Skill.'" />
+                <x-ui.empty-section :auth="'Update your Skills'" />
             @endif
-
         </div>
-
     </section>
 </div>

@@ -1,48 +1,53 @@
-{{--  Header Section  --}}
-{{-- background Image --}}
-<x-ui.background />
+{{--
 
-{{--  Navigation / Logo / Dark Mode  --}}
-<x-core.layout>
-    <div class="app-header mt-8 flex w-full flex-wrap items-center justify-between">
-        <div class="app-logo flex flex-wrap items-center gap-4">
-            <div>
+Core Component: Header Section
+----------------------------------------------------------------
+This component is responsible for rendering the header section of the website.
+-------------------------------------------------------------------
+Data:
+App\View\Components\Header\Section.php
+
+--}}
+
+@props([
+    'is_filled' => false,
+    'navigation' => null,
+    'is_menu_highlighted' => $design['is_menu_highlighted'] ?? false,
+    'darkmode_is_active' => $design['darkmode_is_active'] ?? true,
+    'line_beam_is_active' => $design['line_beam_is_active'] ?? false,
+])
+
+{{-- Core: Background Image --}}
+<x-ui.background />
+{{-- Header --}}
+<nav class="relative z-50 w-full pb-2 pt-8">
+    {{-- Background Layer --}}
+    @if ($line_beam_is_active)
+        <div class="absolute inset-0 -z-20 animate-pulse bg-auto bg-top bg-no-repeat"
+            style="background-image: url({{ asset('img/core/core-ui-elements/beams/blur-beam.png') }})">
+        </div>
+    @endif
+    <x-core.layout :$is_filled :with_padding="false">
+        {{-- Logo and Primary Navigation --}}
+        <div class="-mt-4 flex items-center justify-between py-4 font-mono text-xs uppercase">
+            <div class="flex flex-wrap items-center gap-4">
                 <x-ui.logo />
+                <x-ui.mobile-navigation />
+                {{-- Navigation --}}
+                @if ($navigation)
+                    <div class="nav-bar hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
+                        id="mobile-menu-2">
+                        <x-header.navigation :$is_menu_highlighted :$navigation :primary_navigation="true" />
+                    </div>
+                @endif
             </div>
-            <div>
-                <button data-collapse-toggle="mobile-menu-2" type="button"
-                    class="ml-1 inline-flex items-center rounded-lg p-2 text-sm hover:bg-secondary-100 focus:outline-none focus:ring-2 focus:ring-secondary-200 dark:hover:bg-secondary-700 dark:focus:ring-secondary-600 lg:hidden"
-                    aria-controls="mobile-menu-2" aria-expanded="false">
-                    <span class="sr-only">{{ __('Open main menu') }}</span>
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    <svg class="hidden h-6 w-6" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
+            {{-- Secondary Navigation and Darkmode App --}}
+            <div class="flex flex-wrap items-center font-mono text-xs uppercase">
+                <x-header.navigation :$is_menu_highlighted :$navigation :secondary_navigation="true" />
+                @if ($darkmode_is_active)
+                    <livewire:dark-mode wire:key='header-dark-mode' />
+                @endif
             </div>
-            {{-- Navigation --}}
-            @if ($navigation)
-                <div class="nav-bar hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
-                    id="mobile-menu-2">
-                    <x-header.navigation :$navigation />
-                </div>
-            @endif
         </div>
-        {{-- Darkmode --}}
-        <div class="flex flex-wrap items-center">
-            <livewire:dark-mode wire:key='header-dark-mode' />
-        </div>
-    </div>
-    {{-- Light Beam --}}
-    <div class="mx-auto my-4">
-        <img class="-z-50 animate-pulse" src="{{ asset('img/core/core-ui-elements/beams/pink-beam.png') }}"
-            alt="light-beam" id="menu-gipper-board">
-    </div>
-</x-core.layout>
+    </x-core.layout>
+</nav>

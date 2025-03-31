@@ -2,9 +2,8 @@
 
 namespace App\View\Components\Contact;
 
-use App\Models\Layout;
-use App\Models\Module;
 use App\Models\Profile;
+use App\Models\Setting;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -26,13 +25,13 @@ class Section extends Component
     {
         return view('components.contact.section', [
             'social_network' => $this->isEmpty(),
-            'module'         => Module::first(['contact']),
-            'data'           => Layout::first(['contact']),
+            'data'           => Setting::with(['module', 'layout'])
+                ->first(),
         ]);
     }
 
     /**
-     * Summary of isEmpty
+     * Check if social network is empty.
      * @return int
      */
     public function isEmpty(): int

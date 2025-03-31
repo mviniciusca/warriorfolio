@@ -9,14 +9,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * Class Category
+ *
+ * Represents a category in the system, which can have projects, pages, and a parent category.
+ */
 class Category extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
     protected $guarded = [];
 
     /**
-     * Get all of the projects for the Category
+     * Get all of the projects for the Category.
+     *
      * @return HasMany
      */
     public function project(): HasMany
@@ -25,7 +36,8 @@ class Category extends Model
     }
 
     /**
-     * Get the parent that owns the Category
+     * Get the parent category that owns the Category.
+     *
      * @return BelongsTo
      */
     public function parent(): BelongsTo
@@ -33,12 +45,22 @@ class Category extends Model
         return $this->belongsTo(self::class, 'parent_id');
     }
 
-    public function pages()
+    /**
+     * Get all of the pages associated with the Category.
+     *
+     * @return HasMany
+     */
+    public function pages(): HasMany
     {
         return $this->hasMany(Page::class, 'category_id');
     }
 
-    public function post()
+    /**
+     * Get all of the posts associated with the Category.
+     *
+     * @return HasMany
+     */
+    public function post(): HasMany
     {
         return $this->hasMany(Post::class);
     }

@@ -11,26 +11,38 @@ class Newsletter extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
     protected $guarded = [];
 
     /**
-     * Summary of counter
-     * @return string
+     * Get a formatted count of newsletter subscriptions.
+     *
+     * Formats the count in 'K' (thousands) or 'M' (millions) if applicable.
+     *
+     * @return string The formatted subscription count.
      */
     public static function counter(): string
     {
-        if (self::count() >= 1000) {
-            return round(self::count() / 1000, 1).'K';
-        } elseif (self::count() >= 1000000) {
-            return round(self::count() / 1000000, 1).'M';
-        }
+        $count = self::count();
 
-        return self::count();
+        return $count >= 1_000_000
+            ? round($count / 1_000_000, 1).'M'
+            : ($count >= 1_000
+                ? round($count / 1_000, 1).'K'
+                : (string) $count);
     }
 
     /**
-     * Summary of chartSubscribers
-     * @return array
+     * Generate a chart data array for monthly newsletter subscriptions.
+     *
+     * Retrieves the count of subscriptions per month for the current year
+     * and returns the data as an array.
+     *
+     * @return array The subscription counts for the last 12 months.
      */
     public static function chartSubscribers(): array
     {

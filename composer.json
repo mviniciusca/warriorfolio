@@ -1,27 +1,36 @@
 {
     "name": "mviniciusca/warriorfolio",
-    "version": "2.1.2",
+    "version": "2.1.3",
     "type": "project",
     "authors": [
         {
             "name": "Marcos Vinicius Coelho",
             "email": "mviniciusca@gmail.com",
             "homepage": "https://github.com/mviniciusca",
-            "role": "Laravel Product Developer"
+            "role": "PHP/Laravel Developer"
         }
     ],
-    "description": "Warriorfolio 2 is a modern portfolio application designed for developers. Built with Laravel and Filament, it provides a sleek, user-friendly interface to showcase your skills, projects, and achievements. Whether you're a beginner or an experienced developer, Warriorfolio 2 offers a seamless and efficient way to present your work online.",
+    "support": {
+        "issues": "https://github.com/mviniciusca/warriorfolio/issues",
+        "source": "https://github.com/mviniciusca/warriorfolio"
+    },
+    "description": "Warriorfolio 2 is an advanced portfolio application tailored for developers. Built with Laravel and Filament, it delivers a polished, intuitive platform to highlight your skills, projects, and accomplishments. Whether you're starting out or a seasoned professional, Warriorfolio 2 empowers you to create a compelling online presence with ease.",
     "keywords": [
         "laravel",
         "filament",
-        "portfolio",
+        "portfolio application",
         "developer portfolio",
-        "web application",
+        "web development",
         "laravel framework",
         "developer showcase",
         "project portfolio",
         "tech portfolio",
-        "personal website"
+        "personal website",
+        "online resume",
+        "professional portfolio",
+        "modern portfolio",
+        "developer tools",
+        "career showcase"
     ],
     "license": "MIT",
     "require": {
@@ -76,8 +85,7 @@
             "@php artisan key:generate --ansi",
             "@php artisan storage:link --ansi",
             "@php artisan migrate:fresh --seed --ansi",
-            "npm install",
-            "@php artisan serve & npm run dev"
+            "npm install"
         ]
     },
     "extra": {

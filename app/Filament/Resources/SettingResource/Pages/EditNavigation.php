@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
@@ -38,7 +39,27 @@ class EditNavigation extends EditRecord
     {
         return $form
             ->schema([
-                Section::make('Navigation')
+                Section::make(__('Header'))
+                    ->description(__('Define the header menu of your website.'))
+                    ->icon('heroicon-o-bars-3-bottom-left')
+                    ->collapsible()
+                    ->schema([
+                        Group::make()
+                            ->columns(2)
+                            ->schema([
+                                Checkbox::make('design.darkmode_is_active')
+                                    ->label(__('Dark/Light Mode Switch'))
+                                    ->helperText(__('Enable dark/light mode switch'))
+                                    ->inline(true)
+                                    ->default(true),
+                                Checkbox::make('design.line_beam_is_active')
+                                    ->label(__('Line Beam'))
+                                    ->helperText(__('Enable line beam'))
+                                    ->inline(true)
+                                    ->default(false),
+                            ]),
+                    ]),
+                Section::make(__('Navigation'))
                     ->icon('heroicon-o-bars-3-bottom-left')
                     ->description(__('Define the navigation menu of your website.'))
                     ->collapsible()
@@ -48,9 +69,9 @@ class EditNavigation extends EditRecord
                             ->schema([
                                 Repeater::make('content')
                                     ->collapsed()
-                                    ->label(__('Navigation Links'))
+                                    ->label(__('Main Navigation'))
                                     ->defaultItems(1)
-                                    ->addActionLabel(__('Add Link'))
+                                    ->addActionLabel(__('New Item'))
                                     ->cloneable()
                                     ->itemLabel(function (array $state): string {
                                         $title = $state['name'] ?? __('Navigation Card');
@@ -58,37 +79,39 @@ class EditNavigation extends EditRecord
                                         return preg_replace('/<.*?>.*?<\/.*?>/', '', $title);
                                     })
                                     ->reorderable()
-                                    ->columns(7)
+                                    ->columns(12)
                                     ->schema([
                                         TextInput::make('name')
                                             ->label(__('Title'))
                                             ->placeholder(__('hackable ♠'))
                                             ->prefixIcon('heroicon-o-window')
-                                            ->helperText(__('Link Title'))
-                                            ->columnSpan(2)
+                                            ->helperText(__('Navigation title'))
+                                            ->columnSpan(6)
                                             ->required(),
                                         TextInput::make('url')
                                             ->label(__('URL'))
                                             ->prefixIcon('heroicon-o-link')
-                                            ->helperText(__('Link URL'))
-                                            ->columnSpan(3)
+                                            ->helperText(__('Navigation URL'))
+                                            ->columnSpan(6)
                                             ->required(),
-                                        Select::make('target')
-                                            ->columnSpan(1)
-                                            ->helperText(__('Link Target'))
-                                            ->label(__('Target'))
-                                            ->options([
-                                                '_self'  => __('Self'),
-                                                '_blank' => __('New'),
-                                            ])
-                                            ->default('_self')
-                                            ->required(),
+                                        Toggle::make('target')
+                                            ->helperText(__('Open in new tab'))
+                                            ->label(__('New Tab'))
+                                            ->inline(true)
+                                            ->default(false)
+                                            ->columnSpan(4),
+                                        Toggle::make('is_secondary')
+                                            ->helperText(__('Show on secondary menu'))
+                                            ->label(__('Secondary Menu'))
+                                            ->inline(true)
+                                            ->default(false)
+                                            ->columnSpan(4),
                                         Toggle::make('is_active')
                                             ->helperText(__('Status'))
                                             ->label(__('Visible'))
-                                            ->inline(false)
+                                            ->inline(true)
                                             ->default(true)
-                                            ->required(),
+                                            ->columnSpan(4),
                                     ]),
                             ]),
                     ]),

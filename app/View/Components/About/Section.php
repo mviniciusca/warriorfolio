@@ -3,9 +3,6 @@
 namespace App\View\Components\About;
 
 use App\Models\Course;
-use App\Models\Layout;
-use App\Models\Module;
-use App\Models\Profile;
 use App\Models\Setting;
 use App\Models\Slideshow;
 use Closure;
@@ -29,12 +26,11 @@ class Section extends Component
     {
         return view('components.about.section', [
             'sliders' => getSlider('about-section', new Slideshow),
-            'module'  => Module::first(['about']),
-            'profile' => Profile::first(),
             'courses' => Course::all()
                 ->sortDesc()
                 ->take(5),
-            'data' => Layout::first(['about']),
+            'data' => Setting::with(['layout', 'module', 'user'])
+                ->first(),
         ]);
     }
 }

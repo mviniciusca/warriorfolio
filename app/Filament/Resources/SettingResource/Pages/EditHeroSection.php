@@ -3,15 +3,16 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;
 
@@ -41,12 +42,12 @@ class EditHeroSection extends EditRecord
         return $form
             ->schema([
                 Section::make()
-                    ->columns(2)
+                    ->columns(1)
                     ->schema([
                         Group::make()
                             ->relationship('module')
                             ->schema([
-                                Toggle::make('hero')
+                                Checkbox::make('hero')
                                     ->label(__('Show Hero Section'))
                                     ->helperText(__('Show or hide the hero section on the website.')),
                             ]),
@@ -60,32 +61,106 @@ class EditHeroSection extends EditRecord
                             ->relationship('layout')
                             ->schema([
                                 Group::make()
-                                    ->columns(3)
+                                    ->columns(4)
                                     ->schema([
-                                        Select::make('hero.theme')
+                                        Radio::make('hero.theme')
                                             ->live()
                                             ->label(__('Theme'))
-                                            ->helperText(__('Select the theme of your Hero Section.'))
-                                            ->prefixIcon('heroicon-o-window')
                                             ->options([
-                                                'sierra'  => __('Sierra'),
                                                 'default' => __('Default'),
+                                                'sierra'  => __('Sierra'),
                                             ])
                                             ->default('sierra'),
-                                        Toggle::make('hero.is_mailing_active')
+                                        Checkbox::make('hero.is_filled')
+                                            ->default(true)
+                                            ->live()
+                                            ->label(__('Fill Section Background'))
+                                            ->helperText(__('Add a dark color to section. This can override the background image.')),
+                                        Checkbox::make('hero.social_network_module_is_active')
+                                            ->default(true)
+                                            ->live()
+                                            ->helperText(__('Enable the Social Network Module on Hero Sections where this option is available.'))
+                                            ->label(__('Social Network Module')),
+                                        Checkbox::make('hero.is_mailing_active')
                                             ->default(true)
                                             ->live()
                                             ->helperText(__('Enable the Mailing List Module on Hero Sections where this option is available.'))
-                                            ->label(__('Show Mailing List Module')),
+                                            ->label(__('Mailing List Module')),
+                                    ]),
+                                Section::make(__('Info Bumper'))
+                                    ->columns(3)
+                                    ->description(__('A simple info bumper component. All fields are optional.'))
+                                    ->icon('heroicon-o-megaphone')
+                                    ->collapsed()
+                                    ->schema([
+                                        Group::make()
+                                            ->columns(3)
+                                            ->columnSpanFull()
+                                            ->schema([
+                                                Checkbox::make('hero.bumper_is_active')
+                                                    ->helperText(__('Active or Inactive.'))
+                                                    ->label('Active')
+                                                    ->default(true),
+                                                Checkbox::make('hero.bumper_is_animated')
+                                                    ->label('Animated')
+                                                    ->helperText(__('Animated or Static.'))
+                                                    ->default(true),
+                                                Checkbox::make('hero.bumper_is_center')
+                                                    ->helperText(__('Align to center.'))
+                                                    ->label('Align to Center')
+                                                    ->default(false),
+                                            ]),
+                                        TextInput::make('hero.bumper_tag')
+                                            ->label(__('Tag'))
+                                            ->prefixIcon('heroicon-o-tag')
+                                            ->helperText(__('Featured Tag')),
+                                        TextInput::make('hero.bumper_title')
+                                            ->label(__('Title'))
+                                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                            ->helperText(__('Main content of the bumper.'))
+                                            ->columnSpan(2),
+                                        Group::make()
+                                            ->columnSpanFull()
+                                            ->columns(2)
+                                            ->schema([
+                                                TextInput::make('hero.bumper_icon')
+                                                    ->label('Ionicon')
+                                                    ->helperText(__('Ionicon.(Optional)'))
+                                                    ->suffixIcon('heroicon-o-window')
+                                                    ->prefix('ion-icon'),
+                                                TextInput::make('hero.bumper_link')
+                                                    ->label('Link')
+                                                    ->prefixIcon('heroicon-o-link')
+                                                    ->helperText(__('URL Link. (Optional)')),
+                                                Select::make('hero.bumper_target')
+                                                    ->label('Link Target')
+                                                    ->prefixIcon('heroicon-o-window')
+                                                    ->helperText(__('It opens in a new or same window.'))
+                                                    ->options([
+                                                        '_self'  => __('Self'),
+                                                        '_blank' => __('New'),
+                                                    ])
+                                                    ->default('_self'),
+                                                Select::make('hero.bumper_role')
+                                                    ->label('Role')
+                                                    ->prefixIcon('heroicon-o-bell')
+                                                    ->helperText(__('Select a role of this bumper.'))
+                                                    ->options([
+                                                        'primary' => 'Primary',
+                                                        'danger'  => 'Danger',
+                                                        'info'    => 'Info',
+                                                    ])
+                                                    ->default('primary'),
+                                            ]),
                                     ]),
                                 Section::make(__('Title & Subtitle'))
-                                    ->description(__('Configure the title and subtitle of your Hero Section'))
+                                    ->description(__('The main title and subtitle of your Hero Section. All fields are optional.'))
                                     ->icon('heroicon-o-bars-3-bottom-left')
                                     ->collapsed()
                                     ->schema([
                                         TextInput::make('hero.section_title')
                                             ->label(__('Hero Section Title'))
-                                            ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 140 characters.')
+                                            ->helperText('💡 Use gradient class e.g: tl or dg to highlight a word. Limit 140 characters.')
                                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                             ->columnSpanFull()
                                             ->placeholder(__('hackable ♠'))
@@ -95,24 +170,25 @@ class EditHeroSection extends EditRecord
                                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                             ->columnSpanFull()
                                             ->placeholder(__('hackable ♠'))
-                                            ->helperText('💡 HTML allowed. Use the class "tl" to highlight a word in the title. Max: 160 characters.')
-                                            ->maxLength(160),
+                                            ->helperText('💡 Use gradient class e.g: tl or dg to highlight a word. Limit 140 characters.')
+                                            ->maxLength(140),
                                     ]),
                                 Section::make(__('Buttons'))
-                                    ->description(__('A pair of buttons in your Hero Section.'))
+                                    ->description(__('The buttons of your Hero Section.'))
                                     ->icon('heroicon-o-bolt')
                                     ->collapsed()
                                     ->schema([
                                         Repeater::make('hero.buttons')
+                                            ->cloneable()
                                             ->label(__('Buttons'))
                                             ->itemLabel(function (array $state): string {
                                                 $title = $state['button_title'] ?? __('Button');
 
                                                 return preg_replace('/<.*?>.*?<\/.*?>/', '', $title);
                                             })
-                                            ->helperText(__('Max two buttons.'))
+                                            ->helperText(__('Max 4 buttons. Recommended: 2 buttons.'))
                                             ->reorderable()
-                                            ->maxItems(2)
+                                            ->maxItems(4)
                                             ->columnSpanFull()
                                             ->collapsed()
                                             ->columns(2)
@@ -131,9 +207,8 @@ class EditHeroSection extends EditRecord
                                                     ->maxLength(140),
                                                 TextInput::make('icon')
                                                     ->label(__('Icon'))
-                                                    ->helperText(__('Max: 140 characters.'))
-                                                    ->prefixIcon('heroicon-o-cube')
-                                                    ->maxLength(140),
+                                                    ->helperText(__('Ionicon. (Optional)'))
+                                                    ->prefixIcon('heroicon-o-cube'),
                                                 Select::make('button_style')
                                                     ->label(__('Button Style'))
                                                     ->prefixIcon('heroicon-o-window')
@@ -142,6 +217,10 @@ class EditHeroSection extends EditRecord
                                                         'outlined' => __('Outlined'),
                                                     ])
                                                     ->default('filled'),
+                                                Checkbox::make('color')
+                                                    ->label(__('Primary Color'))
+                                                    ->helperText(__('Use primary color for the button.'))
+                                                    ->default(true),
                                                 Select::make('button_target')
                                                     ->label(__('Target'))
                                                     ->prefixIcon('heroicon-o-window')
@@ -156,39 +235,96 @@ class EditHeroSection extends EditRecord
                                     ->description(__('The featured image of your Hero Section.'))
                                     ->icon('heroicon-o-sparkles')
                                     ->collapsed()
-                                    ->columns(3)
+                                    ->columns(1)
                                     ->schema([
-                                        Toggle::make('hero.featured_image_is_active')
-                                            ->default(true)
-                                            ->helperText(__('Show / hide featured image.'))
-                                            ->label(__('Active')),
-                                        FileUpload::make('hero.featured_image')
-                                            ->label('Featured Image')
-                                            ->directory('hero')
-                                            ->maxSize(10000)
-                                            ->image()
-                                            ->columnSpan(2)
-                                            ->imageEditor()
-                                            ->helperText(__('This is your featured image for the hero section.')),
+                                        Group::make()
+                                            ->columns(2)
+                                            ->schema([
+                                                Checkbox::make('hero.featured_image_is_active')
+                                                    ->default(true)
+                                                    ->helperText(__('Show / hide featured image.'))
+                                                    ->label(__('Active')),
+                                                Checkbox::make('hero.browser_border_is_active')
+                                                    ->default(true)
+                                                    ->helperText(__('Enable this option to display a browser border around the featured image. Applicable only for themes that support browser borders.'))
+                                                    ->label(__('Browser Border')),
+                                                TextInput::make('hero.browser_border_url')
+                                                    ->label(__('Browser Border URL'))
+                                                    ->helperText(__('URL of the browser border image.'))
+                                                    ->columnSpanFull()
+                                                    ->prefixIcon('heroicon-o-link'),
+                                            ]),
+                                        Group::make()
+                                            ->columns(2)
+                                            ->schema([
+                                                FileUpload::make('hero.featured_image')
+                                                    ->label('Featured Image')
+                                                    ->directory('hero')
+                                                    ->maxFiles(1)
+                                                    ->imageEditor()
+                                                    ->imageEditorAspectRatios([
+                                                        '1:1'  => '1:1',
+                                                        '16:9' => '16:9',
+                                                        '4:3'  => '4:3',
+                                                        '3:2'  => '3:2',
+                                                        '2:1'  => '2:1',
+                                                    ])
+                                                    ->helperText(__('16:9 aspect ratio is recommended.')),
+                                                FileUpload::make('hero.dark_mode_featured_image')
+                                                    ->label('Featured Image for Dark Mode')
+                                                    ->directory('hero')
+                                                    ->maxFiles(1)
+                                                    ->imageEditor()
+                                                    ->imageEditorAspectRatios([
+                                                        '1:1'  => '1:1',
+                                                        '16:9' => '16:9',
+                                                        '4:3'  => '4:3',
+                                                        '3:2'  => '3:2',
+                                                        '2:1'  => '2:1',
+                                                    ])
+                                                    ->helperText(__('16:9 aspect ratio is recommended.')),
+                                            ]),
                                     ]),
                                 Section::make(__('Background'))
                                     ->description(__('Controls for Background Image for your Hero Section.'))
                                     ->icon('heroicon-o-sparkles')
                                     ->collapsed()
-                                    ->columns(2)
+                                    ->columns(3)
                                     ->schema([
-                                        Toggle::make('hero.is_active')
-                                            ->label(__('Show Background Image'))
-                                            ->helperText(__('Show or hide the background image.')),
-                                        FileUpload::make('hero.bg_image')
-                                            ->label(__('Hero Section Background Image'))
-                                            ->directory('hero/bg')
-                                            ->image()
-                                            ->imageEditor()
-                                            ->helperText(__('Upload a background image for the hero section.')),
                                         Group::make()
-                                            ->columns(3)
                                             ->columnSpanFull()
+                                            ->columns(3)
+                                            ->schema([
+                                                Checkbox::make('hero.is_active')
+                                                    ->label(__('Show Background Image'))
+                                                    ->default(true)
+                                                    ->helperText(__('Show or hide the background image.')),
+                                                Checkbox::make('hero.is_upper')
+                                                    ->label(__('Move to Upper'))
+                                                    ->helperText(__('Move the background image to the upper side of website.')),
+                                                Checkbox::make('hero.is_highlight')
+                                                    ->label(__('Highlight Text'))
+                                                    ->default(false)
+                                                    ->helperText(__('Highlight the text in the hero section.')),
+                                                FileUpload::make('hero.bg_image')
+                                                    ->label(__('Hero Section Background Image'))
+                                                    ->directory('hero/bg')
+                                                    ->image()
+                                                    ->maxFiles(1)
+                                                    ->columnSpanFull()
+                                                    ->imageEditorAspectRatios([
+                                                        '1:1'  => '1:1',
+                                                        '16:9' => '16:9',
+                                                        '4:3'  => '4:3',
+                                                        '3:2'  => '3:2',
+                                                        '2:1'  => '2:1',
+                                                    ])
+                                                    ->imageEditor()
+                                                    ->helperText(__('Upload a background image for the hero section. 16:9 aspect ratio is recommended.')),
+                                            ]),
+
+                                        Fieldset::make(__('Size'))
+                                            ->columns(4)
                                             ->schema([
                                                 Select::make('hero.bg_position')
                                                     ->options([
@@ -198,7 +334,7 @@ class EditHeroSection extends EditRecord
                                                         'bg-left'   => 'Left',
                                                         'bg-right'  => 'Right',
                                                     ])
-                                                    ->label(__('Background Image Position'))
+                                                    ->label(__('Position'))
                                                     ->helperText(__('Choose the position of the background image.')),
                                                 Select::make('hero.bg_size')
                                                     ->options([
@@ -206,7 +342,7 @@ class EditHeroSection extends EditRecord
                                                         'bg-cover'   => 'Cover',
                                                         'bg-contain' => 'Contain',
                                                     ])
-                                                    ->label(__('Background Image Size'))
+                                                    ->label(__('Size'))
                                                     ->helperText(__('Choose the size of the background image.')),
                                                 Select::make('hero.bg_repeat')
                                                     ->options([
@@ -215,8 +351,48 @@ class EditHeroSection extends EditRecord
                                                         'bg-repeat-x'  => 'Repeat X',
                                                         'bg-repeat-y'  => 'Repeat Y',
                                                     ])
-                                                    ->label(__('Background Image Repeat'))
+                                                    ->label(__('Repeat'))
                                                     ->helperText(__('Choose the repeat of the background image.')),
+                                            ]),
+
+                                        Fieldset::make(__('Overlay & Effects'))
+                                            ->columns(4)
+                                            ->schema([
+                                                Checkbox::make('hero.is_bg_grayscale')
+                                                    ->label(__('Grayscale'))
+                                                    ->helperText(__('Add grayscale effect.')),
+                                                Checkbox::make('hero.is_bg_blur')
+                                                    ->label(__('Blur'))
+                                                    ->default(true)
+                                                    ->helperText(__('Blur the background image.')),
+                                                Checkbox::make('hero.is_overlay_active')
+                                                    ->label(__('Overlay'))
+                                                    ->default(true)
+                                                    ->helperText(__('Show a background overlay in the hero section.')),
+                                                Radio::make('hero.bg_overlay')
+                                                    ->options([
+                                                        'hero-bg-overlay-default' => 'Default',
+                                                        'hero-bg-overlay-middle'  => 'Middle',
+                                                        'hero-bg-overlay-down'    => 'Down',
+                                                    ])
+                                                    ->default('default')
+                                                    ->label(__('Overlay Opacity')),
+                                            ]),
+
+                                        Fieldset::make(__('Pattern Background'))
+                                            ->columns(3)
+                                            ->schema([
+                                                Checkbox::make('hero.is_pattern_bg')
+                                                    ->label(__('Pattern Background'))
+                                                    ->default(false)
+                                                    ->helperText(__('Use a pattern background in the hero section. Set bg-repeat, bg-auto, and remove blur effect.')),
+                                                Radio::make('hero.pattern_name')
+                                                    ->options([
+                                                        'dot'   => 'Dot',
+                                                        'cross' => 'Cross',
+                                                    ])
+                                                    ->default('cross')
+                                                    ->label(__('Pattern Type')),
                                             ]),
 
                                     ]),
@@ -226,10 +402,10 @@ class EditHeroSection extends EditRecord
                                     ->collapsed()
                                     ->columns(2)
                                     ->schema([
-                                        Toggle::make('hero.slider_is_active')
+                                        Checkbox::make('hero.slider_is_active')
                                             ->label(__('Active'))
                                             ->helperText(__('Enable this static slider in your Hero Section.')),
-                                        Toggle::make('hero.is_invert')
+                                        Checkbox::make('hero.is_invert')
                                             ->default(true)
                                             ->label(__('Invert Filter'))
                                             ->helperText(__('When enabled, invert the color of image in dark mode. If the image is black in white mode, turns to white in dark mode.')),
@@ -242,6 +418,8 @@ class EditHeroSection extends EditRecord
                                             ->schema([
                                                 FileUpload::make('hero.slider_image')
                                                     ->label(__('Image'))
+                                                    ->maxFiles(1)
+                                                    ->required()
                                                     ->helperText(__('PNG format will look great.')),
                                                 Group::make()
                                                     ->schema([
@@ -250,7 +428,7 @@ class EditHeroSection extends EditRecord
                                                             ->helperText(__('URL Link.'))
                                                             ->columnSpan(2)
                                                             ->prefixIcon('heroicon-o-link'),
-                                                        Toggle::make('hero.is_new_window')
+                                                        Checkbox::make('hero.is_new_window')
                                                             ->label(__('New Window'))
                                                             ->default(false),
                                                     ]),

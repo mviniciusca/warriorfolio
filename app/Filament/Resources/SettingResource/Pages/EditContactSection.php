@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
@@ -54,12 +55,19 @@ class EditContactSection extends EditRecord
                     ->icon('heroicon-o-envelope')
                     ->schema([
                         Group::make()
-                            ->columns(2)
+                            ->columns(3)
                             ->relationship('layout')
                             ->schema([
-                                Toggle::make('contact.section_fill')
+                                Checkbox::make('contact.is_heading_visible')
+                                    ->label(__('Show Section Heading'))
+                                    ->default(true)
+                                    ->helperText(__('Show or hide the section title and subtitle.')),
+                                Checkbox::make('contact.section_fill')
                                     ->label(__('Fill Section Background'))
                                     ->helperText(__('Fill the background of this section with a secondary default color.')),
+                                Checkbox::make('contact.is_section_filled_inverted')
+                                    ->label(__('Fill Section Background Inverse'))
+                                    ->helperText(__('Fill background with light color in dark mode and dark color in light mode.')),
                                 TextInput::make('contact.section_title')
                                     ->autoFocus()
                                     ->label(__('Contact Section Title'))

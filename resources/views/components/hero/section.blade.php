@@ -1,33 +1,37 @@
-@if ($module->hero)
+{{--
 
-    <x-core.layout>
-        {{-- Background Module --}}
+Core Component: Hero Section
+----------------------------------------------------------------
+This component is responsible for rendering the hero section of the website.
+It includes the hero section background, static and dyn. sliders and the hero section itself.
+-------------------------------------------------------------------
+Data:
+App\View\Components\Hero\Section.php
+
+--}}
+@props(['hero' => $data->layout ?? null, 'sliders'])
+
+@if ($data->module->hero)
+    {{-- Hero Section Background --}}
+    <div class="{{ $hero->hero['is_upper'] ?? false ? '-mt-36' : 'mt-0' }}">
         <x-hero.background :hero='$hero' />
-        {{-- Hero Section --}}
-        <section>
-            <div class="mx-auto flex flex-col items-center justify-center">
-                {{-- Hero Section Themes --}}
-                @if ($hero->hero['theme'] === 'default')
-                    <x-themes.hero.default-theme :$hero />
+    </div>
+    {{-- Hero Section --}}
+    <x-core.layout :is_filled="$hero->hero['is_filled'] ?? false" :module_name="'hero-section'" :with_padding="false">
+        <section class="hero-section-section {{ $hero->hero['is_upper'] ?? false ? 'mt-44' : 'mt-0' }} py-8">
+            <div
+                class="{{ $hero->hero['bumper_is_center'] ?? false ? 'mx-auto flex flex-col items-center justify-center' : '' }}">
+                @if ($hero->hero['theme'])
+                    @php
+                        $themeName = $hero->hero['theme'] ?? 'default';
+                    @endphp
+                    <x-dynamic-component :$hero :component="'themes.hero.' . $themeName . '-theme'" />
                 @endif
-
-                @if ($hero->hero['theme'] === 'sierra')
-                    <x-themes.hero.sierra-theme :$hero />
-                @endif
-
-                {{-- Static Slider --}}
-                @if (data_get($hero, 'hero.slider_is_active'))
-                    <div class="mx-auto mb-16 mt-4 flex max-w-7xl flex-wrap justify-around gap-4">
-                        @foreach (collect($hero->hero['slider_content'])->flatten(1) as $item)
-                            <img class="{{ $hero->hero['is_invert'] ? 'dark:invert' : null }} px-4 opacity-50 transition-all duration-100 hover:opacity-100"
-                                src=" {{ asset('storage/' . $item['slider_image']) }}" />
-                        @endforeach
-                    </div>
-                @endif
-                {{-- Hero Section Slider --}}
+                {{-- Hero Section Static Slider --}}
+                <x-hero.static-slider :$hero />
+                {{-- Hero Section Dynamic Slider --}}
                 <x-hero.slider :$sliders />
             </div>
         </section>
     </x-core.layout>
-
 @endif

@@ -11,10 +11,16 @@ class Maintenance extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
     protected $guarded = [];
 
     /**
-     * Summary of setting
+     * Get the associated setting for the maintenance record.
+     *
      * @return BelongsTo
      */
     public function setting(): BelongsTo

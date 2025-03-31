@@ -32,25 +32,13 @@ class AppServiceProvider extends ServiceProvider
 
         if (Schema::hasTable('cores')) {
             $data = Core::first([
-                'about',
-                'clients',
-                'contact',
                 'footer',
                 'header',
-                'hero',
-                'newsletter',
-                'portfolio',
             ]);
             view()
                 ->share([
-                    'about_core'      => $data->about ?? true,
-                    'clients_core'    => $data->clients ?? true,
-                    'contact_core'    => $data->contact ?? true,
-                    'footer_core'     => $data->footer ?? true,
-                    'header_core'     => $data->header ?? true,
-                    'hero_core'       => $data->hero ?? true,
-                    'newsletter_core' => $data->newsletter ?? true,
-                    'portfolio_core'  => $data->portfolio ?? true,
+                    'footer_core' => $data->footer ?? false,
+                    'header_core' => $data->header ?? false,
                 ]);
         }
     }

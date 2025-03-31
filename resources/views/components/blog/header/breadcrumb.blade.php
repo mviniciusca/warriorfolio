@@ -2,13 +2,10 @@
 
 <div>
     <div class="mb-8 inline-block">
-        <a class="flex items-center gap-1 font-mono transition-all duration-150 hover:opacity-50 active:opacity-20 md:hover:-ml-5"
-            href="{{ env('APP_URL') . '/blog' }}">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-            </svg>
-            <p class="font-semibold uppercase">{{ __('Back to the Main Blog') }}</p>
+        <a class="flex items-center gap-1 transition-all duration-300 hover:opacity-90 active:opacity-50 md:hover:-ml-5"
+            href="{{ config('app.url') . '/' . config('warriorfolio.app_blog_basepath', 'blog/') }}">
+            <x-ui.ionicon :icon="'arrow-back-sharp'" class="text-lg" />
+            <span class="font-semibold text-sm">{{ __('Back to the Notes') }}</span>
         </a>
     </div>
 </div>

@@ -13,7 +13,7 @@ class FeaturedPosts extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('blog.featured-posts')
-            ->icon('heroicon-o-pencil')
+            ->icon('heroicon-o-newspaper')
             ->label(__('Latest Posts'))
             ->schema([
                 Section::make('Core: Notes Latest Posts')

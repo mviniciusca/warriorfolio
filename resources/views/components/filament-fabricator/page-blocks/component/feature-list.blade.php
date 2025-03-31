@@ -1,55 +1,76 @@
 @aware(['page'])
 @props([
-    'features' => null,
     'is_active' => null,
-    'is_center' => null,
-    'link' => null,
-    'is_new_window' => null,
-    'is_filled' => false,
-    'is_section_filled' => false,
     'is_animated' => null,
     'is_border' => null,
-    'module_title' => null,
+    'is_center' => null,
+    'is_color_icon' => null,
+    'is_content_center' => true,
+    'is_filled' => null,
+    'is_light_fx' => null,
+    'button_header' => null,
+    'button_url' => null,
+    'columns' => null ?? 3,
+    'features' => null,
     'module_subtitle' => null,
+    'module_title' => null,
+    'with_padding' => true,
+    'is_heading_active' => true,
+    'is_card_filled' => null,
+    'is_filled_inverted' => null,
+    'is_section_filled_inverted' => null,
+    'is_card_hidden' => false, // false by default
 ])
 
 @if ($is_active)
-    <x-core.layout class="{{ $is_section_filled ? 'section-filled' : '' }}">
-        <section>
-            @if ($module_title || $module_subtitle)
-                <div>
-                    <x-slot name="module_title">
-                        {!! $module_title !!}
-                    </x-slot>
-                    <x-slot name="module_subtitle">
-                        {!! $module_subtitle !!}
-                    </x-slot>
-                </div>
-            @endif
-            <div class="mx-auto py-4 md:py-8 lg:py-12">
-                <div class="{{ $is_center ? 'text-center' : 'text-left' }} grid grid-cols-1 gap-6 md:grid-cols-3">
-                    @foreach ($features as $key => $item)
-                        @if ($link)
-                            <a target="{{ $is_new_window ? '_blank' : '_self' }}" href="{{ $link }}">
-                        @endif
-                        <div
-                            class="{{ $is_animated ? 'hover:-mt-3 hover:z-10' : '' }} {{ $is_filled ? ' dark:bg-secondary-900 hover:dark:bg-secondary-800 bg-opacity-40 bg-secondary-50' : '' }} {{ $is_border ? 'border  dark:border-secondary-800 border-secondary-300' : '' }} icon-card duration-50 min-h-60 rounded-lg p-4 opacity-90 transition-all hover:opacity-100">
-                            <div
-                                class="{{ $is_center ? 'items-center justify-center' : 'items-start justify-normal' }} mx-auto mb-2 flex">
-                                <ion-icon class="h-10 w-10 opacity-80 lg:h-11 lg:w-11"
-                                    name="{{ $item['icon'] }}"></ion-icon>
-                            </div>
-                            <h3 class="my-4 text-xl font-semibold leading-tight">{!! $item['title'] !!}</h3>
-                            <p class="text-sm opacity-70">
-                                {!! $item['description'] !!}
-                            </p>
-                        </div>
-                        @if ($link)
-                            </a>
-                        @endif
-                    @endforeach
+    <x-core.layout :$is_filled :$is_section_filled_inverted :$button_header :$button_url :$is_center >
+        @if (($module_title || $module_subtitle) && $is_heading_active)
+        <div>
+            <x-slot name="module_title" class="py-8 text-center">
+                {!! $module_title !!}
+            </x-slot>
+            <x-slot name="module_subtitle">
+                {!! $module_subtitle !!}
+            </x-slot>
+        </div>
+        @endif
+        <div class="mx-auto{{ $with_padding ? 'py-8' : 'py-12'}}">
+            <div
+            class="{{ $is_content_center ? 'text-center justify-center' : 'text-left' }} {{ $columns == 2 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : '' }} {{ $columns == 3 ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4' : '' }} {{ $columns == 4 ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6' : '' }} grid grid-cols-1 gap-4">
+            @foreach ($features as $key => $item)
+                   @if(!isset($item['is_card_hidden']) || empty($item['is_card_hidden']))
+                        @if ($item['link'] ?? false)
+                        <a class="cursor-pointer hover:opacity-50 active:opacity-20 transition-all duration-300" target="{{ $item['is_new_window'] ? '_blank' : '_self' }}" href="{{ $item['link'] ?? '#' }}">
+                            @endif
+                                    <div
+                                        class="
+                                        {{ $columns != 1 ? 'min-h-24' : 'min-h-10' }}
+                                        {{ ($is_card_filled && (!$is_section_filled_inverted ?? false)) ? 'dark:bg-secondary-900/70 bg-secondary-50/70' : '' }}
+                                        {{ ($is_card_filled && ($is_section_filled_inverted ?? false)) ? 'bg-secondary-900/70 dark:bg-secondary-50/70' : '' }}
+                                        {{ ($is_border && ($is_section_filled_inverted ?? false)) ? 'border dark:border-secondary-800/20 border-secondary-300/10' : '' }}
+                                        {{ ($is_border && (!$is_section_filled_inverted ?? false)) ? 'border dark:border-secondary-800/70 border-secondary-300' : '' }}
+                                            icon-card duration-300 overflow-hidden rounded-lg bg-contain bg-top bg-no-repeat p-4 transition-all">
+                                        @if ($is_light_fx)
+                                            <div class="-mt-4 h-4 animate-pulse bg-contain bg-top bg-no-repeat"
+                                                style="background-image: url({{ asset('img/core/core-ui-elements/beams/blur-beam.png') }})">
+                                            </div>
+                                        @endif
+                                        <div
+                                            class="{{ $is_content_center ? 'items-center justify-center' : 'items-start justify-normal' }} mx-auto -mt-0 mb-2 flex">
+                                            <ion-icon
+                                                class="{{ $is_animated ? 'animate-pulse' : '' }} {{ $is_color_icon ? 'text-primary-500 dark:text-primary-600' : '' }} h-8 w-8 rounded-full p-1"
+                                                name="{{ $item['icon'] }}" />
+                                        </div>
+                                        <h4 class="my-1 text-base font-semibold leading-tight">{!! $item['title'] !!}</h4>
+                                        <p class="{{ $columns != 1 ? 'py-2' : 'pb-2' }} text-sm leading-snug opacity-80"> {!! $item['description'] !!}</p>
+                                    </div>
+                                    @if ($item['link'] ?? false)
+                                        </a>
+                                    @endif
+                    @endif
+            @endforeach
                 </div>
             </div>
-        </section>
-    </x-core.layout>
+            </div>
+        </x-core.layout>
 @endif

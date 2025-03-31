@@ -4,8 +4,10 @@ namespace App\Filament\Fabricator\PageBlocks\Component;
 
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms\Components\Builder\Block;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -19,25 +21,33 @@ class Testimonial extends PageBlock
             ->icon('heroicon-o-chat-bubble-left-right')
             ->label('Testimonial')
             ->schema([
-                Section::make('Testimonial')
+                Section::make(__('Testimonial'))
                     ->icon('heroicon-o-chat-bubble-left-right')
-                    ->description('The testimonial component')
-                    ->columns(2)
+                    ->description(__('Add a testimonial to your page'))
                     ->collapsed()
                     ->schema([
-                        Group::make()->schema([
-                            Toggle::make('is_active')
-                                ->default(true)
-                                ->helperText(__('Show this Module'))
-                                ->label('Active'),
-                            Toggle::make('bg_transparent')
-                                ->helperText(__('Set the transparent background'))
-                                ->label('No Background')
-                                ->default(false),
-                        ])
-                            ->columnSpanFull()
-                            ->columns(2),
                         Group::make()
+                            ->columns(4)
+                            ->schema([
+                                Checkbox::make('is_active')
+                                    ->default(true)
+                                    ->helperText(__('Show this Module'))
+                                    ->label('Active'),
+                                Checkbox::make('with_padding')
+                                    ->helperText(__('Add/Remove vertical padding to the component'))
+                                    ->label('Vertical Padding')
+                                    ->default(false),
+                                Checkbox::make('is_bg_filled')
+                                    ->helperText(__('Set the transparent background'))
+                                    ->label('Filled Background')
+                                    ->default(false),
+                                Checkbox::make('is_filled_inverted')
+                                    ->helperText(__('Invert the colors of component.'))
+                                    ->label('Filled Inverted')
+                                    ->default(false),
+                            ]),
+                        Group::make()
+                            ->columns(2)
                             ->schema([
                                 TextInput::make('author')
                                     ->required()
@@ -53,15 +63,30 @@ class Testimonial extends PageBlock
                                     ->columnSpanFull()
                                     ->helperText(__('The testimonial.')),
                             ]),
-                        Group::make()->schema([
-                            CuratorPicker::make('picture')
-                                ->size('sm')
-                                ->buttonLabel(__('Select picture'))
-                                ->columnSpanFull()
-                                ->directory('public/testimonial')
-                                ->label(__('Author Picture'))
-                                ->helperText(__('The picture of the author')),
-                        ]),
+                        Group::make()
+                            ->columns(2)
+                            ->schema([
+                                CuratorPicker::make('picture')
+                                    ->size('sm')
+                                    ->buttonLabel(__('Select picture'))
+                                    ->directory('public/testimonial')
+                                    ->label(__('Author Picture'))
+                                    ->helperText(__('The picture of the author')),
+                                Select::make('text_size')
+                                    ->options([
+                                        'text-sm'                         => 'Small',
+                                        'text-base'                       => 'Base',
+                                        'text-lg'                         => 'Large',
+                                        'text-xl'                         => 'Extra Large',
+                                        'text-lg md:text-xl lg:text-2xl'  => '2x Large',
+                                        'text-lg md:text-xl lg:text-3xl'  => '3x Large',
+                                        'text-lg md:text-2xl lg:text-4xl' => '4x Large',
+
+                                    ])
+                                    ->default('text-lg md:text-xl lg:text-2xl')
+                                    ->label('Testimonial Font Size')
+                                    ->helperText(__('The size of the text')),
+                            ]),
 
                     ]),
             ]);

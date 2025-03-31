@@ -26,6 +26,7 @@ class SettingFactory extends Factory
             ],
             'blog' => [
                 'module_is_active'       => true,
+                'is_show_profile'        => true,
                 'is_share_active'        => true,
                 'is_trend_widget_active' => true,
                 'header_title'           => 'From Notes ...',
@@ -34,7 +35,7 @@ class SettingFactory extends Factory
                 'button_url'             => '/blog',
                 'is_active'              => true,
                 'is_logo_active'         => true,
-                'name'                   => 'Warriorfolio<br/><span class="tl font-black">Notes</span>',
+                'name'                   => 'Warriorfolio<br/><span class="dg">Notes</span>',
                 'description'            => 'Free your mind with Notes.',
             ],
             //
@@ -47,6 +48,8 @@ class SettingFactory extends Factory
             //
             'design' => [
                 'animation'                   => false,
+                'line_beam_is_active'         => false,
+                'darkmode_is_active'          => true,
                 'background_image_visibility' => true,
                 'background_image_position'   => 'bg-center',
                 'background_image_size'       => 'bg-auto',

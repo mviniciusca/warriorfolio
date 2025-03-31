@@ -4,6 +4,7 @@ namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
 use Filament\Actions;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
@@ -52,11 +53,18 @@ class EditClientSection extends EditRecord
                 ->relationship('layout')
                 ->description(__('This section is used to display your Customers to the public.'))
                 ->icon('heroicon-o-building-office')
-                ->columns(2)
+                ->columns(3)
                 ->schema([
-                    Toggle::make('customer.section_fill')
+                    Checkbox::make('customer.is_heading_visible')
+                        ->label(__('Show Section Heading'))
+                        ->default(true)
+                        ->helperText(__('Show or hide the section title and subtitle.')),
+                    Checkbox::make('customer.section_fill')
                         ->label(__('Fill Section Background'))
                         ->helperText(__('Fill the background of this section with a secondary default color.')),
+                    Checkbox::make('customer.is_section_filled_inverted')
+                        ->label(__('Fill Section Background Inverse'))
+                        ->helperText(__('Fill background with light color in dark mode and dark color in light mode.')),
                     TextInput::make('customer.section_title')
                         ->label(__('Customers Section Text'))
                         ->helperText(__('HTML allowed. Use the class text-highlight to highlight a word in the text'))
