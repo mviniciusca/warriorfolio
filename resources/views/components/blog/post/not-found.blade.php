@@ -1,6 +1,3 @@
-@props([
-    'title' => 'Page Not Found',
-])
 <section class="flex w-full items-center justify-center">
     <div class="mx-auto grid justify-center text-center">
         <svg class="mx-auto my-8 size-6" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
