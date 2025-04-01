@@ -17,13 +17,13 @@
         </div>
 
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            @foreach ($projects as $project)
-                <a href="/{{ $project->slug }}">
-                    <div class="relative" wire:ignore wire:key='{{ $project->id }}'>
-                        <img alt="{{ $project->name }}" class="h-64 w-full rounded-lg object-cover shadow-md"
-                            src="{{ asset('img/core/profile-picture.png') }}">
+            @foreach ($data as $item)
+                <a href="/{{ $item->slug }}">
+                    <div class="relative" wire:ignore wire:key='{{ $item->id }}'>
+                        <img alt="{{ $item->title }}" class="h-64 w-full rounded-lg object-cover shadow-md"
+                            src="{{ asset('storage/' . $item->project->image_cover) }}">
                         <div class="py-4">
-                            <h3 class="text-sm font-semibold">{{ $project->name }}</h3>
+                            <h3 class="text-sm font-semibold">{{ $item->title }}</h3>
                             <p class="text-xs">{{ __('View Full Project') }}</p>
                         </div>
                     </div>

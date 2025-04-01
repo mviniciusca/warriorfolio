@@ -14,7 +14,7 @@ class Gallery extends Component
     public function render()
     {
         return view('livewire.portfolio.gallery', [
-            'projects'   => $this->getProjects(),
+            'data'       => $this->getProjects(),
             'categories' => $this->getCategories(),
         ]);
     }
@@ -22,20 +22,19 @@ class Gallery extends Component
     public function getProjects()
     {
         if ($category_id = $this->category_id) {
-            return Page::with('category')
-                ->with('project')
+            return Page::with('project')
                 ->where('style', '=', 'project')
-                ->whereHas('project', function ($query) {
-                    $query->where('is_active', '=', true);
+                ->whereHas('project', function ($query) use ($category_id) {
+                    $query->whereHas('category', function ($query) use ($category_id) {
+                        $query->where('id', '=', $category_id);
+                    })->where('is_active', '=', true);
                 })
                 ->where('is_active', '=', true)
-                ->where('category_id', '=', $category_id)
                 ->latest()
                 ->get();
         }
 
-        return Page::with('category')
-            ->with('project')
+        return Page::with('project')
             ->where('style', '=', 'project')
             ->whereHas('project', function ($query) {
                 $query->where('is_active', '=', true);
