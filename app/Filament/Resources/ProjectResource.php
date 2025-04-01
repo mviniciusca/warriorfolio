@@ -32,7 +32,7 @@ use Illuminate\Support\Str;
 
 class ProjectResource extends Resource
 {
-    // v2.1.4 - April 2025
+    // v2.1.4 - Apr 25
     // Now belongs to the Page Model with Relationship to Project
     // So we can use the same page for both project and blog
     // And use Fabricator Routing System
@@ -92,7 +92,9 @@ class ProjectResource extends Resource
                                     ->live(true)
                                     ->required()
                                     ->autofocus()
-                                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug',
+                                        'project/'.Str::slug($state).'.html'))
+
                                     ->unique('pages', 'title', ignoreRecord: true)
                                     ->maxLength(200)
                                     ->prefixIcon('heroicon-o-rocket-launch')
@@ -104,36 +106,32 @@ class ProjectResource extends Resource
                                     ->helperText(__('This is automatically generated from the title.'))
                                     ->prefixIcon('heroicon-o-link')
                                     ->label(__('Slug')),
-                                Group::make()
-                                    ->columnSpanFull()
-                                    ->relationship('project')
-                                    ->schema([
-                                        Textarea::make('short_description')
-                                            ->columnSpanFull()
-                                            ->rows(2)
-                                            ->maxLength(500)
-                                            ->helperText(__('A short description of the project. Max: 500 characters.'))
-                                            ->label(__('Short Description (Optional)')),
-                                        RichEditor::make('content')
-                                            ->fileAttachmentsDirectory('project/attachments')
-                                            ->columnSpanFull()
-                                            ->maxLength(5000)
-                                            ->helperText(__('The content of the project. Max: 5000 characters.'))
-                                            ->label(__('Content (Optional)')),
-                                        TextInput::make('external_link')
-                                            ->label(__('External Link (Optional)'))
-                                            ->placeholder('https://example.com')
-                                            ->url()
-                                            ->maxLength(255)
-                                            ->prefixIcon('heroicon-o-link')
-                                            ->helperText(__('The external link of the project. Max: 255 characters.'))
-                                            ->columnSpanFull(),
-                                    ]),
                             ]),
                     ]),
+
                 Group::make()
                     ->relationship('project')
                     ->schema([
+                        Textarea::make('short_description')
+                            ->columnSpanFull()
+                            ->rows(2)
+                            ->maxLength(500)
+                            ->helperText(__('A short description of the project. Max: 500 characters.'))
+                            ->label(__('Short Description (Optional)')),
+                        RichEditor::make('content')
+                            ->fileAttachmentsDirectory('project/attachments')
+                            ->columnSpanFull()
+                            ->maxLength(5000)
+                            ->helperText(__('The content of the project. Max: 5000 characters.'))
+                            ->label(__('Content (Optional)')),
+                        TextInput::make('external_link')
+                            ->label(__('External Link (Optional)'))
+                            ->placeholder('https://example.com')
+                            ->url()
+                            ->maxLength(255)
+                            ->prefixIcon('heroicon-o-link')
+                            ->helperText(__('The external link of the project. Max: 255 characters.'))
+                            ->columnSpanFull(),
                         FileUpload::make('image_cover')
                             ->directory('public/project')
                             ->required()

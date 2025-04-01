@@ -18,7 +18,7 @@
 
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             @foreach ($projects as $project)
-                <a href="/project/{{ $project->slug }}">
+                <a href="/{{ $project->slug }}">
                     <div class="relative" wire:ignore wire:key='{{ $project->id }}'>
                         <img alt="{{ $project->name }}" class="h-64 w-full rounded-lg object-cover shadow-md"
                             src="{{ asset('img/core/profile-picture.png') }}">

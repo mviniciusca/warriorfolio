@@ -3,6 +3,7 @@
 namespace App\Livewire\Portfolio;
 
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Project;
 use Livewire\Component;
 
@@ -21,14 +22,24 @@ class Gallery extends Component
     public function getProjects()
     {
         if ($category_id = $this->category_id) {
-            return Project::with('category')
+            return Page::with('category')
+                ->with('project')
+                ->where('style', '=', 'project')
+                ->whereHas('project', function ($query) {
+                    $query->where('is_active', '=', true);
+                })
                 ->where('is_active', '=', true)
                 ->where('category_id', '=', $category_id)
                 ->latest()
                 ->get();
         }
 
-        return Project::with('category')
+        return Page::with('category')
+            ->with('project')
+            ->where('style', '=', 'project')
+            ->whereHas('project', function ($query) {
+                $query->where('is_active', '=', true);
+            })
             ->where('is_active', '=', true)
             ->latest()
             ->get();

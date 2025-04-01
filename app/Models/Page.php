@@ -62,6 +62,9 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
             if ($page->post) {
                 $page->post->delete();
             }
+            if ($page->project) {
+                $page->project->delete();
+            }
         });
     }
 }

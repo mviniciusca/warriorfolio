@@ -35,7 +35,7 @@ class PageResource extends ResourcesPageResource
     public static function getNavigationBadge(): ?string
     {
         if (static::getModel()::where('style', '!=', 'blog')->count() > 0) {
-            return static::getModel()::where('style', '!=', 'blog')->count();
+            return static::getModel()::where('style', '=', 'default')->count();
         }
 
         return null;
@@ -46,7 +46,7 @@ class PageResource extends ResourcesPageResource
         return $table
             ->query(
                 Page::query()
-                    ->where('style', '!=', 'blog')
+                    ->where('style', '=', 'default')
             )
             ->columns([
                 TextColumn::make('title')

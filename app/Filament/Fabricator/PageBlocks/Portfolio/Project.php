@@ -10,6 +10,7 @@ class Project extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('portfolio.project')
+            ->hidden()
             ->schema([
                 //
             ]);
