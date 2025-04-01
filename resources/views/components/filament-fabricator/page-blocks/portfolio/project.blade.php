@@ -4,7 +4,7 @@
     'title' => 'Project',
 ])
 <x-core.layout :with_padding="true">
-    @if ($page->project->is_active)
+    @if ($page->project->is_active && $page->style == 'portfolio')
         <header class="mx-auto max-w-5xl">
             <div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
                 <div>
