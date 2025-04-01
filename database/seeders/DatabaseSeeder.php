@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         Newsletter::factory()->create();
         Course::factory()->create();
         Category::factory(10)->create();
-        Project::factory(10)->create();
+        // Project::factory(10)->create();
         Alert::factory()->create();
 
         /** Pages */

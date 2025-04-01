@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use App\Models\Category;
+use App\Models\Page;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
 class Project extends Model
@@ -47,5 +49,10 @@ class Project extends Model
             ->orderByRaw('min(created_at) desc')
             ->get()
             ->toArray();
+    }
+
+    public function page(): HasMany
+    {
+        return $this->hasMany(Page::class);
     }
 }

@@ -47,12 +47,10 @@ class PostResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        if (static::getModel()::where('style', '=', 'blog')->count() > 0) {
-            if (static::getModel()::where('style', '=', 'blog')->count() >= 999) {
-                return '+999';
-            } else {
-                return static::getModel()::where('style', '=', 'blog')->count();
-            }
+        $blogCount = static::getModel()::where('style', '=', 'blog')->count();
+
+        if ($blogCount > 0) {
+            return $blogCount >= 999 ? '+999' : $blogCount;
         }
 
         return null;
