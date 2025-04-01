@@ -6,7 +6,7 @@
             <div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
                 <div>
                     <h1 class="text-2xl font-bold tracking-tighter">{{ $page->title ?? null }}</h1>
-                    <h3 class="my-2 text-sm">{{ $page->project->short_description }}</h3>
+                    <h3 class="my-2 text-sm">{{ $page->project->short_description ?? null }}</h3>
                 </div>
                 <x-blog.post.share />
             </div>
