@@ -40,6 +40,7 @@
         "flowframe/laravel-trend": "^0.3.0",
         "laravel/framework": "^11.44.0",
         "laravel/sanctum": "^4.0",
+        "livewire/flux": "^2.1",
         "opcodesio/log-viewer": "^3.12",
         "pxlrbt/filament-excel": "^2.3",
         "z3d0x/filament-fabricator": "^2.4",

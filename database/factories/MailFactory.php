@@ -20,7 +20,7 @@ class MailFactory extends Factory
             'name'    => 'Warrior Mail',
             'phone'   => '999999-9999',
             'email'   => 'test@warriormail.dev',
-            'subject' => 'Welcome to Warriorfolio 2.1.0 🎉',
+            'subject' => 'Welcome to Warriorfolio 🎉',
             'body'    => 'We\'re excited to have you onboard! 🎉
                                 <br/>
                                 This is a test email from Warriroflio, making sure everything is working smoothly.

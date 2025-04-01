@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\Mail;
 use App\Models\Newsletter;
+use App\Models\Project;
 use App\Models\Setting;
 use App\Models\User;
 use Database\Seeders\DocumentationPageSeeder;
@@ -39,7 +40,8 @@ class DatabaseSeeder extends Seeder
         Mail::factory()->create();
         Newsletter::factory()->create();
         Course::factory()->create();
-        Category::factory()->create();
+        Category::factory(10)->create();
+        Project::factory(10)->create();
         Alert::factory()->create();
 
         /** Pages */

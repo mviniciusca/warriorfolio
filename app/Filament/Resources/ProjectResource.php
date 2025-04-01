@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Project;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
@@ -112,13 +113,18 @@ class ProjectResource extends Resource
                     ]),
                 Group::make()
                     ->schema([
-                        CuratorPicker::make('image_cover')
-                            ->buttonLabel(__('Upload Cover Image'))
+                        FileUpload::make('image_cover')
                             ->directory('public/project')
-                            ->maxSize(4000)
                             ->required()
-                            ->maxItems(1)
-                            ->multiple(false)
+                            ->maxFiles(1)
+                            ->imageEditor()
+                            ->imageEditorAspectRatios(
+                                [
+                                    '16:9' => '16:9',
+                                    '4:3'  => '4:3',
+                                    '1:1'  => '1:1',
+                                ]
+                            )
                             ->label(__('Cover Image')),
                         Section::make('Category')
                             ->icon('heroicon-o-tag')

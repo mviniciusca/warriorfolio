@@ -11,6 +11,7 @@
         "autoprefixer": "^10.4.17",
         "axios": "^1.6.1",
         "cropperjs": "^1.6.1",
+        "daisyui": "^5.0.9",
         "flowbite": "^2.2.1",
         "laravel-vite-plugin": "^0.8.0",
         "postcss": "^8.4.34",

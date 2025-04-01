@@ -17,7 +17,15 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name'              => $this->faker->sentence(3),
+            'slug'              => $this->faker->slug(),
+            'short_description' => $this->faker->paragraph(3),
+            'category_id'       => $this->faker->numberBetween(1, 5),
+            'is_active'         => true,
+            'created_at'        => now(),
+            'image_cover'       => 1,
+            'content'           => $this->faker->paragraph(10),
+            'external_link'     => $this->faker->url(),
         ];
     }
 }

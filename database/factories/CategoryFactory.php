@@ -18,11 +18,17 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'      => 'Notes',
-            'slug'      => 'notes',
+            'name'      => $this->faker->word(),
+            'slug'      => Str::slug($this->faker->sentence(2)),
             'is_active' => true,
-            'hex_color' => '#f55247',
-            'icon'      => 'logo-octocat',
+            'hex_color' => $this->faker->hexColor(),
+            'icon'      => $this->faker->randomElement([
+                'logo-laravel',
+                'logo-github',
+                'logo-vercel',
+                'logo-dribbble',
+                'logo-behance',
+            ]),
         ];
     }
 }
