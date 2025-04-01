@@ -2,12 +2,12 @@
     <div class="mx-auto">
 
         <div class="mb-16 flex flex-wrap justify-end" id="portfolio-navigation" wire:ignore>
-            <x-ui.button :icon="'bookmark-sharp'" class="mr-1" style="outlined" wire:click='clear'>
+            <x-ui.button :icon="'bookmark'" class="mr-1" style="outlined" wire:click='clear'>
                 {{ __('All') }}
             </x-ui.button>
             @foreach ($categories as $category)
                 <div wire:ignore wire:key='{{ $category->id }}'>
-                    <x-ui.button :icon="$category->icon" class="mr-1" style="outlined"
+                    <x-ui.button :icon="$category->icon ?? 'bookmark'" class="mr-1" style="outlined"
                         wire:click='filterCategoryById({{ $category->id }})' wire:key='{{ $category->id }}'
                         wire:key='{{ $category->id }}'>
                         {{ ucfirst($category->name) }}
