@@ -20,8 +20,8 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'            => '<span class="dg">Saturn</span> update is here.',
-                'section_subtitle'         => 'Warriorfolio '.env('APP_VERSION').' is here with a new UI, new features, and improvements. Clone, setup, and deploy your portfolio in minutes.',
+                'section_title'            => '<span class="dg">Showcase</span> your work to the World.',
+                'section_subtitle'         => 'Featuring the new Portfolio Section. Create, manage and showcase your work in a beautiful way.',
                 'is_upper'                 => true,
                 'is_filled'                => false,
                 'is_invert'                => true,
@@ -30,7 +30,7 @@ class LayoutFactory extends Factory
                 'bumper_is_active'         => true,
                 'is_bg_blur'               => false,
                 'bumper_role'              => 'primary',
-                'bumper_title'             => 'Welcome to Saturn UI.',
+                'bumper_title'             => 'New Update 🎉',
                 'bumper_is_animated'       => true,
                 'browser_border_is_active' => true,
                 /** Buttons */
