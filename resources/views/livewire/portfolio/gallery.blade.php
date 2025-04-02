@@ -1,4 +1,4 @@
-<div>
+<div id="portfolio-wrapper">
     <div class="mx-auto">
 
         <div class="mb-16 mt-8 flex flex-wrap justify-start" id="portfolio-navigation" wire:ignore>
