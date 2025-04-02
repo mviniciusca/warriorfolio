@@ -1,7 +1,7 @@
 <div>
     <div class="mx-auto">
 
-        <div class="mb-16 flex flex-wrap justify-end" id="portfolio-navigation" wire:ignore>
+        <div class="mb-16 mt-8 flex flex-wrap justify-start" id="portfolio-navigation" wire:ignore>
             <x-ui.button :icon="'bookmark'" class="mr-1" style="outlined" wire:click='clear'>
                 {{ __('All') }}
             </x-ui.button>
@@ -21,7 +21,17 @@
                 <a href="/{{ $item->slug }}">
                     <div class="relative transform transition duration-300 hover:scale-105" wire:ignore
                         wire:key='{{ $item->id }}'>
-                        <img alt="{{ $item->title }}" class="h-64 w-full rounded-lg object-cover shadow-md"
+                        <div class="{{ $item->project->category->color ? '' : 'bg-secondary-950' }} absolute z-30 ml-2 mt-2 flex flex-wrap items-center gap-1 rounded-md px-3 py-1 text-xs font-bold text-white"
+                            style="background-color: {{ $item->project->category->hex_color }}">
+                            @if ($item->project->category->icon)
+                                <x-ui.ionicon :icon="$item->project->category->icon" />
+                            @else
+                                <x-ui.ionicon :icon="'bookmark-sharp'" />
+                            @endif
+                            {{ $item->project->category->name }}
+                        </div>
+                        <img alt="{{ $item->title }}"
+                            class="h-64 w-full rounded-lg border border-black/10 bg-white/80 object-cover p-1 shadow-md dark:border-white/10 dark:bg-white/20"
                             src="{{ asset('storage/' . $item->project->image_cover) }}">
                         <div class="py-4">
                             <h3 class="text-sm font-semibold">{{ $item->title }}</h3>
