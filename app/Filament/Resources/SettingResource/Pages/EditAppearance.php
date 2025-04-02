@@ -111,7 +111,7 @@ class EditAppearance extends EditRecord
                             ]),
                         Group::make()
                             ->columnSpanFull()
-                            ->columns(3)
+                            ->columns(4)
                             ->schema([
                                 Checkbox::make('design.background_image_visibility')
                                     ->label(__('Visible'))
@@ -132,11 +132,12 @@ class EditAppearance extends EditRecord
                                 Radio::make('design.bg_blur')
                                     ->label(__('Blur'))
                                     ->options([
-                                        'blur-xl'  => __('Small'),
-                                        'blur-2xl' => __('Default'),
-                                        'blur-3xl' => __('Large'),
+                                        'blur-none' => __('None'),
+                                        'blur-sm'   => __('Small'),
+                                        'blur-xl'   => __('Default'),
+                                        'blur-3xl'  => __('Large'),
                                     ])
-                                    ->default(true)
+                                    ->default('blur-none')
                                     ->helperText(__('Activate the blur effect on the background image.')),
                                 Radio::make('design.background_image_position')
                                     ->label(__('Position'))
