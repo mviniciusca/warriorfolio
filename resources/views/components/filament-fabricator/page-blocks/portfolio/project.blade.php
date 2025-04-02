@@ -33,8 +33,8 @@
             </div>
             <!-- Bio -->
             <div class="mx-auto mb-12 max-w-2xl text-center">
-                <h2 class="text-xl font-bold">{{ $page->user->name }}</h2>
-                <p class="my-2 text-sm">
+                <h2 class="text-lg font-bold">{{ $page->user->name }}</h2>
+                <p class="mb-4 text-sm">
                     {!! ($page->user->profile->job_position ?? null) . ' • ' . ($page->user->profile->localization ?? null) !!}
                 </p>
                 <x-ui.social-network :justify="'center'" />
