@@ -20,7 +20,7 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'            => 'artisan make: new portfolio gallery',
+                'section_title'            => '<span class="dg">Your Work is </span> <span class="tl">Priceless</span>',
                 'section_subtitle'         => 'Featuring the new Portfolio Section. Create, manage and showcase your work in a beautiful way. Now as Livewire component.',
                 'is_upper'                 => true,
                 'is_filled'                => false,

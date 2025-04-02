@@ -37,9 +37,7 @@ App\View\Components\Project\Section.php
         @endif
 
         <section class="my-12">
-            @livewire('portfolio.gallery', [
-                'is_section_filled_inverted' => $data->portfolio['is_section_filled_inverted'] ?? false,
-            ])
+            @livewire('portfolio.gallery', ['is_section_filled_inverted' => $is_section_filled_inverted])
         </section>
 
         @if ($projects->count() === 0)
