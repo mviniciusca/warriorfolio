@@ -115,21 +115,26 @@ class EditAppearance extends EditRecord
                             ->schema([
                                 Checkbox::make('design.background_image_visibility')
                                     ->label(__('Visible'))
+                                    ->default(true)
                                     ->helperText(__('Activate the background image on your website.')),
                                 Checkbox::make('design.animation')
                                     ->label(__('Opacity Animation FX'))
-                                    ->default(true)
+                                    ->default(false)
                                     ->helperText(__('Activate the background animation')),
                                 Checkbox::make('design.bg_grayscale')
                                     ->label(__('Grayscale'))
-                                    ->default(true)
+                                    ->default(false)
                                     ->helperText(__('Activate the grayscale effect on the background image.')),
+                                Checkbox::make('design.bg_fixed')
+                                    ->label(__('Fixed'))
+                                    ->default(false)
+                                    ->helperText(__('Image Attachment.')),
                             ]),
                         Group::make()
                             ->columns(4)
                             ->columnSpanFull()
                             ->schema([
-                                Radio::make('design.bg_blur')
+                                Select::make('design.bg_blur')
                                     ->label(__('Blur'))
                                     ->options([
                                         'blur-none' => __('None'),
@@ -139,7 +144,7 @@ class EditAppearance extends EditRecord
                                     ])
                                     ->default('blur-none')
                                     ->helperText(__('Activate the blur effect on the background image.')),
-                                Radio::make('design.background_image_position')
+                                Select::make('design.background_image_position')
                                     ->label(__('Position'))
                                     ->options([
                                         'bg-top'    => __('Top'),
@@ -148,7 +153,7 @@ class EditAppearance extends EditRecord
                                     ])
                                     ->default('bg-center')
                                     ->helperText(__('Position of the background image on your website.')),
-                                Radio::make('design.background_image_size')
+                                Select::make('design.background_image_size')
                                     ->label(__('Size'))
                                     ->options([
                                         'bg-auto'    => __('Auto'),
@@ -157,7 +162,7 @@ class EditAppearance extends EditRecord
                                     ])
                                     ->default('bg-cover')
                                     ->helperText(__('Size of the background image on your website.')),
-                                Radio::make('design.background_image_repeat')
+                                Select::make('design.background_image_repeat')
                                     ->label(__('Repeat'))
                                     ->options([
                                         'bg-no-repeat' => __('No Repeat'),
