@@ -79,6 +79,7 @@ class EditAppearance extends EditRecord
                 Section::make(__('Core: Background Image'))
                     ->description(__('Change the background image of your website'))
                     ->icon('heroicon-o-photo')
+                    ->collapsible()
                     ->schema([
                         Group::make()
                             ->columns(2)
@@ -131,9 +132,9 @@ class EditAppearance extends EditRecord
                                 Radio::make('design.bg_blur')
                                     ->label(__('Blur'))
                                     ->options([
-                                        'bg-top'    => __('Small'),
-                                        'bg-center' => __('Default'),
-                                        'bg-bottom' => __('Large'),
+                                        'blur-xl'  => __('Small'),
+                                        'blur-2xl' => __('Default'),
+                                        'blur-3xl' => __('Large'),
                                     ])
                                     ->default(true)
                                     ->helperText(__('Activate the blur effect on the background image.')),
