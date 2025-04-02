@@ -7,6 +7,7 @@ use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
@@ -75,43 +76,65 @@ class EditAppearance extends EditRecord
                             ->inline(false)
                             ->helperText(__('Activate the highlight of the menu item on your website.')),
                     ]),
-                Section::make(__('Background'))
-                    ->description(__('Change the design and appearance of your website'))
+                Section::make(__('Core: Background Image'))
+                    ->description(__('Change the background image of your website'))
                     ->icon('heroicon-o-photo')
-                    ->columns(3)
                     ->schema([
                         Group::make()
+                            ->columns(2)
+                            ->columnSpanFull()
                             ->schema([
-                                Toggle::make('design.background_image_visibility')
-                                    ->label(__('Background Visibility'))
-                                    ->inline(false)
+                                FileUpload::make('design.background_image')
+                                    ->image()
+                                    ->imageEditor()
+                                    ->imageEditorAspectRatios([
+                                        '16:9',
+                                        '4:3',
+                                        '1:1',
+                                    ])
+                                    ->directory('public/background')
+                                    ->label(__('Background Image'))
+                                    ->helperText('Set the background of your website.
+                            Recommended size: 1920x1080px (16:9)'),
+                                FileUpload::make('design.dark_mode_background_image')
+                                    ->image()
+                                    ->imageEditor()
+                                    ->imageEditorAspectRatios([
+                                        '16:9',
+                                        '4:3',
+                                        '1:1',
+                                    ])
+                                    ->directory('public/background/dark-mode')
+                                    ->label(__('Dark Mode Background Image'))
+                                    ->helperText(__('Set the background of your website in dark mode.')),
+                            ]),
+                        Group::make()
+                            ->columnSpanFull()
+                            ->columns(4)
+                            ->schema([
+                                Checkbox::make('design.background_image_visibility')
+                                    ->label(__('Visible'))
                                     ->helperText(__('Activate the background image on your website.')),
-                                Toggle::make('design.animation')
-                                    ->label(__('Background Animation'))
-                                    ->inline(false)
+                                Checkbox::make('design.animation')
+                                    ->label(__('Opacity Animation FX'))
                                     ->default(true)
                                     ->helperText(__('Activate the background animation')),
+                                Checkbox::make('design.bg_grayscale')
+                                    ->label(__('Grayscale'))
+                                    ->default(true)
+                                    ->helperText(__('Activate the grayscale effect on the background image.')),
+                                Checkbox::make('design.bg_blur')
+                                    ->label(__('Blur'))
+                                    ->default(true)
+                                    ->helperText(__('Activate the blur effect on the background image.')),
                             ]),
-                        FileUpload::make('design.background_image')
-                            ->columnSpan(2)
-                            ->image()
-                            ->imageEditor()
-                            ->imageEditorAspectRatios([
-                                '16:9',
-                                '4:3',
-                                '1:1',
-                            ])
-                            ->directory('public/background')
-                            ->label(__('Background Image'))
-                            ->helperText('Set the background of your website.
-                            Recommended size: 1920x1080px (16:9)'),
                         Group::make()
                             ->columns(3)
                             ->columnSpanFull()
                             ->schema([
-                                Select::make('design.background_image_position')
+                                Radio::make('design.background_image_position')
                                     ->label(__('Background Image Position'))
-                                    ->prefixIcon('heroicon-o-window')
+
                                     ->options([
                                         'bg-top'    => __('Top'),
                                         'bg-center' => __('Center'),
@@ -119,9 +142,9 @@ class EditAppearance extends EditRecord
                                     ])
                                     ->default('bg-center')
                                     ->helperText(__('Choose the position of the background image on your application.')),
-                                Select::make('design.background_image_size')
+                                Radio::make('design.background_image_size')
                                     ->label(__('Background Image Size'))
-                                    ->prefixIcon('heroicon-o-window')
+
                                     ->options([
                                         'bg-auto'    => __('Auto'),
                                         'bg-cover'   => __('Cover'),
@@ -129,9 +152,9 @@ class EditAppearance extends EditRecord
                                     ])
                                     ->default('bg-cover')
                                     ->helperText(__('Choose the size of the background image on your application.')),
-                                Select::make('design.background_image_repeat')
+                                Radio::make('design.background_image_repeat')
                                     ->label(__('Background Image Repeat'))
-                                    ->prefixIcon('heroicon-o-window')
+
                                     ->options([
                                         'bg-no-repeat' => __('No Repeat'),
                                         'bg-repeat'    => __('Repeat'),
