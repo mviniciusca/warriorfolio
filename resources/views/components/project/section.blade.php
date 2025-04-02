@@ -37,11 +37,11 @@ App\View\Components\Project\Section.php
         @endif
 
         <section class="my-12" id="portfolio-wrapper">
-            <div class="mx-auto">
-                @livewire('portfolio.gallery')
+            @livewire('portfolio.gallery')
+            {{-- <div class="mx-auto">
                 <div class="flex w-full flex-wrap content-center justify-start">
 
-                    {{-- @foreach ($projects as $project)
+                    @foreach ($projects as $project)
                         <div class="{{ $project->content ? 'cursor-pointer' : 'cursor-auto' }} w-1/2 p-2 sm:w-1/2 md:w-1/3 lg:w-1/4"
                             data-modal-target="{{ $project->id }}" data-modal-toggle="{{ $project->id }}">
                             <div class="{{ $project->category->color ? '' : 'bg-secondary-950' }} absolute z-30 ml-2 mt-2 flex flex-wrap items-center gap-1 rounded-md px-3 py-1 text-xs font-bold text-white"
@@ -70,9 +70,9 @@ App\View\Components\Project\Section.php
                         @if ($project->content)
                             <x-project.modal :$is_section_filled_inverted :project='$project' />
                         @endif
-                    @endforeach --}}
+                    @endforeach
                 </div>
-            </div>
+            </div> --}}
         </section>
         @if ($projects->count() === 0)
             <x-ui.empty-section :auth="__('Go to your Dashboard and create a New Project.')" />
