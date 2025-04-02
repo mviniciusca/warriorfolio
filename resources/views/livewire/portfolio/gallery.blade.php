@@ -3,11 +3,14 @@
 <div id="portfolio-wrapper">
     <div class="mx-auto">
 
+        {{-- Filter by Category --}}
         <div class="mb-16 mt-8 flex flex-wrap justify-start" id="portfolio-navigation" wire:ignore>
-            <x-ui.button :$is_section_filled_inverted :icon="'bookmark'" :style="'outlined'" class="mr-1" iconBefore
-                wire:click='clear'>
-                {{ __('All') }}
-            </x-ui.button>
+            @if ($categories->count() >= 2 ?? false)
+                <x-ui.button :$is_section_filled_inverted :icon="'bookmark'" :style="'outlined'" class="mr-1" iconBefore
+                    wire:click='clear'>
+                    {{ __('All') }}
+                </x-ui.button>
+            @endif
             @foreach ($categories as $category)
                 <div wire:ignore wire:key='{{ $category->id }}'>
                     <x-ui.button :$is_section_filled_inverted :icon="$category->icon ?? 'bookmark'" class="mr-1" iconBefore style="outlined"
@@ -19,6 +22,7 @@
             @endforeach
         </div>
 
+        {{-- Gallery --}}
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             @foreach ($data as $item)
                 <a href="/{{ $item->slug }}">
@@ -33,7 +37,7 @@
                             @endif
                             {{ $item->project->category->name }}
                         </div>
-                        <img alt="{{ $item->title }}"
+                        <img alt="avatar"
                             class="h-64 w-full rounded-lg border border-black/10 bg-white/80 object-cover p-1 shadow-md dark:border-white/10 dark:bg-white/20"
                             src="{{ asset('storage/' . $item->project->image_cover) }}">
                         <div class="py-4">

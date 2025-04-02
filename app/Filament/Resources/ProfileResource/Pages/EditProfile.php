@@ -4,8 +4,6 @@ namespace App\Filament\Resources\ProfileResource\Pages;
 
 use App\Filament\Resources\ProfileResource;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
-use Filament\Actions;
-use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
@@ -86,11 +84,12 @@ class EditProfile extends EditRecord
                             ]),
                         Group::make()
                             ->schema([
-                                CuratorPicker::make('avatar')
+                                FileUpload::make('avatar')
+                                    ->imageEditor()
                                     ->imageCropAspectRatio('1:1')
                                     ->label(__('Profile Picture'))
                                     ->helperText(__('Upload a profile picture.'))
-                                    ->maxItems(1)
+                                    ->maxFiles(1)
                                     ->directory('public/profile'),
                             ]),
                     ]),

@@ -48,11 +48,6 @@ class ProfileResource extends Resource
         return $table
             ->paginated(false)
             ->columns([
-                CuratorColumn::make('avatar')
-                    ->size(50)
-                    ->circular()
-                    ->label('Photo')
-                    ->alignCenter(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Name'),
                 Tables\Columns\TextColumn::make('user.email')
