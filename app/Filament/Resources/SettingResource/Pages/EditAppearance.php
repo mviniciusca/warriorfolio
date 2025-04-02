@@ -158,8 +158,8 @@ class EditAppearance extends EditRecord
                                     ->options([
                                         'bg-no-repeat' => __('No Repeat'),
                                         'bg-repeat'    => __('Repeat'),
-                                        'bg-repeat-x'  => __('Repeat X'),
-                                        'bg-repeat-y'  => __('Repeat Y'),
+                                        'bg-repeat-x'  => __('Repeat-X'),
+                                        'bg-repeat-y'  => __('Repeat-Y'),
                                     ])
                                     ->default('no-repeat')
                                     ->helperText(__('Choose the repeat of the background image on your application.')),
