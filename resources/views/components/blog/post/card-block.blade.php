@@ -1,7 +1,7 @@
 @props(['item'])
 
 <article
-    class="rounded-lg border border-secondary-300 bg-white/30 p-6 transition duration-200 ease-in-out hover:bg-gradient-to-br hover:from-primary-100/0 hover:to-secondary-200/30 dark:border-secondary-800 dark:bg-black/30 dark:hover:from-primary-600/0 dark:hover:to-secondary-700/30">
+    class="rounded-lg border border-secondary-300 bg-white/30 p-6 transition-all duration-300 hover:bg-gradient-to-br hover:from-primary-100/0 hover:to-secondary-200/30 dark:border-secondary-800 dark:bg-black/30 dark:hover:from-primary-600/0 dark:hover:to-secondary-700/30">
     <div class="mb-5 flex items-center justify-between">
         <span class="flex items-center gap-1 text-sm">
             <svg class="size-6" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
