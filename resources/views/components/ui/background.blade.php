@@ -15,6 +15,13 @@ default image will be displayed.
 
 @if ($design['background_image_visibility'] ?? false)
 
+    <div
+        class="absolute -z-50 -mt-12 h-[1080px] w-full bg-gradient-to-b from-gray-900/50 via-transparent to-gray-900/50 dark:from-gray-800/50 dark:via-transparent dark:to-gray-800/50">
+    </div>
+    <div
+        class="absolute bottom-0 -z-40 -mb-10 h-96 w-full bg-gradient-to-b from-transparent via-white to-white dark:via-secondary-950 dark:to-secondary-950">
+    </div>
+
     @if (($design['background_image'] ?? false) || ($design['dark_mode_background_image'] ?? false))
         @if ($design['dark_mode_background_image'] ?? false)
             <img alt="Dark Mode Background"
