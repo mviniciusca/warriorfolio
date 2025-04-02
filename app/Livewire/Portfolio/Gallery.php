@@ -11,6 +11,8 @@ class Gallery extends Component
 {
     public $category_id = 0;
 
+    public $is_section_filled_inverted = '';
+
     public function render()
     {
         return view('livewire.portfolio.gallery', [

@@ -37,8 +37,11 @@ App\View\Components\Project\Section.php
         @endif
 
         <section class="my-12">
-            @livewire('portfolio.gallery')
+            @livewire('portfolio.gallery', [
+                'is_section_filled_inverted' => $data->portfolio['is_section_filled_inverted'] ?? false,
+            ])
         </section>
+
         @if ($projects->count() === 0)
             <x-ui.empty-section :auth="__('Go to your Dashboard and create a New Project.')" />
         @endif
