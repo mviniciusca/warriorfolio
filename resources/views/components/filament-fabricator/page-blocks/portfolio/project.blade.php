@@ -8,7 +8,6 @@
                     <h1 class="text-2xl font-bold tracking-tighter">{{ $page->title ?? null }}</h1>
                     <h3 class="my-2 text-sm">{{ $page->project->short_description ?? null }}</h3>
                 </div>
-                <x-blog.post.share />
             </div>
         </header>
 
