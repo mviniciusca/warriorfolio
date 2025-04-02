@@ -105,7 +105,7 @@ class EditAppearance extends EditRecord
                                         '4:3',
                                         '1:1',
                                     ])
-                                    ->directory('public/background/dark-mode')
+                                    ->directory('public/background')
                                     ->label(__('Dark Mode Background Image'))
                                     ->helperText(__('Set the background of your website in dark mode.')),
                             ]),

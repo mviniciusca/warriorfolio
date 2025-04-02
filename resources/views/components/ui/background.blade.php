@@ -13,16 +13,23 @@ default image will be displayed.
     'design' => null,
 ])
 
-@if (data_get($design, 'background_image_visibility') === true)
-    @if (data_get($design, 'background_image'))
-        <div class="{{ $design['background_image'] ?? '' }} {{ $design['animation'] ? 'animate-opacity opacity-10' : '' }} {{ $design['background_image_size'] ?? 'bg-auto' }} {{ $design['background_image_position'] ?? 'bg-top' }} {{ $design['background_image_repeat'] ?? 'bg-no-repeat' }} {{ $design['bg_grayscale'] ? 'grayscale' : 'grayscale-0' }} {{ $design['bg_blur'] ?? '' }} {{ $design['bg_fixed'] ? 'bg-fixed' : 'bg-scroll' }} absolute -z-50 -mt-52 h-[1080px] w-full"
-            id="default-background"
-            style="background-image: url('{{ asset('storage/' . $design['background_image']) }}')">
-        </div>
+@if ($design['background_image_visibility'] ?? false)
+
+    @if (($design['background_image'] ?? false) || ($design['dark_mode_background_image'] ?? false))
+        @if ($design['dark_mode_background_image'] ?? false)
+            <img alt="Dark Mode Background"
+                class="{{ $design['animation'] ? 'animate-opacity opacity-10' : '' }} {{ $design['background_image_size'] ?? 'bg-auto' }} {{ $design['background_image_position'] ?? 'bg-top' }} {{ $design['background_image_repeat'] ?? 'bg-no-repeat' }} {{ $design['bg_grayscale'] ? 'grayscale' : 'grayscale-0' }} {{ $design['bg_blur'] ?? '' }} {{ $design['bg_fixed'] ? 'fixed' : 'absolute' }} -z-50 -mt-12 hidden h-[1080px] w-full object-cover dark:block"
+                id="dark-background" src="{{ asset('storage/' . $design['dark_mode_background_image']) }}">
+        @endif
+        @if ($design['background_image'] ?? false)
+            <img alt="Light Mode Background"
+                class="{{ $design['animation'] ? 'animate-opacity opacity-10' : '' }} {{ $design['background_image_size'] ?? 'bg-auto' }} {{ $design['background_image_position'] ?? 'bg-top' }} {{ $design['background_image_repeat'] ?? 'bg-no-repeat' }} {{ $design['bg_grayscale'] ? 'grayscale' : 'grayscale-0' }} {{ $design['bg_blur'] ?? '' }} {{ $design['bg_fixed'] ? 'fixed' : 'absolute' }} -z-50 -mt-12 block h-[1080px] w-full object-cover dark:hidden"
+                id="default-background" src="{{ asset('storage/' . $design['background_image']) }}">
+        @endif
     @else
-        <div class="{{ $design['animation'] ? 'animate-opacity opacity-10' : '' }} absolute -z-50 -mt-52 h-[1080px] w-full animate-pulse bg-auto bg-scroll bg-center bg-no-repeat blur-xl -hue-rotate-60 backdrop-filter"
-            id="default-background"
-            style="background-image: url('{{ asset('img/core/bg/saturn-ui-more-lights.png') }}')">
-        </div>
+        <img alt="Default Background"
+            class="{{ $design['animation'] ? 'animate-opacity opacity-10' : '' }} absolute -z-50 -mt-52 h-[1080px] w-full animate-pulse bg-auto bg-scroll bg-center bg-no-repeat object-cover blur-xl backdrop-filter"
+            id="default-background" src="{{ asset('img/core/bg/saturn-ui-more-lights.png') }}">
     @endif
+
 @endif
