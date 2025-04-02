@@ -4,14 +4,15 @@
     <div class="mx-auto">
 
         <div class="mb-16 mt-8 flex flex-wrap justify-start" id="portfolio-navigation" wire:ignore>
-            <x-ui.button :$is_section_filled_inverted :icon="'bookmark'" class="mr-1" style="outlined" wire:click='clear'>
+            <x-ui.button :$is_section_filled_inverted :icon="'bookmark'" :style="'outlined'" class="mr-1" iconBefore="true"
+                wire:click='clear'>
                 {{ __('All') }}
             </x-ui.button>
             @foreach ($categories as $category)
                 <div wire:ignore wire:key='{{ $category->id }}'>
-                    <x-ui.button :$is_section_filled_inverted :icon="$category->icon ?? 'bookmark'" class="mr-1" style="outlined"
-                        wire:click='filterCategoryById({{ $category->id }})' wire:key='{{ $category->id }}'
-                        wire:key='{{ $category->id }}'>
+                    <x-ui.button :$is_section_filled_inverted :icon="$category->icon ?? 'bookmark'" class="mr-1" iconBefore="true"
+                        style="outlined" wire:click='filterCategoryById({{ $category->id }})'
+                        wire:key='{{ $category->id }}' wire:key='{{ $category->id }}'>
                         {{ ucfirst($category->name) }}
                     </x-ui.button>
                 </div>
