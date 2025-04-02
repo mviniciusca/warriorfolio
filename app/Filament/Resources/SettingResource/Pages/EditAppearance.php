@@ -110,7 +110,7 @@ class EditAppearance extends EditRecord
                             ]),
                         Group::make()
                             ->columnSpanFull()
-                            ->columns(4)
+                            ->columns(3)
                             ->schema([
                                 Checkbox::make('design.background_image_visibility')
                                     ->label(__('Visible'))
