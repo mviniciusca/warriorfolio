@@ -15,7 +15,7 @@ default image will be displayed.
 
 @if (data_get($design, 'background_image_visibility') === true)
     @if (data_get($design, 'background_image'))
-        <div class="{{ $design['background_image'] ?? '' }} {{ $design['animation'] ? 'animate-opacity opacity-10' : '' }} {{ $design['background_image_size'] ?? 'bg-auto' }} {{ $design['background_image_position'] ?? 'bg-top' }} {{ $design['background_image_repeat'] ?? 'bg-no-repeat' }} {{ $$design['bg_'] }} absolute -z-50 -mt-52 h-[1080px] w-full"
+        <div class="{{ $design['background_image'] ?? '' }} {{ $design['animation'] ? 'animate-opacity opacity-10' : '' }} {{ $design['background_image_size'] ?? 'bg-auto' }} {{ $design['background_image_position'] ?? 'bg-top' }} {{ $design['background_image_repeat'] ?? 'bg-no-repeat' }} {{ $design['bg_grayscale'] ?? '' }} {{ $design['bg_blur'] ?? '' }} absolute -z-50 -mt-52 h-[1080px] w-full"
             id="default-background"
             style="background-image: url('{{ asset('storage/' . $design['background_image']) }}')">
         </div>
