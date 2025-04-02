@@ -123,38 +123,40 @@ class EditAppearance extends EditRecord
                                     ->label(__('Grayscale'))
                                     ->default(true)
                                     ->helperText(__('Activate the grayscale effect on the background image.')),
-                                Checkbox::make('design.bg_blur')
-                                    ->label(__('Blur'))
-                                    ->default(true)
-                                    ->helperText(__('Activate the blur effect on the background image.')),
                             ]),
                         Group::make()
-                            ->columns(3)
+                            ->columns(4)
                             ->columnSpanFull()
                             ->schema([
+                                Radio::make('design.bg_blur')
+                                    ->label(__('Blur'))
+                                    ->options([
+                                        'bg-top'    => __('Small'),
+                                        'bg-center' => __('Default'),
+                                        'bg-bottom' => __('Large'),
+                                    ])
+                                    ->default(true)
+                                    ->helperText(__('Activate the blur effect on the background image.')),
                                 Radio::make('design.background_image_position')
-                                    ->label(__('Background Image Position'))
-
+                                    ->label(__('Position'))
                                     ->options([
                                         'bg-top'    => __('Top'),
                                         'bg-center' => __('Center'),
                                         'bg-bottom' => __('Bottom'),
                                     ])
                                     ->default('bg-center')
-                                    ->helperText(__('Choose the position of the background image on your application.')),
+                                    ->helperText(__('Position of the background image on your website.')),
                                 Radio::make('design.background_image_size')
-                                    ->label(__('Background Image Size'))
-
+                                    ->label(__('Size'))
                                     ->options([
                                         'bg-auto'    => __('Auto'),
                                         'bg-cover'   => __('Cover'),
                                         'bg-contain' => __('Contain'),
                                     ])
                                     ->default('bg-cover')
-                                    ->helperText(__('Choose the size of the background image on your application.')),
+                                    ->helperText(__('Size of the background image on your website.')),
                                 Radio::make('design.background_image_repeat')
-                                    ->label(__('Background Image Repeat'))
-
+                                    ->label(__('Repeat'))
                                     ->options([
                                         'bg-no-repeat' => __('No Repeat'),
                                         'bg-repeat'    => __('Repeat'),
@@ -162,7 +164,7 @@ class EditAppearance extends EditRecord
                                         'bg-repeat-y'  => __('Repeat-Y'),
                                     ])
                                     ->default('no-repeat')
-                                    ->helperText(__('Choose the repeat of the background image on your application.')),
+                                    ->helperText(__('Repeat the background image on your website.')),
                             ]),
                     ]),
                 Section::make(__('Favicon'))
