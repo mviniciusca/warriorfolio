@@ -40,7 +40,7 @@
                 {{ $item->user->name }}
             </span>
         </div>
-        <a class="inline-flex items-center font-medium text-primary-600 hover:underline dark:text-primary-500"
+        <a class="inline-flex items-center text-sm font-medium hover:underline"
             href="{{ env('APP_URL') . '/' . $item->slug }}">
             {{ __('Read more') }}
             <svg class="ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
