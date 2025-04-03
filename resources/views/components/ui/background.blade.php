@@ -47,7 +47,7 @@ default image will be displayed.
     @if (!$bg_light_mode && !$bg_dark_mode)
         <img alt="Default Background"
             class="{{ $bg_animation ? 'animate-opacity opacity-10' : '' }} {{ $bg_size }} {{ $bg_position }} {{ $bg_repeat }} {{ $bg_grayscale ? 'grayscale' : 'grayscale-0' }} {{ $bg_blur }} {{ $bg_fixed ? 'fixed' : 'absolute' }} {{ $bg_height }} -z-50 block w-full object-cover"
-            id="default-background" src="{{ asset('storage/' . 'img/core/bg/saturn-ui-more-lights.png') }}">
+            id="default-background" src="{{ asset('img/core/bg/saturn-ui-more-lights.png') }}">
     @endif
 
 @endif
