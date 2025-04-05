@@ -181,7 +181,8 @@ class ProjectResource extends Resource
                                                     ->lazy()
                                                     ->unique()
                                                     ->maxLength(200)
-                                                    ->helperText('The name of the category. Max: 200 characters.')
+                                                    ->required()
+                                                    ->placeholder(__('The name of the category. Max: 200 characters.'))
                                                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                                                     ->required()
                                                     ->label(__('Category Name')),
@@ -196,11 +197,10 @@ class ProjectResource extends Resource
                                                     ->live(true)
                                                     ->maxLength(50)
                                                     ->placeholder('ionicon e.g. heart-outline')
-                                                    ->helperText(__('The icon of the category.'))
                                                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('icon', Str::slug($state)))
                                                     ->label(__('Icon (Optional)')),
                                                 ColorPicker::make('hex_color')
-                                                    ->helperText(__('The color of the category.'))
+                                                    ->placeholder(__('The color of the category.'))
                                                     ->label(__('Color (Optional)')),
                                             ]),
                                     ])->createOptionModalHeading(__(''))
