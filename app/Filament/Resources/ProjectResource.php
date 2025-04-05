@@ -201,7 +201,7 @@ class ProjectResource extends Resource
                             ->schema([
                                 Checkbox::make('is_active')
                                     ->label('Published')
-                                    ->helperText(__('Project visibility.'))
+                                    ->helperText(__('Publish the project to the public. Or keep it as a draft.'))
                                     ->default(true)
                                     ->required()
                                     ->inline(),
