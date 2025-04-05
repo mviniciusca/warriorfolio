@@ -175,7 +175,7 @@ class ProjectResource extends Resource
                                     ->createOptionForm([
                                         Section::make(__('Create Category'))
                                             ->icon('heroicon-o-tag')
-                                            ->description('Create a new category for the project. Edit other settings of this category later.')
+                                            ->description(__('Create a new category for the project. More settings can be found in the category page.'))
                                             ->columns(2)
                                             ->schema([
                                                 TextInput::make('name')
