@@ -25,6 +25,7 @@ use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
@@ -212,6 +213,9 @@ class ProjectResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->emptyStateHeading(__('No Projects'))
+            ->emptyStateIcon('heroicon-o-rocket-launch')
+            ->emptyStateDescription(__('You don\'t have any projects yet.'))
             ->heading(__('Projects'))
             ->description(__('Manage your projects.'))
             ->headerActions([
@@ -241,7 +245,12 @@ class ProjectResource extends Resource
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
-                //
+                TernaryFilter::make('is_active')
+                    ->relationship('project', 'is_active')
+                    ->label(__('Published'))
+                    ->trueLabel(__('Published'))
+                    ->falseLabel(__('Draft'))
+                    ->placeholder(__('All')),
             ])
             ->actions([
                 ActionGroup::make([
