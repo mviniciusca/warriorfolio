@@ -209,6 +209,14 @@ class ProjectResource extends Resource
                                     ->searchable()
                                     ->required(),
                             ]),
+                        Section::make('Tags')
+                            ->icon('heroicon-o-tag')
+                            ->schema([
+                                TagsInput::make('tags')
+                                    ->placeholder(__('Add tags to the project.'))
+                                    ->helperText(__('Tags are used to categorize the project.'))
+                                    ->label(__('Tags (Optional)')),
+                            ]),
                         Section::make('Visibility')
                             ->icon('heroicon-o-eye')
                             ->schema([
@@ -218,14 +226,6 @@ class ProjectResource extends Resource
                                     ->default(true)
                                     ->required()
                                     ->inline(),
-                            ]),
-                        Section::make('Tags')
-                            ->icon('heroicon-o-tag')
-                            ->schema([
-                                TagsInput::make('tags')
-                                    ->placeholder(__('Add tags to the project.'))
-                                    ->helperText(__('Tags are used to categorize the project.'))
-                                    ->label(__('Tags (Optional)')),
                             ]),
                     ]),
             ]);
