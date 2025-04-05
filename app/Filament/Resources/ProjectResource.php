@@ -234,11 +234,9 @@ class ProjectResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('project.category.name')
                     ->badge()
-                    ->searchable()
-                    ->sortable(),
+                    ->searchable(),
                 Tables\Columns\ToggleColumn::make('project.is_active')
                     ->label(__('Published'))
-                    ->sortable()
                     ->alignCenter(),
             ])
             ->defaultSort('created_at', 'desc')
