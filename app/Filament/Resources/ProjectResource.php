@@ -16,6 +16,7 @@ use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -218,21 +219,13 @@ class ProjectResource extends Resource
                                     ->required()
                                     ->inline(),
                             ]),
-                        Section::make('SEO')
-                            ->icon('heroicon-o-magnifying-glass')
+                        Section::make('Tags')
+                            ->icon('heroicon-o-tag')
                             ->schema([
-                                TextInput::make('meta_title')
-                                    ->label(__('Meta Title'))
-                                    ->maxLength(60)
-                                    ->helperText(__('The title of the project for search engines. Max: 60 characters.')),
-                                TextInput::make('meta_description')
-                                    ->label(__('Meta Description'))
-                                    ->maxLength(160)
-                                    ->helperText(__('The description of the project for search engines. Max: 160 characters.')),
-                                TextInput::make('meta_keywords')
-                                    ->label(__('Meta Keywords'))
-                                    ->maxLength(255)
-                                    ->helperText(__('The keywords of the project for search engines. Max: 255 characters.')),
+                                TagsInput::make('tags')
+                                    ->placeholder(__('Add tags to the project.'))
+                                    ->helperText(__('Tags are used to categorize the project.'))
+                                    ->label(__('Tags (Optional)')),
                             ]),
                     ]),
             ]);

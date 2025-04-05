@@ -14,6 +14,10 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'tags' => 'array',
+    ];
+
     protected $guarded = [];
 
     /**
