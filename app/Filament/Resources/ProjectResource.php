@@ -188,7 +188,7 @@ class ProjectResource extends Resource
                                                     ->label(__('Category Name')),
                                                 TextInput::make('slug')
                                                     ->disabled()
-                                                    ->unique()
+                                                    ->unique('categories', 'slug', ignoreRecord: true)
                                                     ->maxLength(200)
                                                     ->dehydrated()
                                                     ->placeholder(__('generated automatically'))
