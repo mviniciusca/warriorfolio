@@ -13,7 +13,7 @@ class ListProjects extends ListRecords
 
     public function getTitle(): string | Htmlable
     {
-        return __('Projects');
+        return __('');
     }
 
     protected function getHeaderActions(): array

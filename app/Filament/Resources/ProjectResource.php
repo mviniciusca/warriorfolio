@@ -3,8 +3,10 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProjectResource\Pages;
+use App\Filament\Resources\ProjectResource\Pages\EditProject;
 use App\Models\Category;
 use App\Models\Page;
+use App\Models\Setting;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
@@ -20,6 +22,7 @@ use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
@@ -209,6 +212,16 @@ class ProjectResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->heading(__('Projects'))
+            ->description(__('Manage your projects.'))
+            ->headerActions([
+                Tables\Actions\CreateAction::make()
+                    ->label(__('Create Project'))
+                    ->icon('heroicon-o-rocket-launch')
+                    ->color('primary')
+                    ->size('sm')
+                    ->url(Pages\CreateProject::getUrl()),
+            ])
             ->query(Page::query()
                 ->where('style', '=', 'project'))
             ->columns([
@@ -254,7 +267,7 @@ class ProjectResource extends Resource
         return [
             'index'  => Pages\ListProjects::route('/'),
             'create' => Pages\CreateProject::route('/create'),
-            'edit'   => Pages\EditProject::route('/{record}/edit'),
+            'edit'   => EditProject::route('/{record}/edit'),
         ];
     }
 }
