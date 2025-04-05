@@ -172,9 +172,10 @@ class ProjectResource extends Resource
                                         'is_project' => true,
                                     ])->getKey())
                                     ->createOptionForm([
-                                        Section::make('Fast Create Category.')
+                                        Section::make(__('Create Category'))
                                             ->icon('heroicon-o-tag')
                                             ->description('Create a new category for the project. Edit other settings of this category later.')
+                                            ->columns(2)
                                             ->schema([
                                                 TextInput::make('name')
                                                     ->lazy()
@@ -201,8 +202,9 @@ class ProjectResource extends Resource
                                                 ColorPicker::make('hex_color')
                                                     ->helperText(__('The color of the category.'))
                                                     ->label(__('Color (Optional)')),
-                                            ])->columns(2),
-                                    ])
+                                            ]),
+                                    ])->createOptionModalHeading(__(''))
+
                                     ->optionsLimit(10)
                                     ->searchable()
                                     ->required(),
