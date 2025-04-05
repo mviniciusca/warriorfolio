@@ -9,6 +9,7 @@ use App\Models\Page;
 use App\Models\Setting;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
@@ -190,6 +191,16 @@ class ProjectResource extends Resource
                                                     ->dehydrated()
                                                     ->placeholder(__('generated automatically'))
                                                     ->label('Slug'),
+                                                TextInput::make('icon')
+                                                    ->live(true)
+                                                    ->maxLength(50)
+                                                    ->placeholder('ionicon e.g. heart-outline')
+                                                    ->helperText(__('The icon of the category.'))
+                                                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('icon', Str::slug($state)))
+                                                    ->label(__('Icon (Optional)')),
+                                                ColorPicker::make('hex_color')
+                                                    ->helperText(__('The color of the category.'))
+                                                    ->label(__('Color (Optional)')),
                                             ])->columns(2),
                                     ])
                                     ->optionsLimit(10)
