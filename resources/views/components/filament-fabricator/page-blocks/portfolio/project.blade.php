@@ -17,6 +17,16 @@
                 <div class="project-content text-sm" id="project-content">
                     {!! $page->project->content ?? null !!}
                 </div>
+                @if ($page->project->tags ?? false)
+                    <div class="flex flex-wrap gap-2">
+                        @foreach ($page->project->tags as $tags)
+                            <div
+                                class="mr-1 flex w-auto rounded-md border border-black/30 px-2 py-1 text-sm lowercase dark:border-white/30">
+                                <div>{{ $tags }}</div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </main>
 
