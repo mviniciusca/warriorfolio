@@ -14,14 +14,4 @@ return new class extends Migration {
             $table->string('image_cover')->nullable()->change();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::table('projects', function (Blueprint $table) {
-            $table->string('image_cover')->nullable(false)->change();
-        });
-    }
 };
