@@ -78,6 +78,7 @@ class ProjectResource extends Resource
                     ->schema([
                         Group::make()
                             ->columnSpanFull()
+                            ->columns(2)
                             ->schema([
                                 Hidden::make('user_id')
                                     ->dehydrated()
@@ -107,6 +108,7 @@ class ProjectResource extends Resource
                                     ->prefixIcon('heroicon-o-link')
                                     ->label(__('Slug')),
                                 Group::make()
+                                    ->columnSpanFull()
                                     ->relationship('project')
                                     ->schema([
                                         Textarea::make('short_description')
