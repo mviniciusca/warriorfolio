@@ -142,6 +142,7 @@ class ProjectResource extends Resource
                         FileUpload::make('image_cover')
                             ->directory('public/projects')
                             ->required()
+                            ->imagePreviewHeight('300')
                             ->maxFiles(1)
                             ->imageEditor()
                             ->imageEditorAspectRatios(
@@ -216,12 +217,14 @@ class ProjectResource extends Resource
                     ->size(100),
                 Tables\Columns\TextColumn::make('project.page.title')
                     ->searchable()
+                    ->label(__('Project Title'))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('project.category.name')
+                    ->badge()
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\ToggleColumn::make('project.is_active')
-                    ->label('Published')
+                    ->label(__('Published'))
                     ->sortable()
                     ->alignCenter(),
             ])
