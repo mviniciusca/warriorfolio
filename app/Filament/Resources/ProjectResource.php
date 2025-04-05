@@ -218,6 +218,22 @@ class ProjectResource extends Resource
                                     ->required()
                                     ->inline(),
                             ]),
+                        Section::make('SEO')
+                            ->icon('heroicon-o-magnifying-glass')
+                            ->schema([
+                                TextInput::make('meta_title')
+                                    ->label(__('Meta Title'))
+                                    ->maxLength(60)
+                                    ->helperText(__('The title of the project for search engines. Max: 60 characters.')),
+                                TextInput::make('meta_description')
+                                    ->label(__('Meta Description'))
+                                    ->maxLength(160)
+                                    ->helperText(__('The description of the project for search engines. Max: 160 characters.')),
+                                TextInput::make('meta_keywords')
+                                    ->label(__('Meta Keywords'))
+                                    ->maxLength(255)
+                                    ->helperText(__('The keywords of the project for search engines. Max: 255 characters.')),
+                            ]),
                     ]),
             ]);
     }
