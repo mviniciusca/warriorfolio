@@ -19,7 +19,6 @@ class EditProject extends EditRecord
             Actions\ViewAction::make()
                 ->visible(config('filament-fabricator.enable-view-page')),
             Action::make('visit')
-                ->label(__('filament-fabricator::page-resource.actions.visit'))
                 ->url(function () {
                     /** @var PageContract $page */
                     $page = $this->getRecord();
@@ -28,9 +27,14 @@ class EditProject extends EditRecord
                 })
                 ->icon('heroicon-o-arrow-top-right-on-square')
                 ->openUrlInNewTab()
-                ->color('success')
+                ->label(__('Visit Project'))
+                ->color('primary')
+                ->size('sm')
                 ->visible(config('filament-fabricator.routing.enabled')),
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->icon('heroicon-o-trash')
+                ->color('danger')
+                ->size('sm'),
         ];
     }
 }
