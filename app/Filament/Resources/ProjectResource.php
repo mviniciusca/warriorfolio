@@ -204,8 +204,7 @@ class ProjectResource extends Resource
                                                     ->label(__('Color (Optional)')),
                                             ]),
                                     ])->createOptionModalHeading(__(''))
-
-                                    ->optionsLimit(10)
+                                    ->optionsLimit(12)
                                     ->searchable()
                                     ->required(),
                             ]),
