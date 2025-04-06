@@ -4,7 +4,7 @@
     <div class="mx-auto">
 
         {{-- Filter by Category --}}
-        <div class="mb-16 mt-8 flex flex-wrap justify-start" id="portfolio-navigation" wire:ignore>
+        <div class="mb-8 mt-8 flex flex-wrap justify-start" id="portfolio-navigation" wire:ignore>
             @if ($categories->count() >= 2 ?? false)
                 <x-ui.button :$is_section_filled_inverted :icon="'bookmark'" :style="'outlined'" class="mr-1" iconBefore
                     wire:click='clear'>

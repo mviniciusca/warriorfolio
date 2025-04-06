@@ -21,7 +21,7 @@
                     <div class="flex flex-wrap gap-2">
                         @foreach ($page->project->tags as $tags)
                             <div
-                                class="mr-1 flex w-auto rounded-md border border-black/30 px-2 py-1 text-sm lowercase dark:border-white/30">
+                                class="flex w-auto rounded-md border border-black/30 px-2 py-1 text-sm lowercase transition-all duration-300 hover:opacity-30 dark:border-white/30">
                                 <div>{{ $tags }}</div>
                             </div>
                         @endforeach
