@@ -4,6 +4,7 @@ namespace App\Livewire\Portfolio;
 
 use App\Models\Category;
 use App\Models\Page;
+use App\Models\Project;
 use Livewire\Component;
 
 class Gallery extends Component
@@ -67,8 +68,6 @@ class Gallery extends Component
 
     public function clear()
     {
-        $this->dispatchBrowserEvent('clear-filter');
-        $this->emit('clear-filter');
         $this->category_id = 0;
     }
 }
