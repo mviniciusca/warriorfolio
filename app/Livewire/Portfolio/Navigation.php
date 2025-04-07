@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Portfolio;
 
-use App\Livewire\Blog\Feed\Categories;
 use App\Models\Category;
 use Livewire\Component;
 

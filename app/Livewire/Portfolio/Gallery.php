@@ -4,7 +4,6 @@ namespace App\Livewire\Portfolio;
 
 use App\Models\Category;
 use App\Models\Page;
-use App\Models\Project;
 use Livewire\Component;
 
 class Gallery extends Component
