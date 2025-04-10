@@ -7,7 +7,6 @@
                 style="background-color: {{ $chatbox->color ?? '#25D366' }}">
                 <ion-icon class="text-3xl" name="{{ $chatbox->icon ?? 'logo-whatsapp' }}"></ion-icon>
             </div>
-
         </a>
     </div>
 @endif
