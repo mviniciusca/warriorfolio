@@ -29,6 +29,7 @@ Developed to be 100% managed through the Control Panel, without the need for dee
 - Updated the Project Resource Edit Page
 - Updated the Project Resource Create Page
 - Fixed Browser Mockup for showcasing projects with border and background
+- Icon positioning options on buttons
 
 ##### Inside the box
 - 📝 Blog and Portfolio with advanced features  
