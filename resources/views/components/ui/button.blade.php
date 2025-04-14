@@ -27,12 +27,12 @@ Props:
     <button
         {{ $attributes->class([
             'bg-primary-600 hover:bg-primary-700 text-xs md:text-sm dark:hover:bg-primary-500
-                    transition-all duration-300 text-white dark:bg-primary-700 dark:text-white flex flex-wrap gap-2 border
-                    border-transparent
-                    py-2 px-4 rounded-md items-center justify-center active:opacity-30',
+                            transition-all duration-300 text-white dark:bg-primary-700 dark:text-white flex flex-wrap gap-2 border
+                            border-transparent
+                            py-2 px-4 rounded-md items-center justify-center active:opacity-30',
         ]) }}
         type="{{ $type }}">
-          @if ($icon && $iconBefore)
+        @if ($icon && $iconBefore)
             <x-ui.ionicon :icon='$icon' />
         @endif
         <span>
@@ -49,9 +49,9 @@ Props:
     <button
         {{ $attributes->class([
             'bg-primary-600/15 hover:bg-primary-700/20 text-xs md:text-sm hover:text-white
-                    dark:hover:text-white dark:hover:bg-primary-500/20 transition-all duration-300 dark:bg-primary-700/20 text-white
-                    dark:text-white flex flex-wrap gap-2 border border-primary-600/50 py-2 px-4 dark:border-primary-700/50 rounded-md
-                    items-center hover:bg-primary-700/20 active:opacity-30 justify-center',
+                            dark:hover:text-white dark:hover:bg-primary-500/20 transition-all duration-300 dark:bg-primary-700/20 text-white
+                            dark:text-white flex flex-wrap gap-2 border border-primary-600/50 py-2 px-4 dark:border-primary-700/50 rounded-md
+                            items-center hover:bg-primary-700/20 active:opacity-30 justify-center',
         ]) }}
         type="{{ $type }}">
         @if ($icon && $iconBefore)
@@ -71,11 +71,11 @@ Props:
     <button
         {{ $attributes->class([
             'bg-black hover:bg-secondary-700 text-xs md:text-sm dark:hover:bg-secondary-200 transition-all duration-300
-                    text-white dark:bg-white dark:text-black flex flex-wrap gap-2 border border-transparent py-2 px-4 rounded-md
-                    items-center active:opacity-30 justify-center',
+                            text-white dark:bg-white dark:text-black flex flex-wrap gap-2 border border-transparent py-2 px-4 rounded-md
+                            items-center active:opacity-30 justify-center',
         ]) }}
         type="{{ $type }}">
-         @if ($icon && $iconBefore)
+        @if ($icon && $iconBefore)
             <x-ui.ionicon :icon='$icon' />
         @endif
         <span>
@@ -92,8 +92,8 @@ Props:
     <button
         {{ $attributes->class([
             'bg-white hover:bg-secondary-200 text-xs md:text-sm dark:hover:bg-black
-                    transition-all duration-300 text-black dark:bg-black dark:text-white flex flex-wrap gap-2 border border-black/50
-                    py-2 px-4 rounded-md items-center active:opacity-30 justify-center',
+                            transition-all duration-300 text-black dark:bg-black dark:text-white flex flex-wrap gap-2 border border-black/50
+                            py-2 px-4 rounded-md items-center active:opacity-30 justify-center',
         ]) }}
         type="{{ $type }}">
         @if ($icon && $iconBefore)
@@ -113,9 +113,9 @@ Props:
     <button
         {{ $attributes->class([
             'bg-white/15 hover:bg-black/5 text-xs md:text-sm hover:text-black
-                    dark:hover:text-white dark:hover:bg-white/5 transition-all duration-300 dark:bg-black/10 text-black dark:text-white
-                    flex flex-wrap gap-2 border border-black/50 py-2 px-4 dark:border-white/10 rounded-md items-center
-                    hover:bg-secondary-200/20 active:opacity-30 justify-center',
+                            dark:hover:text-white dark:hover:bg-white/5 transition-all duration-300 dark:bg-black/10 text-black dark:text-white
+                            flex flex-wrap gap-2 border border-black/50 py-2 px-4 dark:border-white/10 rounded-md items-center
+                            hover:bg-secondary-200/20 active:opacity-30 justify-center',
         ]) }}
         type="{{ $type }}">
         @if ($icon && $iconBefore)
@@ -135,12 +135,12 @@ Props:
     <button
         {{ $attributes->class([
             'bg-black/15 hover:bg-white/5 text-xs md:text-sm hover:text-white
-                    dark:hover:text-black dark:hover:bg-black/5 transition-all duration-300 dark:bg-white/10 text-white
-                    dark:text-black flex flex-wrap gap-2 border border-white/10 py-2 px-4 dark:border-black/10 rounded-md
-                    items-center hover:bg-secondary-200/20 active:opacity-30 justify-center',
+                            dark:hover:text-black dark:hover:bg-black/5 transition-all duration-300 dark:bg-white/10 text-white
+                            dark:text-black flex flex-wrap gap-2 border border-white/10 py-2 px-4 dark:border-black/10 rounded-md
+                            items-center hover:bg-secondary-200/20 active:opacity-30 justify-center',
         ]) }}
         type="{{ $type }}">
-         @if ($icon && $iconBefore)
+        @if ($icon && $iconBefore)
             <x-ui.ionicon :icon='$icon' />
         @endif
         <span>
