@@ -11,6 +11,8 @@ class Gallery extends Component
 {
     public $category_id = 0;
 
+    public $quantity = 12;
+
     public $is_section_filled_inverted = '';
 
     protected $listeners = [
@@ -38,6 +40,7 @@ class Gallery extends Component
                 })
                 ->where('is_active', '=', true)
                 ->latest()
+                ->take($this->quantity ?? 12)
                 ->get();
         }
 
@@ -48,6 +51,7 @@ class Gallery extends Component
             })
             ->where('is_active', '=', true)
             ->latest()
+            ->take($this->quantity ?? 12)
             ->get();
     }
 
