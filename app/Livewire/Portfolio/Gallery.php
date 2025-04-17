@@ -65,12 +65,21 @@ class Gallery extends Component
             ->get();
     }
 
-    public function filterCategoryById($category_id)
+    /**
+     * Summary of filterCategoryById
+     * @param mixed $category_id
+     * @return mixed
+     */
+    public function filterCategoryById($category_id): mixed
     {
         return $this->category_id = $category_id;
     }
 
-    public function clear()
+    /**
+     * Summary of clear
+     * @return void
+     */
+    public function clear(): void
     {
         $this->category_id = 0;
     }
