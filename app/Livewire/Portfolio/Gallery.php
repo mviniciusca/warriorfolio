@@ -55,6 +55,10 @@ class Gallery extends Component
             ->get();
     }
 
+    /**
+     * Get categories from the database
+     * @return mixed
+     */
     public function getCategories()
     {
         return Category::where('is_active', '=', true)
@@ -66,7 +70,7 @@ class Gallery extends Component
     }
 
     /**
-     * Get the value of category_id
+     * Get the value of category_id and filter by it
      * @param mixed $category_id
      * @return mixed
      */
