@@ -66,7 +66,7 @@ class Gallery extends Component
     }
 
     /**
-     * Summary of filterCategoryById
+     * Get the value of category_id
      * @param mixed $category_id
      * @return mixed
      */
