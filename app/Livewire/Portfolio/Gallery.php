@@ -14,11 +14,6 @@ class Gallery extends Component
 
     public $is_section_filled_inverted = '';
 
-    protected $listeners = [
-        'filterCategoryById' => 'filterCategoryById',
-        'clear'              => 'clear',
-    ];
-
     public function render()
     {
         return view('livewire.portfolio.gallery', [
