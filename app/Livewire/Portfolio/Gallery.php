@@ -5,8 +5,6 @@ namespace App\Livewire\Portfolio;
 use App\Models\Category;
 use App\Models\Layout;
 use App\Models\Page;
-use App\Models\Project;
-use App\Models\Setting;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
