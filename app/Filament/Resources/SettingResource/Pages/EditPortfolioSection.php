@@ -84,7 +84,7 @@ class EditPortfolioSection extends EditRecord
                             ->helperText(__('Number of projects to show in the gallery. Recommended 12.'))
                             ->numeric()
                             ->minValue(1)
-                            ->maxValue(100)
+                            ->maxValue(50)
                             ->default(12),
                     ]),
 
