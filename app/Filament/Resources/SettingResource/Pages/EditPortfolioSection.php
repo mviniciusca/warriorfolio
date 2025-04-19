@@ -79,7 +79,15 @@ class EditPortfolioSection extends EditRecord
                             ->prefixIcon('heroicon-o-bars-3-bottom-left')
                             ->columnSpanFull()
                             ->maxLength(255),
+                        TextInput::make('portfolio.quantity')
+                            ->label(__('Number of Projects'))
+                            ->helperText(__('Number of projects to show in the gallery. Recommended 12.'))
+                            ->numeric()
+                            ->minValue(1)
+                            ->maxValue(100)
+                            ->default(12),
                     ]),
+
             ]);
     }
 }

@@ -3,15 +3,16 @@
 namespace App\Livewire\Portfolio;
 
 use App\Models\Category;
+use App\Models\Layout;
 use App\Models\Page;
 use App\Models\Project;
+use App\Models\Setting;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
 class Gallery extends Component
 {
     public $category_id = 0;
-
-    public $quantity = 12;
 
     public $is_section_filled_inverted = '';
 
@@ -40,7 +41,7 @@ class Gallery extends Component
                 })
                 ->where('is_active', '=', true)
                 ->latest()
-                ->take($this->quantity ?? 12)
+                ->take($this->accessCache())
                 ->get();
         }
 
@@ -51,7 +52,7 @@ class Gallery extends Component
             })
             ->where('is_active', '=', true)
             ->latest()
-            ->take($this->quantity ?? 12)
+            ->take($this->accessCache())
             ->get();
     }
 
@@ -86,5 +87,18 @@ class Gallery extends Component
     public function clear(): void
     {
         $this->category_id = 0;
+    }
+
+    /**
+     * Access the cache for the portfolio quantity
+     * @return mixed
+     */
+    public function accessCache(): mixed
+    {
+        return Cache::remember('portfolio_quantity', 3600, function () {
+            $layout = Layout::first(['portfolio']);
+
+            $layout->portfolio['quantity'] ?? 12;
+        });
     }
 }
