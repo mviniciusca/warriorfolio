@@ -29,6 +29,10 @@ class Gallery extends Component
         ]);
     }
 
+    /**
+     * Get Projects from the database
+     * @return \Illuminate\Database\Eloquent\Collection<int, Page>
+     */
     public function getProjects()
     {
         if ($category_id = $this->category_id) {
@@ -81,7 +85,7 @@ class Gallery extends Component
     }
 
     /**
-     * Summary of clear
+     * Clear the filter
      * @return void
      */
     public function clear(): void
