@@ -14,6 +14,11 @@ class Gallery extends Component
 
     public $is_section_filled_inverted = '';
 
+    /**
+     * Render the component.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function render()
     {
         return view('livewire.portfolio.gallery', [
@@ -54,8 +59,9 @@ class Gallery extends Component
     }
 
     /**
-     * Get categories from the database
-     * @return mixed
+     * Get active categories that have active projects.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection<int, Category>
      */
     public function getCategories()
     {
