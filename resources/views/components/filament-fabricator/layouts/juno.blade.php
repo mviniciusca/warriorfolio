@@ -69,7 +69,8 @@
             <!-- Tabs System -->
             <div class="pt-6">
                 <!-- Tabs Header -->
-                <div class="mb-8 flex justify-center space-x-8 border-b border-secondary-200 dark:border-secondary-800">
+                <div
+                    class="mb-12 flex justify-center space-x-8 border-b border-secondary-200 dark:border-secondary-800">
                     <button
                         class="tab-button active-tab flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-900 dark:text-secondary-100"
                         id="repositories-tab" onclick="switchTab('repositories')">
