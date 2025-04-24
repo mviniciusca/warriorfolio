@@ -53,7 +53,7 @@
         <div class="container mx-auto max-w-4xl flex-grow px-4 py-16">
 
             <!-- Profile Section with generous top space -->
-            <div class="mb-12 mt-16">
+            <div class="mb-24 mt-16">
                 <x-profile :showCompany="false" :showEmail="false"
                     avatarClass="mb-6 h-24 w-24 overflow-hidden rounded-full border-2 border-zinc-800 dark:border-zinc-800 md:h-32 md:w-32 object-cover"
                     containerClass="max-w-2xl mx-auto"
