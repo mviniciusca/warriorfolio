@@ -45,8 +45,7 @@
         </style>
     </head>
 
-    <body
-        class="bg-zinc-50 font-sans text-zinc-800 antialiased transition-colors duration-200 dark:bg-zinc-900 dark:text-zinc-200">
+    <body class="border font-sans antialiased transition-colors duration-200 dark:border-zinc-800 dark:bg-zinc-950">
         <x-ui.background />
         <x-header.section />
         <div class="container mx-auto max-w-4xl px-4 py-8">
@@ -54,14 +53,14 @@
             <!-- Profile Section with generous top space -->
             <div class="mb-12 mt-16">
                 <x-profile :showCompany="false" :showEmail="false"
-                    avatarClass="mb-6 h-24 w-24 overflow-hidden rounded-full border-2 border-zinc-200 dark:border-zinc-700 md:h-32 md:w-32 object-cover"
+                    avatarClass="mb-6 h-24 w-24 overflow-hidden rounded-full border-2 border-zinc-800 dark:border-zinc-800 md:h-32 md:w-32 object-cover"
                     containerClass="max-w-2xl mx-auto"
-                    downloadButtonClass="inline-flex items-center gap-2 rounded-md bg-zinc-100 px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 transition-colors"
+                    downloadButtonClass="inline-flex items-center gap-2 rounded-md border border-zinc-800 px-4 py-2 hover:border-zinc-700 dark:border-zinc-800/50 dark:hover:border-zinc-700 transition-colors"
                     infoContainerClass="space-y-2"
-                    infoItemClass="flex items-center justify-center gap-2 text-sm text-zinc-600 dark:text-zinc-400"
-                    jobPositionClass="mt-2 text-sm text-zinc-600 dark:text-zinc-400"
-                    nameClass="text-lg font-medium text-zinc-900 dark:text-zinc-100"
-                    skillItemClass="rounded-md bg-zinc-100 px-2 py-1 text-xs text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
+                    infoItemClass="flex items-center justify-center gap-2 text-sm dark:text-zinc-400"
+                    jobPositionClass="mt-2 text-sm dark:text-zinc-400"
+                    nameClass="text-lg font-medium dark:text-zinc-100"
+                    skillItemClass="rounded-md border border-zinc-800 px-2 py-1 text-xs dark:border-zinc-800/50"
                     skillsContainerClass="max-w-lg mx-auto" socialContainerClass="space-x-4" />
             </div>
 
@@ -69,17 +68,22 @@
             <div class="pt-6">
                 <!-- Tabs Header -->
                 <div class="mb-6 flex justify-center space-x-8">
-                    <button class="tab-button active-tab px-4 pt-1 text-xs font-medium text-zinc-900 dark:text-zinc-100"
+                    <button class="tab-button active-tab px-4 pt-1 text-sm font-medium dark:text-zinc-100"
                         id="repositories-tab" onclick="switchTab('repositories')">
                         Repositories
                     </button>
                     <button
-                        class="tab-button px-4 pt-1 text-xs font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                        class="tab-button px-4 pt-1 text-sm font-medium transition-colors hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300"
+                        id="notes-tab" onclick="switchTab('notes')">
+                        Notes
+                    </button>
+                    <button
+                        class="tab-button px-4 pt-1 text-sm font-medium transition-colors hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300"
                         id="about-tab" onclick="switchTab('about')">
                         About Me
                     </button>
                     <button
-                        class="tab-button px-4 pt-1 text-xs font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                        class="tab-button px-4 pt-1 text-sm font-medium transition-colors hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300"
                         id="contact-tab" onclick="switchTab('contact')">
                         Contact
                     </button>
@@ -92,17 +96,16 @@
                         <div class="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2">
                             <!-- Repository Grid Content -->
                             <!-- Repository 1 -->
-                            <a class="flex aspect-square flex-col justify-between bg-zinc-100 p-4 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
-                                    <h3 class="text-sm font-medium text-zinc-900 dark:text-zinc-100">project-name</h3>
-                                    <p class="mt-1 line-clamp-3 text-xs text-zinc-600 dark:text-zinc-400">A brief
-                                        description
+                                    <h3 class="text-sm font-medium dark:text-secondary-100">project-name</h3>
+                                    <p class="mt-1 line-clamp-3 text-xs dark:text-secondary-400">A brief description
                                         of the project and what it does.</p>
                                 </div>
                                 <div class="mt-2 flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -113,7 +116,7 @@
                                             </svg>
                                             24
                                         </span>
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -128,22 +131,22 @@
                                         </span>
                                     </div>
                                     <span
-                                        class="rounded bg-zinc-200 px-1.5 py-0.5 text-xs text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300">JS</span>
+                                        class="rounded bg-secondary-200 px-1.5 py-0.5 text-xs dark:bg-secondary-700">JS</span>
                                 </div>
                             </a>
 
                             <!-- Repository 2 -->
-                            <a class="flex aspect-square flex-col justify-between bg-zinc-100 p-4 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
-                                    <h3 class="text-sm font-medium text-zinc-900 dark:text-zinc-100">react-app</h3>
-                                    <p class="mt-1 line-clamp-3 text-xs text-zinc-600 dark:text-zinc-400">A React
+                                    <h3 class="text-sm font-medium dark:text-secondary-100">react-app</h3>
+                                    <p class="mt-1 line-clamp-3 text-xs dark:text-secondary-400">A React
                                         application
                                         with modern features and clean code.</p>
                                 </div>
                                 <div class="mt-2 flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -154,7 +157,7 @@
                                             </svg>
                                             42
                                         </span>
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -169,22 +172,22 @@
                                         </span>
                                     </div>
                                     <span
-                                        class="rounded bg-zinc-200 px-1.5 py-0.5 text-xs text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300">React</span>
+                                        class="rounded bg-secondary-200 px-1.5 py-0.5 text-xs dark:bg-secondary-700">React</span>
                                 </div>
                             </a>
 
                             <!-- Repository 3 -->
-                            <a class="flex aspect-square flex-col justify-between bg-zinc-100 p-4 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
-                                    <h3 class="text-sm font-medium text-zinc-900 dark:text-zinc-100">api-service</h3>
-                                    <p class="mt-1 line-clamp-3 text-xs text-zinc-600 dark:text-zinc-400">RESTful API
+                                    <h3 class="text-sm font-medium dark:text-secondary-100">api-service</h3>
+                                    <p class="mt-1 line-clamp-3 text-xs dark:text-secondary-400">RESTful API
                                         service
                                         built with Node.js and Express.</p>
                                 </div>
                                 <div class="mt-2 flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -195,7 +198,7 @@
                                             </svg>
                                             18
                                         </span>
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -210,22 +213,22 @@
                                         </span>
                                     </div>
                                     <span
-                                        class="rounded bg-zinc-200 px-1.5 py-0.5 text-xs text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300">Node</span>
+                                        class="rounded bg-secondary-200 px-1.5 py-0.5 text-xs dark:bg-secondary-700">Node</span>
                                 </div>
                             </a>
 
                             <!-- Repository 4 -->
-                            <a class="flex aspect-square flex-col justify-between bg-zinc-100 p-4 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
-                                    <h3 class="text-sm font-medium text-zinc-900 dark:text-zinc-100">ui-components</h3>
-                                    <p class="mt-1 line-clamp-3 text-xs text-zinc-600 dark:text-zinc-400">A library of
+                                    <h3 class="text-sm font-medium dark:text-secondary-100">ui-components</h3>
+                                    <p class="mt-1 line-clamp-3 text-xs dark:text-secondary-400">A library of
                                         reusable
                                         UI components built with React and Tailwind.</p>
                                 </div>
                                 <div class="mt-2 flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -236,7 +239,7 @@
                                             </svg>
                                             56
                                         </span>
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -251,22 +254,22 @@
                                         </span>
                                     </div>
                                     <span
-                                        class="rounded bg-zinc-200 px-1.5 py-0.5 text-xs text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300">TS</span>
+                                        class="rounded bg-secondary-200 px-1.5 py-0.5 text-xs dark:bg-secondary-700">TS</span>
                                 </div>
                             </a>
 
                             <!-- Repository 5 -->
-                            <a class="flex aspect-square flex-col justify-between bg-zinc-100 p-4 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
-                                    <h3 class="text-sm font-medium text-zinc-900 dark:text-zinc-100">data-viz</h3>
-                                    <p class="mt-1 line-clamp-3 text-xs text-zinc-600 dark:text-zinc-400">Data
+                                    <h3 class="text-sm font-medium dark:text-secondary-100">data-viz</h3>
+                                    <p class="mt-1 line-clamp-3 text-xs dark:text-secondary-400">Data
                                         visualization
                                         tools and components for web applications.</p>
                                 </div>
                                 <div class="mt-2 flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -277,7 +280,7 @@
                                             </svg>
                                             32
                                         </span>
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -292,22 +295,22 @@
                                         </span>
                                     </div>
                                     <span
-                                        class="rounded bg-zinc-200 px-1.5 py-0.5 text-xs text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300">JS</span>
+                                        class="rounded bg-secondary-200 px-1.5 py-0.5 text-xs dark:bg-secondary-700">JS</span>
                                 </div>
                             </a>
 
                             <!-- Repository 6 -->
-                            <a class="flex aspect-square flex-col justify-between bg-zinc-100 p-4 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
-                                    <h3 class="text-sm font-medium text-zinc-900 dark:text-zinc-100">cli-tools</h3>
-                                    <p class="mt-1 line-clamp-3 text-xs text-zinc-600 dark:text-zinc-400">Command-line
+                                    <h3 class="text-sm font-medium dark:text-secondary-100">cli-tools</h3>
+                                    <p class="mt-1 line-clamp-3 text-xs dark:text-secondary-400">Command-line
                                         tools
                                         for developer productivity and automation.</p>
                                 </div>
                                 <div class="mt-2 flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -318,7 +321,7 @@
                                             </svg>
                                             15
                                         </span>
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-500">
+                                        <span class="text-xs dark:text-secondary-500">
                                             <svg class="inline h-3 w-3" fill="none" height="16"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="16"
@@ -333,19 +336,82 @@
                                         </span>
                                     </div>
                                     <span
-                                        class="rounded bg-zinc-200 px-1.5 py-0.5 text-xs text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300">TS</span>
+                                        class="rounded bg-secondary-200 px-1.5 py-0.5 text-xs dark:bg-secondary-700">TS</span>
                                 </div>
                             </a>
                         </div>
                     </div>
 
+                    <!-- Notes Tab -->
+                    <div class="tab-pane hidden" id="notes-content">
+                        <div class="mx-auto max-w-2xl space-y-4">
+                            <article
+                                class="overflow-hidden rounded-md border border-zinc-800/50 transition-all hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50">
+                                <div class="p-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs text-zinc-500 dark:text-zinc-400">24 de Abril, 2025</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-zinc-200 px-2 py-0.5 text-xs dark:border-zinc-800">
+                                            Blog
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-2 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                                        Hello World: Minha primeira nota
+                                    </h3>
+                                    <p class="mt-1 line-clamp-2 text-xs text-zinc-600 dark:text-zinc-400">
+                                        Este é um exemplo de nota para o seu novo portfólio. Aqui você pode compartilhar
+                                        suas ideias, tutoriais, notícias e muito mais.
+                                    </p>
+                                    <div class="mt-3">
+                                        <a class="inline-flex items-center text-xs font-medium text-zinc-900 hover:text-zinc-700 dark:text-zinc-100 dark:hover:text-zinc-300"
+                                            href="#">
+                                            Ler mais
+                                            <svg class="ml-1 h-3 w-3" fill="none" height="24"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                stroke="currentColor" viewBox="0 0 24 24" width="24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 12h14"></path>
+                                                <path d="M12 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
                     <!-- About Tab -->
                     <div class="tab-pane hidden" id="about-content">
-                        <div class="prose prose-zinc dark:prose-invert mx-auto">
-                            <div class="rounded-lg bg-zinc-100 p-6 dark:bg-zinc-800">
-                                <h3 class="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">About Me</h3>
-                                <div class="text-sm text-zinc-600 dark:text-zinc-400">
-                                    {{ $data->profile->about ?? 'No information available.' }}
+                        <div class="prose prose-secondary dark:prose-invert mx-auto">
+                            <div class="rounded-lg border border-zinc-800/50 p-6 dark:border-zinc-800/50">
+                                <h3 class="mb-4 text-sm font-medium text-zinc-900 dark:text-zinc-100">about.me</h3>
+                                <div class="space-y-4 text-sm text-zinc-600 dark:text-zinc-400">
+                                    <p>🚀 Full Stack Explorer navigating the digital cosmos</p>
+
+                                    <p>Currently orbiting:</p>
+                                    <ul class="space-y-1 pl-4">
+                                        <li>• Backend Engineering with Laravel</li>
+                                        <li>• Frontend Development with React</li>
+                                        <li>• System Architecture Design</li>
+                                        <li>• Performance Optimization</li>
+                                    </ul>
+
+                                    <p>Mission Control:</p>
+                                    <ul class="space-y-1 pl-4">
+                                        <li>• TypeScript & JavaScript</li>
+                                        <li>• PHP & Python</li>
+                                        <li>• Docker & AWS</li>
+                                        <li>• Git Version Control</li>
+                                    </ul>
+
+                                    <p>✨ Currently charting new territories in:</p>
+                                    <ul class="space-y-1 pl-4">
+                                        <li>• Machine Learning</li>
+                                        <li>• Web3 Technologies</li>
+                                        <li>• Cloud Architecture</li>
+                                    </ul>
+
+                                    <p>⚡ Ground Control: Transforming coffee into code since 2015</p>
                                 </div>
                             </div>
                         </div>
@@ -354,32 +420,33 @@
                     <!-- Contact Tab -->
                     <div class="tab-pane hidden" id="contact-content">
                         <div class="mx-auto max-w-lg">
-                            <div class="rounded-lg bg-zinc-100 p-6 dark:bg-zinc-800">
-                                <h3 class="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">Get in Touch</h3>
+                            <div class="rounded-lg border border-zinc-800/50 p-6 dark:border-zinc-800/50">
+                                <h3 class="mb-4 text-sm font-medium text-zinc-900 dark:text-zinc-100">get_in_touch()
+                                </h3>
                                 <form class="space-y-4">
                                     <div>
                                         <label class="mb-1 block text-sm text-zinc-600 dark:text-zinc-400"
                                             for="name">Name</label>
                                         <input
-                                            class="w-full rounded-md border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 focus:border-zinc-500 focus:ring-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+                                            class="w-full rounded-md border-zinc-800 px-4 py-2 text-sm focus:border-zinc-700 focus:ring-zinc-700 dark:border-zinc-800 dark:text-zinc-100"
                                             id="name" type="text">
                                     </div>
                                     <div>
                                         <label class="mb-1 block text-sm text-zinc-600 dark:text-zinc-400"
                                             for="email">Email</label>
                                         <input
-                                            class="w-full rounded-md border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 focus:border-zinc-500 focus:ring-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+                                            class="w-full rounded-md border-zinc-800 px-4 py-2 text-sm focus:border-zinc-700 focus:ring-zinc-700 dark:border-zinc-800 dark:text-zinc-100"
                                             id="email" type="email">
                                     </div>
                                     <div>
                                         <label class="mb-1 block text-sm text-zinc-600 dark:text-zinc-400"
                                             for="message">Message</label>
                                         <textarea
-                                            class="w-full rounded-md border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 focus:border-zinc-500 focus:ring-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+                                            class="w-full rounded-md border-zinc-800 px-4 py-2 text-sm focus:border-zinc-700 focus:ring-zinc-700 dark:border-zinc-800 dark:text-zinc-100"
                                             id="message" rows="4"></textarea>
                                     </div>
                                     <button
-                                        class="w-full rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+                                        class="w-full rounded-md border border-zinc-800 px-4 py-2 text-sm font-medium hover:border-zinc-700 dark:border-zinc-800/50 dark:hover:border-zinc-700"
                                         type="submit">
                                         Send Message
                                     </button>
@@ -391,13 +458,13 @@
             </div>
 
             <!-- Footer -->
-            <footer class="mt-12 py-6">
-                <div class="flex flex-col items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+            <footer class="mt-12 border-t border-zinc-800/40 py-6">
+                <div class="flex flex-col items-center justify-between gap-4 text-xs text-zinc-400">
                     <p>© 2024 Developer Portfolio. All rights reserved.</p>
                     <div class="flex items-center gap-4">
-                        <a class="hover:text-zinc-800 dark:hover:text-zinc-200" href="#">Terms</a>
-                        <a class="hover:text-zinc-800 dark:hover:text-zinc-200" href="#">Privacy</a>
-                        <a class="hover:text-zinc-800 dark:hover:text-zinc-200" href="#">Contact</a>
+                        <a class="hover:text-zinc-300" href="#">Terms</a>
+                        <a class="hover:text-zinc-300" href="#">Privacy</a>
+                        <a class="hover:text-zinc-300" href="#">Contact</a>
                     </div>
                 </div>
             </footer>
@@ -433,6 +500,11 @@
                 setTheme(!isDark);
             });
 
+            // Remember active tab
+            function setActiveTab(tabName) {
+                localStorage.setItem('activeTab', tabName);
+            }
+
             // Tabs functionality
             function switchTab(tabName) {
                 // Hide all tab panes
@@ -443,8 +515,6 @@
                 // Remove active class from all tab buttons
                 document.querySelectorAll('.tab-button').forEach(function(tabButton) {
                     tabButton.classList.remove('active-tab');
-                    tabButton.classList.remove('text-zinc-900', 'dark:text-zinc-100');
-                    tabButton.classList.add('text-zinc-600', 'dark:text-zinc-400');
                 });
 
                 // Show the selected tab pane
@@ -453,9 +523,16 @@
                 // Add active class to the clicked tab button
                 const activeTab = document.getElementById(tabName + '-tab');
                 activeTab.classList.add('active-tab');
-                activeTab.classList.remove('text-zinc-600', 'dark:text-zinc-400');
-                activeTab.classList.add('text-zinc-900', 'dark:text-zinc-100');
+
+                // Save active tab
+                setActiveTab(tabName);
             }
+
+            // Initialize active tab from localStorage or default to repositories
+            document.addEventListener('DOMContentLoaded', function() {
+                const savedTab = localStorage.getItem('activeTab') || 'repositories';
+                switchTab(savedTab);
+            });
         </script>
     </body>
 
