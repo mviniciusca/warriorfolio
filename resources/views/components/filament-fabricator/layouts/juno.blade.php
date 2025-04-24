@@ -71,24 +71,24 @@
                 <!-- Tabs Header -->
                 <div class="mb-8 flex justify-center space-x-8 border-b border-secondary-200 dark:border-secondary-800">
                     <button
-                        class="tab-button active-tab px-4 pb-2 text-sm font-medium text-secondary-900 dark:text-secondary-100"
+                        class="tab-button active-tab flex items-center gap-2 px-4 pb-2 text-sm font-medium text-secondary-900 dark:text-secondary-100"
                         id="repositories-tab" onclick="switchTab('repositories')">
-                        Repositories
+                        <x-ui.ionicon icon="code-outline" /> Repositories
                     </button>
                     <button
-                        class="tab-button px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button flex items-center gap-2 px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="notes-tab" onclick="switchTab('notes')">
-                        Notes
+                        <x-ui.ionicon icon="document-text-outline" /> Notes
                     </button>
                     <button
-                        class="tab-button px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button flex items-center gap-2 px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="about-tab" onclick="switchTab('about')">
-                        About Me
+                        <x-ui.ionicon icon="person-outline" /> About Me
                     </button>
                     <button
-                        class="tab-button px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button flex items-center gap-2 px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="contact-tab" onclick="switchTab('contact')">
-                        Contact
+                        <x-ui.ionicon icon="mail-outline" /> Contact
                     </button>
                 </div>
 
