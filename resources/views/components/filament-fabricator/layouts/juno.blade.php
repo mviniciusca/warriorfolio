@@ -99,7 +99,7 @@
                         <div class="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2">
                             <!-- Repository Grid Content -->
                             <!-- Repository 1 -->
-                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">project-name</h3>
@@ -139,7 +139,7 @@
                             </a>
 
                             <!-- Repository 2 -->
-                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">react-app</h3>
@@ -180,7 +180,7 @@
                             </a>
 
                             <!-- Repository 3 -->
-                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">api-service</h3>
@@ -221,7 +221,7 @@
                             </a>
 
                             <!-- Repository 4 -->
-                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">ui-components</h3>
@@ -262,7 +262,7 @@
                             </a>
 
                             <!-- Repository 5 -->
-                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">data-viz</h3>
@@ -303,7 +303,7 @@
                             </a>
 
                             <!-- Repository 6 -->
-                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">cli-tools</h3>
@@ -462,18 +462,8 @@
             </div>
 
             <!-- Footer -->
-            <footer class="mt-12 py-6">
-                <div
-                    class="flex flex-col items-center justify-between gap-4 text-xs text-secondary-500 dark:text-zinc-400">
-                    <p>© 2024 Developer Portfolio. All rights reserved.</p>
-                    <div class="flex items-center gap-4">
-                        <a class="hover:text-zinc-300" href="#">Terms</a>
-                        <a class="hover:text-zinc-300" href="#">Privacy</a>
-                        <a class="hover:text-zinc-300" href="#">Contact</a>
-                    </div>
-                </div>
-            </footer>
         </div>
+        <x-footer.section />
         <x-header.body-scripts />
         <!-- Dark Mode Toggle Script -->
         <script>
