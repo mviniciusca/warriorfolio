@@ -44,25 +44,26 @@
                 border-bottom-color: currentColor;
             }
         </style>
+        <x-core.modules.over />
     </head>
 
     <body
-        class="flex min-h-screen flex-col border border-secondary-200 font-sans antialiased transition-colors duration-200 dark:border-zinc-800 dark:bg-zinc-950">
+        class="flex min-h-screen flex-col border border-secondary-200 font-sans antialiased transition-colors duration-200 dark:border-secondary-800 dark:bg-secondary-950">
         <x-ui.background />
         <x-header.section />
         <div class="container mx-auto max-w-4xl flex-grow px-4 py-16">
 
             <!-- Profile Section with generous top space -->
-            <div class="mb-24 mt-16">
+            <div class="mb-12 mt-12">
                 <x-profile :showCompany="false" :showEmail="false"
-                    avatarClass="mb-6 h-24 w-24 overflow-hidden rounded-full border-2 border-zinc-800 dark:border-zinc-800 md:h-32 md:w-32 object-cover"
+                    avatarClass="mb-6 h-24 w-24 overflow-hidden rounded-full border-2 border-secondary-800 dark:border-secondary-800 md:h-36 md:w-36 object-cover"
                     containerClass="max-w-2xl mx-auto"
-                    downloadButtonClass="inline-flex items-center gap-2 rounded-md border border-zinc-800 px-4 py-2 hover:border-zinc-700 dark:border-zinc-800/50 dark:hover:border-zinc-700 transition-colors"
+                    downloadButtonClass="inline-flex items-center gap-2 rounded-md border border-secondary-800 px-4 py-2 hover:border-secondary-700 dark:border-secondary-800/50 dark:hover:border-secondary-700 transition-colors"
                     infoContainerClass="space-y-2"
-                    infoItemClass="flex items-center justify-center gap-2 text-sm dark:text-zinc-400"
-                    jobPositionClass="mt-2 text-sm dark:text-zinc-400"
-                    nameClass="text-lg font-medium dark:text-zinc-100"
-                    skillItemClass="rounded-md border border-zinc-800 px-2 py-1 text-xs dark:border-zinc-800/50"
+                    infoItemClass="flex items-center justify-center gap-2 text-sm dark:text-secondary-400"
+                    jobPositionClass="mt-1 text-sm dark:text-secondary-400"
+                    nameClass="text-lg font-medium dark:text-secondary-100"
+                    skillItemClass="rounded-md border border-secondary-300 px-2 py-1 text-xs dark:border-secondary-700/50"
                     skillsContainerClass="max-w-lg mx-auto" socialContainerClass="space-x-4" />
             </div>
 
@@ -118,7 +119,7 @@
                         <div class="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2">
                             <!-- Repository Grid Content -->
                             <!-- Repository 1 -->
-                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50 dark:hover:border-secondary-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">project-name</h3>
@@ -158,7 +159,7 @@
                             </a>
 
                             <!-- Repository 2 -->
-                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50 dark:hover:border-secondary-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">react-app</h3>
@@ -199,7 +200,7 @@
                             </a>
 
                             <!-- Repository 3 -->
-                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50 dark:hover:border-secondary-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">api-service</h3>
@@ -240,7 +241,7 @@
                             </a>
 
                             <!-- Repository 4 -->
-                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50 dark:hover:border-secondary-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">ui-components</h3>
@@ -281,7 +282,7 @@
                             </a>
 
                             <!-- Repository 5 -->
-                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50 dark:hover:border-secondary-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">data-viz</h3>
@@ -322,7 +323,7 @@
                             </a>
 
                             <!-- Repository 6 -->
-                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-[4/3] flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50 dark:hover:border-secondary-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">cli-tools</h3>
@@ -375,7 +376,7 @@
                         <div class="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2">
                             <!-- Project 1 -->
                             <div
-                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-secondary-800/50">
                                 <img alt="E-commerce Platform"
                                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     src="https://images.unsplash.com/photo-1551650975-87deedd944c3">
@@ -391,7 +392,7 @@
 
                             <!-- Project 2 -->
                             <div
-                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-secondary-800/50">
                                 <img alt="Mobile App"
                                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     src="https://images.unsplash.com/photo-1556155092-490a1ba16284">
@@ -407,7 +408,7 @@
 
                             <!-- Project 3 -->
                             <div
-                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-secondary-800/50">
                                 <img alt="Analytics Dashboard"
                                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     src="https://images.unsplash.com/photo-1460925895917-afdab827c52f">
@@ -423,7 +424,7 @@
 
                             <!-- Project 4 -->
                             <div
-                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-secondary-800/50">
                                 <img alt="Social Network"
                                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d">
@@ -439,7 +440,7 @@
 
                             <!-- Project 5 -->
                             <div
-                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-secondary-800/50">
                                 <img alt="AI Assistant"
                                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0">
@@ -455,7 +456,7 @@
 
                             <!-- Project 6 -->
                             <div
-                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-secondary-800/50">
                                 <img alt="Code Editor"
                                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
@@ -471,7 +472,7 @@
 
                             <!-- Project 7 -->
                             <div
-                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-secondary-800/50">
                                 <img alt="IoT Dashboard"
                                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     src="https://images.unsplash.com/photo-1526498460520-4c246339dccb">
@@ -487,7 +488,7 @@
 
                             <!-- Project 8 -->
                             <div
-                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-secondary-800/50">
                                 <img alt="Blockchain App"
                                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb">
@@ -503,7 +504,7 @@
 
                             <!-- Project 9 -->
                             <div
-                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-secondary-800/50">
                                 <img alt="AR Experience"
                                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6">
@@ -536,7 +537,7 @@
                         </div>
                         <div class="grid gap-4">
                             <article
-                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50">
+                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50">
                                 <div class="flex flex-col md:flex-row">
                                     <div class="relative h-40 w-full md:w-56">
                                         <img alt="Code on screen" class="h-full w-full object-cover"
@@ -583,7 +584,7 @@
                             </article>
 
                             <article
-                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50">
+                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50">
                                 <div class="flex flex-col md:flex-row">
                                     <div class="relative h-40 w-full md:w-56">
                                         <img alt="Server rack" class="h-full w-full object-cover"
@@ -629,7 +630,7 @@
                             </article>
 
                             <article
-                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50">
+                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50">
                                 <div class="flex flex-col md:flex-row">
                                     <div class="relative h-40 w-full md:w-56">
                                         <img alt="Matrix code" class="h-full w-full object-cover"
