@@ -2,7 +2,6 @@
 
 namespace App\View\Components\Blog;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;

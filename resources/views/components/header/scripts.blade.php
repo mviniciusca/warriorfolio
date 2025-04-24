@@ -9,13 +9,13 @@ There is no data passed to this component.
 
 --}}
 
-        <x-header.google-fonts />
-        <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel=" stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
-        <style>
-            [x-cloak] {
-                display: none !important;
-            }
-        </style>
-        @filamentStyles
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+<x-header.google-fonts />
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel=" stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<style>
+    [x-cloak] {
+        display: none !important;
+    }
+</style>
+@filamentStyles
+@vite(['resources/css/app.css', 'resources/js/app.js'])
