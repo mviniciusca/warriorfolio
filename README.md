@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/dev/public/img/core/demo/featured.png" alt="Warriorfolio 2 Preview">
+  <img src="https://raw.githubusercontent.com/mviniciusca/warriorfolio/main/public/img/core/demo/featured.png" alt="Warriorfolio 2 Preview">
 </p>
 
 
@@ -17,20 +17,13 @@ Developed to be 100% managed through the Control Panel, without the need for dee
 
 ### ✨ Features
 
-##### New in version 2.1.3 - March, 2025
-- 🪐 Saturn UI: A revamped and modernized user interface.
-- 🖥️ Browser Mockup: Showcase your projects in a realistic browser mockup.  
-- 🖼️ Portfolio Gallery: A new and improved gallery layout.
-- 🔄 Inverse Mode: Switch between light and dark themes effortlessly.
-- 🔥 Module Creator: Build and customize new modules with ease.  
-- 👀 Section Heading Visibility Control: Toggle the visibility of section headings.  
-- ⬇️ New Footer Layout: Enhanced and customizable footer design.
-- ⚡ Query Boost Performance: Improved database query performance for faster load times.
-- 📄 Files Documentation: Comprehensive documentation for managing files.
-- 🐛 Bug Fixes: Resolved various issues to improve stability and performance.
+###### New in v2.1.4 April, 2025
 
+- 🖼️ New Portfolio Gallery with improved layout, now featuring an independent URL system
+- 🖱️ Icon positioning options on buttons 🖱️
+- 🔥 Enhanced performance for faster load times
 
-##### Inside the Box
+##### Inside the box
 - 📝 Blog and Portfolio with advanced features  
 - 📊 Analytics and Newsletter integration  
 - 📄 Resume, Linkedin "Open to Work" badge and Skills display  
@@ -44,6 +37,15 @@ Developed to be 100% managed through the Control Panel, without the need for dee
 - 💬 WhatsApp Web and Contact form  
 - 📥 Inbox 
 - 🔔 Notifications and Alerts  
+- 🪐 Saturn UI: A revamped and modernized user interface
+- 🖥️ Browser Mockup for showcasing projects realistically  
+- 🖼️ Enhanced Portfolio Gallery with improved layout
+- 🔄 Inverse Mode for switching between light and dark themes
+- 🔥 Module Creator for building customized modules  
+- 👀 Section Heading Visibility Control  
+- ⬇️ Enhanced customizable footer design
+- ⚡ Query Boost Performance for faster load times
+- 📄 Comprehensive Files Documentation
 
 ### 🚀 Installation
 

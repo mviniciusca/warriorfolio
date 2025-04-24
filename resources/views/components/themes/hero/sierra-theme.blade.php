@@ -35,7 +35,7 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
             @endif
         </div>
         {{-- Hero Section: Featured Image --}}
-        <div class="animate__animated animate__fadeInUp animate__delay-1s flex justify-center lg:col-span-1">
+        <div class="animate__animated animate__fadeIn animate__delay-1s flex justify-center lg:col-span-1">
             @if ($hero->hero['featured_image_is_active'] ?? false)
                 <div class="mt-8 flex items-center" id="hero-featured-image">
                     <x-themes.hero.partials.featured-image :hero="$hero" />

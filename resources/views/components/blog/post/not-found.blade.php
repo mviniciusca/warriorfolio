@@ -1,22 +1,21 @@
-<div>
-    <section class="flex h-screen w-full items-center justify-center">
-        <div class="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
-            <div class="mx-auto max-w-screen-sm text-center">
-                <h1
-                    class="mb-4 text-7xl font-extrabold tracking-tight text-primary-600 dark:text-primary-500 lg:text-9xl">
-                    404
-                </h1>
-                <p class="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
-                    {{ __('Something\'s missing.') }}
-                </p>
-                <p class="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">
-                    {{ __(' Sorry, we can\'t find that page. You\'ll find lots to explore on the home page.') }}
-                </p>
-                <a href="#"
-                    class="my-4 inline-flex rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
-                    {{ __('Back to Homepage') }}
-                </a>
-            </div>
-        </div>
-    </section>
-</div>
+<section class="flex w-full items-center justify-center">
+    <div class="mx-auto grid justify-center text-center">
+        <svg class="mx-auto my-8 size-6" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+
+        <h1 class="mb-4 text-4xl font-bold text-black dark:text-white">
+            404
+        </h1>
+        <p class="mb-4 text-sm text-black dark:text-white">
+            {{ __('Page not found.') }}
+        </p>
+        <x-ui.button style="outlined">
+            <a href="{{ url()->previous() }}">
+                {{ __('Go Back') }}
+            </a>
+        </x-ui.button>
+    </div>
+</section>

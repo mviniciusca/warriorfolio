@@ -250,7 +250,7 @@ class EditHeroSection extends EditRecord
                                                     ->label(__('Browser Border')),
                                                 TextInput::make('hero.browser_border_url')
                                                     ->label(__('Browser Border URL'))
-                                                    ->helperText(__('URL of the browser border image.'))
+                                                    ->helperText(__('URL of the browser border image. Active when featured image has uploaded file.'))
                                                     ->columnSpanFull()
                                                     ->prefixIcon('heroicon-o-link'),
                                             ]),

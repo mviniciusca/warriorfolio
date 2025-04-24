@@ -2,21 +2,13 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PageResource\Pages;
-use App\Filament\Resources\PageResource\RelationManagers;
 use App\Models\Page;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 use Z3d0X\FilamentFabricator\Models\Contracts\Page as PageContract;
 use Z3d0X\FilamentFabricator\Resources\PageResource as ResourcesPageResource;
@@ -35,7 +27,7 @@ class PageResource extends ResourcesPageResource
     public static function getNavigationBadge(): ?string
     {
         if (static::getModel()::where('style', '!=', 'blog')->count() > 0) {
-            return static::getModel()::where('style', '!=', 'blog')->count();
+            return static::getModel()::where('style', '=', 'default')->count();
         }
 
         return null;
@@ -46,7 +38,7 @@ class PageResource extends ResourcesPageResource
         return $table
             ->query(
                 Page::query()
-                    ->where('style', '!=', 'blog')
+                    ->where('style', '=', 'default')
             )
             ->columns([
                 TextColumn::make('title')

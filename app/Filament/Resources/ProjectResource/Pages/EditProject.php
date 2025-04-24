@@ -4,7 +4,10 @@ namespace App\Filament\Resources\ProjectResource\Pages;
 
 use App\Filament\Resources\ProjectResource;
 use Filament\Actions;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
+use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
+use Z3d0X\FilamentFabricator\Models\Contracts\Page as PageContract;
 
 class EditProject extends EditRecord
 {
@@ -13,7 +16,25 @@ class EditProject extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\ViewAction::make()
+                ->visible(config('filament-fabricator.enable-view-page')),
+            Action::make('visit')
+                ->url(function () {
+                    /** @var PageContract $page */
+                    $page = $this->getRecord();
+
+                    return FilamentFabricator::getPageUrlFromId($page->id);
+                })
+                ->icon('heroicon-o-arrow-top-right-on-square')
+                ->openUrlInNewTab()
+                ->label(__('Visit Project'))
+                ->color('primary')
+                ->size('sm')
+                ->visible(config('filament-fabricator.routing.enabled')),
+            Actions\DeleteAction::make()
+                ->icon('heroicon-o-trash')
+                ->color('danger')
+                ->size('sm'),
         ];
     }
 }

@@ -20,8 +20,8 @@ class LayoutFactory extends Factory
             /** Hero Section */
             'hero' => [
                 /** Website Content */
-                'section_title'            => '<span class="dg">Saturn</span> update is here.',
-                'section_subtitle'         => 'Warriorfolio '.env('APP_VERSION').' is here with a new UI, new features, and improvements. Clone, setup, and deploy your portfolio in minutes.',
+                'section_title'            => 'Say Hello to your new <br /> <span class="dg">Portfolio Section</span>',
+                'section_subtitle'         => 'Create, manage and showcase your work in a beautiful way. <br/> Now as Livewire component with dedicated page.',
                 'is_upper'                 => true,
                 'is_filled'                => false,
                 'is_invert'                => true,
@@ -30,14 +30,15 @@ class LayoutFactory extends Factory
                 'bumper_is_active'         => true,
                 'is_bg_blur'               => false,
                 'bumper_role'              => 'primary',
-                'bumper_title'             => 'Welcome to Saturn UI.',
+                'bumper_title'             => 'Warriorfolio v2.1.4 is here 🎉',
                 'bumper_is_animated'       => true,
-                'browser_border_is_active' => true,
+                'bumper_is_center'         => false,
+                'browser_border_is_active' => false,
                 /** Buttons */
                 'buttons' => [
                     [
-                        'button_title'  => 'Get Started',
-                        'icon'          => 'rocket',
+                        'button_title'  => 'Create a New Project',
+                        'icon'          => null,
                         'button_url'    => '/admin',
                         'button_style'  => 'filled',
                         'button_target' => '_self',
@@ -51,7 +52,7 @@ class LayoutFactory extends Factory
                     ],
                 ],
                 /** Themes */
-                'theme'                    => 'default',
+                'theme'                    => 'sierra',
                 'is_mailing_active'        => false,
                 'featured_image_is_active' => true,
                 /** Background */

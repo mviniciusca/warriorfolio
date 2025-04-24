@@ -11,28 +11,28 @@
 
 <div>
     {{-- Filled Button --}}
-    @if($style === 'filled' && $title)
+    @if ($style === 'filled' && $title)
         @if ($url)
-            <a target="{{ $target }}" href="{{ $url }}">
+            <a href="{{ $url }}" target="{{ $target }}">
         @endif
-            <x-ui.button :$color :$icon :style="'filled'" class="{{ $class }}">
-                {{ $title }}
-            </x-ui.button>
-            @if ($url)
-                </a>
-            @endif
+        <x-ui.button :$color :$icon :style="'filled'" class="{{ $class }}">
+            {{ $title }}
+        </x-ui.button>
+        @if ($url)
+            </a>
+        @endif
     @endif
 
     {{-- Outlined Button --}}
-    @if($style === 'outlined' && $title)
+    @if ($style === 'outlined' && $title)
         @if ($url)
-            <a target="{{ $target }}" href="{{ $url }}">
+            <a href="{{ $url }}" target="{{ $target }}">
         @endif
-            <x-ui.button :$color :$icon :style="'outlined'" class="{{ $class }}">
-                {{ $title }}
-            </x-ui.button>
-            @if ($url)
-                </a>
-            @endif
+        <x-ui.button :$color :$icon :style="'outlined'" class="{{ $class }}">
+            {{ $title }}
+        </x-ui.button>
+        @if ($url)
+            </a>
+        @endif
     @endif
 </div>

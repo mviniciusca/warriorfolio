@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -30,6 +31,16 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
     }
 
     /**
+     * Get the project that the page belongs to.
+     *
+     * @return BelongsTo
+     */
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    /**
      * Get the user that owns the page.
      *
      * @return BelongsTo
@@ -50,6 +61,9 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
         static::deleted(function ($page) {
             if ($page->post) {
                 $page->post->delete();
+            }
+            if ($page->project) {
+                $page->project->delete();
             }
         });
     }
