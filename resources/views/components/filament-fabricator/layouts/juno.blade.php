@@ -71,22 +71,22 @@
                 <!-- Tabs Header -->
                 <div class="mb-8 flex justify-center space-x-8 border-b border-secondary-200 dark:border-secondary-800">
                     <button
-                        class="tab-button active-tab flex items-center gap-2 px-4 pb-2 text-sm font-medium text-secondary-900 dark:text-secondary-100"
+                        class="tab-button active-tab flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-900 dark:text-secondary-100"
                         id="repositories-tab" onclick="switchTab('repositories')">
                         <x-ui.ionicon icon="code-outline" /> Repositories
                     </button>
                     <button
-                        class="tab-button flex items-center gap-2 px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="notes-tab" onclick="switchTab('notes')">
                         <x-ui.ionicon icon="document-text-outline" /> Notes
                     </button>
                     <button
-                        class="tab-button flex items-center gap-2 px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="about-tab" onclick="switchTab('about')">
                         <x-ui.ionicon icon="person-outline" /> About Me
                     </button>
                     <button
-                        class="tab-button flex items-center gap-2 px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="contact-tab" onclick="switchTab('contact')">
                         <x-ui.ionicon icon="mail-outline" /> Contact
                     </button>
@@ -95,7 +95,7 @@
                 <!-- Tabs Content -->
                 <div class="tab-content">
                     <!-- Repositories Tab -->
-                    <div class="tab-pane active" id="repositories-content">
+                    <div class="tab-pane" id="repositories-content">
                         <div class="mb-8">
                             <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Open Source
                                 Projects</h2>
@@ -825,19 +825,26 @@
                 // Hide all tab panes
                 document.querySelectorAll('.tab-pane').forEach(function(tabPane) {
                     tabPane.classList.add('hidden');
+                    tabPane.classList.remove('active');
                 });
 
-                // Remove active class from all tab buttons
+                // Update tab buttons
                 document.querySelectorAll('.tab-button').forEach(function(tabButton) {
                     tabButton.classList.remove('active-tab');
+                    tabButton.classList.add('text-secondary-500', 'dark:text-secondary-400');
+                    tabButton.classList.remove('text-secondary-900', 'dark:text-secondary-100');
                 });
 
                 // Show the selected tab pane
-                document.getElementById(tabName + '-content').classList.remove('hidden');
+                const selectedPane = document.getElementById(tabName + '-content');
+                selectedPane.classList.remove('hidden');
+                selectedPane.classList.add('active');
 
-                // Add active class to the clicked tab button
+                // Style the active tab button
                 const activeTab = document.getElementById(tabName + '-tab');
                 activeTab.classList.add('active-tab');
+                activeTab.classList.remove('text-secondary-500', 'dark:text-secondary-400');
+                activeTab.classList.add('text-secondary-900', 'dark:text-secondary-100');
 
                 // Save active tab
                 setActiveTab(tabName);
