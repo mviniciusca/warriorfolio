@@ -101,11 +101,18 @@
                 <div class="tab-content">
                     <!-- Repositories Tab -->
                     <div class="tab-pane" id="repositories-content">
-                        <div class="mb-8">
-                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Open Source
-                                Projects</h2>
-                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">A collection of my public
-                                repositories and contributions</p>
+                        <div class="mb-8 flex items-center justify-between">
+                            <div>
+                                <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Open Source
+                                    Projects</h2>
+                                <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">A collection of my
+                                    public repositories and contributions</p>
+                            </div>
+                            <a class="inline-flex items-center gap-2 rounded-md border border-secondary-300 bg-white px-4 py-2 text-sm font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
+                                href="https://github.com/YOUR_USERNAME">
+                                <x-ui.ionicon class="h-5 w-5" icon="logo-github" />
+                                Follow on GitHub
+                            </a>
                         </div>
                         <div class="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2">
                             <!-- Repository Grid Content -->
@@ -513,11 +520,18 @@
 
                     <!-- Notes Tab -->
                     <div class="tab-pane hidden" id="notes-content">
-                        <div class="mb-8">
-                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Latest
-                                Articles</h2>
-                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Thoughts and tutorials
-                                on development, design, and technology</p>
+                        <div class="mb-8 flex items-center justify-between">
+                            <div>
+                                <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Latest
+                                    Articles</h2>
+                                <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Thoughts and
+                                    tutorials on development, design, and technology</p>
+                            </div>
+                            <a class="inline-flex items-center gap-2 rounded-md border border-secondary-300 bg-white px-4 py-2 text-sm font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
+                                href="/blog">
+                                <x-ui.ionicon class="h-5 w-5" icon="newspaper-outline" />
+                                View All Articles
+                            </a>
                         </div>
                         <div class="grid gap-4">
                             <article
