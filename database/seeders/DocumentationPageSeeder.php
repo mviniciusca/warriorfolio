@@ -71,7 +71,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'component.feature-list',
                         'data' => [
                             'module_title'               => 'Features',
-                            'module_subtitle'            => 'Discover the features of Warriorfolio. v2.1.3',
+                            'module_subtitle'            => 'Discover the features of Warriorfolio. v2.1.5',
                             'columns'                    => '4',
                             'is_active'                  => true,
                             'is_center'                  => false,
