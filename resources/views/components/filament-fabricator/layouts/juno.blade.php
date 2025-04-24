@@ -96,6 +96,12 @@
                 <div class="tab-content">
                     <!-- Repositories Tab -->
                     <div class="tab-pane active" id="repositories-content">
+                        <div class="mb-8">
+                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Open Source
+                                Projects</h2>
+                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">A collection of my public
+                                repositories and contributions</p>
+                        </div>
                         <div class="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2">
                             <!-- Repository Grid Content -->
                             <!-- Repository 1 -->
@@ -347,6 +353,12 @@
 
                     <!-- Notes Tab -->
                     <div class="tab-pane hidden" id="notes-content">
+                        <div class="mb-8">
+                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Latest
+                                Articles</h2>
+                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Thoughts and tutorials
+                                on development, design, and technology</p>
+                        </div>
                         <div class="grid gap-4">
                             <article
                                 class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50">
@@ -492,37 +504,138 @@
 
                     <!-- About Tab -->
                     <div class="tab-pane hidden" id="about-content">
-                        <div class="prose prose-secondary dark:prose-invert mx-auto">
-                            <div class="p-6">
-                                <h3 class="mb-4 text-sm font-medium text-secondary-900 dark:text-zinc-100">about.me
-                                </h3>
-                                <div class="space-y-4 text-sm text-secondary-600 dark:text-zinc-400">
-                                    <p>🚀 Full Stack Explorer navigating the digital cosmos</p>
+                        <div class="mb-8">
+                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">About Me</h2>
+                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Full-stack developer
+                                exploring the digital frontier</p>
+                        </div>
+                        <div class="grid gap-8 md:grid-cols-2">
+                            <!-- Bio Column -->
+                            <div class="space-y-6">
+                                <div class="rounded-lg border border-secondary-200 p-6 dark:border-secondary-800">
+                                    <h3 class="text-sm font-medium text-secondary-900 dark:text-secondary-100">about.me
+                                    </h3>
+                                    <div class="mt-4 space-y-4 text-sm text-secondary-600 dark:text-secondary-400">
+                                        <p>🚀 Full Stack Explorer navigating the digital cosmos</p>
 
-                                    <p>Currently orbiting:</p>
-                                    <ul class="space-y-1 pl-4">
-                                        <li>• Backend Engineering with Laravel</li>
-                                        <li>• Frontend Development with React</li>
-                                        <li>• System Architecture Design</li>
-                                        <li>• Performance Optimization</li>
-                                    </ul>
+                                        <div>
+                                            <p class="mb-2">Currently orbiting:</p>
+                                            <ul class="space-y-1 pl-4">
+                                                <li>• Backend Engineering with Laravel</li>
+                                                <li>• Frontend Development with React</li>
+                                                <li>• System Architecture Design</li>
+                                                <li>• Performance Optimization</li>
+                                            </ul>
+                                        </div>
 
-                                    <p>Mission Control:</p>
-                                    <ul class="space-y-1 pl-4">
-                                        <li>• TypeScript & JavaScript</li>
-                                        <li>• PHP & Python</li>
-                                        <li>• Docker & AWS</li>
-                                        <li>• Git Version Control</li>
-                                    </ul>
+                                        <div>
+                                            <p class="mb-2">Mission Control:</p>
+                                            <ul class="space-y-1 pl-4">
+                                                <li>• TypeScript & JavaScript</li>
+                                                <li>• PHP & Python</li>
+                                                <li>• Docker & AWS</li>
+                                                <li>• Git Version Control</li>
+                                            </ul>
+                                        </div>
 
-                                    <p>✨ Currently charting new territories in:</p>
-                                    <ul class="space-y-1 pl-4">
-                                        <li>• Machine Learning</li>
-                                        <li>• Web3 Technologies</li>
-                                        <li>• Cloud Architecture</li>
-                                    </ul>
+                                        <p>⚡ Transforming coffee into code since 2015</p>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <p>⚡ Ground Control: Transforming coffee into code since 2015</p>
+                            <!-- Education Timeline Column -->
+                            <div class="relative">
+                                <div class="absolute left-4 top-0 h-full w-0.5 bg-secondary-200 dark:bg-secondary-800">
+                                </div>
+
+                                <div class="space-y-8">
+                                    <!-- Timeline Item 1 -->
+                                    <div class="relative ml-8">
+                                        <div
+                                            class="absolute -left-10 mt-1.5 h-3 w-3 rounded-full border-2 border-secondary-400 bg-white dark:border-secondary-600 dark:bg-secondary-950">
+                                        </div>
+                                        <div
+                                            class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
+                                            <span
+                                                class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2023
+                                                - 2024</span>
+                                            <h3
+                                                class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                AWS Cloud Practitioner</h3>
+                                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Amazon
+                                                Web Services</p>
+                                            <span
+                                                class="mt-2 inline-flex items-center rounded-full border border-green-200 px-2 py-0.5 text-xs font-medium text-green-600 dark:border-green-900 dark:text-green-400">
+                                                Completed
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Timeline Item 2 -->
+                                    <div class="relative ml-8">
+                                        <div
+                                            class="absolute -left-10 mt-1.5 h-3 w-3 rounded-full border-2 border-secondary-400 bg-white dark:border-secondary-600 dark:bg-secondary-950">
+                                        </div>
+                                        <div
+                                            class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
+                                            <span
+                                                class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2021
+                                                - 2022</span>
+                                            <h3
+                                                class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                Full Stack Development</h3>
+                                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Digital
+                                                Innovation One</p>
+                                            <span
+                                                class="mt-2 inline-flex items-center rounded-full border border-green-200 px-2 py-0.5 text-xs font-medium text-green-600 dark:border-green-900 dark:text-green-400">
+                                                Completed
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Timeline Item 3 -->
+                                    <div class="relative ml-8">
+                                        <div
+                                            class="absolute -left-10 mt-1.5 h-3 w-3 rounded-full border-2 border-secondary-400 bg-white dark:border-secondary-600 dark:bg-secondary-950">
+                                        </div>
+                                        <div
+                                            class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
+                                            <span
+                                                class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2019
+                                                - 2020</span>
+                                            <h3
+                                                class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                React Development</h3>
+                                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Meta
+                                                (formerly Facebook)</p>
+                                            <span
+                                                class="mt-2 inline-flex items-center rounded-full border border-green-200 px-2 py-0.5 text-xs font-medium text-green-600 dark:border-green-900 dark:text-green-400">
+                                                Completed
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Timeline Item 4 -->
+                                    <div class="relative ml-8">
+                                        <div
+                                            class="absolute -left-10 mt-1.5 h-3 w-3 rounded-full border-2 border-secondary-400 bg-white dark:border-secondary-600 dark:bg-secondary-950">
+                                        </div>
+                                        <div
+                                            class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
+                                            <span
+                                                class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2015
+                                                - 2019</span>
+                                            <h3
+                                                class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                Computer Science</h3>
+                                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">
+                                                University of Technology</p>
+                                            <span
+                                                class="mt-2 inline-flex items-center rounded-full border border-green-200 px-2 py-0.5 text-xs font-medium text-green-600 dark:border-green-900 dark:text-green-400">
+                                                Bachelor's Degree
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -530,6 +643,12 @@
 
                     <!-- Contact Tab -->
                     <div class="tab-pane hidden" id="contact-content">
+                        <div class="mb-8">
+                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Get in Touch
+                            </h2>
+                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Have a project in mind?
+                                Let's work together</p>
+                        </div>
                         <div class="mx-auto max-w-lg">
                             <div class="rounded-lg p-6">
                                 <form class="space-y-5">
