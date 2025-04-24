@@ -347,36 +347,143 @@
 
                     <!-- Notes Tab -->
                     <div class="tab-pane hidden" id="notes-content">
-                        <div class="mx-auto max-w-2xl space-y-4">
+                        <div class="grid gap-4">
                             <article
                                 class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50">
-                                <div class="p-4">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-400">April 24, 2025</span>
-                                        <span
-                                            class="inline-flex items-center rounded-full border border-zinc-200 px-2 py-0.5 text-xs dark:border-zinc-800">
-                                            Blog
-                                        </span>
+                                <div class="flex flex-col md:flex-row">
+                                    <div class="relative h-40 w-full md:w-56">
+                                        <img alt="Code on screen" class="h-full w-full object-cover"
+                                            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80">
                                     </div>
-                                    <h3 class="mt-2 text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                                        Hello World: My first note
-                                    </h3>
-                                    <p class="mt-1 line-clamp-2 text-xs text-zinc-600 dark:text-zinc-400">
-                                        This is an example note for your new portfolio. Here you can share your ideas,
-                                        tutorials, news, and much more.
-                                    </p>
-                                    <div class="mt-3">
-                                        <a class="inline-flex items-center text-xs font-medium text-zinc-900 hover:text-zinc-700 dark:text-zinc-100 dark:hover:text-zinc-300"
-                                            href="#">
-                                            Read more
-                                            <svg class="ml-1 h-3 w-3" fill="none" height="24"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                stroke="currentColor" viewBox="0 0 24 24" width="24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5 12h14"></path>
-                                                <path d="M12 5l7 7-7 7"></path>
-                                            </svg>
-                                        </a>
+                                    <div class="flex flex-1 flex-col justify-between p-4">
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-xs text-secondary-500 dark:text-secondary-400">April
+                                                    24, 2025</span>
+                                                <span
+                                                    class="inline-flex items-center rounded-full border border-secondary-200 px-2 py-0.5 text-xs dark:border-secondary-800">
+                                                    Development
+                                                </span>
+                                            </div>
+                                            <div class="mt-2">
+                                                <h3
+                                                    class="text-base font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Building Modern Web Applications with React and TypeScript
+                                                </h3>
+                                                <p
+                                                    class="mt-1 line-clamp-2 text-xs text-secondary-600 dark:text-secondary-400">
+                                                    Explore the powerful combination of React and TypeScript for
+                                                    building robust web applications. Learn best practices, common
+                                                    patterns, and advanced techniques.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <a class="inline-flex items-center text-xs font-medium text-secondary-900 hover:text-secondary-700 dark:text-secondary-100 dark:hover:text-secondary-300"
+                                                href="#">
+                                                Read more
+                                                <svg class="ml-1 h-3 w-3" fill="none" height="24"
+                                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    stroke="currentColor" viewBox="0 0 24 24" width="24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5 12h14"></path>
+                                                    <path d="M12 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article
+                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50">
+                                <div class="flex flex-col md:flex-row">
+                                    <div class="relative h-40 w-full md:w-56">
+                                        <img alt="Server rack" class="h-full w-full object-cover"
+                                            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80">
+                                    </div>
+                                    <div class="flex flex-1 flex-col justify-between p-4">
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-xs text-secondary-500 dark:text-secondary-400">April
+                                                    20, 2025</span>
+                                                <span
+                                                    class="inline-flex items-center rounded-full border border-secondary-200 px-2 py-0.5 text-xs dark:border-secondary-800">
+                                                    DevOps
+                                                </span>
+                                            </div>
+                                            <div class="mt-2">
+                                                <h3
+                                                    class="text-base font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Docker and Kubernetes: A Practical Guide
+                                                </h3>
+                                                <p
+                                                    class="mt-1 line-clamp-2 text-xs text-secondary-600 dark:text-secondary-400">
+                                                    Deep dive into containerization and orchestration. Learn how to
+                                                    deploy, scale, and manage applications using Docker and Kubernetes.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <a class="inline-flex items-center text-xs font-medium text-secondary-900 hover:text-secondary-700 dark:text-secondary-100 dark:hover:text-secondary-300"
+                                                href="#">
+                                                Read more
+                                                <svg class="ml-1 h-3 w-3" fill="none" height="24"
+                                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    stroke="currentColor" viewBox="0 0 24 24" width="24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5 12h14"></path>
+                                                    <path d="M12 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article
+                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50">
+                                <div class="flex flex-col md:flex-row">
+                                    <div class="relative h-40 w-full md:w-56">
+                                        <img alt="Matrix code" class="h-full w-full object-cover"
+                                            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80">
+                                    </div>
+                                    <div class="flex flex-1 flex-col justify-between p-4">
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-xs text-secondary-500 dark:text-secondary-400">April
+                                                    15, 2025</span>
+                                                <span
+                                                    class="inline-flex items-center rounded-full border border-secondary-200 px-2 py-0.5 text-xs dark:border-secondary-800">
+                                                    Security
+                                                </span>
+                                            </div>
+                                            <div class="mt-2">
+                                                <h3
+                                                    class="text-base font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Web Security Best Practices for Modern Applications
+                                                </h3>
+                                                <p
+                                                    class="mt-1 line-clamp-2 text-xs text-secondary-600 dark:text-secondary-400">
+                                                    Essential security practices for protecting web applications. From
+                                                    XSS prevention to CSRF protection, learn how to keep your
+                                                    applications secure.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <a class="inline-flex items-center text-xs font-medium text-secondary-900 hover:text-secondary-700 dark:text-secondary-100 dark:hover:text-secondary-300"
+                                                href="#">
+                                                Read more
+                                                <svg class="ml-1 h-3 w-3" fill="none" height="24"
+                                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    stroke="currentColor" viewBox="0 0 24 24" width="24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5 12h14"></path>
+                                                    <path d="M12 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </article>
@@ -425,8 +532,6 @@
                     <div class="tab-pane hidden" id="contact-content">
                         <div class="mx-auto max-w-lg">
                             <div class="rounded-lg p-6">
-                                <h3 class="mb-6 text-sm font-medium text-secondary-900 dark:text-secondary-100">Get in
-                                    touch</h3>
                                 <form class="space-y-5">
                                     <div>
                                         <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
