@@ -45,7 +45,8 @@
         </style>
     </head>
 
-    <body class="border font-sans antialiased transition-colors duration-200 dark:border-zinc-800 dark:bg-zinc-950">
+    <body
+        class="border border-secondary-200 font-sans antialiased transition-colors duration-200 dark:border-zinc-800 dark:bg-zinc-950">
         <x-ui.background />
         <x-header.section />
         <div class="container mx-auto max-w-4xl px-4 py-8">
@@ -96,7 +97,7 @@
                         <div class="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2">
                             <!-- Repository Grid Content -->
                             <!-- Repository 1 -->
-                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">project-name</h3>
@@ -136,7 +137,7 @@
                             </a>
 
                             <!-- Repository 2 -->
-                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">react-app</h3>
@@ -177,7 +178,7 @@
                             </a>
 
                             <!-- Repository 3 -->
-                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">api-service</h3>
@@ -218,7 +219,7 @@
                             </a>
 
                             <!-- Repository 4 -->
-                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">ui-components</h3>
@@ -259,7 +260,7 @@
                             </a>
 
                             <!-- Repository 5 -->
-                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">data-viz</h3>
@@ -300,7 +301,7 @@
                             </a>
 
                             <!-- Repository 6 -->
-                            <a class="flex aspect-square flex-col justify-between border border-zinc-800 p-4 transition-colors hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                            <a class="flex aspect-square flex-col justify-between border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
                                 href="#">
                                 <div>
                                     <h3 class="text-sm font-medium dark:text-secondary-100">cli-tools</h3>
@@ -346,7 +347,7 @@
                     <div class="tab-pane hidden" id="notes-content">
                         <div class="mx-auto max-w-2xl space-y-4">
                             <article
-                                class="overflow-hidden rounded-md border border-zinc-800/50 transition-all hover:border-zinc-700 dark:border-zinc-800/50 dark:bg-zinc-900/50">
+                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50">
                                 <div class="p-4">
                                     <div class="flex items-center justify-between">
                                         <span class="text-xs text-zinc-500 dark:text-zinc-400">24 de Abril, 2025</span>
@@ -383,7 +384,7 @@
                     <!-- About Tab -->
                     <div class="tab-pane hidden" id="about-content">
                         <div class="prose prose-secondary dark:prose-invert mx-auto">
-                            <div class="rounded-lg border border-zinc-800/50 p-6 dark:border-zinc-800/50">
+                            <div class="rounded-lg border border-secondary-200 p-6 dark:border-zinc-800/50">
                                 <h3 class="mb-4 text-sm font-medium text-zinc-900 dark:text-zinc-100">about.me</h3>
                                 <div class="space-y-4 text-sm text-zinc-600 dark:text-zinc-400">
                                     <p>🚀 Full Stack Explorer navigating the digital cosmos</p>
@@ -420,33 +421,33 @@
                     <!-- Contact Tab -->
                     <div class="tab-pane hidden" id="contact-content">
                         <div class="mx-auto max-w-lg">
-                            <div class="rounded-lg border border-zinc-800/50 p-6 dark:border-zinc-800/50">
-                                <h3 class="mb-4 text-sm font-medium text-zinc-900 dark:text-zinc-100">get_in_touch()
-                                </h3>
+                            <div class="rounded-lg border border-secondary-200 p-6 dark:border-zinc-800/50">
+                                <h3 class="mb-4 text-sm font-medium text-secondary-900 dark:text-zinc-100">
+                                    get_in_touch()</h3>
                                 <form class="space-y-4">
                                     <div>
-                                        <label class="mb-1 block text-sm text-zinc-600 dark:text-zinc-400"
+                                        <label class="mb-1 block text-sm text-secondary-600 dark:text-zinc-400"
                                             for="name">Name</label>
                                         <input
-                                            class="w-full rounded-md border-zinc-800 px-4 py-2 text-sm focus:border-zinc-700 focus:ring-zinc-700 dark:border-zinc-800 dark:text-zinc-100"
+                                            class="w-full rounded-md border-secondary-200 bg-white px-4 py-2 text-sm text-secondary-900 focus:border-secondary-500 focus:ring-secondary-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
                                             id="name" type="text">
                                     </div>
                                     <div>
-                                        <label class="mb-1 block text-sm text-zinc-600 dark:text-zinc-400"
+                                        <label class="mb-1 block text-sm text-secondary-600 dark:text-zinc-400"
                                             for="email">Email</label>
                                         <input
-                                            class="w-full rounded-md border-zinc-800 px-4 py-2 text-sm focus:border-zinc-700 focus:ring-zinc-700 dark:border-zinc-800 dark:text-zinc-100"
+                                            class="w-full rounded-md border-secondary-200 bg-white px-4 py-2 text-sm text-secondary-900 focus:border-secondary-500 focus:ring-secondary-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
                                             id="email" type="email">
                                     </div>
                                     <div>
-                                        <label class="mb-1 block text-sm text-zinc-600 dark:text-zinc-400"
+                                        <label class="mb-1 block text-sm text-secondary-600 dark:text-zinc-400"
                                             for="message">Message</label>
                                         <textarea
-                                            class="w-full rounded-md border-zinc-800 px-4 py-2 text-sm focus:border-zinc-700 focus:ring-zinc-700 dark:border-zinc-800 dark:text-zinc-100"
+                                            class="w-full rounded-md border-secondary-200 bg-white px-4 py-2 text-sm text-secondary-900 focus:border-secondary-500 focus:ring-secondary-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
                                             id="message" rows="4"></textarea>
                                     </div>
                                     <button
-                                        class="w-full rounded-md border border-zinc-800 px-4 py-2 text-sm font-medium hover:border-zinc-700 dark:border-zinc-800/50 dark:hover:border-zinc-700"
+                                        class="w-full rounded-md border border-secondary-200 bg-white px-4 py-2 text-sm font-medium text-secondary-900 hover:border-secondary-300 hover:bg-secondary-50 dark:border-zinc-800/50 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-700"
                                         type="submit">
                                         Send Message
                                     </button>
@@ -458,8 +459,9 @@
             </div>
 
             <!-- Footer -->
-            <footer class="mt-12 border-t border-zinc-800/40 py-6">
-                <div class="flex flex-col items-center justify-between gap-4 text-xs text-zinc-400">
+            <footer class="mt-12 border-t border-secondary-200/80 py-6 dark:border-zinc-800/40">
+                <div
+                    class="flex flex-col items-center justify-between gap-4 text-xs text-secondary-500 dark:text-zinc-400">
                     <p>© 2024 Developer Portfolio. All rights reserved.</p>
                     <div class="flex items-center gap-4">
                         <a class="hover:text-zinc-300" href="#">Terms</a>
