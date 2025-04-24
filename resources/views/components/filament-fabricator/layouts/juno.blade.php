@@ -77,6 +77,11 @@
                     </button>
                     <button
                         class="tab-button flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        id="projects-tab" onclick="switchTab('projects')">
+                        <x-ui.ionicon icon="images-outline" /> Projects
+                    </button>
+                    <button
+                        class="tab-button flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="notes-tab" onclick="switchTab('notes')">
                         <x-ui.ionicon icon="document-text-outline" /> Notes
                     </button>
@@ -348,6 +353,161 @@
                                         class="rounded bg-secondary-200 px-1.5 py-0.5 text-xs dark:bg-secondary-700">TS</span>
                                 </div>
                             </a>
+                        </div>
+                    </div>
+
+                    <!-- Projects Tab -->
+                    <div class="tab-pane hidden" id="projects-content">
+                        <div class="mb-8">
+                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Portfolio
+                                Projects</h2>
+                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Showcasing my latest
+                                work and creative projects</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2">
+                            <!-- Project 1 -->
+                            <div
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                <img alt="E-commerce Platform"
+                                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    src="https://images.unsplash.com/photo-1551650975-87deedd944c3">
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70">
+                                    <div
+                                        class="absolute inset-0 flex flex-col justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                        <h3 class="text-sm font-medium text-white">Modern E-commerce Platform</h3>
+                                        <p class="mt-1 text-xs text-gray-300">Web Development</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 2 -->
+                            <div
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                <img alt="Mobile App"
+                                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    src="https://images.unsplash.com/photo-1556155092-490a1ba16284">
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70">
+                                    <div
+                                        class="absolute inset-0 flex flex-col justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                        <h3 class="text-sm font-medium text-white">Fitness Tracking App</h3>
+                                        <p class="mt-1 text-xs text-gray-300">Mobile Development</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 3 -->
+                            <div
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                <img alt="Analytics Dashboard"
+                                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f">
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70">
+                                    <div
+                                        class="absolute inset-0 flex flex-col justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                        <h3 class="text-sm font-medium text-white">Analytics Dashboard</h3>
+                                        <p class="mt-1 text-xs text-gray-300">Data Visualization</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 4 -->
+                            <div
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                <img alt="Social Network"
+                                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d">
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70">
+                                    <div
+                                        class="absolute inset-0 flex flex-col justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                        <h3 class="text-sm font-medium text-white">Social Network Platform</h3>
+                                        <p class="mt-1 text-xs text-gray-300">Full Stack Development</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 5 -->
+                            <div
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                <img alt="AI Assistant"
+                                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0">
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70">
+                                    <div
+                                        class="absolute inset-0 flex flex-col justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                        <h3 class="text-sm font-medium text-white">AI Virtual Assistant</h3>
+                                        <p class="mt-1 text-xs text-gray-300">Machine Learning</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 6 -->
+                            <div
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                <img alt="Code Editor"
+                                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70">
+                                    <div
+                                        class="absolute inset-0 flex flex-col justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                        <h3 class="text-sm font-medium text-white">Custom Code Editor</h3>
+                                        <p class="mt-1 text-xs text-gray-300">Desktop Application</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 7 -->
+                            <div
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                <img alt="IoT Dashboard"
+                                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    src="https://images.unsplash.com/photo-1526498460520-4c246339dccb">
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70">
+                                    <div
+                                        class="absolute inset-0 flex flex-col justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                        <h3 class="text-sm font-medium text-white">IoT Smart Home Dashboard</h3>
+                                        <p class="mt-1 text-xs text-gray-300">IoT / Frontend Development</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 8 -->
+                            <div
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                <img alt="Blockchain App"
+                                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb">
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70">
+                                    <div
+                                        class="absolute inset-0 flex flex-col justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                        <h3 class="text-sm font-medium text-white">Blockchain Trading Platform</h3>
+                                        <p class="mt-1 text-xs text-gray-300">Web3 Development</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 9 -->
+                            <div
+                                class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-zinc-800/50">
+                                <img alt="AR Experience"
+                                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6">
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70">
+                                    <div
+                                        class="absolute inset-0 flex flex-col justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                        <h3 class="text-sm font-medium text-white">AR Shopping Experience</h3>
+                                        <p class="mt-1 text-xs text-gray-300">Augmented Reality</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
