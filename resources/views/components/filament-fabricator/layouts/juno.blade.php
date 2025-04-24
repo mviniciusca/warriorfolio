@@ -36,11 +36,12 @@
 
             .tab-button {
                 transition: all 0.2s ease-in-out;
-                border-top: 2px solid transparent;
+                border-bottom: 1px solid transparent;
+                margin-bottom: -1px;
             }
 
             .tab-button.active-tab {
-                border-top-color: currentColor;
+                border-bottom-color: currentColor;
             }
         </style>
     </head>
@@ -68,23 +69,24 @@
             <!-- Tabs System -->
             <div class="pt-6">
                 <!-- Tabs Header -->
-                <div class="mb-6 flex justify-center space-x-8">
-                    <button class="tab-button active-tab px-4 pt-1 text-sm font-medium dark:text-zinc-100"
+                <div class="mb-8 flex justify-center space-x-8 border-b border-secondary-200 dark:border-secondary-800">
+                    <button
+                        class="tab-button active-tab px-4 pb-2 text-sm font-medium text-secondary-900 dark:text-secondary-100"
                         id="repositories-tab" onclick="switchTab('repositories')">
                         Repositories
                     </button>
                     <button
-                        class="tab-button px-4 pt-1 text-sm font-medium transition-colors hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300"
+                        class="tab-button px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="notes-tab" onclick="switchTab('notes')">
                         Notes
                     </button>
                     <button
-                        class="tab-button px-4 pt-1 text-sm font-medium transition-colors hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300"
+                        class="tab-button px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="about-tab" onclick="switchTab('about')">
                         About Me
                     </button>
                     <button
-                        class="tab-button px-4 pt-1 text-sm font-medium transition-colors hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300"
+                        class="tab-button px-4 pb-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="contact-tab" onclick="switchTab('contact')">
                         Contact
                     </button>
@@ -350,23 +352,23 @@
                                 class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-zinc-800/50 dark:bg-zinc-900/50">
                                 <div class="p-4">
                                     <div class="flex items-center justify-between">
-                                        <span class="text-xs text-zinc-500 dark:text-zinc-400">24 de Abril, 2025</span>
+                                        <span class="text-xs text-zinc-500 dark:text-zinc-400">April 24, 2025</span>
                                         <span
                                             class="inline-flex items-center rounded-full border border-zinc-200 px-2 py-0.5 text-xs dark:border-zinc-800">
                                             Blog
                                         </span>
                                     </div>
                                     <h3 class="mt-2 text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                                        Hello World: Minha primeira nota
+                                        Hello World: My first note
                                     </h3>
                                     <p class="mt-1 line-clamp-2 text-xs text-zinc-600 dark:text-zinc-400">
-                                        Este é um exemplo de nota para o seu novo portfólio. Aqui você pode compartilhar
-                                        suas ideias, tutoriais, notícias e muito mais.
+                                        This is an example note for your new portfolio. Here you can share your ideas,
+                                        tutorials, news, and much more.
                                     </p>
                                     <div class="mt-3">
                                         <a class="inline-flex items-center text-xs font-medium text-zinc-900 hover:text-zinc-700 dark:text-zinc-100 dark:hover:text-zinc-300"
                                             href="#">
-                                            Ler mais
+                                            Read more
                                             <svg class="ml-1 h-3 w-3" fill="none" height="24"
                                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 stroke="currentColor" viewBox="0 0 24 24" width="24"
@@ -384,9 +386,10 @@
                     <!-- About Tab -->
                     <div class="tab-pane hidden" id="about-content">
                         <div class="prose prose-secondary dark:prose-invert mx-auto">
-                            <div class="rounded-lg border border-secondary-200 p-6 dark:border-zinc-800/50">
-                                <h3 class="mb-4 text-sm font-medium text-zinc-900 dark:text-zinc-100">about.me</h3>
-                                <div class="space-y-4 text-sm text-zinc-600 dark:text-zinc-400">
+                            <div class="p-6">
+                                <h3 class="mb-4 text-sm font-medium text-secondary-900 dark:text-zinc-100">about.me
+                                </h3>
+                                <div class="space-y-4 text-sm text-secondary-600 dark:text-zinc-400">
                                     <p>🚀 Full Stack Explorer navigating the digital cosmos</p>
 
                                     <p>Currently orbiting:</p>
@@ -421,35 +424,35 @@
                     <!-- Contact Tab -->
                     <div class="tab-pane hidden" id="contact-content">
                         <div class="mx-auto max-w-lg">
-                            <div class="rounded-lg border border-secondary-200 p-6 dark:border-zinc-800/50">
-                                <h3 class="mb-4 text-sm font-medium text-secondary-900 dark:text-zinc-100">
-                                    get_in_touch()</h3>
-                                <form class="space-y-4">
+                            <div class="rounded-lg p-6">
+                                <h3 class="mb-6 text-sm font-medium text-secondary-900 dark:text-secondary-100">Get in
+                                    touch</h3>
+                                <form class="space-y-5">
                                     <div>
-                                        <label class="mb-1 block text-sm text-secondary-600 dark:text-zinc-400"
+                                        <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
                                             for="name">Name</label>
                                         <input
-                                            class="w-full rounded-md border-secondary-200 bg-white px-4 py-2 text-sm text-secondary-900 focus:border-secondary-500 focus:ring-secondary-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
-                                            id="name" type="text">
+                                            class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
+                                            id="name" placeholder="Your name" type="text">
                                     </div>
                                     <div>
-                                        <label class="mb-1 block text-sm text-secondary-600 dark:text-zinc-400"
+                                        <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
                                             for="email">Email</label>
                                         <input
-                                            class="w-full rounded-md border-secondary-200 bg-white px-4 py-2 text-sm text-secondary-900 focus:border-secondary-500 focus:ring-secondary-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
-                                            id="email" type="email">
+                                            class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
+                                            id="email" placeholder="your@email.com" type="email">
                                     </div>
                                     <div>
-                                        <label class="mb-1 block text-sm text-secondary-600 dark:text-zinc-400"
+                                        <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
                                             for="message">Message</label>
                                         <textarea
-                                            class="w-full rounded-md border-secondary-200 bg-white px-4 py-2 text-sm text-secondary-900 focus:border-secondary-500 focus:ring-secondary-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
-                                            id="message" rows="4"></textarea>
+                                            class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
+                                            id="message" placeholder="Your message" rows="4"></textarea>
                                     </div>
                                     <button
-                                        class="w-full rounded-md border border-secondary-200 bg-white px-4 py-2 text-sm font-medium text-secondary-900 hover:border-secondary-300 hover:bg-secondary-50 dark:border-zinc-800/50 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-700"
+                                        class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
                                         type="submit">
-                                        Send Message
+                                        Send message
                                     </button>
                                 </form>
                             </div>
@@ -459,7 +462,7 @@
             </div>
 
             <!-- Footer -->
-            <footer class="mt-12 border-t border-secondary-200/80 py-6 dark:border-zinc-800/40">
+            <footer class="mt-12 py-6">
                 <div
                     class="flex flex-col items-center justify-between gap-4 text-xs text-secondary-500 dark:text-zinc-400">
                     <p>© 2024 Developer Portfolio. All rights reserved.</p>
