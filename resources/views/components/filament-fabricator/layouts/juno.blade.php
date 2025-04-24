@@ -753,6 +753,34 @@
                 </div>
             </div>
 
+            <!-- Newsletter Section -->
+            <div class="mt-16">
+                <div class="py-16">
+                    <div class="mx-auto max-w-2xl text-center">
+                        <h2 class="text-xl font-semibold text-secondary-900 dark:text-secondary-100">Subscribe to My
+                            Newsletter</h2>
+                        <p class="mt-2 text-sm text-secondary-600 dark:text-secondary-400">Get the latest updates,
+                            articles, and resources delivered straight to your inbox.</p>
+
+                        <form class="mt-6">
+                            <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                                <input
+                                    class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600 sm:w-72"
+                                    placeholder="Enter your email" required type="email">
+                                <button
+                                    class="w-full rounded-md border border-secondary-900 bg-secondary-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-secondary-800 focus:outline-none focus:ring-2 focus:ring-secondary-900 focus:ring-offset-2 dark:border-secondary-100 dark:bg-secondary-100 dark:text-secondary-900 dark:hover:bg-secondary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-950 sm:w-auto"
+                                    type="submit">
+                                    Subscribe
+                                </button>
+                            </div>
+                            <p class="mt-3 text-xs text-secondary-500 dark:text-secondary-400">
+                                By subscribing, you agree to our Privacy Policy. No spam, unsubscribe anytime.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <!-- Footer -->
         </div>
         <x-footer.section class="mt-16" />
