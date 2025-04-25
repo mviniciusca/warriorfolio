@@ -1,4 +1,4 @@
-@props(['data', 'module'])
+@props(['data', 'module', 'show_light' => true])
 
 {{--
 
@@ -27,7 +27,9 @@ App\Livewire\Newsletter.php
                 </div>
             </div>
         </div>
-        <img class="absolute -z-10 -mt-4 animate-pulse"
-            src="{{ asset('img/core/core-ui-elements/beams/blur-beam.png') }}" />
+        @if ($show_light)
+            <img class="absolute -z-10 -mt-4 animate-pulse"
+                src="{{ asset('img/core/core-ui-elements/beams/blur-beam.png') }}" />
+        @endif
     </x-core.layout>
 @endif
