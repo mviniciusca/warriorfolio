@@ -11,23 +11,27 @@
         </div>
         {{-- ...existing code... --}}
         {{-- Make Follow link dynamic --}}
-        <a class="inline-flex items-center gap-2 rounded-md border border-secondary-300 bg-white px-4 py-2 text-sm font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
+        <a class="inline-flex items-center gap-2 rounded-md border border-secondary-300 bg-white px-4 py-2 text-sm text-xs font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
             href="{{ $githubUser ? 'https://github.com/' . $githubUser : '#' }}">
             <x-ui.ionicon class="h-5 w-5" icon="logo-github" />
-            Follow on GitHub
+            Follow
         </a>
     </div>
-    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
+    <div class="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3">
         @if (!empty($repositories))
             @foreach ($repositories as $repository)
-                <a class="flex aspect-[4/3] flex-col justify-between rounded border border-secondary-200 p-4 transition-colors hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50 dark:hover:border-secondary-700"
+                <a class="group relative flex aspect-[5/3] flex-col justify-between overflow-hidden rounded border border-secondary-200 p-4 transition-all hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50 dark:hover:border-secondary-700"
+                    data-language="{{ $repository['language'] ?? '' }}" data-repository-card
                     href="{{ $repository['html_url'] ?? '#' }}" rel="noopener noreferrer" target="_blank">
-                    <div>
+                    <div
+                        class="language-gradient pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    </div>
+                    <div class="relative">
                         <h3 class="truncate text-sm font-medium dark:text-secondary-100"
                             title="{{ $repository['name'] ?? 'N/A' }}">
                             {{ $repository['name'] ?? 'N/A' }}
                         </h3>
-                        <p class="mt-1 line-clamp-3 text-xs text-secondary-600 dark:text-secondary-400"
+                        <p class="mt-1 line-clamp-3 text-xs leading-relaxed text-secondary-600 dark:text-secondary-400"
                             title="{{ $repository['description'] ?? '' }}">
                             {{ $repository['description'] ?? 'No description available.' }}
                         </p>
