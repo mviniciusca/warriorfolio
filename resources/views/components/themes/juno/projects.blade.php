@@ -22,6 +22,9 @@
                         <p class="mt-1 text-xs text-gray-300">{{ ucfirst($item->project->category->name) }}</p>
                     </div>
             </a>
+
         </div>
-    @endforeach
+</div>
+</div>
+@endforeach
 </div>
