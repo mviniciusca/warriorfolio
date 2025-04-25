@@ -97,13 +97,17 @@ class Repositories extends Component
 
             $response = Http::withToken($this->githubToken)
                 ->get($api, [
-                    'type'     => 'public',
-                    'fork'     => 'false',
-                    'per_page' => 100, // Fetch maximum possible
+                    'type'      => 'owner', // Only show repositories owned by the user
+                    'sort'      => 'updated',
+                    'direction' => 'desc',
+                    'per_page'  => 100,
                 ]);
 
             if ($response->successful()) {
-                return $response->json();
+                // Filter out forks after getting the response
+                return array_filter($response->json(), function ($repo) {
+                    return ! ($repo['fork'] ?? false);
+                });
             } else {
                 Log::warning("Failed to fetch repositories for user: {$this->githubUser}. Status: ".$response->status());
 
