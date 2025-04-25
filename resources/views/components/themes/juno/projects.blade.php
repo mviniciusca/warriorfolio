@@ -10,15 +10,18 @@
     @foreach ($data as $item)
         <div
             class="group relative aspect-[4/3] overflow-hidden border border-secondary-200 dark:border-secondary-800/50">
-            <img alt="E-commerce Platform"
-                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                src="{{ asset('storage/' . $item->project->image_cover) }}">
-            <div class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70">
+            <a href="{{ config('app.url') . '/' . $item->slug }}">
+                <img alt="E-commerce Platform"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    src="{{ asset('storage/' . $item->project->image_cover) }}">
                 <div
-                    class="absolute inset-0 flex flex-col justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <h3 class="text-sm font-medium text-white">{{ $item->title }}</h3>
-                    <p class="mt-1 text-xs text-gray-300">{{ ucfirst($item->project->category->name) }}</p>
-                </div>
-            </div>
+                    class="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70">
+                    <div
+                        class="absolute inset-0 flex flex-col justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <h3 class="text-sm font-medium text-white">{{ $item->title }}</h3>
+                        <p class="mt-1 text-xs text-gray-300">{{ ucfirst($item->project->category->name) }}</p>
+                    </div>
+            </a>
+        </div>
     @endforeach
 </div>
