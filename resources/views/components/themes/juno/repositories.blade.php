@@ -77,4 +77,3 @@
         @endforelse
         {{-- End Loop --}}
     </div>
-</div>
