@@ -31,7 +31,7 @@
                             title="{{ $repository['name'] ?? 'N/A' }}">
                             {{ $repository['name'] ?? 'N/A' }}
                         </h3>
-                        <p class="mt-1 line-clamp-3 text-xs leading-relaxed text-secondary-600 dark:text-secondary-400"
+                        <p class="mt-3 line-clamp-3 text-xs leading-relaxed text-secondary-600 dark:text-secondary-400"
                             title="{{ $repository['description'] ?? '' }}">
                             {{ $repository['description'] ?? 'No description available.' }}
                         </p>
