@@ -11,17 +11,16 @@ use Illuminate\View\Component;
 
 class Repositories extends Component
 {
+    public string $githubApiUrl = 'https://api.github.com/users/';
+
     public string $githubRepoApiUrl = 'https://api.github.com/repos/';
 
     private ?string $githubToken;
 
     public function __construct(
         public ?string $githubUser,
-        public ?int $repoQuantity = null,
-        public ?int $repoStars = null,
-        public ?int $repoForks = null,
-        public ?string $repoName = null,
-        public ?string $repoDescription = null
+        public ?array $showOnlyRepositories = null,
+        public ?int $repoQuantity = null
     ) {
         $this->githubToken = env('GITHUB_API_TOKEN');
     }
@@ -35,29 +34,40 @@ class Repositories extends Component
 
     public function showRepositories()
     {
-        // Define the fixed list of repository names to fetch
-        $repoNamesToFetch = [
-            'warriorfolio',
-            'warriorfolio-docs',
-            'codhous',
-            'reacast',
-            'cardbolt',
-        ];
-
-        // If no user is provided, return empty array
         if (empty($this->githubUser)) {
             return [];
         }
 
-        // Generate a unique cache key using the repo names
-        $repoNamesHash = md5(implode(',', $repoNamesToFetch));
-        $cacheKey = "github-repos-{$this->githubUser}-{$repoNamesHash}";
-        $cacheDuration = 3600; // 1 hour in seconds
+        // Check if we have specific repositories to show
+        if (! empty($this->showOnlyRepositories)) {
+            $repos = $this->fetchSpecificRepositories($this->showOnlyRepositories);
+        } else {
+            // Fetch all repositories and sort by stars
+            $repos = $this->fetchAllRepositories();
+        }
 
-        return Cache::remember($cacheKey, $cacheDuration, function () use ($repoNamesToFetch) {
+        // Sort by number of stars (descending)
+        usort($repos, function ($a, $b) {
+            return ($b['stargazers_count'] ?? 0) - ($a['stargazers_count'] ?? 0);
+        });
+
+        // Apply limit if repoQuantity is set
+        if ($this->repoQuantity !== null && $this->repoQuantity > 0) {
+            $repos = array_slice($repos, 0, $this->repoQuantity);
+        }
+
+        return $repos;
+    }
+
+    private function fetchSpecificRepositories(array $repoNames)
+    {
+        $cacheKey = "github-specific-repos-{$this->githubUser}-".md5(implode(',', $repoNames));
+        $cacheDuration = 3600;
+
+        return Cache::remember($cacheKey, $cacheDuration, function () use ($repoNames) {
             $repositories = [];
 
-            foreach ($repoNamesToFetch as $repoName) {
+            foreach ($repoNames as $repoName) {
                 $api = $this->githubRepoApiUrl.$this->githubUser.'/'.$repoName;
 
                 $response = Http::withToken($this->githubToken)->get($api);
@@ -70,6 +80,30 @@ class Repositories extends Component
             }
 
             return $repositories;
+        });
+    }
+
+    private function fetchAllRepositories()
+    {
+        $cacheKey = "github-all-repos-{$this->githubUser}";
+        $cacheDuration = 3600;
+
+        return Cache::remember($cacheKey, $cacheDuration, function () {
+            $api = $this->githubApiUrl.$this->githubUser.'/repos';
+
+            $response = Http::withToken($this->githubToken)
+                ->get($api, [
+                    'type'     => 'public',
+                    'per_page' => 100, // Fetch maximum possible
+                ]);
+
+            if ($response->successful()) {
+                return $response->json();
+            } else {
+                Log::warning("Failed to fetch repositories for user: {$this->githubUser}. Status: ".$response->status());
+
+                return [];
+            }
         });
     }
 }

@@ -1,4 +1,4 @@
-@props(['githubUser' => null, 'repositories' => []])
+@props(['githubUser' => null, 'repositories' => [], 'repoQuantity' => null])
 
 <!-- Repositories Tab -->
 <div class="tab-pane" id="repositories-content">
