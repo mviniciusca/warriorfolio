@@ -42,7 +42,7 @@ class Repositories extends Component
         if (! empty($this->showOnlyRepositories)) {
             $repos = $this->fetchSpecificRepositories($this->showOnlyRepositories);
         } else {
-            // Fetch all repositories and sort by stars
+            // Fetch all non-fork repositories and sort by stars
             $repos = $this->fetchAllRepositories();
         }
 
@@ -73,7 +73,11 @@ class Repositories extends Component
                 $response = Http::withToken($this->githubToken)->get($api);
 
                 if ($response->successful()) {
-                    $repositories[] = $response->json();
+                    $repo = $response->json();
+                    // Only add if it's not a fork
+                    if (! ($repo['fork'] ?? false)) {
+                        $repositories[] = $repo;
+                    }
                 } else {
                     Log::warning("Failed to fetch GitHub repo: {$this->githubUser}/{$repoName}. Status: ".$response->status());
                 }
@@ -94,6 +98,7 @@ class Repositories extends Component
             $response = Http::withToken($this->githubToken)
                 ->get($api, [
                     'type'     => 'public',
+                    'fork'     => 'false',
                     'per_page' => 100, // Fetch maximum possible
                 ]);
 
