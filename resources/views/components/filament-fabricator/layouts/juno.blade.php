@@ -36,12 +36,28 @@
 
             .tab-button {
                 transition: all 0.2s ease-in-out;
-                border-bottom: 1px solid transparent;
-                margin-bottom: -1px;
+                border-bottom: 2px solid transparent;
             }
 
             .tab-button.active-tab {
                 border-bottom-color: currentColor;
+                background-color: rgba(0, 0, 0, 0.04);
+            }
+
+            .dark .tab-button.active-tab {
+                background-color: rgba(255, 255, 255, 0.04);
+            }
+
+            @media (min-width: 768px) {
+                .tab-button {
+                    border-bottom: none;
+                    border-left: 2px solid transparent;
+                }
+
+                .tab-button.active-tab {
+                    border-left-color: currentColor;
+                    border-bottom-color: transparent;
+                }
             }
         </style>
         <x-core.modules.over />
@@ -55,52 +71,43 @@
 
             <!-- Profile Section with generous top space -->
             <div class="mb-12 mt-4">
-                <x-themes.juno.profile :showCompany="false" :showEmail="false"
-                    avatarClass="mb-6 h-24 w-24 overflow-hidden rounded-full border-2 border-secondary-300 dark:border-secondary-800 md:h-36 md:w-36 object-cover"
-                    containerClass="max-w-2xl mx-auto"
-                    downloadButtonClass="inline-flex items-center gap-2 rounded-md border border-secondary-800 px-4 py-2 hover:border-secondary-700 dark:border-secondary-800/50 dark:hover:border-secondary-700 transition-colors"
-                    infoContainerClass="space-y-2"
-                    infoItemClass="flex items-center justify-center gap-2 text-sm dark:text-secondary-400"
-                    jobPositionClass="mt-1 text-sm dark:text-secondary-400"
-                    nameClass="text-lg font-medium dark:text-secondary-100"
-                    skillItemClass="rounded-md border border-secondary-300 px-2 py-1 text-xs dark:border-secondary-700/50"
-                    skillsContainerClass="max-w-lg mx-auto" socialContainerClass="space-x-4" />
+                <x-themes.juno.profile :showCompany="false" :showEmail="false" />
             </div>
 
             <!-- Tabs System -->
-            <div class="pt-6">
+            <div class="flex flex-col pt-6 md:flex-row">
                 <!-- Tabs Header -->
                 <div
-                    class="mb-12 flex justify-center space-x-8 border-b border-secondary-200 dark:border-secondary-800">
+                    class="mb-6 flex min-w-0 space-x-4 overflow-x-auto border-b border-secondary-200 pr-0 dark:border-secondary-800 md:mb-12 md:min-w-[120px] md:flex-col md:space-x-0 md:space-y-2 md:border-b-0 md:pr-8">
                     <button
-                        class="tab-button active-tab flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-900 dark:text-secondary-100"
+                        class="tab-button active-tab whitespace-nowrap px-3 py-2 text-left text-xs text-secondary-900 dark:text-secondary-100"
                         id="repositories-tab" onclick="switchTab('repositories')">
-                        <x-ui.ionicon icon="code-outline" /> Repositories
+                        Repositories
                     </button>
                     <button
-                        class="tab-button flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button whitespace-nowrap px-3 py-2 text-left text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="projects-tab" onclick="switchTab('projects')">
-                        <x-ui.ionicon icon="images-outline" /> Projects
+                        Projects
                     </button>
                     <button
-                        class="tab-button flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button whitespace-nowrap px-3 py-2 text-left text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="notes-tab" onclick="switchTab('notes')">
-                        <x-ui.ionicon icon="document-text-outline" /> Notes
+                        Notes
                     </button>
                     <button
-                        class="tab-button flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button whitespace-nowrap px-3 py-2 text-left text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="about-tab" onclick="switchTab('about')">
-                        <x-ui.ionicon icon="person-outline" /> About Me
+                        About Me
                     </button>
                     <button
-                        class="tab-button flex items-center gap-2 px-4 py-4 pb-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button whitespace-nowrap px-3 py-2 text-left text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="contact-tab" onclick="switchTab('contact')">
-                        <x-ui.ionicon icon="mail-outline" /> Contact
+                        Contact
                     </button>
                 </div>
 
                 <!-- Tabs Content -->
-                <div class="tab-content">
+                <div class="tab-content flex-1 md:pl-12">
                     <!-- Repositories Tab -->
                     <x-themes.juno.repositories :githubUser="'mviniciusca'" :repoQuantity="9" />
 

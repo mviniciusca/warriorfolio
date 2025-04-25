@@ -22,16 +22,6 @@ class Profile extends Component
         public bool $showSkills = true,
         public bool $showSocial = true,
         public bool $showResume = true,
-        public ?string $containerClass = '',
-        public ?string $avatarClass = '',
-        public ?string $nameClass = '',
-        public ?string $jobPositionClass = '',
-        public ?string $infoContainerClass = '',
-        public ?string $infoItemClass = '',
-        public ?string $skillsContainerClass = '',
-        public ?string $skillItemClass = '',
-        public ?string $socialContainerClass = '',
-        public ?string $downloadButtonClass = ''
     ) {
     }
 
