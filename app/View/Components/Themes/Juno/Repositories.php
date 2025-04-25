@@ -8,11 +8,16 @@ use Illuminate\View\Component;
 
 class Repositories extends Component
 {
+    // public ?string $githubUsername; // GitHub username
+
+    public string $githubApiUrl = 'https://github.com/repositores/'; // GitHub API URL
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
+    public function __construct(public ?string $githubUser, public ?int $repoQuantity, public ?int $repoStars,
+    public ?int $repoForks, public ?string $repoName, public ?string $repoDescription
+    ) {
         //
     }
 
@@ -22,5 +27,17 @@ class Repositories extends Component
     public function render(): View|Closure|string
     {
         return view('components.themes.juno.repositories');
+    }
+
+    public function getRepositories()
+    {
+    }
+
+    public function githubUserData()
+    {
+    }
+
+    public function githubApiSettings()
+    {
     }
 }
