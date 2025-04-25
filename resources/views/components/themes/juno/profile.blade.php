@@ -17,9 +17,9 @@
                 </div>
 
                 @if ($data->profile->is_open_to_work)
-                    <div class="absolute bottom-2 left-1/2 -translate-x-1/2 transform">
+                    <div class="absolute bottom-1 left-1/2 -translate-x-1/2 transform">
                         <span
-                            class="inline-flex min-w-[110px] items-center justify-center border border-white/10 bg-white/80 px-3 py-1 text-xs font-medium text-secondary-900 backdrop-blur-sm dark:border-secondary-700/50 dark:bg-secondary-800/80 dark:text-secondary-100">
+                            class="inline-flex min-w-[110px] items-center justify-center border border-secondary-300/10 bg-secondary-100/80 px-3 py-1 text-xs font-medium text-secondary-900 backdrop-blur-sm dark:border-secondary-700/50 dark:bg-secondary-800/80 dark:text-secondary-100">
                             Open to Work
                         </span>
                     </div>
