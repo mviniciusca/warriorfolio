@@ -463,7 +463,7 @@
             <!-- Newsletter Section -->
             <div class="mt-16">
                 <x-newsletter.section :show_light="false"
-                    class="relative rounded-md border border-secondary-800 py-16" />
+                    class="bg-dots relative rounded-md border border-secondary-200/50 py-16 dark:border-secondary-900 dark:bg-transparent" />
             </div>
 
             <!-- Footer -->
