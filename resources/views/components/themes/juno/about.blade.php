@@ -14,7 +14,8 @@
                 <x-ui.ionicon icon="rocket-outline" />
                 bio
             </h3>
-            <div class="mt-6 text-sm leading-relaxed text-secondary-600 dark:text-secondary-400 [&>p:first-child]:mt-0 [&>p]:mt-4">
+            <div
+                class="mt-6 text-sm leading-relaxed text-secondary-600 dark:text-secondary-400 [&>p:first-child]:mt-0 [&>p]:mt-4">
                 {!! $data->profile->about !!}
             </div>
 
