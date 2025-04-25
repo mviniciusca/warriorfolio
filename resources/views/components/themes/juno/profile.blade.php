@@ -30,7 +30,7 @@
         {{-- Nome e Status --}}
         <div class="text-center">
             @if ($showName)
-                <div class="mb-1 flex items-center justify-center">
+                <div class="mb-2 flex items-center justify-center">
                     <h2 class="text-lg font-medium leading-tight">{{ $data->name }}</h2>
                 </div>
             @endif
@@ -53,7 +53,7 @@
     {{-- Social Network --}}
     @if ($showSocial)
         <div class="mt-6 flex justify-center">
-            <x-ui.social-network justify="center" />
+            <x-ui.social-network justify="center" size="big" />
         </div>
     @endif
 
