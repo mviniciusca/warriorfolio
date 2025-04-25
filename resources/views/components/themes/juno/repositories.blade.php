@@ -8,7 +8,7 @@
             <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">A collection of my public repositories and
                 contributions</p>
         </div>
-        <a class="inline-flex items-center gap-2 rounded-md border border-secondary-300 bg-white px-4 py-2 text-sm text-xs font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
+        <a class="inline-flex items-center gap-2 rounded-md border border-secondary-300 bg-white px-4 py-2 text-xs font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
             href="{{ $githubUser ? 'https://github.com/' . $githubUser : '#' }}">
             <x-ui.ionicon class="h-5 w-5" icon="logo-github" />
             Follow
@@ -20,8 +20,8 @@
         class="mb-8 overflow-hidden rounded-lg border border-secondary-200 bg-white p-4 dark:border-secondary-800/50 dark:bg-secondary-900/50">
         <img alt="GitHub Contributions Graph" class="w-full dark:hidden"
             src="https://ghchart.rshah.org/{{ $githubUser }}">
-        <img alt="GitHub Contributions Graph" class="hidden w-full opacity-80 dark:block"
-            src="https://ghchart.rshah.org/000/{{ $githubUser }}">
+        <img alt="GitHub Contributions Graph" class="hidden w-full opacity-90 grayscale invert dark:block"
+            src="https://ghchart.rshah.org/{{ $githubUser }}">
     </div>
 
     <div class="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3">
