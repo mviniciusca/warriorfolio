@@ -1,22 +1,29 @@
-@props(['githubUser' => null, 'repositories' => []]) {{-- Add repositories prop with default empty array --}}
+@props(['githubUser' => null, 'repositories' => []])
 
 <!-- Repositories Tab -->
 <div class="tab-pane" id="repositories-content">
     <div class="mb-8 flex items-center justify-between">
         <div>
-            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Open Source
-                Projects</h2>
-            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">A collection of my
-                public repositories and contributions</p>
+            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Open Source Projects</h2>
+            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">A collection of my public repositories and
+                contributions</p>
         </div>
-        {{-- ...existing code... --}}
-        {{-- Make Follow link dynamic --}}
         <a class="inline-flex items-center gap-2 rounded-md border border-secondary-300 bg-white px-4 py-2 text-sm text-xs font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
             href="{{ $githubUser ? 'https://github.com/' . $githubUser : '#' }}">
             <x-ui.ionicon class="h-5 w-5" icon="logo-github" />
             Follow
         </a>
     </div>
+
+    <!-- GitHub Contribution Graph -->
+    <div
+        class="mb-8 overflow-hidden rounded-lg border border-secondary-200 bg-white p-4 dark:border-secondary-800/50 dark:bg-secondary-900/50">
+        <img alt="GitHub Contributions Graph" class="w-full dark:hidden"
+            src="https://ghchart.rshah.org/{{ $githubUser }}">
+        <img alt="GitHub Contributions Graph" class="hidden w-full dark:block"
+            src="https://ghchart.rshah.org/gradient/{{ $githubUser }}">
+    </div>
+
     <div class="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3">
         @if (!empty($repositories))
             @foreach ($repositories as $repository)
@@ -44,7 +51,7 @@
                         </p>
                     </div>
                     <div class="mt-2 flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
+                        <divgp class="flex items-center space-x-2">
                             {{-- Stars --}}
                             <span class="text-xs text-secondary-500 dark:text-secondary-500" title="Stars">
                                 <svg class="inline h-3 w-3" fill="none" height="16" stroke-linecap="round"
@@ -69,7 +76,7 @@
                                 </svg>
                                 {{ $repository['forks_count'] ?? 0 }}
                             </span>
-                        </div>
+                        </divgp>
                         {{-- Language --}}
                         @if (!empty($repository['language']))
                             <span
