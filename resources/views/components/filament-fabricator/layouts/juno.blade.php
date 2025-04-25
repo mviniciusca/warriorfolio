@@ -55,7 +55,7 @@
 
             <!-- Profile Section with generous top space -->
             <div class="mb-12 mt-12">
-                <x-profile :showCompany="false" :showEmail="false"
+                <x-themes.juno.profile :showCompany="false" :showEmail="false"
                     avatarClass="mb-6 h-24 w-24 overflow-hidden rounded-full border-2 border-secondary-300 dark:border-secondary-800 md:h-36 md:w-36 object-cover"
                     containerClass="max-w-2xl mx-auto"
                     downloadButtonClass="inline-flex items-center gap-2 rounded-md border border-secondary-800 px-4 py-2 hover:border-secondary-700 dark:border-secondary-800/50 dark:hover:border-secondary-700 transition-colors"

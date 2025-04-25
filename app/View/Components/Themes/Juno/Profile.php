@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Themes\Juno;
 
 use App\Models\User;
 use Closure;
@@ -40,7 +40,7 @@ class Profile extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.profile', [
+        return view('components.themes.juno.profile', [
             'data' => User::with('profile')->first(),
         ]);
     }
