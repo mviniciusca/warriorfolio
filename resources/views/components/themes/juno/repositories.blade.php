@@ -62,7 +62,7 @@
                     {{-- Language --}}
                     @if (!empty($repository['language']))
                         <span
-                            class="rounded bg-secondary-100 px-1.5 py-0.5 text-xs text-secondary-800 dark:bg-secondary-900/50 dark:text-secondary-300">
+                            class="rounded bg-secondary-100 px-1.5 py-0.5 text-xs text-secondary-800 dark:bg-secondary-700/50 dark:text-secondary-300">
                             {{ $repository['language'] }}
                         </span>
                     @endif
