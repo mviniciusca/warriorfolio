@@ -5,6 +5,18 @@
     <div class="flex flex-col items-center">
         @if ($showAvatar)
             <div class="relative mb-8">
+                @if ($data->profile->is_open_to_work)
+                    <div class="absolute -right-0.5 top-4 z-10">
+                        <span class="flex h-3 w-3">
+                            <span class="relative inline-flex h-3 w-3">
+                                <span
+                                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                                <span
+                                    class="relative inline-flex h-3 w-3 rounded-full bg-green-500 ring-4 ring-green-400/70 ring-offset-2 dark:ring-green-400/50"></span>
+                            </span>
+                        </span>
+                    </div>
+                @endif
                 <div class="relative">
                     {{-- Imagem do perfil sem borda --}}
                     @if ($data->profile->avatar)
@@ -15,15 +27,6 @@
                             src="{{ asset('img/core/profile-picture.png') }}" />
                     @endif
                 </div>
-
-                @if ($data->profile->is_open_to_work)
-                    <div class="absolute bottom-1 left-1/2 -translate-x-1/2 transform">
-                        <span
-                            class="inline-flex min-w-[110px] items-center justify-center border border-secondary-300/10 bg-secondary-100/80 px-3 py-1 text-xs font-medium text-secondary-900 backdrop-blur-sm dark:border-secondary-700/50 dark:bg-secondary-800/80 dark:text-secondary-100">
-                            Open to Work
-                        </span>
-                    </div>
-                @endif
             </div>
         @endif
 
@@ -91,17 +94,6 @@
                     </span>
                 @endforeach
             </div>
-        </div>
-    @endif
-
-    {{-- Download CV --}}
-    @if ($showResume && $data->profile->is_downloadable && $data->profile->document)
-        <div class="mt-8 flex justify-center">
-            <a href="{{ asset('storage/' . $data->profile->document) }}" target="_blank">
-                <x-ui.button :icon="'download-outline'" size='sm' style='outlined'>
-                    {{ __('Download CV') }}
-                </x-ui.button>
-            </a>
         </div>
     @endif
 </div>
