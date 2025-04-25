@@ -21,9 +21,8 @@
                         <h3 class="text-sm font-medium text-white">{{ $item->title }}</h3>
                         <p class="mt-1 text-xs text-gray-300">{{ ucfirst($item->project->category->name) }}</p>
                     </div>
+                </div>
             </a>
-
         </div>
-</div>
-@endforeach
+    @endforeach
 </div>

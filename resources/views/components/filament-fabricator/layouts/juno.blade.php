@@ -101,425 +101,435 @@
 
                 <!-- Tabs Content -->
                 <div class="tab-content">
+                    <!-- Repositories Tab -->
                     <x-themes.juno.repositories :githubUser="'mviniciusca'" />
+
                     <!-- Projects Tab -->
                     <div class="tab-pane hidden" id="projects-content">
                         <x-themes.juno.projects />
                     </div>
-                </div>
-                <!-- Notes Tab -->
-                <div class="tab-pane hidden" id="notes-content">
-                    <div class="mb-8 flex items-center justify-between">
-                        <div>
-                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Latest
-                                Articles</h2>
-                            <p class="cdark:text-secondary-400 mt-1 text-xs text-secondary-600">Thoughts and
-                                tutorials on development, design, and technology</p>
+
+                    <!-- Notes Tab -->
+                    <div class="tab-pane hidden" id="notes-content">
+                        <div class="mb-8 flex items-center justify-between">
+                            <div>
+                                <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Latest
+                                    Articles</h2>
+                                <p class="cdark:text-secondary-400 mt-1 text-xs text-secondary-600">Thoughts and
+                                    tutorials on development, design, and technology</p>
+                            </div>
+                            <a class="inline-flex items-center gap-2 rounded-md border border-secondary-300 bg-white px-4 py-2 text-sm font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
+                                href="/blog">
+                                <x-ui.ionicon class="h-5 w-5" icon="newspaper-outline" />
+                                View All Articles
+                            </a>
                         </div>
-                        <a class="inline-flex items-center gap-2 rounded-md border border-secondary-300 bg-white px-4 py-2 text-sm font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
-                            href="/blog">
-                            <x-ui.ionicon class="h-5 w-5" icon="newspaper-outline" />
-                            View All Articles
-                        </a>
-                    </div>
-                    <div class="grid gap-4">
-                        <article
-                            class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50">
-                            <div class="flex flex-col md:flex-row">
-                                <div class="relative h-40 w-full md:w-56">
-                                    <img alt="Code on screen" class="h-full w-full object-cover"
-                                        src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80">
-                                </div>
-                                <div class="flex flex-1 flex-col justify-between p-4">
-                                    <div class="flex-1">
-                                        <div class="flex items-center justify-between">
-                                            <span class="text-xs text-secondary-500 dark:text-secondary-400">April
-                                                24, 2025</span>
-                                            <span
-                                                class="inline-flex items-center rounded-full border border-secondary-200 px-2 py-0.5 text-xs dark:border-secondary-800">
-                                                Development
-                                            </span>
+                        <div class="grid gap-4">
+                            <article
+                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50">
+                                <div class="flex flex-col md:flex-row">
+                                    <div class="relative h-40 w-full md:w-56">
+                                        <img alt="Code on screen" class="h-full w-full object-cover"
+                                            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80">
+                                    </div>
+                                    <div class="flex flex-1 flex-col justify-between p-4">
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-xs text-secondary-500 dark:text-secondary-400">April
+                                                    24, 2025</span>
+                                                <span
+                                                    class="inline-flex items-center rounded-full border border-secondary-200 px-2 py-0.5 text-xs dark:border-secondary-800">
+                                                    Development
+                                                </span>
+                                            </div>
+                                            <div class="mt-2">
+                                                <h3
+                                                    class="text-base font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Building Modern Web Applications with React and TypeScript
+                                                </h3>
+                                                <p
+                                                    class="mt-1 line-clamp-2 text-xs text-secondary-600 dark:text-secondary-400">
+                                                    Explore the powerful combination of React and TypeScript for
+                                                    building robust web applications. Learn best practices, common
+                                                    patterns, and advanced techniques.
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div class="mt-2">
-                                            <h3
-                                                class="text-base font-medium text-secondary-900 dark:text-secondary-100">
-                                                Building Modern Web Applications with React and TypeScript
-                                            </h3>
-                                            <p
-                                                class="mt-1 line-clamp-2 text-xs text-secondary-600 dark:text-secondary-400">
-                                                Explore the powerful combination of React and TypeScript for
-                                                building robust web applications. Learn best practices, common
-                                                patterns, and advanced techniques.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="mt-3">
-                                        <a class="inline-flex items-center text-xs font-medium text-secondary-900 hover:text-secondary-700 dark:text-secondary-100 dark:hover:text-secondary-300"
-                                            href="#">
-                                            Read more
-                                            <svg class="ml-1 h-3 w-3" fill="none" height="24"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                stroke="currentColor" viewBox="0 0 24 24" width="24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5 12h14"></path>
-                                                <path d="M12 5l7 7-7 7"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article
-                            class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50">
-                            <div class="flex flex-col md:flex-row">
-                                <div class="relative h-40 w-full md:w-56">
-                                    <img alt="Server rack" class="h-full w-full object-cover"
-                                        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80">
-                                </div>
-                                <div class="flex flex-1 flex-col justify-between p-4">
-                                    <div class="flex-1">
-                                        <div class="flex items-center justify-between">
-                                            <span class="text-xs text-secondary-500 dark:text-secondary-400">April
-                                                20, 2025</span>
-                                            <span
-                                                class="inline-flex items-center rounded-full border border-secondary-200 px-2 py-0.5 text-xs dark:border-secondary-800">
-                                                DevOps
-                                            </span>
-                                        </div>
-                                        <div class="mt-2">
-                                            <h3
-                                                class="text-base font-medium text-secondary-900 dark:text-secondary-100">
-                                                Docker and Kubernetes: A Practical Guide
-                                            </h3>
-                                            <p
-                                                class="mt-1 line-clamp-2 text-xs text-secondary-600 dark:text-secondary-400">
-                                                Deep dive into containerization and orchestration. Learn how to
-                                                deploy, scale, and manage applications using Docker and
-                                                Kubernetes.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="mt-3">
-                                        <a class="inline-flex items-center text-xs font-medium text-secondary-900 hover:text-secondary-700 dark:text-secondary-100 dark:hover:text-secondary-300"
-                                            href="#">
-                                            Read more
-                                            <svg class="ml-1 h-3 w-3" fill="none" height="24"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                stroke="currentColor" viewBox="0 0 24 24" width="24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5 12h14"></path>
-                                                <path d="M12 5l7 7-7 7"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article
-                            class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50">
-                            <div class="flex flex-col md:flex-row">
-                                <div class="relative h-40 w-full md:w-56">
-                                    <img alt="Matrix code" class="h-full w-full object-cover"
-                                        src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80">
-                                </div>
-                                <div class="flex flex-1 flex-col justify-between p-4">
-                                    <div class="flex-1">
-                                        <div class="flex items-center justify-between">
-                                            <span class="text-xs text-secondary-500 dark:text-secondary-400">April
-                                                15, 2025</span>
-                                            <span
-                                                class="inline-flex items-center rounded-full border border-secondary-200 px-2 py-0.5 text-xs dark:border-secondary-800">
-                                                Security
-                                            </span>
-                                        </div>
-                                        <div class="mt-2">
-                                            <h3
-                                                class="text-base font-medium text-secondary-900 dark:text-secondary-100">
-                                                Web Security Best Practices for Modern Applications
-                                            </h3>
-                                            <p
-                                                class="mt-1 line-clamp-2 text-xs text-secondary-600 dark:text-secondary-400">
-                                                Essential security practices for protecting web applications.
-                                                From
-                                                XSS prevention to CSRF protection, learn how to keep your
-                                                applications secure.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="mt-3">
-                                        <a class="inline-flex items-center text-xs font-medium text-secondary-900 hover:text-secondary-700 dark:text-secondary-100 dark:hover:text-secondary-300"
-                                            href="#">
-                                            Read more
-                                            <svg class="ml-1 h-3 w-3" fill="none" height="24"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                stroke="currentColor" viewBox="0 0 24 24" width="24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5 12h14"></path>
-                                                <path d="M12 5l7 7-7 7"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-                <!-- About Tab -->
-                <div class="tab-pane hidden" id="about-content">
-                    <div class="mb-8">
-                        <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">About Me
-                        </h2>
-                        <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Full-stack developer
-                            exploring the digital frontier</p>
-                    </div>
-                    <div class="grid gap-8 md:grid-cols-2">
-                        <!-- Bio Column -->
-                        <div class="space-y-6">
-                            <div class="rounded-lg p-6">
-                                <h3 class="text-sm font-medium text-secondary-900 dark:text-secondary-100">bio
-                                </h3>
-                                <div class="mt-4 space-y-4 text-sm text-secondary-600 dark:text-secondary-400">
-                                    <p>🚀 Full Stack Explorer navigating the digital cosmos</p>
-
-                                    <div>
-                                        <p class="mb-2">Currently orbiting:</p>
-                                        <ul class="space-y-1 pl-4">
-                                            <li>• Backend Engineering with Laravel</li>
-                                            <li>• Frontend Development with React</li>
-                                            <li>• System Architecture Design</li>
-                                            <li>• Performance Optimization</li>
-                                        </ul>
-                                    </div>
-
-                                    <div>
-                                        <p class="mb-2">Mission Control:</p>
-                                        <ul class="space-y-1 pl-4">
-                                            <li>• TypeScript & JavaScript</li>
-                                            <li>• PHP & Python</li>
-                                            <li>• Docker & AWS</li>
-                                            <li>• Git Version Control</li>
-                                        </ul>
-                                    </div>
-
-                                    <p>⚡ Transforming coffee into code since 2015</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Education Timeline Column -->
-                        <div class="space-y-6">
-                            <div class="rounded-lg">
-                                <h3 class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                    certifications & courses</h3>
-                            </div>
-                            <div class="relative">
-                                <div class="space-y-4">
-                                    <!-- Timeline Item 1 -->
-                                    <div class="relative ml-8">
-                                        <div
-                                            class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
-                                            <span
-                                                class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2023
-                                                - 2024</span>
-                                            <h3
-                                                class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                                AWS Cloud Practitioner</h3>
-                                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">
-                                                Amazon
-                                                Web Services</p>
-                                            <span
-                                                class="mt-2 inline-flex items-center rounded-lg border border-green-200 px-2 py-0.5 text-xs font-medium text-green-600 dark:border-green-900 dark:text-green-400">
-                                                <x-ui.ionicon class="mr-1" icon="checkmark-circle-outline" />
-                                                Completed
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Timeline Item 2 -->
-                                    <div class="relative ml-8">
-                                        <div
-                                            class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
-                                            <span
-                                                class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2024</span>
-                                            <h3
-                                                class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                                Laravel Advanced Concepts</h3>
-                                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">
-                                                Laravel
-                                                Academy</p>
-                                            <span
-                                                class="mt-2 inline-flex items-center rounded-lg border border-yellow-200 px-2 py-0.5 text-xs font-medium text-yellow-600 dark:border-yellow-900 dark:text-yellow-400">
-                                                <x-ui.ionicon class="mr-1" icon="time-outline" />
-                                                In Progress
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Timeline Item 3 -->
-                                    <div class="relative ml-8">
-                                        <div
-                                            class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
-                                            <span
-                                                class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2024</span>
-                                            <h3
-                                                class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                                Vue.js 3 Masterclass</h3>
-                                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">
-                                                Vue
-                                                School</p>
-                                            <span
-                                                class="mt-2 inline-flex items-center rounded-lg border border-blue-200 px-2 py-0.5 text-xs font-medium text-blue-600 dark:border-blue-900 dark:text-blue-400">
-                                                <x-ui.ionicon class="mr-1" icon="calendar-outline" />
-                                                Upcoming
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Timeline Item 4 -->
-                                    <div class="relative ml-8">
-                                        <div
-                                            class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
-                                            <span
-                                                class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2024</span>
-                                            <h3
-                                                class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                                React Native for Mobile Development</h3>
-                                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">
-                                                React
-                                                Training</p>
-                                            <span
-                                                class="mt-2 inline-flex items-center rounded-lg border border-red-200 px-2 py-0.5 text-xs font-medium text-red-600 dark:border-red-900 dark:text-red-400">
-                                                <x-ui.ionicon class="mr-1" icon="close-circle-outline" />
-                                                Cancelled
-                                            </span>
+                                        <div class="mt-3">
+                                            <a class="inline-flex items-center text-xs font-medium text-secondary-900 hover:text-secondary-700 dark:text-secondary-100 dark:hover:text-secondary-300"
+                                                href="#">
+                                                Read more
+                                                <svg class="ml-1 h-3 w-3" fill="none" height="24"
+                                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    stroke="currentColor" viewBox="0 0 24 24" width="24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5 12h14"></path>
+                                                    <path d="M12 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
+
+                            <article
+                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50">
+                                <div class="flex flex-col md:flex-row">
+                                    <div class="relative h-40 w-full md:w-56">
+                                        <img alt="Server rack" class="h-full w-full object-cover"
+                                            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80">
+                                    </div>
+                                    <div class="flex flex-1 flex-col justify-between p-4">
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-xs text-secondary-500 dark:text-secondary-400">April
+                                                    20, 2025</span>
+                                                <span
+                                                    class="inline-flex items-center rounded-full border border-secondary-200 px-2 py-0.5 text-xs dark:border-secondary-800">
+                                                    DevOps
+                                                </span>
+                                            </div>
+                                            <div class="mt-2">
+                                                <h3
+                                                    class="text-base font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Docker and Kubernetes: A Practical Guide
+                                                </h3>
+                                                <p
+                                                    class="mt-1 line-clamp-2 text-xs text-secondary-600 dark:text-secondary-400">
+                                                    Deep dive into containerization and orchestration. Learn how to
+                                                    deploy, scale, and manage applications using Docker and
+                                                    Kubernetes.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <a class="inline-flex items-center text-xs font-medium text-secondary-900 hover:text-secondary-700 dark:text-secondary-100 dark:hover:text-secondary-300"
+                                                href="#">
+                                                Read more
+                                                <svg class="ml-1 h-3 w-3" fill="none" height="24"
+                                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    stroke="currentColor" viewBox="0 0 24 24" width="24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5 12h14"></path>
+                                                    <path d="M12 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article
+                                class="overflow-hidden rounded-md border border-secondary-200 transition-all hover:border-secondary-300 dark:border-secondary-800/50 dark:bg-secondary-900/50">
+                                <div class="flex flex-col md:flex-row">
+                                    <div class="relative h-40 w-full md:w-56">
+                                        <img alt="Matrix code" class="h-full w-full object-cover"
+                                            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80">
+                                    </div>
+                                    <div class="flex flex-1 flex-col justify-between p-4">
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-xs text-secondary-500 dark:text-secondary-400">April
+                                                    15, 2025</span>
+                                                <span
+                                                    class="inline-flex items-center rounded-full border border-secondary-200 px-2 py-0.5 text-xs dark:border-secondary-800">
+                                                    Security
+                                                </span>
+                                            </div>
+                                            <div class="mt-2">
+                                                <h3
+                                                    class="text-base font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Web Security Best Practices for Modern Applications
+                                                </h3>
+                                                <p
+                                                    class="mt-1 line-clamp-2 text-xs text-secondary-600 dark:text-secondary-400">
+                                                    Essential security practices for protecting web applications.
+                                                    From
+                                                    XSS prevention to CSRF protection, learn how to keep your
+                                                    applications secure.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <a class="inline-flex items-center text-xs font-medium text-secondary-900 hover:text-secondary-700 dark:text-secondary-100 dark:hover:text-secondary-300"
+                                                href="#">
+                                                Read more
+                                                <svg class="ml-1 h-3 w-3" fill="none" height="24"
+                                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    stroke="currentColor" viewBox="0 0 24 24" width="24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5 12h14"></path>
+                                                    <path d="M12 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
                     </div>
-                </div>
 
-                <!-- Contact Tab -->
-                <div class="tab-pane hidden" id="contact-content">
-                    <div class="mb-8">
-                        <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Get in
-                            Touch
-                        </h2>
-                        <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Have a project in
-                            mind?
-                            Let's work together</p>
+                    <!-- About Tab -->
+                    <div class="tab-pane hidden" id="about-content">
+                        <div class="mb-8">
+                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">About Me
+                            </h2>
+                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Full-stack developer
+                                exploring the digital frontier</p>
+                        </div>
+                        <div class="grid gap-8 md:grid-cols-2">
+                            <!-- Bio Column -->
+                            <div class="space-y-6">
+                                <div class="rounded-lg p-6">
+                                    <h3 class="text-sm font-medium text-secondary-900 dark:text-secondary-100">bio
+                                    </h3>
+                                    <div class="mt-4 space-y-4 text-sm text-secondary-600 dark:text-secondary-400">
+                                        <p>🚀 Full Stack Explorer navigating the digital cosmos</p>
+
+                                        <div>
+                                            <p class="mb-2">Currently orbiting:</p>
+                                            <ul class="space-y-1 pl-4">
+                                                <li>• Backend Engineering with Laravel</li>
+                                                <li>• Frontend Development with React</li>
+                                                <li>• System Architecture Design</li>
+                                                <li>• Performance Optimization</li>
+                                            </ul>
+                                        </div>
+
+                                        <div>
+                                            <p class="mb-2">Mission Control:</p>
+                                            <ul class="space-y-1 pl-4">
+                                                <li>• TypeScript & JavaScript</li>
+                                                <li>• PHP & Python</li>
+                                                <li>• Docker & AWS</li>
+                                                <li>• Git Version Control</li>
+                                            </ul>
+                                        </div>
+
+                                        <p>⚡ Transforming coffee into code since 2015</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Education Timeline Column -->
+                            <div class="space-y-6">
+                                <div class="rounded-lg">
+                                    <h3 class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                        certifications & courses</h3>
+                                </div>
+                                <div class="relative">
+                                    <div class="space-y-4">
+                                        <!-- Timeline Item 1 -->
+                                        <div class="relative ml-8">
+                                            <div
+                                                class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
+                                                <span
+                                                    class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2023
+                                                    - 2024</span>
+                                                <h3
+                                                    class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                    AWS Cloud Practitioner</h3>
+                                                <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">
+                                                    Amazon
+                                                    Web Services</p>
+                                                <span
+                                                    class="mt-2 inline-flex items-center rounded-lg border border-green-200 px-2 py-0.5 text-xs font-medium text-green-600 dark:border-green-900 dark:text-green-400">
+                                                    <x-ui.ionicon class="mr-1" icon="checkmark-circle-outline" />
+                                                    Completed
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Timeline Item 2 -->
+                                        <div class="relative ml-8">
+                                            <div
+                                                class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
+                                                <span
+                                                    class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2024</span>
+                                                <h3
+                                                    class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Laravel Advanced Concepts</h3>
+                                                <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">
+                                                    Laravel
+                                                    Academy</p>
+                                                <span
+                                                    class="mt-2 inline-flex items-center rounded-lg border border-yellow-200 px-2 py-0.5 text-xs font-medium text-yellow-600 dark:border-yellow-900 dark:text-yellow-400">
+                                                    <x-ui.ionicon class="mr-1" icon="time-outline" />
+                                                    In Progress
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Timeline Item 3 -->
+                                        <div class="relative ml-8">
+                                            <div
+                                                class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
+                                                <span
+                                                    class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2024</span>
+                                                <h3
+                                                    class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Vue.js 3 Masterclass</h3>
+                                                <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">
+                                                    Vue
+                                                    School</p>
+                                                <span
+                                                    class="mt-2 inline-flex items-center rounded-lg border border-blue-200 px-2 py-0.5 text-xs font-medium text-blue-600 dark:border-blue-900 dark:text-blue-400">
+                                                    <x-ui.ionicon class="mr-1" icon="calendar-outline" />
+                                                    Upcoming
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Timeline Item 4 -->
+                                        <div class="relative ml-8">
+                                            <div
+                                                class="rounded-lg border border-secondary-200 p-4 dark:border-secondary-800">
+                                                <span
+                                                    class="text-xs font-medium text-secondary-500 dark:text-secondary-400">2024</span>
+                                                <h3
+                                                    class="mt-1 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                    React Native for Mobile Development</h3>
+                                                <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">
+                                                    React
+                                                    Training</p>
+                                                <span
+                                                    class="mt-2 inline-flex items-center rounded-lg border border-red-200 px-2 py-0.5 text-xs font-medium text-red-600 dark:border-red-900 dark:text-red-400">
+                                                    <x-ui.ionicon class="mr-1" icon="close-circle-outline" />
+                                                    Cancelled
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="grid gap-8 md:grid-cols-2">
-                        <!-- Contact Info Column -->
-                        <div class="space-y-6">
+                    <!-- Contact Tab -->
+                    <div class="tab-pane hidden" id="contact-content">
+                        <div class="mb-8">
+                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Get in
+                                Touch
+                            </h2>
+                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Have a project in
+                                mind?
+                                Let's work together</p>
+                        </div>
+
+                        <div class="grid gap-8 md:grid-cols-2">
+                            <!-- Contact Info Column -->
+                            <div class="space-y-6">
+                                <div class="p-6">
+                                    <h3 class="mb-4 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                        Company Information</h3>
+                                    <div class="space-y-4">
+                                        <div class="flex items-start gap-3">
+                                            <x-ui.ionicon
+                                                class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
+                                                icon="location-outline" />
+                                            <div>
+                                                <p
+                                                    class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Address</p>
+                                                <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
+                                                    123 Developer Street<br>
+                                                    Tech District<br>
+                                                    San Francisco, CA 94107
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <x-ui.ionicon
+                                                class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
+                                                icon="call-outline" />
+                                            <div>
+                                                <p
+                                                    class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Phone</p>
+                                                <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
+                                                    +1 (555) 123-4567</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <x-ui.ionicon
+                                                class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
+                                                icon="mail-outline" />
+                                            <div>
+                                                <p
+                                                    class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Email</p>
+                                                <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
+                                                    contact@company.com</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <x-ui.ionicon
+                                                class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
+                                                icon="time-outline" />
+                                            <div>
+                                                <p
+                                                    class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                                                    Business Hours</p>
+                                                <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
+                                                    Monday - Friday: 9:00 AM - 6:00 PM<br>
+                                                    Saturday: 10:00 AM - 4:00 PM<br>
+                                                    Sunday: Closed
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact Form Column -->
                             <div class="p-6">
-                                <h3 class="mb-4 text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                    Company Information</h3>
-                                <div class="space-y-4">
-                                    <div class="flex items-start gap-3">
-                                        <x-ui.ionicon class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
-                                            icon="location-outline" />
-                                        <div>
-                                            <p class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                                Address</p>
-                                            <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
-                                                123 Developer Street<br>
-                                                Tech District<br>
-                                                San Francisco, CA 94107
-                                            </p>
-                                        </div>
+                                <form class="space-y-5">
+                                    <div>
+                                        <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
+                                            for="name">Name</label>
+                                        <input
+                                            class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
+                                            id="name" placeholder="Your name" type="text">
                                     </div>
-                                    <div class="flex items-start gap-3">
-                                        <x-ui.ionicon class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
-                                            icon="call-outline" />
-                                        <div>
-                                            <p class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                                Phone</p>
-                                            <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
-                                                +1 (555) 123-4567</p>
-                                        </div>
+                                    <div>
+                                        <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
+                                            for="email">Email</label>
+                                        <input
+                                            class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
+                                            id="email" placeholder="your@email.com" type="email">
                                     </div>
-                                    <div class="flex items-start gap-3">
-                                        <x-ui.ionicon class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
-                                            icon="mail-outline" />
-                                        <div>
-                                            <p class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                                Email</p>
-                                            <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
-                                                contact@company.com</p>
-                                        </div>
+                                    <div>
+                                        <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
+                                            for="subject">Subject</label>
+                                        <input
+                                            class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
+                                            id="subject" placeholder="What's this about?" type="text">
                                     </div>
-                                    <div class="flex items-start gap-3">
-                                        <x-ui.ionicon class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
-                                            icon="time-outline" />
-                                        <div>
-                                            <p class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                                Business Hours</p>
-                                            <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
-                                                Monday - Friday: 9:00 AM - 6:00 PM<br>
-                                                Saturday: 10:00 AM - 4:00 PM<br>
-                                                Sunday: Closed
-                                            </p>
-                                        </div>
+                                    <div>
+                                        <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
+                                            for="message">Message</label>
+                                        <textarea
+                                            class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
+                                            id="message" placeholder="Your message" rows="4"></textarea>
                                     </div>
-                                </div>
+                                    <button
+                                        class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
+                                        type="submit">
+                                        Send message
+                                    </button>
+                                </form>
                             </div>
-                        </div>
-
-                        <!-- Contact Form Column -->
-                        <div class="p-6">
-                            <form class="space-y-5">
-                                <div>
-                                    <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
-                                        for="name">Name</label>
-                                    <input
-                                        class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
-                                        id="name" placeholder="Your name" type="text">
-                                </div>
-                                <div>
-                                    <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
-                                        for="email">Email</label>
-                                    <input
-                                        class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
-                                        id="email" placeholder="your@email.com" type="email">
-                                </div>
-                                <div>
-                                    <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
-                                        for="subject">Subject</label>
-                                    <input
-                                        class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
-                                        id="subject" placeholder="What's this about?" type="text">
-                                </div>
-                                <div>
-                                    <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
-                                        for="message">Message</label>
-                                    <textarea
-                                        class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
-                                        id="message" placeholder="Your message" rows="4"></textarea>
-                                </div>
-                                <button
-                                    class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
-                                    type="submit">
-                                    Send message
-                                </button>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Newsletter Section -->
-        <div class="mt-16">
-            <x-newsletter.section :show_light="false" />
-        </div>
+            <!-- Newsletter Section -->
+            <div class="mt-16">
+                <x-newsletter.section :show_light="false" />
+            </div>
 
-        <!-- Footer -->
+            <!-- Footer -->
         </div>
         <x-footer.section class="mt-16" />
         <x-header.body-scripts />
