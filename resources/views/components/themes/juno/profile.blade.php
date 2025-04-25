@@ -53,7 +53,7 @@
     {{-- Social Network --}}
     @if ($showSocial)
         <div class="mt-6 flex justify-center">
-            <x-ui.social-network justify="center" size="big" />
+            <x-ui.social-network justify="center" size="default" />
         </div>
     @endif
 
