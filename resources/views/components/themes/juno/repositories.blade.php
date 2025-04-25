@@ -19,9 +19,9 @@
     <div
         class="mb-8 overflow-hidden rounded-lg border border-secondary-200 bg-white p-4 dark:border-secondary-800/50 dark:bg-secondary-900/50">
         <img alt="GitHub Contributions Graph" class="w-full dark:hidden"
-            src="https://ghchart.rshah.org/a1a1aa/{{ $githubUser }}">
-        <img alt="GitHub Contributions Graph" class="hidden w-full dark:block"
-            src="https://ghchart.rshah.org/52525b/{{ $githubUser }}">
+            src="https://ghchart.rshah.org/{{ $githubUser }}">
+        <img alt="GitHub Contributions Graph" class="hidden w-full opacity-80 dark:block"
+            src="https://ghchart.rshah.org/000/{{ $githubUser }}">
     </div>
 
     <div class="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3">

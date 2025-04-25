@@ -102,7 +102,7 @@
                 <!-- Tabs Content -->
                 <div class="tab-content">
                     <!-- Repositories Tab -->
-                    <x-themes.juno.repositories :githubUser="'mviniciusca'" :repoQuantity="12" />
+                    <x-themes.juno.repositories :githubUser="'mviniciusca'" :repoQuantity="9" />
 
                     <!-- Projects Tab -->
                     <div class="tab-pane hidden" id="projects-content">
