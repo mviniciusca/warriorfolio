@@ -10,9 +10,11 @@
     <!-- Bio Column -->
     <div class="space-y-6">
         <div>
-            <h3 class="text-sm font-medium text-secondary-900 dark:text-secondary-100">bio</h3>
-            <div
-                class="mt-4 text-sm leading-relaxed text-secondary-600 dark:text-secondary-400 [&>p:first-child]:mt-0 [&>p]:mt-4">
+            <h3 class="flex items-center gap-2 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                <x-ui.ionicon icon="rocket-outline" />
+                bio
+            </h3>
+            <div class="mt-6 text-sm leading-relaxed text-secondary-600 dark:text-secondary-400 [&>p:first-child]:mt-0 [&>p]:mt-4">
                 {!! $data->profile->about !!}
             </div>
 
@@ -31,9 +33,12 @@
     <!-- Education Timeline Column -->
     <div class="space-y-6">
         <div>
-            <h3 class="text-sm font-medium text-secondary-900 dark:text-secondary-100">certifications & courses</h3>
+            <h3 class="flex items-center gap-2 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                <x-ui.ionicon icon="school-outline" />
+                certifications & courses
+            </h3>
         </div>
-        <div class="relative">
+        <div class="relative mt-4">
             <!-- Linha vertical -->
             <div class="absolute bottom-2 left-0 top-2 w-px bg-secondary-200 dark:bg-secondary-800"></div>
 
@@ -55,7 +60,7 @@
                                 {{ $course->institution }}
                             </p>
                             <span @class([
-                                'mt-0 inline-flex items-center rounded-lg px-2 py-0.5 text-xs font-medium',
+                                'mt-0 -mx-2 inline-flex items-center rounded-lg px-2 py-0.5 text-xs font-medium',
                                 $course->getStatusColor()['border'],
                                 $course->getStatusColor()['text'],
                                 $course->getStatusColor()['dark_border'],
