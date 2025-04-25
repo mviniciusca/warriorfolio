@@ -34,17 +34,40 @@
                     <h2 class="text-lg font-medium leading-tight">{{ $data->name }}</h2>
                 </div>
             @endif
-            <div class="flex items-center justify-center gap-2 text-sm text-secondary-600 dark:text-secondary-400">
-                @if ($showJobPosition && $data->profile->job_position)
-                    <span>{{ $data->profile->job_position }}</span>
-                @endif
-
-                @if ($showJobPosition && $data->profile->job_position && $showLocation && $data->profile->localization)
-                    <span class="text-secondary-400 dark:text-secondary-600">•</span>
+            <div
+                class="flex flex-col items-center justify-center gap-y-2 text-sm text-secondary-600 dark:text-secondary-400">
+                @if ($showJobPosition && $data->profile->job_position && $showCompany && $data->profile->company)
+                    <div class="flex items-center gap-2">
+                        <x-ui.ionicon icon="briefcase-outline" />
+                        <span>{{ $data->profile->job_position }} at {{ $data->profile->company }}</span>
+                    </div>
+                @elseif ($showJobPosition && $data->profile->job_position)
+                    <div class="flex items-center gap-2">
+                        <x-ui.ionicon icon="briefcase-outline" />
+                        <span>{{ $data->profile->job_position }}</span>
+                    </div>
+                @elseif ($showCompany && $data->profile->company)
+                    <div class="flex items-center gap-2">
+                        <x-ui.ionicon icon="business-outline" />
+                        <span>{{ $data->profile->company }}</span>
+                    </div>
                 @endif
 
                 @if ($showLocation && $data->profile->localization)
-                    <span>{{ $data->profile->localization }}</span>
+                    <div class="flex items-center gap-2">
+                        <x-ui.ionicon icon="location-outline" />
+                        <span>{{ $data->profile->localization }}</span>
+                    </div>
+                @endif
+
+                @if ($showEmail && $data->profile->public_email)
+                    <div class="flex items-center gap-2">
+                        <x-ui.ionicon icon="mail-outline" />
+                        <a class="hover:text-secondary-800 dark:hover:text-secondary-200"
+                            href="mailto:{{ $data->profile->public_email }}">
+                            {{ $data->profile->public_email }}
+                        </a>
+                    </div>
                 @endif
             </div>
         </div>
@@ -63,7 +86,7 @@
             <div class="flex flex-wrap justify-center gap-1.5">
                 @foreach (explode(',', $data->profile->skills) as $skill)
                     <span
-                        class="rounded-sm border border-secondary-300 px-2 py-0.5 text-xs text-secondary-600 dark:border-secondary-700/50 dark:text-secondary-400">
+                        class="rounded-full border border-secondary-600 px-2 py-0.5 text-xs text-secondary-600 dark:border-secondary-700/50 dark:text-secondary-400">
                         {{ trim($skill) }}
                     </span>
                 @endforeach
@@ -71,35 +94,13 @@
         </div>
     @endif
 
-    {{-- Profile Info --}}
-    @if ($showCompany || $showEmail)
-        <div class="mt-8 space-y-2 text-center">
-            @if ($showCompany && $data->profile->company)
-                <div class="flex items-center justify-center gap-2 text-sm text-secondary-600 dark:text-secondary-400">
-                    <x-ui.ionicon icon="business-outline" />
-                    <span>{{ $data->profile->company }}</span>
-                </div>
-            @endif
-
-            @if ($showEmail && $data->profile->public_email)
-                <div class="flex items-center justify-center gap-2 text-sm text-secondary-600 dark:text-secondary-400">
-                    <x-ui.ionicon icon="mail-outline" />
-                    <a class="hover:text-secondary-800 dark:hover:text-secondary-200"
-                        href="mailto:{{ $data->profile->public_email }}">
-                        {{ $data->profile->public_email }}
-                    </a>
-                </div>
-            @endif
-        </div>
-    @endif
-
     {{-- Download CV --}}
     @if ($showResume && $data->profile->is_downloadable && $data->profile->document)
         <div class="mt-8 flex justify-center">
-            <a class="inline-flex items-center gap-1.5 rounded-sm border border-secondary-300 px-3 py-1.5 text-xs text-secondary-600 transition-colors hover:border-secondary-400 hover:text-secondary-800 dark:border-secondary-800/50 dark:text-secondary-400 dark:hover:border-secondary-700 dark:hover:text-secondary-200"
-                href="{{ asset('storage/' . $data->profile->document) }}" target="_blank">
-                <x-ui.ionicon icon="download-outline" />
-                <span>Download CV</span>
+            <a href="{{ asset('storage/' . $data->profile->document) }}" target="_blank">
+                <x-ui.button :icon="'download-outline'" size='sm' style='outlined'>
+                    {{ __('Download CV') }}
+                </x-ui.button>
             </a>
         </div>
     @endif

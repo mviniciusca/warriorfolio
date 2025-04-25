@@ -71,7 +71,7 @@
 
             <!-- Profile Section with generous top space -->
             <div class="mb-12 mt-4">
-                <x-themes.juno.profile :showCompany="false" :showEmail="false" />
+                <x-themes.juno.profile />
             </div>
 
             <!-- Tabs System -->
@@ -224,7 +224,7 @@
                                     <h3 class="text-sm font-medium text-secondary-900 dark:text-secondary-100">bio
                                     </h3>
                                     <div class="mt-4 space-y-4 text-sm text-secondary-600 dark:text-secondary-400">
-                                        <p>🚀 Full Stack Explorer navigating the digital cosmos</p>
+                                        <p>Full Stack Explorer navigating the digital cosmos</p>
 
                                         <div>
                                             <p class="mb-2">Currently orbiting:</p>
@@ -246,7 +246,7 @@
                                             </ul>
                                         </div>
 
-                                        <p>⚡ Transforming coffee into code since 2015</p>
+                                        <p>Transforming coffee into code since 2015</p>
                                     </div>
                                 </div>
                             </div>
