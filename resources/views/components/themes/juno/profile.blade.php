@@ -1,18 +1,50 @@
 @props(['data'])
 
 <style>
-    .rotate-toggle {
+    .toggle-icon {
         transition: transform 0.3s ease;
     }
 
-    .rotate-toggle.active {
-        transform: rotate(180deg);
+    .toggle-icon.rotate {
+        transform: rotate(-180deg);
+    }
+
+    .fade-enter {
+        animation: fadeIn 0.5s ease forwards;
+    }
+
+    .fade-leave {
+        animation: fadeOut 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        to {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
     }
 </style>
 
 <div class="relative mx-auto" x-data="{
     isOpen: $persist(true).as('profilePanelOpen'),
-    toggleProfile() {
+    async toggleProfile() {
         this.isOpen = !this.isOpen;
     }
 }">
@@ -21,14 +53,12 @@
         class="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-secondary-600 hover:text-secondary-800 dark:text-secondary-400 dark:hover:text-secondary-200">
         <span>
             <template x-if="isOpen">
-                <svg class="animate__animated animate__flipInX h-5 w-5" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24">
+                <svg class="toggle-icon rotate h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path d="M5 12h14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
                 </svg>
             </template>
             <template x-if="!isOpen">
-                <svg class="animate__animated animate__flipInX h-5 w-5" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24">
+                <svg class="toggle-icon h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path d="M12 5v14m-7-7h14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
                 </svg>
             </template>
@@ -36,7 +66,7 @@
     </button>
 
     {{-- Profile Expanded --}}
-    <div x-show="isOpen">
+    <div x-show="isOpen" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
         {{-- Profile Header --}}
         <div class="flex flex-col items-center">
             @if ($showAvatar)
@@ -127,9 +157,7 @@
     </div>
 
     {{-- Compact View --}}
-    <div x-show="!isOpen" x-transition:enter-end="profile-compact" x-transition:enter-start="profile-compact hidden"
-        x-transition:enter="profile-transition" x-transition:leave-end="profile-compact hidden"
-        x-transition:leave-start="profile-compact" x-transition:leave="profile-transition">
+    <div x-show="!isOpen" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
         <div class="flex items-center gap-4 py-10">
             <div class="flex-shrink-0">
                 @if ($data->profile->avatar)
