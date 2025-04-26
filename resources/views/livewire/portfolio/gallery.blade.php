@@ -27,6 +27,12 @@
         } else {
             this.viewMode = 'normal';
         }
+    },
+    resetView() {
+        this.viewMode = 'normal';
+        this.activeCategory = null;
+        this.transition = true;
+        setTimeout(() => this.transition = false, 300);
     }
 }">
     <div class="mx-auto">
@@ -64,10 +70,19 @@
             </nav>
 
             {{-- Controls --}}
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
+                {{-- Reset Button --}}
+                <button @click.prevent="resetView"
+                    class="flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700">
+                    <span wire:ignore>
+                        <x-ui.ionicon :icon="'refresh-outline'" class="h-3.5 w-3.5" />
+                    </span>
+                    <span>{{ __('Reset') }}</span>
+                </button>
+
                 {{-- View Toggle --}}
                 <button @click.prevent="cycleViewMode"
-                    class="flex items-center gap-2 rounded-lg border border-secondary-200 bg-white px-2.5 py-1.5 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700">
+                    class="flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700">
                     <span wire:ignore>
                         <x-ui.ionicon :icon="'grid-outline'" class="h-3.5 w-3.5" />
                     </span>
@@ -76,13 +91,13 @@
                 </button>
 
                 {{-- Sort Controls --}}
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center gap-2">
                     <span class="text-xs font-medium text-secondary-600 dark:text-secondary-400">{{ __('Sort by:')
                         }}</span>
                     <div
                         class="flex rounded-lg border border-secondary-200 bg-white dark:border-secondary-700 dark:bg-secondary-800">
                         <button wire:click.prevent="setOrderBy('created_at')"
-                            class="flex items-center px-3 py-1.5 text-sm {{ $orderBy === 'created_at' ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium' : 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200' }} rounded-l-lg border-r border-secondary-200 dark:border-secondary-700">
+                            class="flex items-center px-2.5 py-1 text-xs {{ $orderBy === 'created_at' ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium' : 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200' }} rounded-l-lg border-r border-secondary-200 dark:border-secondary-700">
                             {{ __('Latest') }}
                             @if($orderBy === 'created_at')
                             <svg class="w-3.5 h-3.5 ml-1" viewBox="0 0 24 24" fill="none"
@@ -98,7 +113,7 @@
                             @endif
                         </button>
                         <button wire:click.prevent="setOrderBy('title')"
-                            class="flex items-center px-3 py-1.5 text-sm {{ $orderBy === 'title' ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium' : 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200' }} rounded-r-lg">
+                            class="flex items-center px-2.5 py-1 text-xs {{ $orderBy === 'title' ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium' : 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200' }} rounded-r-lg">
                             {{ __('Title') }}
                             @if($orderBy === 'title')
                             <svg class="w-3.5 h-3.5 ml-1" viewBox="0 0 24 24" fill="none"
