@@ -36,44 +36,12 @@
     }
 }">
     <div class="mx-auto">
-        {{-- Header with Categories and Sort Controls --}}
-        <div
-            class="flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row sm:items-center sm:justify-between sm:space-y-0 pb-8">
-            {{-- Category Navigation --}}
-            <nav class="flex space-x-3 overflow-x-auto" aria-label="Categories">
-                @if ($categories->count() >= 2 ?? false)
-                <button @click.prevent="activeCategory = null" wire:click.prevent="clear"
-                    class="flex items-center rounded-lg border border-secondary-200 dark:border-secondary-700 px-2.5 py-1 text-xs font-medium transition-all duration-200 hover:bg-secondary-50 dark:hover:bg-secondary-800"
-                    :class="{ 'backdrop-blur-sm bg-opacity-10 border-secondary-500 text-secondary-900 dark:text-secondary-100': activeCategory === null }">
-                    <span wire:ignore>
-                        <x-ui.ionicon :icon="'apps-outline'" class="mr-1 h-3.5 w-3.5" />
-                    </span>
-                    {{ __('All Work') }}
-                </button>
-                @endif
-
-                @foreach ($categories as $category)
-                <button @click.prevent="activeCategory = {{ $category->id }}"
-                    wire:click.prevent="filterCategoryById({{ $category->id }})"
-                    class="flex items-center rounded-lg border border-secondary-200 dark:border-secondary-700 px-2.5 py-1 text-xs font-medium transition-all duration-200 hover:bg-secondary-50 dark:hover:bg-secondary-800"
-                    :class="{ 'backdrop-blur-sm border-opacity-50 text-secondary-900 dark:text-secondary-100': activeCategory === {{ $category->id }} }"
-                    :style="activeCategory === {{ $category->id }} ? {
-                        backgroundColor: '{{ $category->hex_color }}33',
-                        borderColor: '{{ $category->hex_color }}'
-                    } : {}">
-                    <span wire:ignore>
-                        <x-ui.ionicon :icon="$category->icon ?? 'bookmark'" class="mr-1 h-3.5 w-3.5" />
-                    </span>
-                    {{ ucfirst($category->name) }}
-                </button>
-                @endforeach
-            </nav>
-
-            {{-- Controls --}}
-            <div class="flex items-center gap-2">
+        {{-- Controls Header --}}
+        <div class="flex flex-col gap-4 sm:flex-row sm:justify-end mb-6">
+            <div class="flex items-center gap-2 order-2 sm:order-none overflow-x-auto">
                 {{-- Reset Button --}}
                 <button @click.prevent="resetView"
-                    class="flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700">
+                    class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700">
                     <span wire:ignore>
                         <x-ui.ionicon :icon="'refresh-outline'" class="h-3.5 w-3.5" />
                     </span>
@@ -82,7 +50,7 @@
 
                 {{-- View Toggle --}}
                 <button @click.prevent="cycleViewMode"
-                    class="flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700">
+                    class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700">
                     <span wire:ignore>
                         <x-ui.ionicon :icon="'grid-outline'" class="h-3.5 w-3.5" />
                     </span>
@@ -91,13 +59,12 @@
                 </button>
 
                 {{-- Sort Controls --}}
-                <div class="flex items-center gap-2">
+                <div class="flex-shrink-0 flex items-center gap-2">
                     <span class="text-xs font-medium text-secondary-600 dark:text-secondary-400">{{ __('Sort by:')
                         }}</span>
-                    <div
-                        class="flex rounded-lg border border-secondary-200 bg-white dark:border-secondary-700 dark:bg-secondary-800">
+                    <div class="flex divide-x-0 rounded-lg bg-white dark:bg-secondary-800">
                         <button wire:click.prevent="setOrderBy('created_at')"
-                            class="flex items-center px-2.5 py-1 text-xs {{ $orderBy === 'created_at' ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium' : 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200' }} rounded-l-lg border-r border-secondary-200 dark:border-secondary-700">
+                            class="flex items-center px-2.5 py-1 text-xs {{ $orderBy === 'created_at' ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium' : 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200' }} rounded-l-lg">
                             {{ __('Latest') }}
                             @if($orderBy === 'created_at')
                             <svg class="w-3.5 h-3.5 ml-1" viewBox="0 0 24 24" fill="none"
@@ -133,12 +100,42 @@
             </div>
         </div>
 
+        {{-- Categories Menu --}}
+        <nav class="flex gap-1 pb-2 mb-4 -mx-2 px-4 overflow-x-auto border-b border-secondary-200 dark:border-secondary-700 scrollbar-none"
+            aria-label="Categories">
+            @if ($categories->count() >= 2 ?? false)
+            <button @click.prevent="activeCategory = null" wire:click.prevent="clear"
+                class="flex-shrink-0 flex items-center gap-1 px-3 py-2 text-xs font-medium transition-all duration-200 hover:text-secondary-900 dark:hover:text-secondary-100 border-b-2 -mb-[9px]"
+                :class="{ 'border-secondary-500 text-secondary-900 dark:text-secondary-100': activeCategory === null, 'border-transparent text-secondary-500 dark:text-secondary-400': activeCategory !== null }">
+                <span wire:ignore>
+                    <x-ui.ionicon :icon="'apps-outline'" class="h-3.5 w-3.5" />
+                </span>
+                {{ __('All Work') }}
+            </button>
+            @endif
+
+            @foreach ($categories as $category)
+            <button @click.prevent="activeCategory = {{ $category->id }}"
+                wire:click.prevent="filterCategoryById({{ $category->id }})"
+                class="flex-shrink-0 flex items-center gap-1 px-3 py-2 text-xs font-medium transition-all duration-200 border-b-2 border-r-0 -mb-[9px]"
+                :class="{ 'text-secondary-900 dark:text-secondary-100': activeCategory === {{ $category->id }}, 'border-transparent text-secondary-500 dark:text-secondary-400': activeCategory !== {{ $category->id }} }"
+                :style="activeCategory === {{ $category->id }} ? {
+                    borderColor: '{{ $category->hex_color }}'
+                } : {}">
+                <span wire:ignore>
+                    <x-ui.ionicon :icon="$category->icon ?? 'bookmark'" class="h-3.5 w-3.5" />
+                </span>
+                {{ ucfirst($category->name) }}
+            </button>
+            @endforeach
+        </nav>
+
         {{-- Gallery Grid with Transition --}}
-        <div class="grid gap-6 mt-12 transition-all duration-300" :class="{
+        <div class="grid gap-4 sm:gap-6 mt-8 sm:mt-12 transition-all duration-300" :class="{
                 'opacity-50 transition-opacity duration-300': transition,
                 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4': viewMode === 'normal',
                 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3': viewMode === 'large',
-                'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3': viewMode === 'compact'
+                'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5': viewMode === 'compact'
             }">
             @foreach ($data as $item)
             <div class="group relative" wire:key='{{ $item->id }}'>
