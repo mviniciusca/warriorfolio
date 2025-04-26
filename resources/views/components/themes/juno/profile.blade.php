@@ -1,6 +1,6 @@
 @props(['data'])
 
-<div class="relative mx-auto max-w-2xl">
+<div class="relative mx-auto">
     {{-- Toggle Button --}}
     <button
         class="absolute right-0 top-0 p-2 text-secondary-600 hover:text-secondary-800 dark:text-secondary-400 dark:hover:text-secondary-200"
@@ -18,20 +18,7 @@
         <div class="flex flex-col items-center">
             @if ($showAvatar)
                 <div class="relative mb-8">
-                    @if ($data->profile->is_open_to_work)
-                        <div class="absolute -right-0.5 top-4 z-10">
-                            <span class="flex h-3 w-3">
-                                <span class="relative inline-flex h-3 w-3">
-                                    <span
-                                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                                    <span
-                                        class="relative inline-flex h-3 w-3 rounded-full bg-green-500 ring-4 ring-green-400/70 ring-offset-2 dark:ring-green-400/50"></span>
-                                </span>
-                            </span>
-                        </div>
-                    @endif
                     <div class="relative">
-                        {{-- Imagem do perfil sem borda --}}
                         @if ($data->profile->avatar)
                             <img alt="{{ $data->name }}" class="relative h-32 w-32 rounded-full object-cover"
                                 src="{{ asset('storage/' . $data->profile->avatar) }}" />
@@ -46,8 +33,13 @@
             {{-- Nome e Status --}}
             <div class="text-center">
                 @if ($showName)
-                    <div class="mb-2 flex items-center justify-center">
+                    <div class="mb-2 flex items-center justify-center gap-2">
                         <h2 class="text-lg font-medium leading-tight">{{ $data->name }}</h2>
+                        @if ($data->profile->is_open_to_work)
+                            <span
+                                class="inline-flex items-center rounded bg-secondary-100 px-2 py-0.5 text-xs font-semibold text-secondary-700 dark:bg-secondary-800 dark:text-secondary-200"
+                                id="open-to-work-expanded">Open to Work</span>
+                        @endif
                     </div>
                 @endif
                 <div
@@ -116,15 +108,22 @@
         <div class="flex items-center gap-4 py-10">
             <div class="flex-shrink-0">
                 @if ($data->profile->avatar)
-                    <img alt="{{ $data->name }}" class="h-20 w-20 rounded-full object-cover"
+                    <img alt="{{ $data->name }}" class="h-20 w-20 rounded-lg object-cover"
                         src="{{ asset('storage/' . $data->profile->avatar) }}" />
                 @else
-                    <img alt="Default profile" class="h-20 w-20 rounded-full object-cover"
+                    <img alt="Default profile" class="h-20 w-20 rounded-lg object-cover"
                         src="{{ asset('img/core/profile-picture.png') }}" />
                 @endif
             </div>
             <div class="flex flex-col justify-center">
-                <h2 class="text-lg font-medium leading-tight">{{ $data->name }}</h2>
+                <div class="flex items-center gap-2">
+                    <h2 class="mb-0 text-lg font-medium leading-tight">{{ $data->name }}</h2>
+                    @if ($data->profile->is_open_to_work)
+                        <span
+                            class="inline-flex items-center rounded bg-secondary-100 px-2 py-0.5 text-xs font-semibold text-secondary-700 dark:bg-secondary-800 dark:text-secondary-200"
+                            id="open-to-work-compact">Open to Work</span>
+                    @endif
+                </div>
                 <div class="text-sm text-secondary-600 dark:text-secondary-400">
                     @if ($showJobPosition && $data->profile->job_position && $showCompany && $data->profile->company)
                         <div class="flex items-center gap-2">
@@ -199,5 +198,42 @@
             profileCompact.classList.add('hidden');
             setIcon(true);
         }
+
+        // Link LinkedIn nos badges Open to Work
+        function updateOpenToWorkBadges() {
+            const socialNetworks = document.querySelectorAll('[data-linkedin]');
+            let linkedinUrl = null;
+
+            // Procura em todos os componentes de redes sociais pelo LinkedIn
+            socialNetworks.forEach(social => {
+                const url = social.getAttribute('data-linkedin');
+                if (url && url !== 'null' && url !== '') {
+                    linkedinUrl = url;
+                }
+            });
+
+            // Se encontrou um LinkedIn, atualiza os badges
+            if (linkedinUrl) {
+                const badges = [
+                    document.getElementById('open-to-work-expanded'),
+                    document.getElementById('open-to-work-compact')
+                ];
+
+                badges.forEach(badge => {
+                    if (badge && badge.textContent.includes('Open to Work')) {
+                        const a = document.createElement('a');
+                        a.href = linkedinUrl;
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.className = badge.className + ' hover:underline';
+                        a.textContent = badge.textContent;
+                        badge.replaceWith(a);
+                    }
+                });
+            }
+        }
+
+        // Aguarda um pouco para garantir que o componente de redes sociais foi renderizado
+        setTimeout(updateOpenToWorkBadges, 100);
     });
 </script>
