@@ -1,19 +1,42 @@
 @props(['data'])
 
-<div class="relative mx-auto">
+<style>
+    .rotate-toggle {
+        transition: transform 0.3s ease;
+    }
+
+    .rotate-toggle.active {
+        transform: rotate(180deg);
+    }
+</style>
+
+<div class="relative mx-auto" x-data="{
+    isOpen: $persist(true).as('profilePanelOpen'),
+    toggleProfile() {
+        this.isOpen = !this.isOpen;
+    }
+}">
     {{-- Toggle Button --}}
-    <button
-        class="absolute right-0 top-0 p-2 text-secondary-600 hover:text-secondary-800 dark:text-secondary-400 dark:hover:text-secondary-200"
-        id="toggle-profile">
-        <span id="toggle-svg">
-            <!-- Ícone de menos (inicialmente aberto) -->
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12h14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-            </svg>
+    <button @click="toggleProfile"
+        class="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-secondary-600 hover:text-secondary-800 dark:text-secondary-400 dark:hover:text-secondary-200">
+        <span>
+            <template x-if="isOpen">
+                <svg class="animate__animated animate__flipInX h-5 w-5" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path d="M5 12h14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+            </template>
+            <template x-if="!isOpen">
+                <svg class="animate__animated animate__flipInX h-5 w-5" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path d="M12 5v14m-7-7h14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+            </template>
         </span>
     </button>
 
-    <div id="profile-container">
+    {{-- Profile Expanded --}}
+    <div x-show="isOpen">
         {{-- Profile Header --}}
         <div class="flex flex-col items-center">
             @if ($showAvatar)
@@ -104,7 +127,9 @@
     </div>
 
     {{-- Compact View --}}
-    <div class="hidden" id="profile-compact">
+    <div x-show="!isOpen" x-transition:enter-end="profile-compact" x-transition:enter-start="profile-compact hidden"
+        x-transition:enter="profile-transition" x-transition:leave-end="profile-compact hidden"
+        x-transition:leave-start="profile-compact" x-transition:leave="profile-transition">
         <div class="flex items-center gap-4 py-10">
             <div class="flex-shrink-0">
                 @if ($data->profile->avatar)
@@ -144,61 +169,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const toggleButton = document.getElementById('toggle-profile');
-        const toggleSvg = document.getElementById('toggle-svg');
-        const profileContainer = document.getElementById('profile-container');
-        const profileCompact = document.getElementById('profile-compact');
-
-        function setIcon(isOpen) {
-            toggleSvg.innerHTML = isOpen ?
-                `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M5 12h14\" /></svg>` :
-                `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 5v14m-7-7h14\" /></svg>`;
-        }
-
-        function showProfile() {
-            profileContainer.classList.remove('hidden');
-            profileCompact.classList.add('hidden');
-            setIcon(true);
-            profileContainer.classList.add('transition-opacity', 'duration-300');
-            profileContainer.style.opacity = 0;
-            setTimeout(() => {
-                profileContainer.style.opacity = 1;
-            }, 10);
-            sessionStorage.setItem('profilePanelOpen', '1');
-        }
-
-        function hideProfile() {
-            profileContainer.classList.add('hidden');
-            profileCompact.classList.remove('hidden');
-            setIcon(false);
-            profileCompact.classList.add('transition-opacity', 'duration-300');
-            profileCompact.style.opacity = 0;
-            setTimeout(() => {
-                profileCompact.style.opacity = 1;
-            }, 10);
-            sessionStorage.setItem('profilePanelOpen', '0');
-        }
-
-        toggleButton.addEventListener('click', () => {
-            if (profileContainer.classList.contains('hidden')) {
-                showProfile();
-            } else {
-                hideProfile();
-            }
-        });
-
-        // Estado inicial baseado no sessionStorage
-        const isOpen = sessionStorage.getItem('profilePanelOpen') !== '0';
-        if (!isOpen) {
-            profileContainer.classList.add('hidden');
-            profileCompact.classList.remove('hidden');
-            setIcon(false);
-        } else {
-            profileContainer.classList.remove('hidden');
-            profileCompact.classList.add('hidden');
-            setIcon(true);
-        }
-
         // Link LinkedIn nos badges Open to Work
         function updateOpenToWorkBadges() {
             const socialNetworks = document.querySelectorAll('[data-linkedin]');
@@ -233,7 +203,6 @@
             }
         }
 
-        // Aguarda um pouco para garantir que o componente de redes sociais foi renderizado
         setTimeout(updateOpenToWorkBadges, 100);
     });
 </script>
