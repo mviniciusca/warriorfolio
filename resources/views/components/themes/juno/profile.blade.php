@@ -43,21 +43,35 @@
 </style>
 
 <div class="relative mx-auto" x-data="{
-    isOpen: $persist(true).as('profilePanelOpen'),
-    async toggleProfile() {
-        this.isOpen = !this.isOpen;
+    viewMode: $persist('expanded').as('profileViewMode'),
+    get isExpanded() { return this.viewMode === 'expanded' },
+    get isCompact() { return this.viewMode === 'compact' },
+    get isUltraCompact() { return this.viewMode === 'ultra-compact' },
+    cycleView() {
+        if (this.isUltraCompact) {
+            this.viewMode = 'compact';
+        } else if (this.isCompact) {
+            this.viewMode = 'expanded';
+        } else {
+            this.viewMode = 'ultra-compact';
+        }
     }
 }">
     {{-- Toggle Button --}}
-    <button @click="toggleProfile"
+    <button @click="cycleView"
         class="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-secondary-600 hover:text-secondary-800 dark:text-secondary-400 dark:hover:text-secondary-200">
         <span>
-            <template x-if="isOpen">
+            <template x-if="isExpanded">
                 <svg class="toggle-icon rotate h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path d="M5 12h14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
                 </svg>
             </template>
-            <template x-if="!isOpen">
+            <template x-if="!isExpanded && isCompact">
+                <svg class="toggle-icon h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 5v14m-7-7h14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+            </template>
+            <template x-if="isUltraCompact">
                 <svg class="toggle-icon h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path d="M12 5v14m-7-7h14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
                 </svg>
@@ -66,8 +80,7 @@
     </button>
 
     {{-- Profile Expanded --}}
-    <div x-show="isOpen" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
-        {{-- Profile Header --}}
+    <div x-show="isExpanded" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
         <div class="flex flex-col items-center">
             @if ($showAvatar)
                 <div class="relative mb-8">
@@ -83,17 +96,16 @@
                 </div>
             @endif
 
-            {{-- Nome e Status --}}
             <div class="text-center">
                 @if ($showName)
-                    <div class="mb-2 flex items-center justify-center gap-2">
-                        <h2 class="text-lg font-medium leading-tight">{{ $data->name }}</h2>
+                    <h2 class="mb-2 flex items-center justify-center gap-2 text-lg font-medium leading-tight">
+                        <span>{{ $data->name }}</span>
                         @if ($data->profile->is_open_to_work)
                             <span
                                 class="inline-flex items-center rounded bg-secondary-100 px-2 py-0.5 text-xs font-semibold text-secondary-700 dark:bg-secondary-800 dark:text-secondary-200"
                                 id="open-to-work-expanded">Open to Work</span>
                         @endif
-                    </div>
+                    </h2>
                 @endif
                 <div
                     class="flex flex-col items-center justify-center gap-y-2 text-sm text-secondary-600 dark:text-secondary-400">
@@ -157,7 +169,7 @@
     </div>
 
     {{-- Compact View --}}
-    <div x-show="!isOpen" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
+    <div x-show="isCompact" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
         <div class="flex items-center gap-4 py-10">
             <div class="flex-shrink-0">
                 @if ($data->profile->avatar)
@@ -169,14 +181,14 @@
                 @endif
             </div>
             <div class="flex flex-col justify-center">
-                <div class="flex items-center gap-2">
-                    <h2 class="mb-0 text-lg font-medium leading-tight">{{ $data->name }}</h2>
+                <h2 class="mb-0 flex items-center gap-2 text-lg font-medium leading-tight">
+                    <span>{{ $data->name }}</span>
                     @if ($data->profile->is_open_to_work)
                         <span
                             class="inline-flex items-center rounded bg-secondary-100 px-2 py-0.5 text-xs font-semibold text-secondary-700 dark:bg-secondary-800 dark:text-secondary-200"
                             id="open-to-work-compact">Open to Work</span>
                     @endif
-                </div>
+                </h2>
                 <div class="text-sm text-secondary-600 dark:text-secondary-400">
                     @if ($showJobPosition && $data->profile->job_position && $showCompany && $data->profile->company)
                         <div class="flex items-center gap-2">
@@ -191,6 +203,33 @@
                     </div>
                 @endif
             </div>
+        </div>
+    </div>
+
+    {{-- Ultra Compact View --}}
+    <div x-show="isUltraCompact" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
+        <div class="flex flex-col py-4">
+            <div class="flex items-center">
+                <h2 class="mb-0 flex items-center gap-2 text-lg font-medium leading-tight">
+                    <span>{{ $data->name }}</span>
+                    @if ($data->profile->is_open_to_work)
+                        <span
+                            class="inline-flex items-center rounded bg-secondary-100 px-2 py-0.5 text-xs font-semibold text-secondary-700 dark:bg-secondary-800 dark:text-secondary-200"
+                            id="open-to-work-ultra-compact">Open to Work</span>
+                    @endif
+                </h2>
+            </div>
+            @if ($showJobPosition && $data->profile->job_position)
+                <div class="mt-1 flex items-center gap-2">
+                    <x-ui.ionicon icon="briefcase-outline" />
+                    <span class="text-sm text-secondary-600 dark:text-secondary-400">
+                        {{ $data->profile->job_position }}
+                        @if ($showCompany && $data->profile->company)
+                            at {{ $data->profile->company }}
+                        @endif
+                    </span>
+                </div>
+            @endif
         </div>
     </div>
 </div>
@@ -214,7 +253,8 @@
             if (linkedinUrl) {
                 const badges = [
                     document.getElementById('open-to-work-expanded'),
-                    document.getElementById('open-to-work-compact')
+                    document.getElementById('open-to-work-compact'),
+                    document.getElementById('open-to-work-ultra-compact'),
                 ];
 
                 badges.forEach(badge => {
