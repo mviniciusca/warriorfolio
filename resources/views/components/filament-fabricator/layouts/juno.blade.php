@@ -36,7 +36,7 @@
         <x-header.section />
         <div class="container mx-auto max-w-5xl flex-grow py-16">
             <!-- Profile Section with generous top space -->
-            <div class="mb-12 mt-4 px-4">
+            <div class="mb-12 mt-12 px-4">
                 <x-themes.juno.profile :showCompany="true" :showEmail="true" />
             </div>
 
