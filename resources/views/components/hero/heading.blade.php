@@ -9,14 +9,14 @@
 
 {{-- Title --}}
 @if ($hero->hero['section_title'] ?? false)
-    <h1
-        class="animate__animated animate__fadeInUp animate my-2 max-w-5xl text-3xl font-bold leading-none tracking-tighter dark:text-white md:text-4xl xl:text-4xl hero-title {{ ($hero->hero['bg_image'] ?? null) && ($hero->hero['is_highlight'] ?? null) ? 'bg-white dark:bg-black px-2' : '' }}">
-        {!! $hero->hero['section_title'] !!}
-    </h1>
+<h1
+    class="animate__animated animate__fadeInUp animate my-2 max-w-5xl text-3xl font-bold leading-none tracking-tighter dark:text-white md:text-4xl xl:text-3xl hero-title {{ ($hero->hero['bg_image'] ?? null) && ($hero->hero['is_highlight'] ?? null) ? 'bg-white dark:bg-black px-2' : '' }}">
+    {!! $hero->hero['section_title'] !!}
+</h1>
 @endif
 @if ($hero->hero['section_subtitle'] ?? false)
-    <h2
-        class="animate__animated animate__fadeInUp animate__delay-1s my-2 hero-subtitle leading-tight tracking-tight shadow-current {{ ($hero->hero['bg_image'] ?? null) && ($hero->hero['is_highlight'] ?? null) ? 'bg-white  dark:bg-black px-2 max-w-auto' : '' }}">
-        {!! $hero->hero['section_subtitle'] !!}
-    </h2>
+<h2
+    class="animate__animated animate__fadeInUp animate__delay-1s my-2 hero-subtitle leading-tight tracking-tight shadow-current {{ ($hero->hero['bg_image'] ?? null) && ($hero->hero['is_highlight'] ?? null) ? 'bg-white  dark:bg-black px-2 max-w-auto' : '' }}">
+    {!! $hero->hero['section_subtitle'] !!}
+</h2>
 @endif
