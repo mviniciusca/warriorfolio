@@ -36,16 +36,12 @@
 
             .tab-button {
                 transition: all 0.2s ease-in-out;
-                border-right: 2px solid transparent;
+                border-bottom: 2px solid transparent;
+                font-size: 0.8rem;
             }
 
             .tab-button.active-tab {
-                border-right-color: currentColor;
-                background-color: rgba(0, 0, 0, 0.04);
-            }
-
-            .dark .tab-button.active-tab {
-                background-color: rgba(255, 255, 255, 0.04);
+                border-bottom-color: currentColor;
             }
         </style>
         <x-core.modules.over />
@@ -55,46 +51,44 @@
         class="flex min-h-screen flex-col border border-secondary-200 font-sans antialiased transition-colors duration-200 dark:border-secondary-800 dark:bg-secondary-950">
         <x-ui.background />
         <x-header.section />
-        <div class="container mx-auto max-w-5xl flex-grow px-4 py-16">
-
+        <div class="container mx-auto max-w-5xl flex-grow py-16">
             <!-- Profile Section with generous top space -->
-            <div class="mb-12 mt-4">
+            <div class="mb-12 mt-4 px-4">
                 <x-themes.juno.profile :showCompany="true" :showEmail="true" />
             </div>
 
             <!-- Tabs System -->
-            <div class="flex pt-6">
+            <div class="flex flex-col">
                 <!-- Tabs Header -->
-                <div class="mb-12 flex min-w-[120px] flex-col space-y-2 pr-4">
-                    <button
-                        class="tab-button active-tab px-3 py-2 text-left text-xs text-secondary-900 dark:text-secondary-100"
+                <div class="mb-12 flex space-x-4 border-b border-secondary-200 px-4 dark:border-secondary-800">
+                    <button class="tab-button active-tab px-4 py-2 text-xs text-secondary-900 dark:text-secondary-100"
                         id="repositories-tab" onclick="switchTab('repositories')">
                         Repositories
                     </button>
                     <button
-                        class="tab-button px-3 py-2 text-left text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button px-4 py-2 text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="projects-tab" onclick="switchTab('projects')">
                         Projects
                     </button>
                     <button
-                        class="tab-button px-3 py-2 text-left text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button px-4 py-2 text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="notes-tab" onclick="switchTab('notes')">
                         Notes
                     </button>
                     <button
-                        class="tab-button px-3 py-2 text-left text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button px-4 py-2 text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="about-tab" onclick="switchTab('about')">
                         About Me
                     </button>
                     <button
-                        class="tab-button px-3 py-2 text-left text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button px-4 py-2 text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="contact-tab" onclick="switchTab('contact')">
                         Contact
                     </button>
                 </div>
 
                 <!-- Tabs Content -->
-                <div class="tab-content flex-1 pl-8">
+                <div class="tab-content">
                     <!-- Repositories Tab -->
                     <x-themes.juno.repositories :githubUser="'mviniciusca'" :repoQuantity="9" />
 
@@ -116,18 +110,16 @@
                     <!-- Contact Tab -->
                     <div class="tab-pane hidden" id="contact-content">
                         <div class="mb-8">
-                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Get in
-                                Touch
+                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Get in Touch
                             </h2>
-                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Have a project in
-                                mind?
+                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Have a project in mind?
                                 Let's work together</p>
                         </div>
 
                         <div class="grid gap-8 md:grid-cols-2">
                             <!-- Contact Info Column -->
                             <div class="space-y-6">
-                                <div class="p-6">
+                                <div>
                                     <h3 class="mb-4 text-sm font-medium text-secondary-900 dark:text-secondary-100">
                                         Company Information</h3>
                                     <div class="space-y-4">
@@ -190,7 +182,7 @@
                             </div>
 
                             <!-- Contact Form Column -->
-                            <div class="p-6">
+                            <div>
                                 <form class="space-y-5">
                                     <div>
                                         <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
