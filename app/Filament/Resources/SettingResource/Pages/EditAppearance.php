@@ -71,21 +71,32 @@ class EditAppearance extends EditRecord
                     ->icon('heroicon-o-sparkles')
                     ->columns(4)
                     ->schema([
+                        Checkbox::make('design.darkmode_is_active')
+                            ->label(__('Switch Component'))
+                            ->helperText(__('Enable dark/light mode switch'))
+                            ->inline(true)
+                            ->default(true),
+                        Checkbox::make('design.line_beam_is_active')
+                            ->label(__('Line Beam'))
+                            ->helperText(__('Enable line beam on top of header'))
+                            ->inline(true)
+                            ->default(false),
+                        Checkbox::make('design.is_menu_highlighted')
+                            ->label(__('Highlight Menu'))
+                            ->inline(true)
+                            ->helperText(__('Activate the highlight of the menu item on your website.')),
                         Select::make('design.container_width')
                             ->label(__('Container Width'))
                             ->options([
-                                'max-w-3xl' => __('3xl (512px'),
-                                'max-w-4xl' => __('4xl (640px)'),
-                                'max-w-5xl' => __('5xl (768px)'),
-                                'max-w-6xl' => __('6xl (1024px)'),
-                                'max-w-7xl' => __('7xl (1280px)'),
+                                'max-w-3xl'  => __('3xl (512px'),
+                                'max-w-4xl'  => __('4xl (640px)'),
+                                'max-w-5xl'  => __('5xl (768px)'),
+                                'max-w-6xl'  => __('6xl (1024px)'),
+                                'max-w-7xl'  => __('7xl (1280px)'),
+                                'full-width' => __('Full Width'),
                             ])
                             ->default('max-w-7xl')
-                            ->helperText(__('Define the width of the container on your website.')),
-                        Checkbox::make('design.is_menu_highlighted')
-                            ->label(__('Highlight Menu'))
-                            ->inline(false)
-                            ->helperText(__('Activate the highlight of the menu item on your website.')),
+                            ->helperText(__('Define the width of the container on your website. Default: 1280px')),
                     ]),
                 Section::make(__('Core: Background Image'))
                     ->description(__('Change the background image of your website'))

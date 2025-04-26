@@ -27,11 +27,11 @@ if (! function_exists('getSlider')) {
     if (! function_exists('settings')) {
         function settings(string $key, mixed $default = null): mixed
         {
-            $settings = Setting::query()
+            $setting = Setting::query()
                 ->with(['layout'])
                 ->first();
 
-            return data_get($settings, $key, $default);
+            return data_get($setting, $key, $default);
         }
     }
 }
