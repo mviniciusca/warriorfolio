@@ -286,7 +286,7 @@
 
     /** UI Components: Tag, Notification Tag**/
     .tag {
-        @apply bg-primary-600 animate-pulse uppercase font-mono text-xs px-1 font-semibold text-white;
+        @apply bg-primary-600 animate-pulse rounded-md lowercase text-xs px-1 text-white;
     }
 
     .notify {

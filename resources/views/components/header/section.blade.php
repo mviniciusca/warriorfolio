@@ -29,7 +29,7 @@ App\View\Components\Header\Section.php
     @endif
     <x-core.layout :$is_filled :with_padding="false">
         {{-- Logo and Primary Navigation --}}
-        <div class="-mt-4 flex items-center justify-between py-4 font-mono text-xs uppercase">
+        <div class="-mt-4 flex items-center justify-between py-4 text-xs ">
             <div class="flex flex-wrap items-center gap-4">
                 <x-ui.logo />
                 <x-ui.mobile-navigation />
@@ -42,7 +42,7 @@ App\View\Components\Header\Section.php
                 @endif
             </div>
             {{-- Secondary Navigation and Darkmode App --}}
-            <div class="flex flex-wrap items-center font-mono text-xs uppercase">
+            <div class="flex flex-wrap items-center text-xs">
                 <x-header.navigation :$is_menu_highlighted :$navigation :secondary_navigation="true" />
                 @if ($darkmode_is_active)
                 <livewire:dark-mode wire:key='header-dark-mode' />
