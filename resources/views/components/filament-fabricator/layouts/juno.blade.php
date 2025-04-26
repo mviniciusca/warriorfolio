@@ -35,7 +35,7 @@
             <x-header.section />
         </header>
         <x-core.layout :with_padding="false">
-            <div class="container mx-auto max-w-7xl flex-grow py-16">
+            <div class="mx-auto flex-grow py-16">
                 <!-- Profile Section with generous top space -->
                 <div class="mb-12 mt-12 px-4">
                     <x-themes.juno.profile />
@@ -108,9 +108,9 @@
 
                 <!-- Footer -->
             </div>
-            <x-footer.section class="mt-16" />
             <x-header.body-scripts />
         </x-core.layout>
+        <x-footer.section class="mt-16" />
         <!-- Dark Mode Toggle Script -->
         <script>
             // Check for saved theme preference or use the system preference
