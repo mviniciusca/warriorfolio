@@ -3,117 +3,116 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <x-header.scripts />
-        <style>
-            .tab-pane {
-                transition: opacity 0.2s ease-in-out;
-                opacity: 0;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <x-header.scripts />
+    <style>
+        .tab-pane {
+            transition: opacity 0.2s ease-in-out;
+            opacity: 0;
+        }
 
-            .tab-pane:not(.hidden) {
-                opacity: 1;
-            }
+        .tab-pane:not(.hidden) {
+            opacity: 1;
+        }
 
-            .tab-button {
-                font-size: 0.875rem;
-                position: relative;
-                border-bottom: 2px solid transparent;
-            }
+        .tab-button {
+            font-size: 0.875rem;
+            position: relative;
+            border-bottom: 2px solid transparent;
+        }
 
-            .tab-button.active-tab {
-                border-bottom-color: currentColor;
-            }
-        </style>
-        <x-core.modules.over />
-    </head>
+        .tab-button.active-tab {
+            border-bottom-color: currentColor;
+        }
+    </style>
+    <x-core.modules.over />
+</head>
 
-    <body class="juno-theme juno-app-core flex min-h-screen flex-col">
-        <header class="header-section" id="app-header">
-            <x-header.section />
-        </header>
-        <x-core.layout :with_padding="false">
-            <div class="mx-auto flex-grow py-16">
-                <!-- Profile Section with generous top space -->
-                <div class="mb-12 mt-12 px-4">
-                    <x-themes.juno.profile />
-                </div>
-
-                <!-- Tabs System -->
-                <div class="flex flex-col">
-                    <!-- Tabs Header -->
-                    <div class="mb-12 flex space-x-4 border-b border-secondary-200 px-4 dark:border-secondary-800">
-                        <button
-                            class="tab-button active-tab px-4 py-2 text-sm text-secondary-900 dark:text-secondary-100"
-                            id="repositories-tab" onclick="switchTab('repositories')">
-                            Repositories
-                        </button>
-                        <button
-                            class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
-                            id="projects-tab" onclick="switchTab('projects')">
-                            Projects
-                        </button>
-                        <button
-                            class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
-                            id="notes-tab" onclick="switchTab('notes')">
-                            Notes
-                        </button>
-                        <button
-                            class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
-                            id="about-tab" onclick="switchTab('about')">
-                            About Me
-                        </button>
-                        <button
-                            class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
-                            id="contact-tab" onclick="switchTab('contact')">
-                            Contact
-                        </button>
-                    </div>
-
-                    <!-- Tabs Content -->
-                    <div class="tab-content">
-                        <!-- Repositories Tab -->
-                        <x-themes.juno.repositories :githubUser="'mviniciusca'" :repoQuantity="9" />
-
-                        <!-- Projects Tab -->
-                        <div class="tab-pane hidden" id="projects-content">
-                            <x-themes.juno.projects />
-                        </div>
-
-                        <!-- Notes Tab -->
-                        <div class="tab-pane hidden" id="notes-content">
-                            <x-themes.juno.notes />
-                        </div>
-
-                        <!-- About Tab -->
-                        <div class="tab-pane hidden" id="about-content">
-                            <x-themes.juno.about />
-                        </div>
-
-                        <!-- Contact Tab -->
-                        <div class="tab-pane hidden" id="contact-content">
-                            <x-themes.juno.contact />
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Newsletter Section -->
-                <div class="mt-16">
-                    <x-newsletter.section :show_light="false"
-                        class="bg-dots relative rounded-md border border-secondary-200/50 py-16 dark:border-secondary-900 dark:bg-transparent" />
-                </div>
-
-                <!-- Footer -->
+<body class="juno-theme juno-app-core flex min-h-screen flex-col">
+    <header class="header-section" id="app-header">
+        <x-header.section />
+    </header>
+    <x-core.layout :with_padding="false">
+        <div class="mx-auto flex-grow py-16">
+            <!-- Profile Section with generous top space -->
+            <div class="mb-12 mt-12">
+                <x-themes.juno.profile />
             </div>
-            <x-header.body-scripts />
-        </x-core.layout>
-        <x-footer.section class="mt-16" />
-        <!-- Dark Mode Toggle Script -->
-        <script>
-            // Check for saved theme preference or use the system preference
+
+            <!-- Tabs System -->
+            <div class="flex flex-col">
+                <!-- Tabs Header -->
+                <div class="mb-12 flex space-x-4 border-b border-secondary-200 dark:border-secondary-800">
+                    <button class="tab-button active-tab px-4 py-2 text-sm text-secondary-900 dark:text-secondary-100"
+                        id="repositories-tab" onclick="switchTab('repositories')">
+                        Repositories
+                    </button>
+                    <button
+                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        id="projects-tab" onclick="switchTab('projects')">
+                        Projects
+                    </button>
+                    <button
+                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        id="notes-tab" onclick="switchTab('notes')">
+                        Notes
+                    </button>
+                    <button
+                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        id="about-tab" onclick="switchTab('about')">
+                        About Me
+                    </button>
+                    <button
+                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        id="contact-tab" onclick="switchTab('contact')">
+                        Contact
+                    </button>
+                </div>
+
+                <!-- Tabs Content -->
+                <div class="tab-content">
+                    <!-- Repositories Tab -->
+                    <x-themes.juno.repositories :githubUser="'mviniciusca'" :repoQuantity="9" />
+
+                    <!-- Projects Tab -->
+                    <div class="tab-pane hidden" id="projects-content">
+                        <x-themes.juno.projects />
+                    </div>
+
+                    <!-- Notes Tab -->
+                    <div class="tab-pane hidden" id="notes-content">
+                        <x-themes.juno.notes />
+                    </div>
+
+                    <!-- About Tab -->
+                    <div class="tab-pane hidden" id="about-content">
+                        <x-themes.juno.about />
+                    </div>
+
+                    <!-- Contact Tab -->
+                    <div class="tab-pane hidden" id="contact-content">
+                        <x-themes.juno.contact />
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Newsletter Section -->
+            <div class="mt-16">
+                <x-newsletter.section :show_light="false"
+                    class="bg-dots relative rounded-md border border-secondary-200/50 py-16 dark:border-secondary-900 dark:bg-transparent" />
+            </div>
+
+            <!-- Footer -->
+        </div>
+        <x-header.body-scripts />
+    </x-core.layout>
+    <x-footer.section class="mt-16" />
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        // Check for saved theme preference or use the system preference
             const themeToggleBtn = document.getElementById('theme-toggle');
 
             // Function to set the theme
@@ -181,7 +180,7 @@
                 const savedTab = localStorage.getItem('activeTab') || 'repositories';
                 switchTab(savedTab);
             });
-        </script>
-    </body>
+    </script>
+</body>
 
 </html>
