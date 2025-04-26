@@ -18,7 +18,7 @@
     <!-- GitHub Contribution Graph -->
     <div
         class="mb-8 overflow-hidden rounded-lg border border-secondary-200 bg-white p-4 dark:border-secondary-800/50 dark:bg-secondary-900/50">
-        <img alt="GitHub Contributions Graph" class="w-full dark:hidden"
+        <img alt="GitHub Contributions Graph" class="w-full grayscale dark:hidden"
             src="https://ghchart.rshah.org/{{ $githubUser }}">
         <img alt="GitHub Contributions Graph" class="hidden w-full opacity-90 grayscale invert dark:block"
             src="https://ghchart.rshah.org/{{ $githubUser }}">
