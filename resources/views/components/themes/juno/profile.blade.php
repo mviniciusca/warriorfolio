@@ -80,7 +80,7 @@
     </button>
 
     {{-- Profile Expanded --}}
-    <div x-show="isExpanded" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
+    <div class="mb-24" x-show="isExpanded" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
         <div class="flex flex-col items-center">
             @if ($showAvatar)
                 <div class="relative mb-8">
