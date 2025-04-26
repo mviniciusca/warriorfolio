@@ -30,8 +30,7 @@
         <x-core.modules.over />
     </head>
 
-    <body
-        class="flex min-h-screen flex-col border border-secondary-200 antialiased transition-colors duration-200 dark:border-secondary-800 dark:bg-secondary-950">
+    <body class="flex min-h-screen flex-col antialiased transition-colors duration-200">
         <x-ui.background />
         <x-header.section />
         <div class="container mx-auto max-w-5xl flex-grow py-16">
