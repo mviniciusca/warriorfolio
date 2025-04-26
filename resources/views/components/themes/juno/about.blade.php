@@ -1,11 +1,7 @@
 @props(['data', 'courses'])
 
 <div>
-    <div class="mb-8">
-        <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">About Me</h2>
-        <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Full-stack developer exploring the digital
-            frontier</p>
-    </div>
+    <x-themes.juno.partials.header subtitle="Full-stack developer exploring the digital frontier" title="About Me" />
 
     <div class="grid gap-8 md:grid-cols-2">
         <!-- Bio Column -->

@@ -1,11 +1,8 @@
 @props(['data'])
 
 <div>
-    <div class="mb-6">
-        <h2 class="text-sm font-medium text-secondary-900 dark:text-secondary-100">Portfolio Projects</h2>
-        <p class="mt-0.5 text-xs text-secondary-600 dark:text-secondary-400">Showcasing my latest work and creative
-            projects</p>
-    </div>
+    <x-themes.juno.partials.header subtitle="Showcasing my latest work and creative projects"
+        title="Portfolio Projects" />
 
     {{-- Categories Tabs --}}
     <div class="mb-6 flex items-center gap-2 overflow-x-auto pb-2">

@@ -1,19 +1,9 @@
 @props(['githubUser' => null, 'repositories' => [], 'repoQuantity' => null])
 
-<!-- Repositories Tab -->
 <div class="tab-pane" id="repositories-content">
-    <div class="mb-8 flex items-center justify-between">
-        <div>
-            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Open Source Projects</h2>
-            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">A collection of my public repositories and
-                contributions</p>
-        </div>
-        <a class="inline-flex items-center gap-2 rounded-md border border-secondary-300 bg-white px-4 py-2 text-xs font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
-            href="{{ $githubUser ? 'https://github.com/' . $githubUser : '#' }}">
-            <x-ui.ionicon class="h-5 w-5" icon="logo-github" />
-            Follow
-        </a>
-    </div>
+    <x-themes.juno.partials.header buttonIcon="logo-github"
+        buttonUrl="{{ $githubUser ? 'https://github.com/' . $githubUser : '#' }}" button="Follow"
+        subtitle="A collection of my public repositories and contributions" title="Open Source Projects" />
 
     <!-- GitHub Contribution Graph -->
     <div

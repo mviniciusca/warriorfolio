@@ -109,12 +109,8 @@
 
                     <!-- Contact Tab -->
                     <div class="tab-pane hidden" id="contact-content">
-                        <div class="mb-8">
-                            <h2 class="text-base font-medium text-secondary-900 dark:text-secondary-100">Get in Touch
-                            </h2>
-                            <p class="mt-1 text-xs text-secondary-600 dark:text-secondary-400">Have a project in mind?
-                                Let's work together</p>
-                        </div>
+                        <x-themes.juno.partials.header subtitle="Have a project in mind? Let's work together"
+                            title="Get in Touch" />
 
                         <div class="grid gap-8 md:grid-cols-2">
                             <!-- Contact Info Column -->
