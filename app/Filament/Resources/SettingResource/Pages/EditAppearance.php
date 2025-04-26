@@ -69,8 +69,19 @@ class EditAppearance extends EditRecord
                 Section::make(__('Design Options'))
                     ->description(__('Change the design and appearance of your website'))
                     ->icon('heroicon-o-sparkles')
-                    ->columns(3)
+                    ->columns(4)
                     ->schema([
+                        Select::make('design.container_width')
+                            ->label(__('Container Width'))
+                            ->options([
+                                'max-w-3xl' => __('3xl (512px'),
+                                'max-w-4xl' => __('4xl (640px)'),
+                                'max-w-5xl' => __('5xl (768px)'),
+                                'max-w-6xl' => __('6xl (1024px)'),
+                                'max-w-7xl' => __('7xl (1280px)'),
+                            ])
+                            ->default('max-w-7xl')
+                            ->helperText(__('Define the width of the container on your website.')),
                         Checkbox::make('design.is_menu_highlighted')
                             ->label(__('Highlight Menu'))
                             ->inline(false)

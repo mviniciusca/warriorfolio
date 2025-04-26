@@ -15,19 +15,20 @@ App\View\Components\Header\Section.php
     'is_menu_highlighted' => $design['is_menu_highlighted'] ?? false,
     'darkmode_is_active' => $design['darkmode_is_active'] ?? true,
     'line_beam_is_active' => $design['line_beam_is_active'] ?? false,
+    'container' => null,
 ])
 
 {{-- Core: Background Image --}}
 <x-ui.background />
 {{-- Header --}}
-<nav class="relative z-50 w-full pb-2 pt-8">
+<nav class="relative z-50 mx-auto w-full pb-2 pt-8">
     {{-- Background Layer --}}
     @if ($line_beam_is_active)
         <div class="absolute inset-0 -z-20 animate-pulse bg-auto bg-top bg-no-repeat"
             style="background-image: url({{ asset('img/core/core-ui-elements/beams/blur-beam.png') }})">
         </div>
     @endif
-    <x-core.layout :$is_filled :with_padding="false">
+    <x-core.layout :$container :$is_filled :with_padding="false">
         {{-- Logo and Primary Navigation --}}
         <div class="-mt-4 flex items-center justify-between py-4 font-mono text-xs uppercase">
             <div class="flex flex-wrap items-center gap-4">
