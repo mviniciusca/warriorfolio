@@ -6,24 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <title>Developer Portfolio</title>
-        <link href="https://fonts.googleapis.com" rel="preconnect">
-        <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
         <x-header.scripts />
-        <script>
-            tailwind.config = {
-                darkMode: 'class',
-                theme: {
-                    extend: {
-                        fontFamily: {
-                            sans: ['Inter', 'sans-serif'],
-                        },
-                    }
-                }
-            }
-        </script>
         <style>
             .tab-pane {
                 transition: opacity 0.2s ease-in-out;
@@ -48,7 +31,7 @@
     </head>
 
     <body
-        class="flex min-h-screen flex-col border border-secondary-200 font-sans antialiased transition-colors duration-200 dark:border-secondary-800 dark:bg-secondary-950">
+        class="flex min-h-screen flex-col border border-secondary-200 antialiased transition-colors duration-200 dark:border-secondary-800 dark:bg-secondary-950">
         <x-ui.background />
         <x-header.section />
         <div class="container mx-auto max-w-5xl flex-grow py-16">
