@@ -3,16 +3,16 @@
 <div>
     <x-themes.juno.partials.header subtitle="Full-stack developer exploring the digital frontier" title="About Me" />
 
-    <div class="grid gap-8 md:grid-cols-2">
+    <div class="grid w-full grid-cols-1 justify-between gap-8 md:grid-cols-[2fr_1fr]">
         <!-- Bio Column -->
-        <div class="space-y-6">
-            <div>
+        <div class="flex flex-col space-y-6">
+            <div class="h-full">
                 <h3 class="flex items-center gap-2 text-sm font-medium text-secondary-900 dark:text-secondary-100">
                     <x-ui.ionicon icon="rocket-outline" />
                     bio
                 </h3>
                 <div
-                    class="mt-6 text-sm leading-relaxed text-secondary-600 dark:text-secondary-400 [&>p:first-child]:mt-0 [&>p]:mt-4">
+                    class="mt-6 h-full text-sm leading-relaxed text-secondary-600 dark:text-secondary-400 [&>p:first-child]:mt-0 [&>p]:mt-4">
                     {!! $data->profile->about !!}
                 </div>
 
@@ -29,18 +29,18 @@
         </div>
 
         <!-- Education Timeline Column -->
-        <div class="space-y-6">
+        <div class="flex flex-col space-y-6">
             <div>
                 <h3 class="flex items-center gap-2 text-sm font-medium text-secondary-900 dark:text-secondary-100">
                     <x-ui.ionicon icon="school-outline" />
                     certifications & courses
                 </h3>
             </div>
-            <div class="relative mt-4">
+            <div class="relative mt-4 h-full flex-grow">
                 <!-- Linha vertical -->
                 <div class="absolute bottom-2 left-0 top-2 w-px bg-secondary-200 dark:bg-secondary-800"></div>
 
-                <div class="relative space-y-8 py-2">
+                <div class="relative h-full space-y-6 py-2">
                     @forelse ($courses as $course)
                         <div class="relative pl-6">
                             <!-- Marcador circular -->

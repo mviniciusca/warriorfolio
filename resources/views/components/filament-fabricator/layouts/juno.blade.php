@@ -35,9 +35,9 @@
             }
 
             .tab-button {
-                transition: all 0.2s ease-in-out;
+                font-size: 0.875rem;
+                position: relative;
                 border-bottom: 2px solid transparent;
-                font-size: 0.8rem;
             }
 
             .tab-button.active-tab {
@@ -61,27 +61,27 @@
             <div class="flex flex-col">
                 <!-- Tabs Header -->
                 <div class="mb-12 flex space-x-4 border-b border-secondary-200 px-4 dark:border-secondary-800">
-                    <button class="tab-button active-tab px-4 py-2 text-xs text-secondary-900 dark:text-secondary-100"
+                    <button class="tab-button active-tab px-4 py-2 text-sm text-secondary-900 dark:text-secondary-100"
                         id="repositories-tab" onclick="switchTab('repositories')">
                         Repositories
                     </button>
                     <button
-                        class="tab-button px-4 py-2 text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="projects-tab" onclick="switchTab('projects')">
                         Projects
                     </button>
                     <button
-                        class="tab-button px-4 py-2 text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="notes-tab" onclick="switchTab('notes')">
                         Notes
                     </button>
                     <button
-                        class="tab-button px-4 py-2 text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="about-tab" onclick="switchTab('about')">
                         About Me
                     </button>
                     <button
-                        class="tab-button px-4 py-2 text-xs text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="contact-tab" onclick="switchTab('contact')">
                         Contact
                     </button>
@@ -295,7 +295,7 @@
                 setActiveTab(tabName);
             }
 
-            // Initialize active tab from localStorage or default to repositories
+            // Initialize active tab
             document.addEventListener('DOMContentLoaded', function() {
                 const savedTab = localStorage.getItem('activeTab') || 'repositories';
                 switchTab(savedTab);
