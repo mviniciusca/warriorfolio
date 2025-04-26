@@ -4,6 +4,7 @@ use App\Models\Setting;
 use Filament\Notifications\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 /**
  * Get the first slider for a given module name.
@@ -32,6 +33,17 @@ if (! function_exists('getSlider')) {
                 ->first();
 
             return data_get($setting, $key, $default);
+        }
+    }
+
+    if (! function_exists('formatContent')) {
+        function formatContent(string $content, int $words = 20, string $end = '...'): string
+        {
+            return Str::words(
+                preg_replace('/<figure[^>]*>.*?<\/figure>/s', '', strip_tags($content, '<figure>')),
+                $words,
+                $end
+            );
         }
     }
 }

@@ -21,20 +21,16 @@
             {{ Str::words($item->title, 13, '...') }}
     </h2>
     <p class="mb-5 text-sm opacity-70">
-        {{ Str::words(
-            preg_replace('/<figure[^>]*>.*?<\/figure>/s', '', strip_tags($item->post->content, '<figure>')),
-            20,
-            '...',
-        ) }}
+        {{ formatContent($item->post->content) }}
     </p>
     </a>
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
             @if ($item->user->profile->avatar)
-                <img class="mx-1 h-7 w-7 rounded-full" src="{{ asset('storage/' . $item->user->profile->avatar) }}" />
+            <img class="mx-1 h-7 w-7 rounded-full" src="{{ asset('storage/' . $item->user->profile->avatar) }}" />
             @else
-                <img class="mx-1 h-7 w-7 rounded-full invert-0 dark:invert"
-                    src="{{ asset('img/core/profile-picture.png') }}" />
+            <img class="mx-1 h-7 w-7 rounded-full invert-0 dark:invert"
+                src="{{ asset('img/core/profile-picture.png') }}" />
             @endif
             <span class="text-sm font-medium">
                 {{ $item->user->name }}
