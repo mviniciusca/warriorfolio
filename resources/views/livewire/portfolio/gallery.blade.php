@@ -9,6 +9,17 @@
     showQuickView: false,
 
     init() {
+        // Verificar se a categoria está na URL ao inicializar
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('activeCategory')) {
+            this.activeCategory = parseInt(urlParams.get('activeCategory')) || null;
+        }
+
+        // Ouvir mudanças de categoria dos componentes Livewire
+        this.$wire.on('category-changed', ({ categoryId }) => {
+            this.activeCategory = categoryId;
+        });
+
         // Prevent default hash change behavior
         window.addEventListener('hashchange', (e) => {
             if (e.target.location.hash === '#portfolio') {
@@ -25,7 +36,6 @@
 
     resetView() {
         this.viewMode = 'normal';
-        this.activeCategory = null;
         this.transition = true;
         setTimeout(() => this.transition = false, 300);
     },

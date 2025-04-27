@@ -19,8 +19,9 @@ class Grid extends Component
     public $search = '';
 
     protected $queryString = [
-        'search' => ['except' => ''],
-        'page'   => ['except' => 1],
+        'search'         => ['except' => ''],
+        'page'           => ['except' => 1],
+        'activeCategory' => ['except' => null],
     ];
 
     protected $listeners = [
@@ -35,6 +36,11 @@ class Grid extends Component
         if (request()->has('search')) {
             $this->search = request()->get('search');
             $this->dispatch('search-initialized', search: $this->search);
+        }
+
+        // Sincronizar com a categoria da URL se estiver disponível
+        if (request()->has('activeCategory')) {
+            $this->activeCategory = request()->get('activeCategory');
         }
     }
 

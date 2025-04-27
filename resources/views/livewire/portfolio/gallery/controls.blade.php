@@ -8,7 +8,7 @@
     <div class="flex items-center gap-2 overflow-x-auto">
         {{-- Reset Button --}}
         <button
-            x-show="viewMode !== 'normal' || activeCategory !== null || $wire.orderBy !== 'created_at' || $wire.orderDirection !== 'desc' || !grayscale"
+            x-show="viewMode !== 'normal' || $wire.orderBy !== 'created_at' || $wire.orderDirection !== 'desc' || !grayscale"
             @click.prevent="
                 $dispatch('controls-reset');
                 resetView();

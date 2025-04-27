@@ -54,7 +54,6 @@ class Controls extends Component
         session(['portfolioViewMode' => 'normal']);
 
         $this->dispatch('search-changed', search: '');
-        $this->dispatch('controls-reset');
     }
 
     public function render()
