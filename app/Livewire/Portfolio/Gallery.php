@@ -92,6 +92,6 @@ class Gallery extends Component
 
     public function accessCache(): mixed
     {
-        return 1; // Forçando exibir apenas 1 item por página sem usar cache
+        return 9;
     }
 }
