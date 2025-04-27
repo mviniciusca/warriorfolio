@@ -92,10 +92,6 @@ class Gallery extends Component
 
     public function accessCache(): mixed
     {
-        return Cache::remember('portfolio_quantity', 3600, function () {
-            $layout = Layout::first(['portfolio']);
-
-            return $layout->portfolio['quantity'] ?? 12;
-        });
+        return 1; // Forçando exibir apenas 1 item por página sem usar cache
     }
 }
