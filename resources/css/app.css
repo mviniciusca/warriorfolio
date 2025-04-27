@@ -6,6 +6,10 @@
 @tailwind components;
 @tailwind utilities;
 
+[x-cloak] {
+    display: none !important;
+}
+
 /** Background Animation FX **/
 
 @keyframes spin {
