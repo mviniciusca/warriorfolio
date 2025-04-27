@@ -44,8 +44,8 @@
                             class="h-full w-full object-cover transition-all duration-300 rounded-xl" :class="{
                                 'group-hover:scale-105': viewMode !== 'compact',
                                 'group-hover:scale-110 group-hover:rotate-2': viewMode === 'compact',
-                                'grayscale': grayscale,
-                                'filter-none': !grayscale
+                                'grayscale opacity-60': grayscale,
+                                'filter-none opacity-100': !grayscale
                             }" src="{{ asset('storage/' . $item->project->image_cover) }}">
                     </div>
 
