@@ -113,6 +113,9 @@
                     <x-ui.ionicon :icon="'apps-outline'" class="h-3.5 w-3.5" />
                 </span>
                 {{ __('All Work') }}
+                <span class="ml-1 rounded-full bg-secondary-100 dark:bg-secondary-700 px-1.5 py-0.5 text-[10px]">
+                    {{ $totalProjects }}
+                </span>
             </button>
             @endif
 
@@ -128,6 +131,12 @@
                     <x-ui.ionicon :icon="$category->icon ?? 'bookmark'" class="h-3.5 w-3.5" />
                 </span>
                 {{ ucfirst($category->name) }}
+                @if($category->project_count > 2)
+                <span class="ml-1 rounded-full px-1.5 py-0.5 text-[10px] text-white"
+                    style="background-color: {{ $category->hex_color }}">
+                    {{ $category->project_count }}
+                </span>
+                @endif
             </button>
             @endforeach
         </nav>

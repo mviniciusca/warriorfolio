@@ -39,11 +39,39 @@ class Gallery extends Component
         }
     }
 
+    public function getCategories()
+    {
+        $categories = Category::where('is_active', '=', true)
+            ->whereHas('project', function ($query) {
+                $query->where('is_active', '=', true);
+            })
+            ->withCount(['project' => function ($query) {
+                $query->where('is_active', '=', true);
+            }])
+            ->latest()
+            ->get();
+
+        $totalProjects = Page::where('style', '=', 'project')
+            ->whereHas('project', function ($query) {
+                $query->where('is_active', '=', true);
+            })
+            ->where('is_active', '=', true)
+            ->count();
+
+        return [
+            'categories'    => $categories,
+            'totalProjects' => $totalProjects,
+        ];
+    }
+
     public function render()
     {
+        $categoriesData = $this->getCategories();
+
         return view('livewire.portfolio.gallery', [
-            'data'       => $this->getProjects(),
-            'categories' => $this->getCategories(),
+            'data'          => $this->getProjects(),
+            'categories'    => $categoriesData['categories'],
+            'totalProjects' => $categoriesData['totalProjects'],
         ]);
     }
 
@@ -66,16 +94,6 @@ class Gallery extends Component
 
         return $query->orderBy($this->orderBy, $this->orderDirection)
             ->paginate($this->accessCache() ?? 12);
-    }
-
-    public function getCategories()
-    {
-        return Category::where('is_active', '=', true)
-            ->whereHas('project', function ($query) {
-                $query->where('is_active', '=', true);
-            })
-            ->latest()
-            ->get();
     }
 
     public function filterCategoryById($category_id): void
