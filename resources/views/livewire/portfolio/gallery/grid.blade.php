@@ -59,8 +59,8 @@
                             'aspect-[16/9]': viewMode === 'large',
                             'aspect-square': viewMode === 'compact'
                         }">
-                        <img alt="{{ $item->title }}"
-                            class="h-full w-full object-cover transition-all duration-300 rounded-xl" :class="{
+                        <img class="portfolio-image h-full w-full object-cover transition-all duration-300 rounded-xl"
+                            :class="{
                                 'group-hover:scale-105': viewMode !== 'compact',
                                 'group-hover:scale-110 group-hover:rotate-2': viewMode === 'compact',
                                 'grayscale opacity-60': grayscale,

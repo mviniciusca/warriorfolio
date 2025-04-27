@@ -343,6 +343,63 @@
 
 }
 
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+        filter: blur(0);
+    }
+    25% {
+        transform: translateX(-4px) rotate(-1deg);
+        filter: blur(1px);
+    }
+    75% {
+        transform: translateX(4px) rotate(1deg);
+        filter: blur(1px);
+    }
+}
+
+@keyframes spinHover {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@layer utilities {
+    .shake-animation {
+        animation: shake 0.4s ease-in-out;
+        will-change: transform, filter;
+    }
+
+    .pop-scale {
+        animation: popScale 0.3s ease-in-out;
+    }
+
+    .glow-pulse {
+        --glow-color: 59, 130, 246;
+        animation: glowPulse 0.8s ease-in-out;
+    }
+
+    .dark .glow-pulse {
+        --glow-color: 147, 197, 253;
+    }
+
+    .spin-fade {
+        animation: spinFade 0.5s ease-out;
+    }
+
+    .click-effect {
+        @apply active:scale-95 transition-transform duration-150;
+    }
+
+    .hover-spin-icon {
+        @apply transition-transform duration-300;
+    }
+
+    .hover-spin-icon svg,
+    .hover-spin-icon ion-icon {
+        animation: spinHover 2s linear infinite;
+    }
+}
+
 /* Dribbble-inspired Gallery Styles */
 .group {
     backface-visibility: hidden;

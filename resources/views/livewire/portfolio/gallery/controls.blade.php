@@ -3,8 +3,14 @@
         {{-- Reset Button --}}
         <button
             x-show="viewMode !== 'normal' || activeCategory !== null || $wire.orderBy !== 'created_at' || $wire.orderDirection !== 'desc' || !grayscale"
-            @click.prevent="$dispatch('controls-reset'); resetView(); grayscale = true; $wire.resetControls()"
-            class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700">
+            @click.prevent="
+                $dispatch('controls-reset');
+                resetView();
+                grayscale = true;
+                $wire.resetControls();
+                $el.classList.add('spin-fade')" @mouseenter="$el.classList.add('hover-spin-icon')"
+            @mouseleave="$el.classList.remove('hover-spin-icon')"
+            class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700 click-effect">
             <span wire:ignore>
                 <x-ui.ionicon :icon="'refresh-outline'" class="h-3.5 w-3.5" />
             </span>
@@ -12,8 +18,13 @@
         </button>
 
         {{-- Grayscale Toggle --}}
-        <button @click.prevent="grayscale = !grayscale"
-            class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:hover:bg-secondary-700 text-secondary-600 dark:text-secondary-400"
+        <button @click.prevent="
+                grayscale = !grayscale;
+                document.querySelectorAll('.portfolio-image').forEach(img => img.classList.add('shake-animation'));
+                setTimeout(() => {
+                    document.querySelectorAll('.portfolio-image').forEach(img => img.classList.remove('shake-animation'));
+                }, 400)"
+            class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:hover:bg-secondary-700 text-secondary-600 dark:text-secondary-400 click-effect"
             :class="{ 'bg-secondary-100 dark:bg-secondary-700': grayscale }">
             <span wire:ignore>
                 <x-ui.ionicon :icon="'color-filter-outline'" class="h-3.5 w-3.5" />
@@ -22,9 +33,12 @@
         </button>
 
         {{-- View Toggle --}}
-        <button wire:ignore
-            @click.prevent="$dispatch('view-mode-changed', { viewMode: viewMode === 'normal' ? 'large' : (viewMode === 'large' ? 'compact' : 'normal') }); viewMode = viewMode === 'normal' ? 'large' : (viewMode === 'large' ? 'compact' : 'normal')"
-            class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700">
+        <button wire:ignore @click.prevent="
+                let newView = viewMode === 'normal' ? 'large' : (viewMode === 'large' ? 'compact' : 'normal');
+                $dispatch('view-mode-changed', { viewMode: newView });
+                viewMode = newView;
+                $el.classList.add('pop-scale')"
+            class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700 click-effect">
             <span wire:ignore>
                 <x-ui.ionicon :icon="'grid-outline'" class="h-3.5 w-3.5" />
             </span>
@@ -37,8 +51,8 @@
             <span class="text-xs font-medium text-secondary-600 dark:text-secondary-400">{{ __('Sort by:') }}</span>
             <div
                 class="flex divide-x divide-secondary-200 dark:divide-secondary-700 rounded-lg border border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-800">
-                <button wire:click.prevent="setOrderBy('created_at')"
-                    class="flex items-center px-2.5 py-1.5 text-xs rounded-l-lg"
+                <button wire:click.prevent="setOrderBy('created_at')" @click="$el.classList.add('glow-pulse')"
+                    class="flex items-center px-2.5 py-1.5 text-xs rounded-l-lg click-effect"
                     :class="{ 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium': $wire.orderBy === 'created_at', 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200': $wire.orderBy !== 'created_at' }">
                     {{ __('Latest') }}
                     @if($orderBy === 'created_at')
@@ -53,8 +67,8 @@
                     </svg>
                     @endif
                 </button>
-                <button wire:click.prevent="setOrderBy('title')"
-                    class="flex items-center px-2.5 py-1.5 text-xs rounded-r-lg"
+                <button wire:click.prevent="setOrderBy('title')" @click="$el.classList.add('glow-pulse')"
+                    class="flex items-center px-2.5 py-1.5 text-xs rounded-r-lg click-effect"
                     :class="{ 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium': $wire.orderBy === 'title', 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200': $wire.orderBy !== 'title' }">
                     {{ __('Title') }}
                     @if($orderBy === 'title')
