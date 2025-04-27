@@ -16,7 +16,17 @@ class Grid extends Component
 
     public $activeCategory = null;
 
-    protected $listeners = ['category-changed' => 'handleCategoryChange'];
+    protected $listeners = [
+        'category-changed' => 'handleCategoryChange',
+        'sort-changed'     => 'handleSortChange',
+    ];
+
+    public function handleSortChange($sort)
+    {
+        $this->orderBy = $sort['orderBy'];
+        $this->orderDirection = $sort['orderDirection'];
+        $this->resetPage();
+    }
 
     public function handleCategoryChange($categoryId)
     {

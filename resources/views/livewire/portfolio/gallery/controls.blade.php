@@ -1,8 +1,9 @@
 <div class="flex flex-col gap-4 sm:flex-row sm:justify-end mb-6">
     <div class="flex items-center gap-2 order-2 sm:order-none overflow-x-auto">
         {{-- Reset Button --}}
-        <button x-show="viewMode !== 'normal' || activeCategory !== null"
-            @click.prevent="$dispatch('controls-reset'); resetView()"
+        <button
+            x-show="viewMode !== 'normal' || activeCategory !== null || $wire.orderBy !== 'created_at' || $wire.orderDirection !== 'desc'"
+            @click.prevent="$dispatch('controls-reset'); resetView(); $wire.resetControls()"
             class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700">
             <span wire:ignore>
                 <x-ui.ionicon :icon="'refresh-outline'" class="h-3.5 w-3.5" />
