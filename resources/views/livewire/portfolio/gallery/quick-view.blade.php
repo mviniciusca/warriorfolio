@@ -40,7 +40,8 @@
             <div class="group relative">
                 {{-- Project Image --}}
                 <div class="aspect-[3/2] w-full overflow-hidden">
-                    <img :src="'/storage/' + (project ? project.image_cover : '')" :alt="project ? project.title : ''"
+                    <img x-bind:src="'/storage/' + (project ? project.image_cover : '')"
+                        x-bind:alt="project ? project.title : ''"
                         class="h-full w-full object-cover transition-all duration-300 group-hover:scale-105">
                 </div>
 
@@ -49,14 +50,13 @@
                     class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <div class="p-6">
                         <div class="flex items-center gap-1 w-fit rounded-lg border px-2 py-0.5 text-xs font-medium text-white bg-opacity-75 border-transparent"
-                            :style="project?.category?.hex_color ? {
-                                backgroundColor: project.category.hex_color,
-                                borderColor: project.category.hex_color
-                            } : { backgroundColor: 'rgb(17, 24, 39)' }">
-                            <span x-show="project?.category?.icon">
+                            x-bind:style="(project && project.category) ?
+                            `background-color: ${project.category.hex_color}; border-color: ${project.category.hex_color};`
+                            : 'background-color: rgb(17, 24, 39); border-color: rgb(17, 24, 39);'">
+                            <span x-show="project && project.category && project.category.icon">
                                 <x-ui.ionicon :icon="'bookmark-sharp'" class="h-3 w-3" />
                             </span>
-                            <span x-text="project?.category?.name"></span>
+                            <span x-text="(project && project.category) ? project.category.name : ''"></span>
                         </div>
                     </div>
                 </div>
@@ -66,14 +66,14 @@
                     class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <div class="p-6">
                         {{-- Title --}}
-                        <h3 :id="'modal-title-' + project?.id"
+                        <h3 x-bind:id="'modal-title-' + (project ? project.id : '')"
                             class="text-base font-medium text-white opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
-                            x-text="project?.title">
+                            x-text="project ? project.title : ''">
                         </h3>
 
                         {{-- Link --}}
                         <div class="mt-1.5">
-                            <a :href="baseUrl + '/' + project?.slug"
+                            <a x-bind:href="baseUrl + '/' + (project ? project.slug : '')"
                                 class="group/link inline-flex items-center text-white/80 transition-colors hover:text-white">
                                 <span
                                     class="text-xs opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 flex items-center">
