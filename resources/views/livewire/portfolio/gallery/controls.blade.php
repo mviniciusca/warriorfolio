@@ -37,7 +37,8 @@
             <span class="text-xs font-medium text-secondary-600 dark:text-secondary-400">{{ __('Sort by:') }}</span>
             <div
                 class="flex divide-x divide-secondary-200 dark:divide-secondary-700 rounded-lg border border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-800">
-                <button wire:click.prevent="setOrderBy('created_at')" class="flex items-center px-2.5 py-1.5 text-xs"
+                <button wire:click.prevent="setOrderBy('created_at')"
+                    class="flex items-center px-2.5 py-1.5 text-xs rounded-l-lg"
                     :class="{ 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium': $wire.orderBy === 'created_at', 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200': $wire.orderBy !== 'created_at' }">
                     {{ __('Latest') }}
                     @if($orderBy === 'created_at')
@@ -52,7 +53,8 @@
                     </svg>
                     @endif
                 </button>
-                <button wire:click.prevent="setOrderBy('title')" class="flex items-center px-2.5 py-1.5 text-xs"
+                <button wire:click.prevent="setOrderBy('title')"
+                    class="flex items-center px-2.5 py-1.5 text-xs rounded-r-lg"
                     :class="{ 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium': $wire.orderBy === 'title', 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200': $wire.orderBy !== 'title' }">
                     {{ __('Title') }}
                     @if($orderBy === 'title')
