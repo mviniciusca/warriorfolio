@@ -3,6 +3,7 @@
 <div id="portfolio" x-data="{
     activeCategory: null,
     viewMode: $persist('normal'),
+    grayscale: $persist(true),
     transition: false,
 
     init() {

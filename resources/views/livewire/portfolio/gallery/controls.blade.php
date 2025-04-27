@@ -2,13 +2,23 @@
     <div class="flex items-center gap-2 order-2 sm:order-none overflow-x-auto">
         {{-- Reset Button --}}
         <button
-            x-show="viewMode !== 'normal' || activeCategory !== null || $wire.orderBy !== 'created_at' || $wire.orderDirection !== 'desc'"
-            @click.prevent="$dispatch('controls-reset'); resetView(); $wire.resetControls()"
+            x-show="viewMode !== 'normal' || activeCategory !== null || $wire.orderBy !== 'created_at' || $wire.orderDirection !== 'desc' || !grayscale"
+            @click.prevent="$dispatch('controls-reset'); resetView(); grayscale = true; $wire.resetControls()"
             class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium text-secondary-600 transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:text-secondary-400 dark:hover:bg-secondary-700">
             <span wire:ignore>
                 <x-ui.ionicon :icon="'refresh-outline'" class="h-3.5 w-3.5" />
             </span>
             <span>{{ __('Reset') }}</span>
+        </button>
+
+        {{-- Grayscale Toggle --}}
+        <button @click.prevent="grayscale = !grayscale"
+            class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:hover:bg-secondary-700"
+            :class="{ 'text-secondary-900 dark:text-white bg-secondary-100 dark:bg-secondary-700': grayscale, 'text-secondary-600 dark:text-secondary-400': !grayscale }">
+            <span wire:ignore>
+                <x-ui.ionicon :icon="'color-filter-outline'" class="h-3.5 w-3.5" />
+            </span>
+            <span x-text="grayscale ? '{{ __('Color') }}' : '{{ __('Grayscale') }}'"></span>
         </button>
 
         {{-- View Toggle --}}

@@ -14,11 +14,16 @@
         <div class="group relative" wire:key='{{ $item->id }}'>
             <a href="/{{ $item->slug }}" class="block">
                 {{-- Image Container with Hover Effect --}}
-                <div class="relative overflow-hidden rounded-lg bg-secondary-900/5 dark:bg-secondary-900/20">
+                <div class="relative">
                     {{-- Category Badge --}}
-                    <div class="{{ $item->project->category->color ? '' : 'bg-secondary-900' }} absolute z-30 left-3 top-3 flex items-center gap-1 rounded-lg px-2 py-0.5 text-[10px] font-medium text-white bg-opacity-75 border"
-                        x-show="viewMode !== 'compact'" x-transition
-                        style="background-color: {{ $item->project->category->hex_color }}; border-color: {{ $item->project->category->hex_color }}">
+                    <div class="absolute z-30 left-3 top-3 flex items-center gap-1 rounded-lg px-2 py-0.5 text-[10px] font-medium border transition-colors duration-300"
+                        x-show="viewMode !== 'compact'" x-transition :class="{
+                            'bg-black text-white border-secondary-700': grayscale,
+                            '{{ $item->project->category->color ? '' : 'bg-secondary-900' }} text-white bg-opacity-75 border-transparent': !grayscale
+                        }" :style="!grayscale ? {
+                            backgroundColor: '{{ $item->project->category->hex_color }}',
+                            borderColor: '{{ $item->project->category->hex_color }}'
+                        } : {}">
                         <span wire:ignore>
                             @if ($item->project->category->icon)
                             <x-ui.ionicon :icon="$item->project->category->icon" class="h-3 w-3" />
@@ -30,20 +35,22 @@
                     </div>
 
                     {{-- Main Image --}}
-                    <div class="overflow-hidden transition-all duration-300" :class="{
+                    <div class="overflow-hidden transition-all duration-300 rounded-xl" :class="{
                             'aspect-[4/3]': viewMode === 'normal',
                             'aspect-[16/9]': viewMode === 'large',
                             'aspect-square': viewMode === 'compact'
                         }">
-                        <img alt="{{ $item->title }}" class="h-full w-full object-cover transition-all duration-300"
-                            :class="{
+                        <img alt="{{ $item->title }}"
+                            class="h-full w-full object-cover transition-all duration-300 rounded-xl" :class="{
                                 'group-hover:scale-105': viewMode !== 'compact',
-                                'group-hover:scale-110 group-hover:rotate-2': viewMode === 'compact'
+                                'group-hover:scale-110 group-hover:rotate-2': viewMode === 'compact',
+                                'grayscale': grayscale,
+                                'filter-none': !grayscale
                             }" src="{{ asset('storage/' . $item->project->image_cover) }}">
                     </div>
 
                     {{-- Hover Overlay with Gradient --}}
-                    <div class="absolute inset-0 transition-all duration-300" :class="{
+                    <div class="absolute inset-0 rounded-xl transition-all duration-300" :class="{
                             'bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100': viewMode !== 'compact',
                             'bg-gradient-to-t from-black to-black/60 opacity-0 group-hover:opacity-90': viewMode === 'compact'
                         }">
