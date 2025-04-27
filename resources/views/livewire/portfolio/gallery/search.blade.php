@@ -4,7 +4,7 @@
             @if(!$searchActive)
             <x-ui.ionicon icon="search-outline" class="h-3.5 w-3.5 text-secondary-400 dark:text-secondary-500" />
             @else
-            <x-ui.ionicon icon="search" class="h-3.5 w-3.5 text-primary-500 dark:text-primary-400" />
+            <x-ui.ionicon icon="search" class="h-3.5 w-3.5 text-secondary-500 dark:text-primary-400" />
             @endif
         </div>
         <input type="text" wire:model.live.debounce.500ms="search" placeholder="{{ __('Search projects...') }}"
