@@ -1,7 +1,8 @@
 <div wire:loading.class="opacity-50">
     {{-- Empty State --}}
     @if($data->isEmpty())
-    <x-ui.empty-section :message="'No projects available'" :auth="'Create a new project'" :icon="'rocket-outline'" />
+    <x-ui.empty-section class="mt-24" message="No projects available" auth="Create a new project"
+        icon="rocket-outline" />
     @endif
 
     {{-- Gallery Grid with Transition --}}

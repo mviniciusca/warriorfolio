@@ -1,11 +1,11 @@
-@props(['message' => false, 'auth' => null, 'info' => [], 'icon' => null])
+@props(['message' => false, 'auth' => null, 'info' => [], 'icon' => null, 'class' => ''])
 
 @isset($info['empty_section'])
 @if ($info['empty_section'])
 @if ($message || ($auth && auth()->check()))
-<div class="mx-auto text-center text-xs">
+<div class="mx-auto text-center text-xs {{ $class }}">
     @if ($icon)
-    <x-ui.ionicon :icon="$icon" class="mx-auto h-6 w-6 text-secondary-500" />
+    <x-ui.ionicon :$icon class="mx-auto  dark:text-white/50 text-black/50" />
     @else
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="mx-auto size-6 text-secondary-500">
