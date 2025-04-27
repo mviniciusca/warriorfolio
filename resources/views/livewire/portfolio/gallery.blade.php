@@ -102,7 +102,7 @@
         </div>
 
         {{-- Categories Menu --}}
-        <nav class="flex gap-1 pb-2 mb-4 -mx-2 px-4 overflow-x-auto border-b border-secondary-200 dark:border-secondary-700 scrollbar-none"
+        <nav class="flex gap-1 pb-2 mb-4 -mx-2 px-4 md:overflow-visible overflow-x-auto border-b border-secondary-200 dark:border-secondary-700 scrollbar-none"
             aria-label="Categories">
             @if ($categories->count() >= 2 ?? false)
             <button @click.prevent="activeCategory = null" wire:click.prevent="clear"
