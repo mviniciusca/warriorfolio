@@ -1,4 +1,7 @@
-<div class="flex flex-col gap-4 sm:flex-row sm:justify-end mb-6">
+<div class="flex flex-col gap-4 sm:flex-row sm:items-center mb-6">
+    {{-- Search Component --}}
+    <livewire:portfolio.gallery.search />
+
     <div class="flex items-center gap-2 order-2 sm:order-none overflow-x-auto">
         {{-- Reset Button --}}
         <button

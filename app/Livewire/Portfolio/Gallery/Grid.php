@@ -16,10 +16,39 @@ class Grid extends Component
 
     public $activeCategory = null;
 
+    public $search = '';
+
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'page'   => ['except' => 1],
+    ];
+
     protected $listeners = [
         'category-changed' => 'handleCategoryChange',
         'sort-changed'     => 'handleSortChange',
+        'search-changed'   => 'handleSearch',
+        'controls-reset'   => 'handleReset',
     ];
+
+    public function mount()
+    {
+        if (request()->has('search')) {
+            $this->search = request()->get('search');
+            $this->dispatch('search-initialized', search: $this->search);
+        }
+    }
+
+    public function handleReset()
+    {
+        $this->search = '';
+        $this->resetPage();
+    }
+
+    public function handleSearch($search)
+    {
+        $this->search = $search;
+        $this->resetPage();
+    }
 
     public function handleSortChange($sort)
     {
@@ -56,6 +85,19 @@ class Grid extends Component
         if ($this->activeCategory !== null) {
             $query->whereHas('project', function ($query) {
                 $query->where('category_id', $this->activeCategory);
+            });
+        }
+
+        if (! empty($this->search)) {
+            $searchTerm = '%'.$this->search.'%';
+            $query->where(function ($query) use ($searchTerm) {
+                $query->where('title', 'like', $searchTerm)
+                    ->orWhereHas('project', function ($query) use ($searchTerm) {
+                        $query->where('short_description', 'like', $searchTerm)
+                            ->orWhereHas('category', function ($query) use ($searchTerm) {
+                                $query->where('name', 'like', $searchTerm);
+                            });
+                    });
             });
         }
 
