@@ -18,7 +18,7 @@
         }
 
         .tab-button {
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             position: relative;
             border-bottom: 2px solid transparent;
         }
@@ -46,27 +46,27 @@
                 <!-- Tabs Header -->
                 <div class="mb-12 flex space-x-4 border-b border-secondary-200 dark:border-secondary-800">
                     <button type="button"
-                        class="tab-button active-tab px-4 py-2 text-sm text-secondary-900 dark:text-secondary-100"
+                        class="tab-button text-xs px-4 py-2 text-secondary-900 dark:text-secondary-100"
                         id="repositories-tab">
                         Repositories
                     </button>
                     <button type="button"
-                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button text-xs px-4 py-2 text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="projects-tab">
                         Projects
                     </button>
                     <button type="button"
-                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button text-xs px-4 py-2 text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="notes-tab">
                         Notes
                     </button>
                     <button type="button"
-                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button text-xs px-4 py-2 text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="about-tab">
                         About Me
                     </button>
                     <button type="button"
-                        class="tab-button px-4 py-2 text-sm text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
+                        class="tab-button text-xs px-4 py-2 text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="contact-tab">
                         Contact
                     </button>
