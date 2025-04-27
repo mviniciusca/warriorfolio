@@ -87,6 +87,8 @@ class Gallery extends Component
     public function clear(): void
     {
         $this->category_id = 0;
+        $this->orderBy = 'created_at';
+        $this->orderDirection = 'desc';
         $this->resetPage();
     }
 
