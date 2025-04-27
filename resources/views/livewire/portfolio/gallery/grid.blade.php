@@ -12,7 +12,26 @@
         }">
         @foreach ($data as $item)
         <div class="group relative" wire:key='{{ $item->id }}'>
-            <a href="/{{ $item->slug }}" class="block">
+            {{-- Quick View Button --}}
+            <button type="button" @click.prevent="$dispatch('open-quick-view', {
+                    id: {{ $item->id }},
+                    title: '{{ $item->title }}',
+                    slug: '{{ $item->slug }}',
+                    image_cover: '{{ $item->project->image_cover }}',
+                    short_description: '{{ addslashes($item->project->short_description) }}',
+                    external_link: '{{ $item->project->external_link }}',
+                    tags: {{ json_encode($item->project->tags) }},
+                    category: {
+                        name: '{{ $item->project->category->name }}',
+                        icon: '{{ $item->project->category->icon }}',
+                        hex_color: '{{ $item->project->category->hex_color }}'
+                    }
+                })"
+                class="absolute right-3 top-3 z-40 flex h-7 w-7 items-center justify-center rounded-lg bg-white/90 opacity-0 transition-all duration-300 hover:bg-white group-hover:opacity-100 dark:bg-secondary-900/90 dark:hover:bg-secondary-900">
+                <x-ui.ionicon icon="eye-outline" class="h-3.5 w-3.5 text-secondary-700 dark:text-secondary-300" />
+            </button>
+
+            <a href="{{ config('app.url') }}/{{ $item->slug }}" class="block">
                 {{-- Image Container with Hover Effect --}}
                 <div class="relative">
                     {{-- Category Badge --}}
@@ -91,4 +110,7 @@
     <div class="mt-6" wire:loading.class="opacity-50">
         {{ $data->links() }}
     </div>
+
+    {{-- Quick View Modal Component --}}
+    <livewire:portfolio.gallery.quick-view />
 </div>

@@ -5,6 +5,8 @@
     viewMode: $persist('normal'),
     grayscale: $persist(true),
     transition: false,
+    quickViewProject: null,
+    showQuickView: false,
 
     init() {
         // Prevent default hash change behavior
