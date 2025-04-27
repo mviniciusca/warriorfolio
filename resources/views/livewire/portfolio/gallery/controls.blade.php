@@ -13,8 +13,8 @@
 
         {{-- Grayscale Toggle --}}
         <button @click.prevent="grayscale = !grayscale"
-            class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:hover:bg-secondary-700"
-            :class="{ 'text-secondary-900 dark:text-white bg-secondary-100 dark:bg-secondary-700': grayscale, 'text-secondary-600 dark:text-secondary-400': !grayscale }">
+            class="flex-shrink-0 flex items-center gap-1 rounded-lg border border-secondary-200 bg-white px-2.5 py-1 text-xs font-medium transition-all hover:bg-secondary-50 dark:border-secondary-700 dark:bg-secondary-800 dark:hover:bg-secondary-700 text-secondary-600 dark:text-secondary-400"
+            :class="{ 'bg-secondary-100 dark:bg-secondary-700': grayscale }">
             <span wire:ignore>
                 <x-ui.ionicon :icon="'color-filter-outline'" class="h-3.5 w-3.5" />
             </span>
