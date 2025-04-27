@@ -1,4 +1,4 @@
-<nav class="flex gap-1 pb-2 mb-4 -mx-2 px-4 md:overflow-visible overflow-x-auto border-b border-secondary-200 dark:border-secondary-700 scrollbar-none"
+<nav class="flex gap-2 py-2 -mx-2 px-4 md:overflow-visible overflow-x-auto border-b border-secondary-200 dark:border-secondary-700 scrollbar-none mb-6"
     aria-label="Categories">
     @if ($categories->count() >= 2)
     <button type="button" @click.prevent="activeCategory = null; $el.classList.add('pop-scale')"

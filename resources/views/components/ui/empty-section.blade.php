@@ -5,7 +5,7 @@
 @if ($message || ($auth && auth()->check()))
 <div class="mx-auto text-center text-xs">
     @if ($icon)
-    <x-ui.ionicon :icon="$icon" class="mx-auto h-6 w-6 text-secondary-500" />
+    <x-ui.ionicon wire:ignore :icon="$icon" class="mx-auto h-6 w-6 text-secondary-500" />
     @else
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="mx-auto size-6 text-secondary-500">

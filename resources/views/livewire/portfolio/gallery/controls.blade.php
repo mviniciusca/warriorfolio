@@ -1,8 +1,11 @@
-<div class="flex flex-col gap-4 sm:flex-row sm:items-center mb-6">
-    {{-- Search Component --}}
-    <livewire:portfolio.gallery.search />
+<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-4 py-2">
+    {{-- Left Side: Search Component --}}
+    <div class="w-full sm:w-64">
+        <livewire:portfolio.gallery.search />
+    </div>
 
-    <div class="flex items-center gap-2 order-2 sm:order-none overflow-x-auto">
+    {{-- Right Side: Controls --}}
+    <div class="flex items-center gap-2 overflow-x-auto">
         {{-- Reset Button --}}
         <button
             x-show="viewMode !== 'normal' || activeCategory !== null || $wire.orderBy !== 'created_at' || $wire.orderDirection !== 'desc' || !grayscale"
