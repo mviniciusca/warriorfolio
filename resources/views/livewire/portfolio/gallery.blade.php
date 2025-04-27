@@ -62,9 +62,10 @@
                 <div class="flex-shrink-0 flex items-center gap-2">
                     <span class="text-xs font-medium text-secondary-600 dark:text-secondary-400">{{ __('Sort by:')
                         }}</span>
-                    <div class="flex divide-x-0 rounded-lg bg-white dark:bg-secondary-800">
+                    <div
+                        class="flex divide-x divide-secondary-200 dark:divide-secondary-700 rounded-lg border border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-800">
                         <button wire:click.prevent="setOrderBy('created_at')"
-                            class="flex items-center px-2.5 py-1 text-xs {{ $orderBy === 'created_at' ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium' : 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200' }} rounded-l-lg">
+                            class="flex items-center px-2.5 py-1.5 text-xs {{ $orderBy === 'created_at' ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium' : 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200' }} rounded-l-lg">
                             {{ __('Latest') }}
                             @if($orderBy === 'created_at')
                             <svg class="w-3.5 h-3.5 ml-1" viewBox="0 0 24 24" fill="none"
@@ -80,7 +81,7 @@
                             @endif
                         </button>
                         <button wire:click.prevent="setOrderBy('title')"
-                            class="flex items-center px-2.5 py-1 text-xs {{ $orderBy === 'title' ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium' : 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200' }} rounded-r-lg">
+                            class="flex items-center px-2.5 py-1.5 text-xs {{ $orderBy === 'title' ? 'bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white font-medium' : 'text-secondary-600 hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-200' }} rounded-r-lg">
                             {{ __('Title') }}
                             @if($orderBy === 'title')
                             <svg class="w-3.5 h-3.5 ml-1" viewBox="0 0 24 24" fill="none"
@@ -129,6 +130,12 @@
             </button>
             @endforeach
         </nav>
+
+        {{-- Empty State --}}
+        @if($data->isEmpty())
+        <x-ui.empty-section :message="'No projects available'" :auth="'Create a new project'"
+            :icon="'rocket-outline'" />
+        @endif
 
         {{-- Gallery Grid with Transition --}}
         <div class="grid gap-4 sm:gap-6 mt-8 sm:mt-12 transition-all duration-300" :class="{
