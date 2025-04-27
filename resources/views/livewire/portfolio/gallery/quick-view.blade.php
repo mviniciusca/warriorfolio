@@ -40,7 +40,7 @@
             <div class="group relative">
                 {{-- Project Image --}}
                 <div class="aspect-[3/2] w-full overflow-hidden">
-                    <img :src="'/storage/' + project?.image_cover" :alt="project?.title"
+                    <img :src="'/storage/' + (project ? project.image_cover : '')" :alt="project ? project.title : ''"
                         class="h-full w-full object-cover transition-all duration-300 group-hover:scale-105">
                 </div>
 
@@ -63,7 +63,7 @@
 
                 {{-- Bottom Shadow with Info --}}
                 <div
-                    class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <div class="p-6">
                         {{-- Title --}}
                         <h3 :id="'modal-title-' + project?.id"
@@ -72,11 +72,11 @@
                         </h3>
 
                         {{-- Link --}}
-                        <div class="mt-3">
+                        <div class="mt-1.5">
                             <a :href="baseUrl + '/' + project?.slug"
                                 class="group/link inline-flex items-center text-white/80 transition-colors hover:text-white">
                                 <span
-                                    class="text-sm font-medium opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 flex items-center">
+                                    class="text-xs opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 flex items-center">
                                     View Full Project
                                     <x-ui.ionicon icon="arrow-forward-outline"
                                         class="h-4 w-4 ml-1.5 -mr-1 transition-transform duration-300 group-hover/link:translate-x-1" />
