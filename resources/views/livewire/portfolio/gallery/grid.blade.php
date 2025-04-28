@@ -1,8 +1,8 @@
 <div wire:loading.class="opacity-50">
     {{-- Empty State --}}
     @if($data->isEmpty())
-    <x-ui.empty-section class="mt-24" message="No projects available" auth="Create a new project"
-        icon="rocket-outline" />
+    <x-ui.empty-section class="mt-24" message="{{ __('No projects available') }}"
+        auth="{{ __('Create a new project') }}" icon="rocket-outline" />
     @endif
 
     {{-- Gallery Grid with Transition --}}
@@ -23,7 +23,7 @@
                     external_link: '{{ $item->project->external_link }}',
                     tags: {{ json_encode($item->project->tags) }},
                     category: {
-                        name: '{{ $item->project->category->name }}',
+                        name: '{{ __(ucfirst($item->project->category->name)) }}',
                         icon: '{{ $item->project->category->icon }}',
                         hex_color: '{{ $item->project->category->hex_color }}'
                     }
@@ -51,7 +51,7 @@
                             <x-ui.ionicon :icon="'bookmark-sharp'" class="h-3 w-3" />
                             @endif
                         </span>
-                        {{ ucfirst($item->project->category->name) }}
+                        {{ __(ucfirst($item->project->category->name)) }}
                     </div>
 
                     {{-- Main Image --}}
@@ -96,7 +96,7 @@
                             <div x-show="viewMode === 'compact'" x-transition
                                 class="mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
                                 <span class="rounded-full border border-white/20 px-2 py-0.5 text-[10px] text-white/90">
-                                    {{ ucfirst($item->project->category->name) }}
+                                    {{ __(ucfirst($item->project->category->name)) }}
                                 </span>
                             </div>
                         </div>

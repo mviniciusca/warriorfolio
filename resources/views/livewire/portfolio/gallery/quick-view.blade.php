@@ -32,7 +32,7 @@
             {{-- Close Button --}}
             <button x-ref="closeBtn" @click="show = false"
                 class="absolute right-4 top-4 z-50 flex h-7 w-7 items-center justify-center rounded-full bg-white/90 transition-colors hover:bg-white dark:bg-secondary-900/90 dark:hover:bg-secondary-900">
-                <span class="sr-only">Close modal</span>
+                <span class="sr-only">{{ __('Close modal') }}</span>
                 <x-ui.ionicon icon="close-outline" class="h-4 w-4 text-secondary-700 dark:text-secondary-300" />
             </button>
 
@@ -77,7 +77,7 @@
                                 class="group/link inline-flex items-center text-white/80 transition-colors hover:text-white">
                                 <span
                                     class="text-xs opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 flex items-center">
-                                    View Full Project
+                                    {{ __('View Full Project') }}
                                     <x-ui.ionicon icon="arrow-forward-outline"
                                         class="h-4 w-4 ml-1.5 -mr-1 transition-transform duration-300 group-hover/link:translate-x-1" />
                                 </span>

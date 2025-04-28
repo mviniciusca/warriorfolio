@@ -31,7 +31,7 @@
         <span wire:ignore>
             <x-ui.ionicon :icon="$category->icon ?? 'bookmark'" class="h-3.5 w-3.5" />
         </span>
-        {{ ucfirst($category->name) }}
+        {{ __(ucfirst($category->name)) }}
         @if($category->project_count > 2)
         <span class="ml-1 rounded-full bg-secondary-100 dark:bg-secondary-700 px-1.5 py-0.5 text-[10px]">
             {{ $category->project_count }}
