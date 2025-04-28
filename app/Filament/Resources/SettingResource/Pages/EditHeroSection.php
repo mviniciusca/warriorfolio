@@ -14,6 +14,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;
@@ -49,7 +50,7 @@ class EditHeroSection extends EditRecord
                         Group::make()
                             ->relationship('module')
                             ->schema([
-                                Checkbox::make('hero')
+                                Toggle::make('hero')
                                     ->label(__('Show Hero Section'))
                                     ->helperText(__('Show or hide the hero section on the website.')),
                             ]),
@@ -518,7 +519,7 @@ class EditHeroSection extends EditRecord
                                             ->extraAttributes(['class' => 'mt-2 border-t border-secondary-300 dark:border-secondary-700 rounded-b-lg']),
                                     ]),
 
-                                Tab::make(__('Slider'))
+                                Tab::make(__('Static Slider'))
                                     ->icon('heroicon-o-photo')
                                     ->schema([
                                         Group::make()
@@ -542,6 +543,7 @@ class EditHeroSection extends EditRecord
                                                 Repeater::make('hero.slider_content')
                                                     ->columns(1)
                                                     ->cloneable()
+                                                    ->maxItems(6)
                                                     ->reorderable()
                                                     ->itemLabel(function (array $state): string {
                                                         return $state['slider_title'] ?? __('Slide Item');
@@ -549,7 +551,7 @@ class EditHeroSection extends EditRecord
                                                     ->collapsible()
                                                     ->collapsed()
                                                     ->label(__('Slider Images'))
-                                                    ->helperText(__('Add images to be displayed in the slider. For best results, use images with the same dimensions.'))
+                                                    ->helperText(__('Add images to be displayed in the slider (up to 6 items). For best results, use images with the same dimensions.'))
                                                     ->schema([
                                                         Group::make()
                                                             ->schema([
