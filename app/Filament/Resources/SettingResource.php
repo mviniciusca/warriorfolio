@@ -207,50 +207,54 @@ class SettingResource extends Resource
                                     ->icon('heroicon-o-globe-alt')
                                     ->collapsible()
                                     ->schema([
-                                        TextInput::make('meta.meta_title')
-                                            ->maxLength(255)
-                                            ->label(__('Meta Title'))
-                                            ->helperText(__('Define the application meta title.'))
-                                            ->prefixIcon('heroicon-o-document-text'),
+                                        Group::make()
+                                            ->columnSpanFull()
+                                            ->columns(2)
+                                            ->schema([
+                                                Group::make()
+                                                    ->schema([
+                                                        TextInput::make('meta.meta_title')
+                                                            ->maxLength(255)
+                                                            ->label(__('Meta Title'))
+                                                            ->helperText(__('Define the application meta title.'))
+                                                            ->prefixIcon('heroicon-o-document-text'),
 
-                                        Textarea::make('meta.meta_description')
-                                            ->maxLength(500)
-                                            ->rows(2)
-                                            ->label(__('Meta Description'))
-                                            ->helperText(__('Description of your application.'))
-                                            ->columnSpanFull(),
+                                                        TextInput::make('meta.meta_keywords')
+                                                            ->maxLength(255)
+                                                            ->helperText(__('Separate keywords with commas'))
+                                                            ->prefixIcon('heroicon-o-tag')
+                                                            ->label(__('Meta Keywords')),
 
-                                        TextInput::make('meta.meta_keywords')
-                                            ->maxLength(255)
-                                            ->helperText(__('Meta keywords for your website.'))
-                                            ->prefixIcon('heroicon-o-tag')
-                                            ->label(__('Meta Keywords')),
+                                                        TextInput::make('meta.meta_robots')
+                                                            ->maxLength(255)
+                                                            ->helperText(__('e.g., index, follow, noindex, nofollow'))
+                                                            ->prefixIcon('heroicon-o-queue-list')
+                                                            ->label(__('Meta Robots')),
+                                                    ]),
 
-                                        TextInput::make('meta.meta_author')
-                                            ->maxLength(255)
-                                            ->helperText(__('Define the application author.'))
-                                            ->prefixIcon('heroicon-o-user')
-                                            ->label(__('Meta Author')),
+                                                Group::make()
+                                                    ->schema([
+                                                        Textarea::make('meta.meta_description')
+                                                            ->maxLength(500)
+                                                            ->rows(2)
+                                                            ->label(__('Meta Description'))
+                                                            ->helperText(__('Description of your application.')),
 
-                                        TextInput::make('meta.meta_robots')
-                                            ->maxLength(255)
-                                            ->helperText(__('e.g., index, follow, noindex, nofollow'))
-                                            ->prefixIcon('heroicon-o-queue-list')
-                                            ->label(__('Meta Robots')),
-                                    ]),
+                                                        TextInput::make('meta.meta_author')
+                                                            ->maxLength(255)
+                                                            ->helperText(__('Define the content author'))
+                                                            ->prefixIcon('heroicon-o-user')
+                                                            ->label(__('Meta Author')),
 
-                                Section::make(__('Site Verification'))
-                                    ->description(__('Verify your site with search engines.'))
-                                    ->icon('heroicon-o-shield-check')
-                                    ->collapsible()
-                                    ->schema([
-                                        TextInput::make('google.meta_google_site_verification')
-                                            ->maxLength(255)
-                                            ->label(__('Google Verification'))
-                                            ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
-                                            ->password()
-                                            ->revealable()
-                                            ->prefixIcon('heroicon-o-key'),
+                                                        TextInput::make('google.meta_google_site_verification')
+                                                            ->maxLength(255)
+                                                            ->label(__('Google Verification'))
+                                                            ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
+                                                            ->password()
+                                                            ->revealable()
+                                                            ->prefixIcon('heroicon-o-key'),
+                                                    ]),
+                                            ]),
                                     ]),
                             ]),
 
