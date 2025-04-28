@@ -32,6 +32,26 @@ class Controls extends Component
         ]);
     }
 
+    public function toggleOrderBy()
+    {
+        $this->orderBy = $this->orderBy === 'created_at' ? 'title' : 'created_at';
+
+        $this->dispatch('sort-changed', [
+            'orderBy'        => $this->orderBy,
+            'orderDirection' => $this->orderDirection,
+        ]);
+    }
+
+    public function toggleOrderDirection()
+    {
+        $this->orderDirection = $this->orderDirection === 'asc' ? 'desc' : 'asc';
+
+        $this->dispatch('sort-changed', [
+            'orderBy'        => $this->orderBy,
+            'orderDirection' => $this->orderDirection,
+        ]);
+    }
+
     public function cycleViewMode()
     {
         if ($this->viewMode === 'normal') {
