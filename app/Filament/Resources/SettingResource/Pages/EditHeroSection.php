@@ -238,7 +238,7 @@ class EditHeroSection extends EditRecord
                                     ->columns(1)
                                     ->schema([
                                         Group::make()
-                                            ->columns(2)
+                                            ->columns(3)
                                             ->schema([
                                                 Checkbox::make('hero.featured_image_is_active')
                                                     ->default(true)
@@ -248,6 +248,14 @@ class EditHeroSection extends EditRecord
                                                     ->default(true)
                                                     ->helperText(__('Enable this option to display a browser border around the featured image. Applicable only for themes that support browser borders.'))
                                                     ->label(__('Browser Border')),
+                                                Radio::make('hero.browser_device')
+                                                    ->options([
+                                                        'desktop' => __('Desktop'),
+                                                        'mobile'  => __('Mobile'),
+                                                    ])
+                                                    ->default('desktop')
+                                                    ->label(__('Browser Device'))
+                                                    ->helperText(__('Select the device type for the browser border.')),
                                                 TextInput::make('hero.browser_border_url')
                                                     ->label(__('Browser Border URL'))
                                                     ->helperText(__('URL of the browser border image. Active when featured image has uploaded file.'))
