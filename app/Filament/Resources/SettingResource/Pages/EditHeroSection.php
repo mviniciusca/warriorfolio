@@ -528,57 +528,86 @@ class EditHeroSection extends EditRecord
                                                     ->helperText(__('Automatically inverts image colors in dark mode for better contrast.')),
                                             ]),
 
-                                        Repeater::make('hero.slider_content')
-                                            ->columnSpanFull()
-                                            ->cloneable()
-                                            ->reorderable()
-                                            ->itemLabel(function (array $state): string {
-                                                return $state['slider_title'] ?? __('Slide Item');
-                                            })
-                                            ->collapsible()
-                                            ->collapsed()
-                                            ->columns(1)
-                                            ->label(__('Slider Images'))
-                                            ->helperText(__('Add images to be displayed in the slider. Recommended aspect ratio is 16:9.'))
+                                        Section::make(__('Slider Content'))
+                                            ->description(__('Manage the images that appear in your slider.'))
+                                            ->icon('heroicon-o-film')
+                                            ->collapsible(false)
                                             ->schema([
-                                                Group::make()
+                                                Repeater::make('hero.slider_content')
+                                                    ->columns(1)
+                                                    ->cloneable()
+                                                    ->reorderable()
+                                                    ->itemLabel(function (array $state): string {
+                                                        return $state['slider_title'] ?? __('Slide Item');
+                                                    })
+                                                    ->collapsible()
+                                                    ->collapsed()
+                                                    ->label(__('Slider Images'))
+                                                    ->helperText(__('Add images to be displayed in the slider. For best results, use images with the same dimensions.'))
                                                     ->schema([
-                                                        TextInput::make('slider_title')
-                                                            ->label(__('Slide Title'))
-                                                            ->helperText(__('Used for administrative purposes and alt text.'))
-                                                            ->placeholder(__('Product Showcase'))
-                                                            ->prefixIcon('heroicon-o-document-text')
-                                                            ->maxLength(50),
-
-                                                        FileUpload::make('slider_image')
-                                                            ->label(__('Slide Image'))
-                                                            ->directory('hero/slider')
-                                                            ->disk('public')
-                                                            ->visibility('public')
-                                                            ->image()
-                                                            ->imageEditor()
-                                                            ->imageEditorAspectRatios([
-                                                                '16:9' => '16:9',
-                                                                '4:3'  => '4:3',
-                                                                '3:2'  => '3:2',
-                                                            ])
-                                                            ->columnSpanFull()
-                                                            ->helperText(__('Upload an image for this slide. Recommended size: 1920×1080px.')),
-
                                                         Group::make()
-                                                            ->columns(2)
                                                             ->schema([
-                                                                TextInput::make('slider_link')
-                                                                    ->label(__('Link URL (Optional)'))
-                                                                    ->helperText(__('Where the slide will link to when clicked.'))
-                                                                    ->placeholder('https://example.com/product')
-                                                                    ->prefixIcon('heroicon-o-link'),
-                                                                Checkbox::make('is_new_window')
-                                                                    ->label(__('Open in New Tab'))
-                                                                    ->helperText(__('When enabled, the link opens in a new browser tab.'))
-                                                                    ->default(false),
+                                                                TextInput::make('slider_title')
+                                                                    ->label(__('Slide Title'))
+                                                                    ->helperText(__('Used for administrative purposes and alt text.'))
+                                                                    ->placeholder(__('Product Showcase'))
+                                                                    ->prefixIcon('heroicon-o-document-text')
+                                                                    ->maxLength(50)
+                                                                    ->columnSpanFull(),
+
+                                                                FileUpload::make('slider_image')
+                                                                    ->label(__('Slide Image'))
+                                                                    ->directory('hero/slider')
+                                                                    ->disk('public')
+                                                                    ->visibility('public')
+                                                                    ->image()
+                                                                    ->imageEditor()
+                                                                    ->imageEditorAspectRatios([
+                                                                        '16:9' => __('16:9 (Widescreen)'),
+                                                                        '4:3'  => __('4:3 (Standard)'),
+                                                                        '3:2'  => __('3:2 (Classic)'),
+                                                                        '1:1'  => __('1:1 (Square)'),
+                                                                    ])
+                                                                    ->columnSpanFull()
+                                                                    ->helperText(__('Recommended size: 1920×1080px (16:9). Use high-quality images for best results.')),
+
+                                                                Group::make()
+                                                                    ->columns(2)
+                                                                    ->schema([
+                                                                        TextInput::make('slider_link')
+                                                                            ->label(__('Link URL (Optional)'))
+                                                                            ->helperText(__('Where the slide will link to when clicked.'))
+                                                                            ->placeholder('https://example.com/product')
+                                                                            ->prefixIcon('heroicon-o-link'),
+                                                                        Checkbox::make('is_new_window')
+                                                                            ->label(__('Open in New Tab'))
+                                                                            ->helperText(__('When enabled, the link opens in a new browser tab.'))
+                                                                            ->default(false),
+                                                                    ]),
+
+                                                                Group::make()
+                                                                    ->columns(2)
+                                                                    ->schema([
+                                                                        TextInput::make('caption')
+                                                                            ->label(__('Caption (Optional)'))
+                                                                            ->helperText(__('Short text displayed on the slide.'))
+                                                                            ->placeholder(__('Latest Product Release'))
+                                                                            ->prefixIcon('heroicon-o-chat-bubble-bottom-center-text'),
+                                                                        Select::make('overlay')
+                                                                            ->label(__('Overlay'))
+                                                                            ->options([
+                                                                                'none'   => __('None'),
+                                                                                'light'  => __('Light (25%)'),
+                                                                                'medium' => __('Medium (50%)'),
+                                                                                'dark'   => __('Dark (75%)'),
+                                                                            ])
+                                                                            ->default('none')
+                                                                            ->helperText(__('Add a dark overlay to improve text readability.')),
+                                                                    ]),
                                                             ]),
-                                                    ]),
+                                                    ])
+                                                    ->defaultItems(0)
+                                                    ->maxItems(10),
                                             ]),
                                     ]),
                             ])->columnSpanFull(),
