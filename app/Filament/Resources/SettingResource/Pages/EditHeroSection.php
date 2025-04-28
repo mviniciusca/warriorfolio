@@ -265,6 +265,7 @@ class EditHeroSection extends EditRecord
                                                     ->imageEditorAspectRatios([
                                                         '1:1'  => '1:1',
                                                         '16:9' => '16:9',
+                                                        '9:16' => '9:16',
                                                         '4:3'  => '4:3',
                                                         '3:2'  => '3:2',
                                                         '2:1'  => '2:1',
@@ -278,9 +279,11 @@ class EditHeroSection extends EditRecord
                                                     ->imageEditorAspectRatios([
                                                         '1:1'  => '1:1',
                                                         '16:9' => '16:9',
+                                                        '9:16' => '9:16',
                                                         '4:3'  => '4:3',
                                                         '3:2'  => '3:2',
                                                         '2:1'  => '2:1',
+
                                                     ])
                                                     ->helperText(__('16:9 aspect ratio is recommended.')),
                                             ]),
