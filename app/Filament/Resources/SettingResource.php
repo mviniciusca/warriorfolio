@@ -113,9 +113,9 @@ class SettingResource extends Resource
                                 Section::make(__('Alerts'))
                                     ->description(__('General Alert Settings'))
                                     ->icon('heroicon-o-bell-alert')
-                                    ->collapsed()
+                                    ->collapsible()
                                     ->schema([
-                                        Toggle::make('config.empty_section')
+                                        Checkbox::make('config.empty_section')
                                             ->label(__('Empty Section'))
                                             ->helperText(__('Alert for Empty Sections'))
                                             ->default(true),
