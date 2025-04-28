@@ -69,7 +69,7 @@
                     </div>
                 </div>
 
-                {{-- Bottom Shadow with Info (Shadow mais escuro e maior) --}}
+                {{-- Bottom Shadow with Info --}}
                 <div
                     class="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black via-black/80 to-transparent pb-[1px] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <div class="p-6 absolute bottom-0 left-0 right-0">
