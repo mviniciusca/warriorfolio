@@ -207,6 +207,13 @@ class SettingResource extends Resource
                                     ->icon('heroicon-o-globe-alt')
                                     ->collapsible()
                                     ->schema([
+                                        Textarea::make('meta.meta_description')
+                                            ->maxLength(500)
+                                            ->rows(2)
+                                            ->label(__('Meta Description'))
+                                            ->helperText(__('Description of your application.'))
+                                            ->columnSpanFull(),
+
                                         Group::make()
                                             ->columnSpanFull()
                                             ->columns(2)
@@ -224,37 +231,32 @@ class SettingResource extends Resource
                                                             ->helperText(__('Separate keywords with commas'))
                                                             ->prefixIcon('heroicon-o-tag')
                                                             ->label(__('Meta Keywords')),
+                                                    ]),
 
+                                                Group::make()
+                                                    ->schema([
                                                         TextInput::make('meta.meta_robots')
                                                             ->maxLength(255)
                                                             ->helperText(__('e.g., index, follow, noindex, nofollow'))
                                                             ->prefixIcon('heroicon-o-queue-list')
                                                             ->label(__('Meta Robots')),
-                                                    ]),
-
-                                                Group::make()
-                                                    ->schema([
-                                                        Textarea::make('meta.meta_description')
-                                                            ->maxLength(500)
-                                                            ->rows(2)
-                                                            ->label(__('Meta Description'))
-                                                            ->helperText(__('Description of your application.')),
 
                                                         TextInput::make('meta.meta_author')
                                                             ->maxLength(255)
                                                             ->helperText(__('Define the content author'))
                                                             ->prefixIcon('heroicon-o-user')
                                                             ->label(__('Meta Author')),
-
-                                                        TextInput::make('google.meta_google_site_verification')
-                                                            ->maxLength(255)
-                                                            ->label(__('Google Verification'))
-                                                            ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
-                                                            ->password()
-                                                            ->revealable()
-                                                            ->prefixIcon('heroicon-o-key'),
                                                     ]),
                                             ]),
+
+                                        TextInput::make('google.meta_google_site_verification')
+                                            ->maxLength(255)
+                                            ->label(__('Google Verification'))
+                                            ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
+                                            ->password()
+                                            ->revealable()
+                                            ->prefixIcon('heroicon-o-key')
+                                            ->columnSpanFull(),
                                     ]),
                             ]),
 
