@@ -608,31 +608,28 @@ class EditHeroSection extends EditRecord
      * Método para garantir que os campos de imagem sejam tratados corretamente antes
      * de preencher o formulário
      */
-    // protected function mutateFormDataBeforeFill(array $data): array
-    // {
-    //     // Certifica-se de que hero.slider_content é sempre um array
-    //     if (isset($data['layout']['hero']['slider_content']) && ! is_array($data['layout']['hero']['slider_content'])) {
-    //         $data['layout']['hero']['slider_content'] = [];
-    //     }
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        if (isset($data['layout']['hero']['slider_content']) && ! is_array($data['layout']['hero']['slider_content'])) {
+            $data['layout']['hero']['slider_content'] = [];
+        }
 
-    //     // Verifica e corrige todas as propriedades de upload de arquivos no hero
-    //     if (isset($data['layout']['hero'])) {
-    //         foreach (['featured_image', 'dark_mode_featured_image', 'bg_image'] as $imageField) {
-    //             if (isset($data['layout']['hero'][$imageField]) && ! is_array($data['layout']['hero'][$imageField]) && ! is_null($data['layout']['hero'][$imageField])) {
-    //                 $data['layout']['hero'][$imageField] = [$data['layout']['hero'][$imageField]];
-    //             }
-    //         }
+        if (isset($data['layout']['hero'])) {
+            foreach (['featured_image', 'dark_mode_featured_image', 'bg_image'] as $imageField) {
+                if (isset($data['layout']['hero'][$imageField]) && ! is_array($data['layout']['hero'][$imageField]) && ! is_null($data['layout']['hero'][$imageField])) {
+                    $data['layout']['hero'][$imageField] = [$data['layout']['hero'][$imageField]];
+                }
+            }
 
-    //         // Processa imagens dentro do slider_content
-    //         if (isset($data['layout']['hero']['slider_content']) && is_array($data['layout']['hero']['slider_content'])) {
-    //             foreach ($data['layout']['hero']['slider_content'] as $key => $item) {
-    //                 if (isset($item['slider_image']) && ! is_array($item['slider_image']) && ! is_null($item['slider_image'])) {
-    //                     $data['layout']['hero']['slider_content'][$key]['slider_image'] = [$item['slider_image']];
-    //                 }
-    //             }
-    //         }
-    //     }
+            if (isset($data['layout']['hero']['slider_content']) && is_array($data['layout']['hero']['slider_content'])) {
+                foreach ($data['layout']['hero']['slider_content'] as $key => $item) {
+                    if (isset($item['slider_image']) && ! is_array($item['slider_image']) && ! is_null($item['slider_image'])) {
+                        $data['layout']['hero']['slider_content'][$key]['slider_image'] = [$item['slider_image']];
+                    }
+                }
+            }
+        }
 
-    //     return $data;
-    // }
+        return $data;
+    }
 }
