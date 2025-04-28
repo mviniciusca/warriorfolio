@@ -1,4 +1,4 @@
-@props(['url' => null, 'device' => 'mobile'])
+@props(['url' => null, 'device' => 'browser'])
 
 @if ($device === 'browser')
 <div class="hero-section-featured-border mx-auto mt-8 p-2" id="browser-cover">

@@ -250,7 +250,7 @@ class EditHeroSection extends EditRecord
                                                     ->label(__('Browser Mockup')),
                                                 Radio::make('hero.browser_border_device')
                                                     ->options([
-                                                        'browser' => __('Browser'),
+                                                        'browser' => __('Desktop'),
                                                         'mobile'  => __('Mobile'),
                                                     ])
                                                     ->default('desktop')
