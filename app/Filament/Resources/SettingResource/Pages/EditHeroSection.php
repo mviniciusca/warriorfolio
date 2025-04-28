@@ -486,18 +486,16 @@ class EditHeroSection extends EditRecord
                                                                     ->live()
                                                                     ->afterStateUpdated(function ($set, $state) {
                                                                         if ($state) {
-                                                                            // Se o pattern for ativado, configurar automaticamente os valores recomendados
-                                                                            $set('hero.is_active', true); // Ativar Background Image
-                                                                            $set('hero.bg_repeat', 'bg-repeat'); // Repetir em todas as direções
-                                                                            $set('hero.bg_position', 'bg-center'); // Posição centralizada
-                                                                            $set('hero.bg_size', 'bg-auto'); // Tamanho automático
-                                                                            $set('hero.is_overlay_active', true); // Ativar overlay
-                                                                            $set('hero.bg_overlay', 'hero-bg-overlay-default'); // Definir overlay como o mais leve
+                                                                            $set('hero.is_active', true);
+                                                                            $set('hero.bg_repeat', 'bg-repeat');
+                                                                            $set('hero.bg_position', 'bg-center');
+                                                                            $set('hero.bg_size', 'bg-auto');
+                                                                            $set('hero.is_overlay_active', true);
+                                                                            $set('hero.bg_overlay', 'hero-bg-overlay-default');
                                                                         } else {
-                                                                            // Quando desativado, retornar aos valores padrão para imagem de fundo
-                                                                            $set('hero.bg_repeat', 'bg-no-repeat'); // Não repetir
-                                                                            $set('hero.bg_position', 'bg-center'); // Posição centralizada
-                                                                            $set('hero.bg_size', 'bg-cover'); // Tamanho cover (preencher)
+                                                                            $set('hero.bg_repeat', 'bg-no-repeat');
+                                                                            $set('hero.bg_position', 'bg-center');
+                                                                            $set('hero.bg_size', 'bg-cover');
                                                                         }
                                                                     }),
 
