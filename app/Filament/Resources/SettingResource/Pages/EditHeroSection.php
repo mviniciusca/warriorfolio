@@ -246,16 +246,16 @@ class EditHeroSection extends EditRecord
                                                     ->label(__('Active')),
                                                 Checkbox::make('hero.browser_border_is_active')
                                                     ->default(true)
-                                                    ->helperText(__('Enable this option to display a browser border around the featured image. Applicable only for themes that support browser borders.'))
-                                                    ->label(__('Browser Border')),
-                                                Radio::make('hero.browser_device')
+                                                    ->helperText(__('Enable this option to display a mockup around the featured image. Applicable only for themes that support browser borders.'))
+                                                    ->label(__('Browser Mockup')),
+                                                Radio::make('hero.browser_border_device')
                                                     ->options([
-                                                        'desktop' => __('Desktop'),
+                                                        'browser' => __('Browser'),
                                                         'mobile'  => __('Mobile'),
                                                     ])
                                                     ->default('desktop')
                                                     ->label(__('Browser Device'))
-                                                    ->helperText(__('Select the device type for the browser border.')),
+                                                    ->helperText(__('The device type for the browser border.')),
                                                 TextInput::make('hero.browser_border_url')
                                                     ->label(__('Browser Border URL'))
                                                     ->helperText(__('URL of the browser border image. Active when featured image has uploaded file.'))
@@ -278,7 +278,7 @@ class EditHeroSection extends EditRecord
                                                         '3:2'  => '3:2',
                                                         '2:1'  => '2:1',
                                                     ])
-                                                    ->helperText(__('16:9 aspect ratio is recommended.')),
+                                                    ->helperText(__('16:9 for browser and 9:16 for mobile is recommended.')),
                                                 FileUpload::make('hero.dark_mode_featured_image')
                                                     ->label('Featured Image for Dark Mode')
                                                     ->directory('hero')
@@ -293,7 +293,7 @@ class EditHeroSection extends EditRecord
                                                         '2:1'  => '2:1',
 
                                                     ])
-                                                    ->helperText(__('16:9 aspect ratio is recommended.')),
+                                                    ->helperText(__('16:9 for browser and 9:16 for mobile is recommended.')),
                                             ]),
                                     ]),
                                 Section::make(__('Background'))
