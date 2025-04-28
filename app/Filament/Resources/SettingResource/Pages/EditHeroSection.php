@@ -365,27 +365,31 @@ class EditHeroSection extends EditRecord
                                                     ->helperText(__('Add contrast to make text more visible over the background.')),
                                             ]),
 
-                                        FileUpload::make('hero.bg_image')
-                                            ->label(__('Background Image'))
-                                            ->directory('hero/bg')
-                                            ->image()
-                                            ->disk('public')
-                                            ->visibility('public')
-                                            ->maxFiles(1)
-                                            ->columnSpanFull()
-                                            ->imageEditor()
-                                            ->imageEditorAspectRatios([
-                                                '16:9' => '16:9',
-                                                '21:9' => '21:9 (Ultrawide)',
-                                                '4:3'  => '4:3',
-                                                '3:2'  => '3:2',
-                                                '2:1'  => '2:1',
-                                            ])
-                                            ->helperText(__('Recommended size: 1920×1080px (16:9) or 1920×900px (21:9). Use high quality images for best results.')),
-
                                         Tabs::make('background_image_tabs')
                                             ->columnSpanFull()
                                             ->tabs([
+                                                Tab::make(__('Image'))
+                                                    ->icon('heroicon-o-photo')
+                                                    ->schema([
+                                                        FileUpload::make('hero.bg_image')
+                                                            ->label(__('Background Image'))
+                                                            ->directory('hero/bg')
+                                                            ->image()
+                                                            ->disk('public')
+                                                            ->visibility('public')
+                                                            ->maxFiles(1)
+                                                            ->columnSpanFull()
+                                                            ->imageEditor()
+                                                            ->imageEditorAspectRatios([
+                                                                '16:9' => '16:9',
+                                                                '21:9' => '21:9 (Ultrawide)',
+                                                                '4:3'  => '4:3',
+                                                                '3:2'  => '3:2',
+                                                                '2:1'  => '2:1',
+                                                            ])
+                                                            ->helperText(__('Recommended size: 1920×1080px (16:9) or 1920×900px (21:9). Use high quality images for best results.')),
+                                                    ]),
+
                                                 Tab::make(__('Basic Settings'))
                                                     ->icon('heroicon-o-adjustments-horizontal')
                                                     ->schema([
@@ -481,6 +485,11 @@ class EditHeroSection extends EditRecord
                                                                             $set('hero.bg_size', 'bg-auto'); // Tamanho automático
                                                                             $set('hero.is_overlay_active', true); // Ativar overlay
                                                                             $set('hero.bg_overlay', 'hero-bg-overlay-default'); // Definir overlay como o mais leve
+                                                                        } else {
+                                                                            // Quando desativado, retornar aos valores padrão para imagem de fundo
+                                                                            $set('hero.bg_repeat', 'bg-no-repeat'); // Não repetir
+                                                                            $set('hero.bg_position', 'bg-center'); // Posição centralizada
+                                                                            $set('hero.bg_size', 'bg-cover'); // Tamanho cover (preencher)
                                                                         }
                                                                     }),
 
@@ -493,41 +502,14 @@ class EditHeroSection extends EditRecord
                                                                     ->label(__('Pattern Style'))
                                                                     ->visible(fn ($get) => $get('hero.is_pattern_bg'))
                                                                     ->helperText(__('Choose the pattern to use as background.')),
-
-                                                                Group::make()
-                                                                    ->visible(fn ($get) => $get('hero.is_pattern_bg'))
-                                                                    ->schema([
-                                                                        Section::make(__('Pattern Settings'))
-                                                                            ->description(__('For best results with patterns, use these recommended settings:'))
-                                                                            ->schema([
-                                                                                Group::make()
-                                                                                    ->columns(2)
-                                                                                    ->schema([
-                                                                                        Select::make('hero.bg_repeat')
-                                                                                            ->options([
-                                                                                                'bg-repeat'    => __('Tile in All Directions'),
-                                                                                                'bg-repeat-x'  => __('Repeat Horizontally'),
-                                                                                                'bg-repeat-y'  => __('Repeat Vertically'),
-                                                                                                'bg-no-repeat' => __('No Repeat'),
-                                                                                            ])
-                                                                                            ->default('bg-repeat')
-                                                                                            ->label(__('Pattern Repeat'))
-                                                                                            ->helperText(__('Patterns typically work best when tiled in all directions.')),
-                                                                                        Select::make('hero.bg_size')
-                                                                                            ->options([
-                                                                                                'bg-auto'    => __('Auto (Recommended)'),
-                                                                                                'bg-cover'   => __('Cover'),
-                                                                                                'bg-contain' => __('Contain'),
-                                                                                            ])
-                                                                                            ->default('bg-auto')
-                                                                                            ->label(__('Pattern Size'))
-                                                                                            ->helperText(__('Auto size is recommended for repeating patterns.')),
-                                                                                    ]),
-                                                                            ]),
-                                                                    ]),
                                                             ]),
                                                     ]),
                                             ]),
+
+                                        \Filament\Forms\Components\View::make('components.filament.pattern-active-notice')
+                                            ->columnSpanFull()
+                                            ->visible(fn ($get) => $get('hero.is_pattern_bg'))
+                                            ->extraAttributes(['class' => 'mt-2 border-t border-secondary-300 dark:border-secondary-700 rounded-b-lg']),
                                     ]),
 
                                 Tab::make(__('Slider'))
