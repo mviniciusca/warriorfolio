@@ -586,10 +586,6 @@ class EditHeroSection extends EditRecord
             ]);
     }
 
-    /**
-     * Método para garantir que os campos de imagem sejam tratados corretamente antes
-     * de preencher o formulário
-     */
     protected function mutateFormDataBeforeFill(array $data): array
     {
         if (isset($data['layout']['hero']['slider_content']) && ! is_array($data['layout']['hero']['slider_content'])) {
