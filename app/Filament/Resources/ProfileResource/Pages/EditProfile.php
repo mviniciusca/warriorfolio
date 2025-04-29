@@ -216,8 +216,8 @@ class EditProfile extends EditRecord
                                             ->schema([
                                                 Toggle::make('is_active')
                                                     ->label(__('Active'))
-                                                    ->helperText(__('Enable or disable this social link'))
-                                                    ->inline(false)
+                                                    ->helperText(__('Show this option'))
+                                                    ->inline(true)
                                                     ->default(true),
                                                 Select::make('social_network')
                                                     ->columnSpan(2)
