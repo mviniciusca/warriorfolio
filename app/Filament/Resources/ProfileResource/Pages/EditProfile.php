@@ -37,12 +37,10 @@ class EditProfile extends EditRecord
         return $form
             ->columns(12)
             ->schema([
-                // Abas para todo o conteúdo
                 Tabs::make('Profile')
                     ->columnSpanFull()
                     ->persistTabInQueryString()
                     ->tabs([
-                        // Tab 1: Informações Básicas (antigo cabeçalho)
                         Tabs\Tab::make(__('Basic Info'))
                             ->icon('heroicon-o-user')
                             ->schema([
@@ -124,52 +122,7 @@ class EditProfile extends EditRecord
                                                     ]),
                                             ]),
                                     ]),
-                            ]),
 
-                        // Tab 2: Informações Profissionais
-                        Tabs\Tab::make(__('Professional Info'))
-                            ->icon('heroicon-o-briefcase')
-                            ->schema([
-                                Grid::make()
-                                    ->columns(12)
-                                    ->schema([
-                                        // Coluna principal - Habilidades
-                                        Section::make(__('Skills & Expertise'))
-                                            ->description(__('Your professional capabilities'))
-                                            ->icon('heroicon-o-academic-cap')
-                                            ->collapsible(false)
-                                            ->columnSpan(['sm' => 12, 'lg' => 7])
-                                            ->schema([
-                                                TagsInput::make('skills')
-                                                    ->separator(',')
-                                                    ->placeholder(__('Add skills like PHP, JavaScript, UI/UX...'))
-                                                    ->helperText(__('Add your professional skills, press Enter after each one'))
-                                                    ->suggestions([
-                                                        'PHP', 'Laravel', 'JavaScript', 'Vue.js', 'React',
-                                                        'CSS', 'HTML', 'UI/UX', 'Project Management',
-                                                    ]),
-                                            ]),
-
-                                        // Coluna lateral - Informações de localização
-                                        Section::make(__('Location'))
-                                            ->description(__('Where you are based'))
-                                            ->icon('heroicon-o-map-pin')
-                                            ->collapsible(false)
-                                            ->columnSpan(['sm' => 12, 'lg' => 5])
-                                            ->schema([
-                                                TextInput::make('localization')
-                                                    ->label(__('Location'))
-                                                    ->prefixIcon('heroicon-o-map-pin')
-                                                    ->placeholder(__('e.g., São Paulo, Brazil'))
-                                                    ->helperText(__('Enter your city and country of residence')),
-                                            ]),
-                                    ]),
-                            ]),
-
-                        // Tab 3: About Me
-                        Tabs\Tab::make(__('About Me'))
-                            ->icon('heroicon-o-document-text')
-                            ->schema([
                                 Section::make(__('Your Biography'))
                                     ->description(__('Tell your professional story'))
                                     ->icon('heroicon-o-document-text')
@@ -193,11 +146,46 @@ class EditProfile extends EditRecord
                                     ]),
                             ]),
 
-                        // Tab 4: Resume / CV
-                        Tabs\Tab::make(__('Resume / CV'))
-                            ->icon('heroicon-o-document')
+                        Tabs\Tab::make(__('Professional Info'))
+                            ->icon('heroicon-o-briefcase')
                             ->schema([
-                                Section::make()
+                                Grid::make()
+                                    ->columns(12)
+                                    ->schema([
+                                        Section::make(__('Skills & Expertise'))
+                                            ->description(__('Your professional capabilities'))
+                                            ->icon('heroicon-o-academic-cap')
+                                            ->collapsible(false)
+                                            ->columnSpan(['sm' => 12, 'lg' => 7])
+                                            ->schema([
+                                                TagsInput::make('skills')
+                                                    ->separator(',')
+                                                    ->placeholder(__('Add skills like PHP, JavaScript, UI/UX...'))
+                                                    ->helperText(__('Add your professional skills, press Enter after each one'))
+                                                    ->suggestions([
+                                                        'PHP', 'Laravel', 'JavaScript', 'Vue.js', 'React',
+                                                        'CSS', 'HTML', 'UI/UX', 'Project Management',
+                                                    ]),
+                                            ]),
+
+                                        Section::make(__('Location'))
+                                            ->description(__('Where you are based'))
+                                            ->icon('heroicon-o-map-pin')
+                                            ->collapsible(false)
+                                            ->columnSpan(['sm' => 12, 'lg' => 5])
+                                            ->schema([
+                                                TextInput::make('localization')
+                                                    ->label(__('Location'))
+                                                    ->prefixIcon('heroicon-o-map-pin')
+                                                    ->placeholder(__('e.g., São Paulo, Brazil'))
+                                                    ->helperText(__('Enter your city and country of residence')),
+                                            ]),
+                                    ]),
+
+                                Section::make(__('Resume / CV'))
+                                    ->description(__('Your professional resume'))
+                                    ->icon('heroicon-o-document')
+                                    ->collapsible(false)
                                     ->schema([
                                         FileUpload::make('document')
                                             ->label(__('Resume/CV File'))
@@ -215,7 +203,6 @@ class EditProfile extends EditRecord
                                     ]),
                             ]),
 
-                        // Tab 5: Social Media & Links
                         Tabs\Tab::make(__('Social Links'))
                             ->icon('heroicon-o-globe-alt')
                             ->schema([
@@ -274,22 +261,6 @@ class EditProfile extends EditRecord
                                                     ->prefixIcon('heroicon-o-link')
                                                     ->label(__('Profile Link')),
                                             ]),
-                                    ]),
-                            ]),
-
-                        // Tab 6: Settings
-                        Tabs\Tab::make(__('Preferences'))
-                            ->icon('heroicon-o-cog-6-tooth')
-                            ->schema([
-                                Section::make(__('Profile Display Settings'))
-                                    ->description(__('Configure how your profile appears to others'))
-                                    ->schema([
-                                        Placeholder::make('preferences_info')
-                                            ->content(__('Additional profile preferences will be available soon.'))
-                                            ->columnSpanFull(),
-
-                                        // Esta seção pode incluir preferências como visibilidade
-                                        // do perfil, notificações, etc.
                                     ]),
                             ]),
                     ]),
