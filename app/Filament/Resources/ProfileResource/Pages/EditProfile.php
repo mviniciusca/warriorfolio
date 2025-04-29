@@ -95,13 +95,21 @@ class EditProfile extends EditRecord
                                                                     ->helperText(__('The company you currently work for')),
                                                             ]),
 
-                                                        TextInput::make('public_email')
-                                                            ->label(__('Public Email'))
-                                                            ->email()
-                                                            ->prefixIcon('heroicon-o-envelope')
-                                                            ->placeholder(__('your.email@example.com'))
-                                                            ->helperText(__('This email will be visible on your public profile'))
-                                                            ->columnSpanFull(),
+                                                        Grid::make(2)
+                                                            ->schema([
+                                                                TextInput::make('public_email')
+                                                                    ->label(__('Public Email'))
+                                                                    ->email()
+                                                                    ->prefixIcon('heroicon-o-envelope')
+                                                                    ->placeholder(__('your.email@example.com'))
+                                                                    ->helperText(__('This email will be visible on your public profile')),
+
+                                                                TextInput::make('localization')
+                                                                    ->label(__('Location'))
+                                                                    ->prefixIcon('heroicon-o-map-pin')
+                                                                    ->placeholder(__('e.g., São Paulo, Brazil'))
+                                                                    ->helperText(__('Enter your city and country of residence')),
+                                                            ]),
 
                                                         Grid::make(2)
                                                             ->schema([
@@ -156,7 +164,7 @@ class EditProfile extends EditRecord
                                             ->description(__('Your professional capabilities'))
                                             ->icon('heroicon-o-academic-cap')
                                             ->collapsible(false)
-                                            ->columnSpan(['sm' => 12, 'lg' => 7])
+                                            ->columnSpanFull()
                                             ->schema([
                                                 TagsInput::make('skills')
                                                     ->separator(',')
@@ -166,19 +174,6 @@ class EditProfile extends EditRecord
                                                         'PHP', 'Laravel', 'JavaScript', 'Vue.js', 'React',
                                                         'CSS', 'HTML', 'UI/UX', 'Project Management',
                                                     ]),
-                                            ]),
-
-                                        Section::make(__('Location'))
-                                            ->description(__('Where you are based'))
-                                            ->icon('heroicon-o-map-pin')
-                                            ->collapsible(false)
-                                            ->columnSpan(['sm' => 12, 'lg' => 5])
-                                            ->schema([
-                                                TextInput::make('localization')
-                                                    ->label(__('Location'))
-                                                    ->prefixIcon('heroicon-o-map-pin')
-                                                    ->placeholder(__('e.g., São Paulo, Brazil'))
-                                                    ->helperText(__('Enter your city and country of residence')),
                                             ]),
                                     ]),
 
