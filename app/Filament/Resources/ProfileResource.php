@@ -38,8 +38,8 @@ class ProfileResource extends Resource
     public static function getRecordSubNavigation(Page $page): array
     {
         return $page->generateNavigationItems([
-            Pages\EditProfile::class,
-            Pages\EditSocialNetwork::class,
+            // Pages\EditProfile::class,
+            // Pages\EditSocialNetwork::class,
         ]);
     }
 

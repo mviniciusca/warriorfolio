@@ -37,92 +37,96 @@ class EditProfile extends EditRecord
         return $form
             ->columns(12)
             ->schema([
-                // Seção de cabeçalho com avatar e informações rápidas
-                Section::make()
-                    ->schema([
-                        Grid::make()
-                            ->columns(12)
-                            ->schema([
-                                FileUpload::make('avatar')
-                                    ->label(__('Profile Photo'))
-                                    ->image()
-                                    ->imageEditor()
-                                    ->imageCropAspectRatio('1:1')
-                                    ->imageResizeMode('cover')
-                                    ->directory('public/profile')
-                                    ->maxFiles(1)
-                                    ->panelAspectRatio('1:1')
-                                    ->placeholder(__('Upload your profile photo'))
-                                    ->helperText(__('Square image recommended, will be cropped to 1:1 ratio'))
-                                    ->columnSpan(['sm' => 12, 'md' => 3]),
-
-                                Group::make()
-                                    ->columnSpan(['sm' => 12, 'md' => 9])
-                                    ->schema([
-                                        Group::make()
-                                            ->relationship('user')
-                                            ->schema([
-                                                TextInput::make('name')
-                                                    ->label(__('Full Name'))
-                                                    ->prefixIcon('heroicon-o-user')
-                                                    ->required()
-                                                    ->minLength(3)
-                                                    ->maxLength(150)
-                                                    ->placeholder(__('Enter your full name'))
-                                                    ->helperText(__('Your name as it will appear on your profile'))
-                                                    ->columnSpanFull(),
-                                            ]),
-
-                                        Grid::make(2)
-                                            ->schema([
-                                                TextInput::make('job_position')
-                                                    ->label(__('Job Title'))
-                                                    ->prefixIcon('heroicon-o-briefcase')
-                                                    ->placeholder(__('e.g., Senior Developer'))
-                                                    ->helperText(__('Your current professional title')),
-
-                                                TextInput::make('company')
-                                                    ->label(__('Company'))
-                                                    ->prefixIcon('heroicon-o-building-office')
-                                                    ->placeholder(__('e.g., Acme Inc.'))
-                                                    ->helperText(__('The company you currently work for')),
-                                            ]),
-
-                                        TextInput::make('public_email')
-                                            ->label(__('Public Email'))
-                                            ->email()
-                                            ->prefixIcon('heroicon-o-envelope')
-                                            ->placeholder(__('your.email@example.com'))
-                                            ->helperText(__('This email will be visible on your public profile'))
-                                            ->columnSpanFull(),
-
-                                        Grid::make(2)
-                                            ->schema([
-                                                Toggle::make('is_open_to_work')
-                                                    ->label(__('Open to Work'))
-                                                    ->helperText(__('Show that you are available for new opportunities'))
-                                                    ->inline(true)
-                                                    ->onIcon('heroicon-m-sparkles')
-                                                    ->offIcon('heroicon-m-x-mark'),
-
-                                                Toggle::make('is_downloadable')
-                                                    ->label(__('Resume Available'))
-                                                    ->helperText(__('Allow visitors to download your resume/CV'))
-                                                    ->inline(true)
-                                                    ->onIcon('heroicon-m-arrow-down-tray')
-                                                    ->offIcon('heroicon-m-lock-closed'),
-                                            ]),
-                                    ]),
-                            ]),
-                    ])
-                    ->columnSpanFull(),
-
-                // Abas para o resto do conteúdo
+                // Abas para todo o conteúdo
                 Tabs::make('Profile')
                     ->columnSpanFull()
                     ->persistTabInQueryString()
                     ->tabs([
-                        // Tab 1: Informações Profissionais
+                        // Tab 1: Informações Básicas (antigo cabeçalho)
+                        Tabs\Tab::make(__('Basic Info'))
+                            ->icon('heroicon-o-user')
+                            ->schema([
+                                Section::make(__('Profile Overview'))
+                                    ->description(__('Your main profile information'))
+                                    ->schema([
+                                        Grid::make()
+                                            ->columns(12)
+                                            ->schema([
+                                                FileUpload::make('avatar')
+                                                    ->label(__('Profile Photo'))
+                                                    ->image()
+                                                    ->imageEditor()
+                                                    ->imageCropAspectRatio('1:1')
+                                                    ->imageResizeMode('cover')
+                                                    ->directory('public/profile')
+                                                    ->maxFiles(1)
+                                                    ->panelAspectRatio('1:1')
+                                                    ->placeholder(__('Upload your profile photo'))
+                                                    ->helperText(__('Square image recommended, will be cropped to 1:1 ratio'))
+                                                    ->columnSpan(['sm' => 12, 'md' => 3]),
+
+                                                Group::make()
+                                                    ->columnSpan(['sm' => 12, 'md' => 9])
+                                                    ->schema([
+                                                        Group::make()
+                                                            ->relationship('user')
+                                                            ->schema([
+                                                                TextInput::make('name')
+                                                                    ->label(__('Full Name'))
+                                                                    ->prefixIcon('heroicon-o-user')
+                                                                    ->required()
+                                                                    ->minLength(3)
+                                                                    ->maxLength(150)
+                                                                    ->placeholder(__('Enter your full name'))
+                                                                    ->helperText(__('Your name as it will appear on your profile'))
+                                                                    ->columnSpanFull(),
+                                                            ]),
+
+                                                        Grid::make(2)
+                                                            ->schema([
+                                                                TextInput::make('job_position')
+                                                                    ->label(__('Job Title'))
+                                                                    ->prefixIcon('heroicon-o-briefcase')
+                                                                    ->placeholder(__('e.g., Senior Developer'))
+                                                                    ->helperText(__('Your current professional title')),
+
+                                                                TextInput::make('company')
+                                                                    ->label(__('Company'))
+                                                                    ->prefixIcon('heroicon-o-building-office')
+                                                                    ->placeholder(__('e.g., Acme Inc.'))
+                                                                    ->helperText(__('The company you currently work for')),
+                                                            ]),
+
+                                                        TextInput::make('public_email')
+                                                            ->label(__('Public Email'))
+                                                            ->email()
+                                                            ->prefixIcon('heroicon-o-envelope')
+                                                            ->placeholder(__('your.email@example.com'))
+                                                            ->helperText(__('This email will be visible on your public profile'))
+                                                            ->columnSpanFull(),
+
+                                                        Grid::make(2)
+                                                            ->schema([
+                                                                Toggle::make('is_open_to_work')
+                                                                    ->label(__('Open to Work'))
+                                                                    ->helperText(__('Show that you are available for new opportunities'))
+                                                                    ->inline(true)
+                                                                    ->onIcon('heroicon-m-sparkles')
+                                                                    ->offIcon('heroicon-m-x-mark'),
+
+                                                                Toggle::make('is_downloadable')
+                                                                    ->label(__('Resume Available'))
+                                                                    ->helperText(__('Allow visitors to download your resume/CV'))
+                                                                    ->inline(true)
+                                                                    ->onIcon('heroicon-m-arrow-down-tray')
+                                                                    ->offIcon('heroicon-m-lock-closed'),
+                                                            ]),
+                                                    ]),
+                                            ]),
+                                    ]),
+                            ]),
+
+                        // Tab 2: Informações Profissionais
                         Tabs\Tab::make(__('Professional Info'))
                             ->icon('heroicon-o-briefcase')
                             ->schema([
@@ -162,14 +166,17 @@ class EditProfile extends EditRecord
                                     ]),
                             ]),
 
-                        // Tab 2: About Me
+                        // Tab 3: About Me
                         Tabs\Tab::make(__('About Me'))
                             ->icon('heroicon-o-document-text')
                             ->schema([
-                                Section::make()
+                                Section::make(__('Your Biography'))
+                                    ->description(__('Tell your professional story'))
+                                    ->icon('heroicon-o-document-text')
+                                    ->collapsible(false)
                                     ->schema([
                                         RichEditor::make('about')
-                                            ->label(__('Your Story'))
+                                            ->label('')
                                             ->placeholder(__('Write about your professional background, experiences, and interests...'))
                                             ->toolbarButtons([
                                                 'bold',
@@ -186,7 +193,7 @@ class EditProfile extends EditRecord
                                     ]),
                             ]),
 
-                        // Tab 3: Resume / CV
+                        // Tab 4: Resume / CV
                         Tabs\Tab::make(__('Resume / CV'))
                             ->icon('heroicon-o-document')
                             ->schema([
@@ -208,7 +215,7 @@ class EditProfile extends EditRecord
                                     ]),
                             ]),
 
-                        // Tab 4: Social Media & Links
+                        // Tab 5: Social Media & Links
                         Tabs\Tab::make(__('Social Links'))
                             ->icon('heroicon-o-globe-alt')
                             ->schema([
@@ -270,7 +277,7 @@ class EditProfile extends EditRecord
                                     ]),
                             ]),
 
-                        // Tab 5: Settings
+                        // Tab 6: Settings
                         Tabs\Tab::make(__('Preferences'))
                             ->icon('heroicon-o-cog-6-tooth')
                             ->schema([
