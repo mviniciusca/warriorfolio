@@ -206,6 +206,8 @@ class EditProfile extends EditRecord
                                     ->schema([
                                         Repeater::make('social')
                                             ->cloneable()
+                                            ->collapsible()
+                                            ->collapsed()
                                             ->itemLabel(function (array $state): string {
                                                 $title = $state['social_network'] ?? __('Card');
 
@@ -216,9 +218,11 @@ class EditProfile extends EditRecord
                                             ->schema([
                                                 Toggle::make('is_active')
                                                     ->label(__('Active'))
-                                                    ->helperText(__('Show this option'))
-                                                    ->inline(true)
-                                                    ->default(true),
+                                                    ->helperText(__('Enable or disable this social link'))
+                                                    ->inline(false)
+                                                    ->default(true)
+                                                    ->onIcon('heroicon-m-check-circle')
+                                                    ->offIcon('heroicon-m-no-symbol'),
                                                 Select::make('social_network')
                                                     ->columnSpan(2)
                                                     ->live()
