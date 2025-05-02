@@ -42,7 +42,7 @@
                 </div>
                 <!-- Right - Close button -->
                 <button @click="closeExpand"
-                    class="p-1 rounded-md hover:bg-secondary-200 dark:hover:bg-secondary-800 transition-colors">
+                    class="p-1 rounded-full flex items-center justify-center hover:bg-secondary-200 dark:hover:bg-secondary-800 transition-colors">
                     <x-ui.ionicon :icon="'close-outline'" class="w-5 h-5" />
                 </button>
             </div>
