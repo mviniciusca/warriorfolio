@@ -56,19 +56,23 @@
                             General</h3>
                         <a href="{{ route('filament.admin.pages.dashboard') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'grid-outline'" class="w-4 h-4" />
+                            <x-ui.ionicon :icon="'game-controller-outline'" class="w-4 h-4" />
                             <span class="text-xs">Dashboard</span>
-                        </a>
-                        <a href="{{ url('/') }}" target="_blank"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'eye-outline'" class="w-4 h-4" />
-                            <span class="text-xs">View Website</span>
                         </a>
                         <a href="{{ route('filament.admin.resources.media.index') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'images-outline'" class="w-4 h-4" />
-                            <span class="text-xs">Media ({{ $mediaCount ?? 0
-                                }})</span>
+                            <span class="text-xs">Media</span>
+                        </a>
+                        <a href="{{ route('filament.admin.resources.media.index') }}"
+                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
+                            <x-ui.ionicon :icon="'construct-outline'" class="w-4 h-4" />
+                            <span class="text-xs">Maintenance Mode</span>
+                        </a>
+                        <a href="{{ route('filament.admin.resources.media.index') }}"
+                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
+                            <x-ui.ionicon :icon="'lock-open-outline'" class="w-4 h-4" />
+                            <span class="text-xs">Account Security Manager</span>
                         </a>
                     </div>
 
