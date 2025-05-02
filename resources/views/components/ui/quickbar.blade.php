@@ -34,7 +34,8 @@
                         <x-ui.ionicon :icon="'flash-outline'" class="w-6 h-6" />
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-medium">{{ settings('application.name') ?? config('app.name', 'Warriorfolio')
+                        <span class="font-medium text-sm">{{ settings('application.name') ?? config('app.name',
+                            'Warriorfolio')
                             }}</span>
                         <span class="text-xs opacity-75">{{ auth()->user()->name ?? config('app.name', 'Warriorfolio')
                             }}</span>
