@@ -1,13 +1,11 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Ui;
 
 use App\Models\Alert;
 use App\Models\Category;
 use App\Models\Mail;
 use App\Models\Page;
-use App\Models\Post;
-use App\Models\Project;
 use Awcodes\Curator\Models\Media;
 use Closure;
 use Illuminate\Contracts\View\View;
