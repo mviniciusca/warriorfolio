@@ -60,17 +60,18 @@
                             <x-ui.ionicon :icon="'images-outline'" class="w-4 h-4" />
                             <span class="text-xs">Media</span>
                         </a>
-                        <a href="{{ route('filament.admin.resources.media.index') }}"
+                        <a href="{{ route('filament.admin.resources.pages.index') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'brush-outline'" class="w-4 h-4" />
                             <span class="text-xs">Theme Switch</span>
                         </a>
-                        <a href="{{ route('filament.admin.resources.media.index') }}"
+                        <a href="{{ route('filament.admin.resources.settings.edit-maintenance-section',['record' => 1]) }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'construct-outline'" class="w-4 h-4" />
                             <span class="text-xs">Maintenance Mode</span>
                         </a>
-                        <a href="{{ route('filament.admin.resources.media.index') }}"
+                        <a href="{{ route('filament.admin.resources.settings.edit-security', [
+                        'record' => 1]) }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'lock-open-outline'" class="w-4 h-4" />
                             <span class="text-xs">Account Security Manager</span>
@@ -175,9 +176,7 @@
                         <a href="{{ route('filament.admin.resources.alerts.index') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'alert-circle-outline'" class="w-4 h-4" />
-                            <span class="text-xs">Alerts ({{
-                                $alertCount ?? 1
-                                }})</span>
+                            <span class="text-xs">Alerts</span>
                         </a>
                     </div>
 
@@ -249,7 +248,7 @@
                     <button type="submit"
                         class="flex items-center gap-2 px-3 py-1.5 text-xs border border-secondary-200 dark:border-secondary-700 rounded-md bg-secondary-50 dark:bg-secondary-800 hover:bg-secondary-200/80 dark:hover:bg-secondary-700/60 transition-colors">
                         <x-ui.ionicon :icon="'log-out-outline'" class="w-4 h-4" />
-                        <span>Logout</span>
+                        <span>Logout from Dashboard</span>
                     </button>
                 </form>
             </div>
