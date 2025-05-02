@@ -19,8 +19,9 @@ App\View\Components\Header\Section.php
 
 {{-- Core: Background Image --}}
 <x-ui.background />
+<x-ui.quickbar />
 {{-- Header --}}
-<nav class="relative z-50 mx-auto w-full pb-2 pt-8">
+<nav class="relative z-40 mx-auto w-full pb-2 pt-8">
     {{-- Background Layer --}}
     @if ($line_beam_is_active)
     <div class="absolute inset-0 -z-20 animate-pulse bg-auto bg-top bg-no-repeat"
