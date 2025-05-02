@@ -62,6 +62,11 @@
                         </a>
                         <a href="{{ route('filament.admin.resources.media.index') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
+                            <x-ui.ionicon :icon="'brush-outline'" class="w-4 h-4" />
+                            <span class="text-xs">Theme Switch</span>
+                        </a>
+                        <a href="{{ route('filament.admin.resources.media.index') }}"
+                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'construct-outline'" class="w-4 h-4" />
                             <span class="text-xs">Maintenance Mode</span>
                         </a>
