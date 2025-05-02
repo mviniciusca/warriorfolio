@@ -15,7 +15,7 @@
     <div x-show="isExpanded" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150"
         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-        class="fixed inset-0 z-40 bg-secondary-900/90 dark:bg-black/90 backdrop-blur-sm" @click="closeExpand"
+        class="fixed inset-0 z-40 bg-secondary-50/50 dark:bg-black/50 backdrop-blur-sm" @click="closeExpand"
         style="display: none;"></div>
 
     <!-- Modal Content Centralizado -->
