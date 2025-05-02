@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Models\Core;
 use App\Models\Maintenance;
-use App\View\Components\Quickbar;
+use App\View\Components\Ui\Quickbar;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -24,9 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Register Components
-        Blade::component('ui.quickbar', Quickbar::class);
-
         if (Schema::hasTable('settings')) {
             $maintenance = optional(Maintenance::first(['is_active', 'is_discovery']));
             view()->share([

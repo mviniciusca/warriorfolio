@@ -6,6 +6,7 @@ use App\Models\Alert;
 use App\Models\Category;
 use App\Models\Mail;
 use App\Models\Page;
+use App\Models\Setting;
 use Awcodes\Curator\Models\Media;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -27,11 +28,14 @@ class Quickbar extends Component
 
     public $alertCount;
 
+    public bool $isActive;
+
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
+        $this->isActive = Setting::first(['application'])->show_quickbar ?? true;
         $this->mailCount = $this->formatCount(Mail::where('is_read', false)
             ->where('is_sent', false)
             ->count());

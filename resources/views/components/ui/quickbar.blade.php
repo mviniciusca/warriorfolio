@@ -1,3 +1,4 @@
+@if($isActive)
 @auth
 <div x-data="{
         isExpanded: false,
@@ -262,3 +263,4 @@
     }
 </style>
 @endauth
+@endif
