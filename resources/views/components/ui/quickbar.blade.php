@@ -106,16 +106,10 @@
                             <x-ui.ionicon :icon="'person-outline'" class="w-4 h-4" />
                             <span class="text-xs">Profile</span>
                         </a>
-                    </div>
-
-                    <!-- Customers -->
-                    <div class="space-y-1">
-                        <h3 class="text-xs font-medium uppercase tracking-wider mb-2">
-                            Customers</h3>
-                        <a href="{{ route('filament.admin.resources.newsletters.index') }}"
+                        <a href="{{ route('filament.admin.resources.customers.index') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'people-outline'" class="w-4 h-4" />
-                            <span class="text-xs">Newsletters</span>
+                            <span class="text-xs">Customers</span>
                         </a>
                     </div>
 
