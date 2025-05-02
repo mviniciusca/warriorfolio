@@ -26,7 +26,7 @@
         x-transition:leave-end="opacity-0 scale-95" class="fixed inset-0 z-50 flex items-center justify-center p-4"
         @click.away="closeExpand" style="display: none;">
         <div
-            class="bg-white dark:bg-secondary-900 rounded-lg shadow-xl w-full max-w-3xl max-h-[85vh] overflow-y-auto border border-secondary-200 dark:border-secondary-800">
+            class="bg-white/90 dark:bg-secondary-950/90 rounded-lg shadow-xl w-full max-w-3xl max-h-[85vh] overflow-y-auto border border-secondary-200 dark:border-secondary-800">
             <div
                 class="sticky top-0 bg-white dark:bg-secondary-900 border-b border-secondary-200 dark:border-secondary-800 p-4 flex justify-between items-center">
                 <!-- Left section with icon and text -->
