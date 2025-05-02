@@ -28,7 +28,19 @@
             class="bg-white dark:bg-secondary-900 rounded-lg shadow-xl w-full max-w-3xl max-h-[85vh] overflow-y-auto border border-secondary-200 dark:border-secondary-800">
             <div
                 class="sticky top-0 bg-white dark:bg-secondary-900 border-b border-secondary-200 dark:border-secondary-800 p-4 flex justify-between items-center">
-                <h2 class="text-base font-medium">Quick Access Menu</h2>
+                <!-- Left section with icon and text -->
+                <div class="flex items-center gap-3 flex-1">
+                    <div class="flex-shrink-0">
+                        <x-ui.ionicon :icon="'flash-outline'" class="w-6 h-6" />
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-medium">{{ settings('application.name') ?? config('app.name', 'Warriorfolio')
+                            }}</span>
+                        <span class="text-xs opacity-75">{{ auth()->user()->name ?? config('app.name', 'Warriorfolio')
+                            }}</span>
+                    </div>
+                </div>
+                <!-- Right - Close button -->
                 <button @click="closeExpand"
                     class="p-1 rounded-md hover:bg-secondary-200 dark:hover:bg-secondary-800 transition-colors">
                     <x-ui.ionicon :icon="'close-outline'" class="w-5 h-5" />
