@@ -4,7 +4,7 @@
         toggleExpand() { this.isExpanded = !this.isExpanded; },
         closeExpand() { this.isExpanded = false; }
     }" class="fixed z-50" x-cloak>
-    <!-- Botão fixo lateral -->
+    <!-- Side Btn -->
     <button @click="toggleExpand"
         class="fixed left-0 top-1/2 -translate-y-1/2 bg-secondary-100 dark:bg-secondary-800 hover:bg-secondary-200 dark:hover:bg-secondary-700 p-2 rounded-r-md shadow-md transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-secondary-300 dark:focus:ring-secondary-600"
         title="{{ __('Open Menu') }}">
@@ -18,7 +18,7 @@
         class="fixed inset-0 z-40 bg-secondary-50/50 dark:bg-black/50 backdrop-blur-sm" @click="closeExpand"
         style="display: none;"></div>
 
-    <!-- Modal Content Centralizado -->
+    <!-- Modal Content -->
     <div x-show="isExpanded" x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
         x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100"
