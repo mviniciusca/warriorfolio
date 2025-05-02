@@ -113,11 +113,16 @@ class SettingResource extends Resource
                                 Section::make(__('Alerts'))
                                     ->description(__('General Alert Settings'))
                                     ->icon('heroicon-o-bell-alert')
+                                    ->columns(2)
                                     ->collapsible()
                                     ->schema([
                                         Checkbox::make('config.empty_section')
                                             ->label(__('Empty Section'))
                                             ->helperText(__('Alert for Empty Sections'))
+                                            ->default(true),
+                                        Checkbox::make('config.quickbar_is_active')
+                                            ->label(__('Quickbar'))
+                                            ->helperText(__('Enable or disable the quickbar.'))
                                             ->default(true),
                                     ]),
                             ]),

@@ -35,7 +35,8 @@ class Quickbar extends Component
      */
     public function __construct()
     {
-        $this->isActive = Setting::first(['application'])->show_quickbar ?? true;
+        $this->isActive = Setting::first(['config'])->config['quickbar_is_active'] ?? true;
+
         $this->mailCount = $this->formatCount(Mail::where('is_read', false)
             ->where('is_sent', false)
             ->count());
