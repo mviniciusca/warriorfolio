@@ -78,28 +78,46 @@
                         <a href="{{ route('filament.admin.resources.mails.index') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'mail-outline'" class="w-4 h-4" />
-                            <span class="text-xs">Mails ({{ $inboxCount ?? 1
-                                }})</span>
+                            <span class="text-xs">Mails</span>
+                            @if($mailCount > 0)
+                            <span
+                                class="px-2 text-xs font-medium rounded-full border-t border-secondary-200 dark:border-secondary-700 bg-secondary-100 dark:bg-secondary-800">
+                                {{ $mailCount }}
+                            </span>
+                            @endif
                         </a>
                         <a href="{{ route('filament.admin.resources.posts.index') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'document-text-outline'" class="w-4 h-4" />
-                            <span class="text-xs">Posts ({{ $noteCount ?? 1
-                                }})</span>
+                            <span class="text-xs">Posts</span>
+                            @if($postCount > 0)
+                            <span
+                                class="px-2 text-xs font-medium rounded-full border-t border-secondary-200 dark:border-secondary-700 bg-secondary-100 dark:bg-secondary-800">
+                                {{ $postCount }}
+                            </span>
+                            @endif
                         </a>
                         <a href="{{ route('filament.admin.resources.projects.index') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'briefcase-outline'" class="w-4 h-4" />
-                            <span class="text-xs">Projects ({{ $projectCount
-                                ?? 7
-                                }})</span>
+                            <span class="text-xs">Projects</span>
+                            @if($projectCount > 0)
+                            <span
+                                class="px-2 text-xs font-medium rounded-full border-t border-secondary-200 dark:border-secondary-700 bg-secondary-100 dark:bg-secondary-800">
+                                {{ $projectCount }}
+                            </span>
+                            @endif
                         </a>
                         <a href="{{ route('filament.admin.resources.categories.index') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'pricetags-outline'" class="w-4 h-4" />
-                            <span class="text-xs">Categories ({{
-                                $categoryCount ?? 6
-                                }})</span>
+                            <span class="text-xs">Categories</span>
+                            @if($categoryCount > 0)
+                            <span
+                                class="px-2 text-xs font-medium rounded-full border-t border-secondary-200 dark:border-secondary-700 bg-secondary-100 dark:bg-secondary-800">
+                                {{ $categoryCount }}
+                            </span>
+                            @endif
                         </a>
                         <a href="{{ route('filament.admin.resources.profiles.index') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
@@ -120,8 +138,13 @@
                         <a href="{{ route('filament.admin.resources.pages.index') }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'document-outline'" class="w-4 h-4" />
-                            <span class="text-xs">Pages ({{ $pageCount ?? 3
-                                }})</span>
+                            <span class="text-xs">Pages</span>
+                            @if($pageCount > 0)
+                            <span
+                                class="px-2 text-xs font-medium rounded-full border-t border-secondary-200 dark:border-secondary-700 bg-secondary-100 dark:bg-secondary-800">
+                                {{ $pageCount }}
+                            </span>
+                            @endif
                         </a>
                         <a href="{{ route('filament.admin.resources.settings.edit-hero-section', ['record' => 1]) }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
