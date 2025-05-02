@@ -34,11 +34,7 @@
                         <x-ui.ionicon :icon="'flash-outline'" class="w-6 h-6" />
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-medium text-sm">{{ settings('application.name') ?? config('app.name',
-                            'Warriorfolio')
-                            }}</span>
-                        <span class="text-xs opacity-75">{{ auth()->user()->name ?? config('app.name', 'Warriorfolio')
-                            }}</span>
+                        <span class="font-medium text-sm">Quick Access </span>
                     </div>
                 </div>
                 <!-- Right - Close button -->
@@ -227,6 +223,30 @@
                         </a>
                     </div>
                 </div>
+            </div>
+
+            <!-- Footer -->
+            <div
+                class="sticky bottom-0 bg-white dark:bg-secondary-900 border-t border-secondary-200 dark:border-secondary-800 p-4 flex justify-between items-center">
+                <!-- Left section with user info -->
+                <div class="flex items-center gap-3">
+                    <div class="flex-shrink-0">
+                        <x-ui.ionicon :icon="'person-circle-outline'" class="w-6 h-6" />
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xs opacity-75">Logged in as</span>
+                        <span class="font-medium text-sm">{{ auth()->user()->name }}</span>
+                    </div>
+                </div>
+                <!-- Right - Logout button -->
+                <form method="POST" action="{{ route('filament.admin.auth.logout') }}">
+                    @csrf
+                    <button type="submit"
+                        class="flex items-center gap-2 px-3 py-1.5 text-xs border border-secondary-200 dark:border-secondary-700 rounded-md bg-secondary-50 dark:bg-secondary-800 hover:bg-secondary-200/80 dark:hover:bg-secondary-700/60 transition-colors">
+                        <x-ui.ionicon :icon="'log-out-outline'" class="w-4 h-4" />
+                        <span>Logout</span>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
