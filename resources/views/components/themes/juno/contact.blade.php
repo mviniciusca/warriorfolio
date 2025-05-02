@@ -1,6 +1,6 @@
 @php
-    $title = 'Get in Touch';
-    $subtitle = "Have a project in mind? Let's work together";
+$title = 'Get in Touch';
+$subtitle = "Have a project in mind? Let's work together";
 @endphp
 
 <div class="px-4">
@@ -65,41 +65,7 @@
 
         <!-- Contact Form Column -->
         <div>
-            <form class="space-y-5">
-                <div>
-                    <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
-                        for="name">Name</label>
-                    <input
-                        class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
-                        id="name" placeholder="Your name" type="text">
-                </div>
-                <div>
-                    <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
-                        for="email">Email</label>
-                    <input
-                        class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
-                        id="email" placeholder="your@email.com" type="email">
-                </div>
-                <div>
-                    <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
-                        for="subject">Subject</label>
-                    <input
-                        class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
-                        id="subject" placeholder="What's this about?" type="text">
-                </div>
-                <div>
-                    <label class="mb-2 block text-sm text-secondary-700 dark:text-secondary-400"
-                        for="message">Message</label>
-                    <textarea
-                        class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm text-secondary-900 transition-colors placeholder:text-secondary-500 hover:border-secondary-400 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:placeholder:text-secondary-600 dark:hover:border-secondary-700 dark:focus:border-secondary-600 dark:focus:ring-secondary-600"
-                        id="message" placeholder="Your message" rows="4"></textarea>
-                </div>
-                <button
-                    class="w-full rounded-md border border-secondary-300 bg-white px-4 py-2.5 text-sm font-medium text-secondary-900 transition-colors hover:border-secondary-400 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-secondary-800 dark:bg-secondary-950 dark:text-secondary-100 dark:hover:border-secondary-700 dark:hover:bg-secondary-900 dark:focus:ring-secondary-600 dark:focus:ring-offset-secondary-950"
-                    type="submit">
-                    Send message
-                </button>
-            </form>
+            @livewire('mail.create-mail')
         </div>
     </div>
 </div>
