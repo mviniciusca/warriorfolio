@@ -25,7 +25,6 @@ export default {
                 success: colors.green,//success color: default green
                 info: colors.blue,//info color: default blue
                 warning: colors.yellow,//warning color: default yellow
-
             }
         },
     },
