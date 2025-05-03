@@ -14,40 +14,78 @@ class ProfileWidget extends BaseWidget
 {
     protected static ?int $sort = 2;
 
+    protected int|string|array $columnSpan = 'full';
+
     public function table(Table $table): Table
     {
         return $table
             ->query(
-                Profile::query(),
+                Profile::query()
+                    ->with(['user'])
+                    ->where('user_id', Auth::id())
             )
             ->heading(__('Profile Overview'))
-            ->description(__('A quick view about your profile.'))
+            ->description(__('Quick overview of your professional profile'))
             ->striped()
-            ->headerActions(
-                [
-                    ViewAction::make()
-                        ->url(route('filament.admin.resources.profiles.edit', Auth::user()->id))
-                        ->label('Manager')
-                        ->icon('heroicon-o-arrow-up-right')
-                        ->outlined()
-                        ->size('xs'),
-                ]
-            )
-            ->emptyStateIcon('heroicon-o-user')
-            ->paginated(false)
-            ->heading('Profile Status')
+            ->headerActions([
+                ViewAction::make()
+                    ->url(route('filament.admin.resources.profiles.edit', Auth::user()->id))
+                    ->label(__('Edit Profile'))
+                    ->icon('heroicon-o-pencil-square')
+                    ->outlined()
+                    ->size('sm'),
+            ])
+            ->contentGrid([
+                'md' => 2,
+                'xl' => 3,
+            ])
             ->columns([
                 TextColumn::make('user.name')
-                    ->label(__('Name')),
+                    ->label(__('Name'))
+                    ->searchable()
+                    ->sortable()
+                    ->icon('heroicon-o-user'),
+
                 TextColumn::make('job_position')
-                    ->limit(15)
-                    ->label(__('Job Position')),
+                    ->label(__('Position'))
+                    ->searchable()
+                    ->sortable()
+                    ->icon('heroicon-o-briefcase'),
+
+                TextColumn::make('company')
+                    ->label(__('Company'))
+                    ->searchable()
+                    ->sortable()
+                    ->icon('heroicon-o-building-office'),
+
+                TextColumn::make('localization')
+                    ->label(__('Location'))
+                    ->searchable()
+                    ->sortable()
+                    ->icon('heroicon-o-map-pin'),
+
+                TextColumn::make('public_email')
+                    ->label(__('Public Email'))
+                    ->searchable()
+                    ->sortable()
+                    ->icon('heroicon-o-envelope'),
+
                 ToggleColumn::make('is_open_to_work')
                     ->label(__('Open to Work'))
-                    ->alignCenter(),
+                    ->alignCenter()
+                    ->onColor('success')
+                    ->offColor('danger'),
+
                 ToggleColumn::make('is_downloadable')
-                    ->label(__('Downl. Resume'))
-                    ->alignCenter(),
-            ]);
+                    ->label(__('Resume Available'))
+                    ->alignCenter()
+                    ->onColor('success')
+                    ->offColor('danger'),
+            ])
+            ->defaultSort('user.name', 'asc')
+            ->emptyStateIcon('heroicon-o-user')
+            ->emptyStateHeading(__('No profile information'))
+            ->emptyStateDescription(__('Start by adding your professional information'))
+            ->paginated(false);
     }
 }
