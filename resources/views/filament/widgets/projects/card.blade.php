@@ -17,7 +17,7 @@ $project = $getRecord();
     <a href="{{ route('filament.admin.resources.projects.edit', ['record' => $project]) }}" class="block py-4 px-4">
         <div class="relative">
             {{-- Category Badge --}}
-            <div class="absolute z-30 left-3 top-3 flex items-center gap-1 rounded-lg border px-2 py-0.5 text-[10px] font-medium bg-secondary-900 text-white bg-opacity-75 border-transparent"
+            <div class="absolute z-10 left-3 top-3 flex items-center gap-1 rounded-lg border px-2 py-0.5 text-[10px] font-medium bg-secondary-900 text-white bg-opacity-75 border-transparent"
                 style="background-color: {{ $project->project->category->hex_color }}; border-color: {{ $project->project->category->hex_color }}">
                 <span>
                     @if ($project->project->category->icon)

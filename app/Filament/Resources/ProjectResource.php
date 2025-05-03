@@ -34,6 +34,7 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\Layout\View;
+use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
@@ -269,7 +270,7 @@ class ProjectResource extends Resource
 
                         return ['Status' => $state['value'] ? 'Published' : 'Not Published'];
                     }),
-            ])
+            ], layout:FiltersLayout::Modal)
             ->actions([
                 ActionGroup::make([
                     Action::make('publish')
