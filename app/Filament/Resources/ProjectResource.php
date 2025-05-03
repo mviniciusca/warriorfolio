@@ -266,6 +266,7 @@ class ProjectResource extends Resource
                         if (! $state['value'] ?? null) {
                             return [];
                         }
+
                         return ['Status' => $state['value'] ? 'Published' : 'Not Published'];
                     }),
             ])
