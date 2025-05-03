@@ -23,7 +23,6 @@ class CoreModuleWidget extends BaseWidget
             )
             ->striped()
             ->heading(__('Module Visibility'))
-            ->description(__('See the status of the modules of your application.'))
             ->emptyStateIcon('heroicon-o-cpu-chip')
             ->paginated(false)
             ->headerActions(

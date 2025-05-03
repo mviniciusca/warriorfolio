@@ -9,9 +9,7 @@ use Flowframe\Trend\TrendValue;
 
 class SubscriberWidget extends ChartWidget
 {
-    protected static ?string $heading = 'Mailing List';
-
-    protected static ?string $description = 'Your mailing list subscribers.';
+    protected static ?string $heading = 'Subscribers Graph';
 
     protected static ?int $sort = 8;  // Mudando para 8 para ficar logo após o SliderWidget
 
