@@ -30,7 +30,7 @@ class ProjectWidget extends BaseWidget
                         $query->where('is_active', true);
                     })
                     ->latest()
-                    ->limit(12)
+                    ->limit(8)
             )
             ->contentGrid([
                 'sm' => 2,
