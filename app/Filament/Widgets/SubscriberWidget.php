@@ -13,7 +13,14 @@ class SubscriberWidget extends ChartWidget
 
     protected static ?string $description = 'Your mailing list subscribers.';
 
-    protected static ?int $sort = 9;
+    protected static ?int $sort = 8;  // Mudando para 8 para ficar logo após o SliderWidget
+
+    protected int|string|array $columnSpan = 2;
+
+    protected function getColumns(): int|array
+    {
+        return 3; // Total de 3 colunas disponíveis
+    }
 
     protected function getData(): array
     {

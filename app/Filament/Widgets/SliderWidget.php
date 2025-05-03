@@ -13,6 +13,13 @@ class SliderWidget extends BaseWidget
 {
     protected static ?int $sort = 7;
 
+    protected int|string|array $columnSpan = 1;
+
+    protected function getColumns(): int|array
+    {
+        return 3; // Total de 3 colunas disponíveis
+    }
+
     public function table(Table $table): Table
     {
         return $table
