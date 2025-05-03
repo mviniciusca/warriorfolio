@@ -30,7 +30,7 @@ class ProjectWidget extends BaseWidget
                         $query->where('is_active', true);
                     })
                     ->latest()
-                    ->limit(6)
+                    ->limit(12)
             )
             ->contentGrid([
                 'sm' => 2,
@@ -38,6 +38,9 @@ class ProjectWidget extends BaseWidget
                 'lg' => 3,
                 'xl' => 4,
             ])
+
+            ->heading(__('Published Projects'))
+            ->description(__('See the latest published projects.'))
             ->columns([
                 View::make('filament.widgets.projects.card'),
             ])
