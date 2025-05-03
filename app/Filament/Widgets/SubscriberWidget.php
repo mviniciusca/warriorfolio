@@ -13,7 +13,9 @@ class SubscriberWidget extends ChartWidget
 
     protected static ?int $sort = 8;  // Mudando para 8 para ficar logo após o SliderWidget
 
-    protected int|string|array $columnSpan = 2;
+    protected int|string|array $columnSpan = 'full';
+
+    protected static ?string $maxHeight = '320px';
 
     protected function getColumns(): int|array
     {
