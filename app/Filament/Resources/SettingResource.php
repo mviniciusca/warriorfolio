@@ -110,12 +110,16 @@ class SettingResource extends Resource
                                             ->label(__('Meta Author')),
                                     ]),
 
-                                Section::make(__('Alerts'))
-                                    ->description(__('General Alert Settings'))
-                                    ->icon('heroicon-o-bell-alert')
-                                    ->columns(2)
+                                Section::make(__('Features Control'))
+                                    ->description(__('Enable or disable features for your application.'))
+                                    ->icon('heroicon-o-rectangle-group')
+                                    ->columns(4)
                                     ->collapsible()
                                     ->schema([
+                                        Checkbox::make('config.scroll_up_is_active')
+                                            ->label(__('Scroll Up'))
+                                            ->helperText(__('Scroll up button feature.'))
+                                            ->default(true),
                                         Checkbox::make('config.empty_section')
                                             ->label(__('Empty Section'))
                                             ->helperText(__('Alert for Empty Sections'))
@@ -127,7 +131,7 @@ class SettingResource extends Resource
                                     ]),
                             ]),
 
-                        Tab::make(__('Modules'))
+                        Tab::make(__('Core Modules'))
                             ->icon('heroicon-o-cube')
                             ->schema([
                                 Section::make(__('Core Module Decoupling'))
