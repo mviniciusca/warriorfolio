@@ -35,7 +35,7 @@ class ProjectWidget extends BaseWidget
             ->contentGrid([
                 'sm' => 2,
                 'md' => 2,
-                'lg' => 4,
+                'lg' => 3,
                 'xl' => 4,
             ])
             ->columns([
