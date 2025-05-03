@@ -13,6 +13,8 @@ class AlertWidget extends BaseWidget
 {
     protected static ?int $sort = 6;
 
+    protected int|string|array $columnSpan = 2;
+
     public function table(Table $table): Table
     {
         return $table
@@ -23,8 +25,7 @@ class AlertWidget extends BaseWidget
                     ->orderBy('created_at', 'desc')
                     ->take(5)
             )
-            ->heading(__('Active Notifications'))
-            ->description(__('Active notifications in your application.'))
+            ->heading(__('Site Alerts'))
             ->headerActions(
                 [
                     ViewAction::make()
@@ -38,7 +39,6 @@ class AlertWidget extends BaseWidget
             ->striped()
             ->emptyStateIcon('heroicon-o-bell')
             ->paginated(false)
-            ->heading('Active Alerts')
             ->columns([
                 IconColumn::make('is_active')
                     ->boolean()

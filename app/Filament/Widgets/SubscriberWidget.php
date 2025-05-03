@@ -19,7 +19,7 @@ class SubscriberWidget extends ChartWidget
 
     protected function getColumns(): int|array
     {
-        return 3; // Total de 3 colunas disponíveis
+        return 6; // Total de 3 colunas disponíveis
     }
 
     protected function getData(): array
