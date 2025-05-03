@@ -33,6 +33,7 @@ use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\Layout\View;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
@@ -205,7 +206,7 @@ class ProjectResource extends Resource
                                 ->schema([
                                     Toggle::make('is_active')
                                         ->label('Published')
-                                        ->helperText(__('Publish the project to the public. Or keep it as a draft.'))
+                                        ->helperText(__('Publish the project to make it visible on your portfolio section.'))
                                         ->default(true)
                                         ->onIcon('heroicon-o-check-circle')
                                         ->offIcon('heroicon-o-eye-slash'),
@@ -241,36 +242,75 @@ class ProjectResource extends Resource
             ->query(Page::query()
                 ->where('style', '=', 'project'))
             ->columns([
-                ImageColumn::make('project.image_cover')
-                    ->label('')
-                    ->size(100),
-                Tables\Columns\TextColumn::make('project.page.title')
-                    ->searchable()
-                    ->label(__('Project Title'))
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('project.category.name')
-                    ->badge()
-                    ->searchable(),
-                Tables\Columns\ToggleColumn::make('project.is_active')
-                    ->label(__('Published'))
-                    ->alignCenter(),
+                View::make('filament.widgets.projects.card'),
             ])
+            ->defaultPaginationPageOption(50)
+            ->contentGrid([
+                'sm' => 2,
+                'md' => 2,
+                'lg' => 3,
+                'xl' => 4,
+            ])
+            ->recordUrl(fn (Page $record): string => route('filament.admin.resources.projects.edit', ['record' => $record]))
             ->defaultSort('created_at', 'desc')
+            ->persistFiltersInSession()
             ->filters([
                 TernaryFilter::make('is_active')
                     ->relationship('project', 'is_active')
-                    ->label(__('Published'))
+                    ->label(__('Status'))
                     ->trueLabel(__('Published'))
-                    ->falseLabel(__('Draft'))
-                    ->placeholder(__('All')),
+                    ->falseLabel(__('Not Published'))
+                    ->placeholder(__('All'))
+                    ->default(true)
+                    ->indicateUsing(function (array $state): array {
+                        if (! $state['value'] ?? null) {
+                            return [];
+                        }
+                        return ['Status' => $state['value'] ? 'Published' : 'Not Published'];
+                    }),
             ])
             ->actions([
                 ActionGroup::make([
-                    Tables\Actions\EditAction::make(),
+                    Action::make('publish')
+                        ->label(__('Set as Published'))
+                        ->icon('heroicon-o-check-circle')
+                        ->color('success')
+                        ->action(function (Page $record) {
+                            $record->project->update(['is_active' => true]);
+                        })
+                        ->visible(fn (Page $record) => ! $record->project->is_active),
+                    Action::make('unpublish')
+                        ->label(__('Set as Not Published'))
+                        ->icon('heroicon-o-x-circle')
+                        ->color('danger')
+                        ->action(function (Page $record) {
+                            $record->project->update(['is_active' => false]);
+                        })
+                        ->visible(fn (Page $record) => $record->project->is_active),
                 ]),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\BulkAction::make('publish')
+                        ->label(__('Set Selected as Published'))
+                        ->icon('heroicon-o-check-circle')
+                        ->color('success')
+                        ->action(function ($records) {
+                            $records->each(function ($record) {
+                                $record->project->update(['is_active' => true]);
+                            });
+                        }),
+                    Tables\Actions\BulkAction::make('unpublish')
+                        ->label(__('Set Selected as Not Published'))
+                        ->icon('heroicon-o-x-circle')
+                        ->color('danger')
+                        ->action(function ($records) {
+                            $records->each(function ($record) {
+                                $record->project->update(['is_active' => false]);
+                            });
+                        }),
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
             ]);
     }
 
