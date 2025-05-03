@@ -20,6 +20,7 @@ App\View\Components\Header\Section.php
 {{-- Core: Background Image --}}
 <x-ui.background />
 <x-ui.quickbar />
+<x-ui.scroll-up />
 {{-- Header --}}
 <nav class="relative z-40 mx-auto w-full pb-2 pt-8">
     {{-- Background Layer --}}
