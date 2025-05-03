@@ -38,7 +38,6 @@ class ProjectWidget extends BaseWidget
                 'lg' => 3,
                 'xl' => 4,
             ])
-
             ->heading(__('Published Projects'))
             ->description(__('See the latest published projects.'))
             ->columns([
