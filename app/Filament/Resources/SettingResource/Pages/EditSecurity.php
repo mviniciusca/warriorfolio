@@ -69,18 +69,18 @@ class EditSecurity extends EditRecord
                     TextInput::make('password')
                         ->password()
                         ->confirmed()
-                        ->regex('/^\S+$/')
+                        ->regex('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,64}$/')
                         ->validationMessages([
                             'confirmed' => 'The password confirmation does not match.',
-                            'regex'     => 'The password must not contain any whitespace.',
+                            'regex'     => 'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character.',
                         ])
                         ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
                         ->dehydrated(fn (?string $state): bool => filled($state))
                         ->label('Password')
-                        ->minLength(6)
-                        ->maxLength(15)
+                        ->minLength(8)
+                        ->maxLength(64)
                         ->revealable()
-                        ->helperText('Password must be at least 6 characters long and no more than 15 characters long.'),
+                        ->helperText('Password must be 8-64 characters long and include uppercase, lowercase, numbers and special characters.'),
                     TextInput::make('password_confirmation')
                         ->password()
                         ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
