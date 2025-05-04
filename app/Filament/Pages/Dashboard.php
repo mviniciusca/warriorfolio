@@ -13,10 +13,25 @@ use App\Filament\Widgets\SliderWidget;
 use App\Filament\Widgets\StatsOverview;
 use App\Filament\Widgets\SubscriberWidget;
 use Filament\Pages\Dashboard as BaseDashboard;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class Dashboard extends BaseDashboard
 {
     protected static ?string $title = 'Dashboard';
+
+    public function getSubheading(): string | Htmlable | null
+    {
+        $hour = Carbon::now()->hour;
+        $greeting = match (true) {
+            $hour >= 5 && $hour < 12  => 'Good morning',
+            $hour >= 12 && $hour < 18 => 'Good afternoon',
+            default                   => 'Good evening',
+        };
+
+        return $greeting.', '.Auth::user()->name.'!';
+    }
 
     protected static ?string $navigationIcon = 'heroicon-o-home';
 
