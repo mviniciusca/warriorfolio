@@ -52,6 +52,7 @@ class SettingResource extends Resource
             Pages\EditSetting::class,
             Pages\EditAppearance::class,
             Pages\EditNavigation::class,
+            Pages\EditSections::class,
             Pages\EditBlogSettings::class,
             Pages\EditAboutSection::class,
             Pages\EditClientSection::class,
@@ -367,6 +368,7 @@ class SettingResource extends Resource
             'edit-navigation'          => Pages\EditNavigation::route('/{record}/edit-navigation'),
             'edit-security'            => Pages\EditSecurity::route('/{record}/edit-security'),
             'edit-blog'                => Pages\EditBlogSettings::route('/{record}/edit-blog'),
+            'edit-sections'            => Pages\EditSections::route('/{record}/edit-sections'),
         ];
     }
 }
