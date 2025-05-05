@@ -17,5 +17,6 @@ class Section extends Model
 
     protected $casts = [
         'content' => 'array',
+        'blocks'  => 'array',
     ];
 }

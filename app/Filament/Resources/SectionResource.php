@@ -6,6 +6,7 @@ use App\Filament\Resources\SectionResource\Pages;
 use App\Filament\Resources\SectionResource\RelationManagers;
 use App\Models\Section;
 use Filament\Forms;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -13,6 +14,10 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
+use Z3d0X\FilamentFabricator\Forms\Components\PageBuilder;
+use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
+use Z3d0X\FilamentFabricator\View\ResourceSchemaSlot;
 
 class SectionResource extends Resource
 {
@@ -84,6 +89,16 @@ class SectionResource extends Resource
                                     ->label('Button URL')
                                     ->placeholder('Enter button URL')
                                     ->url(),
+                            ]),
+                        Forms\Components\Tabs\Tab::make('Blocks')
+                            ->icon('heroicon-o-rectangle-group')
+                            ->schema([
+                                Group::make()->schema(FilamentFabricator::getSchemaSlot(ResourceSchemaSlot::BLOCKS_BEFORE)),
+
+                                PageBuilder::make('blocks')
+                                    ->label(__('filament-fabricator::page-resource.labels.blocks')),
+
+                                Group::make()->schema(FilamentFabricator::getSchemaSlot(ResourceSchemaSlot::BLOCKS_AFTER)),
                             ]),
                     ])
                     ->columnSpanFull(),
