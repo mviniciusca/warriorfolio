@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('slug');
             $table->json('content')->nullable();
+            $table->json('blocks')->nullable();
             $table->boolean('is_active')->default(1);
             $table->boolean('is_coupled')->default(0);
             $table->timestamps();
