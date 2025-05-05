@@ -7,6 +7,7 @@ use App\Filament\Resources\SectionResource\RelationManagers;
 use App\Models\Section;
 use Filament\Forms;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,7 +25,7 @@ class SectionResource extends Resource
 {
     protected static ?string $model = Section::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-m-bars-3-center-left';
 
     protected static ?string $navigationGroup = 'Core Features';
 
@@ -39,65 +40,96 @@ class SectionResource extends Resource
     {
         return $form
             ->schema([
+                Placeholder::make('Section Information')
+                    ->hiddenLabel()
+                    ->columnSpanFull()
+                    ->content(__('Sections help organize your website content into distinct areas. Each section can contain multiple blocks and can be customized with different layouts and styles.'))
+                    ->extraAttributes([
+                        'class' => 'p-4 bg-gray-100 text-gray-600 border border-gray-200 rounded-lg dark:bg-gray-900 dark:text-gray-400 dark:border-gray-800',
+                    ]),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255)
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(fn (string $state, Forms\Set $set) => $set('slug', Str::slug($state))),
+                    ->label(__('Section Name'))
+                    ->prefixIcon('heroicon-m-bars-3-center-left')
+                    ->helperText(__('This is the name of the section that will be displayed in the admin panel.'))
+                    ->live(onBlur: true),
                 Forms\Components\TextInput::make('slug')
                     ->disabled()
                     ->dehydrated()
                     ->required()
+                    ->prefixIcon('heroicon-m-bars-3-center-left')
                     ->maxLength(255)
+                    ->helperText('This is the unique identifier for the section.')
                     ->unique(Section::class, 'slug', ignoreRecord: true),
                 Forms\Components\Tabs::make('Section')
                     ->tabs([
                         Forms\Components\Tabs\Tab::make('Settings')
-                            ->icon('heroicon-o-information-circle')
+                            ->icon('heroicon-o-cog-6-tooth')
                             ->schema([
-                                Forms\Components\Grid::make()
+                                Group::make()
+                                    ->columns(3)
                                     ->schema([
                                         Forms\Components\Toggle::make('is_active')
-                                            ->label('Active')
+                                            ->label(__('Active'))
+                                            ->helperText(__('If enabled, this section will be visible on the frontend'))
                                             ->default(true)
                                             ->required(),
                                         Forms\Components\Toggle::make('is_coupled')
-                                            ->label('Coupled')
-                                            ->helperText('If enabled, this section will be coupled with the main layout')
+                                            ->label(__('Coupled'))
+                                            ->helperText(__('If enabled, this section will be coupled with the main layout'))
                                             ->default(false)
                                             ->required(),
-                                    ])
-                                    ->columns(2),
+                                        Forms\Components\Toggle::make('content.is_filled')
+                                            ->label(__('Filled'))
+                                            ->helperText(__('If enabled, this section will be filled with a color'))
+                                            ->default(false)
+                                            ->required(),
+                                        Forms\Components\Toggle::make('content.is_section_filled_inverted')
+                                            ->label(__('Section Filled Inverted'))
+                                            ->helperText(__('If enabled, this section will be filled with a color and the text will be inverted'))
+                                            ->default(false)
+                                            ->required(),
+                                        Forms\Components\Toggle::make('content.with_padding')
+                                            ->label(__('With Padding'))
+                                            ->helperText(__('If enabled, this section will have padding'))
+                                            ->default(true)
+                                            ->required(),
+                                        Forms\Components\Toggle::make('content.is_heading_visible')
+                                            ->label(__('Heading Visible'))
+                                            ->helperText(__('If enabled, this section will have a heading'))
+                                            ->default(true)
+                                            ->required(),
+                                    ]),
+
                             ]),
 
                         Forms\Components\Tabs\Tab::make('Content')
-                            ->icon('heroicon-o-document-text')
+                            ->icon('heroicon-o-cube')
+                            ->columns(2)
                             ->schema([
                                 Forms\Components\TextInput::make('content.title')
-                                    ->label('Title')
-                                    ->placeholder('Enter section title'),
+                                    ->label(__('Title'))
+                                    ->placeholder(__('Enter section title'))
+                                    ->prefixIcon('heroicon-m-bars-3-center-left')
+                                    ->helperText(__('The main heading text for this section')),
                                 Forms\Components\TextInput::make('content.subtitle')
-                                    ->label('Subtitle')
-                                    ->placeholder('Enter section subtitle'),
-                                Forms\Components\Textarea::make('content.description')
-                                    ->label('Description')
-                                    ->placeholder('Enter section description')
-                                    ->rows(4),
-                                Forms\Components\TextInput::make('content.button_text')
-                                    ->label('Button Text')
-                                    ->placeholder('Enter button text'),
+                                    ->label(__('Subtitle'))
+                                    ->placeholder(__('Enter section subtitle'))
+                                    ->prefixIcon('heroicon-m-bars-3-center-left')
+                                    ->helperText(__('A secondary heading or supporting text')),
+                                Forms\Components\TextInput::make('content.button_header')
+                                    ->label(__('Button Text'))
+                                    ->placeholder(__('Enter button text'))
+                                    ->prefixIcon('heroicon-m-bars-3-center-left')
+                                    ->helperText(__('The text to display on the button')),
                                 Forms\Components\TextInput::make('content.button_url')
-                                    ->label('Button URL')
-                                    ->placeholder('Enter button URL')
-                                    ->url(),
+                                    ->label(__('Button URL'))
+                                    ->placeholder(__('Enter button URL'))
+                                    ->prefixIcon('heroicon-m-bars-3-center-left')
+                                    ->helperText(__('The destination URL when the button is clicked')),
                             ]),
-                        Forms\Components\Tabs\Tab::make('Blocks')
-                            ->icon('heroicon-o-rectangle-group')
-                            ->schema([
-                                PageBuilder::make('blocks')
-                                    ->blockPickerStyle(BlockPickerStyle::Modal)
-                                    ->label(__('filament-fabricator::page-resource.labels.blocks')),
-                            ]),
+
                     ])
                     ->columnSpanFull(),
             ]);
