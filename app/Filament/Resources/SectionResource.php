@@ -14,6 +14,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Z3d0X\FilamentFabricator\Enums\BlockPickerStyle;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 use Z3d0X\FilamentFabricator\Forms\Components\PageBuilder;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
@@ -93,12 +94,9 @@ class SectionResource extends Resource
                         Forms\Components\Tabs\Tab::make('Blocks')
                             ->icon('heroicon-o-rectangle-group')
                             ->schema([
-                                Group::make()->schema(FilamentFabricator::getSchemaSlot(ResourceSchemaSlot::BLOCKS_BEFORE)),
-
                                 PageBuilder::make('blocks')
+                                    ->blockPickerStyle(BlockPickerStyle::Modal)
                                     ->label(__('filament-fabricator::page-resource.labels.blocks')),
-
-                                Group::make()->schema(FilamentFabricator::getSchemaSlot(ResourceSchemaSlot::BLOCKS_AFTER)),
                             ]),
                     ])
                     ->columnSpanFull(),

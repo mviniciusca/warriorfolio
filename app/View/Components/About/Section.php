@@ -3,6 +3,7 @@
 namespace App\View\Components\About;
 
 use App\Models\Course;
+use App\Models\Section as SectionModel;
 use App\Models\Setting;
 use App\Models\Slideshow;
 use Closure;
@@ -16,7 +17,6 @@ class Section extends Component
      */
     public function __construct()
     {
-        //
     }
 
     /**
