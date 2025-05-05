@@ -15,6 +15,12 @@ class Section extends Component
     /**
      * Create a new component instance.
      */
+    public $title;
+
+    public $subtitle;
+
+    public $is_centered;
+
     public $button_header;
 
     public $button_url;
@@ -27,25 +33,29 @@ class Section extends Component
 
     public $module_name;
 
-    public $is_active;
+    public $is_active; // is the module active?
 
     public $is_coupled;
 
-    public $is_heading_visible;
+    public $is_heading_visible; // is the heading visible?
 
     public function __construct()
     {
         $module = SectionModel::where('slug', 'about-me')
             ->sole();
-        $this->button_header = $module->content['button_header'] ?? null;
-        $this->button_url = $module->content['button_url'] ?? null;
-        $this->is_filled = $module->content['is_filled'] ?? null;
-        $this->is_section_filled_inverted = $module->content['is_section_filled_inverted'] ?? null;
-        $this->with_padding = $module->content['with_padding'] ?? null;
         $this->module_name = $module->slug ?? rand(1, 1000);
         $this->is_active = $module->is_active ?? null;
         $this->is_coupled = $module->is_coupled ?? null;
+        // Content
+        $this->title = $module->content['title'] ?? null;
+        $this->button_header = $module->content['button_header'] ?? null;
+        $this->subtitle = $module->content['subtitle'] ?? null;
+        $this->button_url = $module->content['button_url'] ?? null;
         $this->is_heading_visible = $module->content['is_heading_visible'] ?? true;
+        $this->is_filled = $module->content['is_filled'] ?? null;
+        $this->with_padding = $module->content['with_padding'] ?? null;
+        $this->is_section_filled_inverted = $module->content['is_section_filled_inverted'] ?? null;
+        $this->is_centered = $module->content['is_centered'] ?? false;
     }
 
     /**

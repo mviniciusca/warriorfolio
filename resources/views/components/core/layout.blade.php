@@ -27,27 +27,6 @@ This is the default layout component for the website. Used for website and compo
     id="{{ $module_name ?? 'app-' . rand(1, 10) }}">
 
     <div class="{{ $container }} mx-auto">
-        @if ($module_title)
-        <div class="{{ $button_header ? 'flex justify-between flex-initial' : '' }} py-4">
-            <p class="dg header-title {{ $is_center ? 'text-center' : 'text-left' }}">{{ $module_title }}</p>
-            @if ($button_header)
-            @if ($button_url)
-            <a href="{{ $button_url }}">
-                @endif
-                <x-ui.button :$is_section_filled_inverted :$icon :style="'outlined'">
-                    {!! $button_header !!}
-                </x-ui.button>
-                @endif
-                @if ($button_url)
-            </a>
-            @endif
-        </div>
-        @endif
-        @if ($module_subtitle)
-        <div class="subtitle {{ $is_center ? 'text-center max-w-4xl' : 'text-left w-full' }} subtitle mb-12 text-sm">
-            {{ $module_subtitle }}
-        </div>
-        @endif
         <div id="app-container-{{ rand(1, 10) }}">
             {!! $slot !!}
         </div>

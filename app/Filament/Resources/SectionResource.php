@@ -68,7 +68,7 @@ class SectionResource extends Resource
                             ->icon('heroicon-o-cog-6-tooth')
                             ->schema([
                                 Group::make()
-                                    ->columns(3)
+                                    ->columns(4)
                                     ->schema([
                                         Forms\Components\Toggle::make('is_active')
                                             ->label(__('Active'))
@@ -99,6 +99,11 @@ class SectionResource extends Resource
                                             ->label(__('Heading Visible'))
                                             ->helperText(__('If enabled, this section will have a heading'))
                                             ->default(true)
+                                            ->required(),
+                                        Forms\Components\Toggle::make('content.is_centered')
+                                            ->label(__('Centered'))
+                                            ->helperText(__('If enabled, this section will be centered'))
+                                            ->default(false)
                                             ->required(),
                                     ]),
 

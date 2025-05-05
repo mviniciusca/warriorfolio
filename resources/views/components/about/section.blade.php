@@ -17,22 +17,13 @@ App\View\Components\About\Section.php
 'sliders' => null,
 ])
 
+
 @if ($module->is_active)
 
-<x-core.layout :$button_header :$button_url :$is_filled :$is_section_filled_inverted :$with_padding :$module_name>
+<x-core.layout :$is_filled :$is_section_filled_inverted :$with_padding :$module_name>
 
-    @if ($is_heading_visible)
-    @if ($module->content['title'] ?? false)
-    <x-slot name="module_title">
-        {!! $module->content['title'] ?? null !!}
-    </x-slot>
-    @endif
-    @if ($module->content['subtitle'] ?? false)
-    <x-slot name="module_subtitle">
-        {!! $module->content['subtitle'] ?? null !!}
-    </x-slot>
-    @endif
-    @endif
+    <x-core.layout.section-header :$button_header :$button_url :$is_centered :$title :$subtitle
+        :$is_section_filled_inverted :$is_heading_visible />
 
     <div class="my-12 flex flex-wrap" id="about-section-wrapper">
         {{-- Profile Section --}}
