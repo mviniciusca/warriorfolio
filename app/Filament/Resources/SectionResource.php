@@ -27,9 +27,9 @@ class SectionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-m-bars-3-center-left';
 
-    protected static ?string $navigationGroup = 'Core Features';
+    protected static ?string $navigationGroup = 'Website Design';
 
-    protected static ?int $navigationSort = 4;
+    protected static ?int $navigationSort = -1;
 
     public static function getNavigationLabel(): string
     {

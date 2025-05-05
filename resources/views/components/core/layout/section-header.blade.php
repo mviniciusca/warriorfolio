@@ -31,7 +31,7 @@
     </div>
     @if ($subtitle)
     <div
-        class="subtitle {{ $button_header ? 'text-left w-full' : ($is_centered ? 'text-center max-w-4xl' : 'text-left w-full') }} mb-12 text-sm">
+        class="subtitle {{ $button_header ? 'text-left w-full -mt-2' : ($is_centered ? 'text-center max-w-4xl' : 'text-left w-full') }} mb-6 text-sm">
         {{ $subtitle }}
     </div>
     @endif
