@@ -9,7 +9,6 @@ App\View\Components\About\Section.php
 
 --}}
 
-
 @props([
 'profile' => $data->user->profile ?? null,
 'courses' => null,
