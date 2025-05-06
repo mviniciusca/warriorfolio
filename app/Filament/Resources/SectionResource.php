@@ -63,6 +63,7 @@ class SectionResource extends Resource
                     ->helperText('This is the unique identifier for the section.')
                     ->unique(Section::class, 'slug', ignoreRecord: true),
                 Forms\Components\Tabs::make('Section')
+                    ->persistTab()
                     ->tabs([
                         Forms\Components\Tabs\Tab::make('Settings')
                             ->icon('heroicon-o-cog-6-tooth')
@@ -112,33 +113,51 @@ class SectionResource extends Resource
                         Forms\Components\Tabs\Tab::make('Content')
                             ->icon('heroicon-o-cube')
                             ->columns(2)
-                            ->schema([
-                                Forms\Components\TextInput::make('content.title')
-                                    ->label(__('Title'))
-                                    ->placeholder(__('Enter section title'))
-                                    ->prefixIcon('heroicon-m-bars-3-center-left')
-                                    ->helperText(__('The main heading text for this section')),
-                                Forms\Components\TextInput::make('content.subtitle')
-                                    ->label(__('Subtitle'))
-                                    ->placeholder(__('Enter section subtitle'))
-                                    ->prefixIcon('heroicon-m-bars-3-center-left')
-                                    ->helperText(__('A secondary heading or supporting text')),
-                                Forms\Components\TextInput::make('content.button_header')
-                                    ->label(__('Button Text'))
-                                    ->placeholder(__('Enter button text'))
-                                    ->prefixIcon('heroicon-m-bars-3-center-left')
-                                    ->helperText(__('The text to display on the button')),
-                                Forms\Components\TextInput::make('content.button_url')
-                                    ->label(__('Button URL'))
-                                    ->placeholder(__('Enter button URL'))
-                                    ->prefixIcon('heroicon-m-bars-3-center-left')
-                                    ->helperText(__('The destination URL when the button is clicked')),
-                                Forms\Components\TextInput::make('content.button_icon')
-                                    ->label(__('Button Icon'))
-                                    ->placeholder(__('Enter button icon'))
-                                    ->prefixIcon('heroicon-m-bars-3-center-left')
-                                    ->helperText(__('The icon to display on the button')),
-                            ]),
+                            ->schema(function (Forms\Get $get) {
+                                $commonFields = [
+                                    Forms\Components\TextInput::make('content.title')
+                                        ->label(__('Title'))
+                                        ->placeholder(__('Enter section title'))
+                                        ->prefixIcon('heroicon-m-bars-3-center-left')
+                                        ->helperText(__('The main heading text for this section')),
+                                    Forms\Components\TextInput::make('content.subtitle')
+                                        ->label(__('Subtitle'))
+                                        ->placeholder(__('Enter section subtitle'))
+                                        ->prefixIcon('heroicon-m-bars-3-center-left')
+                                        ->helperText(__('A secondary heading or supporting text')),
+                                    Forms\Components\TextInput::make('content.button_header')
+                                        ->label(__('Button Text'))
+                                        ->placeholder(__('Enter button text'))
+                                        ->prefixIcon('heroicon-m-bars-3-center-left')
+                                        ->helperText(__('The text to display on the button')),
+                                    Forms\Components\TextInput::make('content.button_url')
+                                        ->label(__('Button URL'))
+                                        ->placeholder(__('Enter button URL'))
+                                        ->prefixIcon('heroicon-m-bars-3-center-left')
+                                        ->helperText(__('The destination URL when the button is clicked')),
+                                    Forms\Components\TextInput::make('content.button_icon')
+                                        ->label(__('Button Icon'))
+                                        ->placeholder(__('Enter button icon'))
+                                        ->prefixIcon('heroicon-m-bars-3-center-left')
+                                        ->helperText(__('The icon to display on the button')),
+                                ];
+
+                                // Footer
+                                if ($get('slug') === 'footer') {
+                                    return array_merge($commonFields, [
+                                        Group::make()
+                                            ->columns(2)
+                                            ->schema([
+                                                Forms\Components\Toggle::make('content.show_social_links')
+                                                    ->label(__('Show Social Links'))
+                                                    ->helperText(__('Enable to display social media links in the footer'))
+                                                    ->default(true),
+                                            ]),
+                                    ]);
+                                }
+
+                                return $commonFields;
+                            }),
 
                     ])
                     ->columnSpanFull(),
@@ -158,10 +177,12 @@ class SectionResource extends Resource
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean()
                     ->sortable()
+                    ->alignCenter()
                     ->label('Active'),
                 Tables\Columns\IconColumn::make('is_coupled')
                     ->boolean()
                     ->sortable()
+                    ->alignCenter()
                     ->label('Coupled'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
