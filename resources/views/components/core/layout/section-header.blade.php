@@ -1,7 +1,7 @@
 @props([
 // Button Component
 'is_section_filled_inverted' => false,
-'icon' => null,
+'icon' => null ?? 'arrow-forward-sharp',
 
 // Heading Component
 'title' => null,
@@ -26,12 +26,14 @@
     </div>
     @if($button_header)
     <div>
-        @if($button_url)<a href="{{ $button_url }}">@endif
-            <x-ui.button :is_section_filled_inverted="$is_section_filled_inverted" :icon="$icon" style="outlined">
+        @if($button_url)
+        <a href="{{ $button_url }}">@endif
+            <x-ui.button :$is_section_filled_inverted :$icon style="outlined">
                 {!! $button_header !!}
             </x-ui.button>
             @if($button_url)
-        </a>@endif
+        </a>
+        @endif
     </div>
     @endif
 </div>
