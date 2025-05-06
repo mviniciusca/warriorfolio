@@ -14,8 +14,8 @@ class SectionHeader extends Component
     public function __construct(
         public ?string $title = 'Heading Title' ?? null,
         public ?string $subtitle = 'I\'m a heading subtitle' ?? null,
-        public bool $is_heading_visible = true,
-        public bool $is_centered = true,
+        public ?bool $is_heading_visible = null,
+        public ?bool $is_centered = null,
         public ?string $button_header = null,
         public ?string $button_url = null,
     ) {
