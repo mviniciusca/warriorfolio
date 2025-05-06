@@ -1,7 +1,7 @@
 @props([
 // Button Component
 'is_section_filled_inverted' => false,
-'button_icon' => null ?? 'arrow-forward-sharp',
+'button_icon' => null ?? 'chevron-forward-outline',
 
 // Heading Component
 'title' => null,

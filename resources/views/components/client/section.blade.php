@@ -15,9 +15,7 @@ App\View\Components\Customer\Section.php
 ])
 
 @if ($is_active)
-
-<x-core.layout :$button_header :$button_url :$is_filled :$is_section_filled_inverted :$with_padding
-    :module_name="'customers'">
+<x-core.layout :$is_filled :$is_section_filled_inverted :$with_padding :$module_name>
     <x-core.layout.section-header :$button_header :$button_icon :$button_url :$is_centered :$title :$subtitle
         :$is_section_filled_inverted :$is_heading_visible />
     <section

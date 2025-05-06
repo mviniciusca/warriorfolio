@@ -59,6 +59,7 @@ trait SectionLoader
         $this->is_section_filled_inverted = $section->content['is_section_filled_inverted'] ?? null;
         $this->is_centered = $section->content['is_centered'] ?? false;
         $this->module_slug = $section->slug ?? null;
+        $this->module_name = $section->name ?? null;
     }
 }
 //

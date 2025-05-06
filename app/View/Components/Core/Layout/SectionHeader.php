@@ -18,6 +18,9 @@ class SectionHeader extends Component
         public ?bool $is_centered = null,
         public ?string $button_header = null,
         public ?string $button_url = null,
+        public ?string $button_icon = null,
+        public ?string $module_slug = null,
+        public ?string $module_name = null,
     ) {
     }
 

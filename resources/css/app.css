@@ -114,6 +114,9 @@
     .section-filled {
         @apply bg-secondary-50 dark:bg-black;
     }
+    .section-filled-inverse {
+        @apply bg-secondary-950 text-secondary-300 dark:bg-secondary-50 dark:text-secondary-900;
+    }
 
     /** Saturn UI **/
     .saturn-ui,
