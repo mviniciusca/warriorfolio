@@ -47,11 +47,11 @@ class Section extends Component
         $this->is_active = $module->is_active ?? null;
         $this->is_coupled = $module->is_coupled ?? null;
         // Content
+        $this->is_heading_visible = $module->content['is_heading_visible'] ?? null;
         $this->title = $module->content['title'] ?? null;
         $this->button_header = $module->content['button_header'] ?? null;
         $this->subtitle = $module->content['subtitle'] ?? null;
         $this->button_url = $module->content['button_url'] ?? null;
-        $this->is_heading_visible = $module->content['is_heading_visible'] ?? true;
         $this->is_filled = $module->content['is_filled'] ?? null;
         $this->with_padding = $module->content['with_padding'] ?? null;
         $this->is_section_filled_inverted = $module->content['is_section_filled_inverted'] ?? null;

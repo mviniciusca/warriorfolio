@@ -98,7 +98,7 @@ class SectionResource extends Resource
                                         Forms\Components\Toggle::make('content.is_heading_visible')
                                             ->label(__('Heading Visible'))
                                             ->helperText(__('If enabled, this section will have a heading'))
-                                            ->default(true)
+                                            ->default(false)
                                             ->required(),
                                         Forms\Components\Toggle::make('content.is_centered')
                                             ->label(__('Centered'))

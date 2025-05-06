@@ -1,9 +1,12 @@
 @props([
+// Button Component
 'is_section_filled_inverted' => false,
 'icon' => null,
+
+// Heading Component
 'title' => null,
 'subtitle' => null,
-'is_centered' => false,
+'is_centered' => null,
 'button_header' => null,
 'button_url' => null,
 'is_visible' => true,

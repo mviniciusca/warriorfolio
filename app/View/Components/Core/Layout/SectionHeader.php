@@ -11,26 +11,14 @@ class SectionHeader extends Component
     /**
      * Create a new component instance.
      */
-    public ?bool $is_heading_visible;
-
-    public ?bool $is_centered;
-
-    public ?string $title;
-
-    public ?string $subtitle;
-
-    public ?string $button_header;
-
-    public ?string $button_url;
-
-    public function __construct()
-    {
-        $this->title = null;
-        $this->subtitle = null;
-        $this->is_heading_visible = null;
-        $this->button_header = null;
-        $this->button_url = null;
-        $this->is_centered = null;
+    public function __construct(
+        public ?string $title = 'Heading Title' ?? null,
+        public ?string $subtitle = 'I\'m a heading subtitle' ?? null,
+        public bool $is_heading_visible = true,
+        public bool $is_centered = true,
+        public ?string $button_header = null,
+        public ?string $button_url = null,
+    ) {
     }
 
     /**

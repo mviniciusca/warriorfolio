@@ -11,14 +11,13 @@ App\View\Components\About\Section.php
 
 
 @props([
-
 'profile' => $data->user->profile ?? null,
 'courses' => null,
 'sliders' => null,
 ])
 
-
 @if ($module->is_active)
+
 
 <x-core.layout :$is_filled :$is_section_filled_inverted :$with_padding :$module_name>
 
