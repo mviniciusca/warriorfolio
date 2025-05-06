@@ -12,25 +12,14 @@ App\View\Components\Customer\Section.php
 @props([
 'customers' => null,
 'sliders' => null,
-// Module Relationship
-'module' => $data->module->clients ?? false,
-// Layout Relationship
-'with_padding' => $data->layout->customer['with_padding'] ?? true, // future
-'button_header' => $data->layout->customer['button_header'] ?? null, // future
-'button_url' => $data->layout->customer['button_url'] ?? null, // future
-'is_filled' => $data->layout->customer['section_fill'] ?? false,
-'is_section_filled_inverted' => $data->layout->customer['is_section_filled_inverted'] ?? false,
-'is_heading_visible' => $data->layout->customer['is_heading_visible'] ?? false,
 ])
 
-@if ($data->module->clients ?? false)
+@if ($is_active)
 
 <x-core.layout :$button_header :$button_url :$is_filled :$is_section_filled_inverted :$with_padding
     :module_name="'customers'">
-
-    <x-core.layout.section-header :$button_header :$button_url :$is_centered :$title :$subtitle
+    <x-core.layout.section-header :$button_header :$button_icon :$button_url :$is_centered :$title :$subtitle
         :$is_section_filled_inverted :$is_heading_visible />
-
     <section
         class="my-12 flex flex-wrap content-center items-center justify-center justify-items-center gap-8 transition-all duration-300"
         id="customer-wrapper">
@@ -47,6 +36,5 @@ App\View\Components\Customer\Section.php
     @if ($customers->isEmpty() && $sliders == null)
     <x-ui.empty-section :auth="__('Go to your Dashboard and create a New Client.')" />
     @endif
-
 </x-core.layout>
 @endif
