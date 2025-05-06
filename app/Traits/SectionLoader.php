@@ -17,6 +17,8 @@ trait SectionLoader
 
     public ?string $button_url;
 
+    public ?string $button_icon;
+
     public ?bool $is_filled;
 
     public ?bool $is_section_filled_inverted;
@@ -50,6 +52,7 @@ trait SectionLoader
         $this->title = $section->content['title'] ?? null;
         $this->button_header = $section->content['button_header'] ?? null;
         $this->subtitle = $section->content['subtitle'] ?? null;
+        $this->button_icon = $section->content['button_icon'] ?? null;
         $this->button_url = $section->content['button_url'] ?? null;
         $this->is_filled = $section->content['is_filled'] ?? null;
         $this->with_padding = $section->content['with_padding'] ?? null;

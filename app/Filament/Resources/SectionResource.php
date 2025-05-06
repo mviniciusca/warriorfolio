@@ -133,6 +133,11 @@ class SectionResource extends Resource
                                     ->placeholder(__('Enter button URL'))
                                     ->prefixIcon('heroicon-m-bars-3-center-left')
                                     ->helperText(__('The destination URL when the button is clicked')),
+                                Forms\Components\TextInput::make('content.button_icon')
+                                    ->label(__('Button Icon'))
+                                    ->placeholder(__('Enter button icon'))
+                                    ->prefixIcon('heroicon-m-bars-3-center-left')
+                                    ->helperText(__('The icon to display on the button')),
                             ]),
 
                     ])
