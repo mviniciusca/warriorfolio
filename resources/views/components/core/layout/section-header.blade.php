@@ -15,7 +15,7 @@
 
 @if($is_heading_visible)
 @if ($title)
-<div class="flex flex-col">
+<div class="flex flex-col mx-auto">
     <div class="{{ $button_header ? 'flex justify-between flex-initial' : '' }} py-4">
         <p class="dg header-title {{ $is_centered && !$button_header ? 'text-center' : 'text-left' }}">
             {{ $title }}
