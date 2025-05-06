@@ -10,15 +10,14 @@ App\View\Components\Footer\Section.php
 --}}
 
 @props([
+'is_active' => true,
+'is_filled' => false,
+'with_padding' => true,
+'is_section_filled_inverted' => false,
 'data' => null,
-'module' => $data->module ?? null,
-'navigation' => $data->navigation->content ?? null,
-'is_section_filled_inverted' => $data->layout->footer['is_section_filled_inverted'] ?? false,
-'with_padding' => $data->layout->footer['with_padding'] ?? false,
 ])
-
-@if ($data->module->footer ?? false)
-<div class="{{ $data->layout->footer['section_fill'] ?? false ? 'section-filled' : '' }}">
+@if ($is_active)
+<div class="{{ $is_filled ? 'section-filled' : '' }}">
     <x-core.layout :$is_section_filled_inverted :$with_padding>
         <div class="py-8 border-t border-gray-200 dark:border-gray-800" id="footer-content">
             <div class="mx-auto p-4">
@@ -30,7 +29,9 @@ App\View\Components\Footer\Section.php
                             env('APP_NAME'))) }}
                         </span>
                     </div>
+                    @if($data->content['show_social_networks'] ?? true)
                     <x-ui.social-network size="default" />
+                    @endif
                 </div>
             </div>
         </div>

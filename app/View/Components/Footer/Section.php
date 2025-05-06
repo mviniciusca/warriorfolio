@@ -3,6 +3,7 @@
 namespace App\View\Components\Footer;
 
 use App\Models\Setting;
+use App\Traits\SectionLoader;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -12,9 +13,11 @@ class Section extends Component
     /**
      * Create a new component instance.
      */
+    use SectionLoader;
+
     public function __construct()
     {
-        //
+        $this->loadSection('footer');
     }
 
     /**
@@ -23,8 +26,7 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.footer.section', [
-            'data' => Setting::with(['module', 'layout', 'navigation'])
-                ->first(),
+            'data' => $this->section,
         ]);
     }
 }

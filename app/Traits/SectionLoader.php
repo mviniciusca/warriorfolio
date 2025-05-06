@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Log;
 
 trait SectionLoader
 {
+    protected Section $section;
+
     public ?string $title;
 
     public ?string $subtitle;
@@ -43,6 +45,8 @@ trait SectionLoader
             Log::error("Failed to load section with slug '{$slug}': ".$e->getMessage());
             throw $e;
         }
+
+        $this->section = $section;
 
         $this->module_name = $section->slug ?? rand(1, 1000);
         $this->is_active = $section->is_active;
