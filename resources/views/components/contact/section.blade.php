@@ -9,21 +9,9 @@ App\View\Components\Contact\Section.php
 
 --}}
 
-@props([
-// Layout Relationship
-'with_padding' => $data->layout->contact['with_padding'] ?? null, // future
-'button_header' => $data->layout->contact['button_header'] ?? null, // future
-'button_url' => $data->layout->contact['button_url'] ?? null, // future
-'is_filled' => $data->layout->contact['section_fill'] ?? false,
-'is_section_filled_inverted' => $data->layout->contact['is_section_filled_inverted'] ?? false,
-'is_heading_visible' => $data->layout->contact['is_heading_visible'] ?? false,
-])
-
-@if ($data->module->contact)
-<x-core.layout :$button_header :$button_url :$is_filled :$is_section_filled_inverted :$with_padding
-    :module_name="'contact'">
-    <x-core.layout.section-header :$button_header :$button_url :$is_centered :$title :$subtitle
-        :$is_section_filled_inverted :$is_heading_visible />
+@if ($is_active)
+<x-core.layout :$is_filled :$with_padding :$module_name :$button_header :$button_url :$is_centered :$title :$subtitle
+    :$is_section_filled_inverted :$is_heading_visible :$button_icon :$module_slug>
     <section class="mx-auto my-12 flex flex-wrap justify-between" id="contact-wrapper">
         <div class="w-full p-8 lg:w-2/3">
             @if (data_get($data->layout->contact, 'google_maps_code'))
