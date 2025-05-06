@@ -4,18 +4,21 @@ namespace App\View\Components\Contact;
 
 use App\Models\Profile;
 use App\Models\Setting;
+use App\Traits\SectionLoader;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Section extends Component
 {
+    use SectionLoader;
+
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
+        $this->loadSection('contact');
     }
 
     /**
