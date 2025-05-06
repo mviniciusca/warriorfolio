@@ -5,6 +5,7 @@ namespace App\View\Components\Client;
 use App\Models\Customer;
 use App\Models\Setting;
 use App\Models\Slideshow;
+use App\Traits\SectionLoader;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -14,9 +15,11 @@ class Section extends Component
     /**
      * Create a new component instance.
      */
+    use SectionLoader;
+
     public function __construct()
     {
-        //
+        $this->loadSection('clients');
     }
 
     /**
