@@ -21,6 +21,8 @@ class Newsletter extends Component implements HasForms
 
     public $buttonText = 'Subscribe';
 
+    public $buttonIcon = 'mail-outline';
+
     public function mount(): void
     {
         $this->form->fill();
@@ -76,6 +78,6 @@ class Newsletter extends Component implements HasForms
 
     public function render(): View
     {
-        return view('livewire.newsletter');
+        return view('livewire.newsletter', ['buttonIcon' => $this->buttonIcon]);
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SectionResource\Pages;
-use App\Filament\Resources\SectionResource\RelationManagers;
 use App\Models\Section;
 use Filament\Forms;
 use Filament\Forms\Components\Group;
@@ -12,14 +11,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
-use Z3d0X\FilamentFabricator\Enums\BlockPickerStyle;
-use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
-use Z3d0X\FilamentFabricator\Forms\Components\PageBuilder;
-use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
-use Z3d0X\FilamentFabricator\View\ResourceSchemaSlot;
 
 class SectionResource extends Resource
 {
@@ -153,6 +144,17 @@ class SectionResource extends Resource
                                                     ->helperText(__('Enable to display social media links in the footer'))
                                                     ->default(true),
                                             ]),
+                                    ]);
+                                }
+
+                                // Newsletter
+
+                                if ($get('slug') === 'newsletter') {
+                                    return array_merge($commonFields, [
+                                        Forms\Components\Toggle::make('content.show_light')
+                                            ->label(__('Light Beam'))
+                                            ->helperText(__('Show a light beam effect in the card'))
+                                            ->default(true),
                                     ]);
                                 }
 

@@ -5,6 +5,7 @@ namespace App\View\Components\Newsletter;
 use App\Models\Layout;
 use App\Models\Module;
 use App\Models\Setting;
+use App\Traits\SectionLoader;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -14,9 +15,11 @@ class Section extends Component
     /**
      * Create a new component instance.
      */
+    use SectionLoader;
+
     public function __construct()
     {
-        //
+        $this->loadSection('newsletter');
     }
 
     /**
@@ -25,8 +28,7 @@ class Section extends Component
     public function render(): View|Closure|string
     {
         return view('components.newsletter.section', [
-            'data' => Setting::with(['layout', 'module'])->first(),
-
+            'section' => $this->section,
         ]);
     }
 }
