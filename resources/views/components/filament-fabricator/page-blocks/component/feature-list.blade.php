@@ -17,21 +17,17 @@
 'is_heading_active' => true,
 'is_card_filled' => null,
 'is_section_filled_inverted' => null,
+'title' => $module_title ?? null,
+'subtitle' => $module_subtitle ?? null,
+'is_heading_visible' => $is_heading_active ?? null,
+'is_centered' => $is_heading_centered ?? false,
 ])
 
-@if ($is_active)
-<x-core.layout :$is_filled :$is_section_filled_inverted :$button_header :$button_url>
-    @if (($module_title || $module_subtitle) && $is_heading_active)
-    <div>
-        <x-slot name="module_title" class="py-8 text-center">
-            {!! $module_title !!}
-        </x-slot>
-        <x-slot name="module_subtitle">
-            {!! $module_subtitle !!}
-        </x-slot>
-    </div>
-    @endif
+@dd($is_heading_centered ?? null)
 
+@if ($is_active)
+<x-core.layout :$is_centered :$is_heading_visible :$title :$subtitle :$is_filled :$is_section_filled_inverted
+    :$button_header :$button_url>
     <div class="mx-auto {{ $with_padding ? 'py-8' : 'py-12' }}">
         <div @class([ 'grid gap-4' , 'text-center'=> $is_content_center,
             'text-left' => !$is_content_center,
