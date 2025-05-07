@@ -80,7 +80,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary'   => Color::Purple,
                 'secondary' => Color::Zinc,
-                'gray'      => Color::Neutral,
+                'gray'      => Color::Zinc,
             ])
             ->navigationGroups([
                 'Core Features',
