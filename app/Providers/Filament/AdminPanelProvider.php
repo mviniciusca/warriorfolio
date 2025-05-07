@@ -59,26 +59,26 @@ class AdminPanelProvider extends PanelProvider
                     ->url('/admin/settings/'.$this->getSetting().'/edit-navigation')
                     ->group(__('Website Design'))
                     ->sort(1),
-                NavigationItem::make(__('About Section'))
-                    ->icon('heroicon-o-user')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit-about-section')
-                    ->group(__('App Sections'))
-                    ->sort(1),
-                NavigationItem::make(__('Projects Section'))
-                    ->icon('heroicon-o-rocket-launch')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit-portfolio-section')
-                    ->group(__('App Sections'))
-                    ->sort(2),
-                NavigationItem::make(__('Contact Section'))
-                    ->icon('heroicon-o-envelope')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit-contact-section')
-                    ->group(__('App Sections'))
-                    ->sort(3),
-                NavigationItem::make(__('More Sections'))
-                    ->icon('heroicon-o-arrow-up-right')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit')
-                    ->group(__('App Sections'))
-                    ->sort(3),
+                // NavigationItem::make(__('About Section'))
+                //     ->icon('heroicon-o-user')
+                //     ->url('/admin/settings/'.$this->getSetting().'/edit-about-section')
+                //     ->group(__('App Sections'))
+                //     ->sort(1),
+                // NavigationItem::make(__('Projects Section'))
+                //     ->icon('heroicon-o-rocket-launch')
+                //     ->url('/admin/settings/'.$this->getSetting().'/edit-portfolio-section')
+                //     ->group(__('App Sections'))
+                //     ->sort(2),
+                // NavigationItem::make(__('Contact Section'))
+                //     ->icon('heroicon-o-envelope')
+                //     ->url('/admin/settings/'.$this->getSetting().'/edit-contact-section')
+                //     ->group(__('App Sections'))
+                //     ->sort(3),
+                // NavigationItem::make(__('More Sections'))
+                //     ->icon('heroicon-o-arrow-up-right')
+                //     ->url('/admin/settings/'.$this->getSetting().'/edit')
+                //     ->group(__('App Sections'))
+                //     ->sort(3),
                 NavigationItem::make(__('Log Viewer'))
                     ->icon('heroicon-o-arrow-up-right')
                     ->url('/admin/logs')

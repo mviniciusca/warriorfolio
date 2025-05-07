@@ -52,7 +52,6 @@ class SettingResource extends Resource
             Pages\EditSetting::class,
             Pages\EditAppearance::class,
             Pages\EditNavigation::class,
-            Pages\EditSections::class,
             Pages\EditBlogSettings::class,
             //Pages\EditAboutSection::class,
             //Pages\EditClientSection::class,
