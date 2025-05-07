@@ -2,9 +2,6 @@
 
 namespace App\View\Components\Newsletter;
 
-use App\Models\Layout;
-use App\Models\Module;
-use App\Models\Setting;
 use App\Traits\SectionLoader;
 use Closure;
 use Illuminate\Contracts\View\View;
