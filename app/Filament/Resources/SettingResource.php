@@ -41,7 +41,7 @@ class SettingResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('Application Settings');
+        return __('Settings');
     }
 
     public static function getNavigationUrl(): string
