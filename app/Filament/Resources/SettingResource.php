@@ -53,13 +53,7 @@ class SettingResource extends Resource
             Pages\EditAppearance::class,
             Pages\EditNavigation::class,
             Pages\EditBlogSettings::class,
-            //Pages\EditAboutSection::class,
-            //Pages\EditClientSection::class,
-            //Pages\EditContactSection::class,
-            //Pages\EditFooterSection::class,
             Pages\EditHeroSection::class,
-            //Pages\EditNewsletterSection::class,
-            //Pages\EditPortfolioSection::class,
             Pages\EditChatbox::class,
             Pages\EditMaintenanceSection::class,
             Pages\EditSecurity::class,
@@ -352,22 +346,16 @@ class SettingResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'           => Pages\ListSettings::route('/'),
-            'edit'            => Pages\EditSetting::route('/{record}/edit'),
-            'edit-appearance' => Pages\EditAppearance::route('/{record}/edit-appearance'),
-            'edit-chatbox'    => Pages\EditChatbox::route('/{record}/edit-chatbox'),
-            //'edit-contact-section'     => Pages\EditContactSection::route('/{record}/edit-contact-section'),
-            'edit-hero-section' => Pages\EditHeroSection::route('/{record}/edit-hero-section'),
-            //'edit-portfolio-section'   => Pages\EditPortfolioSection::route('/{record}/edit-portfolio-section'),
-            //'edit-about-section'       => Pages\EditAboutSection::route('/{record}/edit-about-section'),
-            //'edit-client-section'      => Pages\EditClientSection::route('/{record}/edit-client-section'),
-            //'edit-newsletter-section'  => Pages\EditNewsletterSection::route('/{record}/edit-newsletter-section'),
-            //'edit-footer-section'      => Pages\EditFooterSection::route('/{record}/edit-footer-section'),
+            'index'                    => Pages\ListSettings::route('/'),
+            'edit'                     => Pages\EditSetting::route('/{record}/edit'),
+            'edit-appearance'          => Pages\EditAppearance::route('/{record}/edit-appearance'),
+            'edit-chatbox'             => Pages\EditChatbox::route('/{record}/edit-chatbox'),
+            'edit-hero-section'        => Pages\EditHeroSection::route('/{record}/edit-hero-section'),
             'edit-maintenance-section' => Pages\EditMaintenanceSection::route('/{record}/edit-maintenance-section'),
             'edit-navigation'          => Pages\EditNavigation::route('/{record}/edit-navigation'),
             'edit-security'            => Pages\EditSecurity::route('/{record}/edit-security'),
             'edit-blog'                => Pages\EditBlogSettings::route('/{record}/edit-blog'),
-            'edit-sections'            => Pages\EditSections::route('/{record}/edit-sections'),
+
         ];
     }
 }
