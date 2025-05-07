@@ -7,7 +7,6 @@
 'is_heading_visible' => $info['is_heading_visible'] ?? false,
 'button_header' => $info['button'] ?? null,
 'button_url' => $info['button_url'] ?? null,
-
 ])
 
 @if ($posts && $module_blog)
