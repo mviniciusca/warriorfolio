@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Custom\PageBuilder;
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\Page;
 use Filament\Forms\Components\Builder;
@@ -133,10 +134,11 @@ class PageResource extends ResourcesPageResource
                         Tabs\Tab::make('Content')
                             ->icon('heroicon-o-document-text')
                             ->schema([
-                                Builder::make('blocks')
+                                PageBuilder::make('blocks')
                                     ->label(__('Page Builder'))
                                     ->blocks(FilamentFabricator::getPageBlocks())
                                     ->collapsible()
+                                    ->collapsed()
                                     ->cloneable(),
                             ]),
 
