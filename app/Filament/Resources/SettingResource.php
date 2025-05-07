@@ -18,6 +18,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -33,6 +34,8 @@ class SettingResource extends Resource
     {
         return __('Settings');
     }
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Start;
 
     protected static ?int $navigationSort = 0;
 

@@ -22,12 +22,12 @@ class EditSecurity extends EditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('Account Security Manager');
+        return __('Account');
     }
 
     public function getTitle(): string | Htmlable
     {
-        return __('Account Security Manager');
+        return __('Account');
     }
 
     public function getSubheading(): string | Htmlable | null
