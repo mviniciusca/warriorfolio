@@ -188,22 +188,22 @@
                     <div class="space-y-1">
                         <h3 class="text-xs font-medium uppercase tracking-wider mb-2">
                             {{ __('App Sections') }}</h3>
-                        <a href="{{ route('filament.admin.resources.settings.edit-about-section', ['record' => 1]) }}"
+                        <a href="{{ route('filament.admin.resources.settings.edit-sections', ['record' => 1]) }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'information-circle-outline'" class="w-4 h-4" />
                             <span class="text-xs">{{ __('About Section') }}</span>
                         </a>
-                        <a href="{{ route('filament.admin.resources.settings.edit-portfolio-section', ['record' => 1]) }}"
+                        <a href="{{ route('filament.admin.resources.settings.edit-sections', ['record' => 1]) }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'construct-outline'" class="w-4 h-4" />
                             <span class="text-xs">{{ __('Portfolio Section') }}</span>
                         </a>
-                        <a href="{{ route('filament.admin.resources.settings.edit-contact-section', ['record' => 1]) }}"
+                        <a href="{{ route('filament.admin.resources.settings.edit-sections', ['record' => 1]) }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'call-outline'" class="w-4 h-4" />
                             <span class="text-xs">{{ __('Contact Section') }}</span>
                         </a>
-                        <a href="{{ route('filament.admin.resources.settings.edit-client-section', ['record' => 1]) }}"
+                        <a href="{{ route('filament.admin.resources.settings.edit-sections', ['record' => 1]) }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'add-circle-outline'" class="w-4 h-4" />
                             <span class="text-xs">{{ __('Client Section') }}</span>
