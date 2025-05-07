@@ -94,7 +94,7 @@ class FeatureList extends PageBlock
                                                     ->helperText(__('Temporarily hide this card from being displayed')),
                                             ]),
                                     ])
-                                    ->createItemButtonLabel(__('Add New Feature Card')),
+                                    ->addActionLabel(__('Add New Feature Card')),
                             ]),
 
                         Tabs\Tab::make(__('Heading'))
