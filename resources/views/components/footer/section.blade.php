@@ -10,10 +10,6 @@ App\View\Components\Footer\Section.php
 --}}
 
 @props([
-'is_active' => true,
-'is_filled' => false,
-'with_padding' => true,
-'is_section_filled_inverted' => false,
 'data' => null,
 ])
 @if ($is_active)
