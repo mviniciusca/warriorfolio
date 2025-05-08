@@ -15,6 +15,8 @@
 'with_padding' => false,
 ])
 
+
+
 @if ($is_active)
 <x-core.layout :$button_header :$is_centered :$button_icon :$button_url :$is_heading_visible :$module_name :$is_filled
     :$is_section_filled_inverted :$title :$subtitle :$with_padding>

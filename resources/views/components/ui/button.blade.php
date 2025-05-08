@@ -38,7 +38,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {{ $slot }}
+        {!! $slot !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />
@@ -61,7 +61,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {{ $slot }}
+        {!! $slot !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />
@@ -83,7 +83,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {{ $slot }}
+        {!! $slot !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />
@@ -105,7 +105,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {{ $slot }}
+        {!! $slot !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />
@@ -128,7 +128,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {{ $slot }}
+        {!! $slot !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />
@@ -151,7 +151,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {{ $slot }}
+        {!! $slot !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />
