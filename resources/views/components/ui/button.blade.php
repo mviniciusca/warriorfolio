@@ -20,7 +20,7 @@ Props:
 
 @props([
 'type' => 'button',
-'icon' => null,
+'icon' => $button_icon ?? null,
 'style' => 'filled',
 'color' => false,
 'is_section_filled_inverted' => null,

@@ -15,6 +15,7 @@ This is the default layout component for the website. Used for website and compo
 'subtitle' => null,
 'button_icon' => null ?? 'chevron-forward-outline',
 'button_header' => null,
+'button_style' => null,
 'button_url' => null,
 'is_centered' => null,
 'is_heading_visible' => true,
@@ -22,6 +23,7 @@ This is the default layout component for the website. Used for website and compo
 'with_padding' => true,
 'module_name' => null,
 'is_filled' => false,
+'style' => null,
 'module_slug' => null ?? 'section' . rand(1, 10),
 
 // Layout Props
@@ -36,9 +38,33 @@ This is the default layout component for the website. Used for website and compo
   {{ $px_padding ? 'px-4' : '' }}" id="{{ $module_name ?? 'section' . rand(1, 10) }}">
     <div class="{{ $container }} mx-auto">
         <div id="{{ $module_slug }}">
-            <x-core.layout.section-header :$button_header :$button_icon :$is_heading_visible :$button_url :$is_centered
-                :$title :$subtitle :$is_section_filled_inverted />
-            {!! $slot !!}
+            {{-- Heading --}}
+            @if($is_heading_visible)
+            <div
+                class="w-full flex items-center {{ $button_header ? 'justify-between' : ($is_centered ? 'justify-center' : 'justify-start') }} py-6">
+                <div class="flex flex-col {{ $is_centered && !$button_header ? 'text-center' : 'text-left' }}">
+                    @if($title)
+                    <h2 class="text-2xl font-bold">{!! $title !!}</h2>
+                    @endif
+                    @if($subtitle)
+                    <p class="text-sm mt-1">{!! $subtitle !!}</p>
+                    @endif
+                </div>
+                @if($button_header)
+                <div>
+                    @if($button_url)
+                    <a href="{{ $button_url }}">@endif
+                        <x-ui.button :$button_style :$is_section_filled_inverted :icon="$button_icon" :$style
+                            :label="$button_header" />
+                        @if($button_url)
+                    </a>
+                    @endif
+                </div>
+                @endif
+            </div>
+            @endif
+            {{-- Content --}}
+            {{ $slot }}
         </div>
     </div>
 </div>

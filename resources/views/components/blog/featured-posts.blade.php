@@ -11,8 +11,7 @@
 
 @if ($posts && $module_blog)
 @if ($info['module_is_active'] ?? false)
-<x-core.layout :with_padding="false">
-    <x-core.layout.section-header :$title :$subtitle :$is_heading_visible :$button_header :$button_url />
+<x-core.layout :$title :$subtitle :$is_heading_visible :$button_header :$button_url :with_padding="false">
     <div class="my-12">
         <section class="mt-8">
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
