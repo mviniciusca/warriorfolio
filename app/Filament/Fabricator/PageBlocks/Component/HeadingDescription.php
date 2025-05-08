@@ -30,9 +30,11 @@ class HeadingDescription extends PageBlock
                     ->tabs([
                         Tab::make('content')
                             ->label(__('Content'))
+                            ->columns(2)
                             ->icon('heroicon-o-document-text')
                             ->schema([
                                 TextInput::make('module_name')
+                                    ->prefixIcon('heroicon-o-hashtag')
                                     ->label(__('Module Name'))
                                     ->helperText(__('Identifier for this module (not shown to visitors)')),
 
@@ -43,6 +45,7 @@ class HeadingDescription extends PageBlock
                                     ->required(fn (Get $get): bool => $get('is_heading_visible')),
 
                                 Textarea::make('subtitle')
+                                    ->columnSpanFull()
                                     ->label(__('Subtitle'))
                                     ->helperText(__('Additional text displayed below the title'))
                                     ->visible(fn (Get $get): bool => $get('is_heading_visible')),
@@ -112,8 +115,7 @@ class HeadingDescription extends PageBlock
                                     ->helperText(__('Where the button should link to'))
                                     ->url(),
                             ]),
-                    ])
-                    ->activeTab(0),
+                    ]),
             ]);
     }
 
