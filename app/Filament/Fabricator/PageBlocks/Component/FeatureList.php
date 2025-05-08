@@ -38,7 +38,7 @@ class FeatureList extends PageBlock
                                     ->collapsible()
                                     ->cloneable()
                                     ->reorderable()
-                                    ->itemLabel(fn (array $state): string => $state['title'] ?? __('Card'))
+                                    ->itemLabel(fn (array $state): string => strip_tags($state['title'] ?? __('Card')))
                                     ->schema([
                                         Group::make()
                                             ->columnSpan(1)
