@@ -5,12 +5,16 @@ Usage:
     Submit
 </x-ui.button>
 
+Or with label property:
+<x-ui.button type="submit" style="filled" icon="chevron-forward-sharp" label="<strong>Submit</strong>" />
+
 Props:
 - type: button|submit|reset
 - icon: ionicon name
 - style: filled|outlined
 - is_section_filled_inverted: null|true|false
 - size: default|sm (small)
+- label: HTML content to display (will be rendered unescaped)
 
 --}}
 
@@ -22,7 +26,12 @@ Props:
 'is_section_filled_inverted' => null,
 'iconBefore' => false,
 'size' => 'sm', // sm, default
+'label' => null,
 ])
+
+@php
+$buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
+@endphp
 
 {{-- Filled with Color Primary bg-primary-600 text-white Button --}}
 @if ($style === 'filled' && $color)
@@ -38,7 +47,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {!! $slot !!}
+        {!! $buttonContent !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />
@@ -61,7 +70,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {!! $slot !!}
+        {!! $buttonContent !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />
@@ -83,7 +92,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {!! $slot !!}
+        {!! $buttonContent !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />
@@ -105,7 +114,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {!! $slot !!}
+        {!! $buttonContent !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />
@@ -128,7 +137,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {!! $slot !!}
+        {!! $buttonContent !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />
@@ -151,7 +160,7 @@ Props:
     <x-ui.ionicon :icon='$icon' />
     @endif
     <span>
-        {!! $slot !!}
+        {!! $buttonContent !!}
     </span>
     @if ($icon && !$iconBefore)
     <x-ui.ionicon :icon='$icon' />

@@ -15,10 +15,15 @@
 'with_padding' => false,
 ])
 
-
+@php
+// Tratamento do button_header para permitir HTML não escapado
+$processedButtonHeader = $button_header ? new Illuminate\Support\HtmlString($button_header) : null;
+@endphp
 
 @if ($is_active)
-<x-core.layout :$button_header :$is_centered :$button_icon :$button_url :$is_heading_visible :$module_name :$is_filled
-    :$is_section_filled_inverted :$title :$subtitle :$with_padding>
+<x-core.layout :$is_centered :$module_name :$is_filled :$is_section_filled_inverted :$with_padding :$title :$subtitle
+    :$is_heading_visible :button_header="$processedButtonHeader">
+
+
 </x-core.layout>
 @endif
