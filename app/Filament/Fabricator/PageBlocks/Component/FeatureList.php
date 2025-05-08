@@ -133,7 +133,7 @@ class FeatureList extends PageBlock
                             ->icon('heroicon-o-cog-6-tooth')
                             ->schema([
                                 Grid::make()
-                                    ->columns(3)
+                                    ->columns(4)
                                     ->schema([
                                         Checkbox::make('is_active')
                                             ->default(true)
@@ -180,21 +180,21 @@ class FeatureList extends PageBlock
                                             ->label(__('Border'))
                                             ->inline()
                                             ->helperText(__('Add border to cards.')),
+                                        Group::make()
+                                            ->schema([
+                                                Select::make('columns')
+                                                    ->label(__('Cards per Row'))
+                                                    ->helperText(__('Select how many cards to display per row.'))
+                                                    ->options([
+                                                        1 => '1 Card',
+                                                        2 => '2 Cards',
+                                                        3 => '3 Cards',
+                                                        4 => '4 Cards',
+                                                    ])
+                                                    ->default(3),
+                                            ]),
                                     ]),
 
-                                Group::make()
-                                    ->schema([
-                                        Select::make('columns')
-                                            ->label(__('Cards per Row'))
-                                            ->helperText(__('Select how many cards to display per row.'))
-                                            ->options([
-                                                1 => '1 Card',
-                                                2 => '2 Cards',
-                                                3 => '3 Cards',
-                                                4 => '4 Cards',
-                                            ])
-                                            ->default(3),
-                                    ]),
                             ]),
                     ]),
             ]);
