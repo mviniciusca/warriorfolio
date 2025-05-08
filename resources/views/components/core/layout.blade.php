@@ -23,7 +23,7 @@ This is the default layout component for the website. Used for website and compo
 'with_padding' => true,
 'module_name' => null,
 'is_filled' => false,
-'style' => null,
+'style' => 'outlined',
 'module_slug' => null ?? 'section' . rand(1, 10),
 
 // Layout Props
