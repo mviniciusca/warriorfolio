@@ -3,19 +3,18 @@
 // Props to Layout Component
 'is_active' => null,
 'is_filled' => null,
+'is_section_filled_inverted' => null,
+'is_heading_visible' => null,
 'title' => null,
 'subtitle' => null,
 'is_centered' => null,
 'button_header' => null,
 'button_icon' => null,
 'button_url' => null,
-'is_heading_visible' => null,
 'module_name' => null,
-'is_section_filled_inverted' => null,
 'with_padding' => false,
 
 // Props for this Component
-
 'featured_image_is_active' => null,
 'featured_image' => null,
 'description' => null,

@@ -22,7 +22,6 @@ class HeadingDescription extends PageBlock
             ->label(__('Page Heading'))
             ->icon('heroicon-o-cube')
             ->schema([
-
                 //
             ]);
     }
