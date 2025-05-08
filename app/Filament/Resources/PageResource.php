@@ -51,13 +51,6 @@ class PageResource extends ResourcesPageResource
         return $table
             ->query(Page::query())
             ->columns([
-                TextColumn::make('title')
-                    ->label(__('filament-fabricator::page-resource.labels.title'))
-                    ->searchable()
-                    ->limit(50)
-                    ->sortable()
-                    ->wrap(),
-
                 TextColumn::make('style')
                     ->label(__('Style'))
                     ->badge()
@@ -69,6 +62,13 @@ class PageResource extends ResourcesPageResource
                     })
                     ->toggleable()
                     ->sortable(),
+
+                TextColumn::make('title')
+                    ->label(__('filament-fabricator::page-resource.labels.title'))
+                    ->searchable()
+                    ->limit(50)
+                    ->sortable()
+                    ->wrap(),
 
                 TextColumn::make('url')
                     ->label(__('filament-fabricator::page-resource.labels.url'))
