@@ -132,7 +132,7 @@ class PageResource extends ResourcesPageResource
                     ->columnSpanFull()
                     ->tabs([
                         Tabs\Tab::make('Content')
-                            ->icon('heroicon-o-document-text')
+                            ->icon('heroicon-o-cube')
                             ->schema([
                                 PageBuilder::make('blocks')
                                     ->label(__('Page Builder'))
@@ -155,44 +155,17 @@ class PageResource extends ResourcesPageResource
                                             ->helperText(__('Make this page visible to visitors'))
                                             ->default(true),
 
-                                        Toggle::make('in_navigation')
-                                            ->label(__('Show in Navigation'))
-                                            ->helperText(__('Include this page in the navigation menu'))
-                                            ->default(true),
-
                                         Select::make('parent_id')
                                             ->label(__('Parent Page'))
                                             ->relationship('parent', 'title')
                                             ->searchable()
+                                            ->hidden()
                                             ->columnSpanFull(),
                                     ]),
                             ]),
 
-                        Tabs\Tab::make('SEO')
-                            ->icon('heroicon-o-magnifying-glass')
-                            ->schema([
-                                Section::make(__('SEO Settings'))
-                                    ->description(__('Search engine optimization settings'))
-                                    ->icon('heroicon-o-magnifying-glass')
-                                    ->columns(1)
-                                    ->schema([
-                                        TextInput::make('seo_title')
-                                            ->label(__('SEO Title'))
-                                            ->maxLength(60)
-                                            ->helperText(__('Recommended length: 50-60 characters')),
-
-                                        TextInput::make('seo_description')
-                                            ->label(__('Meta Description'))
-                                            ->maxLength(160)
-                                            ->helperText(__('Recommended length: 150-160 characters')),
-
-                                        TextInput::make('og_image')
-                                            ->label(__('Social Image'))
-                                            ->helperText(__('Image to display when sharing on social media')),
-                                    ]),
-                            ]),
                     ])
-                    ->persistTabInQueryString(),
+                    ->persistTabInQueryString('id'),
             ]);
     }
 
