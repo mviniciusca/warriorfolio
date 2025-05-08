@@ -18,10 +18,10 @@
     class="w-full flex items-center {{ $button_header ? 'justify-between' : ($is_centered ? 'justify-center' : 'justify-start') }} py-6">
     <div class="flex flex-col {{ $is_centered && !$button_header ? 'text-center' : 'text-left' }}">
         @if($title)
-        <h2 class="text-2xl font-bold">{{ $title }}</h2>
+        <h2 class="text-2xl font-bold">{!! $title !!}</h2>
         @endif
         @if($subtitle)
-        <p class="text-sm mt-1">{{ $subtitle }}</p>
+        <p class="text-sm mt-1">{!! $subtitle !!}</p>
         @endif
     </div>
     @if($button_header)
