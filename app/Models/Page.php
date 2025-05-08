@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Page extends \Z3d0X\FilamentFabricator\Models\Page
 {
+    protected $casts = [
+        'seo'    => 'array',
+        'blocks' => 'array',
+    ];
+
     /**
      * Get the category that the page belongs to.
      *

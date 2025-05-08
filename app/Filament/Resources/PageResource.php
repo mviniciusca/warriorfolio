@@ -18,6 +18,7 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
@@ -71,6 +72,12 @@ class PageResource extends ResourcesPageResource
                     ->label(__('filament-fabricator::page-resource.labels.layout'))
                     ->badge()
                     ->toggleable()
+                    ->sortable(),
+
+                ToggleColumn::make('is_active')
+                    ->label(__('Published'))
+                    ->toggleable()
+                    ->alignCenter()
                     ->sortable(),
 
                 TextColumn::make('parent.title')
@@ -150,7 +157,7 @@ class PageResource extends ResourcesPageResource
                                     ->icon('heroicon-o-cog')
                                     ->columns(2)
                                     ->schema([
-                                        Toggle::make('is_published')
+                                        Toggle::make('is_active')
                                             ->label(__('Published'))
                                             ->helperText(__('Make this page visible to visitors'))
                                             ->default(true),
