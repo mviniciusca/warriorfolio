@@ -23,8 +23,6 @@
 'is_centered' => $is_heading_centered ?? false,
 ])
 
-@dd($is_heading_centered ?? null)
-
 @if ($is_active)
 <x-core.layout :$is_centered :$is_heading_visible :$title :$subtitle :$is_filled :$is_section_filled_inverted
     :$button_header :$button_url>

@@ -49,7 +49,7 @@ class PageResource extends ResourcesPageResource
     public static function table(Table $table): Table
     {
         return $table
-            ->defaultPaginationPageOption(10)
+            ->query(Page::query())
             ->columns([
                 TextColumn::make('title')
                     ->label(__('filament-fabricator::page-resource.labels.title'))
@@ -62,10 +62,10 @@ class PageResource extends ResourcesPageResource
                     ->label(__('Style'))
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'default'   => 'primary',
-                        'blog'      => 'success',
-                        'portfolio' => 'warning',
-                        default     => 'gray',
+                        'default' => 'primary',
+                        'blog'    => 'success',
+                        'project' => 'warning',
+                        default   => 'gray',
                     })
                     ->toggleable()
                     ->sortable(),
@@ -75,7 +75,7 @@ class PageResource extends ResourcesPageResource
                     ->toggleable()
                     ->limit(25)
                     ->badge()
-                    ->color('success')
+                    ->color('info')
                     ->getStateUsing(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id) ?: null)
                     ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id) ?: null, true)
                     ->visible(config('filament-fabricator.routing.enabled')),
@@ -112,9 +112,8 @@ class PageResource extends ResourcesPageResource
                     ->options([
                         'default' => 'Default',
                         'blog'    => 'Blog',
-                        'project' => 'Portfolio',
-                    ])
-                    ->default('default'),
+                        'project' => 'Project',
+                    ]),
 
                 SelectFilter::make('is_active')
                     ->label(__('Status'))
@@ -132,7 +131,12 @@ class PageResource extends ResourcesPageResource
                 ActionGroup::make([
                     ViewAction::make()
                         ->visible(config('filament-fabricator.enable-view-page')),
-                    EditAction::make(),
+                    EditAction::make()
+                        ->url(fn (Page $record): string => match ($record->style) {
+                            'blog'    => route('filament.admin.resources.posts.edit', ['record' => $record->id]),
+                            'project' => route('filament.admin.resources.projects.edit', ['record' => $record->id]),
+                            default   => PageResource::getUrl('edit', ['record' => $record])
+                        }),
                     Action::make('visit')
                         ->label(__('filament-fabricator::page-resource.actions.visit'))
                         ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
