@@ -7,7 +7,6 @@ use App\Filament\Resources\PageResource\Pages;
 use App\Models\Page;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
@@ -50,10 +49,7 @@ class PageResource extends ResourcesPageResource
     public static function table(Table $table): Table
     {
         return $table
-            ->query(
-                Page::query()
-                    ->where('style', '=', 'default')
-            )
+            ->defaultPaginationPageOption(10)
             ->columns([
                 TextColumn::make('title')
                     ->label(__('filament-fabricator::page-resource.labels.title'))
@@ -61,6 +57,18 @@ class PageResource extends ResourcesPageResource
                     ->limit(50)
                     ->sortable()
                     ->wrap(),
+
+                TextColumn::make('style')
+                    ->label(__('Style'))
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'default'   => 'primary',
+                        'blog'      => 'success',
+                        'portfolio' => 'warning',
+                        default     => 'gray',
+                    })
+                    ->toggleable()
+                    ->sortable(),
 
                 TextColumn::make('url')
                     ->label(__('filament-fabricator::page-resource.labels.url'))
@@ -85,14 +93,29 @@ class PageResource extends ResourcesPageResource
                     ->sortable()
                     ->searchable(),
 
+                TextColumn::make('created_at')
+                    ->label(__('Created At'))
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(),
+
                 TextColumn::make('parent.title')
                     ->label(__('filament-fabricator::page-resource.labels.parent'))
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->formatStateUsing(fn ($state) => $state ?? '-')
                     ->url(fn (?PageContract $record) => filled($record->parent_id) ? PageResource::getUrl('edit', ['record' => $record->parent_id]) : null),
             ])
-            ->defaultSort('title', 'asc')
+            ->defaultSort('created_at', 'desc')
             ->filters([
+                SelectFilter::make('style')
+                    ->label(__('Style'))
+                    ->options([
+                        'default' => 'Default',
+                        'blog'    => 'Blog',
+                        'project' => 'Portfolio',
+                    ])
+                    ->default('default'),
+
                 SelectFilter::make('is_active')
                     ->label(__('Status'))
                     ->options([
