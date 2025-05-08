@@ -15,6 +15,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -64,6 +65,8 @@ class PageResource extends ResourcesPageResource
                     ->label(__('filament-fabricator::page-resource.labels.url'))
                     ->toggleable()
                     ->limit(25)
+                    ->badge()
+                    ->color('success')
                     ->getStateUsing(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id) ?: null)
                     ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id) ?: null, true)
                     ->visible(config('filament-fabricator.routing.enabled')),
@@ -92,16 +95,18 @@ class PageResource extends ResourcesPageResource
                     ->options(FilamentFabricator::getLayouts()),
             ])
             ->actions([
-                ViewAction::make()
-                    ->visible(config('filament-fabricator.enable-view-page')),
-                EditAction::make(),
-                Action::make('visit')
-                    ->label(__('filament-fabricator::page-resource.actions.visit'))
-                    ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
-                    ->icon('heroicon-o-arrow-top-right-on-square')
-                    ->openUrlInNewTab()
-                    ->color('success')
-                    ->visible(config('filament-fabricator.routing.enabled')),
+                ActionGroup::make([
+                    ViewAction::make()
+                        ->visible(config('filament-fabricator.enable-view-page')),
+                    EditAction::make(),
+                    Action::make('visit')
+                        ->label(__('filament-fabricator::page-resource.actions.visit'))
+                        ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)
+                        ->icon('heroicon-o-arrow-top-right-on-square')
+                        ->openUrlInNewTab()
+                        ->color('success')
+                        ->visible(config('filament-fabricator.routing.enabled')),
+                ]),
             ])
             ->bulkActions([]);
     }
