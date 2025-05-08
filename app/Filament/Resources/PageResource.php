@@ -59,7 +59,8 @@ class PageResource extends ResourcesPageResource
                     ->label(__('filament-fabricator::page-resource.labels.title'))
                     ->searchable()
                     ->limit(50)
-                    ->sortable(),
+                    ->sortable()
+                    ->wrap(),
 
                 TextColumn::make('url')
                     ->label(__('filament-fabricator::page-resource.labels.url'))
@@ -81,7 +82,8 @@ class PageResource extends ResourcesPageResource
                     ->label(__('Published'))
                     ->toggleable()
                     ->alignCenter()
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
 
                 TextColumn::make('parent.title')
                     ->label(__('filament-fabricator::page-resource.labels.parent'))
@@ -89,7 +91,16 @@ class PageResource extends ResourcesPageResource
                     ->formatStateUsing(fn ($state) => $state ?? '-')
                     ->url(fn (?PageContract $record) => filled($record->parent_id) ? PageResource::getUrl('edit', ['record' => $record->parent_id]) : null),
             ])
+            ->defaultSort('title', 'asc')
             ->filters([
+                SelectFilter::make('is_active')
+                    ->label(__('Status'))
+                    ->options([
+                        '1' => 'Published',
+                        '0' => 'Draft',
+                    ])
+                    ->default('1'),
+
                 SelectFilter::make('layout')
                     ->label(__('filament-fabricator::page-resource.labels.layout'))
                     ->options(FilamentFabricator::getLayouts()),
