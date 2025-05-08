@@ -84,7 +84,7 @@ class HeadingDescription extends PageBlock
                         Tab::make('background')
                             ->columns(2)
                             ->label(__('Background'))
-                            ->icon('heroicon-o-rectangle-group')
+                            ->icon('heroicon-o-sparkles')
                             ->schema([
                                 Toggle::make('is_filled')
                                     ->label(__('Use Background Fill'))
@@ -99,6 +99,7 @@ class HeadingDescription extends PageBlock
                             ]),
 
                         Tab::make('button')
+                            ->columns(3)
                             ->label(__('Button'))
                             ->icon('heroicon-o-cursor-arrow-rays')
                             ->schema([
@@ -108,7 +109,7 @@ class HeadingDescription extends PageBlock
 
                                 TextInput::make('button_icon')
                                     ->label(__('Button Icon'))
-                                    ->helperText(__('Enter a Heroicon name (e.g., heroicon-o-arrow-right)')),
+                                    ->helperText(__('Enter a Ionicon name (e.g., heart-outline)')),
 
                                 TextInput::make('button_url')
                                     ->label(__('Button URL'))
