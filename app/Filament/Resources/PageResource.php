@@ -51,6 +51,13 @@ class PageResource extends ResourcesPageResource
         return $table
             ->query(Page::query())
             ->columns([
+                TextColumn::make('title')
+                    ->label(__('filament-fabricator::page-resource.labels.title'))
+                    ->searchable()
+                    ->limit(50)
+                    ->sortable()
+                    ->wrap(),
+
                 TextColumn::make('style')
                     ->label(__('Style'))
                     ->badge()
@@ -63,19 +70,12 @@ class PageResource extends ResourcesPageResource
                     ->toggleable()
                     ->sortable(),
 
-                TextColumn::make('title')
-                    ->label(__('filament-fabricator::page-resource.labels.title'))
-                    ->searchable()
-                    ->limit(50)
-                    ->sortable()
-                    ->wrap(),
-
                 TextColumn::make('url')
                     ->label(__('filament-fabricator::page-resource.labels.url'))
                     ->toggleable()
                     ->limit(25)
                     ->badge()
-                    ->color('info')
+                    ->color('success')
                     ->getStateUsing(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id) ?: null)
                     ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id) ?: null, true)
                     ->visible(config('filament-fabricator.routing.enabled')),
@@ -83,6 +83,10 @@ class PageResource extends ResourcesPageResource
                 TextColumn::make('layout')
                     ->label(__('filament-fabricator::page-resource.labels.layout'))
                     ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'juno'  => 'danger',
+                        default => 'gray',
+                    })
                     ->toggleable()
                     ->sortable(),
 
@@ -108,12 +112,13 @@ class PageResource extends ResourcesPageResource
             ->defaultSort('created_at', 'desc')
             ->filters([
                 SelectFilter::make('style')
-                    ->label(__('Style'))
                     ->options([
                         'default' => 'Default',
                         'blog'    => 'Blog',
                         'project' => 'Project',
-                    ]),
+                    ])
+                    ->default('default')
+                    ->label('Style'),
 
                 SelectFilter::make('is_active')
                     ->label(__('Status'))
