@@ -15,9 +15,10 @@ class DocumentationPageSeeder extends Seeder
     {
         DB::table('pages')
             ->insert([
-                'title'  => 'Documentation',
-                'slug'   => 'docs',
-                'blocks' => json_encode([
+                'created_at' => now(),
+                'title'      => 'Documentation',
+                'slug'       => 'docs',
+                'blocks'     => json_encode([
                     [
                         'type' => 'component.heading-description',
                         'data' => [
