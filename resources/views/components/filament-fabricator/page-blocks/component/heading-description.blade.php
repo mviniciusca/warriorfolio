@@ -13,16 +13,13 @@
 'button_url' => null,
 'module_name' => null,
 'with_padding' => false,
-
-// Props for this Component
-'featured_image_is_active' => null,
-'featured_image' => null,
-'description' => null,
-
 ])
 
 @if ($is_active)
 <x-core.layout :$button_header :$is_centered :$button_icon :$button_url :$is_heading_visible :$module_name :$is_filled
     :$is_section_filled_inverted :$title :$subtitle :$with_padding>
 </x-core.layout>
+{{-- --}}
+
+{{-- --}}
 @endif
