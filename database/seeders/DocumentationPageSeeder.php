@@ -61,7 +61,7 @@ class DocumentationPageSeeder extends Seeder
                                 [
                                     'icon'          => 'flashlight-outline',
                                     'title'         => 'Laravel + Filament',
-                                    'description'   => 'Warriorfolio is built on Laravel and Filament. This powerful combination provides a solid foundation for your website, with a modern and intuitive interface. 🪐',
+                                    'description'   => 'Warriorfolio is built on Laravel and Filament. This powerful combination provides a solid foundation for your website, with a modern and intuitive interface.',
                                     'link'          => null,
                                     'is_new_window' => false,
                                 ],
@@ -72,7 +72,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'component.feature-list',
                         'data' => [
                             'module_title'               => 'Features',
-                            'module_subtitle'            => 'Discover the features of Warriorfolio. v2.1.5',
+                            'module_subtitle'            => 'Discover the features of Warriorfolio. v2.2.0',
                             'columns'                    => '4',
                             'is_active'                  => true,
                             'is_center'                  => false,
@@ -89,8 +89,29 @@ class DocumentationPageSeeder extends Seeder
                             'with_padding'               => true,
                             'features'                   => [
                                 [
+                                    'icon'          => 'rocket-outline',
+                                    'title'         => 'Juno Theme <span class="tag">new</span>',
+                                    'description'   => 'The very first theme of Warriorfolio. Juno is a minimalist-modern and elegant theme that allows you to create a professional website quickly and easily.',
+                                    'link'          => null,
+                                    'is_new_window' => false,
+                                ],
+                                [
+                                    'icon'          => 'logo-github',
+                                    'title'         => 'Github Module <span class="tag">new</span>',
+                                    'description'   => 'The Github module allows you to display your Github repositories on your website. You can choose which repositories to display and how they will be displayed.',
+                                    'link'          => null,
+                                    'is_new_window' => false,
+                                ],
+                                [
+                                    'icon'          => 'color-wand-outline',
+                                    'title'         => 'QuickAccess <span class="tag">new</span>',
+                                    'description'   => 'QuickAccess is a new feature that allows you to access your Dashboard from anywhere in your website. Use it to quickly navigate to your projects, messages and settings.',
+                                    'link'          => null,
+                                    'is_new_window' => false,
+                                ],
+                                [
                                     'icon'          => 'planet-outline',
-                                    'title'         => 'Saturn UI <span class="tag">new</span>',
+                                    'title'         => 'Saturn UI  <span class="tag">updated</span> ',
                                     'description'   => 'Saturn UI is a new interface for Warriorfolio. It is a modern and intuitive interface that allows you to manage your website and projects easily.',
                                     'link'          => null,
                                     'is_new_window' => false,
@@ -104,14 +125,14 @@ class DocumentationPageSeeder extends Seeder
                                 ],
                                 [
                                     'icon'          => 'logo-whatsapp',
-                                    'title'         => 'Whatsapp Web <span class="tag">hidden treasure</span>',
+                                    'title'         => 'Whatsapp Web Chatbox',
                                     'description'   => 'You can display a whatsapp web button on your website. This feature is hidden and can be activated in the settings.Works on mobile and desktop.',
                                     'link'          => null,
                                     'is_new_window' => false,
                                 ],
                                 [
                                     'icon'          => 'document-outline',
-                                    'title'         => 'Pages',
+                                    'title'         => 'Pages <span class="tag">updated</span>',
                                     'description'   => 'You can create as many pages as you want and, following the concept of modularity, add pre-built components to them or create your own through components that combine with each other.',
                                     'link'          => null,
                                     'is_new_window' => false,
