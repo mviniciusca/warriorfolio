@@ -39,6 +39,7 @@ class HeadingDescription extends PageBlock
                                     ->helperText(__('Identifier for this module (not shown to visitors)')),
 
                                 TextInput::make('title')
+                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->label(__('Title'))
                                     ->helperText(__('Main heading text displayed on the page'))
                                     ->visible(fn (Get $get): bool => $get('is_heading_visible'))
@@ -104,14 +105,17 @@ class HeadingDescription extends PageBlock
                             ->icon('heroicon-o-cursor-arrow-rays')
                             ->schema([
                                 TextInput::make('button_header')
+                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
                                     ->label(__('Button Text'))
                                     ->helperText(__('Text to display on the button')),
 
                                 TextInput::make('button_icon')
+                                    ->prefixIcon('heroicon-o-cube')
                                     ->label(__('Button Icon'))
                                     ->helperText(__('Enter a Ionicon name (e.g., heart-outline)')),
 
                                 TextInput::make('button_url')
+                                    ->prefixIcon('heroicon-o-link')
                                     ->label(__('Button URL'))
                                     ->helperText(__('Where the button should link to'))
                                     ->url(),
