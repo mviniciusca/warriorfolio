@@ -19,7 +19,7 @@ class HeadingDescription extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('component.heading-description')
-            ->label(__('Heading & Description'))
+            ->label(__('Page Heading'))
             ->icon('heroicon-o-cube')
             ->schema([
 
