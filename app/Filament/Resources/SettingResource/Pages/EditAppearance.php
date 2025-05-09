@@ -86,6 +86,7 @@ class EditAppearance extends EditRecord
                             ->inline(true)
                             ->helperText(__('Activate the highlight of the menu item on your website.')),
                         Select::make('design.container_width')
+                            ->required()
                             ->label(__('Container Width'))
                             ->options([
                                 'max-w-3xl'  => __('3xl (512px'),
