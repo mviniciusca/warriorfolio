@@ -40,8 +40,8 @@ This is the default layout component for the website. Used for website and compo
         <div id="{{ $module_slug }}">
             {{-- Heading --}}
             @if($is_heading_visible)
-            <div
-                class="w-full flex items-center {{ $button_header ? 'justify-between' : ($is_centered ? 'justify-center' : 'justify-start') }} py-6">
+            <div class="w-full flex items-center
+                {{ $button_header ? 'justify-between' : ($is_centered ? 'justify-center' : 'justify-start') }} py-6">
                 <div class="flex flex-col {{ $is_centered && !$button_header ? 'text-center' : 'text-left' }}">
                     @if($title)
                     <h2 class="text-2xl font-bold">{!! $title !!}</h2>
