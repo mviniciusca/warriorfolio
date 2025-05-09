@@ -11,6 +11,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Pages\Page;
@@ -62,6 +63,8 @@ class SettingResource extends Resource
         return $form
             ->schema([
                 Tabs::make('settings_tabs')
+                    ->persistTab(true)
+                    ->persistTabInQueryString('id')
                     ->columnSpanFull()
                     ->tabs([
                         Tab::make(__('Quick Settings'))
@@ -307,6 +310,62 @@ class SettingResource extends Resource
                                                     ->rows(3)
                                                     ->helperText(__('Paste your scripts here. This will be loaded in the body.'))
                                                     ->label(__('Body Scripts')),
+                                            ]),
+                                    ]),
+                            ]),
+
+                        Tab::make(__('API Keys & Integrations'))
+                            ->icon('heroicon-o-key')
+                            ->schema([
+                                Tabs::make('api_integrations')
+                                    ->tabs([
+                                        Tab::make(__('GitHub Service'))
+                                            ->icon('heroicon-o-code-bracket-square')
+                                            ->schema([
+                                                Group::make()
+                                                    ->columns(1)
+                                                    ->schema([
+                                                        Group::make()
+                                                            ->columns(4)
+                                                            ->schema([
+                                                                Toggle::make('api.github_is_active')
+                                                                    ->label(__('Enable GitHub Service'))
+                                                                    ->helperText(__('Enable or disable the GitHub service.'))
+                                                                    ->default(true),
+                                                                Toggle::make('show_graphs')
+                                                                    ->label(__('Show Graphs'))
+                                                                    ->helperText(__('Enable or disable the graphs.'))
+                                                                    ->default(true),
+                                                                Toggle::make('show_only_repositories')
+                                                                    ->label(__('Show Only Repositories'))
+                                                                    ->helperText(__('Enable or disable the display of only repositories.'))
+                                                                    ->default(true),
+                                                                TextInput::make('repository_quantity')
+                                                                    ->label(__('Repository Quantity'))
+                                                                    ->helperText(__('Number of repositories to display. Max: 100'))
+                                                                    ->numeric()
+                                                                    ->default(9)
+                                                                    ->minValue(1)
+                                                                    ->maxValue(100),
+                                                            ]),
+                                                        TextInput::make('api.github_api_token')
+                                                            ->maxLength(255)
+                                                            ->helperText(__('GitHub Personal Access Token for API integration.'))
+                                                            ->prefixIcon('heroicon-o-key')
+                                                            ->password()
+                                                            ->revealable()
+                                                            ->label(__('GitHub API Token')),
+                                                        TextInput::make('api.github_username')
+                                                            ->maxLength(255)
+                                                            ->helperText(__('Your GitHub username for profile and repository access.'))
+                                                            ->prefixIcon('heroicon-o-user')
+                                                            ->label(__('GitHub Username')),
+                                                        Textarea::make('api.github_repositories')
+                                                            ->rows(3)
+                                                            ->maxLength(65535)
+                                                            ->helperText(__('List of GitHub repositories to display. Format: one repository per line (e.g., username/repo-name).'))
+                                                            ->label(__('GitHub Repositories')),
+                                                    ]),
                                             ]),
                                     ]),
                             ]),

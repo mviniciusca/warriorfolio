@@ -9,9 +9,17 @@ use Illuminate\View\Component;
 
 class Repositories extends Component
 {
+    public ?string $githubUser;
+
+    public ?array $showOnlyRepositories;
+
+    public ?int $repoQuantity;
+
     public function __construct()
     {
-        //
+        $this->githubUser = null;
+        $this->showOnlyRepositories = null;
+        $this->repoQuantity = null;
     }
 
     public function render(): View|Closure|string
@@ -24,6 +32,11 @@ class Repositories extends Component
 
     public function githubService(): GithubService
     {
-        return new GithubService('mviniciusca', [], 9);
+        return new GithubService($this->githubUser ?? 'mviniciusca', $this->showOnlyRepositories ?? null, $this->repoQuantity ?? null);
+    }
+
+    public function getRepositories():array
+    {
+        return [];
     }
 }
