@@ -162,6 +162,7 @@ class PageResource extends ResourcesPageResource
                     ->schema([
                         TextInput::make('title')
                             ->label(__('Title'))
+                            ->helperText(__('The title of the page'))
                             ->required()
                             ->maxLength(255)
                             ->live(onBlur: true)
@@ -178,6 +179,7 @@ class PageResource extends ResourcesPageResource
 
                         Select::make('layout')
                             ->label(__('Layout'))
+                            ->helperText(__('Select the layout for this page'))
                             ->options(FilamentFabricator::getLayouts())
                             ->required()
                             ->columnSpan(1),
