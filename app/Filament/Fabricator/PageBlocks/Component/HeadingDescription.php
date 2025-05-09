@@ -100,7 +100,7 @@ class HeadingDescription extends PageBlock
                             ]),
 
                         Tab::make('button')
-                            ->columns(3)
+                            ->columns(4)
                             ->label(__('Button'))
                             ->icon('heroicon-o-cursor-arrow-rays')
                             ->schema([
@@ -113,6 +113,15 @@ class HeadingDescription extends PageBlock
                                     ->prefixIcon('heroicon-o-cube')
                                     ->label(__('Button Icon'))
                                     ->helperText(__('Enter a Ionicon name (e.g., heart-outline)')),
+
+                                Select::make('style')
+                                    ->label(__('Button Style'))
+                                    ->helperText(__('Choose a style for the button'))
+                                    ->options([
+                                        'outlined' => __('Outlined'),
+                                        'filled'   => __('Filled'),
+                                    ])
+                                    ->default('outlined'),
 
                                 TextInput::make('button_url')
                                     ->prefixIcon('heroicon-o-link')
