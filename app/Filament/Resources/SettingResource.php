@@ -9,6 +9,7 @@ use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -326,21 +327,17 @@ class SettingResource extends Resource
                                                     ->columns(1)
                                                     ->schema([
                                                         Group::make()
-                                                            ->columns(4)
+                                                            ->columns(3)
                                                             ->schema([
-                                                                Toggle::make('api.github_is_active')
+                                                                Toggle::make('config.github_is_active')
                                                                     ->label(__('Enable GitHub Service'))
                                                                     ->helperText(__('Enable or disable the GitHub service.'))
                                                                     ->default(true),
-                                                                Toggle::make('show_graphs')
+                                                                Toggle::make('config.show_graphs')
                                                                     ->label(__('Show Graphs'))
                                                                     ->helperText(__('Enable or disable the graphs.'))
                                                                     ->default(true),
-                                                                Toggle::make('show_only_repositories')
-                                                                    ->label(__('Show Only Repositories'))
-                                                                    ->helperText(__('Enable or disable the display of only repositories.'))
-                                                                    ->default(true),
-                                                                TextInput::make('repository_quantity')
+                                                                TextInput::make('config.repository_quantity')
                                                                     ->label(__('Repository Quantity'))
                                                                     ->helperText(__('Number of repositories to display. Max: 100'))
                                                                     ->numeric()
@@ -348,23 +345,24 @@ class SettingResource extends Resource
                                                                     ->minValue(1)
                                                                     ->maxValue(100),
                                                             ]),
-                                                        TextInput::make('api.github_api_token')
+                                                        TextInput::make('config.github_api_token')
                                                             ->maxLength(255)
                                                             ->helperText(__('GitHub Personal Access Token for API integration.'))
                                                             ->prefixIcon('heroicon-o-key')
                                                             ->password()
+                                                            ->required()
                                                             ->revealable()
                                                             ->label(__('GitHub API Token')),
-                                                        TextInput::make('api.github_username')
+                                                        TextInput::make('config.github_username')
                                                             ->maxLength(255)
+                                                            ->required()
                                                             ->helperText(__('Your GitHub username for profile and repository access.'))
                                                             ->prefixIcon('heroicon-o-user')
                                                             ->label(__('GitHub Username')),
-                                                        Textarea::make('api.github_repositories')
-                                                            ->rows(3)
-                                                            ->maxLength(65535)
-                                                            ->helperText(__('List of GitHub repositories to display. Format: one repository per line (e.g., username/repo-name).'))
-                                                            ->label(__('GitHub Repositories')),
+                                                        TagsInput::make('config.github_repositories')
+                                                            ->placeholder(__('repo name'))
+                                                            ->helperText(__('Enter the names of the repositories you want to show. Leave empty to show all repositories.'))
+                                                            ->label(__('Show Only Repositories')),
                                                     ]),
                                             ]),
                                     ]),
