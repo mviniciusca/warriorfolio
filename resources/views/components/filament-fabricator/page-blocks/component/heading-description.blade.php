@@ -17,7 +17,6 @@
 ])
 
 @php
-// Tratamento do button_header para permitir HTML não escapado
 $processedButtonHeader = $button_header ? new Illuminate\Support\HtmlString($button_header) : null;
 @endphp
 
