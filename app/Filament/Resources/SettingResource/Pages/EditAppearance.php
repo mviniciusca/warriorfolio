@@ -49,9 +49,9 @@ class EditAppearance extends EditRecord
                         Tabs\Tab::make(__('Logo & Icons'))
                             ->icon('heroicon-o-sparkles')
                             ->schema([
-                                Section::make(__('Application Logo'))
+                                Section::make(__(null))
                                     ->icon('heroicon-o-photo')
-                                    ->description(__('Change the design and appearance of your application'))
+                                    ->description(__('Logo - Change the logo of your website'))
                                     ->columns(3)
                                     ->schema([
                                         CuratorPicker::make('design.logo')
@@ -75,8 +75,8 @@ class EditAppearance extends EditRecord
                                             ->default('max-w-14')
                                             ->helperText(__('Define the size of the logo on your website.')),
                                     ]),
-                                Section::make(__('Favicon'))
-                                    ->description(__('Change the favicon of your website.'))
+                                Section::make(__(null))
+                                    ->description(__('Favicon - Change the favicon of your website.'))
                                     ->icon('heroicon-o-star')
                                     ->columns(3)
                                     ->schema([
@@ -97,7 +97,8 @@ class EditAppearance extends EditRecord
                         Tabs\Tab::make(__('Layout & Design'))
                             ->icon('heroicon-o-rectangle-group')
                             ->schema([
-                                Section::make(__('Design Options'))
+                                Section::make(__(null))
+                                    ->icon('heroicon-o-paint-brush')
                                     ->description(__('Change the design and appearance of your website'))
                                     ->columns(4)
                                     ->schema([
@@ -134,9 +135,14 @@ class EditAppearance extends EditRecord
                         Tabs\Tab::make(__('Background'))
                             ->icon('heroicon-o-photo')
                             ->schema([
-                                Section::make(__('Core: Background Image'))
+                                Section::make(__(null))
+                                    ->icon('heroicon-o-photo')
                                     ->description(__('Change the background image of your website'))
                                     ->schema([
+                                        Checkbox::make('design.background_image_visibility')
+                                            ->label(__('Visible'))
+                                            ->default(true)
+                                            ->helperText(__('Activate the background image on your website.')),
                                         Group::make()
                                             ->columns(2)
                                             ->columnSpanFull()
@@ -169,10 +175,6 @@ class EditAppearance extends EditRecord
                                             ->columnSpanFull()
                                             ->columns(4)
                                             ->schema([
-                                                Checkbox::make('design.background_image_visibility')
-                                                    ->label(__('Visible'))
-                                                    ->default(true)
-                                                    ->helperText(__('Activate the background image on your website.')),
                                                 Checkbox::make('design.animation')
                                                     ->label(__('Opacity Animation FX'))
                                                     ->default(false)
