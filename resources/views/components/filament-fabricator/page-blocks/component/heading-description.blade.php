@@ -16,6 +16,7 @@
 'with_padding' => false,
 ])
 
+
 @php
 $processedButtonHeader = $button_header ? new Illuminate\Support\HtmlString($button_header) : null;
 @endphp

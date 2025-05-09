@@ -54,8 +54,8 @@ This is the default layout component for the website. Used for website and compo
                 <div>
                     @if($button_url)
                     <a href="{{ $button_url }}">@endif
-                        <x-ui.button :$button_style :$is_section_filled_inverted :icon="$button_icon" :$style
-                            :label="$button_header" />
+                        <x-ui.button :$button_style :$is_section_filled_inverted :icon="$button_icon"
+                            :style="$button_style" :label="$button_header" />
                         @if($button_url)
                     </a>
                     @endif

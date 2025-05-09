@@ -114,7 +114,7 @@ class HeadingDescription extends PageBlock
                                     ->label(__('Button Icon'))
                                     ->helperText(__('Enter a Ionicon name (e.g., heart-outline)')),
 
-                                Select::make('style')
+                                Select::make('button_style')
                                     ->label(__('Button Style'))
                                     ->helperText(__('Choose a style for the button'))
                                     ->options([
