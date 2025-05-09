@@ -35,9 +35,9 @@
         <x-header.section />
     </header>
     <x-core.layout :with_padding="false">
-        <div class="mx-auto flex-grow py-16">
+        <div class="mx-auto flex-grow py-4">
             <!-- Profile Section with generous top space -->
-            <div class="mb-12 mt-12">
+            <div class="mb-6s mt-6">
                 <x-themes.juno.profile />
             </div>
 
