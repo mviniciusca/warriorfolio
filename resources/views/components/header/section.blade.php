@@ -18,7 +18,6 @@ App\View\Components\Header\Section.php
 ])
 {{-- Header --}}
 <nav class="relative z-40 mx-auto w-full pb-2">
-    {{-- Background Layer --}}
     @if ($line_beam_is_active)
     <div class="absolute inset-0 -z-20 animate-pulse bg-auto bg-top bg-no-repeat"
         style="background-image: url({{ asset('img/core/core-ui-elements/beams/blur-beam.png') }})">
