@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SettingResource\Pages;
 use App\Models\Setting;
+use Closure;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
@@ -14,6 +15,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
@@ -334,7 +336,8 @@ class SettingResource extends Resource
                                                                 Toggle::make('config.github_is_active')
                                                                     ->label(__('Enable GitHub Service'))
                                                                     ->helperText(__('Enable or disable the GitHub service.'))
-                                                                    ->default(true),
+                                                                    ->default(true)
+                                                                    ->live(),
                                                                 Toggle::make('config.show_graphs')
                                                                     ->label(__('Show Graphs'))
                                                                     ->helperText(__('Enable or disable the graphs.'))
@@ -352,12 +355,14 @@ class SettingResource extends Resource
                                                             ->helperText(__('GitHub Personal Access Token for API integration.'))
                                                             ->prefixIcon('heroicon-o-key')
                                                             ->password()
-                                                            ->required()
+                                                            ->required(fn (Get $get) => $get('config.github_is_active'))
+                                                            ->live()
                                                             ->revealable()
                                                             ->label(__('GitHub API Token')),
                                                         TextInput::make('config.github_username')
                                                             ->maxLength(255)
-                                                            ->required()
+                                                            ->required(fn (Get $get) => $get('config.github_is_active'))
+                                                            ->live()
                                                             ->helperText(__('Your GitHub username for profile and repository access.'))
                                                             ->prefixIcon('heroicon-o-user')
                                                             ->label(__('GitHub Username')),
