@@ -112,14 +112,17 @@ class SettingResource extends Resource
                                     ->collapsible()
                                     ->schema([
                                         Checkbox::make('config.scroll_up_is_active')
+                                            ->required()
                                             ->label(__('Scroll Up'))
                                             ->helperText(__('Scroll up button feature.'))
                                             ->default(true),
                                         Checkbox::make('config.empty_section')
+                                            ->required()
                                             ->label(__('Empty Section'))
                                             ->helperText(__('Alert for Empty Sections'))
                                             ->default(true),
                                         Checkbox::make('config.quickbar_is_active')
+                                            ->required()
                                             ->label(__('Quickbar'))
                                             ->helperText(__('Enable or disable the quickbar.'))
                                             ->default(true),
