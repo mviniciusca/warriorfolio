@@ -1,36 +1,29 @@
 @props(['page'])
 
-<!DOCTYPE html>
-<html lang="en">
+<x-core.base-layout bodyClass="juno-theme juno-app-core flex min-h-screen flex-col">
+    <x-slot:header>
+        <style>
+            .tab-pane {
+                transition: opacity 0.2s ease-in-out;
+                opacity: 0;
+            }
 
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <x-header.scripts />
-    <style>
-        .tab-pane {
-            transition: opacity 0.2s ease-in-out;
-            opacity: 0;
-        }
+            .tab-pane:not(.hidden) {
+                opacity: 1;
+            }
 
-        .tab-pane:not(.hidden) {
-            opacity: 1;
-        }
+            .tab-button {
+                font-size: 0.75rem;
+                position: relative;
+                border-bottom: 2px solid transparent;
+            }
 
-        .tab-button {
-            font-size: 0.75rem;
-            position: relative;
-            border-bottom: 2px solid transparent;
-        }
+            .tab-button.active-tab {
+                border-bottom-color: currentColor;
+            }
+        </style>
+    </x-slot:header>
 
-        .tab-button.active-tab {
-            border-bottom-color: currentColor;
-        }
-    </style>
-    <x-core.modules.over />
-</head>
-
-<body class="juno-theme juno-app-core flex min-h-screen flex-col">
     <header class="header-section" id="app-header">
         <x-header.section />
     </header>
@@ -166,39 +159,39 @@
 
             <!-- Footer -->
         </div>
-        <x-header.body-scripts />
     </x-core.layout>
     <x-footer.section class="mt-16" />
-    <!-- Dark Mode Toggle Script -->
-    <script>
-        // Check for saved theme preference or use the system preference
-        const themeToggleBtn = document.getElementById('theme-toggle');
 
-        // Function to set the theme
-        function setTheme(isDark) {
-            if (isDark) {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
+    <x-slot:footer>
+        <!-- Dark Mode Toggle Script -->
+        <script>
+            // Check for saved theme preference or use the system preference
+            const themeToggleBtn = document.getElementById('theme-toggle');
+
+            // Function to set the theme
+            function setTheme(isDark) {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                }
             }
-        }
 
-        // Initialize theme based on saved preference or system preference
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia(
-                '(prefers-color-scheme: dark)').matches)) {
-            setTheme(true);
-        } else {
-            setTheme(false);
-        }
+            // Initialize theme based on saved preference or system preference
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia(
+                    '(prefers-color-scheme: dark)').matches)) {
+                setTheme(true);
+            } else {
+                setTheme(false);
+            }
 
-        // Toggle theme when button is clicked
-        themeToggleBtn.addEventListener('click', function() {
-            const isDark = document.documentElement.classList.contains('dark');
-            setTheme(!isDark);
-        });
-    </script>
-</body>
-
-</html>
+            // Toggle theme when button is clicked
+            themeToggleBtn.addEventListener('click', function() {
+                const isDark = document.documentElement.classList.contains('dark');
+                setTheme(!isDark);
+            });
+        </script>
+    </x-slot:footer>
+</x-core.base-layout>
