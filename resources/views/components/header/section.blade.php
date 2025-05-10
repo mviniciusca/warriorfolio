@@ -16,11 +16,6 @@ App\View\Components\Header\Section.php
 'darkmode_is_active' => $design['darkmode_is_active'] ?? true,
 'line_beam_is_active' => $design['line_beam_is_active'] ?? true,
 ])
-
-{{-- Core: Background Image --}}
-<x-ui.background />
-<x-ui.quickbar />
-<x-ui.scroll-up />
 {{-- Header --}}
 <nav class="relative z-40 mx-auto w-full pb-2">
     {{-- Background Layer --}}
