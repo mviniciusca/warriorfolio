@@ -253,13 +253,12 @@ class SettingResource extends Resource
                                                     ]),
                                             ]),
 
-                                        TextInput::make('google.meta_google_site_verification')
-                                            ->maxLength(255)
-                                            ->label(__('Google Verification'))
+                                        Textarea::make('google.tag')
+                                            ->maxLength(900)
+                                            ->rows(3)
+                                            ->helperText(__('Google Site Verification code.'))
+                                            ->label(__('Google Verification / Google Tag'))
                                             ->placeholder('ex: 1a2b3c4d5e6f7g8h9i0j')
-                                            ->password()
-                                            ->revealable()
-                                            ->prefixIcon('heroicon-o-key')
                                             ->columnSpanFull(),
                                     ]),
                             ]),
