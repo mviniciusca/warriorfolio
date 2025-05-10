@@ -231,15 +231,18 @@
                         <span class="font-medium text-sm">{{ auth()->user()->name }}</span>
                     </div>
                 </div>
-                <!-- Right - Logout button -->
-                <form method="POST" action="{{ route('filament.admin.auth.logout') }}">
-                    @csrf
-                    <button type="submit"
-                        class="flex items-center gap-2 px-3 py-1.5 text-xs border border-secondary-200 dark:border-secondary-700 rounded-md bg-secondary-50 dark:bg-secondary-800 hover:bg-secondary-200/80 dark:hover:bg-secondary-700/60 transition-colors">
-                        <x-ui.ionicon :icon="'log-out-outline'" class="w-4 h-4" />
-                        <span>{{ __('Logout from Dashboard') }}</span>
-                    </button>
-                </form>
+                <!-- Right section with dark mode toggle and logout -->
+                <div class="flex items-center gap-2">
+                    <livewire:dark-mode wire:key='footer-dark-mode' />
+                    <form method="POST" action="{{ route('filament.admin.auth.logout') }}">
+                        @csrf
+                        <button type="submit"
+                            class="flex items-center gap-2 px-3 py-1.5 text-xs border border-secondary-200 dark:border-secondary-700 rounded-md bg-secondary-50 dark:bg-secondary-800 hover:bg-secondary-200/80 dark:hover:bg-secondary-700/60 transition-colors">
+                            <x-ui.ionicon :icon="'log-out-outline'" class="w-4 h-4" />
+                            <span>{{ __('Logout from Dashboard') }}</span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
