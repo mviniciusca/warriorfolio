@@ -5,6 +5,7 @@ namespace App\Livewire\Mail;
 use App\Models\Mail;
 use App\Models\User;
 use App\Notifications\NewMailNotification;
+use App\Traits\WithRecaptcha;
 use Exception;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -15,30 +16,20 @@ use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
-use ReCaptcha\ReCaptcha;
 
 class CreateMail extends Component implements HasForms
 {
     use InteractsWithForms;
+    use WithRecaptcha;
 
     public ?array $data = [];
 
-    public $recaptchaToken = '';
-
     public $is_section_filled_inverted = '';
-
-    protected $listeners = [
-        'recaptcha-success' => 'setRecaptchaToken',
-    ];
 
     public function mount(): void
     {
         $this->form->fill();
-    }
-
-    public function setRecaptchaToken($token)
-    {
-        $this->recaptchaToken = $token['token'];
+        $this->initializeWithRecaptcha();
     }
 
     public function form(Form $form): Form
@@ -100,27 +91,7 @@ class CreateMail extends Component implements HasForms
 
     public function create(): void
     {
-        if (empty($this->recaptchaToken)) {
-            Notification::make()
-                ->title(__('Please complete the reCAPTCHA challenge'))
-                ->danger()
-                ->send();
-
-            return;
-        }
-
-        // Validate reCAPTCHA
-        $recaptcha = new ReCaptcha(config('recaptcha.secret_key'));
-        $response = $recaptcha->verify($this->recaptchaToken);
-
-        if (! $response->isSuccess()) {
-            Notification::make()
-                ->title(__('reCAPTCHA validation failed. Please try again.'))
-                ->danger()
-                ->send();
-            $this->reset('recaptchaToken');
-            $this->dispatch('reloadRecaptcha');
-
+        if (! $this->verifyRecaptcha()) {
             return;
         }
 
@@ -142,7 +113,6 @@ class CreateMail extends Component implements HasForms
                 ->danger()
                 ->send();
             Log::error($e->getMessage());
-            $this->dispatch('reloadRecaptcha');
         }
 
         if (env('SMTP_SERVICES')) {
