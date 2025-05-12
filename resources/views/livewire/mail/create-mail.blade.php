@@ -3,7 +3,7 @@
 <div>
     <form wire:submit.prevent="create" id="mail">
         {{ $this->form }}
-        <div class="flex justify-center mb-4">
+        <div class="flex justify-center mb-4" wire:ignore>
             <div class="g-recaptcha" data-sitekey="{{ config('recaptcha.site_key') }}"
                 data-callback="onRecaptchaSuccess"></div>
         </div>
@@ -15,20 +15,15 @@
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
-        document.addEventListener('livewire:init', () => {
-            Livewire.on('recaptchaReset', () => {
-                grecaptcha.reset();
-            });
-
-            Livewire.on('formSubmitted', () => {
-                setTimeout(() => {
-                    grecaptcha.reset();
-                }, 100);
-            });
-        });
-
         function onRecaptchaSuccess(token) {
             @this.set('recaptchaToken', token);
         }
+
+        document.addEventListener('livewire:navigated', () => {
+            if (typeof grecaptcha !== 'undefined') {
+                grecaptcha.reset();
+            }
+        });
+    </script>
     </script>
 </div>

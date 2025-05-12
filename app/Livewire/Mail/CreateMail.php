@@ -118,7 +118,8 @@ class CreateMail extends Component implements HasForms
                 ->title(__('reCAPTCHA validation failed. Please try again.'))
                 ->danger()
                 ->send();
-            $this->dispatch('recaptchaReset');
+            $this->reset('recaptchaToken');
+            $this->dispatch('reloadRecaptcha');
 
             return;
         }
@@ -131,12 +132,17 @@ class CreateMail extends Component implements HasForms
                 ->title(__('Message sent!'))
                 ->success()
                 ->send();
+
+            $this->reset(['data', 'recaptchaToken']);
+            $this->form->fill();
+            $this->dispatch('formSubmitted');
         } catch (Exception $e) {
             Notification::make()
                 ->title(__('Error on sent message!'))
                 ->danger()
                 ->send();
             Log::error($e->getMessage());
+            $this->dispatch('reloadRecaptcha');
         }
 
         if (env('SMTP_SERVICES')) {
@@ -147,11 +153,6 @@ class CreateMail extends Component implements HasForms
                 Log::error($e->getMessage());
             }
         }
-
-        $this->reset(['data', 'recaptchaToken']);
-        $this->form->fill();
-        $this->dispatch('recaptchaReset');
-        $this->dispatch('formSubmitted');
     }
 
     public function render(): View
