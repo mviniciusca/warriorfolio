@@ -57,6 +57,7 @@ class SlideshowResource extends Resource
                         Forms\Components\TextInput::make('title')
                             ->required()
                             ->autofocus()
+                            ->columnSpan(2)
                             ->helperText('The title of the slideshow')
                             ->maxLength(255),
                         Select::make('module_name')
@@ -70,6 +71,7 @@ class SlideshowResource extends Resource
                             ->searchable()
                             ->label('Core Module')
                             ->helperText('The module where the slideshow will be displayed. Not all core modules support slideshows.')
+                            ->columnSpan(2)
                             ->required(),
                         Toggle::make('is_active')
                             ->inline(false)
@@ -77,7 +79,7 @@ class SlideshowResource extends Resource
                             ->label('Show Slideshow')
                             ->default(true),
                     ])
-                    ->columns(3),
+                    ->columns(5),
 
                 Forms\Components\Wizard::make([
                     Forms\Components\Wizard\Step::make('Images')
