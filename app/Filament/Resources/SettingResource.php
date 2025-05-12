@@ -323,6 +323,8 @@ class SettingResource extends Resource
                             ->icon('heroicon-o-key')
                             ->schema([
                                 Tabs::make('api_integrations')
+                                    ->persistTab()
+                                    ->persistTabInQueryString('id')
                                     ->tabs([
                                         Tab::make(__('GitHub Service'))
                                             ->icon('heroicon-o-code-bracket-square')
