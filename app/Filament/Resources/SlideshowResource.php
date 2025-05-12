@@ -52,6 +52,7 @@ class SlideshowResource extends Resource
         return $form
             ->schema([
                 Group::make()
+                    ->columnSpanFull()
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
@@ -70,7 +71,13 @@ class SlideshowResource extends Resource
                             ->label('Core Module')
                             ->helperText('The module where the slideshow will be displayed. Not all core modules support slideshows.')
                             ->required(),
-                    ])->columns(2),
+                        Toggle::make('is_active')
+                            ->inline(false)
+                            ->helperText(__('Enable this slideshow'))
+                            ->label('Show Slideshow')
+                            ->default(true),
+                    ])
+                    ->columns(3),
 
                 Forms\Components\Wizard::make([
                     Forms\Components\Wizard\Step::make('Images')
@@ -120,46 +127,39 @@ class SlideshowResource extends Resource
                         ->description('Configure slideshow options')
                         ->schema([
                             Group::make()
+                                ->columnSpanFull()
+                                ->columns(4)
                                 ->schema([
-                                    Group::make()
-                                        ->schema([
-                                            Toggle::make('show_title')
-                                                ->inline(false)
-                                                ->label('Show Title')
-                                                ->default(true),
-                                            Toggle::make('is_active')
-                                                ->inline(false)
-                                                ->label('Show Slideshow')
-                                                ->default(true),
-                                        ])->columns(2),
-
-                                    Group::make()
-                                        ->schema([
-                                            Select::make('slider_size')
-                                                ->options([
-                                                    'max-w-3xl' => 'Small (max-w-3xl)',
-                                                    'max-w-4xl' => 'Medium (max-w-4xl)',
-                                                    'max-w-5xl' => 'Large (max-w-5xl)',
-                                                    'max-w-6xl' => 'Extra Large (max-w-6xl)',
-                                                    'max-w-7xl' => 'Full Width (max-w-7xl)',
-                                                ])
-                                                ->default('max-w-5xl'),
-                                            Select::make('image_size')
-                                                ->options([
-                                                    'small'       => 'Small (h-10)',
-                                                    'default'     => 'Default (h-12)',
-                                                    'medium'      => 'Medium (h-14)',
-                                                    'large'       => 'Large (h-16)',
-                                                    'extra-large' => 'Extra Large (h-20)',
-                                                ])
-                                                ->default('default'),
-                                            Toggle::make('is_invert')
-                                                ->inline(false)
-                                                ->helperText('Invert the colors of the images. This is useful if the png image is dark so turn white in dark mode.')
-                                                ->label('Filter: Invert Colors')
-                                                ->default(false),
-                                        ])->columns(2),
+                                    Toggle::make('show_title')
+                                        ->inline(false)
+                                        ->label('Show Title')
+                                        ->helperText(__('Show the title of the image'))
+                                        ->default(true),
+                                    Toggle::make('is_invert')
+                                        ->inline(false)
+                                        ->helperText('Invert the colors of the images. This is useful if the png image is dark so turn white in dark mode.')
+                                        ->label('Filter: Invert Colors')
+                                        ->default(false),
+                                    Select::make('slider_size')
+                                        ->options([
+                                            'max-w-3xl' => 'Small (max-w-3xl)',
+                                            'max-w-4xl' => 'Medium (max-w-4xl)',
+                                            'max-w-5xl' => 'Large (max-w-5xl)',
+                                            'max-w-6xl' => 'Extra Large (max-w-6xl)',
+                                            'max-w-7xl' => 'Full Width (max-w-7xl)',
+                                        ])
+                                        ->default('max-w-5xl'),
+                                    Select::make('image_size')
+                                        ->options([
+                                            'small'       => 'Small (h-10)',
+                                            'default'     => 'Default (h-12)',
+                                            'medium'      => 'Medium (h-14)',
+                                            'large'       => 'Large (h-16)',
+                                            'extra-large' => 'Extra Large (h-20)',
+                                        ])
+                                        ->default('default'),
                                 ]),
+
                         ]),
                 ])->columnSpanFull(),
             ]);
