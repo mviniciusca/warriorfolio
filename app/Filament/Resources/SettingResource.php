@@ -372,6 +372,39 @@ class SettingResource extends Resource
                                                             ->label(__('Show Only Repositories')),
                                                     ]),
                                             ]),
+                                        Tab::make(__('Google reCAPTCHA'))
+                                            ->icon('heroicon-o-shield-check')
+                                            ->schema([
+                                                Group::make()
+                                                    ->columns(1)
+                                                    ->schema([
+                                                        Group::make()
+                                                            ->columns(2)
+                                                            ->schema([
+                                                                Toggle::make('config.recaptcha_is_active')
+                                                                    ->label(__('Enable reCAPTCHA'))
+                                                                    ->helperText(__('Enable or disable Google reCAPTCHA protection. Currently supporting reCAPTCHA v2'))
+                                                                    ->default(true)
+                                                                    ->live(),
+                                                            ]),
+                                                        TextInput::make('config.recaptcha_site_key')
+                                                            ->maxLength(255)
+                                                            ->helperText(__('Google reCAPTCHA Site Key'))
+                                                            ->prefixIcon('heroicon-o-key')
+                                                            ->required(fn (Get $get) => $get('config.recaptcha_is_active'))
+                                                            ->live()
+                                                            ->label(__('Site Key')),
+                                                        TextInput::make('config.recaptcha_secret_key')
+                                                            ->maxLength(255)
+                                                            ->helperText(__('Google reCAPTCHA Secret Key'))
+                                                            ->prefixIcon('heroicon-o-key')
+                                                            ->password()
+                                                            ->revealable()
+                                                            ->required(fn (Get $get) => $get('config.recaptcha_is_active'))
+                                                            ->live()
+                                                            ->label(__('Secret Key')),
+                                                    ]),
+                                            ]),
                                     ]),
                             ]),
                     ]),

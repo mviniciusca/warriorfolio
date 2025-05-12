@@ -9,9 +9,12 @@ class Recaptcha extends Component
 {
     public string $siteKey;
 
+    public bool $enabled;
+
     public function __construct(RecaptchaService $recaptchaService)
     {
         $this->siteKey = $recaptchaService->getSiteKey();
+        $this->enabled = $recaptchaService->isEnabled();
     }
 
     public function render()

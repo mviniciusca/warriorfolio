@@ -25,6 +25,10 @@ trait WithRecaptcha
     {
         $recaptchaService = app(RecaptchaService::class);
 
+        if (! $recaptchaService->isEnabled()) {
+            return true;
+        }
+
         if (! $recaptchaService->verify($this->recaptchaToken)) {
             Notification::make()
                 ->title(__('Please complete the reCAPTCHA challenge'))
