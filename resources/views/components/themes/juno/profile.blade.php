@@ -89,7 +89,7 @@
                     <img alt="{{ $data->name }}" class="relative h-32 w-32 rounded-full object-cover"
                         src="{{ asset('storage/' . $data->profile->avatar) }}" />
                     @else
-                    <img alt="Default profile" class="relative h-32 w-32 rounded-full object-cover"
+                    <img alt="Default profile" class="relative dark:invert h-32 w-32 rounded-full object-cover"
                         src="{{ asset('img/core/profile-picture.png') }}" />
                     @endif
                 </div>
@@ -174,7 +174,7 @@
                 <img alt="{{ $data->name }}" class="h-20 w-20 rounded-lg object-cover"
                     src="{{ asset('storage/' . $data->profile->avatar) }}" />
                 @else
-                <img alt="Default profile" class="h-20 w-20 rounded-lg object-cover"
+                <img alt="Default profile" class="dark:invert h-20 w-20 rounded-lg object-cover"
                     src="{{ asset('img/core/profile-picture.png') }}" />
                 @endif
             </div>

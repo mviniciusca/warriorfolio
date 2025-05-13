@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Ui;
 
-use App\Models\Chatbox as Cb;
+use App\Models\Chatbox as ChatboxModel;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -23,7 +23,7 @@ class Chatbox extends Component
     public function render(): View|Closure|string
     {
         return view('components.ui.chatbox', [
-            'chatbox' => Cb::first(),
+            'chatbox' => ChatboxModel::first(),
         ]);
     }
 }
