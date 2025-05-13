@@ -12,9 +12,22 @@ class Chatbox extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
+    public function __construct(
+        public ?bool $is_active = false,
+        public ?int $mobile_number = null,
+        public ?string $message = null,
+        public ?string $animation_style = null,
+        public ?string $color = null ?? '#25D366',
+        public ?string $icon = null ?? 'logo-whatsapp',
+    ) {
+        $data = ChatboxModel::first();
+
+        $this->is_active = $data->visible ?? false;
+        $this->mobile_number = $data->telephone ?? null;
+        $this->message = $data->message ?? null;
+        $this->animation_style = $data->animation_style ?? null;
+        $this->color = $data->color ?? '#25D366';
+        $this->icon = $data->icon ?? 'logo-whatsapp';
     }
 
     /**
