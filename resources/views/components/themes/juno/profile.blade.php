@@ -42,7 +42,7 @@
     }
 </style>
 
-<div class="relative" x-data="{
+<div class="relative mb-24" x-data="{
     viewMode: $persist('expanded').as('profileViewMode'),
     get isExpanded() { return this.viewMode === 'expanded' },
     get isCompact() { return this.viewMode === 'compact' },
@@ -80,7 +80,7 @@
     </button>
 
     {{-- Profile Expanded --}}
-    <div class="mb-24" x-show="isExpanded" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
+    <div x-show="isExpanded" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
         <div class="flex flex-col items-center">
             @if ($showAvatar)
             <div class="relative mb-8">
