@@ -41,27 +41,27 @@
                     <button type="button"
                         class="tab-button text-xs px-4 py-2 text-secondary-900 dark:text-secondary-100"
                         id="repositories-tab">
-                        Repositories
+                        {{ __('Repositories') }}
                     </button>
                     <button type="button"
                         class="tab-button text-xs px-4 py-2 text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="projects-tab">
-                        Projects
+                        {{ __('Projects') }}
                     </button>
                     <button type="button"
                         class="tab-button text-xs px-4 py-2 text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="notes-tab">
-                        Notes
+                        {{__('Notes') }}
                     </button>
                     <button type="button"
                         class="tab-button text-xs px-4 py-2 text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="about-tab">
-                        About Me
+                        {{ __('About Me') }}
                     </button>
                     <button type="button"
                         class="tab-button text-xs px-4 py-2 text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
                         id="contact-tab">
-                        Contact
+                        {{ __('Contact') }}
                     </button>
                 </div>
 
@@ -69,7 +69,7 @@
                 <div class="tab-content">
                     <!-- Repositories Tab -->
                     <div class="tab-pane" id="repositories-content">
-                        <x-themes.juno.repositories :githubUser="'mviniciusca'" :repoQuantity="9" />
+                        <x-themes.juno.repositories />
                     </div>
 
                     <!-- Projects Tab -->
