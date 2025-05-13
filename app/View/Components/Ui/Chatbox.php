@@ -20,7 +20,7 @@ class Chatbox extends Component
         public ?string $color = null ?? '#25D366',
         public ?string $icon = null ?? 'logo-whatsapp',
     ) {
-        $data = ChatboxModel::first();
+        $data = ChatboxModel::sole();
 
         $this->is_active = $data->visible ?? false;
         $this->mobile_number = $data->telephone ?? null;
@@ -36,7 +36,7 @@ class Chatbox extends Component
     public function render(): View|Closure|string
     {
         return view('components.ui.chatbox', [
-            'chatbox' => ChatboxModel::first(),
+            //
         ]);
     }
 }
