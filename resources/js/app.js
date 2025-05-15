@@ -2,23 +2,30 @@ import './bootstrap';
 import 'flowbite';
 import Swiper from 'swiper/bundle';
 
-// Scroll up
-
+/**
+ * Scroll Up Button functionality
+ * Shows/hides a button to scroll to the top of the page when scrolling
+ */
 const scrollUpButton = document.getElementById('scrollUp');
 
 window.onscroll = function () {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        scrollUpButton.style.display = "block";
-    } else {
-        scrollUpButton.style.display = "none";
-    }
+    const scrollThreshold = 100;
+    const shouldShow = document.body.scrollTop > scrollThreshold ||
+        document.documentElement.scrollTop > scrollThreshold;
+    scrollUpButton.style.display = shouldShow ? "block" : "none";
 };
 
 scrollUpButton.onclick = function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 };
 
-// Language to color mapping
+/**
+ * Repository Card Language Colors
+ * Defines colors for different programming languages used in repository cards
+ */
 const languageColors = {
     JavaScript: '#f7df1e',   // yellow
     TypeScript: '#007acc',   // blue
@@ -32,16 +39,20 @@ const languageColors = {
     CSS: '#264de4',        // blue (CSS3 official color)
 };
 
-// Function to apply gradient based on language
+/**
+ * Applies gradient background to repository cards based on their language
+ * @param {HTMLElement} element - The card element to apply gradient to
+ * @param {string} language - Programming language name
+ */
 function applyLanguageGradient(element, language) {
-    const color = languageColors[language] || '#ffffff20'; // default color if language is not mapped
+    const color = languageColors[language] || '#ffffff20';
     const gradientElement = element.querySelector('.language-gradient');
     if (gradientElement) {
         gradientElement.style.background = `linear-gradient(to top right, ${color}20, transparent)`;
     }
 }
 
-// Apply gradients when DOM is ready
+// Initialize language gradients when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-repository-card]').forEach(card => {
         const language = card.getAttribute('data-language');
@@ -51,67 +62,73 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-/** Menu JS */
+/**
+ * Smooth Scroll Navigation
+ * Handles smooth scrolling for anchor links within the same page
+ */
 document.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function (e) {
-        var href = this.getAttribute('href');
-        if (href && href.includes('#')) {
-            e.preventDefault();
-            var urlParts = href.split('#');
-            var baseUrl = urlParts[0];
-            var targetId = urlParts[1];
-            if (window.location.origin + window.location.pathname === baseUrl) {
-                var targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            } else {
-                window.location.href = href;
+        const href = this.getAttribute('href');
+        if (!href?.includes('#')) return;
+
+        e.preventDefault();
+        const [baseUrl, targetId] = href.split('#');
+
+        if (window.location.origin + window.location.pathname === baseUrl) {
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
             }
+        } else {
+            window.location.href = href;
         }
     });
 });
 
-/** Swipper JS */
+/**
+ * Swiper Carousel Configuration
+ * Initializes the Swiper carousel with specific settings
+ */
 const swiper = new Swiper(".swiper", {
     slidesPerView: 5,
     loop: true,
     centerInsufficientSlides: true,
     centeredSlidesBounds: true,
-    peed: 500,
+    speed: 500,
     autoplay: true,
     centeredSlides: true,
 });
 
-
+/**
+ * Privacy Modal Management
+ * Handles the display and interactions with the privacy policy modal
+ */
 const modalEl = document.getElementById('info-popup');
 const modalId = modalEl.getAttribute('data-modal-id');
 const privacyModal = new Modal(modalEl, {
     placement: 'center'
 });
 
-
 function showModalAfter(delay) {
-    setTimeout(function () {
-        privacyModal.show();
-    }, delay);
+    setTimeout(() => privacyModal.show(), delay);
 }
 
-
+// Initialize modal
 showModalAfter(100);
 
+// Modal event listeners
 const closeModalEl = document.getElementById('close-modal');
-closeModalEl.addEventListener('click', function () {
-    privacyModal.hide();
-});
+closeModalEl.addEventListener('click', () => privacyModal.hide());
 
 const acceptPrivacyEl = document.getElementById('confirm-button');
-acceptPrivacyEl.addEventListener('click', function () {
+acceptPrivacyEl.addEventListener('click', () => {
     alert('privacy accepted');
     privacyModal.hide();
 });
 
-
+/**
+ * Content visibility management
+ */
 function hideContent() {
     document.body.classList.add('hide-content');
 }
