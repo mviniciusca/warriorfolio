@@ -2,30 +2,46 @@ import './bootstrap';
 import 'flowbite';
 import Swiper from 'swiper/bundle';
 
-// Mapeamento de linguagens para cores
-const languageColors = {
-    JavaScript: '#f7df1e',   // amarelo
-    TypeScript: '#007acc',   // azul
-    PHP: '#777BB3',         // roxo
-    Python: '#3776AB',      // azul escuro
-    Java: '#f89820',       // laranja
-    Ruby: '#CC342D',       // vermelho
-    Go: '#00ADD8',         // azul claro
-    Rust: '#DEA584',       // marrom claro
-    HTML: '#e34c26',       // laranja avermelhado (cor oficial do HTML5)
-    CSS: '#264de4',        // azul (cor oficial do CSS3)
+// Scroll up
+
+const scrollUpButton = document.getElementById('scrollUp');
+
+window.onscroll = function () {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollUpButton.style.display = "block";
+    } else {
+        scrollUpButton.style.display = "none";
+    }
 };
 
-// Função para aplicar o gradiente baseado na linguagem
+scrollUpButton.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// Language to color mapping
+const languageColors = {
+    JavaScript: '#f7df1e',   // yellow
+    TypeScript: '#007acc',   // blue
+    PHP: '#777BB3',         // purple
+    Python: '#3776AB',      // dark blue
+    Java: '#f89820',       // orange
+    Ruby: '#CC342D',       // red
+    Go: '#00ADD8',         // light blue
+    Rust: '#DEA584',       // light brown
+    HTML: '#e34c26',       // reddish orange (HTML5 official color)
+    CSS: '#264de4',        // blue (CSS3 official color)
+};
+
+// Function to apply gradient based on language
 function applyLanguageGradient(element, language) {
-    const color = languageColors[language] || '#ffffff20'; // cor padrão se a linguagem não estiver mapeada
+    const color = languageColors[language] || '#ffffff20'; // default color if language is not mapped
     const gradientElement = element.querySelector('.language-gradient');
     if (gradientElement) {
         gradientElement.style.background = `linear-gradient(to top right, ${color}20, transparent)`;
     }
 }
 
-// Aplicar os gradientes quando o DOM estiver pronto
+// Apply gradients when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-repository-card]').forEach(card => {
         const language = card.getAttribute('data-language');

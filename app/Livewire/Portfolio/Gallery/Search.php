@@ -16,7 +16,7 @@ class Search extends Component
 
     public function mount()
     {
-        // Verificar se já existe uma busca ativa ao montar o componente
+        // Check if there's already an active search when mounting the component
         if (! empty($this->search) && strlen($this->search) >= 5) {
             $this->searchActive = true;
         }
@@ -30,7 +30,7 @@ class Search extends Component
 
     public function updatedSearch()
     {
-        // Se o campo de busca estiver vazio, limpa a busca (mostra todos os projetos)
+        // If search field is empty, clear the search (show all projects)
         if (empty($this->search)) {
             $this->searchActive = false;
             $this->dispatch('search-changed', search: '');
@@ -38,7 +38,7 @@ class Search extends Component
             return;
         }
 
-        // Só dispara o evento de busca se tiver pelo menos 5 caracteres
+        // Only trigger search event if there are at least 5 characters
         if (strlen($this->search) >= 5) {
             $this->searchActive = true;
             $this->dispatch('search-changed', search: $this->search);
@@ -49,7 +49,7 @@ class Search extends Component
 
     public function submit()
     {
-        // Se o campo estiver vazio, limpa a busca (mostra todos os projetos)
+        // If field is empty, clear the search (show all projects)
         if (empty($this->search)) {
             $this->searchActive = false;
             $this->dispatch('search-changed', search: '');
@@ -57,7 +57,7 @@ class Search extends Component
             return;
         }
 
-        // Validação no submit também
+        // Validation on submit as well
         if (strlen($this->search) >= 5) {
             $this->searchActive = true;
             $this->dispatch('search-changed', search: $this->search);

@@ -30,9 +30,9 @@
         <!-- Mobile Status Bar with Real-time Clock -->
         <div class="flex items-center justify-between rounded-t-3xl bg-black/10 px-4 py-2 dark:bg-black/50">
             <div x-data="{ time: '' }" x-init="
-                time = new Date().toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'});
+                time = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
                 setInterval(() => {
-                    time = new Date().toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'});
+                    time = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
                 }, 1000)
             " x-text="time" class="text-xs font-medium text-black/70 dark:text-white/70"></div>
             <div class="rounded-full bg-black/20 px-2 py-0.5 dark:bg-white/20">

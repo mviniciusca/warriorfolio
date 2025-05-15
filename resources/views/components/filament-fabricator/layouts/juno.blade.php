@@ -1,6 +1,6 @@
 @props(['page'])
 
-<x-core.base-layout bodyClass="juno-theme juno-app-core flex min-h-screen flex-col">
+<x-core.base-layout bodyClass="juno-theme juno-app-core flex min-hscreen flex-col">
     <x-slot:header>
         <style>
             .tab-pane {
@@ -104,13 +104,13 @@
                         }
 
                         function switchTab(tabName) {
-                            // Primeiro, reseta os botões
+                            // First, reset all buttons
                             tabButtons.forEach(button => {
                                 button.classList.remove('active-tab', 'text-secondary-900', 'dark:text-secondary-100');
                                 button.classList.add('text-secondary-500', 'dark:text-secondary-400');
                             });
 
-                            // Depois esconde todos os painéis
+                            // Then hide all panels
                             tabPanes.forEach(pane => {
                                 if (pane.id === tabName + '-content') {
                                     pane.classList.remove('hidden');
@@ -119,7 +119,7 @@
                                 }
                             });
 
-                            // Ativa o botão selecionado
+                            // Activate the selected button
                             const selectedTab = document.getElementById(tabName + '-tab');
                             if (selectedTab) {
                                 selectedTab.classList.add('active-tab', 'text-secondary-900', 'dark:text-secondary-100');

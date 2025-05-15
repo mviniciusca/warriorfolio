@@ -3,7 +3,7 @@ $project = $getRecord();
 @endphp
 
 <div class="group relative transition-all duration-300 -my-4">
-    {{-- Quick View Button com SVG personalizado --}}
+    {{-- Quick View Button with custom SVG --}}
     <a href="{{ config('app.url') }}/{{ $project->slug }}" target="_blank"
         class="absolute right-7 top-7 z-40 flex h-7 w-7 items-center justify-center rounded-lg bg-white opacity-0 transition-all duration-300 hover:bg-white group-hover:opacity-100 dark:bg-secondary-700 dark:hover:bg-secondary-700 hover:ring-2 hover:ring-secondary-500 dark:hover:ring-secondary-500">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -13,7 +13,7 @@ $project = $getRecord();
         </svg>
     </a>
 
-    {{-- Link principal para edição do projeto --}}
+    {{-- Main link for project editing --}}
     <a href="{{ route('filament.admin.resources.projects.edit', ['record' => $project]) }}" class="block py-4 px-4">
         <div class="relative">
             {{-- Category Badge --}}

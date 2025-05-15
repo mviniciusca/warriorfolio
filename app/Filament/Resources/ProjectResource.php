@@ -99,15 +99,15 @@ class ProjectResource extends Resource
                     ->live(true)
                     ->required()
                     ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
-                        // Atualiza o slug
+                        // Update the slug
                         $set('slug', 'project/'.Str::slug($state).'.html');
 
-                        // Atualiza o título SEO ao mesmo tempo
+                        // Update the SEO title at the same time
                         $settings = Setting::first();
                         $appName = $settings?->application['name'] ?? '';
                         $metaTitle = $settings?->meta['meta_title'] ?? '';
 
-                        // Monta o título SEO com verificações
+                        // Build SEO title with validations
                         $seoTitle = $state ?? '';
                         if (! empty($appName)) {
                             $seoTitle .= " - {$appName}";
@@ -116,7 +116,7 @@ class ProjectResource extends Resource
                             $seoTitle .= " - {$metaTitle}";
                         }
 
-                        // Define o título SEO no relacionamento project
+                        // Set SEO title in project relationship
                         $set('project.seo_title', 'Project: '.$seoTitle);
                     })
                     ->unique('pages', 'title', ignoreRecord: true)
@@ -182,7 +182,7 @@ class ProjectResource extends Resource
                                                 ->label(__('Tags (Optional)'))
                                                 ->live(true)
                                                 ->afterStateUpdated(function (Set $set, ?array $state) {
-                                                    // Atualiza as keywords SEO com base nas tags
+                                                    // Update SEO keywords based on tags
                                                     if (! empty($state)) {
                                                         $set('seo_keywords', implode(', ', $state));
                                                     }

@@ -39,7 +39,7 @@ class TimelineWidget extends Widget
                 ]);
             });
 
-        // Adiciona posts do blog
+        // Add blog posts
         Page::where('style', '=', 'blog')
             ->where('is_active', true)
             ->orderBy('created_at', 'desc')
@@ -55,7 +55,7 @@ class TimelineWidget extends Widget
                 ]);
             });
 
-        // Adiciona mensagens importantes
+        // Add important messages
         Mail::where('is_important', true)
             ->orderBy('created_at', 'desc')
             ->limit(5)

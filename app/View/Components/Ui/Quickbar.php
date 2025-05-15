@@ -41,12 +41,12 @@ class Quickbar extends Component
             ->where('is_sent', false)
             ->count());
 
-        // Contagem de posts publicados do tipo blog
+        // Count of published blog posts
         $this->postCount = $this->formatCount(Page::whereHas('post', function ($query) {
             $query->where('is_active', true);
         })->where('style', 'blog')->count());
 
-        // Contagem de projetos publicados
+        // Count of published projects
         $this->projectCount = $this->formatCount(Page::whereHas('project', function ($query) {
             $query->where('is_active', true);
         })->where('style', 'project')->count());
@@ -63,7 +63,7 @@ class Quickbar extends Component
     }
 
     /**
-     * Formata a contagem para mostrar +99 quando exceder 99
+     * Format count to show +99 when exceeding 99
      * @param int $count
      * @return int|string
      */
