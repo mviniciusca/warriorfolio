@@ -98,6 +98,26 @@
         transform: translateX(-50%) rotate(180deg) scale(1.1);
     }
 }
+/** Tabs CSS **/
+
+.tab-pane {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+}
+
+.tab-pane:not(.hidden) {
+    opacity: 1;
+}
+
+.tab-button {
+    font-size: 0.75rem;
+    position: relative;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-button.active-tab {
+    border-bottom-color: currentColor;
+}
 
 /** Main App **/
 
