@@ -11,11 +11,12 @@ App\View\Components\Footer\Section.php
 
 @props([
 'data' => null,
+'with_padding' => null,
 ])
 @if ($is_active)
 <div class="{{ $is_filled ? 'section-filled' : '' }}">
     <x-core.layout :$is_section_filled_inverted :$with_padding>
-        <div class="py-8 border-t border-secondary-200/50 dark:border-secondary-800/50" id="footer-content">
+        <div class="py-8" id="footer-content">
             <div class="mx-auto p-4">
                 <div class="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
                     <div class="flex items-center space-x-4">

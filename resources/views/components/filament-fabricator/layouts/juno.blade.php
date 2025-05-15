@@ -51,6 +51,6 @@
             </div>
             <!-- Footer -->
         </div>
+        <x-footer.section :with_padding="false" />
     </x-core.layout>
-    <x-footer.section />
 </x-core.base-layout>
