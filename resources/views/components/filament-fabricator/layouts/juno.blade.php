@@ -163,35 +163,6 @@
     <x-footer.section class="mt-16" />
 
     <x-slot:footer>
-        <!-- Dark Mode Toggle Script -->
-        <script>
-            // Check for saved theme preference or use the system preference
-            const themeToggleBtn = document.getElementById('theme-toggle');
 
-            // Function to set the theme
-            function setTheme(isDark) {
-                if (isDark) {
-                    document.documentElement.classList.add('dark');
-                    localStorage.theme = 'dark';
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.theme = 'light';
-                }
-            }
-
-            // Initialize theme based on saved preference or system preference
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia(
-                    '(prefers-color-scheme: dark)').matches)) {
-                setTheme(true);
-            } else {
-                setTheme(false);
-            }
-
-            // Toggle theme when button is clicked
-            themeToggleBtn.addEventListener('click', function() {
-                const isDark = document.documentElement.classList.contains('dark');
-                setTheme(!isDark);
-            });
-        </script>
     </x-slot:footer>
 </x-core.base-layout>
