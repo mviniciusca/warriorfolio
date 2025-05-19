@@ -212,7 +212,7 @@ class SectionResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    //
                 ]),
             ])
             ->defaultSort('name', 'asc');
@@ -228,9 +228,9 @@ class SectionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListSections::route('/'),
-            'create' => Pages\CreateSection::route('/create'),
-            'edit'   => Pages\EditSection::route('/{record}/edit'),
+            'index' => Pages\ListSections::route('/'),
+            //'create' => Pages\CreateSection::route('/create'),
+            'edit' => Pages\EditSection::route('/{record}/edit'),
         ];
     }
 }

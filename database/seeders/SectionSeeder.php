@@ -109,6 +109,17 @@ class SectionSeeder extends Seeder
                 'is_active'  => 1,
                 'is_coupled' => 0,
             ],
+            [
+                'name'    => 'github-repositories',
+                'slug'    => 'github-repositories',
+                'content' => [
+                    'title'    => 'My GitHub Projects',
+                    'subtitle' => 'Check out my open source contributions',
+
+                ],
+                'is_active'  => 1,
+                'is_coupled' => 0,
+            ],
         ];
 
         foreach ($sections as $section) {
