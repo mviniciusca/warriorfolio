@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\SectionResource\Pages;
 use App\Models\Section;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
@@ -33,15 +34,13 @@ class SectionResource extends Resource
     {
         return $form
             ->schema([
-
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255)
                     ->label(__('Section Name'))
                     ->prefixIcon('heroicon-m-bars-3-center-left')
                     ->helperText(__('This is the name of the section that will be displayed in the admin panel.'))
-                    ->live(onBlur: true),
-                Forms\Components\TextInput::make('slug')
+                    ->live(onBlur: true),                Forms\Components\TextInput::make('slug')
                     ->disabled()
                     ->dehydrated()
                     ->required()
@@ -59,37 +58,37 @@ class SectionResource extends Resource
                                 Group::make()
                                     ->columns(4)
                                     ->schema([
-                                        Forms\Components\Toggle::make('is_active')
+                                        Checkbox::make('is_active')
                                             ->label(__('Active'))
                                             ->helperText(__('If enabled, this section will be visible on the frontend'))
                                             ->default(true)
                                             ->required(),
-                                        Forms\Components\Toggle::make('is_coupled')
+                                        Checkbox::make('is_coupled')
                                             ->label(__('Coupled'))
                                             ->helperText(__('If enabled, this section will be coupled with the main layout'))
                                             ->default(false)
                                             ->required(),
-                                        Forms\Components\Toggle::make('content.is_filled')
+                                        Checkbox::make('content.is_filled')
                                             ->label(__('Filled'))
                                             ->helperText(__('If enabled, this section will be filled with a color'))
                                             ->default(false)
                                             ->required(),
-                                        Forms\Components\Toggle::make('content.is_section_filled_inverted')
+                                        Checkbox::make('content.is_section_filled_inverted')
                                             ->label(__('Section Filled Inverted'))
                                             ->helperText(__('If enabled, this section will be filled with a color and the text will be inverted'))
                                             ->default(false)
                                             ->required(),
-                                        Forms\Components\Toggle::make('content.with_padding')
+                                        Checkbox::make('content.with_padding')
                                             ->label(__('With Padding'))
                                             ->helperText(__('If enabled, this section will have padding'))
                                             ->default(true)
                                             ->required(),
-                                        Forms\Components\Toggle::make('content.is_heading_visible')
+                                        Checkbox::make('content.is_heading_visible')
                                             ->label(__('Heading Visible'))
                                             ->helperText(__('If enabled, this section will have a heading'))
                                             ->default(false)
                                             ->required(),
-                                        Forms\Components\Toggle::make('content.is_centered')
+                                        Checkbox::make('content.is_centered')
                                             ->label(__('Centered'))
                                             ->helperText(__('If enabled, this section will be centered'))
                                             ->default(false)
