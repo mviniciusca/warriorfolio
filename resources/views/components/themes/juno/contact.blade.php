@@ -5,49 +5,48 @@
         <!-- Contact Info Column -->
         <div class="space-y-6">
             <div>
-                <h3 class="mb-4 text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                <h3 class="mb-4 text-sm font-medium">
                     Company Information</h3>
                 <div class="space-y-4">
+                    @isset($content['address'])
                     <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
-                            icon="location-outline" />
+                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="location-outline" />
                         <div>
-                            <p class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                                Address</p>
-                            <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
-                                123 Developer Street<br>
-                                Tech District<br>
-                                San Francisco, CA 94107
-                            </p>
+                            <p class="text-sm font-medium">
+                                {{ __('Address') }}</p>
+                            <p>{!! $content['address'] ?? null !!} </p>
                         </div>
                     </div>
+                    @endisset
+
+                    @isset($content['phone'])
                     <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
-                            icon="call-outline" />
+                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="call-outline" />
                         <div>
-                            <p class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                            <p class="text-sm font-medium ">
                                 Phone</p>
-                            <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
-                                +1 (555) 123-4567</p>
+                            <p class="mt-1 text-sm  ">
+                                {!! $content['phone'] !!}</p>
                         </div>
                     </div>
+                    @endisset
+                    @isset($content['email'])
                     <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
-                            icon="mail-outline" />
+                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="mail-outline" />
                         <div>
-                            <p class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                            <p class="text-sm font-medium ">
                                 Email</p>
-                            <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
-                                contact@company.com</p>
+                            <p class="mt-1 text-sm  ">
+                                {{ $content['email'] ?? null }}</p>
                         </div>
                     </div>
+                    @endisset
                     <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5 text-secondary-600 dark:text-secondary-400"
-                            icon="time-outline" />
+                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="time-outline" />
                         <div>
-                            <p class="text-sm font-medium text-secondary-900 dark:text-secondary-100">
+                            <p class="text-sm font-medium ">
                                 Business Hours</p>
-                            <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">
+                            <p class="mt-1 text-sm">
                                 Monday - Friday: 9:00 AM - 6:00 PM<br>
                                 Saturday: 10:00 AM - 4:00 PM<br>
                                 Sunday: Closed

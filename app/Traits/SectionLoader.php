@@ -37,6 +37,8 @@ trait SectionLoader
 
     public ?string $module_slug;
 
+    public ?array $content;
+
     public function loadSection(string $slug): void
     {
         try {
@@ -64,6 +66,7 @@ trait SectionLoader
         $this->is_centered = $section->content['is_centered'] ?? false;
         $this->module_slug = $section->slug ?? null;
         $this->module_name = $section->name ?? null;
+        $this->content = $section->content ?? null;
     }
 }
 //

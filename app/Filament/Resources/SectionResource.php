@@ -166,8 +166,8 @@ class SectionResource extends Resource
                                         Group::make()
                                             ->columnSpanFull()
                                             ->schema([
-                                                Fieldset::make(__('Public Information'))
-                                                    ->columns(3)
+                                                Fieldset::make(__(''))
+                                                    ->columns(2)
                                                     ->schema([
                                                         Forms\Components\TextInput::make('content.email')
                                                             ->label(__('Email'))
@@ -184,12 +184,18 @@ class SectionResource extends Resource
                                                             ->placeholder(__('Enter address'))
                                                             ->prefixIcon('heroicon-o-map')
                                                             ->helperText(__('The physical address for contact')),
+                                                        Forms\Components\TextInput::make('content.business_hours')
+                                                            ->label(__('Business Hours'))
+                                                            ->placeholder(__('Enter business hours'))
+                                                            ->prefixIcon('heroicon-o-clock')
+                                                            ->helperText(__('The business hours for contact')),
                                                         Textarea::make('content.google_map')
                                                             ->label(__('Google Map'))
                                                             ->columnSpanFull()
                                                             ->rows(5)
                                                             ->placeholder(__('Enter Google Map URL'))
                                                             ->helperText(__('The Google Map URL for contact')),
+
                                                     ]),
                                             ]),
                                     ]);
