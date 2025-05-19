@@ -33,13 +33,7 @@ class SectionResource extends Resource
     {
         return $form
             ->schema([
-                Placeholder::make('Section Information')
-                    ->hiddenLabel()
-                    ->columnSpanFull()
-                    ->content(__('Sections help organize your website content into distinct areas. Each section can contain multiple blocks and can be customized with different layouts and styles.'))
-                    ->extraAttributes([
-                        'class' => 'p-4 bg-gray-100 text-gray-600 border border-gray-200 rounded-lg dark:bg-gray-900 dark:text-gray-400 dark:border-gray-800',
-                    ]),
+
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255)
@@ -109,7 +103,7 @@ class SectionResource extends Resource
                             ->columns(2)
                             ->schema(function (Forms\Get $get) {
                                 $commonFields = [
-                                    Fieldset::make(__('Section Content'))
+                                    Fieldset::make(__('Section Header'))
                                         ->columns(2)
                                         ->schema([
                                             Forms\Components\TextInput::make('content.title')
