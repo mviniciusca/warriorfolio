@@ -2,7 +2,7 @@
 
 @if($is_active)
 <div>
-    <x-themes.juno.partials.header subtitle="Full-stack developer exploring the digital frontier" title="About Me" />
+    <x-themes.juno.partials.header :$title :$subtitle />
 
     <div class="grid w-full grid-cols-1 justify-between gap-8 md:grid-cols-[2fr_1fr]">
         <!-- Bio Column -->

@@ -4,7 +4,7 @@ $subtitle = "Have a project in mind? Let's work together";
 @endphp
 
 <div class="px-4">
-    <x-themes.juno.partials.header :subtitle="$subtitle" :title="$title" />
+    <x-themes.juno.partials.header :$title :$subtitle />
 
     <div class="grid gap-8 md:grid-cols-2">
         <!-- Contact Info Column -->

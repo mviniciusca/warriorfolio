@@ -4,6 +4,7 @@ namespace App\View\Components\Themes\Juno;
 
 use App\Models\Setting;
 use App\Services\GithubService;
+use App\Traits\SectionLoader;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Log;
@@ -12,7 +13,7 @@ use Throwable;
 
 class Repositories extends Component
 {
-    public ?bool $is_active;
+    use SectionLoader;
 
     public ?string $githubUser;
 
@@ -20,14 +21,18 @@ class Repositories extends Component
 
     public ?int $repoQuantity;
 
+    public ?bool $is_app_active;
+
     public function __construct()
     {
         try {
+            $this->loadSection('github-repositories');
+
             $settings = Setting::first(['config'])->config ?? null;
             $this->githubUser = $settings['github_username'] ?? null;
             $this->showOnlyRepositories = $settings['github_repositories'] ?? null;
             $this->repoQuantity = $settings['repository_quantity'] ?? null;
-            $this->is_active = null;
+            $this->is_app_active = $settings['github_is_active'] ?? null;
         } catch (Throwable $e) {
             Log::error('Error initializing Repositories component', [
                 'exception' => $e->getMessage(),
@@ -39,7 +44,8 @@ class Repositories extends Component
             $this->githubUser = null;
             $this->showOnlyRepositories = null;
             $this->repoQuantity = null;
-            $this->is_active = null;
+
+            $this->loadSection('github-repositories');
         }
     }
 

@@ -1,7 +1,7 @@
 {{-- No props required since we get posts from the component class --}}
 
 @if($is_active)
-<x-themes.juno.partials.header buttonIcon="newspaper-outline" buttonUrl="/blog" button="View All"
+<x-themes.juno.partials.header :$title :$subtitle buttonIcon="newspaper-outline" buttonUrl="/blog" button="View All"
     subtitle="Sharing thoughts, tutorials, and insights" title="Notes" />
 
 <div class="divide-y divide-secondary-200 dark:divide-secondary-800">

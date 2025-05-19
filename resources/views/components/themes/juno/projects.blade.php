@@ -2,8 +2,7 @@
 
 @if($is_active)
 <div>
-    <x-themes.juno.partials.header subtitle="Showcasing my latest work and creative projects"
-        title="Portfolio Projects" />
+    <x-themes.juno.partials.header :$title :$subtitle />
     <div class="mb-6">
         @livewire('portfolio.gallery')
     </div>
