@@ -5,8 +5,10 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\SectionResource\Pages;
 use App\Models\Section;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -55,6 +57,7 @@ class SectionResource extends Resource
                     ->unique(Section::class, 'slug', ignoreRecord: true),
                 Forms\Components\Tabs::make('Section')
                     ->persistTab()
+                    ->persistTabInQueryString('id')
                     ->tabs([
                         Forms\Components\Tabs\Tab::make('Settings')
                             ->icon('heroicon-o-cog-6-tooth')
@@ -106,31 +109,40 @@ class SectionResource extends Resource
                             ->columns(2)
                             ->schema(function (Forms\Get $get) {
                                 $commonFields = [
-                                    Forms\Components\TextInput::make('content.title')
-                                        ->label(__('Title'))
-                                        ->placeholder(__('Enter section title'))
-                                        ->prefixIcon('heroicon-m-bars-3-center-left')
-                                        ->helperText(__('The main heading text for this section')),
-                                    Forms\Components\TextInput::make('content.subtitle')
-                                        ->label(__('Subtitle'))
-                                        ->placeholder(__('Enter section subtitle'))
-                                        ->prefixIcon('heroicon-m-bars-3-center-left')
-                                        ->helperText(__('A secondary heading or supporting text')),
-                                    Forms\Components\TextInput::make('content.button_header')
-                                        ->label(__('Button Text'))
-                                        ->placeholder(__('Enter button text'))
-                                        ->prefixIcon('heroicon-m-bars-3-center-left')
-                                        ->helperText(__('The text to display on the button')),
-                                    Forms\Components\TextInput::make('content.button_url')
-                                        ->label(__('Button URL'))
-                                        ->placeholder(__('Enter button URL'))
-                                        ->prefixIcon('heroicon-m-bars-3-center-left')
-                                        ->helperText(__('The destination URL when the button is clicked')),
-                                    Forms\Components\TextInput::make('content.button_icon')
-                                        ->label(__('Button Icon'))
-                                        ->placeholder(__('Enter button icon'))
-                                        ->prefixIcon('heroicon-m-bars-3-center-left')
-                                        ->helperText(__('The icon to display on the button')),
+                                    Fieldset::make(__('Section Content'))
+                                        ->columns(2)
+                                        ->schema([
+                                            Forms\Components\TextInput::make('content.title')
+                                                ->label(__('Title'))
+                                                ->placeholder(__('Enter section title'))
+                                                ->prefixIcon('heroicon-m-bars-3-center-left')
+                                                ->helperText(__('The main heading text for this section')),
+                                            Forms\Components\TextInput::make('content.subtitle')
+                                                ->label(__('Subtitle'))
+                                                ->placeholder(__('Enter section subtitle'))
+                                                ->prefixIcon('heroicon-m-bars-3-center-left')
+                                                ->helperText(__('A secondary heading or supporting text')),
+                                            Group::make()
+                                                ->columns(3)
+                                                ->columnSpanFull()
+                                                ->schema([
+                                                    Forms\Components\TextInput::make('content.button_header')
+                                                        ->label(__('Button Text'))
+                                                        ->placeholder(__('Enter button text'))
+                                                        ->prefixIcon('heroicon-m-bars-3-center-left')
+                                                        ->helperText(__('The text to display on the button')),
+                                                    Forms\Components\TextInput::make('content.button_url')
+                                                        ->label(__('Button URL'))
+                                                        ->placeholder(__('Enter button URL'))
+                                                        ->prefixIcon('heroicon-m-bars-3-center-left')
+                                                        ->helperText(__('The destination URL when the button is clicked')),
+                                                    Forms\Components\TextInput::make('content.button_icon')
+                                                        ->label(__('Button Icon'))
+                                                        ->placeholder(__('Enter button icon'))
+                                                        ->prefixIcon('heroicon-m-bars-3-center-left')
+                                                        ->helperText(__('The icon to display on the button')),
+                                                ]),
+                                        ]),
                                 ];
 
                                 // Footer
@@ -143,6 +155,42 @@ class SectionResource extends Resource
                                                     ->label(__('Show Social Links'))
                                                     ->helperText(__('Enable to display social media links in the footer'))
                                                     ->default(true),
+                                            ]),
+                                    ]);
+                                }
+
+                                // Contact
+
+                                if ($get('slug') === 'contact') {
+                                    return array_merge($commonFields, [
+                                        Group::make()
+                                            ->columnSpanFull()
+                                            ->schema([
+                                                Fieldset::make(__('Public Information'))
+                                                    ->columns(3)
+                                                    ->schema([
+                                                        Forms\Components\TextInput::make('content.email')
+                                                            ->label(__('Email'))
+                                                            ->placeholder(__('Enter email address'))
+                                                            ->prefixIcon('heroicon-o-envelope')
+                                                            ->helperText(__('The email address for contact')),
+                                                        Forms\Components\TextInput::make('content.phone')
+                                                            ->label(__('Phone'))
+                                                            ->placeholder(__('Enter phone number'))
+                                                            ->prefixIcon('heroicon-o-phone')
+                                                            ->helperText(__('The phone number for contact')),
+                                                        Forms\Components\TextInput::make('content.address')
+                                                            ->label(__('Address'))
+                                                            ->placeholder(__('Enter address'))
+                                                            ->prefixIcon('heroicon-o-map')
+                                                            ->helperText(__('The physical address for contact')),
+                                                        Textarea::make('content.google_map')
+                                                            ->label(__('Google Map'))
+                                                            ->columnSpanFull()
+                                                            ->rows(5)
+                                                            ->placeholder(__('Enter Google Map URL'))
+                                                            ->helperText(__('The Google Map URL for contact')),
+                                                    ]),
                                             ]),
                                     ]);
                                 }

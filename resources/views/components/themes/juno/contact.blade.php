@@ -1,8 +1,3 @@
-@php
-$title = 'Get in Touch';
-$subtitle = "Have a project in mind? Let's work together";
-@endphp
-
 <div class="px-4">
     <x-themes.juno.partials.header :$title :$subtitle />
 
