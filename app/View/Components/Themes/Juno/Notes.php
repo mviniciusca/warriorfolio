@@ -3,14 +3,18 @@
 namespace App\View\Components\Themes\Juno;
 
 use App\Models\Page;
+use App\Traits\SectionLoader;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Notes extends Component
 {
+    use SectionLoader;
+
     public function __construct()
     {
+        $this->loadSection('blog');
     }
 
     public function render(): View|Closure|string
