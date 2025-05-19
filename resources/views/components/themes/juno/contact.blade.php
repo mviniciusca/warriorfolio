@@ -1,12 +1,13 @@
 <div class="px-4">
-    <x-themes.juno.partials.header :$title :$subtitle />
 
-    <div class="grid gap-8 md:grid-cols-2">
+    @if($is_heading_visible)
+    <x-themes.juno.partials.header :$title :$subtitle />
+    @endif
+
+    <div class="grid gap-8 md:grid-cols-2 items-center">
         <!-- Contact Info Column -->
         <div class="space-y-6">
             <div>
-                <h3 class="mb-4 text-sm font-medium">
-                    Company Information</h3>
                 <div class="space-y-4">
                     @isset($content['address'])
                     <div class="flex items-start gap-3">
@@ -18,7 +19,6 @@
                         </div>
                     </div>
                     @endisset
-
                     @isset($content['phone'])
                     <div class="flex items-start gap-3">
                         <x-ui.ionicon class="mt-1 h-5 w-5" icon="call-outline" />
@@ -41,22 +41,21 @@
                         </div>
                     </div>
                     @endisset
+                    @isset($content['business_hour']))
                     <div class="flex items-start gap-3">
                         <x-ui.ionicon class="mt-1 h-5 w-5" icon="time-outline" />
                         <div>
                             <p class="text-sm font-medium ">
                                 Business Hours</p>
                             <p class="mt-1 text-sm">
-                                Monday - Friday: 9:00 AM - 6:00 PM<br>
-                                Saturday: 10:00 AM - 4:00 PM<br>
-                                Sunday: Closed
+                                {!! $content['business_hour'] !!}
                             </p>
                         </div>
                     </div>
+                    @endisset
                 </div>
             </div>
         </div>
-
         <!-- Contact Form Column -->
         <div>
             @livewire('mail.create-mail')

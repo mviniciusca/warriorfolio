@@ -79,7 +79,7 @@ class SectionResource extends Resource
                                             ->default(false)
                                             ->required(),
                                         Checkbox::make('content.with_padding')
-                                            ->label(__('With Padding'))
+                                            ->label(__('Vertical Padding'))
                                             ->helperText(__('If enabled, this section will have padding'))
                                             ->default(true)
                                             ->required(),
