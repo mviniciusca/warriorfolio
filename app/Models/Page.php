@@ -72,4 +72,31 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
             }
         });
     }
+
+    public function tabsSection()
+    {
+        $tabs = [
+            'github-repositories' => 'Repositories',
+            'portfolio'           => 'Portfolio',
+            'blog'                => 'Blog',
+            'about-me'            => 'About Me',
+            'contact'             => 'Contact',
+        ];
+
+        $activeSections = Section::whereIn('slug', array_keys($tabs))
+            ->where('is_active', true)
+            ->get()
+            ->keyBy('slug');
+
+        // Retorna apenas as tabs com seções ativas
+        $result = [];
+        foreach ($tabs as $slug => $label) {
+            // Se a seção existe e está ativa, ou se é 'github-repositories' (que é sempre ativo)
+            if ($slug === 'github-repositories' || isset($activeSections[$slug])) {
+                $result[$slug] = $label;
+            }
+        }
+
+        return $result;
+    }
 }

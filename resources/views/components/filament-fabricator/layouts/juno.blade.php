@@ -1,5 +1,9 @@
 @props(['page'])
 
+@php
+$tabs = $page->tabsSection();
+@endphp
+
 <x-core.base-layout bodyClass="juno-theme juno-app-core flex min-h-screen flex-col">
     <header class="header-section" id="app-header">
         <x-header.section />
@@ -12,35 +16,29 @@
             </div>
 
             <!-- Tabs System -->
-            <x-ui.tabs :tabs="[
-                'repositories' => 'Repositories',
-                'projects' => 'Projects',
-                'notes' => 'Notes',
-                'about' => 'About Me',
-                'contact' => 'Contact'
-            ]">
+            <x-ui.tabs :tabs="$tabs">
                 <!-- Repositories Tab -->
-                <div class="tab-pane" id="repositories-content">
+                <div class="tab-pane" id="github-repositories">
                     <x-themes.juno.repositories />
                 </div>
 
-                <!-- Projects Tab -->
-                <div class="tab-pane hidden" id="projects-content">
+                <!-- Portfolio Tab -->
+                <div class="tab-pane hidden" id="portfolio">
                     <x-themes.juno.projects />
                 </div>
 
-                <!-- Notes Tab -->
-                <div class="tab-pane hidden" id="notes-content">
+                <!-- Blog Tab -->
+                <div class="tab-pane hidden" id="blog">
                     <x-themes.juno.notes />
                 </div>
 
-                <!-- About Tab -->
-                <div class="tab-pane hidden" id="about-content">
+                <!-- About Me Tab -->
+                <div class="tab-pane hidden" id="about-me">
                     <x-themes.juno.about />
                 </div>
 
                 <!-- Contact Tab -->
-                <div class="tab-pane hidden" id="contact-content">
+                <div class="tab-pane hidden" id="contact">
                     <x-themes.juno.contact />
                 </div>
             </x-ui.tabs>
