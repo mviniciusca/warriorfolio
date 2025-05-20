@@ -36,7 +36,6 @@
     "require": {
         "php": "^8.2",
         "awcodes/filament-curator": "*",
-        "biscolab/laravel-recaptcha": "^6.1",
         "filament/filament": "^3.3",
         "flowframe/laravel-trend": "^0.3.0",
         "google/recaptcha": "^1.3",
