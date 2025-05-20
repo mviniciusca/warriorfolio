@@ -8,7 +8,7 @@
     <div class="mb-12 flex space-x-4 border-b border-secondary-200 dark:border-secondary-800">
         @foreach($tabs as $id => $label)
         <button type="button"
-            class="tab-button text-xs px-4 py-2 {{ $id === $activeTab ? 'text-secondary-900 dark:text-secondary-100' : 'text-secondary-500 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100' }}"
+            class="tab-button text-xs px-4 py-2 {{ $id === $activeTab ? 'text-secondary-900 dark:text-secondary-100' : 'text-secondary-600 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100' }}"
             id="{{ $id }}-tab">
             {{ __($label) }}
         </button>
