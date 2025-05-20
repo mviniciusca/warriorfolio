@@ -23,6 +23,10 @@ class Repositories extends Component
 
     public ?bool $is_app_active;
 
+    public ?bool $show_graphs;
+
+    public ?bool $show_repositories_feed;
+
     public function __construct()
     {
         try {
@@ -33,6 +37,8 @@ class Repositories extends Component
             $this->showOnlyRepositories = $settings['github_repositories'] ?? null;
             $this->repoQuantity = $settings['repository_quantity'] ?? null;
             $this->is_app_active = $settings['github_is_active'] ?? null;
+            $this->show_graphs = $settings['show_graphs'] ?? null;
+            $this->show_repositories_feed = $settings['show_repositories_feed'] ?? null;
         } catch (Throwable $e) {
             Log::error('Error initializing Repositories component', [
                 'exception' => $e->getMessage(),

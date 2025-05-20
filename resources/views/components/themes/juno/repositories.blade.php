@@ -5,6 +5,9 @@
 <div class="tab-pane" id="repositories-content">
     <x-themes.juno.partials.header :buttonIcon="$buttonIcon ?? 'logo-github'" :buttonUrl="$button_url"
         :button="$button_header" :$subtitle :$title />
+
+
+    @if($show_graphs)
     <!-- GitHub Contribution Graph -->
     <div
         class="mb-8 overflow-hidden rounded-lg border border-secondary-200 bg-white/0 p-4 dark:border-secondary-800/50 dark:bg-secondary-900/50">
@@ -13,7 +16,9 @@
         <img alt="GitHub Contributions Graph" class="hidden w-full opacity-90 grayscale invert dark:block"
             src="https://ghchart.rshah.org/{{ $githubUser }}">
     </div>
+    @endif
 
+    @if($show_repositories_feed)
     <div class="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3">
         @if (!empty($repositories))
         @foreach ($repositories as $repository)
@@ -83,5 +88,6 @@
         </div>
         @endif
     </div>
+    @endif
 </div>
 @endif

@@ -333,7 +333,7 @@ class SettingResource extends Resource
                                                     ->columns(1)
                                                     ->schema([
                                                         Group::make()
-                                                            ->columns(3)
+                                                            ->columns(4)
                                                             ->schema([
                                                                 Toggle::make('config.github_is_active')
                                                                     ->label(__('Enable GitHub Service'))
@@ -343,6 +343,10 @@ class SettingResource extends Resource
                                                                 Toggle::make('config.show_graphs')
                                                                     ->label(__('Show Graphs'))
                                                                     ->helperText(__('Enable or disable the graphs.'))
+                                                                    ->default(true),
+                                                                Toggle::make('config.show_repositories_feed')
+                                                                    ->label(__('Show Repositories Feed'))
+                                                                    ->helperText(__('Enable or disable the repositories feed.'))
                                                                     ->default(true),
                                                                 TextInput::make('config.repository_quantity')
                                                                     ->label(__('Repository Quantity'))
