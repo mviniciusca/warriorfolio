@@ -139,12 +139,12 @@ class StatsOverview extends BaseWidget
             // GitHub Repositories
             Stat::make(
                 __('GitHub Repositories'),
-                Setting::first()?->config['github_username'] ? __('Active') : __('Not Configured')
+                Setting::first()?->config['github_is_active'] ? __('Active') : __('Inactive')
             )
                 ->icon('heroicon-o-code-bracket')
                 ->url(route('filament.admin.resources.settings.edit', ['record' => Setting::first()->id]))
                 ->description('@'.(Setting::first()->config['github_username'] ?? env('GITHUB_USERNAME', 'username')))
-                ->color(Setting::first()?->config['github_username'] ? 'success' : 'gray')
+                ->color(Setting::first()?->config['github_is_active'] ? 'success' : 'gray')
                 ->extraAttributes([
                     'class' => 'cursor-pointer transition-all hover:scale-101',
                 ]),
