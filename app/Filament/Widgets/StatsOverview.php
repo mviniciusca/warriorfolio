@@ -11,6 +11,8 @@ use App\Models\Page;
 use App\Models\Post;
 use App\Models\Profile;
 use App\Models\Project;
+use App\Models\Setting;
+use App\Services\GithubService;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Support\Facades\Auth;
@@ -134,16 +136,15 @@ class StatsOverview extends BaseWidget
                     'class' => 'cursor-pointer transition-all hover:scale-101',
                 ]),
 
-            // Media Library
+            // GitHub Repositories
             Stat::make(
-                __('Media Files'),
-                (string) \Awcodes\Curator\Models\Media::count()
+                __('GitHub Repositories'),
+                Setting::first()?->config['github_username'] ? __('Active') : __('Not Configured')
             )
-                ->icon('heroicon-o-photo')
-                ->url(route('filament.admin.resources.media.index'))
-                ->description(__('Storage Items'))
-                ->descriptionIcon('heroicon-m-folder')
-                ->color('primary')
+                ->icon('heroicon-o-code-bracket')
+                ->url(route('filament.admin.resources.settings.edit', ['record' => Setting::first()->id]))
+                ->description('@'.(Setting::first()->config['github_username'] ?? env('GITHUB_USERNAME', 'username')))
+                ->color(Setting::first()?->config['github_username'] ? 'success' : 'gray')
                 ->extraAttributes([
                     'class' => 'cursor-pointer transition-all hover:scale-101',
                 ]),

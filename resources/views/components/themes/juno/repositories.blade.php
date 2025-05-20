@@ -3,8 +3,8 @@
 @if($is_active && $is_app_active)
 
 <div class="tab-pane" id="repositories-content">
-    <x-themes.juno.partials.header buttonIcon="logo-github"
-        buttonUrl="{{ $githubUser ? 'https://github.com/' . $githubUser : '#' }}" button="Follow" :$subtitle :$title />
+    <x-themes.juno.partials.header :buttonIcon="$buttonIcon ?? 'logo-github'" :buttonUrl="$button_url"
+        :button="$button_header" :$subtitle :$title />
     <!-- GitHub Contribution Graph -->
     <div
         class="mb-8 overflow-hidden rounded-lg border border-secondary-200 bg-white/0 p-4 dark:border-secondary-800/50 dark:bg-secondary-900/50">
