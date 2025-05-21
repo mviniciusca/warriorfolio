@@ -81,88 +81,91 @@
 
     {{-- Profile Expanded --}}
     <div x-show="isExpanded" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
-        <div class="flex flex-col md:flex-row md:items-start md:gap-8">
-            @if ($showAvatar)
-            <div class="relative mb-8 md:mb-0 md:w-1/3">
-                <div class="relative">
-                    @if ($data->profile->avatar)
-                    <img alt="{{ $data->name }}" class="relative h-32 w-32 md:h-48 md:w-48 rounded-full object-cover"
-                        src="{{ asset('storage/' . $data->profile->avatar) }}" />
-                    @else
-                    <img alt="Default profile"
-                        class="relative dark:invert h-32 w-32 md:h-48 md:w-48 rounded-full object-cover"
-                        src="{{ asset('img/core/profile-picture.png') }}" />
-                    @endif
-                </div>
-            </div>
-            @endif
-
-            <div class="flex flex-col md:w-2/3">
-                <div class="text-center md:text-left">
-                    @if ($showName)
-                    <h2 class="mb-4 flex items-center md:justify-start gap-2 text-lg font-medium leading-tight">
-                        <span>{{ $data->name }}</span>
-                        @if ($data->profile->is_open_to_work)
-                        <x-themes.juno.partials.open-to-work-badge />
-                        @endif
-                    </h2>
-                    @endif
-                    <div class="flex flex-col gap-y-2 text-sm text-secondary-600 dark:text-secondary-400">
-                        @if ($showJobPosition && $data->profile->job_position && $showCompany &&
-                        $data->profile->company)
-                        <div class="flex items-center gap-2">
-                            <x-ui.ionicon icon="briefcase-outline" />
-                            <span>{{ $data->profile->job_position }} at {{ $data->profile->company }}</span>
-                        </div>
-                        @elseif ($showJobPosition && $data->profile->job_position)
-                        <div class="flex items-center gap-2">
-                            <x-ui.ionicon icon="briefcase-outline" />
-                            <span>{{ $data->profile->job_position }}</span>
-                        </div>
-                        @elseif ($showCompany && $data->profile->company)
-                        <div class="flex items-center gap-2">
-                            <x-ui.ionicon icon="business-outline" />
-                            <span>{{ $data->profile->company }}</span>
-                        </div>
-                        @endif
-
-                        @if ($showLocation && $data->profile->localization)
-                        <div class="flex items-center gap-2">
-                            <x-ui.ionicon icon="location-outline" />
-                            <span>{{ $data->profile->localization }}</span>
-                        </div>
-                        @endif
-
-                        @if ($showEmail && $data->profile->public_email)
-                        <div class="flex items-center gap-2">
-                            <x-ui.ionicon icon="mail-outline" />
-                            <a class="hover:text-secondary-800 dark:hover:text-secondary-200"
-                                href="mailto:{{ $data->profile->public_email }}">
-                                {{ $data->profile->public_email }}
-                            </a>
-                        </div>
+        <div class="container mx-auto max-w-4xl px-4">
+            <div class="flex flex-col md:flex-row md:items-start md:gap-8">
+                @if ($showAvatar)
+                <div class="relative mb-8 md:mb-0 md:w-1/3 flex justify-center md:justify-end">
+                    <div class="relative">
+                        @if ($data->profile->avatar)
+                        <img alt="{{ $data->name }}"
+                            class="relative h-32 w-32 md:h-32 md:w-32 rounded-full object-cover"
+                            src="{{ asset('storage/' . $data->profile->avatar) }}" />
+                        @else
+                        <img alt="Default profile"
+                            class="relative dark:invert h-32 w-32 md:h-32 md:w-32 rounded-full object-cover"
+                            src="{{ asset('img/core/profile-picture.png') }}" />
                         @endif
                     </div>
                 </div>
-
-                @if ($showSocial)
-                <div class="mt-6 flex md:justify-start">
-                    <x-ui.social-network justify="start" size="default" />
-                </div>
                 @endif
 
-                @if ($showSkills && $data->profile->skills)
-                <div class="mt-6">
-                    <div class="flex flex-wrap md:justify-start gap-1.5">
-                        @foreach (explode(',', $data->profile->skills) as $skill)
-                        <span
-                            class="rounded-full border border-secondary-600 px-2 py-0.5 text-xs text-secondary-600 dark:border-secondary-700/50 dark:text-secondary-400">
-                            {{ trim($skill) }}
-                        </span>
-                        @endforeach
+                <div class="flex flex-col md:w-2/3">
+                    <div class="text-center md:text-left">
+                        @if ($showName)
+                        <h2 class="mb-4 flex items-center md:justify-start gap-2 text-lg font-medium leading-tight">
+                            <span>{{ $data->name }}</span>
+                            @if ($data->profile->is_open_to_work)
+                            <x-themes.juno.partials.open-to-work-badge />
+                            @endif
+                        </h2>
+                        @endif
+                        <div class="flex flex-col gap-y-2 text-sm text-secondary-600 dark:text-secondary-400">
+                            @if ($showJobPosition && $data->profile->job_position && $showCompany &&
+                            $data->profile->company)
+                            <div class="flex items-center gap-2">
+                                <x-ui.ionicon icon="briefcase-outline" />
+                                <span>{{ $data->profile->job_position }} at {{ $data->profile->company }}</span>
+                            </div>
+                            @elseif ($showJobPosition && $data->profile->job_position)
+                            <div class="flex items-center gap-2">
+                                <x-ui.ionicon icon="briefcase-outline" />
+                                <span>{{ $data->profile->job_position }}</span>
+                            </div>
+                            @elseif ($showCompany && $data->profile->company)
+                            <div class="flex items-center gap-2">
+                                <x-ui.ionicon icon="business-outline" />
+                                <span>{{ $data->profile->company }}</span>
+                            </div>
+                            @endif
+
+                            @if ($showLocation && $data->profile->localization)
+                            <div class="flex items-center gap-2">
+                                <x-ui.ionicon icon="location-outline" />
+                                <span>{{ $data->profile->localization }}</span>
+                            </div>
+                            @endif
+
+                            @if ($showEmail && $data->profile->public_email)
+                            <div class="flex items-center gap-2">
+                                <x-ui.ionicon icon="mail-outline" />
+                                <a class="hover:text-secondary-800 dark:hover:text-secondary-200"
+                                    href="mailto:{{ $data->profile->public_email }}">
+                                    {{ $data->profile->public_email }}
+                                </a>
+                            </div>
+                            @endif
+                        </div>
                     </div>
+
+                    @if ($showSocial)
+                    <div class="mt-6 flex md:justify-start">
+                        <x-ui.social-network justify="start" size="default" />
+                    </div>
+                    @endif
+
+                    @if ($showSkills && $data->profile->skills)
+                    <div class="mt-6">
+                        <div class="flex flex-wrap md:justify-start gap-1.5">
+                            @foreach (explode(',', $data->profile->skills) as $skill)
+                            <span
+                                class="rounded-full border border-secondary-600 px-2 py-0.5 text-xs text-secondary-600 dark:border-secondary-700/50 dark:text-secondary-400">
+                                {{ trim($skill) }}
+                            </span>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
                 </div>
-                @endif
             </div>
         </div>
     </div>
