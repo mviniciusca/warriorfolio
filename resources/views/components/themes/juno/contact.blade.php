@@ -1,9 +1,7 @@
 <div class="px-4">
-
     @if($is_heading_visible)
     <x-themes.juno.partials.header :$title :$subtitle />
     @endif
-
     @if(isset($content['google_map']))
     <div class="relative min-h-[600px]">
         <!-- Google Maps Background -->
@@ -13,7 +11,6 @@
                 loading="lazy" referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </div>
-
         <!-- Contact Info Overlay -->
         <div class="relative z-10 p-8 grid grid-cols-1 md:grid-cols-2">
             <div class="hidden md:block"></div>
