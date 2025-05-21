@@ -19,10 +19,6 @@
             <div class="hidden md:block"></div>
             <div
                 class="max-w-md bg-white/95 dark:bg-secondary-800/95 rounded-lg shadow-lg p-8 backdrop-blur-sm ml-auto">
-                @if($is_heading_visible)
-                <x-themes.juno.partials.header :$title :$subtitle />
-                @endif
-
                 <div class="space-y-4">
                     @isset($content['address'])
                     <div class="flex items-start gap-3">
