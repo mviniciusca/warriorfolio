@@ -17,7 +17,7 @@ App\View\Components\Footer\Section.php
 <div class="{{ $is_filled ? 'section-filled' : '' }}">
     <x-core.layout :$is_section_filled_inverted :$with_padding>
         <div class="py-8" id="footer-content">
-            <div class="mx-auto p-4">
+            <div class="mx-auto">
                 <div class="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
                     <div class="flex items-center space-x-4">
                         <x-ui.logo />

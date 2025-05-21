@@ -47,8 +47,8 @@ $tabs = $page->tabsSection();
                 <x-newsletter.section :with_padding="false" :show_light="false"
                     class="bg-dots relative rounded-md border border-secondary-200/50 py-16 dark:border-secondary-900 dark:bg-transparent" />
             </div>
-            <!-- Footer -->
         </div>
-        <x-footer.section :with_padding="false" />
     </x-core.layout>
+    <!-- Footer -->
+    <x-footer.section :with_padding="false" />
 </x-core.base-layout>
