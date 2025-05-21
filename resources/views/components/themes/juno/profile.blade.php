@@ -136,7 +136,7 @@
                 <img alt="{{ $data->name }}" class="h-20 w-20 rounded-lg object-cover"
                     src="{{ asset('storage/' . $data->profile->avatar) }}" />
                 @else
-                <img alt="Default profile" class="dark:invert h-20 w-20 rounded-lg object-cover"
+                <img alt="Default profile" class="dark:invert h-20 w-20 rounded-full object-cover"
                     src="{{ asset('img/core/profile-picture.png') }}" />
                 @endif
             </div>
