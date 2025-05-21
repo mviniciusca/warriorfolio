@@ -132,3 +132,43 @@ acceptPrivacyEl.addEventListener('click', () => {
 function hideContent() {
     document.body.classList.add('hide-content');
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Link LinkedIn nos badges Open to Work
+    function updateOpenToWorkBadges() {
+        const socialNetworks = document.querySelectorAll('[data-linkedin]');
+        let linkedinUrl = null;
+
+        // Procura em todos os componentes de redes sociais pelo LinkedIn
+        socialNetworks.forEach(social => {
+            const url = social.getAttribute('data-linkedin');
+            if (url && url !== 'null' && url !== '') {
+                linkedinUrl = url;
+            }
+        });
+
+        // Se encontrou um LinkedIn, atualiza os badges
+        if (linkedinUrl) {
+            const badges = [
+                document.getElementById('open-to-work-expanded'),
+                document.getElementById('open-to-work-compact'),
+                document.getElementById('open-to-work-ultra-compact'),
+            ];
+
+            badges.forEach(badge => {
+                if (badge && badge.textContent.includes('Open to Work')) {
+                    const a = document.createElement('a');
+                    a.href = linkedinUrl;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.className = badge.className + ' hover:underline';
+                    a.textContent = badge.textContent;
+                    badge.replaceWith(a);
+                }
+            });
+        }
+    }
+
+    setTimeout(updateOpenToWorkBadges, 100);
+});
