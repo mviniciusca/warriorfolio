@@ -13,7 +13,7 @@
     @endif
 
     @if ($portfolio_core ?? false)
-    <x-project.section :global_visibility="true ?? false" />
+    <x-themes.default.projects :global_visibility="true ?? false" />
     @endif
 
     @if ($clients_core ?? false)
