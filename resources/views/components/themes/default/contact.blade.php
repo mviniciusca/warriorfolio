@@ -62,7 +62,7 @@
                 @if (
                 $content['address'] == null ||
                 ($content['phone'] == null && $content['email'] == null))
-                <x-contact.empty-address :data="$content" />
+                <x-ui.empty-address :data="$content" />
                 @endif
                 {{-- End Empty Fields --}}
             </div>
