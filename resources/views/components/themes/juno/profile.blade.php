@@ -68,6 +68,13 @@
                                 {{ __('Open to Work') }}
                             </x-themes.juno.partials.badge>
                             @endif
+                            @if($data->profile->is_downloadable && $data->profile->document)
+                            <a target="_blank" href="{{ asset('storage/' . $data->profile->document) }}">
+                                <x-themes.juno.partials.badge>
+                                    {{ __('Download CV') }}
+                                </x-themes.juno.partials.badge>
+                            </a>
+                            @endif
                         </h2>
                         @endif
                         <div
