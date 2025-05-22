@@ -64,7 +64,9 @@
                             class="mb-4 flex items-center justify-center md:justify-start gap-2 text-lg font-medium leading-tight">
                             <span>{{ $data->name }}</span>
                             @if ($data->profile->is_open_to_work)
-                            <x-themes.juno.partials.open-to-work-badge />
+                            <x-themes.juno.partials.badge>
+                                {{ __('Open to Work') }}
+                            </x-themes.juno.partials.badge>
                             @endif
                         </h2>
                         @endif
@@ -146,7 +148,9 @@
                 <h2 class="mb-0 flex items-center gap-2 text-lg font-medium leading-tight">
                     <span>{{ $data->name }}</span>
                     @if ($data->profile->is_open_to_work)
-                    <x-themes.juno.partials.open-to-work-badge />
+                    <x-themes.juno.partials.badge>
+                        {{ __('Open to Work') }}
+                    </x-themes.juno.partials.badge>
                     @endif
                 </h2>
                 <div class="text-sm text-secondary-600 dark:text-secondary-400">
@@ -173,7 +177,9 @@
                 <h2 class="mb-0 flex items-center gap-2 text-lg font-medium leading-tight">
                     <span>{{ $data->name }}</span>
                     @if ($data->profile->is_open_to_work)
-                    <x-themes.juno.partials.open-to-work-badge />
+                    <x-themes.juno.partials.badge>
+                        {{ __('Open to Work') }}
+                    </x-themes.juno.partials.badge>
                     @endif
                 </h2>
             </div>
