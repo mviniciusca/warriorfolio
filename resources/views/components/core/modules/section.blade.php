@@ -21,7 +21,7 @@
     @endif
 
     @if ($contact_core ?? false)
-    <x-contact.section :global_visibility="true ?? false" />
+    <x-themes.default.contact :global_visibility="true ?? false" />
     @endif
 
     @if ($newsletter_core ?? false)
