@@ -39,7 +39,7 @@
 
     {{-- Profile Expanded --}}
     <div x-show="isExpanded" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
-        <div class="container mx-auto max-w-4xl px-4">
+        <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row md:items-start md:gap-8">
                 @if ($showAvatar)
                 <div class="relative mb-8 md:mb-0 md:w-1/3 flex justify-center md:justify-end">
@@ -60,14 +60,16 @@
                 <div class="flex flex-col md:w-2/3">
                     <div class="text-center md:text-left">
                         @if ($showName)
-                        <h2 class="mb-4 flex items-center md:justify-start gap-2 text-lg font-medium leading-tight">
+                        <h2
+                            class="mb-4 flex items-center justify-center md:justify-start gap-2 text-lg font-medium leading-tight">
                             <span>{{ $data->name }}</span>
                             @if ($data->profile->is_open_to_work)
                             <x-themes.juno.partials.open-to-work-badge />
                             @endif
                         </h2>
                         @endif
-                        <div class="flex flex-col gap-y-2 text-sm text-secondary-600 dark:text-secondary-400">
+                        <div
+                            class="flex flex-col items-center md:items-start gap-y-2 text-sm text-secondary-600 dark:text-secondary-400">
                             @if ($showJobPosition && $data->profile->job_position && $showCompany &&
                             $data->profile->company)
                             <div class="flex items-center gap-2">
@@ -106,14 +108,14 @@
                     </div>
 
                     @if ($showSocial)
-                    <div class="mt-6 flex md:justify-start">
-                        <x-ui.social-network justify="start" size="default" />
+                    <div class="mt-6 flex justify-center md:justify-start">
+                        <x-ui.social-network justify="center md:start" size="default" />
                     </div>
                     @endif
 
                     @if ($showSkills && $data->profile->skills)
                     <div class="mt-6">
-                        <div class="flex flex-wrap md:justify-start gap-1.5">
+                        <div class="flex flex-wrap justify-center md:justify-start gap-1.5">
                             @foreach (explode(',', $data->profile->skills) as $skill)
                             <span
                                 class="rounded-full border border-secondary-600 px-2 py-0.5 text-xs text-secondary-600 dark:border-secondary-700/50 dark:text-secondary-400">
