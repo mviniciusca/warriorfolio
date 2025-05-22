@@ -17,7 +17,7 @@
     @endif
 
     @if ($clients_core ?? false)
-    <x-client.section :global_visibility="true ?? false" />
+    <x-themes.default.clients :global_visibility="true ?? false" />
     @endif
 
     @if ($contact_core ?? false)
