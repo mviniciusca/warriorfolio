@@ -58,9 +58,10 @@ class HeroResource extends Resource
                             ->label(__('Active'))
                             ->default(false)
                             ->helperText(__('Show or hide the hero section on the website.')),
-                        TextInput::make('content.title')
+                        TextInput::make('title')
                             ->label(__('Hero Section Title'))
                             ->helperText(__('Title of the hero section.'))
+                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
                             ->placeholder(__('Hero Section Title'))
                             ->maxLength(140)
                             ->required(),
