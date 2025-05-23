@@ -17,7 +17,7 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
     <div
         class="{{ $hero->content['is_mailing_active'] ? 'items-start' : 'items-center' }} mx-auto mt-8 grid max-w-screen-xl gap-8 md:gap-16 lg:grid-cols-2">
         <div class="mr-auto place-self-center lg:col-span-1">
-            <x-hero.heading :hero="$hero" />
+            <x-themes.common.partials.hero.heading :hero="$hero" />
             {{-- Social Network --}}
             @if ($hero->content['social_network_module_is_active'] ?? false)
             <div id="social-network-module">
@@ -26,7 +26,7 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
             </div>
             @endif
             {{-- Hero Section Button --}}
-            <x-themes.hero.partials.buttons :hero="$hero" :justify="'start'" />
+            <x-themes.common.partials.hero.buttons :hero="$hero" :justify="'start'" />
             {{-- Newsletter Module --}}
             @if (data_get($hero, 'content.is_mailing_active') ?? true)
             <div class="animate__animated animate__slideInDown max-w-80 py-4">
@@ -39,7 +39,7 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
         <div class="animate__animated animate__fadeIn animate__delay-1s flex justify-center lg:col-span-1">
             @if ($hero->content['featured_image_is_active'] ?? false)
             <div class="mt-8 flex items-center" id="hero-featured-image">
-                <x-themes.hero.partials.featured-image :hero="$hero" />
+                <x-themes.common.partials.hero.featured-image :hero="$hero" />
             </div>
             @endif
         </div>

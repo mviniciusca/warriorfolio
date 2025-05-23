@@ -18,7 +18,6 @@
         </div>
         @endforeach
     </section>
-    <x-hero.slider :$sliders />
     @if ($customers->isEmpty() && $sliders == null)
     <x-ui.empty-section :auth="__('Go to your Dashboard and create a New Client.')" />
     @endif

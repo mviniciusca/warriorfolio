@@ -25,6 +25,5 @@
         </div>
     </div>
     {{-- Core: Slider --}}
-    <x-hero.slider :$sliders />
 </x-core.layout>
 @endif

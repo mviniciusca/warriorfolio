@@ -16,14 +16,11 @@ class Hero extends Component
      */
     use SectionLoader;
 
-    public $sliders;
-
     public $hero;
 
     public function __construct()
     {
         $this->loadSection('hero');
-        $this->sliders = $this->sliders();
         $this->hero = HeroSectionModel::first();
     }
 
@@ -33,10 +30,5 @@ class Hero extends Component
     public function render(): View|Closure|string
     {
         return view('components.themes.common.hero');
-    }
-
-    public function sliders()
-    {
-        return getSlider('hero-section', new Slideshow);
     }
 }
