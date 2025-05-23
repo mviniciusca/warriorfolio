@@ -157,7 +157,7 @@
                             </span>
                             @endif
                         </a>
-                        <a href="{{ route('filament.admin.resources.settings.edit-hero-section', ['record' => 1]) }}"
+                        <a href="{{ route('filament.admin.resources.heroes.index', ['record' => 1]) }}"
                             class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
                             <x-ui.ionicon :icon="'flag-outline'" class="w-4 h-4" />
                             <span class="text-xs">{{ __('Hero Section') }}</span>
