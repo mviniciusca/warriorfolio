@@ -24,7 +24,7 @@
     @endif
     @endif
     @if ($maintenance && (!$discovery || !auth()->user()))
-    <x-maintenance.section />
+    <x-themes.common.maintenance />
     @endif
     <!-- Body Scripts -->
     @isset($scripts['body_scripts'])

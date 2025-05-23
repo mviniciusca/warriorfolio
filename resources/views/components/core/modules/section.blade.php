@@ -25,6 +25,6 @@
     @endif
 
     @if ($newsletter_core ?? false)
-    <x-newsletter.section :global_visibility="true ?? false" />
+    <x-themes.default.newsletter :global_visibility="true ?? false" />
     @endif
 </div>

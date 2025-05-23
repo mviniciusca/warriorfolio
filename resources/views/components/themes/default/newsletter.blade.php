@@ -1,29 +1,5 @@
-@props([
-'data',
-'module',
-'show_light' => true,
-'class' => null,
-'with_padding' => true,
-'px_padding' => false,
-'button_icon' => null,
-])
-
-{{--
-
-Core Component: Newsletter / Email Catcher Section
-Livewire Application
-----------------------------------------------------------------
-This component is responsible for rendering the newsletter / email catcher section of the website. This is a Livewire
-component.
--------------------------------------------------------------------
-Data:
-App\Livewire\Newsletter.php
-
---}}
-
-
-@if ($is_active ?? false)
-<x-core.layout :$px_padding :$with_padding>
+@if ($is_active)
+<x-core.layout :$with_padding :$is_section_filled_inverted :$module_name>
     <div
         class="{{ $class ?? 'bg-dots relative items-center overflow-hidden rounded-3xl border border-secondary-100 bg-white px-8 py-16 text-left dark:border-secondary-900 dark:bg-black' }}">
         <div class="absolute inset-0 z-0 bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-70"></div>
@@ -37,7 +13,7 @@ App\Livewire\Newsletter.php
             </div>
         </div>
     </div>
-    @if ($section->content['show_light'] ?? false)
+    @if ($content['show_light'] ?? false)
     <img class="absolute -z-10 -mt-4 animate-pulse"
         src="{{ asset('img/core/core-ui-elements/beams/blur-beam.png') }}" />
     @endif
