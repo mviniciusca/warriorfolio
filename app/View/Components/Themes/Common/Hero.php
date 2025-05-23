@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Themes\Common;
 
+use App\Models\Hero as HeroSectionModel;
 use App\Models\Slideshow;
 use App\Traits\SectionLoader;
 use Closure;
@@ -17,10 +18,13 @@ class Hero extends Component
 
     public $sliders;
 
+    public $hero;
+
     public function __construct()
     {
         $this->loadSection('hero');
         $this->sliders = $this->sliders();
+        $this->hero = HeroSectionModel::first();
     }
 
     /**
