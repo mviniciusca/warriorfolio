@@ -3,7 +3,7 @@
 'color' => false,
 'icon' => null,
 'size' => null,
-'style' => 'filled',
+'style' => null ?? 'filled',
 'target' => '_self',
 'title' => null,
 'url' => null,
