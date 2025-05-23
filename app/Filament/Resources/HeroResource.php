@@ -50,18 +50,21 @@ class HeroResource extends Resource
     {
         return $form
             ->schema([
-                Section::make()
-                    ->columns(1)
+                Group::make()
+                    ->columnSpanFull()
+                    ->columns(3)
                     ->schema([
-                        Group::make()
-                            ->schema([
-                                Toggle::make('is_active')
-                                    ->label(__('Active'))
-                                    ->default(true)
-                                    ->helperText(__('Show or hide the hero section on the website.')),
-                            ]),
+                        Toggle::make('is_active')
+                            ->label(__('Active'))
+                            ->default(false)
+                            ->helperText(__('Show or hide the hero section on the website.')),
+                        TextInput::make('content.title')
+                            ->label(__('Hero Section Title'))
+                            ->helperText(__('Title of the hero section.'))
+                            ->placeholder(__('Hero Section Title'))
+                            ->maxLength(140)
+                            ->required(),
                     ]),
-
                 Group::make()
                     ->columnSpanFull()
                     ->schema([
@@ -85,7 +88,7 @@ class HeroResource extends Resource
                                                     ->default('sierra')
                                                     ->helperText(__('Choose the visual theme for the Hero section.')),
                                                 Checkbox::make('content.is_filled')
-                                                    ->default(true)
+                                                    ->default(false)
                                                     ->live()
                                                     ->label(__('Fill Section Background'))
                                                     ->helperText(__('Add a dark color to section. This can override the background image.')),
@@ -95,13 +98,13 @@ class HeroResource extends Resource
                                             ->columns(2)
                                             ->schema([
                                                 Checkbox::make('content.social_network_module_is_active')
-                                                    ->default(true)
+                                                    ->default(false)
                                                     ->live()
                                                     ->label(__('Social Network Module'))
                                                     ->helperText(__('Enable the Social Network Module on Hero Sections where this option is available.')),
 
                                                 Checkbox::make('content.is_mailing_active')
-                                                    ->default(true)
+                                                    ->default(false)
                                                     ->live()
                                                     ->label(__('Mailing List Module'))
                                                     ->helperText(__('Enable the Mailing List Module on Hero Sections where this option is available.')),
@@ -224,11 +227,11 @@ class HeroResource extends Resource
                                                 Checkbox::make('content.bumper_is_active')
                                                     ->helperText(__('Show or hide the bumper.'))
                                                     ->label(__('Active'))
-                                                    ->default(true),
+                                                    ->default(false),
                                                 Checkbox::make('content.bumper_is_animated')
                                                     ->label(__('Animated'))
                                                     ->helperText(__('Add animation effect to the bumper.'))
-                                                    ->default(true),
+                                                    ->default(false),
                                                 Checkbox::make('content.bumper_is_center')
                                                     ->helperText(__('Center align the bumper content.'))
                                                     ->label(__('Center Alignment'))
@@ -246,11 +249,10 @@ class HeroResource extends Resource
                                                 TextInput::make('content.bumper_title')
                                                     ->label(__('Title'))
                                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                                                    ->placeholder('Warriorfolio v2.1.4 is here 🎉')
+                                                    ->placeholder('Bumper title 🎉')
                                                     ->helperText(__('Main content of the bumper.'))
                                                     ->columnSpan(2),
                                             ]),
-
                                         Group::make()
                                             ->columns(2)
                                             ->schema([
@@ -265,7 +267,6 @@ class HeroResource extends Resource
                                                     ->placeholder('https://example.com')
                                                     ->helperText(__('URL the bumper will link to (optional).')),
                                             ]),
-
                                         Group::make()
                                             ->columns(2)
                                             ->schema([
@@ -298,11 +299,11 @@ class HeroResource extends Resource
                                             ->columns(3)
                                             ->schema([
                                                 Checkbox::make('content.featured_image_is_active')
-                                                    ->default(true)
+                                                    ->default(false)
                                                     ->helperText(__('Show / hide featured image.'))
                                                     ->label(__('Active')),
                                                 Checkbox::make('content.browser_border_is_active')
-                                                    ->default(true)
+                                                    ->default(false)
                                                     ->helperText(__('Enable this option to display a mockup around the featured image. Applicable only for themes that support browser borders.'))
                                                     ->label(__('Browser Mockup')),
                                                 Radio::make('content.browser_border_device')
@@ -367,7 +368,7 @@ class HeroResource extends Resource
                                             ->schema([
                                                 Checkbox::make('content.is_active')
                                                     ->label(__('Enable Background Image'))
-                                                    ->default(true)
+                                                    ->default(false)
                                                     ->helperText(__('Show or hide the background image in the hero section.')),
                                                 Checkbox::make('content.is_upper')
                                                     ->label(__('Position at Top'))
@@ -459,11 +460,11 @@ class HeroResource extends Resource
                                                             ->schema([
                                                                 Checkbox::make('content.is_bg_blur')
                                                                     ->label(__('Blur Effect'))
-                                                                    ->default(true)
+                                                                    ->default(false)
                                                                     ->helperText(__('Add a subtle blur to the background image.')),
                                                                 Checkbox::make('content.is_overlay_active')
                                                                     ->label(__('Dark Overlay'))
-                                                                    ->default(true)
+                                                                    ->default(false)
                                                                     ->helperText(__('Add a semi-transparent dark layer over the image for better readability.')),
                                                             ]),
 
@@ -533,9 +534,9 @@ class HeroResource extends Resource
                                                 Checkbox::make('content.slider_is_active')
                                                     ->label(__('Enable Slider'))
                                                     ->helperText(__('Show or hide the slider in the Hero Section.'))
-                                                    ->default(true),
+                                                    ->default(false),
                                                 Checkbox::make('content.is_invert')
-                                                    ->default(true)
+                                                    ->default(false)
                                                     ->label(__('Dark Mode Color Inversion'))
                                                     ->helperText(__('Automatically inverts image colors in dark mode for better contrast.')),
                                             ]),
