@@ -94,7 +94,6 @@ class HeroResource extends Resource
                                                     ->label(__('Fill Section Background'))
                                                     ->helperText(__('Add a dark color to section. This can override the background image.')),
                                             ]),
-
                                         Group::make()
                                             ->columns(2)
                                             ->schema([
@@ -111,7 +110,6 @@ class HeroResource extends Resource
                                                     ->helperText(__('Enable the Mailing List Module on Hero Sections where this option is available.')),
                                             ]),
                                     ]),
-
                                 Tab::make(__('Heading'))
                                     ->icon('heroicon-o-document-text')
                                     ->schema([
@@ -134,7 +132,6 @@ class HeroResource extends Resource
                                                     ->maxLength(140),
                                             ]),
                                     ]),
-
                                 Tab::make(__('Buttons'))
                                     ->icon('heroicon-o-bolt')
                                     ->schema([
@@ -176,7 +173,6 @@ class HeroResource extends Resource
                                                                     ->default('#')
                                                                     ->maxLength(140),
                                                             ]),
-
                                                         Group::make()
                                                             ->columnSpan(2)
                                                             ->columns(2)
@@ -200,7 +196,6 @@ class HeroResource extends Resource
                                                                     ])
                                                                     ->default('_self'),
                                                             ]),
-
                                                         Group::make()
                                                             ->columnSpan(2)
                                                             ->columns(2)
@@ -218,7 +213,6 @@ class HeroResource extends Resource
                                                     ]),
                                             ]),
                                     ]),
-
                                 Tab::make(__('Bumper'))
                                     ->icon('heroicon-o-megaphone')
                                     ->schema([
@@ -238,7 +232,6 @@ class HeroResource extends Resource
                                                     ->label(__('Center Alignment'))
                                                     ->default(false),
                                             ]),
-
                                         Group::make()
                                             ->columns(3)
                                             ->schema([
@@ -292,7 +285,6 @@ class HeroResource extends Resource
                                                     ->default('primary'),
                                             ]),
                                     ]),
-
                                 Tab::make(__('Featured Image'))
                                     ->icon('heroicon-o-photo')
                                     ->schema([
@@ -360,7 +352,6 @@ class HeroResource extends Resource
                                                     ->helperText(__('16:9 for browser and 9:16 for mobile is recommended.')),
                                             ]),
                                     ]),
-
                                 Tab::make(__('Background Image'))
                                     ->icon('heroicon-o-rectangle-stack')
                                     ->schema([
@@ -380,7 +371,6 @@ class HeroResource extends Resource
                                                     ->default(false)
                                                     ->helperText(__('Add contrast to make text more visible over the background.')),
                                             ]),
-
                                         Tabs::make('background_image_tabs')
                                             ->columnSpanFull()
                                             ->tabs([
@@ -405,7 +395,6 @@ class HeroResource extends Resource
                                                             ])
                                                             ->helperText(__('Recommended size: 1920×1080px (16:9) or 1920×900px (21:9). Use high quality images for best results.')),
                                                     ]),
-
                                                 Tab::make(__('Basic Settings'))
                                                     ->icon('heroicon-o-adjustments-horizontal')
                                                     ->schema([
@@ -433,7 +422,6 @@ class HeroResource extends Resource
                                                                     ->label(__('Size'))
                                                                     ->helperText(__('How the image fills the available space.')),
                                                             ]),
-
                                                         Group::make()
                                                             ->columns(2)
                                                             ->schema([
@@ -452,7 +440,6 @@ class HeroResource extends Resource
                                                                     ->helperText(__('Convert the image to black and white.')),
                                                             ]),
                                                     ]),
-
                                                 Tab::make(__('Visual Effects'))
                                                     ->icon('heroicon-o-sparkles')
                                                     ->schema([
@@ -468,7 +455,6 @@ class HeroResource extends Resource
                                                                     ->default(false)
                                                                     ->helperText(__('Add a semi-transparent dark layer over the image for better readability.')),
                                                             ]),
-
                                                         Radio::make('content.bg_overlay')
                                                             ->options([
                                                                 'hero-bg-overlay-default' => __('Light (25% opacity)'),
@@ -480,7 +466,6 @@ class HeroResource extends Resource
                                                             ->visible(fn ($get) => $get('content.is_overlay_active'))
                                                             ->helperText(__('Control the darkness level of the overlay.')),
                                                     ]),
-
                                                 Tab::make(__('Pattern Background'))
                                                     ->icon('heroicon-o-squares-2x2')
                                                     ->schema([
@@ -506,7 +491,6 @@ class HeroResource extends Resource
                                                                             $set('content.bg_size', 'bg-cover');
                                                                         }
                                                                     }),
-
                                                                 Radio::make('content.pattern_name')
                                                                     ->options([
                                                                         'dot'   => __('Dots Pattern'),
@@ -519,13 +503,11 @@ class HeroResource extends Resource
                                                             ]),
                                                     ]),
                                             ]),
-
                                         Forms\Components\View::make('components.filament.pattern-active-notice')
                                             ->columnSpanFull()
                                             ->visible(fn ($get) => $get('content.is_pattern_bg'))
                                             ->extraAttributes(['class' => 'mt-2 border-t border-secondary-300 dark:border-secondary-700 rounded-b-lg']),
                                     ]),
-
                                 Tab::make(__('Static Slider'))
                                     ->icon('heroicon-o-photo')
                                     ->schema([
@@ -597,7 +579,6 @@ class HeroResource extends Resource
                                                                             ->helperText(__('When enabled, the link opens in a new browser tab.'))
                                                                             ->default(false),
                                                                     ]),
-
                                                                 Group::make()
                                                                     ->columns(2)
                                                                     ->schema([
