@@ -618,10 +618,12 @@ class HeroResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\IconColumn::make('is_active')
-                    ->boolean(),
                 Tables\Columns\TextColumn::make('title')
+                    ->label(__('Title'))
                     ->searchable(),
+                Tables\Columns\IconColumn::make('is_active')
+                    ->label(__('Status'))
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
