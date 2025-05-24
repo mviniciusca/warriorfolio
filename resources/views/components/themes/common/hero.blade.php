@@ -1,4 +1,4 @@
-@if ($hero->is_active)
+@isset ($hero->is_active)
 {{-- Hero Section Background --}}
 <div class="{{ $hero->content['is_upper'] ?? false ? '-mt-36' : 'mt-0' }}">
     <x-themes.common.partials.hero.background :hero='$hero' />
@@ -19,4 +19,4 @@
         </div>
     </section>
 </x-core.layout>
-@endif
+@endisset
