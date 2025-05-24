@@ -9,23 +9,21 @@ This is the default layout component for the website. Used for website and compo
 
 @aware(['page'])
 @props([
-
 // Section Header Props
-'title' => null,
-'subtitle' => null,
-'button_icon' => null ?? 'chevron-forward-outline',
 'button_header' => null,
+'button_icon' => null ?? 'chevron-forward-outline',
 'button_style' => null,
 'button_url' => null,
 'is_centered' => null,
+'is_filled' => false,
 'is_heading_visible' => true,
 'is_section_filled_inverted' => false,
-'with_padding' => true,
 'module_name' => null,
-'is_filled' => false,
-'style' => 'outlined',
 'module_slug' => null ?? 'section' . rand(1, 10),
-
+'style' => 'outlined',
+'subtitle' => null,
+'title' => null,
+'with_padding' => true,
 // Layout Props
 'container' => settings('design.container_width', 'max-w-7xl'),
 'px_padding' => true,
