@@ -44,11 +44,6 @@ class AdminPanelProvider extends PanelProvider
                     ->url(env('APP_URL'), shouldOpenInNewTab: true)
                     ->icon('heroicon-o-arrow-up-right')
                     ->sort(-1),
-                NavigationItem::make(__('Hero Section'))
-                    ->icon('heroicon-o-bolt')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit-hero-section')
-                    ->group(__('Website Design'))
-                    ->sort(0),
                 NavigationItem::make(__('Background & Logo'))
                     ->icon('heroicon-o-paint-brush')
                     ->url('/admin/settings/'.$this->getSetting().'/edit-appearance')

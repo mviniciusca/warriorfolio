@@ -41,6 +41,11 @@ class HeroResource extends Resource
         return __('Hero Section');
     }
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Website Design');
+    }
+
     public function getSubheading(): string | Htmlable | null
     {
         return __('Manager your Hero Section from your website.');
