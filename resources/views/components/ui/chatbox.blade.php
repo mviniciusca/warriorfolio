@@ -2,51 +2,64 @@
 <div>
     <!-- Chat Button -->
     <div id="chatButton"
-        class="chatbox align-center {{ $animation_style }} fixed bottom-5 right-5 z-50 flex cursor-pointer items-center overflow-hidden rounded-full p-3 text-center text-primary-50 transition-all duration-300 hover:opacity-80 hover:scale-110"
-        style="background-color: {{ $color }}">
-        <ion-icon class="text-3xl" name="{{ $icon ?? 'logo-whatsapp' }}"></ion-icon>
+        class="fixed bottom-6 right-6 z-50 w-14 h-14 dark:bg-secondary-50 dark:text-black bg-secondary-900  text-white rounded-full shadow-xl cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 group">
+        <svg class="w-7 h-7 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
     </div>
 
     <!-- Chat Window -->
     <div id="chatWindow"
-        class="fixed bottom-20 right-5 z-50 w-80 h-96 bg-white dark:bg-secondary-900 rounded-lg shadow-xl border border-secondary-200 dark:border-secondary-700 hidden animate__animated">
+        class="fixed bottom-6 right-6 z-50 max-w-lg bg-white dark:bg-secondary-950 rounded-xl shadow-xl border border-secondary-200 dark:border-secondary-800 hidden transform transition-all duration-300 scale-0 opacity-0 overflow-hidden">
+
         <!-- Header -->
-        <div
-            class="bg-secondary-800 dark:bg-secondary-700 text-white p-4 rounded-t-lg flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div
-                    class="w-10 h-10 bg-secondary-100 dark:bg-secondary-600 rounded-full flex items-center justify-center">
-                    <ion-icon class="text-secondary-600 dark:text-secondary-300 text-xl" name="person"></ion-icon>
+        <div class="flex items-center justify-between p-4 border-b border-secondary-200 dark:border-secondary-800">
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5 text-secondary-600 dark:text-secondary-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                    <div
+                        class="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-secondary-800">
+                    </div>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-sm text-secondary-100"></h3>
-                    <div class="flex items-center space-x-1">
-                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <p class="text-xs text-secondary-300">Online</p>
-                    </div>
+                    <h3 class="font-semibold text-sm">Suporte</h3>
+                    <p class="text-xs ">Online agora</p>
                 </div>
             </div>
             <button id="closeChat"
-                class="text-secondary-300 hover:text-white hover:bg-secondary-700 dark:hover:bg-secondary-600 rounded p-1 transition-colors">
-                <ion-icon name="close" class="text-xl"></ion-icon>
+                class="p-2 hover:bg-secondary-200 dark:hover:bg-secondary-600 rounded-full transition-colors duration-200">
+                <svg class="w-5 h-5 text-secondary-500 dark:text-secondary-400" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
             </button>
         </div>
 
         <!-- Messages Area -->
-        <div class="h-64 overflow-y-auto p-4 bg-secondary-50 dark:bg-secondary-800"
-            style="background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><defs><pattern id=&quot;whatsapp-bg&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;100&quot; height=&quot;100&quot; patternUnits=&quot;userSpaceOnUse&quot;><circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;1&quot; fill=&quot;%23a1a1aa&quot; opacity=&quot;0.1&quot;/></pattern></defs><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;url(%23whatsapp-bg)&quot;/></svg>');">
+        <div id="messagesArea" class="h-80 overflow-y-auto p-6 bg-secondary-25 dark:bg-secondary-850 space-y-4">
             <!-- Initial Message (hidden by default) -->
-            <div id="initialMessage" class="mb-4 animate__animated animate__fadeInUp hidden">
-                <div class="flex items-start space-x-2">
+            <div id="initialMessage" class="hidden animate-fade-in">
+                <div class="flex items-start space-x-3">
                     <div
-                        class="w-8 h-8 bg-secondary-600 dark:bg-secondary-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <ion-icon class="text-white text-sm" name="person"></ion-icon>
+                        class="w-8 h-8 bg-secondary-300 dark:bg-secondary-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <svg class="w-4 h-4 text-secondary-600 dark:text-secondary-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
                     </div>
                     <div
-                        class="bg-white dark:bg-secondary-700 rounded-lg px-3 py-2 shadow-sm max-w-xs border border-secondary-200 dark:border-secondary-600">
-                        <p class="text-sm text-secondary-800 dark:text-secondary-200">{{ $message ?? 'Olá! Como posso
-                            ajudar você
-                            hoje?' }}</p>
+                        class="bg-white dark:bg-secondary-800 rounded-2xl  px-4 py-3 shadow-sm max-w-xs border border-secondary-100 dark:border-secondary-800">
+                        <p class="text-sm text-secondary-800 dark:text-secondary-200 leading-none">{{ $message ??
+                            'Olá! Como posso ajudar você hoje?' }}</p>
                         <span class="text-xs text-secondary-500 dark:text-secondary-400 mt-1 block">agora</span>
                     </div>
                 </div>
@@ -54,23 +67,73 @@
         </div>
 
         <!-- Input Area -->
-        <div
-            class="p-4 border-t border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 rounded-b-lg">
-            <div class="flex items-center space-x-2">
-                <input type="text" id="messageInput" placeholder="Digite sua mensagem..."
-                    class="flex-1 border border-secondary-300 dark:border-secondary-600 bg-white dark:bg-secondary-800 text-secondary-800 dark:text-secondary-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-green-500 dark:focus:border-green-400 placeholder-secondary-500 dark:placeholder-secondary-400"
-                    maxlength="500">
-                <button id="sendMessage"
-                    class="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white rounded-full p-2 transition-colors duration-200">
-                    <ion-icon name="send" class="text-lg"></ion-icon>
+        <div class="p-3 border-t border-secondary-100 dark:border-secondary-800">
+            <div class="flex items-center space-x-3">
+                <div class="flex-1 relative">
+                    <input type="text" id="messageInput" placeholder="Digite sua mensagem..."
+                        class="w-full border-2 border-secondary-200 dark:border-secondary-800 bg-secondary-50 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:bg-white dark:focus:bg-secondary-700 placeholder-secondary-500 dark:placeholder-secondary-400 transition-all duration-200"
+                        maxlength="500">
+                </div>
+                <button id="sendMessageButton"
+                    class="w-8 h-8 p-2 bg-black dark:bg-white text-white dark:text-black disabled:bg-secondary-300 dark:disabled:bg-secondary-600  rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
                 </button>
             </div>
-            <p class="text-xs text-secondary-500 dark:text-secondary-400 mt-2 text-center">
-                Pressione Enter para enviar
+            <p class="text-xs text-secondary-500 dark:text-secondary-400 mt-3 text-center leading-relaxed">
+                {{ __('Press Enter to Send') }}
             </p>
         </div>
     </div>
+
+    <!-- Backdrop -->
+    <div id="backdrop" class="fixed inset-0 bg-black bg-opacity-30 z-40 hidden transition-opacity duration-300"></div>
 </div>
+
+<style>
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fade-in 0.5s ease-out;
+    }
+
+    #messagesArea::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    #messagesArea::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    #messagesArea::-webkit-scrollbar-thumb {
+        background: rgb(148 163 184);
+        border-radius: 4px;
+    }
+
+    #messagesArea::-webkit-scrollbar-thumb:hover {
+        background: rgb(100 116 139);
+    }
+
+    .dark #messagesArea::-webkit-scrollbar-thumb {
+        background: rgb(71 85 105);
+    }
+
+    .dark #messagesArea::-webkit-scrollbar-thumb:hover {
+        background: rgb(100 116 139);
+    }
+</style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -78,8 +141,9 @@
     const chatWindow = document.getElementById('chatWindow');
     const closeChat = document.getElementById('closeChat');
     const messageInput = document.getElementById('messageInput');
-    const sendMessage = document.getElementById('sendMessage');
-    const messagesArea = chatWindow.querySelector('.h-64');
+    const sendMessageButton = document.getElementById('sendMessageButton');
+    const messagesArea = document.getElementById('messagesArea');
+    const backdrop = document.getElementById('backdrop');
 
     // WhatsApp configuration
     const whatsappUrl = '{{ config("warriorfolio.whatsapp_web_url", env("WHATSAPP_WEB_URL")) }}';
@@ -89,124 +153,148 @@
     // Open chat window
     chatButton.addEventListener('click', function() {
         chatWindow.classList.remove('hidden');
-        chatWindow.classList.remove('animate__fadeOutDown');
-        chatWindow.classList.add('animate__fadeInUp');
-        messageInput.focus();
+        backdrop.classList.remove('hidden');
 
-        // Show initial message when opening chat for the first time
+        setTimeout(() => {
+            chatWindow.classList.remove('scale-0', 'opacity-0');
+            chatWindow.classList.add('scale-100', 'opacity-100');
+        }, 10);
+
+        setTimeout(() => {
+            messageInput.focus();
+        }, 300);
+
+        // Show initial message with delay
         const initialMessage = document.getElementById('initialMessage');
         if (initialMessage && initialMessage.classList.contains('hidden')) {
             setTimeout(() => {
                 initialMessage.classList.remove('hidden');
+                messagesArea.scrollTop = messagesArea.scrollHeight;
             }, 500);
         }
     });
 
     // Close chat window
-    closeChat.addEventListener('click', function() {
-        chatWindow.classList.remove('animate__fadeInUp');
-        chatWindow.classList.add('animate__fadeOutDown');
+    function closeChatWindow() {
+        chatWindow.classList.remove('scale-100', 'opacity-100');
+        chatWindow.classList.add('scale-0', 'opacity-0');
+
         setTimeout(() => {
+            backdrop.classList.add('hidden');
             chatWindow.classList.add('hidden');
         }, 300);
-    });
+    }
+
+    closeChat.addEventListener('click', closeChatWindow);
+    backdrop.addEventListener('click', closeChatWindow);
 
     // Add user message to chat
     function addUserMessage(message) {
         const messageDiv = document.createElement('div');
-        messageDiv.className = 'mb-4 flex justify-end animate__animated animate__fadeInUp';
+        messageDiv.className = 'flex justify-end animate-fade-in';
         messageDiv.innerHTML = `
-            <div class="bg-secondary-600 dark:bg-secondary-500 text-white rounded-lg px-3 py-2 shadow-sm max-w-xs">
-                <p class="text-sm">${message}</p>
-                <span class="text-xs opacity-75 mt-1 block">agora</span>
+            <div class="bg-secondary-900 dark:bg-secondary-700 text-white rounded-2xl rounded-br-md px-4 py-3 shadow-sm max-w-xs">
+                <p class="text-sm leading-relaxed">${message}</p>
+                <span class="text-xs text-secondary-300 dark:text-secondary-400 mt-2 block">agora</span>
             </div>
         `;
         messagesArea.appendChild(messageDiv);
         messagesArea.scrollTop = messagesArea.scrollHeight;
     }
 
-    // Send message function
-    function sendMessageToWhatsApp() {
-        const message = messageInput.value.trim();
-        if (message === '') return;
+    // Add bot message to chat
+    function addBotMessage(message, isRedirect = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'flex items-start space-x-3 animate-fade-in';
 
-        // Add message to chat interface
-        addUserMessage(message);
+        const avatarClass = isRedirect ? 'bg-green-100 dark:bg-green-900' : 'bg-secondary-300 dark:bg-secondary-600';
+        const avatarIconColor = isRedirect ? 'text-green-600 dark:text-green-400' : 'text-secondary-600 dark:text-secondary-300';
 
-        // Clear input
-        messageInput.value = '';
+        messageDiv.innerHTML = `
+            <div class="w-8 h-8 ${avatarClass} rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                <svg class="w-4 h-4 ${avatarIconColor}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+            </div>
+            <div class="bg-white dark:bg-secondary-800 rounded-2xl rounded-tl-md px-4 py-3 shadow-sm max-w-xs border border-secondary-100 dark:border-secondary-800">
+                <p class="text-sm text-secondary-800 dark:text-secondary-200 leading-relaxed">${message}</p>
+                <span class="text-xs text-secondary-500 dark:text-secondary-400 mt-2 block">agora</span>
+            </div>
+        `;
+        messagesArea.appendChild(messageDiv);
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+    }
 
-        // Show typing indicator
+    // Show typing indicator
+    function showTypingIndicator() {
         const typingDiv = document.createElement('div');
-        typingDiv.className = 'mb-4 animate__animated animate__fadeInUp';
         typingDiv.id = 'typing-indicator';
+        typingDiv.className = 'flex items-start space-x-3 animate-fade-in';
         typingDiv.innerHTML = `
-            <div class="flex items-start space-x-2">
-                <div class="w-8 h-8 bg-secondary-600 dark:bg-secondary-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <ion-icon class="text-white text-sm" name="person"></ion-icon>
-                </div>
-                <div class="bg-white dark:bg-secondary-700 rounded-lg px-3 py-2 shadow-sm border border-secondary-200 dark:border-secondary-600">
-                    <div class="flex space-x-1">
-                        <div class="w-2 h-2 bg-secondary-400 dark:bg-secondary-500 rounded-full animate-pulse"></div>
-                        <div class="w-2 h-2 bg-secondary-400 dark:bg-secondary-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
-                        <div class="w-2 h-2 bg-secondary-400 dark:bg-secondary-500 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
-                    </div>
+            <div class="w-8 h-8 bg-secondary-300 dark:bg-secondary-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                <svg class="w-4 h-4 text-secondary-600 dark:text-secondary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+            </div>
+            <div class="bg-white dark:bg-secondary-800 rounded-2xl rounded-tl-md px-4 py-3 shadow-sm border border-secondary-100 dark:border-secondary-800">
+                <div class="flex space-x-1">
+                    <div class="w-2 h-2 bg-secondary-400 dark:bg-secondary-500 rounded-full animate-pulse"></div>
+                    <div class="w-2 h-2 bg-secondary-400 dark:bg-secondary-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                    <div class="w-2 h-2 bg-secondary-400 dark:bg-secondary-500 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
                 </div>
             </div>
         `;
         messagesArea.appendChild(typingDiv);
         messagesArea.scrollTop = messagesArea.scrollHeight;
+    }
 
-        // Simulate response and redirect to WhatsApp
+    // Remove typing indicator
+    function removeTypingIndicator() {
+        const typing = document.getElementById('typing-indicator');
+        if (typing) typing.remove();
+    }
+
+    // Send message function
+    function sendMessage() {
+        const message = messageInput.value.trim();
+        if (message === '') return;
+
+        // Disable input while processing
+        messageInput.disabled = true;
+        sendMessageButton.disabled = true;
+
+        // Add user message
+        addUserMessage(message);
+        messageInput.value = '';
+
+        // Show typing indicator
         setTimeout(() => {
-            // Remove typing indicator
-            const typing = document.getElementById('typing-indicator');
-            if (typing) typing.remove();
+            showTypingIndicator();
+        }, 500);
 
-            // Add response message
-            const responseDiv = document.createElement('div');
-            responseDiv.className = 'mb-4 animate__animated animate__fadeInUp';
-            responseDiv.innerHTML = `
-                <div class="flex items-start space-x-2">
-                    <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
-                        <ion-icon class="text-white text-sm" name="person"></ion-icon>
-                    </div>
-                    <div class="bg-white dark:bg-secondary-700 rounded-lg px-3 py-2 shadow-sm max-w-xs border border-secondary-200 dark:border-secondary-600">
-                        <p class="text-sm text-secondary-800 dark:text-secondary-200">Redirecionando para o WhatsApp...</p>
-                        <span class="text-xs text-secondary-500 dark:text-secondary-400 mt-1 block">agora</span>
-                    </div>
-                </div>
-            `;
-            messagesArea.appendChild(responseDiv);
-            messagesArea.scrollTop = messagesArea.scrollHeight;
+        setTimeout(() => {
+            removeTypingIndicator();
+            addBotMessage('Redirecionando para o WhatsApp...', true);
 
-            // Redirect to WhatsApp after a short delay
             setTimeout(() => {
                 const whatsappLink = `${whatsappUrl}${countryCode}${mobileNumber}/?text=${encodeURIComponent(message)}`;
                 window.open(whatsappLink, '_blank');
+                closeChatWindow();
 
-                // Close chat window
-                closeChat.click();
-            }, 1000);
-        }, 1500);
+                // Re-enable input
+                messageInput.disabled = false;
+                sendMessageButton.disabled = false;
+            }, 1500);
+        }, 1200);
     }
 
     // Send message on button click
-    sendMessage.addEventListener('click', sendMessageToWhatsApp);
+    sendMessageButton.addEventListener('click', sendMessage);
 
     // Send message on Enter key press
     messageInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            sendMessageToWhatsApp();
-        }
-    });
-
-    // Close chat when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!chatWindow.contains(e.target) && !chatButton.contains(e.target)) {
-            if (!chatWindow.classList.contains('hidden')) {
-                closeChat.click();
-            }
+            sendMessage();
         }
     });
 });
