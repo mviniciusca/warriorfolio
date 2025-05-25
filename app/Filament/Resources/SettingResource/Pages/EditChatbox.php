@@ -51,7 +51,7 @@ class EditChatbox extends EditRecord
                             ->required()
                             ->label(__('Active')),
                         TextInput::make('telephone')
-                            ->prefix('+'.env('MOBILE_COUNTRY_CODE'))
+                            ->prefix('+'.config('warriorfolio.mobile_country_code', '55'))
                             ->label(__('Whatsapp Number'))
                             ->helperText(__('Your whatsapp telephone number. Just Numbers.'))
                             ->placeholder(__('Mobile Number'))
