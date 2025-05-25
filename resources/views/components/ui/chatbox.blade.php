@@ -12,7 +12,7 @@
 
     <!-- Chat Window -->
     <div id="chatWindow"
-        class="fixed bottom-6 right-6 z-50 max-w-lg bg-white dark:bg-secondary-950 rounded-xl shadow-xl border border-secondary-200 dark:border-secondary-800 hidden transform transition-all duration-300 scale-0 opacity-0 overflow-hidden">
+        class="fixed bottom-6 right-6 z-50 max-w-md bg-white dark:bg-secondary-950 rounded-xl shadow-xl border border-secondary-200 dark:border-secondary-800 hidden transform transition-all duration-300 scale-0 opacity-0 overflow-hidden">
 
         <!-- Header -->
         <div class="flex items-center justify-between p-4 border-b border-secondary-200 dark:border-secondary-800">
@@ -31,8 +31,8 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-sm">Suporte</h3>
-                    <p class="text-xs ">Online agora</p>
+                    <h3 class="font-semibold text-sm">{{ __('Support') }}</h3>
+                    <p class="text-xs ">{{ __('Online now') }}</p>
                 </div>
             </div>
             <button id="closeChat"
@@ -45,7 +45,7 @@
         </div>
 
         <!-- Messages Area -->
-        <div id="messagesArea" class="h-80 overflow-y-auto p-6 bg-secondary-25 dark:bg-secondary-850 space-y-4">
+        <div id="messagesArea" class="h-64 overflow-y-auto p-4 bg-secondary-25 dark:bg-secondary-850 space-y-3">
             <!-- Initial Message (hidden by default) -->
             <div id="initialMessage" class="hidden animate-fade-in">
                 <div class="flex items-start space-x-3">
@@ -58,10 +58,11 @@
                         </svg>
                     </div>
                     <div
-                        class="bg-secondary-100 dark:bg-secondary-800 rounded-xl px-4 py-3 shadow-sm max-w-xs border border-secondary-100 dark:border-secondary-800">
+                        class="bg-secondary-100 dark:bg-secondary-800 rounded-xl px-3 py-2 shadow-sm max-w-xs border border-secondary-100 dark:border-secondary-800">
                         <p class="text-sm text-secondary-800 dark:text-secondary-200 leading-none">{{ $message ??
-                            'Olá! Como posso ajudar você hoje?' }}</p>
-                        <span class="text-xs text-secondary-500 dark:text-secondary-400 mt-1 block">agora</span>
+                            __('Hello! How can I help you today?') }}</p>
+                        <span class="text-xs text-secondary-500 dark:text-secondary-400 mt-1 block">{{ __('now')
+                            }}</span>
                     </div>
                 </div>
             </div>
@@ -69,9 +70,9 @@
 
         <!-- Input Area -->
         <div class="p-3 border-t border-secondary-100 dark:border-secondary-800">
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-2">
                 <div class="flex-1 relative">
-                    <input type="text" id="messageInput" placeholder="Digite sua mensagem..."
+                    <input type="text" id="messageInput" placeholder="{{ __('Type your message...') }}"
                         class="w-full border-2 border-secondary-200 dark:border-secondary-800 bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:bg-white dark:focus:bg-secondary-700 placeholder-secondary-500 dark:placeholder-secondary-400 transition-all duration-200"
                         maxlength="500">
                 </div>
@@ -194,9 +195,9 @@
         const messageDiv = document.createElement('div');
         messageDiv.className = 'flex justify-end animate-fade-in';
         messageDiv.innerHTML = `
-            <div class="bg-secondary-900 dark:bg-secondary-700 text-white rounded-2xl rounded-br-md px-4 py-3 shadow-sm max-w-xs">
+            <div class="bg-secondary-900 dark:bg-secondary-700 text-white rounded-2xl rounded-br-md px-3 py-2 shadow-sm max-w-xs">
                 <p class="text-sm leading-relaxed">${message}</p>
-                <span class="text-xs text-secondary-300 dark:text-secondary-400 mt-2 block">agora</span>
+                <span class="text-xs text-secondary-300 dark:text-secondary-400 mt-1 block">{{ __('now') }}</span>
             </div>
         `;
         messagesArea.appendChild(messageDiv);
@@ -217,9 +218,9 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                 </svg>
             </div>
-            <div class="bg-white dark:bg-secondary-800 rounded-2xl rounded-tl-md px-4 py-3 shadow-sm max-w-xs border border-secondary-100 dark:border-secondary-800">
+            <div class="bg-white dark:bg-secondary-800 rounded-2xl rounded-tl-md px-3 py-2 shadow-sm max-w-xs border border-secondary-100 dark:border-secondary-800">
                 <p class="text-sm text-secondary-800 dark:text-secondary-200 leading-relaxed">${message}</p>
-                <span class="text-xs text-secondary-500 dark:text-secondary-400 mt-2 block">agora</span>
+                <span class="text-xs text-secondary-500 dark:text-secondary-400 mt-1 block">{{ __('now') }}</span>
             </div>
         `;
         messagesArea.appendChild(messageDiv);
@@ -237,7 +238,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                 </svg>
             </div>
-            <div class="bg-white dark:bg-secondary-800 rounded-2xl rounded-tl-md px-4 py-3 shadow-sm border border-secondary-100 dark:border-secondary-800">
+            <div class="bg-white dark:bg-secondary-800 rounded-2xl rounded-tl-md px-3 py-2 shadow-sm border border-secondary-100 dark:border-secondary-800">
                 <div class="flex space-x-1">
                     <div class="w-2 h-2 bg-secondary-400 dark:bg-secondary-500 rounded-full animate-pulse"></div>
                     <div class="w-2 h-2 bg-secondary-400 dark:bg-secondary-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
@@ -275,7 +276,7 @@
 
         setTimeout(() => {
             removeTypingIndicator();
-            addBotMessage('Redirecionando para o WhatsApp...', true);
+            addBotMessage('{{ __("Redirecting to WhatsApp...") }}', true);
 
             setTimeout(() => {
                 const whatsappLink = `${whatsappUrl}${countryCode}${mobileNumber}/?text=${encodeURIComponent(message)}`;
