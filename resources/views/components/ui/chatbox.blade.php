@@ -71,7 +71,7 @@
             <div class="flex items-center space-x-3">
                 <div class="flex-1 relative">
                     <input type="text" id="messageInput" placeholder="Digite sua mensagem..."
-                        class="w-full border-2 border-secondary-200 dark:border-secondary-800 bg-secondary-50 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:bg-white dark:focus:bg-secondary-700 placeholder-secondary-500 dark:placeholder-secondary-400 transition-all duration-200"
+                        class="w-full border-2 border-secondary-200 dark:border-secondary-800 bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:bg-white dark:focus:bg-secondary-700 placeholder-secondary-500 dark:placeholder-secondary-400 transition-all duration-200"
                         maxlength="500">
                 </div>
                 <button id="sendMessageButton"
@@ -82,7 +82,7 @@
                     </svg>
                 </button>
             </div>
-            <p class="text-xs text-secondary-500 dark:text-secondary-400 mt-3 text-center leading-relaxed">
+            <p class="text-xs  mt-3 text-center leading-relaxed">
                 {{ __('Press Enter to Send') }}
             </p>
         </div>
