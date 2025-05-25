@@ -17,7 +17,7 @@
 
 <body {{ $attributes->merge(['class' => $bodyClass]) }}>
     @if (!$maintenance || ($discovery && auth()->user()))
-    <x-core.modules.over />
+    <x-core.modules.overlay-apps />
     {{ $slot }}
     @if (isset($footer))
     {{ $footer }}

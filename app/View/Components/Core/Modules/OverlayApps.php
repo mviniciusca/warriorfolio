@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Over extends Component
+class OverlayApps extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Over extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.core.modules.over');
+        return view('components.core.modules.overlay-apps');
     }
 }
