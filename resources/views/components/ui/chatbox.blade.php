@@ -18,7 +18,8 @@
         <div class="flex items-center justify-between p-4 border-b border-secondary-200 dark:border-secondary-800">
             <div class="flex items-center space-x-4">
                 <div class="relative">
-                    <div class="w-10 h-10 rounded-full flex items-center justify-center">
+                    <div
+                        class="w-10 h-10 rounded-full bg-secondary-100 dark:bg-secondary-800 flex items-center justify-center">
                         <svg class="w-5 h-5 text-secondary-600 dark:text-secondary-300" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -49,7 +50,7 @@
             <div id="initialMessage" class="hidden animate-fade-in">
                 <div class="flex items-start space-x-3">
                     <div
-                        class="w-8 h-8 bg-secondary-300 dark:bg-secondary-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                        class="w-8 h-8 bg-secondary-100 dark:bg-secondary-800 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
                         <svg class="w-4 h-4 text-secondary-600 dark:text-secondary-300" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -57,7 +58,7 @@
                         </svg>
                     </div>
                     <div
-                        class="bg-white dark:bg-secondary-800 rounded-2xl  px-4 py-3 shadow-sm max-w-xs border border-secondary-100 dark:border-secondary-800">
+                        class="bg-secondary-100 dark:bg-secondary-800 rounded-xl px-4 py-3 shadow-sm max-w-xs border border-secondary-100 dark:border-secondary-800">
                         <p class="text-sm text-secondary-800 dark:text-secondary-200 leading-none">{{ $message ??
                             'Olá! Como posso ajudar você hoje?' }}</p>
                         <span class="text-xs text-secondary-500 dark:text-secondary-400 mt-1 block">agora</span>
