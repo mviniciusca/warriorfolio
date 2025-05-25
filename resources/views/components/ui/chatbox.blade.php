@@ -2,7 +2,8 @@
 <div>
     <!-- Chat Button -->
     <button id="chatButton"
-        class="fixed bottom-8 right-5 z-50 p-3 dark:bg-secondary-50 dark:text-black bg-secondary-900 text-white rounded-full shadow-xl cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 group">
+        class="fixed bottom-8 right-5 z-50 p-3 text-white rounded-full shadow-xl cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 group {{ $color ? '' : 'dark:bg-secondary-50 dark:text-black bg-secondary-900' }}"
+        style="background-color: {{ $color }}">
         <x-ui.ionicon class="h-6 w-6" icon="logo-whatsapp" />
         </svg>
     </button>

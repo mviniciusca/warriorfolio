@@ -26,7 +26,7 @@ class Chatbox extends Component
         $this->mobile_number = $data->telephone ?? null;
         $this->message = $data->message ?? null;
         $this->animation_style = $data->animation_style ?? null;
-        $this->color = $data->color ?? '#25D366';
+        $this->color = $data->color ?? null;
         $this->icon = $data->icon ?? 'logo-whatsapp';
     }
 
