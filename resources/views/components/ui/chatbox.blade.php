@@ -10,9 +10,9 @@
 
     <!-- Chat Window -->
     <div id="chatWindow"
-        class="fixed bottom-6 right-6 z-50 max-w-md bg-white dark:bg-secondary-950 rounded-xl shadow-xl border border-secondary-200 dark:border-secondary-800 transform scale-0 opacity-0 overflow-hidden transition-all duration-300 hidden">
+        class="fixed bottom-6 right-6 z-50 max-w-md bg-white dark:bg-secondary-950 rounded-xl border border-secondary-300 dark:border-secondary-800 transform scale-0 opacity-0 overflow-hidden transition-all duration-300 hidden">
         <!-- Header -->
-        <div class="flex items-center justify-between p-4 border-b border-secondary-200 dark:border-secondary-800">
+        <div class="flex items-center justify-between p-4 border-b border-secondary-300 dark:border-secondary-800">
             <div class="flex items-center space-x-4">
                 <div class="relative">
                     <div
@@ -55,7 +55,7 @@
                         </svg>
                     </div>
                     <div
-                        class="bg-secondary-100 dark:bg-secondary-800 rounded-xl px-3 py-2 shadow-sm max-w-xs border border-secondary-100 dark:border-secondary-800">
+                        class="bg-secondary-100 dark:bg-secondary-800 rounded-xl px-3 py-2 shadow-sm max-w-xs border border-secondary-300 dark:border-secondary-800">
                         <p class="text-sm text-secondary-800 dark:text-secondary-200 leading-none">{{ $message ??
                             __('Hello! How can I help you today?') }}</p>
                         <span class="text-xs text-secondary-500 dark:text-secondary-400 mt-1 block">{{ __('now')
@@ -66,7 +66,7 @@
         </div>
 
         <!-- Input Area -->
-        <div class="p-3 border-t border-secondary-100 dark:border-secondary-800">
+        <div class="p-3 border-t border-secondary-300 dark:border-secondary-800">
             <div class="flex items-center space-x-2">
                 <div class="flex-1 relative">
                     <input type="text" id="messageInput" placeholder="{{ __('Type your message...') }}"
