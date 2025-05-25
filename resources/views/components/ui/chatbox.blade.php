@@ -1,19 +1,15 @@
 @if ($is_active)
 <div>
     <!-- Chat Button -->
-    <div id="chatButton"
-        class="fixed bottom-6 right-6 z-50 w-14 h-14 dark:bg-secondary-50 dark:text-black bg-secondary-900  text-white rounded-full shadow-xl cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 group">
-        <svg class="w-7 h-7 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor"
-            viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+    <button id="chatButton"
+        class="fixed bottom-8 right-5 z-50 p-3 dark:bg-secondary-50 dark:text-black bg-secondary-900 text-white rounded-full shadow-xl cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 group">
+        <x-ui.ionicon class="h-6 w-6" icon="logo-whatsapp" />
         </svg>
-    </div>
+    </button>
 
     <!-- Chat Window -->
     <div id="chatWindow"
-        class="fixed bottom-6 right-6 z-50 max-w-md bg-white dark:bg-secondary-950 rounded-xl shadow-xl border border-secondary-200 dark:border-secondary-800 hidden transform transition-all duration-300 scale-0 opacity-0 overflow-hidden">
-
+        class="fixed bottom-6 right-6 z-50 max-w-md bg-white dark:bg-secondary-950 rounded-xl shadow-xl border border-secondary-200 dark:border-secondary-800 transform scale-0 opacity-0 overflow-hidden transition-all duration-300 hidden">
         <!-- Header -->
         <div class="flex items-center justify-between p-4 border-b border-secondary-200 dark:border-secondary-800">
             <div class="flex items-center space-x-4">
@@ -31,8 +27,8 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-sm">{{ __('Support') }}</h3>
-                    <p class="text-xs ">{{ __('Online now') }}</p>
+                    <h3 class="font-semibold text-sm">{{ __('Whatsapp Chat') }}</h3>
+                    <p class="text-xs">{{ __('Online now') }}</p>
                 </div>
             </div>
             <button id="closeChat"
@@ -46,8 +42,8 @@
 
         <!-- Messages Area -->
         <div id="messagesArea" class="h-64 overflow-y-auto p-4 bg-secondary-25 dark:bg-secondary-850 space-y-3">
-            <!-- Initial Message (hidden by default) -->
-            <div id="initialMessage" class="hidden animate-fade-in">
+            <!-- Initial Message -->
+            <div id="initialMessage" class="animate-fade-in hidden">
                 <div class="flex items-start space-x-3">
                     <div
                         class="w-8 h-8 bg-secondary-100 dark:bg-secondary-800 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
@@ -73,25 +69,27 @@
             <div class="flex items-center space-x-2">
                 <div class="flex-1 relative">
                     <input type="text" id="messageInput" placeholder="{{ __('Type your message...') }}"
-                        class="w-full border-2 border-secondary-200 dark:border-secondary-800 bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:bg-white dark:focus:bg-secondary-700 placeholder-secondary-500 dark:placeholder-secondary-400 transition-all duration-200"
+                        class="w-full border-2 border-secondary-200 dark:border-secondary-800 bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:bg-white dark:focus:bg-secondary-900 placeholder-secondary-500 dark:placeholder-secondary-400 transition-all duration-200"
                         maxlength="500">
                 </div>
                 <button id="sendMessageButton"
-                    class="w-8 h-8 p-2 bg-black dark:bg-white text-white dark:text-black disabled:bg-secondary-300 dark:disabled:bg-secondary-600  rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-lg">
+                    class="w-8 h-8 p-2 bg-black dark:bg-white text-white dark:text-black disabled:bg-secondary-300 dark:disabled:bg-secondary-600 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-lg">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                     </svg>
                 </button>
             </div>
-            <p class="text-xs  mt-3 text-center leading-relaxed">
+            <p class="text-xs mt-3 text-center leading-relaxed">
                 {{ __('Press Enter to Send') }}
             </p>
         </div>
     </div>
 
-    <!-- Backdrop -->
-    <div id="backdrop" class="fixed inset-0 bg-black bg-opacity-30 z-40 hidden transition-opacity duration-300"></div>
+    <!-- WhatsApp Config -->
+    <div data-whatsapp-url="{{ config('warriorfolio.whatsapp_web_url', env('WHATSAPP_WEB_URL')) }}"
+        data-country-code="{{ config('warriorfolio.mobile_country_code', env('MOBILE_COUNTRY_CODE')) }}"
+        data-mobile-number="{{ $mobile_number }}" class="hidden"></div>
 </div>
 
 <style>
@@ -145,18 +143,15 @@
     const messageInput = document.getElementById('messageInput');
     const sendMessageButton = document.getElementById('sendMessageButton');
     const messagesArea = document.getElementById('messagesArea');
-    const backdrop = document.getElementById('backdrop');
 
     // WhatsApp configuration
-    const whatsappUrl = '{{ config("warriorfolio.whatsapp_web_url", env("WHATSAPP_WEB_URL")) }}';
-    const countryCode = '{{ config("warriorfolio.mobile_country_code", env("MOBILE_COUNTRY_CODE")) }}';
-    const mobileNumber = '{{ $mobile_number }}';
+    const whatsappUrl = document.querySelector('[data-whatsapp-url]').dataset.whatsappUrl;
+    const countryCode = document.querySelector('[data-country-code]').dataset.countryCode;
+    const mobileNumber = document.querySelector('[data-mobile-number]').dataset.mobileNumber;
 
     // Open chat window
     chatButton.addEventListener('click', function() {
         chatWindow.classList.remove('hidden');
-        backdrop.classList.remove('hidden');
-
         setTimeout(() => {
             chatWindow.classList.remove('scale-0', 'opacity-0');
             chatWindow.classList.add('scale-100', 'opacity-100');
@@ -182,13 +177,11 @@
         chatWindow.classList.add('scale-0', 'opacity-0');
 
         setTimeout(() => {
-            backdrop.classList.add('hidden');
             chatWindow.classList.add('hidden');
         }, 300);
     }
 
     closeChat.addEventListener('click', closeChatWindow);
-    backdrop.addEventListener('click', closeChatWindow);
 
     // Add user message to chat
     function addUserMessage(message) {

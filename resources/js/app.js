@@ -1,6 +1,10 @@
 import './bootstrap';
 import 'flowbite';
 import Swiper from 'swiper/bundle';
+import chatbox from './components/chatbox';
+
+// Register Alpine.js components
+window.setupChatbox = chatbox;
 
 /**
  * Scroll Up Button functionality
