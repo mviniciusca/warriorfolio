@@ -31,11 +31,11 @@
             <div class="sticky top-0  border-b saturn-border p-4 flex justify-between items-center">
                 <!-- Left section with icon and text -->
                 <div class="flex items-center gap-3 flex-1">
-                    <div class="flex-shrink-0">
+                    {{-- <div class="flex-shrink-0">
                         <x-ui.ionicon :icon="'flash-outline'" class="w-6 h-6" />
-                    </div>
+                    </div> --}}
                     <div class="flex flex-col">
-                        <span class="font-medium text-sm">{{ __('Quick Access') }}</span>
+                        <span class="font-medium text-xs">{{ __('Quick Access') }}</span>
                     </div>
                 </div>
                 <!-- Right - Close button -->
@@ -49,174 +49,87 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- General -->
                     <div class="space-y-1">
-                        <h3 class="text-xs font-medium uppercase tracking-wider mb-2">
+                        <h3 class="text-[10px] uppercase opacity-50 tracking-widest mb-3">
                             {{ __('General') }}</h3>
-                        <a href="{{ route('filament.admin.pages.dashboard') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'game-controller-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Dashboard') }}</span>
-                        </a>
-                        <a href="{{ route('filament.admin.resources.media.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'images-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Media') }}</span>
-                        </a>
-                        <a href="{{ route('filament.admin.resources.pages.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'brush-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Theme Switch') }}</span>
-                        </a>
-                        <a href="{{ route('filament.admin.resources.settings.edit-maintenance-section',['record' => 1]) }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'construct-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Maintenance Mode') }}</span>
-                        </a>
-                        <a href="{{ route('filament.admin.resources.settings.edit-security', [
-                        'record' => 1]) }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'lock-open-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Account Security Manager') }}</span>
-                        </a>
+                        <x-ui.link href="{{ route('filament.admin.pages.dashboard') }}" icon="home-outline"
+                            text="Dashboard Max" />
+                        <x-ui.link href="{{ route('filament.admin.resources.media.index') }}" icon="images-outline"
+                            text="{{ __('Media') }}" />
+                        <x-ui.link href="{{ route('filament.admin.resources.pages.index') }}" icon="brush-outline"
+                            text="{{ __('Theme Switch') }}" />
+                        <x-ui.link
+                            href="{{ route('filament.admin.resources.settings.edit-maintenance-section',['record' => 1]) }}"
+                            icon="construct-outline" text="{{ __('Maintenance Mode') }}" />
+                        <x-ui.link
+                            href="{{ route('filament.admin.resources.settings.edit-security', ['record' => 1]) }}"
+                            icon="lock-open-outline" text="{{ __('Account Security Manager') }}" />
                     </div>
 
                     <!-- Core Features -->
                     <div class="space-y-1">
-                        <h3 class="text-xs font-medium uppercase tracking-wider mb-2">
+                        <h3 class="text-[10px] uppercase opacity-50 tracking-widest mb-3">
                             {{ __('Core Features') }}</h3>
-                        <a href="{{ route('filament.admin.resources.mails.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'mail-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Mails') }}</span>
-                            @if($mailCount > 0)
-                            <span
-                                class="px-2 text-xs font-medium rounded-full border-t border-secondary-200 dark:border-secondary-700 bg-secondary-100 dark:bg-secondary-800">
-                                {{ $mailCount }}
-                            </span>
-                            @endif
-                        </a>
-                        <a href="{{ route('filament.admin.resources.posts.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'document-text-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Posts') }}</span>
-                            @if($postCount > 0)
-                            <span
-                                class="px-2 text-xs font-medium rounded-full border-t border-secondary-200 dark:border-secondary-700 bg-secondary-100 dark:bg-secondary-800">
-                                {{ $postCount }}
-                            </span>
-                            @endif
-                        </a>
-                        <a href="{{ route('filament.admin.resources.projects.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'briefcase-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Projects') }}</span>
-                            @if($projectCount > 0)
-                            <span
-                                class="px-2 text-xs font-medium rounded-full border-t border-secondary-200 dark:border-secondary-700 bg-secondary-100 dark:bg-secondary-800">
-                                {{ $projectCount }}
-                            </span>
-                            @endif
-                        </a>
-                        <a href="{{ route('filament.admin.resources.categories.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'pricetags-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Categories') }}</span>
-                            @if($categoryCount > 0)
-                            <span
-                                class="px-2 text-xs font-medium rounded-full border-t border-secondary-200 dark:border-secondary-700 bg-secondary-100 dark:bg-secondary-800">
-                                {{ $categoryCount }}
-                            </span>
-                            @endif
-                        </a>
-                        <a href="{{ route('filament.admin.resources.profiles.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'person-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Profile') }}</span>
-                        </a>
-                        <a href="{{ route('filament.admin.resources.customers.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'people-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Customers') }}</span>
-                        </a>
+                        <x-ui.link href="{{ route('filament.admin.resources.mails.index') }}" icon="mail-outline"
+                            text="{{ __('Mails') }}" badge="{{ $mailCount > 0 ? $mailCount : '' }}" />
+                        <x-ui.link href="{{ route('filament.admin.resources.posts.index') }}"
+                            icon="document-text-outline" text="{{ __('Posts') }}"
+                            badge="{{ $postCount > 0 ? $postCount : '' }}" />
+                        <x-ui.link href="{{ route('filament.admin.resources.projects.index') }}"
+                            icon="briefcase-outline" text="{{ __('Projects') }}"
+                            badge="{{ $projectCount > 0 ? $projectCount : '' }}" />
+                        <x-ui.link href="{{ route('filament.admin.resources.categories.index') }}"
+                            icon="pricetags-outline" text="{{ __('Categories') }}"
+                            badge="{{ $categoryCount > 0 ? $categoryCount : '' }}" />
+                        <x-ui.link href="{{ route('filament.admin.resources.profiles.index') }}" icon="person-outline"
+                            text="{{ __('Profile') }}" />
+                        <x-ui.link href="{{ route('filament.admin.resources.customers.index') }}" icon="people-outline"
+                            text="{{ __('Customers') }}" />
                     </div>
 
                     <!-- Website Design -->
                     <div class="space-y-1">
-                        <h3 class="text-xs font-medium uppercase tracking-wider mb-2">
+                        <h3 class="text-[10px] uppercase opacity-50 tracking-widest mb-3">
                             {{ __('Website Design') }}</h3>
-                        <a href="{{ route('filament.admin.resources.pages.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'document-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Pages') }}</span>
-                            @if($pageCount > 0)
-                            <span
-                                class="px-2 text-xs font-medium rounded-full border-t border-secondary-200 dark:border-secondary-700 bg-secondary-100 dark:bg-secondary-800">
-                                {{ $pageCount }}
-                            </span>
-                            @endif
-                        </a>
-                        <a href="{{ route('filament.admin.resources.heroes.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'flag-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Hero Section') }}</span>
-                        </a>
-                        <a href="{{ route('filament.admin.resources.settings.edit-appearance', ['record' => 1]) }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'color-palette-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Appearance') }}</span>
-                        </a>
-                        <a href="{{ route('filament.admin.resources.settings.edit-navigation', ['record' => 1]) }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'menu-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Navigation') }}</span>
-                        </a>
-                        <a href="{{ route('filament.admin.resources.slideshows.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'albums-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Slideshows') }}</span>
-                        </a>
-                        <a href="{{ route('filament.admin.resources.alerts.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'alert-circle-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Alerts') }}</span>
-                        </a>
+                        <x-ui.link href="{{ route('filament.admin.resources.pages.index') }}" icon="document-outline"
+                            text="{{ __('Pages') }}" badge="{{ $pageCount > 0 ? $pageCount : '' }}" />
+                        <x-ui.link href="{{ route('filament.admin.resources.heroes.index') }}" icon="flag-outline"
+                            text="{{ __('Hero Section') }}" />
+                        <x-ui.link
+                            href="{{ route('filament.admin.resources.settings.edit-appearance', ['record' => 1]) }}"
+                            icon="color-palette-outline" text="{{ __('Appearance') }}" />
+                        <x-ui.link
+                            href="{{ route('filament.admin.resources.settings.edit-navigation', ['record' => 1]) }}"
+                            icon="menu-outline" text="{{ __('Navigation') }}" />
+                        <x-ui.link href="{{ route('filament.admin.resources.slideshows.index') }}" icon="albums-outline"
+                            text="{{ __('Slideshows') }}" />
+                        <x-ui.link href="{{ route('filament.admin.resources.alerts.index') }}"
+                            icon="alert-circle-outline" text="{{ __('Alerts') }}" />
                     </div>
 
                     <!-- App Sections -->
                     <div class="space-y-1">
-                        <h3 class="text-xs font-medium uppercase tracking-wider mb-2">
+                        <h3 class="text-[10px] uppercase opacity-50 tracking-widest mb-3">
                             {{ __('App Sections') }}</h3>
-                        <a href="{{ route('filament.admin.resources.sections.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'radio-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('App Sections') }}</span>
-                        </a>
+                        <x-ui.link href="{{ route('filament.admin.resources.sections.index') }}" icon="radio-outline"
+                            text="{{ __('App Sections') }}" />
                     </div>
 
                     <!-- Settings -->
                     <div class="space-y-1">
-                        <h3 class="text-xs font-medium uppercase tracking-wider mb-2">
+                        <h3 class="text-[10px] uppercase opacity-50 tracking-widest mb-3">
                             {{ __('Settings') }}</h3>
-                        <a href="{{ route('filament.admin.resources.activity-logs.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'time-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Activity Log') }}</span>
-                        </a>
-                        <a href="{{ route('filament.admin.resources.settings.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'settings-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Settings') }}</span>
-                        </a>
-                        <a href="{{ route('log-viewer.index') }}"
-                            class="flex items-center gap-2 p-1.5 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 transition-colors">
-                            <x-ui.ionicon :icon="'clipboard-outline'" class="w-4 h-4" />
-                            <span class="text-xs">{{ __('Log Viewer') }}</span>
-                        </a>
+                        <x-ui.link href="{{ route('filament.admin.resources.activity-logs.index') }}"
+                            icon="time-outline" text="{{ __('Activity Log') }}" />
+                        <x-ui.link href="{{ route('filament.admin.resources.settings.index') }}" icon="settings-outline"
+                            text="{{ __('Settings') }}" />
+                        <x-ui.link href="{{ route('log-viewer.index') }}" icon="clipboard-outline"
+                            text="{{ __('Log Viewer') }}" />
                     </div>
                 </div>
             </div>
 
             <!-- Footer -->
-            <div class="sticky bottom-0  border-t saturn-border p-4 flex justify-between items-center">
+            <div class="sticky bottom-0 border-t saturn-border p-4 flex justify-between items-center">
                 <!-- Left section with user info -->
                 <div class="flex items-center gap-3">
                     <div class="flex-shrink-0">
@@ -243,7 +156,6 @@
         </div>
     </div>
 </div>
-
 <style>
     [x-cloak] {
         display: none !important;

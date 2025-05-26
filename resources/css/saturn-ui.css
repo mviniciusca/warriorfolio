@@ -40,16 +40,16 @@
 
 /** Saturn UI Borders **/
 .saturn-border {
-    @apply border-saturn-300 dark:border-saturn-800;
+    @apply border-saturn-300 dark:border-saturn-800/70;
 }
 .saturn-border-inverse {
-    @apply border-saturn-800 dark:border-saturn-300;
+    @apply border-saturn-800/70 dark:border-saturn-300;
 }
 .saturn-border-accent {
-    @apply border-saturn-200 dark:border-saturn-700;
+    @apply border-saturn-200 dark:border-saturn-800;
 }
 .saturn-border-accent-inverse {
-    @apply border-saturn-700 dark:border-saturn-200;
+    @apply border-saturn-800 dark:border-saturn-200;
 }
 
 /** Saturn UI Backgrounds **/
