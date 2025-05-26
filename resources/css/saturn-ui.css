@@ -68,7 +68,9 @@
 .saturn-hover-bg-accent {
     @apply hover:bg-saturn-50 hover:dark:bg-saturn-900;
 }
-
+.saturn-modal-bg {
+    @apply bg-white/20 dark:bg-black/20 backdrop-blur-sm;
+}
 /* ========================================
  * 3. COMPONENT COMPOSITIONS
  * ======================================== */

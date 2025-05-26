@@ -7,7 +7,7 @@
     }" class="fixed z-50" x-cloak>
     <!-- Side Btn -->
     <button @click="toggleExpand"
-        class="fixed left-0 top-1/2 -translate-y-1/2 bg-secondary-100 dark:bg-secondary-800 hover:bg-secondary-200 dark:hover:bg-secondary-700 p-2 rounded-r-md shadow-md transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-secondary-300 dark:focus:ring-secondary-600"
+        class="fixed left-0 top-1/2 -translate-y-1/2 saturn-bg-inverse saturn-text-inverse hover:opacity-90 p-2 rounded-r-md transition-all duration-200 flex items-center justify-center"
         title="{{ __('Open Menu') }}">
         <x-ui.ionicon :icon="'chevron-forward-outline'" class="w-5 h-5" />
     </button>
@@ -16,8 +16,7 @@
     <div x-show="isExpanded" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150"
         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-        class="fixed inset-0 z-40 bg-secondary-50/50 dark:bg-black/50 backdrop-blur-sm" @click="closeExpand"
-        style="display: none;"></div>
+        class="fixed inset-0 z-40 saturn-modal-bg" @click="closeExpand" style="display: none;"></div>
 
     <!-- Modal Content -->
     <div x-show="isExpanded" x-transition:enter="transition ease-out duration-300"
@@ -28,10 +27,8 @@
         x-transition:leave-end="opacity-0 scale-95 translate-y-4"
         class="fixed inset-0 z-50 flex items-center justify-center p-4" @click.away="closeExpand"
         style="display: none;">
-        <div
-            class="bg-white/90 dark:bg-secondary-950/90 rounded-lg shadow-xl w-full max-w-3xl max-h-[85vh] overflow-y-auto border border-secondary-200 dark:border-secondary-800">
-            <div
-                class="sticky top-0 bg-white dark:bg-secondary-900 border-b border-secondary-200 dark:border-secondary-800 p-4 flex justify-between items-center">
+        <div class="saturn-bg rounded-lg shadow-xl w-full max-w-3xl max-h-[85vh] overflow-y-auto border saturn-border">
+            <div class="sticky top-0  border-b saturn-border p-4 flex justify-between items-center">
                 <!-- Left section with icon and text -->
                 <div class="flex items-center gap-3 flex-1">
                     <div class="flex-shrink-0">
@@ -43,7 +40,7 @@
                 </div>
                 <!-- Right - Close button -->
                 <button @click="closeExpand"
-                    class="p-1 rounded-full flex items-center justify-center hover:bg-secondary-200 dark:hover:bg-secondary-800 transition-colors">
+                    class="p-1 rounded-full flex items-center justify-center hover:saturn-bg-accent transition-colors">
                     <x-ui.ionicon :icon="'close-outline'" class="w-5 h-5" />
                 </button>
             </div>
@@ -219,8 +216,7 @@
             </div>
 
             <!-- Footer -->
-            <div
-                class="sticky bottom-0 bg-white dark:bg-secondary-900 border-t border-secondary-200 dark:border-secondary-800 p-4 flex justify-between items-center">
+            <div class="sticky bottom-0  border-t saturn-border p-4 flex justify-between items-center">
                 <!-- Left section with user info -->
                 <div class="flex items-center gap-3">
                     <div class="flex-shrink-0">
@@ -237,7 +233,7 @@
                     <form method="POST" action="{{ route('filament.admin.auth.logout') }}">
                         @csrf
                         <button type="submit"
-                            class="flex items-center gap-2 px-3 py-1.5 text-xs border border-secondary-200 dark:border-secondary-700 rounded-md bg-secondary-50 dark:bg-secondary-800 hover:bg-secondary-200/80 dark:hover:bg-secondary-700/60 transition-colors">
+                            class="flex items-center gap-2 px-3 py-1.5 text-xs border saturn-border rounded-md  transition-colors">
                             <x-ui.ionicon :icon="'log-out-outline'" class="w-4 h-4" />
                             <span>{{ __('Logout from Dashboard') }}</span>
                         </button>
