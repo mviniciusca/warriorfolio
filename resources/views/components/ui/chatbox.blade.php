@@ -10,7 +10,7 @@
 
     <!-- Chat Window -->
     <div id="chatWindow"
-        class="fixed bottom-6 right-6 z-50 max-w-md saturn-bg rounded-xl border saturn-border transform scale-0 opacity-0 overflow-hidden transition-all duration-300 hidden">
+        class="fixed bottom-6 right-4 z-50 max-w-md saturn-bg rounded-xl border saturn-border transform scale-0 opacity-0 overflow-hidden transition-all duration-300 hidden">
         <!-- Header -->
         <div class="flex items-center justify-between p-4 border-b saturn-border">
             <div class="flex items-center space-x-4">
