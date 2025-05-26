@@ -131,25 +131,18 @@
             <!-- Footer -->
             <div class="sticky bottom-0 border-t saturn-border p-4 flex justify-between items-center">
                 <!-- Left section with user info -->
-                <div class="flex items-center gap-3">
-                    <div class="flex-shrink-0">
-                        <x-ui.ionicon :icon="'person-circle-outline'" class="w-6 h-6" />
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-xs opacity-75">{{ __('Logged in as') }}</span>
-                        <span class="font-medium text-sm">{{ auth()->user()->name }}</span>
-                    </div>
+                <div class="flex items-center gap-2">
+                    <x-ui.ionicon :icon="'person-circle-outline'" class="w-6 h-6" />
+                    <span class="font-medium text-xs">{{ auth()->user()->name }}</span>
                 </div>
                 <!-- Right section with dark mode toggle and logout -->
                 <div class="flex items-center gap-5">
                     <livewire:dark-mode wire:key='footer-dark-mode' />
                     <form method="POST" action="{{ route('filament.admin.auth.logout') }}">
                         @csrf
-                        <button type="submit"
-                            class="flex items-center gap-2 px-3 py-1.5 text-xs border saturn-border rounded-md hover:saturn-bg-accent transition-colors">
-                            <x-ui.ionicon :icon="'log-out-outline'" class="w-4 h-4" />
-                            <span>{{ __('Logout') }}</span>
-                        </button>
+                        <x-ui.button size="sm" style="outlined" icon="log-out-outline" type="submit">
+                            {{ __('Logout') }}
+                        </x-ui.button>
                     </form>
                 </div>
             </div>
