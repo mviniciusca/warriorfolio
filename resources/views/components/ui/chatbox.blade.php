@@ -2,7 +2,7 @@
 <div>
     <!-- Chat Button -->
     <button id="chatButton"
-        class="fixed bottom-8 right-5 z-50 p-3 text-white rounded-full shadow-xl cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 group {{ $color ? '' : 'dark:bg-secondary-50 dark:text-black bg-secondary-900' }}"
+        class="fixed bottom-8 right-5 z-50 p-3 saturn-text-inverse rounded-full shadow-xl cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 group {{ $color ? '' : 'saturn-bg-inverse' }}"
         style="background-color: {{ $color }}">
         <x-ui.ionicon class="h-6 w-6" icon="logo-whatsapp" />
         </svg>
@@ -10,21 +10,19 @@
 
     <!-- Chat Window -->
     <div id="chatWindow"
-        class="fixed bottom-6 right-6 z-50 max-w-md bg-white dark:bg-secondary-950 rounded-xl border border-secondary-300 dark:border-secondary-800 transform scale-0 opacity-0 overflow-hidden transition-all duration-300 hidden">
+        class="fixed bottom-6 right-6 z-50 max-w-md saturn-bg rounded-xl border saturn-border transform scale-0 opacity-0 overflow-hidden transition-all duration-300 hidden">
         <!-- Header -->
-        <div class="flex items-center justify-between p-4 border-b border-secondary-300 dark:border-secondary-800">
+        <div class="flex items-center justify-between p-4 border-b saturn-border">
             <div class="flex items-center space-x-4">
                 <div class="relative">
                     <div
-                        class="w-10 h-10 rounded-full bg-secondary-100 dark:bg-secondary-800 flex items-center justify-center">
-                        <svg class="w-5 h-5 text-secondary-600 dark:text-secondary-300" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-10 h-10 rounded-full saturn-bg-accent border saturn-border flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                     </div>
-                    <div
-                        class="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-secondary-800">
+                    <div class="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 saturn-border">
                     </div>
                 </div>
                 <div>
@@ -32,33 +30,29 @@
                     <p class="text-xs">{{ __('Online now') }}</p>
                 </div>
             </div>
-            <button id="closeChat"
-                class="p-2 hover:bg-secondary-200 dark:hover:bg-secondary-600 rounded-full transition-colors duration-200">
-                <svg class="w-5 h-5 text-secondary-500 dark:text-secondary-400" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24">
+            <button id="closeChat" class="p-2 hover:saturn-bg-accent rounded-full transition-colors duration-200">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
 
         <!-- Messages Area -->
-        <div id="messagesArea" class="h-64 overflow-y-auto p-4 bg-secondary-25 dark:bg-secondary-850 space-y-3">
+        <div id="messagesArea" class="h-64 overflow-y-auto p-4 bg-saturn space-y-3">
             <!-- Initial Message -->
             <div id="initialMessage" class="animate-fade-in hidden">
                 <div class="flex items-start space-x-3">
                     <div
-                        class="w-8 h-8 bg-secondary-100 dark:bg-secondary-800 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
-                        <svg class="w-4 h-4 text-secondary-600 dark:text-secondary-300" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-8 h-8 saturn-bg-accent rounded-full border saturn-border flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                     </div>
-                    <div
-                        class="bg-secondary-100 dark:bg-secondary-800 rounded-xl px-3 py-2 shadow-sm max-w-xs border border-secondary-300 dark:border-secondary-800">
-                        <p class="text-sm text-secondary-800 dark:text-secondary-200 leading-none">{{ $message ??
+                    <div class="saturn-bg-accent rounded-xl px-3 py-2 max-w-xs border saturn-border">
+                        <p class="text-xs leading-none">{{ $message ??
                             __('Hello! How can I help you today?') }}</p>
-                        <span class="text-xs text-secondary-500 dark:text-secondary-400 mt-1 block">{{ __('now')
+                        <span class="text-xs saturn-text-accent mt-1 block">{{ __('now')
                             }}</span>
                     </div>
                 </div>
@@ -66,15 +60,15 @@
         </div>
 
         <!-- Input Area -->
-        <div class="p-3 border-t border-secondary-300 dark:border-secondary-800">
+        <div class="p-3 border-t saturn-border">
             <div class="flex items-center space-x-2">
                 <div class="flex-1 relative">
                     <input type="text" id="messageInput" placeholder="{{ __('Type your message...') }}"
-                        class="w-full border-2 border-secondary-200 dark:border-secondary-800 bg-secondary-50 dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:bg-white dark:focus:bg-secondary-900 placeholder-secondary-500 dark:placeholder-secondary-400 transition-all duration-200"
+                        class="w-full border saturn-border-accent saturn-bg rounded-full px-4 py-2 text-sm focus:outline-none focus:saturn-bg-accent placeholder-saturn-500  transition-all duration-200"
                         maxlength="500">
                 </div>
                 <button id="sendMessageButton"
-                    class="w-8 h-8 p-2 bg-black dark:bg-white text-white dark:text-black disabled:bg-secondary-300 dark:disabled:bg-secondary-600 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-lg">
+                    class="w-8 h-8 p-2 saturn-bg-inverse saturn-text-inverse disabled:bg-saturn rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-lg">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
@@ -82,7 +76,7 @@
                 </button>
             </div>
             <p class="text-xs mt-3 text-center leading-relaxed">
-                {{ __('Press Enter to Send') }}
+                {{ __('Press Enter to send your message') }}
             </p>
         </div>
     </div>

@@ -1,0 +1,320 @@
+
+/*
+ * ========================================
+ * SATURN UI - COMPONENT LIBRARY
+ * ========================================
+ *
+ * Table of Contents:
+ * 1. Base Typography
+ * 2. Base Colors & Backgrounds
+ * 3. Component Compositions
+ * 4. Layout Compositions
+ * 5. Interactive Elements
+ * 6. Utility Compositions
+ * ========================================
+ */
+
+@layer components {
+
+/* ========================================
+ * 1. BASE TYPOGRAPHY
+ * ======================================== */
+
+/** Saturn UI Typography **/
+.saturn-text {
+    @apply text-saturn-900 dark:text-white;
+}
+.saturn-text-inverse {
+    @apply text-white dark:text-saturn-900;
+}
+.saturn-text-accent {
+    @apply text-saturn-800 dark:text-saturn-300;
+}
+.saturn-text-accent-inverse {
+    @apply text-saturn-300 dark:text-saturn-800;
+}
+
+/* ========================================
+ * 2. BASE COLORS & BACKGROUNDS
+ * ======================================== */
+
+/** Saturn UI Borders **/
+.saturn-border {
+    @apply border-saturn-300 dark:border-saturn-800;
+}
+.saturn-border-inverse {
+    @apply border-saturn-800 dark:border-saturn-300;
+}
+.saturn-border-accent {
+    @apply border-saturn-200 dark:border-saturn-700;
+}
+.saturn-border-accent-inverse {
+    @apply border-saturn-700 dark:border-saturn-200;
+}
+
+/** Saturn UI Backgrounds **/
+.saturn-bg {
+    @apply bg-white dark:bg-saturn-950;
+}
+.saturn-bg-inverse {
+    @apply bg-saturn-900 dark:bg-white;
+}
+.saturn-bg-accent {
+    @apply bg-saturn-50 dark:bg-saturn-900;
+}
+.saturn-bg-accent-inverse {
+    @apply bg-saturn-950 dark:bg-saturn-50;
+}
+.saturn-hover-bg-accent {
+    @apply hover:bg-saturn-50 hover:dark:bg-saturn-900;
+}
+
+/* ========================================
+ * 3. COMPONENT COMPOSITIONS
+ * ======================================== */
+
+/** Cards **/
+.saturn-card {
+    @apply saturn-bg saturn-border saturn-text rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow;
+}
+
+.saturn-card-elevated {
+    @apply saturn-card shadow-lg hover:shadow-xl border-2;
+}
+
+.saturn-card-interactive {
+    @apply saturn-card cursor-pointer hover:scale-105 transition-transform duration-200;
+}
+
+/** Buttons **/
+.saturn-btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-saturn-500 focus:ring-offset-2;
+}
+
+.saturn-btn-primary {
+    @apply saturn-btn bg-saturn-600 text-white hover:bg-saturn-700 active:bg-saturn-800;
+}
+
+.saturn-btn-secondary {
+    @apply saturn-btn saturn-border saturn-text saturn-hover-bg-accent;
+}
+
+.saturn-btn-ghost {
+    @apply saturn-btn saturn-text saturn-hover-bg-accent;
+}
+
+.saturn-btn-sm {
+    @apply px-3 py-1.5 text-sm;
+}
+
+.saturn-btn-lg {
+    @apply px-6 py-3 text-lg;
+}
+
+/** Input Fields **/
+.saturn-input {
+    @apply w-full px-3 py-2 saturn-border saturn-bg saturn-text rounded-lg focus:outline-none focus:ring-2 focus:ring-saturn-500 focus:border-transparent;
+}
+
+.saturn-input-group {
+    @apply space-y-2;
+}
+
+.saturn-label {
+    @apply block text-sm font-medium saturn-text-accent;
+}
+
+/** Badges & Tags **/
+.saturn-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.saturn-badge-primary {
+    @apply saturn-badge bg-saturn-100 text-saturn-800 dark:bg-saturn-800 dark:text-saturn-200;
+}
+
+.saturn-badge-success {
+    @apply saturn-badge bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-200;
+}
+
+.saturn-badge-warning {
+    @apply saturn-badge bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200;
+}
+
+.saturn-badge-error {
+    @apply saturn-badge bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-200;
+}
+
+/* ========================================
+ * 4. LAYOUT COMPOSITIONS
+ * ======================================== */
+
+/** Containers **/
+.saturn-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.saturn-container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.saturn-container-wide {
+    @apply max-w-full mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/** Grid Systems **/
+.saturn-grid {
+    @apply grid gap-6;
+}
+
+.saturn-grid-2 {
+    @apply saturn-grid md:grid-cols-2;
+}
+
+.saturn-grid-3 {
+    @apply saturn-grid md:grid-cols-2 lg:grid-cols-3;
+}
+
+.saturn-grid-4 {
+    @apply saturn-grid md:grid-cols-2 lg:grid-cols-4;
+}
+
+/** Flex Layouts **/
+.saturn-flex-center {
+    @apply flex items-center justify-center;
+}
+
+.saturn-flex-between {
+    @apply flex items-center justify-between;
+}
+
+.saturn-flex-start {
+    @apply flex items-center justify-start;
+}
+
+.saturn-flex-end {
+    @apply flex items-center justify-end;
+}
+
+/** Sections **/
+.saturn-section {
+    @apply py-12 md:py-16 lg:py-20;
+}
+
+.saturn-section-compact {
+    @apply py-8 md:py-12;
+}
+
+.saturn-section-spacious {
+    @apply py-16 md:py-24 lg:py-32;
+}
+
+/* ========================================
+ * 5. INTERACTIVE ELEMENTS
+ * ======================================== */
+
+/** Navigation **/
+.saturn-nav {
+    @apply saturn-bg saturn-border-accent border-b;
+}
+
+.saturn-nav-item {
+    @apply px-3 py-2 rounded-md text-sm font-medium saturn-text-accent hover:saturn-text saturn-hover-bg-accent transition-colors;
+}
+
+.saturn-nav-item-active {
+    @apply saturn-nav-item saturn-text saturn-bg-accent;
+}
+
+/** Tabs **/
+.saturn-tab-list {
+    @apply flex space-x-1 saturn-bg-accent p-1 rounded-lg;
+}
+
+.saturn-tab {
+    @apply flex-1 py-2 px-3 text-sm font-medium text-center rounded-md saturn-text-accent hover:saturn-text transition-colors cursor-pointer;
+}
+
+.saturn-tab-active {
+    @apply saturn-tab saturn-bg saturn-text shadow-sm;
+}
+
+/** Modals & Overlays **/
+.saturn-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 z-40;
+}
+
+.saturn-modal {
+    @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+}
+
+.saturn-modal-content {
+    @apply saturn-bg rounded-lg shadow-xl max-w-md w-full max-h-96 overflow-y-auto;
+}
+
+.saturn-modal-header {
+    @apply px-6 py-4 border-b saturn-border;
+}
+
+.saturn-modal-body {
+    @apply px-6 py-4;
+}
+
+.saturn-modal-footer {
+    @apply px-6 py-4 border-t saturn-border saturn-flex-end space-x-3;
+}
+
+/* ========================================
+ * 6. UTILITY COMPOSITIONS
+ * ======================================== */
+
+/** Loading States **/
+.saturn-loading {
+    @apply animate-pulse;
+}
+
+.saturn-skeleton {
+    @apply saturn-bg-accent rounded;
+}
+
+.saturn-spinner {
+    @apply animate-spin rounded-full border-2 border-saturn-200 border-t-saturn-600;
+}
+
+/** States **/
+.saturn-disabled {
+    @apply opacity-50 cursor-not-allowed;
+}
+
+.saturn-hidden {
+    @apply sr-only;
+}
+
+/** Transitions **/
+.saturn-transition {
+    @apply transition-all duration-200 ease-in-out;
+}
+
+.saturn-transition-slow {
+    @apply transition-all duration-500 ease-in-out;
+}
+
+.saturn-transition-fast {
+    @apply transition-all duration-100 ease-in-out;
+}
+
+/** Hover Effects **/
+.saturn-hover-lift {
+    @apply hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-200;
+}
+
+.saturn-hover-scale {
+    @apply hover:scale-105 transition-transform duration-200;
+}
+
+.saturn-hover-glow {
+    @apply hover:shadow-lg hover:shadow-saturn-500/25 transition-shadow duration-200;
+}
+
+}
+

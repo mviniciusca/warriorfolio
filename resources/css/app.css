@@ -1,7 +1,26 @@
-/** Animate CSS **/
-@import '../../node_modules/animate.css/animate.css';
 
-/* Default Theme CSS */
+/*
+ * ========================================
+ * WARRIORFOLIO - MAIN STYLESHEET
+ * ========================================
+ *
+ * Table of Contents:
+ * 1. Imports & Base
+ * 2. Animations & Keyframes
+ * 3. Saturn UI Components
+ * 4. Layout Components
+ * 5. Form Components
+ * 6. Content Components
+ * 7. Utility Classes
+ * ========================================
+ */
+
+/* ========================================
+ * 1. IMPORTS & BASE
+ * ======================================== */
+@import '../../node_modules/animate.css/animate.css';
+@import url('../css/saturn-ui.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,135 +29,69 @@
     display: none !important;
 }
 
-/** Background Animation FX **/
+/* ========================================
+ * 2. ANIMATIONS & KEYFRAMES
+ * ======================================== */
 
+/* Background Animations */
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.animation-bg-spin {
-    animation: spin 60s linear infinite;
-}
-
-.animate-opacity {
-    animation: animateOpacity 2s ease-in;
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes animateOpacity {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0.5;
-    }
+    0% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
 
 @keyframes moveDotsLeft {
-    0% {
-        background-position: 0% 0%;
-    }
-
-    100% {
-        background-position: 100% 0%;
-    }
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
 }
 
-.bg-dots {
-    background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
-    background-size: 20px 20px;
-    animation: moveDotsLeft 60s linear infinite;
-}
-
-.dark .bg-dots {
-    background-image: radial-gradient(circle, #4b5563 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-/** Rocket Animation **/
-.rocket {
-    font-size: 42px;
-    margin-top: -50px;
-    animation: float 4s ease-in-out infinite;
-    position: relative;
-    right: 10px;
-    z-index: 2;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-
+/* Element Animations */
 @keyframes float {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-30px) rotate(2deg);
-    }
-
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(2deg); }
+    100% { transform: translateY(0) rotate(0deg); }
 }
 
 @keyframes flicker {
-    0% {
-        opacity: 0.7;
-        transform: translateX(-50%) rotate(180deg) scale(0.9);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) rotate(180deg) scale(1.1);
-    }
-}
-.toggle-icon {
-    transition: transform 0.3s ease;
-}
-
-.toggle-icon.rotate {
-    transform: rotate(-180deg);
-}
-
-.fade-enter {
-    animation: fadeIn 0.5s ease forwards;
-}
-
-.fade-leave {
-    animation: fadeOut 0.5s ease forwards;
+    0% { opacity: 0.7; transform: translateX(-50%) rotate(180deg) scale(0.9); }
+    100% { opacity: 1; transform: translateX(-50%) rotate(180deg) scale(1.1); }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    to {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
 }
-/** Tabs CSS **/
 
+@keyframes shake {
+    0%, 100% { transform: translateX(0); filter: blur(0); }
+    25% { transform: translateX(-4px) rotate(-1deg); filter: blur(1px); }
+    75% { transform: translateX(4px) rotate(1deg); filter: blur(1px); }
+}
+
+@keyframes spinHover {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Animation Classes */
+.animation-bg-spin { animation: spin 60s linear infinite; }
+.animate-opacity { animation: animateOpacity 2s ease-in; }
+.fade-enter { animation: fadeIn 0.5s ease forwards; }
+.fade-leave { animation: fadeOut 0.5s ease forwards; }
+/* ========================================
+ * 3. SATURN UI COMPONENTS
+ * ======================================== */
+
+/** Tabs CSS **/
 .tab-pane {
     transition: opacity 0.2s ease-in-out;
     opacity: 0;
@@ -157,7 +110,9 @@
     border-bottom-color: currentColor;
 }
 
-/** Main App **/
+/* ========================================
+ * 4. LAYOUT COMPONENTS
+ * ======================================== */
 
 @layer base {
     html {
@@ -176,7 +131,7 @@
         @apply bg-secondary-950 text-secondary-300 dark:bg-secondary-50 dark:text-secondary-900;
     }
 
-    /** Saturn UI **/
+    /** Saturn UI Integration **/
     .saturn-ui,
     .saturn-ui-primary {
         @apply bg-black text-white dark:bg-white dark:text-black;
@@ -517,3 +472,4 @@ nav[aria-label="Categories"] button:hover::after {
     transform: scaleX(1);
     transform-origin: left;
 }
+

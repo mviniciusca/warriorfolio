@@ -19,6 +19,7 @@ export default {
         extend: {
             colors: {
                 primary: colors.zinc,//accent color: default purple
+                saturn: colors.zinc,//saturn color: default zinc
                 secondary: colors.zinc,//dark color: default zinc
                 tertiary: colors.pink,//highlight fx color: default pink
                 danger: colors.red,//danger color: default red
