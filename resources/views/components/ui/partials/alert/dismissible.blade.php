@@ -5,7 +5,7 @@
 
 @if ($is_dismissible)
 @if ($button_text)
-<x-ui.button wire:click="close">
+<x-ui.button style="primary" wire:click="close">
     <p class="text-xs">{!! $button_text !!}</p>
 </x-ui.button>
 @else

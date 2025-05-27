@@ -86,7 +86,7 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
 @endif
 
 {{-- Outlined --}}
-@if ($style === 'outline')
+@if ($style === 'outlined')
 <button {{ $attributes->class([
     'saturn-btn-outlined',
     ]) }}
@@ -104,7 +104,7 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
 @endif
 
 {{-- Outlined Inverse --}}
-@if ($style === 'outline' && $is_section_filled_inverted)
+@if ($style === 'outlined' && $is_section_filled_inverted)
 <button {{ $attributes->class([
     'saturn-btn-outlined-inverse',
     ]) }}

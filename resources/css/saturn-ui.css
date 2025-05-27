@@ -109,7 +109,7 @@
 
 /** Alerts **/
 .saturn-alert {
-    @apply animate__animated animate__delay-1s font-medium text-sm leading-relaxed z-50 mx-auto;
+    @apply animate__animated animate__delay-1s font-medium text-xs leading-relaxed z-50 mx-auto;
 }
 
 .saturn-alert-default {

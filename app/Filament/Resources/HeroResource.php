@@ -190,7 +190,7 @@ class HeroResource extends Resource
                                                                         'primary'   => __('Primary'),
                                                                         'secondary' => __('Secondary'),
                                                                         'ghost'     => __('Ghost (Transparent)'),
-                                                                        'outline'   => __('Outline'),
+                                                                        'outlined'  => __('Outlined'),
                                                                     ])
                                                                     ->default('primary'),
                                                                 Select::make('button_target')

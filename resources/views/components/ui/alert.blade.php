@@ -6,8 +6,10 @@
 'is_dismissible' => false,
 ])
 
+{{-- Alert --}}
+@if($style === null)
 <div {{ $attributes->merge([
-    'class' => 'saturn-alert saturn-bg-accent saturn-text border-b saturn-border-accent',
+    'class' => 'saturn-alert saturn-bg saturn-text border-b saturn-border-accent',
     ]) }}>
     <div class="flex py-4 max-w-7xl mx-auto items-center justify-between">
         <span class="flex items-center gap-2">
@@ -18,11 +20,12 @@
     </div>
 </div>
 </div>
+@endif
 
-{{-- Default Style: --}}
+{{-- Default Style --}}
 @if($style === 'default')
 <div tabindex="-1" wire:ignore id="wrapper-{{ $id }}"
-    class="saturn-alert saturn-bg-accent saturn-text fixed bottom-0 w-full border-t saturn-border-accent animate__fadeInUp">
+    class="saturn-alert saturn-bg saturn-text fixed bottom-0 w-full border-t saturn-border-accent animate__fadeInUp">
     <div class="flex py-4 max-w-7xl mx-auto items-center justify-between">
         <span class="flex items-center gap-2">
             <x-ui.ionicon :$icon class="w-4 h-4" />
@@ -35,7 +38,7 @@
 
 {{-- Bumper Style --}}
 @if($style === 'bumper')
-<div class="saturn-alert saturn-bg-accent border-b saturn-border-accent animate__fadeInDown saturn-text fixed top-0 w-full"
+<div class="saturn-alert saturn-bg border-b saturn-border-accent animate__fadeInDown saturn-text fixed top-0 w-full"
     id="wrapper-{{ $id }}" tabindex="-1">
     <div class="flex py-4 max-w-7xl mx-auto items-center justify-between">
         <span class="flex items-center gap-2">
@@ -50,7 +53,7 @@
 
 {{-- Banner Style --}}
 @if($style === 'banner')
-<div class="saturn-alert saturn-bg-accent saturn-text top-0 w-full border-b saturn-border-accent" id="wrapper-{{ $id }}"
+<div class="saturn-alert saturn-bg saturn-text top-0 w-full border-b saturn-border-accent" id="wrapper-{{ $id }}"
     tabindex="-1">
     <div class="flex py-4 max-w-7xl mx-auto items-center justify-between">
         <span class="flex items-center gap-2">
@@ -63,3 +66,17 @@
 @endif
 
 {{-- Toast Style --}}
+@if($style === 'toast')
+<div class="saturn-alert rounded-lg saturn-bg saturn-text fixed bottom-5 left-5 mx-auto max-w-2xl border saturn-border-accent animate__fadeInUp"
+    id="wrapper-{{ $id }}" tabindex="-1">
+    <div class="grid gap-2 py-4 px-5 max-w-7xl mx-auto items-center justify-between">
+        <span class="flex items-center gap-2 text-xs leading-relaxed">
+            <x-ui.ionicon :$icon class="w-4 h-4" />
+            <span>{!! $slot !!}</span>
+        </span>
+        <span class="m-2">
+            <x-ui.partials.alert.dismissible :$button_text :$is_dismissible />
+        </span>
+    </div>
+</div>
+@endif
