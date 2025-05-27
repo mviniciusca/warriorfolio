@@ -4,7 +4,7 @@
         isExpanded: false,
         toggleExpand() { this.isExpanded = !this.isExpanded; },
         closeExpand() { this.isExpanded = false; }
-    }" class="fixed z-50" x-cloak>
+    }" class="fixed z-40" x-cloak>
     <!-- Side Btn -->
     <button @click="toggleExpand" class="fixed -left-1 top-1/2 -translate-y-1/2 saturn-btn saturn-btn-secondary"
         title="{{ __('Open Quickbar') }}">

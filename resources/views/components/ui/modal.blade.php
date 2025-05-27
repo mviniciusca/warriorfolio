@@ -67,7 +67,7 @@ $modalSize = $sizeClasses[$size] ?? $sizeClasses['md'];
             <!-- Header -->
             @if($title)
             <div class="px-6 py-4 border-b saturn-border-accent">
-                <h3 class="text-lg font-semibold saturn-text">
+                <h3 class="text-sm font-semibold saturn-text">
                     {{ $title }}
                 </h3>
             </div>
