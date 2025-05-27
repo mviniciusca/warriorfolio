@@ -76,7 +76,7 @@
 /** Saturn UI Buttons **/
 
 .saturn-btn {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium antialiased transition-colors focus-visible:outline-none shadow-sm h-9 px-4 py-2;
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium antialiased active:opacity-60 focus-visible:outline-none shadow-sm h-9 px-4 py-2 hover:opacity-90 transition-all;
 }
 .saturn-btn-primary {
     @apply saturn-btn saturn-bg-inverse saturn-text-inverse saturn-border-inverse;
@@ -84,17 +84,17 @@
 .saturn-btn-primary-inverse {
     @apply saturn-btn saturn-bg saturn-text saturn-border;
 }
+.saturn-btn-secondary {
+    @apply saturn-btn saturn-bg-accent saturn-text saturn-border-accent;
+}
+.saturn-btn-secondary-inverse {
+    @apply saturn-btn saturn-bg-accent saturn-text-accent saturn-border-accent;
+}
 .saturn-btn-outlined {
     @apply saturn-btn bg-transparent saturn-text-inverse saturn-border-inverse;
 }
 .saturn-btn-outlined-inverse {
     @apply saturn-btn bg-transparent saturn-text saturn-border;
-}
-.saturn-btn-secondary {
-    @apply saturn-btn saturn-bg-accent-inverse saturn-text-accent-inverse saturn-border-accent-inverse;
-}
-.saturn-btn-secondary-inverse {
-    @apply saturn-btn saturn-bg-accent saturn-text-accent saturn-border-accent;
 }
 
 

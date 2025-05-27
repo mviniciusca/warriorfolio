@@ -52,3 +52,42 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
     @endif
 </button>
 @endif
+
+
+{{-- Secondary Button --}}
+@if ($style === 'secondary')
+<button {{ $attributes->class([
+    'saturn-btn-secondary',
+    ]) }}
+    type="{{ $type }}">
+    @if ($icon && $icon_before)
+    <x-ui.ionicon :icon='$icon' />
+    @endif
+    <span>
+        {!! $buttonContent !!}
+    </span>
+    @if ($icon && $icon_before === false)
+    <x-ui.ionicon :icon='$icon' />
+    @endif
+</button>
+@endif
+
+{{-- Secondary Inverse --}}
+@if ($style === 'secondary' && $is_section_filled_inverted)
+<button {{ $attributes->class([
+    'saturn-btn-secondary-inverse',
+    ]) }}
+    type="{{ $type }}">
+    @if ($icon && $icon_before)
+    <x-ui.ionicon :icon='$icon' />
+    @endif
+    <span>
+        {!! $buttonContent !!}
+    </span>
+    @if ($icon && $icon_before === false)
+    <x-ui.ionicon :icon='$icon' />
+    @endif
+</button>
+@endif
+
+{{-- Ghost Button --}}
