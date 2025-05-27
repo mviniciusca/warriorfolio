@@ -22,16 +22,16 @@
 
 /** Saturn UI Typography **/
 .saturn-text {
-    @apply text-saturn-900 dark:text-white;
+    @apply text-saturn-800 dark:text-saturn-100;
 }
 .saturn-text-inverse {
-    @apply text-white dark:text-saturn-900;
+    @apply text-saturn-100 dark:text-saturn-800;
 }
 .saturn-text-accent {
-    @apply text-saturn-800 dark:text-saturn-300;
+    @apply text-saturn-700 dark:text-saturn-300;
 }
 .saturn-text-accent-inverse {
-    @apply text-saturn-300 dark:text-saturn-800;
+    @apply text-saturn-300 dark:text-saturn-700;
 }
 
 /* ========================================
@@ -109,7 +109,7 @@
 
 /** Alerts **/
 .saturn-alert {
-    @apply animate__animated animate__delay-1s text-xs z-50 mx-auto;
+    @apply animate__animated animate__delay-1s font-medium text-sm leading-relaxed z-50 mx-auto;
 }
 
 .saturn-alert-default {

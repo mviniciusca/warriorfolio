@@ -1,7 +1,7 @@
 @props([
 'id' => null,
 'icon' => null,
-'style' =>'default',
+'style' => null,
 'button_text' => null,
 'is_dismissible' => false,
 ])
