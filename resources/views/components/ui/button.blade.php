@@ -2,7 +2,7 @@
 'icon' => null,
 'label' => null,
 'type' => 'button',
-'icon_before' => true, // icon position before or after the label
+'icon_before' => true,
 'style' => null ?? 'primary',
 'is_section_filled_inverted' => null,
 'size' => null, // deprecated v3.0.0
@@ -16,7 +16,7 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
 
 {{-- Saturn UI Buttons Primary, Secondary, Ghost and Outlined --}}
 
-{{-- Primary - Filled Button --}}
+{{-- Primary Button --}}
 @if ($style === 'primary' && !$is_section_filled_inverted)
 <button {{ $attributes->class([
     'saturn-btn-primary',
@@ -35,7 +35,7 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
 @endif
 
 
-{{-- Primary - Filled Button Inverse --}}
+{{-- Primary Inverse --}}
 @if ($style === 'primary' && $is_section_filled_inverted)
 <button {{ $attributes->class([
     'saturn-btn-primary-inverse',
