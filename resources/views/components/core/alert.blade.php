@@ -13,12 +13,12 @@
 ])
 @endforeach
 
-
 {{-- Core Message: Discovery Mode Alert --}}
 @if ($maintenance && ($discovery && auth()->user()))
-<x-ui.alert :icon="'telescope-sharp'" :style="'banner'" :id="'discovery-alert'">
+<x-ui.alert :style="'banner'" :id="'discovery-alert'">
     <div class="flex items-center gap-2">
-        <span class="bg-warning-500 animate-pulse block h-1 w-1 rounded-full"></span>
+        <span
+            class="saturn-bg-inverse animate-pulse block h-1 w-1 p-0.5 ring ring-saturn-500/50 border saturn-border-inverse  rounded-full"></span>
         {{ __('Discovery Mode is active. Although the website is in Maintenance Mode, it remains visible due to your
         authenticated session.') }}
     </div>

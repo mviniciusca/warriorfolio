@@ -1,6 +1,3 @@
-{{-- Livewire - Notifications Hub --}}
-@livewire('notifications')
-
 {{-- Alerts Hub --}}
 <x-core.alert />
 

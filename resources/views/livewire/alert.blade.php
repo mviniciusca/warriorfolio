@@ -9,13 +9,10 @@
 'icon' =>'notifications-outline',
 ])
 
-<div>
-    <div>
-        @if ($display && $is_active && $style)
-        {{-- Alert Component --}}
-        <x-ui.alert :$style :$id :$icon :$is_dismissible :$button_text>
-            {!! $message !!}
-        </x-ui.alert>
-        @endif
-    </div>
+<div id="messaging-hub">
+    @if ($display && $is_active && $style)
+    <x-ui.alert :$style :$id :$icon :$is_dismissible :$button_text>
+        {!! $message !!}
+    </x-ui.alert>
+    @endif
 </div>
