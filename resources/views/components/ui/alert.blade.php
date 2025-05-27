@@ -67,7 +67,7 @@
 
 {{-- Toast Style --}}
 @if($style === 'toast')
-<div class="saturn-alert rounded-lg saturn-bg saturn-text fixed bottom-5 left-5 mx-auto max-w-2xl border saturn-border-accent animate__fadeInUp"
+<div class="saturn-alert rounded-lg saturn-bg saturn-text fixed bottom-5 left-5 mx-auto max-w-xl border saturn-border-accent animate__fadeInUp"
     id="wrapper-{{ $id }}" tabindex="-1">
     <div class="grid gap-2 py-4 px-5 max-w-7xl mx-auto items-center justify-between">
         <span class="flex items-center gap-2 text-xs leading-relaxed">
@@ -79,4 +79,20 @@
         </span>
     </div>
 </div>
+@endif
+
+{{-- Modal Style --}}
+@if($style === 'modal')
+<x-ui.modal id="wrapper-{{ $id }}" :autoOpen="true" :id="$id" :title="null" :closable="true" :overlay="true"
+    class="saturn-bg saturn-text border saturn-border-accent">
+    <div class="p-6">
+        <div class="flex items-center gap-2">
+            <x-ui.ionicon :$icon class="w-4 h-4" />
+            <span>{!! $slot !!}</span>
+        </div>
+    </div>
+    <x-slot name="footer">
+        <x-ui.partials.alert.dismissible :$button_text :$is_dismissible />
+    </x-slot>
+</x-ui.modal>
 @endif

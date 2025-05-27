@@ -79,6 +79,7 @@ class AlertResource extends Resource
                                         'bumper'  => 'Bumper',
                                         'banner'  => 'Banner',
                                         'toast'   => 'Toast',
+                                        'modal'   => 'Modal',
                                     ])
                                     ->helperText(__('Select the style of the alert.'))
                                     ->default('default')
