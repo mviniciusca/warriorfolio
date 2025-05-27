@@ -187,10 +187,12 @@ class HeroResource extends Resource
                                                                     ->helperText(__('Visual appearance of the button.'))
                                                                     ->prefixIcon('heroicon-o-swatch')
                                                                     ->options([
-                                                                        'filled'   => __('Filled (Primary)'),
-                                                                        'outlined' => __('Outlined (Secondary)'),
+                                                                        'primary'   => __('Primary'),
+                                                                        'secondary' => __('Secondary'),
+                                                                        'ghost'     => __('Ghost (Transparent)'),
+                                                                        'outline'   => __('Outline'),
                                                                     ])
-                                                                    ->default('filled'),
+                                                                    ->default('primary'),
                                                                 Select::make('button_target')
                                                                     ->label(__('Open In'))
                                                                     ->helperText(__('How the link will open.'))
@@ -210,9 +212,9 @@ class HeroResource extends Resource
                                                                     ->helperText(__('Add an Ionicon for visual emphasis.'))
                                                                     ->placeholder('arrow-forward-outline')
                                                                     ->prefixIcon('heroicon-o-bolt'),
-                                                                Checkbox::make('color')
-                                                                    ->label(__('Use Primary Color'))
-                                                                    ->helperText(__('Enable to use the primary theme color for this button.'))
+                                                                Checkbox::make('icon_before')
+                                                                    ->label(__('Icon Before Text'))
+                                                                    ->helperText(__('Display the icon before the button text.'))
                                                                     ->default(true),
                                                             ]),
                                                     ]),

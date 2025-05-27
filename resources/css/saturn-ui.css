@@ -40,16 +40,16 @@
 
 /** Saturn UI Borders **/
 .saturn-border {
-    @apply border-saturn-300/70 dark:border-saturn-800/70;
+    @apply border border-saturn-300/70 dark:border-saturn-800/70;
 }
 .saturn-border-inverse {
-    @apply border-saturn-800/70 dark:border-saturn-300/70;
+    @apply border border-saturn-800/70 dark:border-saturn-300/70;
 }
 .saturn-border-accent {
-    @apply border-saturn-300 dark:border-saturn-800;
+    @apply border border-saturn-300 dark:border-saturn-800;
 }
 .saturn-border-accent-inverse {
-    @apply border-saturn-800 dark:border-saturn-300;
+    @apply border border-saturn-800 dark:border-saturn-300;
 }
 
 /** Saturn UI Backgrounds **/
@@ -57,13 +57,13 @@
     @apply bg-white dark:bg-saturn-950;
 }
 .saturn-bg-inverse {
-    @apply bg-saturn-900 dark:bg-white;
+    @apply bg-saturn-950 dark:bg-white;
 }
 .saturn-bg-accent {
     @apply bg-saturn-50 dark:bg-saturn-900;
 }
 .saturn-bg-accent-inverse {
-    @apply bg-saturn-950 dark:bg-saturn-50;
+    @apply bg-saturn-900 dark:bg-saturn-50;
 }
 .saturn-hover-bg-accent {
     @apply hover:bg-saturn-50 hover:dark:bg-saturn-900;
@@ -71,6 +71,35 @@
 .saturn-modal-bg {
     @apply bg-white/20 dark:bg-black/20 backdrop-blur-sm;
 }
+
+
+/** Saturn UI Buttons **/
+
+.saturn-btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium antialiased transition-colors focus-visible:outline-none shadow-sm h-9 px-4 py-2;
+}
+.saturn-btn-primary {
+    @apply saturn-btn saturn-bg-inverse saturn-text-inverse saturn-border-inverse;
+}
+.saturn-btn-primary-inverse {
+    @apply saturn-btn saturn-bg saturn-text saturn-border;
+}
+.saturn-btn-outlined {
+    @apply saturn-btn bg-transparent saturn-text-inverse saturn-border-inverse;
+}
+.saturn-btn-outlined-inverse {
+    @apply saturn-btn bg-transparent saturn-text saturn-border;
+}
+.saturn-btn-secondary {
+    @apply saturn-btn saturn-bg-accent-inverse saturn-text-accent-inverse saturn-border-accent-inverse;
+}
+.saturn-btn-secondary-inverse {
+    @apply saturn-btn saturn-bg-accent saturn-text-accent saturn-border-accent;
+}
+
+
+
+
 /* ========================================
  * 3. COMPONENT COMPOSITIONS
  * ======================================== */
@@ -88,30 +117,7 @@
     @apply saturn-card cursor-pointer hover:scale-105 transition-transform duration-200;
 }
 
-/** Buttons **/
-.saturn-btn {
-    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-saturn-500 focus:ring-offset-2;
-}
 
-.saturn-btn-primary {
-    @apply saturn-btn bg-saturn-600 text-white hover:bg-saturn-700 active:bg-saturn-800;
-}
-
-.saturn-btn-secondary {
-    @apply saturn-btn saturn-border saturn-text saturn-hover-bg-accent;
-}
-
-.saturn-btn-ghost {
-    @apply saturn-btn saturn-text saturn-hover-bg-accent;
-}
-
-.saturn-btn-sm {
-    @apply px-3 py-1.5 text-sm;
-}
-
-.saturn-btn-lg {
-    @apply px-6 py-3 text-lg;
-}
 
 /** Input Fields **/
 .saturn-input {

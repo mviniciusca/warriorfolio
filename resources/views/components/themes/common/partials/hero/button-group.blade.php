@@ -7,28 +7,15 @@
 'target' => '_self',
 'title' => null,
 'url' => null,
+'icon_before' => true,
 ])
 
 <div>
-    {{-- Filled Button --}}
-    @if ($style === 'filled' && $title)
+    @if ($style && $title)
     @if ($url)
     <a href="{{ $url }}" target="{{ $target }}">
         @endif
-        <x-ui.button :$color :$icon :style="'filled'" class="{{ $class }}">
-            {{ $title }}
-        </x-ui.button>
-        @if ($url)
-    </a>
-    @endif
-    @endif
-
-    {{-- Outlined Button --}}
-    @if ($style === 'outlined' && $title)
-    @if ($url)
-    <a href="{{ $url }}" target="{{ $target }}">
-        @endif
-        <x-ui.button :$color :$icon :style="'outlined'" class="{{ $class }}">
+        <x-ui.button :$icon_before :$icon :$style class="{{ $class }}">
             {{ $title }}
         </x-ui.button>
         @if ($url)
