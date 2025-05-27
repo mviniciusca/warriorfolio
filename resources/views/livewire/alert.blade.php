@@ -21,8 +21,13 @@
         </x-ui.alert>
         @endif
 
+        {{-- Bumper Alert Style --}}
         @if ($style === 'bumper')
-        <div class="animate__animated animate__fadeInDown animate__delay-1s fixed top-0 z-50 mx-auto w-full rounded-lg bg-secondary-100 bg-contain bg-center bg-no-repeat text-xs dark:border-b dark:border-b-secondary-800 dark:bg-secondary-950"
+        <x-ui.alert :$style :$id :$icon :$is_dismissible :$button_text>
+            {!! $message !!}
+        </x-ui.alert>
+        {{-- <div
+            class="animate__animated animate__fadeInDown animate__delay-1s fixed top-0 z-50 mx-auto w-full rounded-lg bg-secondary-100 bg-contain bg-center bg-no-repeat text-xs dark:border-b dark:border-b-secondary-800 dark:bg-secondary-950"
             id="{{ $id }}" tabindex="-1">
             <div class="mx-auto flex max-w-7xl items-center justify-between gap-2 px-5 py-2">
                 <div class="alert-content">
@@ -40,7 +45,7 @@
                     @endif
                 </div>
             </div>
-        </div>
+        </div> --}}
         @endif
 
         @if ($style === 'banner')
