@@ -1,11 +1,16 @@
 @props(['maintenance' => null, 'discovery' => null, 'alerts' => []])
 
-{{-- Messaging Hub --}}
+{{-- Messaging Hub from Livewire Component --}}
 @foreach ($alerts as $alert)
-<x-ui.alert :id="$alert->id" :style="$alert->style" :icon="$alert->icon" :is_dismissible="$alert->is_dismissible"
-    :button_text="$alert->button_text" :display="$alert->display" :is_active="$alert->is_active">
-    {!! $alert->message !!}
-</x-ui.alert>
+@livewire('alert', [
+'id' => $alert->id,
+'style' => $alert->style,
+'icon' => $alert->icon,
+'is_dismissible' => $alert->is_dismissible,
+'button_text' => $alert->button_text,
+'is_active' => $alert->is_active,
+'message' => $alert->message
+])
 @endforeach
 
 

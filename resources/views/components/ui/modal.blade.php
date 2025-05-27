@@ -1,5 +1,5 @@
 @props([
-'id' => 'modal-' . uniqid(),
+'id' => null,
 'size' => 'md', // sm, md, lg, xl, 2xl
 'overlay' => true,
 'closable' => true,
