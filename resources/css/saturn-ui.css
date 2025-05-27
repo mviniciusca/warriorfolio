@@ -72,6 +72,9 @@
     @apply bg-white/20 dark:bg-black/20 backdrop-blur-sm;
 }
 
+/* ========================================
+ * 3. COMPONENT COMPOSITIONS
+ * ======================================== */
 
 /** Saturn UI Buttons **/
 
@@ -103,12 +106,10 @@
     @apply saturn-btn bg-transparent saturn-text-accent-inverse hover:saturn-text-inverse shadow-none border border-transparent hover:saturn-border-accent-inverse;
 }
 
+/** Saturn UI Bumpers **/
 
 
 
-/* ========================================
- * 3. COMPONENT COMPOSITIONS
- * ======================================== */
 
 /** Cards **/
 .saturn-card {
