@@ -1,12 +1,12 @@
 @props([
-'is_dismissible' => null,
-'is_active' => null,
-'button_text' => null,
+'id' => null,
 'style' => null,
 'message' => null,
-'icon' =>'notifications-outline',
-'id' => null,
 'display' => false,
+'is_active' => null,
+'button_text' => null,
+'is_dismissible' => null,
+'icon' =>'notifications-outline',
 ])
 
 <div>
