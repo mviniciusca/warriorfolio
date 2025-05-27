@@ -107,17 +107,13 @@
 }
 
 
-/** Cards **/
-.saturn-card {
-    @apply saturn-bg saturn-border saturn-text rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow;
+/** Alerts **/
+.saturn-alert {
+    @apply animate__animated animate__fadeInUp animate__delay-1s text-sm z-50 mx-auto;
 }
 
-.saturn-card-elevated {
-    @apply saturn-card shadow-lg hover:shadow-xl border-2;
-}
-
-.saturn-card-interactive {
-    @apply saturn-card cursor-pointer hover:scale-105 transition-transform duration-200;
+.saturn-alert-default {
+    @apply mx-auto flex max-w-7xl items-center justify-between gap-2 px-5 py-2;
 }
 
 

@@ -1,29 +1,24 @@
-@props(['is_dismissible' => null, 'is_active' => null, 'button_text' => null])
+@props([
+'is_dismissible' => null,
+'is_active' => null,
+'button_text' => null,
+'style' => 'default',
+'message' => null,
+'icon' =>'notifications-outline',
+'id' => null,
+'display' => false,
+])
 
 <div>
     <div id="wrapper-{{ $id }}">
 
         @if ($display && $is_active)
+
+        {{-- Default Alert Style --}}
         @if ($style === 'default')
-        <div class="animate__animated animate__fadeInUp animate__delay-1s fixed bottom-0 z-50 mx-auto w-full border-t bg-secondary-100 bg-contain bg-center bg-no-repeat dark:border-t-secondary-800 dark:bg-secondary-950"
-            id="{{ $id }}" tabindex="-1">
-            <div class="mx-auto flex max-w-7xl items-center justify-between gap-2 px-5 py-2 text-xs">
-                <div class="alert-content">
-                    {!! $message !!}
-                </div>
-                <div class="my-4">
-                    @if ($is_dismissible)
-                    @if ($button_text)
-                    <x-ui.button wire:click="close">
-                        <p class="text-xs">{{ $button_text }}</p>
-                    </x-ui.button>
-                    @else
-                    <x-ui.ionicon class="cursor-pointer" icon="close-outline" wire:click="close" />
-                    @endif
-                    @endif
-                </div>
-            </div>
-        </div>
+        <x-ui.alert :$style :$id :$icon :$is_dismissible :$button_text>
+            {!! $message !!}
+        </x-ui.alert>
         @endif
 
         @if ($style === 'bumper')
