@@ -6,10 +6,9 @@
         closeExpand() { this.isExpanded = false; }
     }" class="fixed z-50" x-cloak>
     <!-- Side Btn -->
-    <button @click="toggleExpand"
-        class="fixed left-0 top-1/2 -translate-y-1/2 saturn-bg-inverse saturn-text-inverse hover:opacity-90 p-2 rounded-r-md transition-all duration-200 flex items-center justify-center"
-        title="{{ __('Open Menu') }}">
-        <x-ui.ionicon :icon="'chevron-forward-outline'" class="w-5 h-5" />
+    <button @click="toggleExpand" class="fixed -left-1 top-1/2 -translate-y-1/2 saturn-btn saturn-btn-secondary"
+        title="{{ __('Open Quickbar') }}">
+        <x-ui.ionicon :icon="'chevron-forward-outline'" />
     </button>
 
     <!-- Modal Backdrop -->
@@ -35,7 +34,7 @@
                         <x-ui.ionicon :icon="'flash-outline'" class="w-6 h-6" />
                     </div> --}}
                     <div class="flex flex-col">
-                        <span class="font-medium text-xs">{{ __('Quick Access') }}</span>
+                        <span class="font-medium text-xs">{{ __('Warriorfolio Quickbar') }}</span>
                     </div>
                 </div>
                 <!-- Right - Close button -->

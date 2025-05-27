@@ -40,16 +40,16 @@
 
 /** Saturn UI Borders **/
 .saturn-border {
-    @apply border border-saturn-300/70 dark:border-saturn-800/70;
+    @apply border-saturn-300/70 dark:border-saturn-800/70;
 }
 .saturn-border-inverse {
-    @apply border border-saturn-800/70 dark:border-saturn-300/70;
+    @apply border-saturn-800/70 dark:border-saturn-300/70;
 }
 .saturn-border-accent {
-    @apply border border-saturn-300 dark:border-saturn-800;
+    @apply border-saturn-300 dark:border-saturn-800;
 }
 .saturn-border-accent-inverse {
-    @apply border border-saturn-800 dark:border-saturn-300;
+    @apply border-saturn-800 dark:border-saturn-300;
 }
 
 /** Saturn UI Backgrounds **/
@@ -79,22 +79,22 @@
     @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium antialiased active:opacity-60 focus-visible:outline-none shadow-sm h-9 px-4 py-2 hover:opacity-75 transition-all;
 }
 .saturn-btn-primary {
-    @apply saturn-btn saturn-bg-inverse saturn-text-inverse saturn-border-inverse;
+    @apply saturn-btn saturn-bg-inverse saturn-text-inverse border saturn-border-inverse;
 }
 .saturn-btn-primary-inverse {
-    @apply saturn-btn saturn-bg saturn-text saturn-border;
+    @apply saturn-btn saturn-bg saturn-text border saturn-border;
 }
 .saturn-btn-secondary {
-    @apply saturn-btn saturn-bg-accent saturn-text saturn-border-accent;
+    @apply saturn-btn saturn-bg-accent saturn-text border saturn-border-accent;
 }
 .saturn-btn-secondary-inverse {
-    @apply saturn-btn saturn-bg-accent saturn-text-accent saturn-border-accent;
+    @apply saturn-btn saturn-bg-accent saturn-text-accent border saturn-border-accent;
 }
 .saturn-btn-outlined {
-    @apply saturn-btn bg-transparent saturn-text saturn-border-accent;
+    @apply saturn-btn bg-transparent saturn-text border saturn-border-accent;
 }
 .saturn-btn-outlined-inverse {
-    @apply saturn-btn bg-transparent saturn-text-inverse saturn-border-accent-inverse;
+    @apply saturn-btn bg-transparent saturn-text-inverse border saturn-border-accent-inverse;
 }
 .saturn-btn-ghost {
     @apply saturn-btn bg-transparent saturn-text-accent hover:saturn-text shadow-none border border-transparent hover:saturn-border-accent;
