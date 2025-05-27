@@ -90,4 +90,40 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
 </button>
 @endif
 
-{{-- Ghost Button --}}
+{{-- Outlined --}}
+@if ($style === 'outline')
+<button {{ $attributes->class([
+    'saturn-btn-outlined',
+    ]) }}
+    type="{{ $type }}">
+    @if ($icon && $icon_before)
+    <x-ui.ionicon :icon='$icon' />
+    @endif
+    <span>
+        {!! $buttonContent !!}
+    </span>
+    @if ($icon && $icon_before === false)
+    <x-ui.ionicon :icon='$icon' />
+    @endif
+</button>
+@endif
+
+{{-- Outlined Inverse --}}
+@if ($style === 'outline' && $is_section_filled_inverted)
+<button {{ $attributes->class([
+    'saturn-btn-outlined-inverse',
+    ]) }}
+    type="{{ $type }}">
+    @if ($icon && $icon_before)
+    <x-ui.ionicon :icon='$icon' />
+    @endif
+    <span>
+        {!! $buttonContent !!}
+    </span>
+    @if ($icon && $icon_before === false)
+    <x-ui.ionicon :icon='$icon' />
+    @endif
+</button>
+@endif
+
+{{-- Ghost --}}

@@ -91,10 +91,10 @@
     @apply saturn-btn saturn-bg-accent saturn-text-accent saturn-border-accent;
 }
 .saturn-btn-outlined {
-    @apply saturn-btn bg-transparent saturn-text-inverse saturn-border-inverse;
+    @apply saturn-btn bg-transparent saturn-text saturn-border;
 }
 .saturn-btn-outlined-inverse {
-    @apply saturn-btn bg-transparent saturn-text saturn-border;
+    @apply saturn-btn bg-transparent saturn-text-inverse saturn-border-inverse;
 }
 
 
