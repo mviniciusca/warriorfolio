@@ -121,22 +121,19 @@
 
     /** Default Theme **/
     body {
-        @apply overflow-x-hidden antialiased scroll-smooth bg-white text-secondary-900 dark:bg-secondary-950 dark:text-secondary-300
+        @apply overflow-x-hidden antialiased scroll-smooth saturn-text saturn-bg;
     }
-
     .section-filled {
-        @apply bg-secondary-50 dark:bg-black;
+        @apply saturn-bg-accent;
     }
     .section-filled-inverse {
-        @apply bg-secondary-950 text-secondary-300 dark:bg-secondary-50 dark:text-secondary-900;
+        @apply saturn-bg-inverse saturn-text-inverse;
     }
-
-    /** Saturn UI Integration **/
     .saturn-ui,
     .saturn-ui-primary {
-        @apply bg-black text-white dark:bg-white dark:text-black;
+        @apply saturn-text saturn-bg;
     }
-
+ss
     /** Highlighted text **/
     .text-gradient,
     .tg {
