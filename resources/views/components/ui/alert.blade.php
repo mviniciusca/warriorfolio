@@ -83,11 +83,10 @@
 
 {{-- Modal Style --}}
 @if($style === 'modal')
-<x-ui.modal id="wrapper-{{ $id }}" :autoOpen="true" :id="$id" :title="null" :closable="false" :overlay="true"
+<x-ui.modal id="wrapper-{{ $id }}" :autoOpen="true" :id="$id" :title="null" :closable="false" :overlay="true" size="xl"
     class="saturn-bg saturn-text border saturn-border-accent">
     <div class="p-6">
         <div class="flex items-center gap-2">
-            <x-ui.ionicon :$icon class="w-4 h-4" />
             <span class="text-sm">{!! $slot !!}</span>
         </div>
     </div>
