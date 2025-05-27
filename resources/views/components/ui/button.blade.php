@@ -3,7 +3,7 @@
 'label' => null,
 'type' => 'button',
 'icon_before' => true,
-'style' => null ?? 'primary',
+'style' => 'primary',
 'is_section_filled_inverted' => null,
 'size' => null, // deprecated v3.0.0
 'color' => null, // deprecated v3.0.0
@@ -12,9 +12,6 @@
 @php
 $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
 @endphp
-
-
-{{-- Saturn UI Buttons Primary, Secondary, Ghost and Outlined --}}
 
 {{-- Primary Button --}}
 @if ($style === 'primary' && !$is_section_filled_inverted)
@@ -34,7 +31,6 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
 </button>
 @endif
 
-
 {{-- Primary Inverse --}}
 @if ($style === 'primary' && $is_section_filled_inverted)
 <button {{ $attributes->class([
@@ -52,7 +48,6 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
     @endif
 </button>
 @endif
-
 
 {{-- Secondary Button --}}
 @if ($style === 'secondary')
@@ -161,5 +156,3 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
     @endif
 </button>
 @endif
-
-{{-- Default Button --}}
