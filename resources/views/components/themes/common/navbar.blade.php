@@ -4,9 +4,9 @@
         style="background-image: url({{ asset('img/core/core-ui-elements/beams/blur-beam.png') }})">
     </div>
     @endif
-    <x-core.layout :$is_filled :with_padding='false'>
+    <x-core.layout :is_heading_visible="false" :$is_filled :with_padding='false'>
         {{-- Logo and Primary Navigation --}}
-        <div class="-mt-4 flex items-center justify-between mb-12 text-xs">
+        <div class="flex items-center justify-between py-4 text-xs">
             <div class="flex flex-wrap items-center gap-4">
                 <x-ui.logo />
                 <x-ui.mobile-navigation />

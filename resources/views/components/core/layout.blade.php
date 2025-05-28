@@ -16,7 +16,7 @@ This is the default layout component for the website. Used for website and compo
 'button_url' => null,
 'is_centered' => null,
 'is_filled' => false,
-'is_heading_visible' => true,
+'is_heading_visible' => false,
 'is_section_filled_inverted' => false,
 'module_name' => null,
 'module_slug' => null ?? 'section' . rand(1, 10),

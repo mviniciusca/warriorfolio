@@ -165,7 +165,7 @@ ss
     }
 
     .hero-section-featured-border {
-        @apply p-2 mx-auto bg-white/20 dark:bg-white/20 rounded-xl shadow-xl border border-black/10 dark:border-white/10;
+        @apply p-1.5 mx-auto saturn-bg-accent saturn-border-accent rounded-lg shadow-xl border;
     }
 
     .hero-bg-overlay-default {

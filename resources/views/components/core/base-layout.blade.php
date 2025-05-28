@@ -15,6 +15,7 @@
     @endif
 </head>
 
+
 <body {{ $attributes->merge(['class' => $bodyClass]) }}>
     @if (!$maintenance || ($discovery && auth()->user()))
     <x-core.modules.overlay-apps />
