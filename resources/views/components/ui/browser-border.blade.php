@@ -24,31 +24,40 @@
 </div>
 @elseif ($device === 'mobile')
 <div class="mx-auto mt-8" id="mobile-cover">
-    <div class="mx-auto max-w-[320px] rounded-[2.5rem] border-[8px] border-black/10 bg-white/20 p-0 shadow-xl dark:border-white/10 dark:bg-black/30"
+    <div class="mx-auto max-w-[320px] rounded-[2.5rem] border-[8px] saturn-border-accent saturn-bg p-0 shadow-xl"
         id="mobile-mockup">
         <!-- Mobile Status Bar with Real-time Clock -->
-        <div class="flex items-center justify-between rounded-t-3xl bg-black/10 px-4 py-2 dark:bg-black/50">
+        <div class="flex items-center justify-between rounded-t-3xl saturn-bg-accent px-4 py-2">
             <div x-data="{ time: '' }" x-init="
                 time = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
                 setInterval(() => {
                     time = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
                 }, 1000)
-            " x-text="time" class="text-xs font-medium text-black/70 dark:text-white/70"></div>
-            <div class="rounded-full bg-black/20 px-2 py-0.5 dark:bg-white/20">
-                <div class="h-2 w-16 rounded-full"></div>
+            " x-text="time" class="text-xs font-medium text-saturn"></div>
+            <div class="rounded-full saturn-bg px-2 py-0.5">
+                <div class="h-2 w-16 rounded-full saturn-border-accent border"></div>
             </div>
-            <div class="flex items-center gap-1 text-xs text-black/70 dark:text-white/70">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 20.9994C16.4183 20.9994 20 17.4177 20 12.9994C20 8.58107 16.4183 4.99939 12 4.99939C7.58172 4.99939 4 8.58107 4 12.9994C4 17.4177 7.58172 20.9994 12 20.9994Z">
-                    </path>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M1 10L3 14H6V20H18V14H21L23 10H1Z"></path>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M4 4H20V20H4V4Z"></path>
-                </svg>
+            <div class="flex items-center gap-1 text-xs text-saturn">
+                <!-- Signal Strength -->
+                <div class="flex items-end gap-0.5">
+                    <div class="w-0.5 h-1 saturn-bg rounded-full"></div>
+                    <div class="w-0.5 h-1.5 saturn-bg rounded-full"></div>
+                    <div class="w-0.5 h-2 saturn-bg rounded-full"></div>
+                    <div class="w-0.5 h-2.5 saturn-bg rounded-full"></div>
+                </div>
+                <!-- Wi-Fi -->
+                <div class="relative w-3 h-3 flex items-center justify-center">
+                    <div class="absolute w-2 h-2 rounded-full saturn-border-accent border opacity-30"></div>
+                    <div class="absolute w-1.5 h-1.5 rounded-full saturn-border-accent border opacity-60"></div>
+                    <div class="w-1 h-1 rounded-full saturn-bg"></div>
+                </div>
+                <!-- Battery -->
+                <div class="flex items-center">
+                    <div class="w-4 h-2 saturn-border-accent border rounded-sm relative">
+                        <div class="w-3/4 h-full saturn-bg rounded-sm"></div>
+                    </div>
+                    <div class="w-0.5 h-1 saturn-border-accent border-l rounded-r-sm"></div>
+                </div>
             </div>
         </div>
 
@@ -58,8 +67,8 @@
         </div>
 
         <!-- Mobile Home Indicator -->
-        <div class="flex justify-center rounded-b-3xl bg-black/10 py-1 dark:bg-black/50">
-            <div class="h-1 w-1/3 rounded-full bg-black/20 dark:bg-white/20"></div>
+        <div class="flex justify-center rounded-b-3xl saturn-bg-accent py-1">
+            <div class="h-1 w-1/3 rounded-full saturn-border-accent border"></div>
         </div>
     </div>
 </div>
