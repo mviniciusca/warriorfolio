@@ -10,9 +10,9 @@
         <x-themes.common.partials.hero.buttons :$hero :justify="'center'" />
         {{-- Social Network --}}
         @if ($hero->content['social_network_module_is_active'] ?? (null ?? false))
-        <div class="mb-8" id="social-network-module">
+        <div class="my-4" id="social-network-module">
             <x-ui.social-network :justify="'center'" class="animate__animated animate__fadeInDown animate__delay-1s"
-                size="big" />
+                size="defaults" />
         </div>
         @endif
         {{-- Hero Section: Featured Image --}}

@@ -24,7 +24,7 @@
 </div>
 @elseif ($device === 'mobile')
 <div class="mx-auto mt-8" id="mobile-cover">
-    <div class="mx-auto max-w-[320px] rounded-[2.5rem] border-[8px] saturn-border-accent saturn-bg p-0 shadow-xl"
+    <div class="mx-auto max-w-[320px] rounded-[2.5rem] border-8 saturn-border-accent saturn-bg p-0 shadow-xl"
         id="mobile-mockup">
         <!-- Mobile Status Bar with Real-time Clock -->
         <div class="flex items-center justify-between rounded-t-3xl saturn-bg-accent px-4 py-2">

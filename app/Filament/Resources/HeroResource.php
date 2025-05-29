@@ -519,7 +519,7 @@ class HeroResource extends Resource
                                     ->icon('heroicon-o-photo')
                                     ->schema([
                                         Group::make()
-                                            ->columns(2)
+                                            ->columns(3)
                                             ->schema([
                                                 Checkbox::make('content.slider_is_active')
                                                     ->label(__('Enable Slider'))
@@ -529,6 +529,33 @@ class HeroResource extends Resource
                                                     ->default(false)
                                                     ->label(__('Dark Mode Color Inversion'))
                                                     ->helperText(__('Automatically inverts image colors in dark mode for better contrast.')),
+                                                Checkbox::make('content.is_marquee')
+                                                    ->default(false)
+                                                    ->label(__('Marquee Effect'))
+                                                    ->helperText(__('Enable continuous scrolling animation for logos.'))
+                                                    ->live(),
+                                            ]),
+                                        Group::make()
+                                            ->columns(2)
+                                            ->visible(fn ($get) => $get('content.is_marquee'))
+                                            ->schema([
+                                                Select::make('content.marquee_speed')
+                                                    ->label(__('Marquee Speed'))
+                                                    ->options([
+                                                        'slow'   => __('Slow'),
+                                                        'normal' => __('Normal'),
+                                                        'fast'   => __('Fast'),
+                                                    ])
+                                                    ->default('normal')
+                                                    ->helperText(__('Control the scrolling speed of the marquee.')),
+                                                Select::make('content.marquee_direction')
+                                                    ->label(__('Marquee Direction'))
+                                                    ->options([
+                                                        'left'  => __('Left to Right'),
+                                                        'right' => __('Right to Left'),
+                                                    ])
+                                                    ->default('left')
+                                                    ->helperText(__('Direction of the marquee scrolling.')),
                                             ]),
                                         Section::make(__('Slider Content'))
                                             ->description(__('Manage the images that appear in your slider.'))

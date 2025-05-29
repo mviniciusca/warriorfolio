@@ -22,7 +22,7 @@ App\View\Components\Themes\Hero\Sierra-Theme.php
             @if ($hero->content['social_network_module_is_active'] ?? false)
             <div id="social-network-module">
                 <x-ui.social-network :justify="'start'"
-                    class="animate__animated animate__fadeInDown animate__delay-1s mt-8" size="big" />
+                    class="animate__animated animate__fadeInDown animate__delay-1s my-4" size="default" />
             </div>
             @endif
             {{-- Hero Section Button --}}

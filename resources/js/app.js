@@ -104,6 +104,50 @@ const swiper = new Swiper(".swiper", {
 });
 
 /**
+ * Hero Logos Marquee Configuration
+ * Creates a continuous marquee effect for hero logos using CSS animations
+ */
+document.addEventListener('DOMContentLoaded', function () {
+    const heroLogosContainer = document.querySelector('.hero-logos-swiper');
+
+    if (heroLogosContainer) {
+        const speed = parseInt(heroLogosContainer.getAttribute('data-speed')) || 2;
+        const direction = heroLogosContainer.getAttribute('data-direction') || 'left';
+
+        // Speed mapping: slow=25s, normal=15s, fast=8s
+        const speedMap = {
+            1: '25s', // slow
+            2: '15s', // normal
+            3: '8s'   // fast
+        };
+
+        const animationDuration = speedMap[speed] || '15s';
+        const animationDirection = direction === 'right' ? 'reverse' : 'normal';
+
+        // Apply CSS animation to wrapper
+        const wrapper = heroLogosContainer.querySelector('.swiper-wrapper');
+        if (wrapper) {
+            // Calculate the total width needed for smooth scrolling
+            const totalWidth = wrapper.scrollWidth;
+            const containerWidth = heroLogosContainer.offsetWidth;
+
+            // Set the wrapper width to ensure smooth animation
+            wrapper.style.width = `${totalWidth * 2}px`;
+            wrapper.style.animation = `marquee-scroll ${animationDuration} linear infinite ${animationDirection}`;
+
+            // Add hover pause functionality
+            heroLogosContainer.addEventListener('mouseenter', () => {
+                wrapper.style.animationPlayState = 'paused';
+            });
+
+            heroLogosContainer.addEventListener('mouseleave', () => {
+                wrapper.style.animationPlayState = 'running';
+            });
+        }
+    }
+});
+
+/**
  * Privacy Modal Management
  * Handles the display and interactions with the privacy policy modal
  */

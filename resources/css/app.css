@@ -1,4 +1,3 @@
-
 /*
  * ========================================
  * WARRIORFOLIO - MAIN STYLESHEET
@@ -468,5 +467,136 @@ nav[aria-label="Categories"] button::after {
 nav[aria-label="Categories"] button:hover::after {
     transform: scaleX(1);
     transform-origin: left;
+}
+
+/* ========================================
+ * MARQUEE ANIMATIONS FOR LOGO SLIDER
+ * ======================================== */
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-33.33%);
+    }
+}
+
+@keyframes marquee-reverse {
+    0% {
+        transform: translateX(-33.33%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Normal speed */
+.animate-marquee {
+    animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+    animation: marquee-reverse 25s linear infinite;
+}
+
+/* Slow speed */
+.animate-marquee-slow {
+    animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-slow-reverse {
+    animation: marquee-reverse 40s linear infinite;
+}
+
+/* Fast speed */
+.animate-marquee-fast {
+    animation: marquee 15s linear infinite;
+}
+
+.animate-marquee-fast-reverse {
+    animation: marquee-reverse 15s linear infinite;
+}
+
+/* Pause on hover */
+.animate-marquee:hover,
+.animate-marquee-reverse:hover,
+.animate-marquee-slow:hover,
+.animate-marquee-slow-reverse:hover,
+.animate-marquee-fast:hover,
+.animate-marquee-fast-reverse:hover {
+    animation-play-state: paused;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .animate-marquee,
+    .animate-marquee-reverse {
+        animation-duration: 20s;
+    }
+
+    .animate-marquee-slow,
+    .animate-marquee-slow-reverse {
+        animation-duration: 30s;
+    }
+
+    .animate-marquee-fast,
+    .animate-marquee-fast-reverse {
+        animation-duration: 12s;
+    }
+}
+
+/* ========================================
+ * SWIPER MARQUEE STYLES FOR HERO LOGOS
+ * ======================================== */
+
+/** Hero Logos Marquee Styles **/
+.hero-logos-swiper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    height: auto;
+}
+
+.hero-logos-swiper .swiper-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* 32px spacing */
+    width: max-content;
+    min-width: 100%;
+    justify-content: space-around;
+}
+
+.hero-logos-swiper .swiper-slide {
+    width: auto;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    min-width: 80px; /* Minimum width for each slide */
+}
+
+/* Marquee animation keyframes */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive spacing adjustments */
+@media (max-width: 767px) {
+    .hero-logos-swiper .swiper-wrapper {
+        gap: 1rem; /* 16px on mobile */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero-logos-swiper .swiper-wrapper {
+        gap: 1.5rem; /* 24px on tablet */
+    }
 }
 

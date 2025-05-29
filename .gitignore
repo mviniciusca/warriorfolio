@@ -20,3 +20,4 @@ yarn-error.log
 .phpctlrc
 .php-cs-fixer.php
 CHANGELOGS.md
+/docs

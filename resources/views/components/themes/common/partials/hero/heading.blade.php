@@ -10,13 +10,14 @@
 {{-- Title --}}
 @if ($hero->content['section_title'] ?? false)
 <h1
-    class="animate__animated animate__fadeInUp animate my-2 text-2xl font-bold leading-none tracking-tight dark:text-white md:text-2xl xl:text-3xl hero-title {{ ($hero->content['bg_image'] ?? null) && ($hero->content['is_highlight'] ?? null) ? 'bg-white dark:bg-black px-2' : '' }}">
+    class="animate__animated animate__fadeInUp animate text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1]
+    {{ ($hero->content['bg_image'] ?? null) && ($hero->content['is_highlight'] ?? null) ? 'saturn-bg saturn-text-inverse px-2' : '' }}">
     {!! $hero->content['section_title'] !!}
 </h1>
 @endif
 @if ($hero->content['section_subtitle'] ?? false)
 <h2
-    class="animate__animated animate__fadeInUp animate__delay-1s my-2 hero-subtitle leading-tight tracking-tight shadow-current {{ ($hero->content['bg_image'] ?? null) && ($hero->content['is_highlight'] ?? null) ? 'bg-white  dark:bg-black px-2 max-w-auto' : '' }}">
+    class="animate__animated animate__fadeInUp animate__delay-1s my-2 hero-subtitle leading-tight tracking-tight shadow-current {{ ($hero->content['bg_image'] ?? null) && ($hero->content['is_highlight'] ?? null) ? 'saturn-bg px-2 max-w-auto' : '' }}">
     {!! $hero->content['section_subtitle'] !!}
 </h2>
 @endif
