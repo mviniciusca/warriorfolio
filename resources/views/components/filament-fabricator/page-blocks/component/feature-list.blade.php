@@ -27,7 +27,7 @@
 <x-core.layout :$is_section_filled_inverted :$title :$subtitle :$is_heading_visible>
     <x-ui.card-grid :cols="$columns">
         @foreach ($features as $item)
-        <x-ui.card>
+        <x-ui.card :$is_section_filled_inverted :$is_border :$is_card_filled>
             <x-slot:header>
                 <div class="flex items-center gap-2">
                     <x-ui.ionicon :icon="$item['icon'] ?? null" class="h-6 w-6" />
