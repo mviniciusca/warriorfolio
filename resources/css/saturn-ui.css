@@ -32,6 +32,9 @@
 .saturn-h4 {
     @apply text-xl font-semibold saturn-text;
 }
+.saturn-h5 {
+    @apply text-base font-medium saturn-text;
+}
 .saturn-text-large {
     @apply text-lg saturn-text;
 }
@@ -50,10 +53,10 @@
     @apply saturn-transition text-saturn-100 dark:text-saturn-800;
 }
 .saturn-text-accent {
-    @apply saturn-transition text-saturn-700 dark:text-saturn-300;
+    @apply saturn-transition text-saturn-600 dark:text-saturn-400;
 }
 .saturn-text-accent-inverse {
-    @apply saturn-transition text-saturn-300 dark:text-saturn-700;
+    @apply saturn-transition text-saturn-400 dark:text-saturn-600;
 }
 
 /* ========================================

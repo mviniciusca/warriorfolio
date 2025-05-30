@@ -29,7 +29,10 @@
         @foreach ($features as $item)
         <x-ui.card>
             <x-slot:header>
-                {!! $item['title'] ?? null !!}
+                <div class="flex items-center gap-2">
+                    <x-ui.ionicon :icon="$item['icon'] ?? null" class="h-6 w-6" />
+                    <span>{!! $item['title'] ?? null !!}</span>
+                </div>
             </x-slot:header>
             {!! $item['description'] ?? null !!}
         </x-ui.card>
