@@ -18,7 +18,7 @@
     </div>
     @endif
 
-    <div class="text-sm leading-relaxed py-4">
+    <div class="text-sm py-4">
         {{ $slot }}
     </div>
 

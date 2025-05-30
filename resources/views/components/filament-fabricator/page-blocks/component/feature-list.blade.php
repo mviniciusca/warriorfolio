@@ -1,30 +1,29 @@
 @aware(['page'])
 @props([
-'is_active' => null,
-'is_animated' => null,
-'is_border' => null,
-'is_color_icon' => null,
-'is_content_center' => null,
-'is_filled' => null,
-'is_light_fx' => null,
-'button_header' => null,
-'button_url' => null,
 'columns' => 3,
 'features' => [],
-'module_subtitle' => null,
-'module_title' => null,
-'with_padding' => true,
-'is_heading_active' => true,
-'is_card_filled' => null,
-'is_section_filled_inverted' => false,
 'title' => $module_title ?? null,
+'is_active' => null,
+'is_border' => null,
+'is_filled' => null,
+'button_url' => null,
+'is_animated' => null,
+'with_padding' => true,
+'is_light_fx' => null,
+'is_color_icon' => null,
+'button_header' => null,
 'subtitle' => $module_subtitle ?? null,
-'is_heading_visible' => $is_heading_active ?? null,
+'module_title' => null,
+'is_card_filled' => null,
+'module_subtitle' => null,
+'is_content_center' => null,
+'is_heading_active' => true,
 'is_centered' => $is_heading_centered ?? false,
+'is_heading_visible' => $is_heading_active ?? null,
+'is_section_filled_inverted' => false,
 ])
 
-
-<x-core.layout :$is_section_filled_inverted :$title :$subtitle :$is_heading_visible>
+<x-core.layout :$with_padding :$is_section_filled_inverted :$title :$subtitle :$is_heading_visible>
     <x-ui.card-grid :cols="$columns">
         @foreach ($features as $item)
         <x-ui.card :$is_section_filled_inverted :$is_border :$is_card_filled>
