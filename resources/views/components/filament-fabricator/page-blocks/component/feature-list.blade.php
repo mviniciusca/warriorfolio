@@ -12,6 +12,7 @@
 'is_light_fx' => null,
 'is_color_icon' => null,
 'button_header' => null,
+'button_icon' => null,
 'subtitle' => $module_subtitle ?? null,
 'module_title' => null,
 'is_card_filled' => null,
@@ -23,14 +24,16 @@
 'is_section_filled_inverted' => false,
 ])
 
-<x-core.layout :$with_padding :$is_centered :$is_section_filled_inverted :$title :$subtitle :$is_heading_visible>
+<x-core.layout :$with_padding :$is_centered :$is_section_filled_inverted :$title :$subtitle :$is_heading_visible
+    :$button_header :$button_url :$button_icon>
     <x-ui.card-grid :cols="$columns">
         @foreach ($features as $item)
         @if(!isset($item['is_card_hidden']) || empty($item['is_card_hidden']))
-        <x-ui.card :$is_content_center :$is_section_filled_inverted :$is_border :$is_card_filled>
+        <x-ui.card :$is_color_icon :$is_content_center :$is_section_filled_inverted :$is_border :$is_card_filled>
             <x-slot:header>
                 <div class="flex items-center gap-2">
-                    <x-ui.ionicon :icon="$item['icon'] ?? null" class="h-6 w-6" />
+                    <x-ui.ionicon :icon="$item['icon'] ?? null"
+                        class="h-6 w-6 {{ $is_color_icon ? 'text-primary-500' : '' }}" />
                     <span>{!! $item['title'] ?? null !!}</span>
                 </div>
             </x-slot:header>
