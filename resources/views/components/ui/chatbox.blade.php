@@ -2,7 +2,7 @@
 <div>
     <!-- Chat Button -->
     <button id="chatButton"
-        class="fixed bottom-8 right-5 z-40 p-3 saturn-text-inverse rounded-full shadow-xl cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 group {{ $color ? '' : 'saturn-bg-inverse' }}"
+        class="fixed border saturn-border-inverse bottom-8 right-5 z-40 p-3 saturn-text-inverse rounded-full shadow-xl cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 group {{ $color ? '' : 'saturn-bg-inverse' }}"
         style="background-color: {{ $color }}">
         <x-ui.ionicon class="h-6 w-6" icon="logo-whatsapp" />
         </svg>

@@ -6,7 +6,7 @@
         closeExpand() { this.isExpanded = false; }
     }" class="fixed z-40" x-cloak>
     <!-- Side Btn -->
-    <button @click="toggleExpand" class="fixed -left-1 top-1/2 -translate-y-1/2 saturn-btn saturn-btn-secondary"
+    <button @click="toggleExpand" class="fixed -left-1 top-1/2 -translate-y-1/2 saturn-btn saturn-btn-primary-inverse"
         title="{{ __('Open Quickbar') }}">
         <x-ui.ionicon :icon="'chevron-forward-outline'" />
     </button>
