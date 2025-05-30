@@ -227,11 +227,19 @@
 
 /** Sections **/
 .saturn-y-section {
-    @apply py-6 md:py-12 lg:py-24;
+    @apply py-6 md:py-12 lg:py-16;
 }
-
+.saturn-y-subsection {
+    @apply py-4 md:py-8 lg:py-10;
+}
 .saturn-x-section {
     @apply px-4 sm:px-6 lg:px-8;
+}
+.saturn-component-section {
+    @apply py-3 md:py-4 lg:py-6;
+}
+.saturn-component-padding {
+    @apply py-2 md:py-3 lg:py-4;
 }
 
 
