@@ -14,6 +14,13 @@ export default {
     darkMode: 'class',
     safelist: [
         'notify', 'tag', 'dg', 'tl', 'ht', 'animate-pulse', 'animate-ping', 'rocket', 'bg-secondary-100', 'bg-black', 'bg-white', 'w-10', 'h-10',
+        // Grid classes for card-grid component
+        'grid-cols-1', 'grid-cols-2', 'grid-cols-3', 'grid-cols-4',
+        'md:grid-cols-2', 'md:grid-cols-3', 'md:grid-cols-4',
+        'lg:grid-cols-3', 'lg:grid-cols-4',
+        'xl:grid-cols-4',
+        // Gap classes
+        'gap-1', 'gap-2', 'gap-3', 'gap-4', 'gap-5', 'gap-6', 'gap-8',
     ],
     theme: {
         extend: {
