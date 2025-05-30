@@ -29,10 +29,10 @@ This is the default layout component for the website. Used for website and compo
 'px_padding' => true,
 ])
 
-<div class="{{ $with_padding ? 'py-6 md:py-12 lg:py-24' : 'py-0' }}
+<div class="{{ $with_padding ? 'saturn-y-section' : 'py-0'  }}
 {{ $is_section_filled_inverted ? 'saturn-bg-accent-inverse saturn-text-inverse' : '' }}
  {{ $is_filled ? 'saturn-bg-accent duration-300 transition-all' : '' }}
-  {{ $px_padding ? 'px-4' : '' }}" id="{{ $module_name ?? '' }}">
+  {{ $px_padding ? 'saturn-x-section' : '' }}" id="{{ $module_name ?? '' }}">
     <div class="{{ $container }} mx-auto">
         <div id="{{ $module_slug }}">
             {{-- Heading --}}

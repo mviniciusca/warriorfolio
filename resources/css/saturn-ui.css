@@ -226,17 +226,14 @@
 }
 
 /** Sections **/
-.saturn-section {
-    @apply py-12 md:py-16 lg:py-20;
+.saturn-y-section {
+    @apply py-6 md:py-12 lg:py-24;
 }
 
-.saturn-section-compact {
-    @apply py-8 md:py-12;
+.saturn-x-section {
+    @apply px-4 sm:px-6 lg:px-8;
 }
 
-.saturn-section-spacious {
-    @apply py-16 md:py-24 lg:py-32;
-}
 
 /* ========================================
  * 5. INTERACTIVE ELEMENTS
