@@ -12,12 +12,12 @@
         @if ($hero->content['social_network_module_is_active'] ?? (null ?? false))
         <div class="my-4" id="social-network-module">
             <x-ui.social-network :justify="'center'" class="animate__animated animate__fadeInDown animate__delay-1s"
-                size="defaults" />
+                size="default" />
         </div>
         @endif
         {{-- Hero Section: Featured Image --}}
         @if ($hero->content['featured_image_is_active'] ?? false)
-        <div class="animate__animated animate__fadeInUp animate__delay-1s mx-auto mt-4">
+        <div class="animate__animated animate__fadeIn animate__delay-1s mx-auto my-2">
             <x-themes.common.partials.hero.featured-image :$hero />
         </div>
         @endif
