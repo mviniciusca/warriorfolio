@@ -30,7 +30,7 @@ This is the default layout component for the website. Used for website and compo
 
 ])
 
-<div class="{{ $with_padding ? 'py-12 md:py-16 lg:py-20' : 'py-0' }}
+<div class="{{ $with_padding ? 'py-4 md:py-8 lg:py-12' : 'py-0' }}
 {{ $is_section_filled_inverted ? 'section-filled-inverse' : '' }}
  {{ $is_filled ? 'section-filled duration-300 transition-all' : '' }}
   {{ $px_padding ? 'px-4' : '' }}" id="{{ $module_name ?? 'section' . rand(1, 10) }}">

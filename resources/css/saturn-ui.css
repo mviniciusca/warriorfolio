@@ -1,4 +1,3 @@
-
 /*
  * ========================================
  * SATURN UI - COMPONENT LIBRARY
@@ -19,6 +18,29 @@
 /* ========================================
  * 1. BASE TYPOGRAPHY
  * ======================================== */
+
+/** Saturn UI Typography Hierarchy (inspired by Vercel) **/
+.saturn-h1 {
+    @apply text-4xl font-bold tracking-tight saturn-text;
+}
+.saturn-h2 {
+    @apply text-3xl font-bold saturn-text;
+}
+.saturn-h3 {
+    @apply text-2xl font-semibold saturn-text;
+}
+.saturn-h4 {
+    @apply text-xl font-semibold saturn-text;
+}
+.saturn-text-large {
+    @apply text-lg saturn-text;
+}
+.saturn-text-base {
+    @apply text-base saturn-text;
+}
+.saturn-text-secondary {
+    @apply text-sm saturn-text-accent;
+}
 
 /** Saturn UI Typography **/
 .saturn-text {
