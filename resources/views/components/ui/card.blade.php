@@ -6,13 +6,11 @@
 'is_card_filled' => false,
 ])
 
-<div class="
-{{ $is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : 'saturn-text saturn-bg' }}
-{{ $is_border ? 'border saturn-border' : '' }}
-{{ $is_border && !$is_section_filled_inverted ? 'saturn-text saturn-bg border saturn-border' : '' }}
-{{ $is_border && $is_section_filled_inverted ? 'border saturn-border-inverse' : '' }}
-{{ $is_card_filled && !$is_section_filled_inverted ? 'saturn-bg-accent saturn-text-accent' : '' }}
-{{ $is_card_filled && $is_section_filled_inverted ? 'saturn-bg-accent-inverse saturn-text-accent-inverse' : '' }} rounded-lg overflow-hidden p-4
+<div class="rounded-lg overflow-hidden p-4
+{{ $is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : 'saturn-bg saturn-text' }}
+{{ $is_border ? 'border' : '' }}
+{{ $is_border ? ($is_section_filled_inverted ? 'saturn-border-inverse' : 'saturn-border') : '' }}
+{{ $is_card_filled ? ($is_section_filled_inverted ? 'saturn-bg-accent-inverse saturn-text-accent-inverse' : 'saturn-bg-accent saturn-text-accent') : '' }}
 ">
     @if(isset($header))
     <div class="text-sm font-medium py-2">

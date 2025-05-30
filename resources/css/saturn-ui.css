@@ -85,10 +85,10 @@
     @apply saturn-transition bg-saturn-950 dark:bg-white;
 }
 .saturn-bg-accent {
-    @apply saturn-transition bg-saturn-50/40 dark:bg-saturn-900/40;
+    @apply saturn-transition bg-saturn-50/50 dark:bg-saturn-900/40;
 }
 .saturn-bg-accent-inverse {
-    @apply saturn-transition bg-saturn-900/40 dark:bg-saturn-50/40;
+    @apply saturn-transition bg-saturn-900/40 dark:bg-saturn-50/50;
 }
 .saturn-hover-bg-accent {
     @apply saturn-transition hover:bg-saturn-50 hover:dark:bg-saturn-900;
