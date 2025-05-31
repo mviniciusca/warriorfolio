@@ -62,13 +62,13 @@ class SectionResource extends Resource
                                     ->schema([
                                         Toggle::make('is_active')
                                             ->label(__('Active'))
-                                            ->helperText(__('If enabled, this section will be visible on the frontend'))
+                                            ->helperText(__('Controls section visibility on the frontend'))
                                             ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
                                             ->default(true),
                                         Toggle::make('is_coupled')
                                             ->label(__('Coupled'))
-                                            ->helperText(__('If enabled, this section will be coupled with the main layout'))
+                                            ->helperText(__('Integrates section with the main layout structure'))
                                             ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
                                             ->default(false),
@@ -79,7 +79,7 @@ class SectionResource extends Resource
                                     ->schema([
                                         Toggle::make('content.is_filled')
                                             ->label(__('Fill Section'))
-                                            ->helperText(__('Fill the background section with accent color.'))
+                                            ->helperText(__('Applies accent color background to the section'))
                                             ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
                                             ->default(false)
@@ -91,7 +91,7 @@ class SectionResource extends Resource
                                             }),
                                         Toggle::make('content.is_section_filled_inverted')
                                             ->label(__('Fill Section Inverted'))
-                                            ->helperText(__('Fill and invert the entire section with inverted theme color.'))
+                                            ->helperText(__('Applies inverted theme colors with contrasting text'))
                                             ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
                                             ->default(false)
@@ -110,19 +110,19 @@ class SectionResource extends Resource
                                             ->label(__('Vertical Padding'))
                                             ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
-                                            ->helperText(__('If enabled, this section will have padding'))
+                                            ->helperText(__('Adds vertical spacing around section content'))
                                             ->default(true),
                                         Toggle::make('content.is_heading_visible')
                                             ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
                                             ->label(__('Heading Visible'))
-                                            ->helperText(__('If enabled, this section will have a heading'))
+                                            ->helperText(__('Shows the section title and subtitle'))
                                             ->default(false),
                                         Toggle::make('content.is_centered')
                                             ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
-                                            ->label(__('Centered'))
-                                            ->helperText(__('If enabled, this section will be centered'))
+                                            ->label(__('Heading Centered'))
+                                            ->helperText(__('Centers the section title and subtitle'))
                                             ->default(false),
                                     ]),
 
@@ -177,7 +177,7 @@ class SectionResource extends Resource
                                             ->schema([
                                                 Toggle::make('content.show_social_links')
                                                     ->label(__('Show Social Links'))
-                                                    ->helperText(__('Enable to display social media links in the footer'))
+                                                    ->helperText(__('Displays social media links in the footer'))
                                                     ->default(true),
                                             ]),
                                     ]);
@@ -231,7 +231,7 @@ class SectionResource extends Resource
                                     return array_merge($commonFields, [
                                         Toggle::make('content.show_light')
                                             ->label(__('Light Beam'))
-                                            ->helperText(__('Show a light beam effect in the card'))
+                                            ->helperText(__('Adds a light beam effect to the newsletter card'))
                                             ->default(true),
                                     ]);
                                 }
