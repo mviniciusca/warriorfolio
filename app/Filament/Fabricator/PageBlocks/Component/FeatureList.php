@@ -87,12 +87,12 @@ class FeatureList extends PageBlock
                                                     ->prefixIcon('heroicon-o-swatch')
                                                     ->options([
                                                         ''          => __('Default'),
-                                                        'primary'   => __('🔵 Primary'),
-                                                        'secondary' => __('⚪ Secondary'),
-                                                        'success'   => __('🟢 Success'),
-                                                        'warning'   => __('🟡 Warning'),
-                                                        'danger'    => __('🔴 Danger'),
-                                                        'info'      => __('🔵 Info'),
+                                                        'primary'   => __('Primary'),
+                                                        'secondary' => __('Secondary'),
+                                                        'success'   => __('Success'),
+                                                        'warning'   => __('Warning'),
+                                                        'danger'    => __('Danger'),
+                                                        'info'      => __('Info'),
                                                     ])
                                                     ->helperText(__('Choose a color theme for this card'))
                                                     ->columnSpan(2),
