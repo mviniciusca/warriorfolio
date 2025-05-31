@@ -26,7 +26,7 @@ class NavigationFactory extends Factory
 
                 // Secondary navigation
 
-                ['url' => '/docs', 'name' => 'Docs <span class="saturn-tag">New</span>', 'target' => false, 'is_active' => true, 'is_secondary' => true],
+                ['url' => '/docs', 'name' => 'Docs <span class="saturn-tag"><ion-icon name="heart-outline"></ion-icon>New</span>', 'target' => false, 'is_active' => true, 'is_secondary' => true],
                 ['url' => 'https://github.com/mviniciusca/warriorfolio', 'name' => 'Github', 'target' => true, 'is_active' => true, 'is_secondary' => true],
             ],
         ];
