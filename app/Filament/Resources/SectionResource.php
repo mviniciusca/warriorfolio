@@ -48,7 +48,7 @@ class SectionResource extends Resource
                     ->required()
                     ->prefixIcon('heroicon-m-bars-3-center-left')
                     ->maxLength(255)
-                    ->helperText('This is the unique identifier for the section.')
+                    ->helperText('⚠️ This is the unique identifier for the section and it\'s used in the backend. Please don\'t change it unless you know what you are doing.')
                     ->unique(Section::class, 'slug', ignoreRecord: true),
                 Forms\Components\Tabs::make('Section')
                     ->persistTab()
