@@ -34,7 +34,7 @@
 <div class="w-full flex items-center
     {{ $button_header ? 'justify-between' : ($is_centered ? 'justify-center' : 'justify-start') }} py-6">
     <div class="flex flex-col {{ $is_centered && !$button_header ? 'text-center' : 'text-left' }}
-        {{ $button_header ? 'pr-8' : '' }}">
+        {{ $button_header ? 'pr-12' : '' }}">
         @if($title)
         <h2 class="text-2xl font-bold">{!! $title !!}</h2>
         @endif
@@ -43,7 +43,7 @@
         @endif
     </div>
     @if($button_header)
-    <div class="ml-8 flex-shrink-0">
+    <div class="ml-12 flex-shrink-0">
         @if($button_url)
         <a href="{{ $button_url }}">@endif
             <x-ui.button :$button_style :$is_section_filled_inverted :icon="$button_icon" :label="$button_header" />

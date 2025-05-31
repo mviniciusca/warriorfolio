@@ -37,9 +37,8 @@ This is the default layout component for the website. Used for website and compo
         <div id="{{ $module_slug }}">
             {{-- Heading --}}
             @if($is_heading_visible)
-            <x-core.partials.section-heading :$is_section_filled_inverted :title="$title" :subtitle="$subtitle"
-                :button_header="$button_header" :button_icon="$button_icon" :button_style="$button_style"
-                :button_url="$button_url" :is_centered="$is_centered" :is_filled="$is_filled" />
+            <x-core.partials.section-heading :$is_section_filled_inverted :$title :$subtitle :$button_header
+                :$button_icon :$button_style :$button_url :$is_centered :$is_filled />
             @endif
             {{-- Content --}}
             {{ $slot }}
