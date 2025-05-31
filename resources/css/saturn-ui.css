@@ -162,7 +162,11 @@
 }
 
 .saturn-badge-primary {
-    @apply saturn-badge saturn-bg-accent saturn-text saturn-border border;
+    @apply saturn-badge bg-primary-500/10 text-primary-600 dark:bg-primary-400/20 dark:text-primary-600 border border-primary-500/20 dark:border-primary-400/30;
+}
+
+.saturn-badge-info {
+    @apply saturn-badge bg-blue-500/10 text-blue-600 dark:bg-blue-400/20 dark:text-blue-600 border border-blue-500/20 dark:border-blue-400/30;
 }
 
 .saturn-badge-success {
@@ -182,7 +186,23 @@
 }
 
 .saturn-tag {
+    @apply saturn-badge saturn-badge-primary;
+}
+
+.saturn-tag-info {
+    @apply saturn-badge saturn-badge-info;
+}
+
+.saturn-tag-success {
+    @apply saturn-badge saturn-badge-success;
+}
+
+.saturn-tag-warning {
     @apply saturn-badge saturn-badge-warning;
+}
+
+.saturn-tag-error {
+    @apply saturn-badge saturn-badge-error;
 }
 
 /* ========================================
