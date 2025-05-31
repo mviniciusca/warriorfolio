@@ -301,12 +301,12 @@ ss
     }
 
     /** UI Components: Tag, Notification Tag**/
-    .tag {
-        @apply bg-primary-600 animate-pulse rounded-md lowercase text-xs px-1 text-white;
+    .tag, .saturn-tag {
+        @apply bg-primary-500/70 text-white rounded-none lowercase font-medium leading-tight text-xs p-0.5 px-2;
     }
 
-    .notify {
-        @apply bg-primary-500 animate-ping lowercase w-1 h-1 absolute float-end -mt-1 rounded-full;
+    .notify, .saturn-notify {
+        @apply relative inline-flex items-center justify-center w-1 h-1 text-xs font-bold text-white bg-primary-500 rounded-full -top-2 -left-1 animate-pulse;
 
     }
 

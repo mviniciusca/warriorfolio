@@ -26,7 +26,7 @@ export default {
         extend: {
             colors: {
                 saturn: colors.zinc,//main color: default zinc
-                primary: colors.purple,//accent color: default purple
+                primary: colors.red,//accent color: default purple
 
                 info: colors.blue,//info color: default blue
                 danger: colors.red,//danger color: default red

@@ -9,7 +9,7 @@
 
 <div class="rounded-lg overflow-hidden p-4
 {{ $is_content_center ? 'text-center' : 'text-left' }}
-{{ $is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : 'saturn-bg saturn-text' }}
+{{ $is_card_filled ? ($is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : 'saturn-bg saturn-text') : '' }}
 {{ $is_border ? 'border' : '' }}
 {{ $is_border ? ($is_section_filled_inverted ? 'saturn-border-inverse' : 'saturn-border') : '' }}
 {{ $is_card_filled ? ($is_section_filled_inverted ? 'saturn-bg-accent-inverse saturn-text-accent-inverse' : 'saturn-bg-accent saturn-text-accent') : '' }}
