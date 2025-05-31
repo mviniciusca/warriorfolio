@@ -24,6 +24,7 @@
 'is_section_filled_inverted' => false,
 ])
 
+@if($is_active)
 <x-core.layout :$with_padding :$is_centered :$is_section_filled_inverted :$title :$subtitle :$is_heading_visible
     :$button_header :$button_url :$button_icon>
     <x-ui.card-grid :cols="$columns">
@@ -31,9 +32,9 @@
         @if(!isset($item['is_card_hidden']) || empty($item['is_card_hidden']))
         <x-ui.card :$is_color_icon :$is_content_center :$is_section_filled_inverted :$is_border :$is_card_filled>
             <x-slot:header>
-                <div class="flex items-center gap-2">
+                <div class="grid items-center gap-2">
                     <x-ui.ionicon :icon="$item['icon'] ?? null"
-                        class="h-6 w-6 {{ $is_color_icon ? 'text-primary-500' : '' }}" />
+                        class="h-7 w-7 {{ $is_color_icon ? 'text-primary-500' : '' }}" />
                     <span>{!! $item['title'] ?? null !!}</span>
                 </div>
             </x-slot:header>
@@ -43,6 +44,7 @@
         @endforeach
     </x-ui.card-grid>
 </x-core.layout>
+@endif
 
 
 {{-- <x-core.layout :$is_centered :$is_heading_visible :$title :$subtitle :$is_filled :$is_section_filled_inverted

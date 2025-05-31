@@ -1,4 +1,4 @@
-<nav id="main-navigation" class="relative z-40 mx-auto w-full pb-2">
+<nav id="main-navigation" class="relative z-20 mx-auto w-full">
     @if ($line_beam_is_active)
     <div class="absolute inset-0 -z-20 animate-pulse bg-auto bg-top bg-no-repeat"
         style="background-image: url({{ asset('img/core/core-ui-elements/beams/blur-beam.png') }})">
@@ -6,7 +6,7 @@
     @endif
     <x-core.layout :is_heading_visible="false" :$is_filled :with_padding='false'>
         {{-- Logo and Primary Navigation --}}
-        <div class="flex items-center justify-between py-4 text-xs">
+        <div class="flex items-center justify-between py-6 text-xs">
             <div class="flex flex-wrap items-center gap-4">
                 <x-ui.logo />
                 <x-ui.mobile-navigation />

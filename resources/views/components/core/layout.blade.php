@@ -29,7 +29,7 @@ This is the default layout component for the website. Used for website and compo
 'px_padding' => true,
 ])
 
-<div class="{{ $with_padding ? 'saturn-y-section' : 'py-0'  }}
+<div class="{{ $with_padding ? 'saturn-y-section' : 'py-2'  }}
 {{ $is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : '' }}
  {{ $is_filled ? 'saturn-bg-accent duration-300 transition-all' : '' }}
   {{ $px_padding ? 'saturn-x-section' : '' }}" id="{{ $module_name ?? '' }}">

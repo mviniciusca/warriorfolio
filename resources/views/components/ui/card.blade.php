@@ -15,7 +15,7 @@
 {{ $is_card_filled ? ($is_section_filled_inverted ? 'saturn-bg-accent-inverse saturn-text-accent-inverse' : 'saturn-bg-accent saturn-text-accent') : '' }}
 ">
     @if(isset($header))
-    <div class="text-sm font-medium py-2">
+    <div class="text-sm py-2 font-medium">
         {{ $header }}
     </div>
     @endif
