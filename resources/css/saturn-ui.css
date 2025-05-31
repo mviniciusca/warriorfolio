@@ -47,10 +47,10 @@
 
 /** Saturn UI Typography **/
 .saturn-text {
-    @apply saturn-transition text-saturn-800 dark:text-saturn-100;
+    @apply saturn-transition text-saturn-950 dark:text-saturn-50;
 }
 .saturn-text-inverse {
-    @apply saturn-transition text-saturn-100 dark:text-saturn-800;
+    @apply saturn-transition text-saturn-50 dark:text-saturn-950;
 }
 .saturn-text-accent {
     @apply saturn-transition text-saturn-600 dark:text-saturn-400;

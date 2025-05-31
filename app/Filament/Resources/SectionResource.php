@@ -11,6 +11,7 @@ use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -72,12 +73,24 @@ class SectionResource extends Resource
                                             ->label(__('Filled'))
                                             ->helperText(__('If enabled, this section will be filled with a color'))
                                             ->default(false)
-                                            ->required(),
+                                            ->required()
+                                            ->live()
+                                            ->afterStateUpdated(function (Set $set, $state) {
+                                                if ($state) {
+                                                    $set('content.is_section_filled_inverted', false);
+                                                }
+                                            }),
                                         Checkbox::make('content.is_section_filled_inverted')
                                             ->label(__('Section Filled Inverted'))
                                             ->helperText(__('If enabled, this section will be filled with a color and the text will be inverted'))
                                             ->default(false)
-                                            ->required(),
+                                            ->required()
+                                            ->live()
+                                            ->afterStateUpdated(function (Set $set, $state) {
+                                                if ($state) {
+                                                    $set('content.is_filled', false);
+                                                }
+                                            }),
                                         Checkbox::make('content.with_padding')
                                             ->label(__('Vertical Padding'))
                                             ->helperText(__('If enabled, this section will have padding'))
