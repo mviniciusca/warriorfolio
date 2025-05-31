@@ -104,7 +104,7 @@ class SectionResource extends Resource
                                     ]),
 
                                 Fieldset::make(__('Layout & Display'))
-                                    ->columns(3)
+                                    ->columns(1)
                                     ->schema([
                                         Toggle::make('content.with_padding')
                                             ->label(__('Vertical Padding'))
@@ -112,30 +112,40 @@ class SectionResource extends Resource
                                             ->offIcon('heroicon-o-x-circle')
                                             ->helperText(__('Adds vertical spacing around section content'))
                                             ->default(true),
-                                        Toggle::make('content.is_heading_visible')
-                                            ->onIcon('heroicon-o-check-circle')
-                                            ->offIcon('heroicon-o-x-circle')
-                                            ->label(__('Heading Visible'))
-                                            ->helperText(__('Shows the section title and subtitle'))
-                                            ->default(false),
-                                        Toggle::make('content.is_centered')
-                                            ->onIcon('heroicon-o-check-circle')
-                                            ->offIcon('heroicon-o-x-circle')
-                                            ->label(__('Heading Centered'))
-                                            ->helperText(__('Centers the section title and subtitle'))
-                                            ->default(false),
                                     ]),
 
                             ]),
 
                         Forms\Components\Tabs\Tab::make('Content')
                             ->icon('heroicon-o-cube')
-                            ->columns(2)
                             ->schema(function (Forms\Get $get) {
                                 $commonFields = [
                                     Fieldset::make(__('Section Header'))
                                         ->columns(2)
                                         ->schema([
+                                            Group::make()
+                                                ->columnSpanFull()
+                                                ->columns(3)
+                                                ->schema([
+                                                    Toggle::make('content.is_heading_visible')
+                                                        ->onIcon('heroicon-o-check-circle')
+                                                        ->offIcon('heroicon-o-x-circle')
+                                                        ->label(__('Heading Visible'))
+                                                        ->helperText(__('Shows the section title and subtitle'))
+                                                        ->default(false),
+                                                    Toggle::make('content.is_centered')
+                                                        ->onIcon('heroicon-o-check-circle')
+                                                        ->offIcon('heroicon-o-x-circle')
+                                                        ->label(__('Heading Centered'))
+                                                        ->helperText(__('Centers the section title and subtitle'))
+                                                        ->default(false),
+                                                    Toggle::make('content.show_button')
+                                                        ->onIcon('heroicon-o-check-circle')
+                                                        ->offIcon('heroicon-o-x-circle')
+                                                        ->label(__('Show Button'))
+                                                        ->helperText(__('Displays the action button in the section'))
+                                                        ->default(false),
+                                                ]),
                                             Forms\Components\TextInput::make('content.title')
                                                 ->label(__('Title'))
                                                 ->placeholder(__('Enter section title'))
