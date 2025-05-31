@@ -48,7 +48,7 @@ class DocumentationPageSeeder extends Seeder
                             'is_heading_active'          => false,
                             'is_filled_inverted'         => false,
                             'is_section_filled_inverted' => false,
-                            'is_border'                  => true,
+                            'is_border'                  => false,
                             'with_padding'               => true,
                             'features'                   => [
                                 [
@@ -79,12 +79,12 @@ class DocumentationPageSeeder extends Seeder
                             'is_filled'                  => true,
                             'is_animated'                => false,
                             'is_light_fx'                => false,
-                            'is_color_icon'              => false,
+                            'is_color_icon'              => true,
                             'is_card_filled'             => true,
                             'is_content_center'          => false,
                             'is_heading_active'          => true,
                             'is_filled_inverted'         => false,
-                            'is_section_filled_inverted' => false,
+                            'is_section_filled_inverted' => true,
                             'is_border'                  => true,
                             'with_padding'               => true,
                             'features'                   => [
