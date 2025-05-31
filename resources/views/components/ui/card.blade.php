@@ -11,34 +11,42 @@
 
 @php
 $roleClasses = '';
+$roleBorderClasses = '';
 if ($role) {
 switch ($role) {
 case 'primary':
 $roleClasses = 'saturn-color-primary';
+$roleBorderClasses = 'border border-primary-500/20 dark:border-primary-400/30';
 break;
 case 'secondary':
 $roleClasses = 'saturn-color-secondary';
+$roleBorderClasses = 'border saturn-border-accent';
 break;
 case 'success':
 $roleClasses = 'saturn-color-success';
+$roleBorderClasses = 'border border-green-500/20 dark:border-green-400/30';
 break;
 case 'danger':
 case 'error':
 $roleClasses = 'saturn-color-error';
+$roleBorderClasses = 'border border-red-500/20 dark:border-red-400/30';
 break;
 case 'warning':
 $roleClasses = 'saturn-color-warning';
+$roleBorderClasses = 'border border-yellow-500/20 dark:border-yellow-400/30';
 break;
 case 'info':
 $roleClasses = 'saturn-color-info';
+$roleBorderClasses = 'border border-blue-500/20 dark:border-blue-400/30';
 break;
 }
 }
 @endphp
 
-<div class="rounded-lg overflow-hidden p-4
+<div class="rounded-lg overflow-hidden py-2 px-4
 {{ $is_content_center ? 'text-center' : 'text-left' }}
-{{ $role ? $roleClasses : '' }}
+{{ $role && $is_card_filled ? $roleClasses : '' }}
+{{ $role && !$is_card_filled ? $roleBorderClasses : '' }}
 {{ !$role && $is_card_filled ? ($is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : 'saturn-bg saturn-text') : '' }}
 {{ !$role && $is_border ? 'border' : '' }}
 {{ !$role && $is_border ? ($is_section_filled_inverted ? 'saturn-border-inverse' : 'saturn-border') : '' }}
@@ -51,12 +59,12 @@ break;
     </div>
     @endif
 
-    <div class="text-sm py-4">
+    <div class="text-xs leading-relaxed py-1">
         {{ $slot }}
     </div>
 
     @if(isset($footer))
-    <div class="py-2">
+    <div class="py-1">
         {{ $footer }}
     </div>
     @endif

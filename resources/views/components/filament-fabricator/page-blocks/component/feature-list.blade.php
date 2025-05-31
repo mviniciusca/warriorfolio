@@ -34,7 +34,7 @@
         <x-ui.card :role="$item['role'] ?? null" :$is_filled :$is_color_icon :$is_content_center
             :$is_section_filled_inverted :$is_border :$is_card_filled>
             <x-slot:header>
-                <div class="grid items-center gap-2">
+                <div class="flex items-center gap-2">
                     <x-ui.ionicon :icon="$item['icon'] ?? null"
                         class="h-7 w-7 {{ $is_color_icon ? 'text-primary-500' : '' }}" />
                     <span>{!! $item['title'] ?? null !!}</span>

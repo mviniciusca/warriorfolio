@@ -3,7 +3,7 @@
 namespace App\Filament\Fabricator\PageBlocks\Component;
 
 use Filament\Forms\Components\Builder\Block;
-use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
@@ -101,12 +101,16 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_new_window')
                                                     ->label(__('New Tab'))
                                                     ->helperText(__('Open link in new tab'))
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->columnSpan(1),
 
                                                 Toggle::make('is_card_hidden')
                                                     ->label(__('Hide Card'))
                                                     ->helperText(__('Temporarily hide this card'))
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->columnSpan(1),
                                             ]),
@@ -122,14 +126,21 @@ class FeatureList extends PageBlock
                                         Grid::make()
                                             ->columns(2)
                                             ->schema([
-                                                Checkbox::make('is_heading_active')
+                                                Toggle::make('is_heading_active')
+                                                    ->label(__('Show Heading'))
                                                     ->default(true)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
-                                                    ->helperText(__('Show / Hide the title and subtitle.')),
-                                                Checkbox::make('is_heading_centered')
+                                                    ->helperText(__('Show or hide the title and subtitle')),
+
+                                                Toggle::make('is_heading_centered')
+                                                    ->label(__('Center Heading'))
                                                     ->default(true)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
-                                                    ->helperText(__('Center align title and subtitle.')),
+                                                    ->helperText(__('Center align title and subtitle')),
                                             ]),
 
                                         TextInput::make('module_title')
@@ -137,81 +148,148 @@ class FeatureList extends PageBlock
                                             ->prefixIcon('heroicon-o-pencil')
                                             ->maxLength(255)
                                             ->placeholder('hackable ♠')
-                                            ->helperText(__('Enter the main title for this feature section.')),
+                                            ->helperText(__('Enter the main title for this feature section')),
 
                                         Textarea::make('module_subtitle')
                                             ->label(__('Subtitle'))
                                             ->rows(2)
-                                            ->helperText(__('Add a brief description or subtitle for the feature section.')),
+                                            ->helperText(__('Add a brief description or subtitle for the feature section')),
                                     ]),
                             ]),
 
                         Tabs\Tab::make(__('Settings'))
                             ->icon('heroicon-o-cog-6-tooth')
                             ->schema([
-                                Grid::make()
-                                    ->columns(4)
+                                Fieldset::make(__('Module Visibility'))
                                     ->schema([
-                                        Checkbox::make('is_active')
-                                            ->default(true)
-                                            ->inline()
-                                            ->helperText(__('Show / Hide this module.')),
-                                        Checkbox::make('with_padding')
-                                            ->default(true)
-                                            ->inline()
-                                            ->helperText(__('Add vertical padding.')),
-                                        Checkbox::make('is_filled')
-                                            ->default(false)
-                                            ->inline()
-                                            ->helperText(__('Fill background with dark accent color.')),
-                                        Checkbox::make('is_section_filled_inverted')
-                                            ->default(false)
-                                            ->inline()
-                                            ->helperText(__('Inverse background fill in dark/light mode.')),
-                                        Checkbox::make('is_content_center')
-                                            ->label(__('Center Content'))
-                                            ->default(true)
-                                            ->inline()
-                                            ->helperText(__('Center align card content.')),
-                                        Checkbox::make('is_color_icon')
-                                            ->label(__('Colored Icons'))
-                                            ->default(true)
-                                            ->inline()
-                                            ->helperText(__('Enable colored icons.')),
-                                        Checkbox::make('is_card_filled')
-                                            ->label(__('Card Background'))
-                                            ->default(false)
-                                            ->inline()
-                                            ->helperText(__('Add background color to cards.')),
-                                        Checkbox::make('is_light_fx')
-                                            ->label(__('Light Effect'))
-                                            ->default(false)
-                                            ->inline()
-                                            ->helperText(__('Enable hover light effect.')),
-                                        Checkbox::make('is_animated')
-                                            ->label(__('Animation'))
-                                            ->default(false)
-                                            ->inline()
-                                            ->helperText(__('Enable animation effects.')),
-                                        Checkbox::make('is_border')
-                                            ->label(__('Border'))
-                                            ->inline()
-                                            ->helperText(__('Add border to cards.')),
-                                        Group::make()
+                                        Grid::make()
+                                            ->columns(2)
                                             ->schema([
+                                                Toggle::make('is_active')
+                                                    ->label(__('Module Active'))
+                                                    ->default(true)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
+                                                    ->inline()
+                                                    ->helperText(__('Show or hide this entire module')),
+
+                                                Toggle::make('with_padding')
+                                                    ->label(__('Vertical Padding'))
+                                                    ->default(true)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
+                                                    ->inline()
+                                                    ->helperText(__('Add vertical spacing around the module')),
+                                            ]),
+                                    ]),
+
+                                Fieldset::make(__('Background & Layout'))
+                                    ->schema([
+                                        Grid::make()
+                                            ->columns(3)
+                                            ->schema([
+                                                Toggle::make('is_filled')
+                                                    ->label(__('Section Background'))
+                                                    ->default(false)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
+                                                    ->live()
+                                                    ->inline()
+                                                    ->helperText(__('Fill section with accent color'))
+                                                    ->afterStateUpdated(function ($state, callable $set) {
+                                                        if ($state) {
+                                                            $set('is_section_filled_inverted', false);
+                                                        }
+                                                    }),
+
+                                                Toggle::make('is_section_filled_inverted')
+                                                    ->label(__('Invert Background'))
+                                                    ->default(false)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
+                                                    ->live()
+                                                    ->inline()
+                                                    ->helperText(__('Reverse light/dark theme colors'))
+                                                    ->afterStateUpdated(function ($state, callable $set) {
+                                                        if ($state) {
+                                                            $set('is_filled', false);
+                                                        }
+                                                    }),
+
+                                                Toggle::make('is_content_center')
+                                                    ->label(__('Center Content'))
+                                                    ->default(true)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
+                                                    ->inline()
+                                                    ->helperText(__('Center align card content')),
+                                            ]),
+                                    ]),
+
+                                Fieldset::make(__('Card Appearance'))
+                                    ->schema([
+                                        Grid::make()
+                                            ->columns(4)
+                                            ->schema([
+                                                Toggle::make('is_card_filled')
+                                                    ->label(__('Card Backgrounds'))
+                                                    ->default(false)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
+                                                    ->inline()
+                                                    ->helperText(__('Add background color to cards')),
+
+                                                Toggle::make('is_border')
+                                                    ->label(__('Card Borders'))
+                                                    ->default(false)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
+                                                    ->inline()
+                                                    ->helperText(__('Add borders around cards')),
+
+                                                Toggle::make('is_color_icon')
+                                                    ->label(__('Colored Icons'))
+                                                    ->default(true)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
+                                                    ->inline()
+                                                    ->helperText(__('Use brand colors for icons')),
+
                                                 Select::make('columns')
                                                     ->label(__('Cards per Row'))
-                                                    ->helperText(__('Select how many cards to display per row.'))
+                                                    ->helperText(__('Number of cards displayed per row'))
                                                     ->options([
-                                                        1 => '1 Card',
-                                                        2 => '2 Cards',
-                                                        3 => '3 Cards',
-                                                        4 => '4 Cards',
+                                                        1 => __('1 Card'),
+                                                        2 => __('2 Cards'),
+                                                        3 => __('3 Cards'),
+                                                        4 => __('4 Cards'),
                                                     ])
                                                     ->default(3),
                                             ]),
                                     ]),
 
+                                Fieldset::make(__('Visual Effects'))
+                                    ->schema([
+                                        Grid::make()
+                                            ->columns(2)
+                                            ->schema([
+                                                Toggle::make('is_light_fx')
+                                                    ->label(__('Hover Light Effect'))
+                                                    ->default(false)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
+                                                    ->inline()
+                                                    ->helperText(__('Add light effect on card hover')),
+
+                                                Toggle::make('is_animated')
+                                                    ->label(__('Animations'))
+                                                    ->default(false)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
+                                                    ->inline()
+                                                    ->helperText(__('Enable entrance animations')),
+                                            ]),
+                                    ]),
                             ]),
                     ]),
             ]);
