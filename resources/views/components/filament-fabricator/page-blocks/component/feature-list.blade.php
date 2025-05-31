@@ -4,6 +4,7 @@
 'features' => [],
 'title' => $module_title ?? null,
 'is_active' => null,
+'role' => null,
 'is_border' => null,
 'is_filled' => null,
 'button_url' => null,

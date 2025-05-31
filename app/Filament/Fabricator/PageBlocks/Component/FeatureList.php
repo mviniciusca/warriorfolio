@@ -94,6 +94,7 @@ class FeatureList extends PageBlock
                                                         'danger'    => __('Danger'),
                                                         'info'      => __('Info'),
                                                     ])
+                                                    ->default('')
                                                     ->helperText(__('Choose a color theme for this card'))
                                                     ->columnSpan(2),
 
