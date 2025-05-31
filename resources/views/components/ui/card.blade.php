@@ -1,6 +1,7 @@
 @props([
 'header' => null,
 'footer' => null,
+'is_filled' => false,
 'is_section_filled_inverted' => false,
 'is_border' => false,
 'is_card_filled' => false,
@@ -12,7 +13,8 @@
 {{ $is_card_filled ? ($is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : 'saturn-bg saturn-text') : '' }}
 {{ $is_border ? 'border' : '' }}
 {{ $is_border ? ($is_section_filled_inverted ? 'saturn-border-inverse' : 'saturn-border') : '' }}
-{{ $is_card_filled ? ($is_section_filled_inverted ? 'saturn-bg-accent-inverse saturn-text-accent-inverse' : 'saturn-bg-accent saturn-text-accent') : '' }}
+{{ $is_card_filled && !$is_filled ? ($is_section_filled_inverted ? 'saturn-bg-accent-inverse saturn-text-accent-inverse' : 'saturn-bg-accent saturn-text-accent') : '' }}
+{{ $is_card_filled && $is_filled ? ($is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : 'saturn-bg saturn-text') : '' }}
 ">
     @if(isset($header))
     <div class="text-sm py-2 font-medium">

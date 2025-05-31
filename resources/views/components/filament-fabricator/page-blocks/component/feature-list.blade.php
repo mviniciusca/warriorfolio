@@ -25,12 +25,13 @@
 ])
 
 @if($is_active)
-<x-core.layout :$with_padding :$is_centered :$is_section_filled_inverted :$title :$subtitle :$is_heading_visible
-    :$button_header :$button_url :$button_icon>
+<x-core.layout :$is_filled :$with_padding :$is_centered :$is_section_filled_inverted :$title :$subtitle
+    :$is_heading_visible :$button_header :$button_url :$button_icon>
     <x-ui.card-grid :cols="$columns">
         @foreach ($features as $item)
         @if(!isset($item['is_card_hidden']) || empty($item['is_card_hidden']))
-        <x-ui.card :$is_color_icon :$is_content_center :$is_section_filled_inverted :$is_border :$is_card_filled>
+        <x-ui.card :$is_filled :$is_color_icon :$is_content_center :$is_section_filled_inverted :$is_border
+            :$is_card_filled>
             <x-slot:header>
                 <div class="grid items-center gap-2">
                     <x-ui.ionicon :icon="$item['icon'] ?? null"
