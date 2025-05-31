@@ -33,65 +33,81 @@ class FeatureList extends PageBlock
                                     ->label(__('Feature Cards'))
                                     ->addActionLabel(__('Add New Card'))
                                     ->columnSpanFull()
-                                    ->columns(2)
                                     ->collapsed()
                                     ->collapsible()
                                     ->cloneable()
                                     ->reorderable()
                                     ->itemLabel(fn (array $state): string => strip_tags($state['title'] ?? __('Card')))
                                     ->schema([
+                                        // Content Section
                                         Group::make()
-                                            ->columnSpan(1)
+                                            ->label(__('Content'))
+                                            ->columnSpanFull()
+                                            ->columns(2)
                                             ->schema([
                                                 TextInput::make('title')
                                                     ->live(true)
                                                     ->required()
+                                                    ->label(__('Title'))
                                                     ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                                                    ->helperText(__('Enter the title for this feature card'))
-                                                    ->maxLength(255),
+                                                    ->placeholder(__('Enter card title'))
+                                                    ->maxLength(255)
+                                                    ->columnSpan(1),
 
                                                 TextInput::make('icon')
+                                                    ->label(__('Icon'))
                                                     ->prefixIcon('heroicon-o-cube')
-                                                    ->placeholder('icon-name')
-                                                    ->helperText(__('Enter the icon name (e.g. heroicon-o-star)')),
+                                                    ->placeholder('heroicon-o-star')
+                                                    ->helperText(__('Icon name (e.g. heroicon-o-star)'))
+                                                    ->columnSpan(1),
                                             ]),
 
-                                        Group::make()
-                                            ->columnSpan(1)
-                                            ->schema([
-                                                Textarea::make('description')
-                                                    ->rows(3)
-                                                    ->helperText(__('Describe this feature'))
-                                                    ->placeholder(__('Enter a brief description of this feature')),
-                                            ]),
+                                        Textarea::make('description')
+                                            ->label(__('Description'))
+                                            ->rows(3)
+                                            ->placeholder(__('Enter a brief description of this feature'))
+                                            ->columnSpanFull(),
 
+                                        // Link and Appearance Section
                                         Group::make()
+                                            ->label(__('Link & Appearance'))
                                             ->columnSpanFull()
-                                            ->columns(4)
+                                            ->columns(6)
                                             ->schema([
                                                 TextInput::make('link')
+                                                    ->label(__('Link URL'))
                                                     ->prefixIcon('heroicon-o-link')
-                                                    ->placeholder('https://')
+                                                    ->placeholder('https://example.com')
                                                     ->url()
-                                                    ->columnSpan(3)
-                                                    ->helperText(__('Optional: Add a link to learn more about this feature')),
+                                                    ->helperText(__('Optional link URL for this card'))
+                                                    ->columnSpan(2),
+
+                                                Select::make('role')
+                                                    ->label(__('Card Style'))
+                                                    ->prefixIcon('heroicon-o-swatch')
+                                                    ->options([
+                                                        ''          => __('Default'),
+                                                        'primary'   => __('🔵 Primary'),
+                                                        'secondary' => __('⚪ Secondary'),
+                                                        'success'   => __('🟢 Success'),
+                                                        'warning'   => __('🟡 Warning'),
+                                                        'danger'    => __('🔴 Danger'),
+                                                        'info'      => __('🔵 Info'),
+                                                    ])
+                                                    ->helperText(__('Choose a color theme for this card'))
+                                                    ->columnSpan(2),
 
                                                 Toggle::make('is_new_window')
                                                     ->label(__('New Tab'))
+                                                    ->helperText(__('Open link in new tab'))
                                                     ->inline()
-                                                    ->columnSpan(1)
-                                                    ->helperText(__('Open link in new tab')),
-                                            ]),
+                                                    ->columnSpan(1),
 
-                                        Group::make()
-                                            ->columnSpanFull()
-                                            ->columns(2)
-                                            ->schema([
-                                                Checkbox::make('is_card_hidden')
+                                                Toggle::make('is_card_hidden')
                                                     ->label(__('Hide Card'))
-                                                    ->default(false)
+                                                    ->helperText(__('Temporarily hide this card'))
                                                     ->inline()
-                                                    ->helperText(__('Temporarily hide this card from being displayed')),
+                                                    ->columnSpan(1),
                                             ]),
                                     ])
                                     ->addActionLabel(__('Add New Feature Card')),

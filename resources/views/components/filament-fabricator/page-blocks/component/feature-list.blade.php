@@ -30,8 +30,8 @@
     <x-ui.card-grid :cols="$columns">
         @foreach ($features as $item)
         @if(!isset($item['is_card_hidden']) || empty($item['is_card_hidden']))
-        <x-ui.card :$is_filled :$is_color_icon :$is_content_center :$is_section_filled_inverted :$is_border
-            :$is_card_filled>
+        <x-ui.card :role="$item['role'] ?? null" :$is_filled :$is_color_icon :$is_content_center
+            :$is_section_filled_inverted :$is_border :$is_card_filled>
             <x-slot:header>
                 <div class="grid items-center gap-2">
                     <x-ui.ionicon :icon="$item['icon'] ?? null"
