@@ -4,7 +4,7 @@
 'button_header' => null,
 'button_url' => null,
 'button_icon' => null,
-'button_style' => 'outlined',
+'button_style' => 'primary',
 'is_section_filled_inverted' => false,
 'is_centered' => false
 ])
