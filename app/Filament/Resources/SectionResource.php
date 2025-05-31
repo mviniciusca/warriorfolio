@@ -10,6 +10,7 @@ use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
@@ -56,56 +57,73 @@ class SectionResource extends Resource
                         Forms\Components\Tabs\Tab::make('Settings')
                             ->icon('heroicon-o-cog-6-tooth')
                             ->schema([
-                                Group::make()
-                                    ->columns(4)
+                                Fieldset::make(__('General Settings'))
+                                    ->columns(2)
                                     ->schema([
-                                        Checkbox::make('is_active')
+                                        Toggle::make('is_active')
                                             ->label(__('Active'))
                                             ->helperText(__('If enabled, this section will be visible on the frontend'))
-                                            ->default(true)
-                                            ->required(),
-                                        Checkbox::make('is_coupled')
+                                            ->onIcon('heroicon-o-check-circle')
+                                            ->offIcon('heroicon-o-x-circle')
+                                            ->default(true),
+                                        Toggle::make('is_coupled')
                                             ->label(__('Coupled'))
                                             ->helperText(__('If enabled, this section will be coupled with the main layout'))
+                                            ->onIcon('heroicon-o-check-circle')
+                                            ->offIcon('heroicon-o-x-circle')
+                                            ->default(false),
+                                    ]),
+
+                                Fieldset::make(__('Background & Fill'))
+                                    ->columns(2)
+                                    ->schema([
+                                        Toggle::make('content.is_filled')
+                                            ->label(__('Fill Section'))
+                                            ->helperText(__('Fill the background section with accent color.'))
+                                            ->onIcon('heroicon-o-check-circle')
+                                            ->offIcon('heroicon-o-x-circle')
                                             ->default(false)
-                                            ->required(),
-                                        Checkbox::make('content.is_filled')
-                                            ->label(__('Filled'))
-                                            ->helperText(__('If enabled, this section will be filled with a color'))
-                                            ->default(false)
-                                            ->required()
                                             ->live()
                                             ->afterStateUpdated(function (Set $set, $state) {
                                                 if ($state) {
                                                     $set('content.is_section_filled_inverted', false);
                                                 }
                                             }),
-                                        Checkbox::make('content.is_section_filled_inverted')
-                                            ->label(__('Section Filled Inverted'))
-                                            ->helperText(__('If enabled, this section will be filled with a color and the text will be inverted'))
+                                        Toggle::make('content.is_section_filled_inverted')
+                                            ->label(__('Fill Section Inverted'))
+                                            ->helperText(__('Fill and invert the entire section with inverted theme color.'))
+                                            ->onIcon('heroicon-o-check-circle')
+                                            ->offIcon('heroicon-o-x-circle')
                                             ->default(false)
-                                            ->required()
                                             ->live()
                                             ->afterStateUpdated(function (Set $set, $state) {
                                                 if ($state) {
                                                     $set('content.is_filled', false);
                                                 }
                                             }),
-                                        Checkbox::make('content.with_padding')
+                                    ]),
+
+                                Fieldset::make(__('Layout & Display'))
+                                    ->columns(3)
+                                    ->schema([
+                                        Toggle::make('content.with_padding')
                                             ->label(__('Vertical Padding'))
+                                            ->onIcon('heroicon-o-check-circle')
+                                            ->offIcon('heroicon-o-x-circle')
                                             ->helperText(__('If enabled, this section will have padding'))
-                                            ->default(true)
-                                            ->required(),
-                                        Checkbox::make('content.is_heading_visible')
+                                            ->default(true),
+                                        Toggle::make('content.is_heading_visible')
+                                            ->onIcon('heroicon-o-check-circle')
+                                            ->offIcon('heroicon-o-x-circle')
                                             ->label(__('Heading Visible'))
                                             ->helperText(__('If enabled, this section will have a heading'))
-                                            ->default(false)
-                                            ->required(),
-                                        Checkbox::make('content.is_centered')
+                                            ->default(false),
+                                        Toggle::make('content.is_centered')
+                                            ->onIcon('heroicon-o-check-circle')
+                                            ->offIcon('heroicon-o-x-circle')
                                             ->label(__('Centered'))
                                             ->helperText(__('If enabled, this section will be centered'))
-                                            ->default(false)
-                                            ->required(),
+                                            ->default(false),
                                     ]),
 
                             ]),
@@ -157,7 +175,7 @@ class SectionResource extends Resource
                                         Group::make()
                                             ->columns(2)
                                             ->schema([
-                                                Forms\Components\Toggle::make('content.show_social_links')
+                                                Toggle::make('content.show_social_links')
                                                     ->label(__('Show Social Links'))
                                                     ->helperText(__('Enable to display social media links in the footer'))
                                                     ->default(true),
@@ -211,7 +229,7 @@ class SectionResource extends Resource
 
                                 if ($get('slug') === 'newsletter') {
                                     return array_merge($commonFields, [
-                                        Forms\Components\Toggle::make('content.show_light')
+                                        Toggle::make('content.show_light')
                                             ->label(__('Light Beam'))
                                             ->helperText(__('Show a light beam effect in the card'))
                                             ->default(true),
