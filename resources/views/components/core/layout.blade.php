@@ -24,12 +24,13 @@ This is the default layout component for the website. Used for website and compo
 'subtitle' => null,
 'title' => null,
 'with_padding' => true,
+'no_padding' => false,
 // Layout Props
 'container' => settings('design.container_width', 'max-w-7xl'),
 'px_padding' => true,
 ])
 
-<div class="{{ $with_padding ? 'saturn-y-section' : ($is_heading_visible ? 'pb-16' : 'py-8') }}
+<div class="{{ $no_padding ? 'py-0' : ($with_padding ? 'saturn-y-section' : ($is_heading_visible ? 'pb-16' : 'py-6')) }}
 {{ $is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : '' }}
  {{ $is_filled ? 'saturn-bg-accent duration-300 transition-all' : '' }}
   {{ $px_padding ? 'saturn-x-section' : '' }}" id="{{ $module_name ?? '' }}">

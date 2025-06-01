@@ -54,11 +54,9 @@ break;
 {{ $is_content_center ? 'text-center' : 'text-left' }}
 {{ $role && $is_card_filled ? $roleClasses : '' }}
 {{ $role && !$is_card_filled ? $roleBorderClasses . ' ' . $roleTextClasses : '' }}
-{{ !$role && $is_card_filled ? ($is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : 'saturn-bg saturn-text') : '' }}
+{{ !$role ? ($is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : 'saturn-bg saturn-text') : '' }}
 {{ !$role && $is_border ? 'border' : '' }}
 {{ !$role && $is_border ? ($is_section_filled_inverted ? 'saturn-border-inverse' : 'saturn-border') : '' }}
-{{ !$role && $is_card_filled && !$is_filled ? ($is_section_filled_inverted ? 'saturn-bg-accent-inverse saturn-text-accent-inverse' : 'saturn-bg-accent saturn-text-accent') : '' }}
-{{ !$role && $is_card_filled && $is_filled ? ($is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : 'saturn-bg saturn-text') : '' }}
 ">
     @if(isset($header))
     <div class="text-sm py-1 mb-2 font-medium">

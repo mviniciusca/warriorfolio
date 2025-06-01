@@ -4,7 +4,7 @@
         style="background-image: url({{ asset('img/core/core-ui-elements/beams/blur-beam.png') }})">
     </div>
     @endif
-    <x-core.layout :is_heading_visible="false" :$is_filled :with_padding='false'>
+    <x-core.layout :no_padding="true" :is_heading_visible="false" :$is_filled :with_padding='false'>
         {{-- Logo and Primary Navigation --}}
         <div class="flex items-center justify-between py-6 text-xs">
             <div class="flex flex-wrap items-center gap-4">
