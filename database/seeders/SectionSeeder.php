@@ -14,8 +14,9 @@ class SectionSeeder extends Seeder
                 'name'    => 'about me',
                 'slug'    => 'about-me',
                 'content' => [
-                    'title'    => 'About Me',
-                    'subtitle' => 'I am a passionate developer',
+                    'is_heading_visible' => 1,
+                    'title'              => 'About Me',
+                    'subtitle'           => 'I am a passionate developer',
 
                 ],
                 'is_active'  => 1,
@@ -36,8 +37,9 @@ class SectionSeeder extends Seeder
                 'name'    => 'portfolio',
                 'slug'    => 'portfolio',
                 'content' => [
-                    'title'    => 'My Portfolio',
-                    'subtitle' => 'Check out my work',
+                    'is_heading_visible' => 1,
+                    'title'              => 'My Portfolio',
+                    'subtitle'           => 'Check out my work',
 
                 ],
                 'is_active'  => 1,
@@ -47,8 +49,9 @@ class SectionSeeder extends Seeder
                 'name'    => 'contact',
                 'slug'    => 'contact',
                 'content' => [
-                    'title'    => 'Get in Touch',
-                    'subtitle' => 'I would love to hear from you',
+                    'is_heading_visible' => 1,
+                    'title'              => 'Get in Touch',
+                    'subtitle'           => 'I would love to hear from you',
 
                 ],
                 'is_active'  => 1,
@@ -58,8 +61,9 @@ class SectionSeeder extends Seeder
                 'name'    => 'blog',
                 'slug'    => 'blog',
                 'content' => [
-                    'title'    => 'My Blog',
-                    'subtitle' => 'Read my latest articles',
+                    'is_heading_visible' => 1,
+                    'title'              => 'My Blog',
+                    'subtitle'           => 'Read my latest articles',
 
                 ],
                 'is_active'  => 1,
@@ -80,8 +84,9 @@ class SectionSeeder extends Seeder
                 'name'    => 'clients',
                 'slug'    => 'clients',
                 'content' => [
-                    'title'    => 'My Clients',
-                    'subtitle' => 'I have worked with amazing clients',
+                    'is_heading_visible' => 1,
+                    'title'              => 'My Clients',
+                    'subtitle'           => 'I have worked with amazing clients',
 
                 ],
                 'is_active'  => 1,
@@ -113,8 +118,9 @@ class SectionSeeder extends Seeder
                 'name'    => 'github-repositories',
                 'slug'    => 'github-repositories',
                 'content' => [
-                    'title'    => 'My GitHub Projects',
-                    'subtitle' => 'Check out my open source contributions',
+                    'is_heading_visible' => 1,
+                    'title'              => 'My GitHub Projects',
+                    'subtitle'           => 'Check out my open source contributions',
 
                 ],
                 'is_active'  => 1,
