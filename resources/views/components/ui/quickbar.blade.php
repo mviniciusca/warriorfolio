@@ -37,18 +37,22 @@
                         <span class="font-medium text-xs">{{ __('Warriorfolio Quickbar') }}</span>
                     </div>
                 </div>
-                <!-- Right - Close button -->
-                <button @click="closeExpand"
-                    class="p-1 rounded-full flex items-center justify-center hover:saturn-bg-accent transition-colors">
-                    <x-ui.ionicon :icon="'close-outline'" class="w-5 h-5" />
-                </button>
+                <!-- Right section with dark mode switch and close button -->
+                <div class="flex items-center gap-3">
+                    <livewire:dark-mode wire:key='header-dark-mode' />
+                    <div class="w-px h-5 saturn-border bg-current opacity-20"></div>
+                    <button @click="closeExpand"
+                        class="p-1 rounded-full flex items-center justify-center hover:saturn-bg-accent transition-colors">
+                        <x-ui.ionicon :icon="'close-outline'" class="w-5 h-5" />
+                    </button>
+                </div>
             </div>
 
             <div class="p-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- General -->
                     <div class="space-y-1">
-                        <h3 class="text-[10px] uppercase opacity-50 tracking-widest mb-3">
+                        <h3 class="text-[10px] uppercase tracking-widest mb-3">
                             {{ __('General') }}</h3>
                         <x-ui.link href="{{ route('filament.admin.pages.dashboard') }}" icon="home-outline"
                             text="Dashboard Max" />
@@ -66,7 +70,7 @@
 
                     <!-- Core Features -->
                     <div class="space-y-1">
-                        <h3 class="text-[10px] uppercase opacity-50 tracking-widest mb-3">
+                        <h3 class="text-[10px] uppercase tracking-widest mb-3">
                             {{ __('Core Features') }}</h3>
                         <x-ui.link href="{{ route('filament.admin.resources.mails.index') }}" icon="mail-outline"
                             text="{{ __('Mails') }}" badge="{{ $mailCount > 0 ? $mailCount : '' }}" />
@@ -87,7 +91,7 @@
 
                     <!-- Website Design -->
                     <div class="space-y-1">
-                        <h3 class="text-[10px] uppercase opacity-50 tracking-widest mb-3">
+                        <h3 class="text-[10px] uppercase  tracking-widest mb-3">
                             {{ __('Website Design') }}</h3>
                         <x-ui.link href="{{ route('filament.admin.resources.pages.index') }}" icon="document-outline"
                             text="{{ __('Pages') }}" badge="{{ $pageCount > 0 ? $pageCount : '' }}" />
@@ -107,7 +111,7 @@
 
                     <!-- App Sections -->
                     <div class="space-y-1">
-                        <h3 class="text-[10px] uppercase opacity-50 tracking-widest mb-3">
+                        <h3 class="text-[10px] uppercase  tracking-widest mb-3">
                             {{ __('App Sections') }}</h3>
                         <x-ui.link href="{{ route('filament.admin.resources.sections.index') }}" icon="radio-outline"
                             text="{{ __('App Sections') }}" />
@@ -115,7 +119,7 @@
 
                     <!-- Settings -->
                     <div class="space-y-1">
-                        <h3 class="text-[10px] uppercase opacity-50 tracking-widest mb-3">
+                        <h3 class="text-[10px] uppercase  tracking-widest mb-3">
                             {{ __('Settings') }}</h3>
                         <x-ui.link href="{{ route('filament.admin.resources.activity-logs.index') }}"
                             icon="time-outline" text="{{ __('Activity Log') }}" />
@@ -132,17 +136,20 @@
                 <!-- Left section with user info -->
                 <div class="flex items-center gap-2">
                     <x-ui.ionicon :icon="'person-circle-outline'" class="w-6 h-6" />
-                    <span class="font-medium text-xs">{{ auth()->user()->name }}</span>
+                    <span class="font-medium text-xs">{{ auth()->user()->name ?? config('app.name', 'Warriorfolio')
+                        }}</span>
                 </div>
-                <!-- Right section with dark mode toggle and logout -->
-                <div class="flex items-center gap-5">
-                    <livewire:dark-mode wire:key='footer-dark-mode' />
+                <!-- Right section with logout -->
+                <div class="flex items-center">
+                    @auth
                     <form method="POST" action="{{ route('filament.admin.auth.logout') }}">
                         @csrf
-                        <x-ui.button size="sm" style="outlined" icon="log-out-outline" type="submit">
+                        <x-ui.button style="secondary" :icon_before="false" class="text-xs" icon="log-out-outline"
+                            type="submit">
                             {{ __('Logout') }}
                         </x-ui.button>
                     </form>
+                    @endauth
                 </div>
             </div>
         </div>
