@@ -50,7 +50,7 @@ break;
 }
 @endphp
 
-<div class="rounded-lg overflow-hidden py-2 px-4
+<div class="rounded-lg overflow-hidden py-2 px-4 min-h-24
 {{ $is_content_center ? 'text-center' : 'text-left' }}
 {{ $role && $is_card_filled ? $roleClasses : '' }}
 {{ $role && !$is_card_filled ? $roleBorderClasses . ' ' . $roleTextClasses : '' }}
@@ -61,12 +61,12 @@ break;
 {{ !$role && $is_card_filled && $is_filled ? ($is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : 'saturn-bg saturn-text') : '' }}
 ">
     @if(isset($header))
-    <div class="text-sm py-2 font-medium">
+    <div class="text-sm py-1 mb-2 font-medium">
         {{ $header }}
     </div>
     @endif
 
-    <div class="text-xs leading-relaxed py-1">
+    <div class="text-xs py-1">
         {{ $slot }}
     </div>
 
