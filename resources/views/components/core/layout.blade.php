@@ -11,9 +11,10 @@ This is the default layout component for the website. Used for website and compo
 @props([
 // Section Header Props
 'button_header' => null,
-'button_icon' => null ?? 'chevron-forward-outline',
+'button_icon' => null,
 'button_style' => null,
 'button_url' => null,
+'icon_before' => null,
 'is_centered' => null,
 'is_filled' => false,
 'is_heading_visible' => false,
@@ -38,8 +39,8 @@ This is the default layout component for the website. Used for website and compo
         <div id="{{ $module_slug }}">
             {{-- Heading --}}
             @if($is_heading_visible)
-            <x-core.partials.section-heading :$is_section_filled_inverted :$title :$subtitle :$button_header
-                :$button_icon :$button_style :$button_url :$is_centered :$is_filled />
+            <x-core.partials.section-heading :$icon_before :$is_section_filled_inverted :$title :$subtitle
+                :$button_header :$button_icon :$button_style :$button_url :$is_centered :$is_filled />
             @endif
             {{-- Content --}}
             {{ $slot }}

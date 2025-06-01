@@ -7,13 +7,15 @@
 'is_heading_visible' => $info['is_heading_visible'] ?? false,
 'button_header' => $info['button'] ?? null,
 'button_url' => $info['button_url'] ?? null,
+'icon_before' => $info['icon_before'] ?? null,
 ])
 
 @if ($posts && $module_blog)
 @if ($info['module_is_active'] ?? false)
-<x-core.layout :$title :$subtitle :$is_heading_visible :$button_header :$button_url :with_padding="false">
-    <div class="my-12">
-        <section class="mt-8">
+<x-core.layout :$title :button_icon="'arrow-forward-sharp'" :icon_before="false" :$subtitle :$is_heading_visible
+    :$button_header :$button_url>
+    <div class="my-2">
+        <section class="my-4">
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($posts as $item)
                 <x-blog.post.card-block :$item />

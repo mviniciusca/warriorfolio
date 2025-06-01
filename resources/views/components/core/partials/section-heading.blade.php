@@ -6,7 +6,8 @@
 'button_icon' => null,
 'button_style' => 'primary',
 'is_section_filled_inverted' => false,
-'is_centered' => false
+'is_centered' => false,
+'icon_before' => null,
 ])
 
 @if($is_centered && $button_header)
@@ -23,7 +24,8 @@
         <div class="flex justify-center">
             @if($button_url)
             <a href="{{ $button_url }}">@endif
-                <x-ui.button :$button_style :$is_section_filled_inverted :icon="$button_icon" :label="$button_header" />
+                <x-ui.button :$icon_before :$button_style :$is_section_filled_inverted :icon="$button_icon"
+                    :label="$button_header" />
                 @if($button_url)
             </a>
             @endif
@@ -46,7 +48,8 @@
     <div class="ml-12 flex-shrink-0">
         @if($button_url)
         <a href="{{ $button_url }}">@endif
-            <x-ui.button :$button_style :$is_section_filled_inverted :icon="$button_icon" :label="$button_header" />
+            <x-ui.button :$icon_before :$button_style :$is_section_filled_inverted :icon="$button_icon"
+                :label="$button_header" />
             @if($button_url)
         </a>
         @endif

@@ -25,7 +25,7 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
     <span>
         {!! $buttonContent !!}
     </span>
-    @if ($icon && $icon_before === false)
+    @if ($icon && !$icon_before)
     <x-ui.ionicon :icon='$icon' />
     @endif
 </button>
@@ -43,14 +43,14 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
     <span>
         {!! $buttonContent !!}
     </span>
-    @if ($icon && $icon_before === false)
+    @if ($icon && !$icon_before)
     <x-ui.ionicon :icon='$icon' />
     @endif
 </button>
 @endif
 
 {{-- Secondary Button --}}
-@if ($style === 'secondary')
+@if ($style === 'secondary' && !$is_section_filled_inverted)
 <button {{ $attributes->class([
     'saturn-btn-secondary',
     ]) }}
@@ -61,7 +61,7 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
     <span>
         {!! $buttonContent !!}
     </span>
-    @if ($icon && $icon_before === false)
+    @if ($icon && !$icon_before)
     <x-ui.ionicon :icon='$icon' />
     @endif
 </button>
@@ -79,14 +79,14 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
     <span>
         {!! $buttonContent !!}
     </span>
-    @if ($icon && $icon_before === false)
+    @if ($icon && !$icon_before)
     <x-ui.ionicon :icon='$icon' />
     @endif
 </button>
 @endif
 
 {{-- Outlined --}}
-@if ($style === 'outlined')
+@if ($style === 'outlined' && !$is_section_filled_inverted)
 <button {{ $attributes->class([
     'saturn-btn-outlined',
     ]) }}
@@ -97,7 +97,7 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
     <span>
         {!! $buttonContent !!}
     </span>
-    @if ($icon && $icon_before === false)
+    @if ($icon && !$icon_before)
     <x-ui.ionicon :icon='$icon' />
     @endif
 </button>
@@ -115,14 +115,14 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
     <span>
         {!! $buttonContent !!}
     </span>
-    @if ($icon && $icon_before === false)
+    @if ($icon && !$icon_before)
     <x-ui.ionicon :icon='$icon' />
     @endif
 </button>
 @endif
 
 {{-- Ghost --}}
-@if ($style === 'ghost')
+@if ($style === 'ghost' && !$is_section_filled_inverted)
 <button {{ $attributes->class([
     'saturn-btn-ghost',
     ]) }}
@@ -151,7 +151,7 @@ $buttonContent = $label ? new Illuminate\Support\HtmlString($label) : $slot;
     <span>
         {!! $buttonContent !!}
     </span>
-    @if ($icon && $icon_before === false)
+    @if ($icon && !$icon_before)
     <x-ui.ionicon :icon='$icon' />
     @endif
 </button>
