@@ -158,45 +158,56 @@ class PageResource extends ResourcesPageResource
     {
         return $form
             ->schema([
-                Grid::make(3)
-                    ->schema([
-                        TextInput::make('title')
-                            ->label(__('Title'))
-                            ->helperText(__('The title of the page'))
-                            ->required()
-                            ->maxLength(255)
-                            ->live(onBlur: true)
-                            ->afterStateUpdated(fn (string $operation, $state, callable $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
-
-                        TextInput::make('slug')
-                            ->label(__('Slug'))
-                            ->required()
-                            ->maxLength(255)
-                            ->unique(ignoreRecord: true)
-                            ->rules(['regex:/^[a-zA-Z0-9\-\/]+$/'])
-                            ->helperText(__('This will be the URL of your page. Use / for homepage'))
-                            ->columnSpan(1),
-
-                        Select::make('layout')
-                            ->label(__('Layout'))
-                            ->helperText(__('Select the layout for this page'))
-                            ->options(FilamentFabricator::getLayouts())
-                            ->required()
-                            ->columnSpan(1),
-                    ]),
-
-                Tabs::make('Create Page')
+                Tabs::make('Page Management')
                     ->columnSpanFull()
                     ->tabs([
                         Tabs\Tab::make('Content')
-                            ->icon('heroicon-o-cube')
+                            ->icon('heroicon-o-document-text')
                             ->schema([
-                                PageBuilder::make('blocks')
-                                    ->label(__('Page Builder'))
-                                    ->blocks(FilamentFabricator::getPageBlocks())
+                                Section::make('Page Information')
+                                    ->description('Basic information about the page')
+                                    ->icon('heroicon-o-information-circle')
                                     ->collapsible()
-                                    ->collapsed()
-                                    ->cloneable(),
+                                    ->schema([
+                                        Grid::make(3)
+                                            ->schema([
+                                                TextInput::make('title')
+                                                    ->label(__('Title'))
+                                                    ->helperText(__('The title of the page'))
+                                                    ->required()
+                                                    ->maxLength(255)
+                                                    ->live(onBlur: true)
+                                                    ->afterStateUpdated(fn (string $operation, $state, callable $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+
+                                                TextInput::make('slug')
+                                                    ->label(__('Slug'))
+                                                    ->required()
+                                                    ->maxLength(255)
+                                                    ->unique(ignoreRecord: true)
+                                                    ->rules(['regex:/^[a-zA-Z0-9\-\/]+$/'])
+                                                    ->helperText(__('This will be the URL of your page. Use / for homepage')),
+
+                                                Select::make('layout')
+                                                    ->label(__('Layout'))
+                                                    ->helperText(__('Select the layout for this page'))
+                                                    ->options(FilamentFabricator::getLayouts())
+                                                    ->required(),
+                                            ]),
+                                    ]),
+
+                                Section::make('Page Builder')
+                                    ->description('Design your page by adding and arranging components')
+                                    ->icon('heroicon-o-puzzle-piece')
+                                    ->collapsible()
+                                    ->schema([
+                                        PageBuilder::make('blocks')
+                                            ->label(false)
+                                            ->blocks(FilamentFabricator::getPageBlocks())
+                                            ->collapsible(false)
+                                            ->cloneable()
+                                            ->collapsible()
+                                            ->showSidebar(false),
+                                    ]),
                             ]),
 
                         Tabs\Tab::make('Settings')
@@ -204,7 +215,7 @@ class PageResource extends ResourcesPageResource
                             ->schema([
                                 Section::make(__('Page Settings'))
                                     ->description(__('Configure page visibility and behavior'))
-                                    ->icon('heroicon-o-cog')
+                                    ->icon('heroicon-o-adjustments-horizontal')
                                     ->columns(2)
                                     ->schema([
                                         Toggle::make('is_active')
@@ -215,14 +226,11 @@ class PageResource extends ResourcesPageResource
                                         Select::make('parent_id')
                                             ->label(__('Parent Page'))
                                             ->relationship('parent', 'title')
-                                            ->searchable()
-                                            ->hidden()
-                                            ->columnSpanFull(),
+                                            ->searchable(),
                                     ]),
                             ]),
-
                     ])
-                    ->persistTabInQueryString('id'),
+                    ->persistTabInQueryString('tab'),
             ]);
     }
 

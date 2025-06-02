@@ -8,7 +8,11 @@ use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 
 class PageBuilder extends \Z3d0X\FilamentFabricator\Forms\Components\PageBuilder
 {
+    protected string $view = 'vendor.filament-fabricator.components.forms.components.page-builder';
+
     protected BlockPickerStyle $blockPickerStyle = BlockPickerStyle::Modal;
+
+    protected bool $showSidebar = false;
 
     protected function setUp(): void
     {
@@ -36,5 +40,17 @@ class PageBuilder extends \Z3d0X\FilamentFabricator\Forms\Components\PageBuilder
         $this->blockPickerStyle = $style;
 
         return $this;
+    }
+
+    public function showSidebar(bool $condition = true): static
+    {
+        $this->showSidebar = $condition;
+
+        return $this;
+    }
+
+    public function getShowSidebar(): bool
+    {
+        return $this->showSidebar;
     }
 }
