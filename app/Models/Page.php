@@ -10,9 +10,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Page extends \Z3d0X\FilamentFabricator\Models\Page
 {
+    protected $guarded = [];
+
     protected $casts = [
-        'seo'    => 'array',
-        'blocks' => 'array',
+        'seo'                   => 'array',
+        'blocks'                => 'array',
+        'publish_at'            => 'datetime',
+        'expire_at'             => 'datetime',
+        'is_password_protected' => 'boolean',
+        'open_in_new_tab'       => 'boolean',
+        'show_breadcrumbs'      => 'boolean',
+        'show_title'            => 'boolean',
     ];
 
     /**
@@ -72,6 +80,8 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
             }
         });
     }
+
+    // Relação "relatedPages" removida pois já existe no sistema
 
     public function tabsSection()
     {

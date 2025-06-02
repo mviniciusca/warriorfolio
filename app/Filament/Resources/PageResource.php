@@ -161,7 +161,25 @@ class PageResource extends ResourcesPageResource
                 Tabs::make('Page Management')
                     ->columnSpanFull()
                     ->tabs([
-                        Tabs\Tab::make('Content')
+                        Tabs\Tab::make('Page Constructor')
+                            ->icon('heroicon-o-puzzle-piece')
+                            ->schema([
+                                Section::make('Page Builder')
+                                    ->description('Design your page by adding and arranging components')
+                                    ->icon('heroicon-o-puzzle-piece')
+                                    ->collapsible()
+                                    ->schema([
+                                        PageBuilder::make('blocks')
+                                            ->label(false)
+                                            ->blocks(FilamentFabricator::getPageBlocks())
+                                            ->collapsible(false)
+                                            ->cloneable()
+                                            ->collapsible()
+                                            ->showSidebar(false),
+                                    ]),
+                            ]),
+
+                        Tabs\Tab::make('Page Details')
                             ->icon('heroicon-o-document-text')
                             ->schema([
                                 Section::make('Page Information')
@@ -195,27 +213,53 @@ class PageResource extends ResourcesPageResource
                                             ]),
                                     ]),
 
-                                Section::make('Page Builder')
-                                    ->description('Design your page by adding and arranging components')
-                                    ->icon('heroicon-o-puzzle-piece')
+                                Section::make('SEO Information')
+                                    ->description('Search engine optimization settings for this page')
+                                    ->icon('heroicon-o-magnifying-glass')
                                     ->collapsible()
                                     ->schema([
-                                        PageBuilder::make('blocks')
-                                            ->label(false)
-                                            ->blocks(FilamentFabricator::getPageBlocks())
-                                            ->collapsible(false)
-                                            ->cloneable()
-                                            ->collapsible()
-                                            ->showSidebar(false),
+                                        TextInput::make('meta_title')
+                                            ->label(__('Meta Title'))
+                                            ->helperText(__('Title that appears in search engine results (if different from page title)'))
+                                            ->maxLength(60),
+
+                                        TextInput::make('meta_description')
+                                            ->label(__('Meta Description'))
+                                            ->helperText(__('Brief description used in search engine results'))
+                                            ->maxLength(160),
+
+                                        TextInput::make('meta_keywords')
+                                            ->label(__('Meta Keywords'))
+                                            ->helperText(__('Keywords separated by commas'))
+                                            ->maxLength(255),
+                                    ]),
+
+                                Section::make('Page Scripts')
+                                    ->description('Add custom scripts that will run only on this page')
+                                    ->icon('heroicon-o-code-bracket')
+                                    ->collapsible()
+                                    ->schema([
+                                        \Filament\Forms\Components\Textarea::make('header_scripts')
+                                            ->label(__('Header Scripts'))
+                                            ->helperText(__('Scripts that will be added to the <head> section of this page only'))
+                                            ->placeholder('<script>// Your script here</script>')
+                                            ->rows(6),
+
+                                        \Filament\Forms\Components\Textarea::make('footer_scripts')
+                                            ->label(__('Footer Scripts'))
+                                            ->helperText(__('Scripts that will be added before the closing </body> tag of this page only'))
+                                            ->placeholder('<script>// Your script here</script>')
+                                            ->rows(6),
                                     ]),
                             ]),
 
                         Tabs\Tab::make('Settings')
                             ->icon('heroicon-o-cog-6-tooth')
                             ->schema([
-                                Section::make(__('Page Settings'))
-                                    ->description(__('Configure page visibility and behavior'))
-                                    ->icon('heroicon-o-adjustments-horizontal')
+                                Section::make(__('Visibility & Access'))
+                                    ->description(__('Control who can see this page and when'))
+                                    ->icon('heroicon-o-eye')
+                                    ->collapsible()
                                     ->columns(2)
                                     ->schema([
                                         Toggle::make('is_active')
@@ -223,10 +267,84 @@ class PageResource extends ResourcesPageResource
                                             ->helperText(__('Make this page visible to visitors'))
                                             ->default(true),
 
-                                        Select::make('parent_id')
-                                            ->label(__('Parent Page'))
-                                            ->relationship('parent', 'title')
-                                            ->searchable(),
+                                        Grid::make()
+                                            ->schema([
+                                                \Filament\Forms\Components\DateTimePicker::make('publish_at')
+                                                    ->label(__('Publish Date'))
+                                                    ->helperText(__('When this page should be automatically published'))
+                                                    ->placeholder(now()->format('Y-m-d H:i')),
+
+                                                \Filament\Forms\Components\DateTimePicker::make('expire_at')
+                                                    ->label(__('Expiry Date'))
+                                                    ->helperText(__('When this page should be automatically unpublished'))
+                                                    ->placeholder(now()->addYear()->format('Y-m-d H:i')),
+                                            ]),
+
+                                        Toggle::make('is_password_protected')
+                                            ->label(__('Password Protected'))
+                                            ->helperText(__('Require a password to view this page'))
+                                            ->reactive(),
+
+                                        TextInput::make('access_password')
+                                            ->label(__('Access Password'))
+                                            ->password()
+                                            ->helperText(__('Password required to access this page'))
+                                            ->visible(fn ($get) => $get('is_password_protected')),
+                                    ]),
+
+                                // Page Structure section removida pois já existe funcionalidade similar no sistema
+
+                                Section::make(__('Page Behavior'))
+                                    ->description(__('Configure how this page functions'))
+                                    ->icon('heroicon-o-arrow-path')
+                                    ->collapsible()
+                                    ->columns(2)
+                                    ->schema([
+                                        TextInput::make('redirect_url')
+                                            ->label(__('Redirect URL'))
+                                            ->url()
+                                            ->helperText(__('If set, visitors will be redirected to this URL')),
+
+                                        Select::make('redirect_type')
+                                            ->label(__('Redirect Type'))
+                                            ->options([
+                                                '301' => '301 - Permanent Redirect',
+                                                '302' => '302 - Temporary Redirect',
+                                            ])
+                                            ->helperText(__('Type of HTTP redirect to use'))
+                                            ->visible(fn ($get) => filled($get('redirect_url'))),
+
+                                        Toggle::make('open_in_new_tab')
+                                            ->label(__('Open External Links in New Tab'))
+                                            ->helperText(__('Automatically open external links in a new browser tab'))
+                                            ->default(true),
+                                    ]),
+
+                                Section::make(__('Display Options'))
+                                    ->description(__('Configure visual settings for this page'))
+                                    ->icon('heroicon-o-rectangle-group')
+                                    ->collapsible()
+                                    ->columns(2)
+                                    ->schema([
+                                        Toggle::make('show_breadcrumbs')
+                                            ->label(__('Show Breadcrumbs'))
+                                            ->helperText(__('Display navigation breadcrumb trail on this page'))
+                                            ->default(true),
+
+                                        Toggle::make('show_title')
+                                            ->label(__('Show Page Title'))
+                                            ->helperText(__('Display the page title at the top of the page'))
+                                            ->default(true),
+
+                                        Select::make('sidebar_position')
+                                            ->label(__('Sidebar Position'))
+                                            ->options([
+                                                'none'  => 'No Sidebar',
+                                                'left'  => 'Left Side',
+                                                'right' => 'Right Side',
+                                            ])
+                                            ->default('none')
+                                            ->helperText(__('Position of the sidebar on this page')),
                                     ]),
                             ]),
                     ])
