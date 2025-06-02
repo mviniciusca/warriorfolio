@@ -25,7 +25,6 @@ export default {
     theme: {
         extend: {
             colors: {
-                saturn: colors.zinc,//main color: default zinc
                 primary: colors.violet,//accent color: default violet
 
                 info: colors.blue,//info color: default blue
@@ -35,6 +34,11 @@ export default {
 
                 secondary: colors.zinc,//dark color: default zinc
                 tertiary: colors.pink,//highlight fx color: default pink
+
+                // Saturn UI Colors
+                saturn: colors.zinc,//main color: default zinc
+                'saturn-dark-accent': '#0f0f11', // accent color for dark mode
+                'saturn-light-accent': '#fcfcfc', // accent color for light mode
             }
         },
     },

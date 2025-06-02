@@ -7,13 +7,15 @@
 'is_heading_visible' => $info['is_heading_visible'] ?? false,
 'button_header' => $info['button'] ?? null,
 'button_url' => $info['button_url'] ?? null,
-'icon_before' => $info['icon_before'] ?? null,
+'button_icon' => $info['button_icon'] ?? null,
+'is_centered' => $info['is_centered'] ?? false,
+'icon_before' => $info['icon_before'] ?? false,
 ])
 
 @if ($posts && $module_blog)
 @if ($info['module_is_active'] ?? false)
-<x-core.layout :$title :button_icon="'arrow-forward-sharp'" :icon_before="false" :$subtitle :$is_heading_visible
-    :$button_header :$button_url>
+<x-core.layout :$title :$is_centered :$button_icon :$icon_before :$subtitle :$is_heading_visible :$button_header
+    :$button_url>
     <div class="my-2">
         <section class="my-4">
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

@@ -72,6 +72,7 @@ class EditBlogSettings extends EditRecord
                                             ->prefixIcon('heroicon-o-pencil')
                                             ->default(__('More Stories'))
                                             ->helperText(__('HTML allowed. Use the class "tl" to highlight a word')),
+
                                     ]),
                             ]),
 
