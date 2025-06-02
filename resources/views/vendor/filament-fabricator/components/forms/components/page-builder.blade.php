@@ -39,7 +39,7 @@ $statePath = $getStatePath();
         >
         <div class="grid grid-cols-12 gap-6">
             @if ($isAddable)
-            <div class="col-span-3 hidden">
+            <div class="hidden">
                 <x-filament::section heading="Modules" description="Click to add a new module" icon="heroicon-o-cube"
                     iconColor="gray" :collapsible="true">
                     <div>
@@ -67,8 +67,8 @@ $statePath = $getStatePath();
             </div>
             @endif
 
-            <!-- Builder  -->
-            <div class="{{ $isAddable ? 'col-span-12' : 'col-span-12' }}">
+            <!-- Conteúdo principal do page-builder -->
+            <div class="col-span-12">
                 <div class="space-y-4">
                     @if ($isCollapsible && ($collapseAllAction->isVisible() || $expandAllAction->isVisible()))
                     <div @class([ 'flex gap-x-3' , 'hidden'=> count($containers) < 2, ])>
