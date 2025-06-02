@@ -292,8 +292,6 @@ class PageResource extends ResourcesPageResource
                                             ->visible(fn ($get) => $get('is_password_protected')),
                                     ]),
 
-                                // Page Structure section removida pois já existe funcionalidade similar no sistema
-
                                 Section::make(__('Page Behavior'))
                                     ->description(__('Configure how this page functions'))
                                     ->icon('heroicon-o-arrow-path')
