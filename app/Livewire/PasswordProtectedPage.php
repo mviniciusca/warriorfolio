@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
@@ -36,8 +37,8 @@ class PasswordProtectedPage extends Component
 
     public function checkPassword()
     {
-        // Simplified password check
-        if ($this->inputPassword === $this->password) {
+        // Check password using Hash::check for security
+        if (Hash::check($this->inputPassword, $this->password)) {
             // Correct password
             Session::put('page_access_'.$this->pageId, true);
             $this->showContent = true;

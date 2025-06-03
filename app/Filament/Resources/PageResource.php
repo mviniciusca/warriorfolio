@@ -276,7 +276,8 @@ class PageResource extends ResourcesPageResource
                                             ->label(__('Access Password'))
                                             ->password()
                                             ->helperText(__('Password required to access this page'))
-                                            ->visible(fn ($get) => $get('is_password_protected')),
+                                            ->visible(fn ($get) => $get('is_password_protected'))
+                                            ->dehydrateStateUsing(fn ($state) => filled($state) ? bcrypt($state) : null),
                                     ]),
 
                                 Section::make(__('Page Behavior'))
