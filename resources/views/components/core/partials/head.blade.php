@@ -21,7 +21,6 @@
         display: none !important;
     }
 </style>
-
 @if($googleSiteVerification)
 <!-- Google Site Verification -->
 {!! $googleSiteVerification !!}

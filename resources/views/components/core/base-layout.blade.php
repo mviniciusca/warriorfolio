@@ -1,3 +1,5 @@
+@aware(['page'])
+
 @props([
 'maintenance' => false,
 'discovery' => false,
@@ -9,14 +11,14 @@
     lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <x-core.partials.head />
+    <x-core.partials.head :$page />
     @if (isset($header))
     {{ $header }}
     @endif
 </head>
 
 
-<body {{ $attributes->merge(['class' => $bodyClass]) }}>
+<body id="main-app" {{ $attributes->merge(['class' => $bodyClass]) }}>
     @if (!$maintenance || ($discovery && auth()->user()))
     <x-core.modules.overlay-apps />
     {{ $slot }}
