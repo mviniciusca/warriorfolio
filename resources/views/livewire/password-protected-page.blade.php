@@ -1,7 +1,7 @@
 <div>
     @if(!$showContent)
     <section class="saturn-flex-center min-h-screen saturn-y-section saturn-x-section saturn-transition">
-        <div class="border saturn-border-accent rounded-xl max-w-md w-full p-8 text-center">
+        <div class="rounded-xl max-w-md w-full p-8 text-center">
 
             <div class="mb-6">
                 <div class="flex items-center justify-center gap-2 mb-4">
@@ -11,7 +11,7 @@
             </div>
 
             <p class="mb-6 text-sm">
-                {{ __('This content is protected by a password.') }}
+                {{ __('This content is secured with a password') }}
             </p>
 
 
@@ -23,22 +23,16 @@
 
                 <x-ui.button type="submit" style="primary" class="saturn-btn-primary w-full">
                     <span class="flex items-center justify-center gap-2">
-                        <x-ui.ionicon icon="lock-open-outline" class="h-4 w-4" />
-                        {{ __('Unlock Content') }}
+                        {{ __('Unlock') }}
                     </span>
                 </x-ui.button>
             </form>
 
 
-            <div class="saturn-grid-2 mt-6 gap-2">
-                <a href="{{ url('/') }}" class="w-full">
-                    <x-ui.button style="secondary" class="w-full" :icon_before="true" icon="home-outline">
-                        {{ __('Home') }}
-                    </x-ui.button>
-                </a>
+            <div class="mx-auto mt-6 gap-2">
                 <a href="{{ url()->previous() }}" class="w-full">
-                    <x-ui.button style="secondary" class="w-full" :icon_before="true" icon="arrow-back-outline">
-                        {{ __('Back') }}
+                    <x-ui.button style="ghost" class="text-xs" :icon_before="true" icon="arrow-back-outline">
+                        {{ __('Go back') }}
                     </x-ui.button>
                 </a>
             </div>
