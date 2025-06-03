@@ -18,40 +18,12 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
         'advanced_settings' => 'array',
         'publish_at'        => 'datetime',
         'expire_at'         => 'datetime',
+        'is_password_protected' => 'boolean',
     ];
 
     /**
-     * Métodos de compatibilidade para atributos antigos
+     * Page Behavior - Métodos mantidos para compatibilidade com JSON
      */
-
-    // Visibility & Access
-    public function getIsPasswordProtectedAttribute()
-    {
-        return $this->advanced_settings['visibility']['is_password_protected'] ?? false;
-    }
-
-    public function setIsPasswordProtectedAttribute($value)
-    {
-        $this->attributes['advanced_settings'] = array_merge(
-            $this->advanced_settings ?? [],
-            ['visibility' => array_merge($this->advanced_settings['visibility'] ?? [], ['is_password_protected' => $value])]
-        );
-    }
-
-    public function getAccessPasswordAttribute()
-    {
-        return $this->advanced_settings['visibility']['access_password'] ?? null;
-    }
-
-    public function setAccessPasswordAttribute($value)
-    {
-        $this->attributes['advanced_settings'] = array_merge(
-            $this->advanced_settings ?? [],
-            ['visibility' => array_merge($this->advanced_settings['visibility'] ?? [], ['access_password' => $value])]
-        );
-    }
-
-    // Page Behavior
     public function getRedirectUrlAttribute()
     {
         return $this->advanced_settings['behavior']['redirect_url'] ?? null;

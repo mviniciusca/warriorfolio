@@ -267,16 +267,16 @@ class PageResource extends ResourcesPageResource
                                             ->helperText(__('Make this page visible to visitors'))
                                             ->default(true),
 
-                                        Toggle::make('advanced_settings.visibility.is_password_protected')
+                                        Toggle::make('is_password_protected')
                                             ->label(__('Password Protected'))
                                             ->helperText(__('Require a password to view this page'))
                                             ->reactive(),
 
-                                        TextInput::make('advanced_settings.visibility.access_password')
+                                        TextInput::make('access_password')
                                             ->label(__('Access Password'))
                                             ->password()
                                             ->helperText(__('Password required to access this page'))
-                                            ->visible(fn ($get) => $get('advanced_settings.visibility.is_password_protected')),
+                                            ->visible(fn ($get) => $get('is_password_protected')),
                                     ]),
 
                                 Section::make(__('Page Behavior'))

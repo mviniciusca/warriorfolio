@@ -19,7 +19,7 @@
 
 <body id="main-app" {{ $attributes->merge(['class' => $bodyClass]) }}>
     @php
-    $isPasswordProtected = $page->advanced_settings['visibility']['is_password_protected'] ?? false;
+    $isPasswordProtected = $page->is_password_protected ?? false;
     $unlocked = request()->has('unlocked');
     @endphp
 
