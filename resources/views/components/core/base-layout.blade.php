@@ -17,8 +17,8 @@
     @endif
 </head>
 
-
 <body id="main-app" {{ $attributes->merge(['class' => $bodyClass]) }}>
+    @if(!$page->redirect_url)
     @if (!$maintenance || ($discovery && auth()->user()))
     <x-core.modules.overlay-apps />
     {{ $slot }}
@@ -28,6 +28,9 @@
     @endif
     @if ($maintenance && (!$discovery || !auth()->user()))
     <x-themes.common.maintenance />
+    @endif
+    @else
+    <x-themes.common.redirect />
     @endif
     <!-- Body Scripts -->
     @isset($scripts['body_scripts'])
