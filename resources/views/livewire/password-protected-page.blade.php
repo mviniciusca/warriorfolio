@@ -1,0 +1,111 @@
+<div>
+    @if(!$showContent)
+    <section class="saturn-flex-center min-h-screen saturn-y-section saturn-x-section saturn-transition">
+        <div class="border saturn-border-accent rounded-xl max-w-md w-full p-8 text-center">
+
+            <div class="mb-6">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <x-ui.ionicon icon="lock-closed-outline" class="h-6 w-6" />
+                </div>
+                <h1 class="saturn-h4 font-semibold">{{ __('Locked') }}</h1>
+            </div>
+
+            <p class="mb-6 text-sm">
+                {{ __('This content is protected by a password.') }}
+            </p>
+
+
+            <form wire:submit.prevent="checkPassword" class="mb-6">
+                <x-ui.form.input type="password" name="inputPassword" wire:model.lazy="inputPassword"
+                    placeholder="{{ __('Enter password') }}" icon="key-outline" iconPosition="left"
+                    :error="$error ? __('Incorrect password. Please try again.') : null" required autofocus
+                    class="mb-6" />
+
+                <x-ui.button type="submit" style="primary" class="saturn-btn-primary w-full">
+                    <span class="flex items-center justify-center gap-2">
+                        <x-ui.ionicon icon="lock-open-outline" class="h-4 w-4" />
+                        {{ __('Unlock Content') }}
+                    </span>
+                </x-ui.button>
+            </form>
+
+
+            <div class="saturn-grid-2 mt-6 gap-2">
+                <a href="{{ url('/') }}" class="w-full">
+                    <x-ui.button style="primary" class="w-full" :icon_before="true" icon="home-outline">
+                        {{ __('Home') }}
+                    </x-ui.button>
+                </a>
+                <a href="{{ url()->previous() }}" class="w-full">
+                    <x-ui.button style="outlined" class="w-full" :icon_before="true" icon="arrow-back-outline">
+                        {{ __('Back') }}
+                    </x-ui.button>
+                </a>
+            </div>
+        </div>
+    </section>
+    @else
+    {{-- Content is unlocked --}}
+    @if(request()->has('unlocked') && $showContent)
+    {{-- Show the actual protected content here --}}
+    <div class="min-h-screen saturn-y-section saturn-x-section">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-8">
+                <x-ui.ionicon icon="lock-open" class="w-6 h-6 text-green-500" />
+                <h1 class="saturn-h2 font-bold">{{ __('Protected Content Unlocked') }}</h1>
+            </div>
+
+            <div class="saturn-card p-8">
+                <p class="text-lg mb-4">{{ __('🎉 Welcome to the protected content!') }}</p>
+                <p class="saturn-text-base mb-6">
+                    {{ __('This is where your protected content would be displayed. You can replace this section with
+                    whatever content should be shown after the password is entered correctly.') }}
+                </p>
+
+                <div class="flex gap-4">
+                    <a href="{{ url('/') }}">
+                        <x-ui.button style="primary" icon="home-outline" :icon_before="true">
+                            {{ __('Home') }}
+                        </x-ui.button>
+                    </a>
+                    <button wire:click="logout" class="inline-flex">
+                        <x-ui.button style="outlined" icon="log-out-outline" :icon_before="true">
+                            {{ __('Lock Again') }}
+                        </x-ui.button>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @else
+    {{-- User is logged in but URL doesn't have unlocked parameter - redirect silently --}}
+    <script>
+        // Silent redirect if logged in but no unlocked parameter
+        if(!window.location.href.includes('unlocked=true')) {
+            const url = new URL(window.location.href);
+            url.searchParams.set('unlocked', 'true');
+            window.location.replace(url.toString()); // Use replace to avoid adding to history
+        }
+    </script>
+    @endif
+    @endif
+</div>
+
+<script>
+    // Listen for password unlock event
+    document.addEventListener('livewire:init', () => {
+        Livewire.on('password-unlocked', () => {
+            // Add unlocked parameter to current URL
+            const url = new URL(window.location.href);
+            url.searchParams.set('unlocked', 'true');
+            window.location.href = url.toString();
+        });
+
+        Livewire.on('password-locked', () => {
+            // Remove unlocked parameter from current URL
+            const url = new URL(window.location.href);
+            url.searchParams.delete('unlocked');
+            window.location.href = url.toString();
+        });
+    });
+</script>

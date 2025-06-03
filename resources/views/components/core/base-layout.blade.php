@@ -18,14 +18,23 @@
 </head>
 
 <body id="main-app" {{ $attributes->merge(['class' => $bodyClass]) }}>
+    @php
+    $isPasswordProtected = $page->advanced_settings['visibility']['is_password_protected'] ?? false;
+    $unlocked = request()->has('unlocked');
+    @endphp
+
     @if($page->style !== 'blog' && $page->is_active)
 
     @if(!$page->redirect_url)
     @if (!$maintenance || ($discovery && auth()->user()))
+    @if($isPasswordProtected && !$unlocked)
+    <x-themes.common.password-protected-page />
+    @else
     <x-core.modules.overlay-apps />
     {{ $slot }}
     @if (isset($footer))
     {{ $footer }}
+    @endif
     @endif
     @endif
     @if ($maintenance && (!$discovery || !auth()->user()))
