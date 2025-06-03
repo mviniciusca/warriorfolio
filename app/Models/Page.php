@@ -13,11 +13,11 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
     protected $guarded = [];
 
     protected $casts = [
-        'seo'               => 'array',
-        'blocks'            => 'array',
-        'advanced_settings' => 'array',
-        'publish_at'        => 'datetime',
-        'expire_at'         => 'datetime',
+        'seo'                   => 'array',
+        'blocks'                => 'array',
+        'advanced_settings'     => 'array',
+        'publish_at'            => 'datetime',
+        'expire_at'             => 'datetime',
         'is_password_protected' => 'boolean',
     ];
 
