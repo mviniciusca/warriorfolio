@@ -260,25 +260,12 @@ class PageResource extends ResourcesPageResource
                                     ->description(__('Control who can see this page and when'))
                                     ->icon('heroicon-o-eye')
                                     ->collapsible()
-                                    ->columns(2)
+                                    ->columns(3)
                                     ->schema([
                                         Toggle::make('is_active')
                                             ->label(__('Published'))
                                             ->helperText(__('Make this page visible to visitors'))
                                             ->default(true),
-
-                                        Grid::make()
-                                            ->schema([
-                                                \Filament\Forms\Components\DateTimePicker::make('publish_at')
-                                                    ->label(__('Publish Date'))
-                                                    ->helperText(__('When this page should be automatically published'))
-                                                    ->placeholder(now()->format('Y-m-d H:i')),
-
-                                                \Filament\Forms\Components\DateTimePicker::make('expire_at')
-                                                    ->label(__('Expiry Date'))
-                                                    ->helperText(__('When this page should be automatically unpublished'))
-                                                    ->placeholder(now()->addYear()->format('Y-m-d H:i')),
-                                            ]),
 
                                         Toggle::make('advanced_settings.visibility.is_password_protected')
                                             ->label(__('Password Protected'))
@@ -300,50 +287,11 @@ class PageResource extends ResourcesPageResource
                                     ->schema([
                                         TextInput::make('advanced_settings.behavior.redirect_url')
                                             ->label(__('Redirect URL'))
+                                            ->prefixIcon('heroicon-o-link')
                                             ->url()
                                             ->helperText(__('If set, visitors will be redirected to this URL')),
-
-                                        Select::make('advanced_settings.behavior.redirect_type')
-                                            ->label(__('Redirect Type'))
-                                            ->options([
-                                                '301' => '301 - Permanent Redirect',
-                                                '302' => '302 - Temporary Redirect',
-                                            ])
-                                            ->helperText(__('Type of HTTP redirect to use'))
-                                            ->visible(fn ($get) => filled($get('advanced_settings.behavior.redirect_url'))),
-
-                                        Toggle::make('advanced_settings.behavior.open_in_new_tab')
-                                            ->label(__('Open External Links in New Tab'))
-                                            ->helperText(__('Automatically open external links in a new browser tab'))
-                                            ->default(true),
                                     ]),
 
-                                Section::make(__('Display Options'))
-                                    ->description(__('Configure visual settings for this page'))
-                                    ->icon('heroicon-o-rectangle-group')
-                                    ->collapsible()
-                                    ->columns(2)
-                                    ->schema([
-                                        Toggle::make('advanced_settings.display.show_breadcrumbs')
-                                            ->label(__('Show Breadcrumbs'))
-                                            ->helperText(__('Display navigation breadcrumb trail on this page'))
-                                            ->default(true),
-
-                                        Toggle::make('advanced_settings.display.show_title')
-                                            ->label(__('Show Page Title'))
-                                            ->helperText(__('Display the page title at the top of the page'))
-                                            ->default(true),
-
-                                        Select::make('advanced_settings.display.sidebar_position')
-                                            ->label(__('Sidebar Position'))
-                                            ->options([
-                                                'none'  => 'No Sidebar',
-                                                'left'  => 'Left Side',
-                                                'right' => 'Right Side',
-                                            ])
-                                            ->default('none')
-                                            ->helperText(__('Position of the sidebar on this page')),
-                                    ]),
                             ]),
                     ])
                     ->persistTabInQueryString('tab'),
