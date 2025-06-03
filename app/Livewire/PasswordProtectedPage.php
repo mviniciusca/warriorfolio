@@ -13,6 +13,8 @@ class PasswordProtectedPage extends Component
 
     public $password;
 
+    public $pageSlug;
+
     public $error = false;
 
     public $showContent = false;
@@ -21,6 +23,10 @@ class PasswordProtectedPage extends Component
     {
         $this->pageId = $pageId;
         $this->password = $password;
+
+        // Get the page slug to construct proper URL
+        $page = \App\Models\Page::find($pageId);
+        $this->pageSlug = $page->slug ?? '/';
 
         // Check if session already exists for this page
         if (Session::has('page_access_'.$this->pageId)) {
@@ -37,8 +43,10 @@ class PasswordProtectedPage extends Component
             $this->showContent = true;
             $this->error = false;
 
-            // Dispatch browser event to redirect with JavaScript
-            $this->dispatch('password-unlocked');
+            // Construct the proper page URL
+            $pageUrl = $this->pageSlug === '/' ? url('/') : url('/'.ltrim($this->pageSlug, '/'));
+
+            return redirect($pageUrl.'?unlocked=true');
         } else {
             // Wrong password
             $this->error = true;
@@ -54,8 +62,10 @@ class PasswordProtectedPage extends Component
         $this->inputPassword = '';
         $this->error = false;
 
-        // Dispatch browser event to redirect and remove unlocked parameter
-        $this->dispatch('password-locked');
+        // Construct the proper page URL
+        $pageUrl = $this->pageSlug === '/' ? url('/') : url('/'.ltrim($this->pageSlug, '/'));
+
+        return redirect($pageUrl);
     }
 
     public function render()

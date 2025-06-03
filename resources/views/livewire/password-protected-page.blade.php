@@ -46,8 +46,6 @@
     </section>
     @else
     {{-- Content is unlocked --}}
-    @if(request()->has('unlocked') && $showContent)
-    {{-- Show the actual protected content here --}}
     <div class="min-h-screen saturn-y-section saturn-x-section">
         <div class="max-w-4xl mx-auto">
             <div class="flex items-center gap-3 mb-8">
@@ -77,35 +75,5 @@
             </div>
         </div>
     </div>
-    @else
-    {{-- User is logged in but URL doesn't have unlocked parameter - redirect silently --}}
-    <script>
-        // Silent redirect if logged in but no unlocked parameter
-        if(!window.location.href.includes('unlocked=true')) {
-            const url = new URL(window.location.href);
-            url.searchParams.set('unlocked', 'true');
-            window.location.replace(url.toString()); // Use replace to avoid adding to history
-        }
-    </script>
-    @endif
     @endif
 </div>
-
-<script>
-    // Listen for password unlock event
-    document.addEventListener('livewire:init', () => {
-        Livewire.on('password-unlocked', () => {
-            // Add unlocked parameter to current URL
-            const url = new URL(window.location.href);
-            url.searchParams.set('unlocked', 'true');
-            window.location.href = url.toString();
-        });
-
-        Livewire.on('password-locked', () => {
-            // Remove unlocked parameter from current URL
-            const url = new URL(window.location.href);
-            url.searchParams.delete('unlocked');
-            window.location.href = url.toString();
-        });
-    });
-</script>
