@@ -15,13 +15,20 @@
 
             <form wire:submit.prevent="checkPassword" class="mb-6">
                 <x-ui.form.input type="password" name="inputPassword" wire:model.lazy="inputPassword"
-                    placeholder="{{ __('Enter password') }}" icon="key-outline" iconPosition="left"
-                    :error="$error ? __('Incorrect password. Please try again.') : null" required autofocus
-                    class="mb-6" />
+                    placeholder="{{ __('Enter password') }}" icon="key-outline" iconPosition="left" required autofocus
+                    class="mb-6" :disabled="$isUnlocking" />
 
-                <x-ui.button type="submit" style="primary" class="saturn-btn-primary w-full">
+                <x-ui.button type="submit" style="primary" class="saturn-btn-primary w-full" :disabled="$isUnlocking">
                     <span class="flex items-center justify-center gap-2">
+                        @if($isUnlocking)
+                        <x-ui.ionicon icon="checkmark-circle" class="h-4 w-4 animate-pulse" />
+                        {{ __('Unlocking...') }}
+                        @elseif($showError)
+                        <x-ui.ionicon icon="close-circle" class="h-4 w-4" />
+                        {{ __('Incorrect password') }}
+                        @else
                         {{ __('Unlock') }}
+                        @endif
                     </span>
                 </x-ui.button>
             </form>
@@ -35,4 +42,20 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('redirect-after-delay', (event) => {
+                setTimeout(() => {
+                    window.location.href = event[0].url;
+                }, 1200); // 1.2 seconds delay for visual feedback
+            });
+
+            Livewire.on('hide-error-after-delay', () => {
+                setTimeout(() => {
+                    @this.call('hideError');
+                }, 2000); // 2 seconds delay to show error
+            });
+        });
+    </script>
 </div>

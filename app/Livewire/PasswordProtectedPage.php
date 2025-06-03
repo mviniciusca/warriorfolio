@@ -18,6 +18,10 @@ class PasswordProtectedPage extends Component
 
     public $error = false;
 
+    public $isUnlocking = false;
+
+    public $showError = false;
+
     public function mount($password, $pageId)
     {
         $this->pageId = $pageId;
@@ -41,16 +45,31 @@ class PasswordProtectedPage extends Component
     {
         // Check password using Hash::check for security
         if (Hash::check($this->inputPassword, $this->password)) {
-            // Correct password - create session and redirect to content
-            Session::put('page_access_'.$this->pageId, true);
+            // Correct password - show unlocking state
+            $this->isUnlocking = true;
             $this->error = false;
+            $this->showError = false;
 
-            return redirect($this->getPageUrl().'?unlocked=true');
+            // Create session
+            Session::put('page_access_'.$this->pageId, true);
+
+            // Small delay for visual feedback, then redirect
+            $this->dispatch('redirect-after-delay', ['url' => $this->getPageUrl().'?unlocked=true']);
         } else {
-            // Wrong password
+            // Wrong password - show error state in button
             $this->error = true;
+            $this->showError = true;
             $this->inputPassword = '';
+            $this->isUnlocking = false;
+
+            // Hide error after 2 seconds
+            $this->dispatch('hide-error-after-delay');
         }
+    }
+
+    public function hideError()
+    {
+        $this->showError = false;
     }
 
     public function render()
