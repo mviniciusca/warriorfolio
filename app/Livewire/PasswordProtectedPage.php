@@ -18,55 +18,39 @@ class PasswordProtectedPage extends Component
 
     public $error = false;
 
-    public $showContent = false;
-
     public function mount($password, $pageId)
     {
         $this->pageId = $pageId;
         $this->password = $password;
 
         // Get the page slug to construct proper URL
-        $page = \App\Models\Page::find($pageId);
-        $this->pageSlug = $page->slug ?? '/';
+        $this->pageSlug = \App\Models\Page::where('id', $pageId)->value('slug') ?? '/';
 
-        // Check if session already exists for this page
+        // If user already has access, redirect directly to content
         if (Session::has('page_access_'.$this->pageId)) {
-            $this->showContent = true;
+            return redirect($this->getPageUrl().'?unlocked=true');
         }
+    }
+
+    private function getPageUrl()
+    {
+        return $this->pageSlug === '/' ? url('/') : url('/'.ltrim($this->pageSlug, '/'));
     }
 
     public function checkPassword()
     {
         // Check password using Hash::check for security
         if (Hash::check($this->inputPassword, $this->password)) {
-            // Correct password
+            // Correct password - create session and redirect to content
             Session::put('page_access_'.$this->pageId, true);
-            $this->showContent = true;
             $this->error = false;
 
-            // Construct the proper page URL
-            $pageUrl = $this->pageSlug === '/' ? url('/') : url('/'.ltrim($this->pageSlug, '/'));
-
-            return redirect($pageUrl.'?unlocked=true');
+            return redirect($this->getPageUrl().'?unlocked=true');
         } else {
             // Wrong password
             $this->error = true;
             $this->inputPassword = '';
         }
-    }
-
-    public function logout()
-    {
-        // Remove session and lock content again
-        Session::forget('page_access_'.$this->pageId);
-        $this->showContent = false;
-        $this->inputPassword = '';
-        $this->error = false;
-
-        // Construct the proper page URL
-        $pageUrl = $this->pageSlug === '/' ? url('/') : url('/'.ltrim($this->pageSlug, '/'));
-
-        return redirect($pageUrl);
     }
 
     public function render()
