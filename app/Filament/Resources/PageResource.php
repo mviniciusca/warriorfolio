@@ -280,16 +280,16 @@ class PageResource extends ResourcesPageResource
                                                     ->placeholder(now()->addYear()->format('Y-m-d H:i')),
                                             ]),
 
-                                        Toggle::make('is_password_protected')
+                                        Toggle::make('advanced_settings.visibility.is_password_protected')
                                             ->label(__('Password Protected'))
                                             ->helperText(__('Require a password to view this page'))
                                             ->reactive(),
 
-                                        TextInput::make('access_password')
+                                        TextInput::make('advanced_settings.visibility.access_password')
                                             ->label(__('Access Password'))
                                             ->password()
                                             ->helperText(__('Password required to access this page'))
-                                            ->visible(fn ($get) => $get('is_password_protected')),
+                                            ->visible(fn ($get) => $get('advanced_settings.visibility.is_password_protected')),
                                     ]),
 
                                 Section::make(__('Page Behavior'))
@@ -298,21 +298,21 @@ class PageResource extends ResourcesPageResource
                                     ->collapsible()
                                     ->columns(2)
                                     ->schema([
-                                        TextInput::make('redirect_url')
+                                        TextInput::make('advanced_settings.behavior.redirect_url')
                                             ->label(__('Redirect URL'))
                                             ->url()
                                             ->helperText(__('If set, visitors will be redirected to this URL')),
 
-                                        Select::make('redirect_type')
+                                        Select::make('advanced_settings.behavior.redirect_type')
                                             ->label(__('Redirect Type'))
                                             ->options([
                                                 '301' => '301 - Permanent Redirect',
                                                 '302' => '302 - Temporary Redirect',
                                             ])
                                             ->helperText(__('Type of HTTP redirect to use'))
-                                            ->visible(fn ($get) => filled($get('redirect_url'))),
+                                            ->visible(fn ($get) => filled($get('advanced_settings.behavior.redirect_url'))),
 
-                                        Toggle::make('open_in_new_tab')
+                                        Toggle::make('advanced_settings.behavior.open_in_new_tab')
                                             ->label(__('Open External Links in New Tab'))
                                             ->helperText(__('Automatically open external links in a new browser tab'))
                                             ->default(true),
@@ -324,17 +324,17 @@ class PageResource extends ResourcesPageResource
                                     ->collapsible()
                                     ->columns(2)
                                     ->schema([
-                                        Toggle::make('show_breadcrumbs')
+                                        Toggle::make('advanced_settings.display.show_breadcrumbs')
                                             ->label(__('Show Breadcrumbs'))
                                             ->helperText(__('Display navigation breadcrumb trail on this page'))
                                             ->default(true),
 
-                                        Toggle::make('show_title')
+                                        Toggle::make('advanced_settings.display.show_title')
                                             ->label(__('Show Page Title'))
                                             ->helperText(__('Display the page title at the top of the page'))
                                             ->default(true),
 
-                                        Select::make('sidebar_position')
+                                        Select::make('advanced_settings.display.sidebar_position')
                                             ->label(__('Sidebar Position'))
                                             ->options([
                                                 'none'  => 'No Sidebar',

@@ -47,24 +47,3 @@
     </x-ui.card-grid>
 </x-core.layout>
 @endif
-
-
-{{-- <x-core.layout :$is_centered :$is_heading_visible :$title :$subtitle :$is_filled :$is_section_filled_inverted
-    :$button_header :$button_url>
-    <div class="mx-auto {{ $with_padding ? 'py-8' : 'py-12' }}">
-        <div @class([ 'grid gap-4' , 'text-center'=> $is_content_center,
-            'text-left' => !$is_content_center,
-            'grid-cols-1' => true,
-            'md:grid-cols-2' => $columns == 2,
-            'sm:grid-cols-2 md:grid-cols-3' => $columns == 3,
-            'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4' => $columns == 4,
-            ])>
-            @foreach ($features as $item)
-            @if(!isset($item['is_card_hidden']) || empty($item['is_card_hidden']))
-            <x-filament-fabricator.page-blocks.component.feature-card :$item :$columns :$is_content_center :$is_animated
-                :$is_color_icon :$is_card_filled :$is_section_filled_inverted :$is_border :$is_light_fx />
-            @endif
-            @endforeach
-        </div>
-    </div>
-</x-core.layout> --}}

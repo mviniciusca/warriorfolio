@@ -13,15 +13,123 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
     protected $guarded = [];
 
     protected $casts = [
-        'seo'                   => 'array',
-        'blocks'                => 'array',
-        'publish_at'            => 'datetime',
-        'expire_at'             => 'datetime',
-        'is_password_protected' => 'boolean',
-        'open_in_new_tab'       => 'boolean',
-        'show_breadcrumbs'      => 'boolean',
-        'show_title'            => 'boolean',
+        'seo'               => 'array',
+        'blocks'            => 'array',
+        'advanced_settings' => 'array',
+        'publish_at'        => 'datetime',
+        'expire_at'         => 'datetime',
     ];
+
+    /**
+     * Métodos de compatibilidade para atributos antigos
+     */
+
+    // Visibility & Access
+    public function getIsPasswordProtectedAttribute()
+    {
+        return $this->advanced_settings['visibility']['is_password_protected'] ?? false;
+    }
+
+    public function setIsPasswordProtectedAttribute($value)
+    {
+        $this->attributes['advanced_settings'] = array_merge(
+            $this->advanced_settings ?? [],
+            ['visibility' => array_merge($this->advanced_settings['visibility'] ?? [], ['is_password_protected' => $value])]
+        );
+    }
+
+    public function getAccessPasswordAttribute()
+    {
+        return $this->advanced_settings['visibility']['access_password'] ?? null;
+    }
+
+    public function setAccessPasswordAttribute($value)
+    {
+        $this->attributes['advanced_settings'] = array_merge(
+            $this->advanced_settings ?? [],
+            ['visibility' => array_merge($this->advanced_settings['visibility'] ?? [], ['access_password' => $value])]
+        );
+    }
+
+    // Page Behavior
+    public function getRedirectUrlAttribute()
+    {
+        return $this->advanced_settings['behavior']['redirect_url'] ?? null;
+    }
+
+    public function setRedirectUrlAttribute($value)
+    {
+        $this->attributes['advanced_settings'] = array_merge(
+            $this->advanced_settings ?? [],
+            ['behavior' => array_merge($this->advanced_settings['behavior'] ?? [], ['redirect_url' => $value])]
+        );
+    }
+
+    public function getRedirectTypeAttribute()
+    {
+        return $this->advanced_settings['behavior']['redirect_type'] ?? null;
+    }
+
+    public function setRedirectTypeAttribute($value)
+    {
+        $this->attributes['advanced_settings'] = array_merge(
+            $this->advanced_settings ?? [],
+            ['behavior' => array_merge($this->advanced_settings['behavior'] ?? [], ['redirect_type' => $value])]
+        );
+    }
+
+    public function getOpenInNewTabAttribute()
+    {
+        return $this->advanced_settings['behavior']['open_in_new_tab'] ?? true;
+    }
+
+    public function setOpenInNewTabAttribute($value)
+    {
+        $this->attributes['advanced_settings'] = array_merge(
+            $this->advanced_settings ?? [],
+            ['behavior' => array_merge($this->advanced_settings['behavior'] ?? [], ['open_in_new_tab' => $value])]
+        );
+    }
+
+    // Display Options
+    public function getShowBreadcrumbsAttribute()
+    {
+        return $this->advanced_settings['display']['show_breadcrumbs'] ?? true;
+    }
+
+    public function setShowBreadcrumbsAttribute($value)
+    {
+        $this->attributes['advanced_settings'] = array_merge(
+            $this->advanced_settings ?? [],
+            ['display' => array_merge($this->advanced_settings['display'] ?? [], ['show_breadcrumbs' => $value])]
+        );
+    }
+
+    public function getShowTitleAttribute()
+    {
+        return $this->advanced_settings['display']['show_title'] ?? true;
+    }
+
+    public function setShowTitleAttribute($value)
+    {
+        $this->attributes['advanced_settings'] = array_merge(
+            $this->advanced_settings ?? [],
+            ['display' => array_merge($this->advanced_settings['display'] ?? [], ['show_title' => $value])]
+        );
+    }
+
+    public function getSidebarPositionAttribute()
+    {
+        return $this->advanced_settings['display']['sidebar_position'] ?? 'none';
+    }
+
+    public function setSidebarPositionAttribute($value)
+    {
+        $this->attributes['advanced_settings'] = array_merge(
+            $this->advanced_settings ?? [],
+            ['display' => array_merge($this->advanced_settings['display'] ?? [], ['sidebar_position' => $value])]
+        );
+    }
 
     /**
      * Get the category that the page belongs to.

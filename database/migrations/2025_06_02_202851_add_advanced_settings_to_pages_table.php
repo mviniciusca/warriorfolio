@@ -11,23 +11,12 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('pages', function (Blueprint $table) {
-            // Visibility & Access
+            // Add a JSON column for all advanced settings
+            $table->json('advanced_settings')->nullable();
+
+            // Keep separate timestamp columns for database queries/indexing efficiency
             $table->timestamp('publish_at')->nullable();
             $table->timestamp('expire_at')->nullable();
-            $table->boolean('is_password_protected')->default(false);
-            $table->string('access_password')->nullable();
-
-            // Page Structure fields removed (functionality already exists in the system)
-
-            // Page Behavior
-            $table->string('redirect_url')->nullable();
-            $table->string('redirect_type')->nullable();
-            $table->boolean('open_in_new_tab')->default(true);
-
-            // Display Options
-            $table->boolean('show_breadcrumbs')->default(true);
-            $table->boolean('show_title')->default(true);
-            $table->string('sidebar_position')->default('none');
         });
     }
 
@@ -38,16 +27,9 @@ return new class extends Migration {
     {
         Schema::table('pages', function (Blueprint $table) {
             $table->dropColumn([
+                'advanced_settings',
                 'publish_at',
                 'expire_at',
-                'is_password_protected',
-                'access_password',
-                'redirect_url',
-                'redirect_type',
-                'open_in_new_tab',
-                'show_breadcrumbs',
-                'show_title',
-                'sidebar_position',
             ]);
         });
     }

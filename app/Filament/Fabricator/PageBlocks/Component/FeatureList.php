@@ -78,7 +78,6 @@ class FeatureList extends PageBlock
                                                     ->label(__('Link URL'))
                                                     ->prefixIcon('heroicon-o-link')
                                                     ->placeholder('https://example.com')
-                                                    ->url()
                                                     ->helperText(__('Optional link URL for this card'))
                                                     ->columnSpan(2),
 
