@@ -18,6 +18,8 @@
 </head>
 
 <body id="main-app" {{ $attributes->merge(['class' => $bodyClass]) }}>
+    @if($page->style !== 'blog' && $page->is_active)
+
     @if(!$page->redirect_url)
     @if (!$maintenance || ($discovery && auth()->user()))
     <x-core.modules.overlay-apps />
@@ -31,6 +33,10 @@
     @endif
     @else
     <x-themes.common.redirect />
+    @endif
+
+    @else
+    <x-themes.common.not-found-page />
     @endif
     <!-- Body Scripts -->
     @isset($scripts['body_scripts'])
