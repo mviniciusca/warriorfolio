@@ -274,10 +274,36 @@ class PageResource extends ResourcesPageResource
 
                                         TextInput::make('access_password')
                                             ->label(__('Access Password'))
+                                            ->revealable()
                                             ->password()
-                                            ->helperText(__('Password required to access this page'))
+                                            ->helperText(function ($record) {
+                                                if ($record && ! empty($record->access_password)) {
+                                                    return __('Password is set. Enter a new password to change it, or leave empty to keep current password.');
+                                                }
+
+                                                return __('Password required to access this page.');
+                                            })
+                                            ->placeholder(function ($record) {
+                                                if ($record && ! empty($record->access_password)) {
+                                                    return '••••••••••••••••';
+                                                }
+
+                                                return __('Enter password');
+                                            })
                                             ->visible(fn ($get) => $get('is_password_protected'))
-                                            ->dehydrateStateUsing(fn ($state) => filled($state) ? bcrypt($state) : null),
+                                            ->dehydrateStateUsing(function ($state, $record) {
+                                                // Se o campo está vazio e estamos editando um registro existente, manter a senha atual
+                                                if (empty($state) && $record) {
+                                                    return $record->access_password;
+                                                }
+
+                                                // Se uma nova senha foi digitada, fazer hash
+                                                return filled($state) ? bcrypt($state) : null;
+                                            })
+                                            ->afterStateHydrated(function ($component, $state, $record) {
+                                                // Limpar o campo ao carregar para não mostrar o hash, mas manter placeholder
+                                                $component->state('');
+                                            }),
                                     ]),
 
                                 Section::make(__('Page Behavior'))

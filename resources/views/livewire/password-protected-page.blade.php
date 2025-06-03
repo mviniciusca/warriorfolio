@@ -32,12 +32,12 @@
 
             <div class="saturn-grid-2 mt-6 gap-2">
                 <a href="{{ url('/') }}" class="w-full">
-                    <x-ui.button style="primary" class="w-full" :icon_before="true" icon="home-outline">
+                    <x-ui.button style="secondary" class="w-full" :icon_before="true" icon="home-outline">
                         {{ __('Home') }}
                     </x-ui.button>
                 </a>
                 <a href="{{ url()->previous() }}" class="w-full">
-                    <x-ui.button style="outlined" class="w-full" :icon_before="true" icon="arrow-back-outline">
+                    <x-ui.button style="secondary" class="w-full" :icon_before="true" icon="arrow-back-outline">
                         {{ __('Back') }}
                     </x-ui.button>
                 </a>
