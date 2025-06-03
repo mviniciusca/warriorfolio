@@ -2,7 +2,7 @@
 @props([
 'redirectUrl' => $page->redirect_url ?? null,
 'redirectMessage' => __('You will be redirected shortly.'),
-'redirectDelay' => 10000,
+'redirectDelay' => 5,
 ])
 @if($page->redirect_url ?? false)
 
