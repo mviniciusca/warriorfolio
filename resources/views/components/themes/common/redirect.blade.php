@@ -1,10 +1,11 @@
+@aware(['page'])
+@props([
+'redirectUrl' => $page->redirect_url ?? null,
+'redirectMessage' => __('You will be redirected shortly.'),
+'redirectDelay' => 5,
+])
+@if($page->redirect_url ?? false)
 <x-core.layout>
-    @props([
-    'redirectUrl' => null,
-    'redirectMessage' => __('You will be redirected shortly.'),
-    'redirectDelay' => 5,
-    ])
-
     <div class="flex items-center justify-center min-h-screen saturn-bg">
         <div class="text-center p-6">
             <!-- Loading spinner with countdown from Saturn UI -->
@@ -46,3 +47,4 @@
     </script>
     </div>
 </x-core.layout>
+@endif

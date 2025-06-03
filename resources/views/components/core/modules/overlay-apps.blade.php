@@ -1,5 +1,3 @@
-@aware(['page'])
-
 {{-- Alerts Hub --}}
 <x-core.alert />
 
@@ -16,4 +14,4 @@
 <x-ui.scroll-up />
 
 {{-- Rollerblade Redirect --}}
-<x-themes.common.redirect :redirectUrl="$page->redirect_url ?? null" />
+<x-themes.common.redirect />
