@@ -1,11 +1,11 @@
 @props(['title' => null, 'message' => 'Back to Notes'])
 
 <div>
-    <div class="mb-8 inline-block">
-        <a class="flex items-center gap-1 transition-all duration-300 hover:opacity-90 active:opacity-50 md:hover:-ml-5"
+    <div class="saturn-breadcrumb-back">
+        <a class="saturn-breadcrumb-back"
             href="{{ config('app.url') . '/' . config('warriorfolio.app_blog_basepath', 'blog/') }}">
-            <x-ui.ionicon :icon="'arrow-back-sharp'" class="text-lg" />
-            <span class="text-sm font-semibold">{{ __($message) }}</span>
+            <x-ui.ionicon :icon="'arrow-back-sharp'" class="w-4 h-4 group-hover:-translate-x-0.5 saturn-transition" />
+            <span>{{ __($message) }}</span>
         </a>
     </div>
 </div>

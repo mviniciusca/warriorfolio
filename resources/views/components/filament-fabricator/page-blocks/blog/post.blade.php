@@ -2,36 +2,87 @@
 @props(['title' => $page->title ?? null])
 
 @if ($page->post->is_active)
-<x-core.layout :with_padding="false">
-    <main class="antialiased my-16">
-        <div class="mx-auto flex max-w-screen-xl justify-between">
-            <article
-                class="format format-sm sm:format-base lg:format-lg format-blue dark:format-invert mx-auto w-full max-w-3xl">
-                <x-blog.header.breadcrumb :$title />
-                <section class="not-format">
-                    <p class="py-2 font-mono text-xs uppercase">
-                        {{ \Carbon\Carbon::parse($page->created_at)->format('F d, Y ') . __('in ') .
-                        $page->post->category->name }}
-                    </p>
-                    <h1
-                        class="mt-2 text-3xl font-bold leading-snug tracking-tighter dark:text-white/90 lg:mb-4 lg:text-3xl">
-                        {{ $page->title }}
-                    </h1>
-                    <h2 class="text-sm pb-4 leading-tight tracking-tight">
-                        {{ $page->post->resume }}
-                    </h2>
-                </section>
-                <x-blog.profile :$page />
-                <div class="content font-serif text-base leading-relaxed">
-                    {!! $page->post->content !!}
+<article class="saturn-container-narrow saturn-y-section">
+    <!-- Breadcrumb Navigation -->
+    <x-ui.breadcrumb :show-back-button="true"
+        :back-url="config('app.url') . '/' . config('warriorfolio.app_blog_basepath', 'blog/')"
+        back-text="Back to Blog" />
+
+    <!-- Post Header -->
+    <header id="post-header" class="mb-8 md:mb-12">
+        <!-- Meta Information -->
+        <div id="post-meta" class="saturn-flex-start gap-6 mb-6 text-sm">
+            @if($page->post->category)
+            <span class="saturn-badge saturn-bg-accent border saturn-border-accent">
+                {{ $page->post->category->name }}
+            </span>
+            @endif
+            <time>{{ $page->created_at->format('M d, Y') }}</time>
+            <x-ui.reading-time :content="$page->post->content" style="default" size="md" />
+        </div>
+
+        <!-- Post Title -->
+        <div id="post-title">
+            <h1 class="saturn-h1 leading-none tracking-tight my-6">{{ $page->title }}</h1>
+        </div>
+
+        <!-- Post Description -->
+        @if($page->post->resume)
+        <div id="post-description" class="mb-8">
+            <p class="saturn-text-large saturn-text-accent">{{ $page->post->resume }}</p>
+        </div>
+        @endif
+
+        <!-- Author & Social Share -->
+        <div id="post-author-share-social-network" class="saturn-flex-between border-y saturn-border py-8">
+            <div class="saturn-flex-start gap-3">
+                <div class="w-10 h-10 rounded-full saturn-bg-accent saturn-flex-center">
+                    <span class="text-sm font-medium saturn-text">{{ substr(auth()->user()->name ?? 'A', 0, 1) }}</span>
                 </div>
-                <x-blog.post.share class="mt-8" />
-                <x-blog.post.articles :page="$page" />
-            </article>
+                <div>
+                    <p class="text-sm font-medium saturn-text">{{ auth()->user()->name ?? 'Author' }}</p>
+                    <p class="text-xs saturn-text-accent">{{ $page->created_at->diffForHumans() }}</p>
+                </div>
+            </div>
+
+            <div class="saturn-flex-end gap-2">
+                <button class="saturn-btn-ghost p-2">
+                    <x-ui.ionicon icon="heart-outline" class="w-4 h-4" />
+                </button>
+                <button class="saturn-btn-ghost p-2">
+                    <x-ui.ionicon icon="bookmark-outline" class="w-4 h-4" />
+                </button>
+                <button class="saturn-btn-ghost p-2">
+                    <x-ui.ionicon icon="share-outline" class="w-4 h-4" />
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <main id="post-content" class="mb-12 md:mb-16">
+        <div class="prose prose-lg max-w-none dark:prose-invert saturn-text">
+            {!! $page->post->content !!}
         </div>
     </main>
-    {{-- Not Found --}}
-</x-core.layout>
-@else
-<x-blog.post.not-found />
+
+    <!-- Post Footer -->
+    <footer id="post-category-and-share-social-network" class="border-t saturn-border pt-8">
+        <div class="saturn-flex-between">
+            <!-- Category Tags -->
+            <div class="saturn-flex-start gap-2">
+                @if($page->post->category)
+                <span class="saturn-badge saturn-bg-accent border saturn-border-accent">
+                    {{ $page->post->category->name }}
+                </span>
+                @endif
+            </div>
+
+            <!-- Social Share -->
+            <div class="saturn-flex-end gap-3">
+                <x-blog.post.share />
+            </div>
+        </div>
+    </footer>
+</article>
 @endif
