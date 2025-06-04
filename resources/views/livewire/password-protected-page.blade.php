@@ -17,11 +17,11 @@
                 <x-ui.button type="submit" style="primary" class="saturn-btn-primary w-full" :disabled="$isUnlocking">
                     <span class="flex items-center justify-center gap-2">
                         @if($isUnlocking)
-                        <x-ui.ionicon icon="checkmark-circle" class="h-4 w-4 animate-pulse" />
+                        <x-ui.ionicon icon="checkmark-circle-outline" class="h-4 w-4 animate-pulse" />
                         {{ __('Unlocking...') }}
                         @elseif($showError)
-                        <x-ui.ionicon icon="close-circle" class="h-4 w-4" />
-                        {{ __('Incorrect password') }}
+                        <x-ui.ionicon icon="close-circle-outline" class="h-4 w-4" />
+                        {{ __('Incorrect') }}
                         @else
                         {{ __('Unlock') }}
                         @endif
