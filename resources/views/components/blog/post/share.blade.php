@@ -3,11 +3,9 @@
 @if ($data['is_share_active'] ?? false)
 <div {{ $attributes->class(['relative']) }} x-data="{ open: false }">
     <!-- Share Button -->
-    <button @click="open = !open" @click.away="open = false"
-        class="flex items-center gap-2 py-4 opacity-20 hover:opacity-100 transition-all duration-300 focus:outline-none focus:opacity-100"
+    <button @click="open = !open" @click.away="open = false" class="flex saturn-btn-ghost items-center gap-2 py-4 "
         :class="{ 'opacity-100': open }">
         <x-ui.ionicon icon="share-outline" class="w-5 h-5" />
-        <span class="font-mono text-xs uppercase">{{ __('Share') }}</span>
     </button>
 
     <!-- Dropdown Menu -->
