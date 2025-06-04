@@ -106,13 +106,13 @@ class PostResource extends Resource
                     ]),
                 Group::make()
                     ->columnSpan(1)
-                    ->relationship('post')
                     ->schema([
                         Hidden::make('user_id')
                             ->dehydrated()
                             ->default(Auth::user()->id),
                         Section::make(__('Featured Image'))
                             ->icon('heroicon-o-photo')
+                            ->relationship('post')
                             ->schema([
                                 CuratorPicker::make('img_cover')
                                     ->helperText(__('Image cover. Optional.'))
@@ -120,6 +120,7 @@ class PostResource extends Resource
                             ]),
                         Section::make(__('Settings'))
                             ->icon('heroicon-o-cog-6-tooth')
+                            ->relationship('post')
                             ->schema([
                                 Select::make('category_id')
                                     ->label(__('Category'))
@@ -161,6 +162,47 @@ class PostResource extends Resource
                                     ->helperText(__('Visibility status of your post.'))
                                     ->default(true),
                             ]),
+                        Section::make(__('Password Protection'))
+                            ->icon('heroicon-o-key')
+                            ->columns(1)
+                            ->schema([
+                                Toggle::make('is_password_protected')
+                                    ->label(__('Password Protected'))
+                                    ->helperText(__('Require a password to view this post'))
+                                    ->reactive(),
+                                TextInput::make('access_password')
+                                    ->label(__('Access Password'))
+                                    ->revealable()
+                                    ->password()
+                                    ->helperText(function ($record) {
+                                        if ($record && ! empty($record->access_password)) {
+                                            return __('Password is set. Enter a new password to change it, or leave empty to keep current password.');
+                                        }
+
+                                        return __('Password required to access this post.');
+                                    })
+                                    ->placeholder(function ($record) {
+                                        if ($record && ! empty($record->access_password)) {
+                                            return '••••••••••••••••';
+                                        }
+
+                                        return __('Enter password');
+                                    })
+                                    ->visible(fn ($get) => $get('is_password_protected'))
+                                    ->dehydrateStateUsing(function ($state, $record) {
+                                        // Se o campo está vazio e estamos editando um registro existente, manter a senha atual
+                                        if (empty($state) && $record) {
+                                            return $record->access_password;
+                                        }
+
+                                        // Se uma nova senha foi digitada, fazer hash
+                                        return filled($state) ? bcrypt($state) : null;
+                                    })
+                                    ->afterStateHydrated(function ($component, $state, $record) {
+                                        // Limpar o campo ao carregar para não mostrar o hash, mas manter placeholder
+                                        $component->state('');
+                                    }),
+                            ]),
                     ]),
             ]);
     }
@@ -190,6 +232,17 @@ class PostResource extends Resource
                 ToggleColumn::make('post.is_active')
                     ->alignCenter()
                     ->label(__('Published')),
+                ToggleColumn::make('is_password_protected')
+                    ->label(__('Password Protected'))
+                    ->alignCenter()
+                    ->sortable(),
+                TextColumn::make('access_password')
+                    ->label(__('Has Password'))
+                    ->badge()
+                    ->alignCenter()
+                    ->formatStateUsing(fn ($state) => $state ? __('Yes') : __('No'))
+                    ->color(fn ($state) => $state ? 'success' : 'gray')
+                    ->icon(fn ($state) => $state ? 'heroicon-o-key' : 'heroicon-o-minus'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
