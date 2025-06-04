@@ -190,16 +190,13 @@ class PostResource extends Resource
                                     })
                                     ->visible(fn ($get) => $get('is_password_protected'))
                                     ->dehydrateStateUsing(function ($state, $record) {
-                                        // Se o campo está vazio e estamos editando um registro existente, manter a senha atual
                                         if (empty($state) && $record) {
                                             return $record->access_password;
                                         }
 
-                                        // Se uma nova senha foi digitada, fazer hash
                                         return filled($state) ? bcrypt($state) : null;
                                     })
                                     ->afterStateHydrated(function ($component, $state, $record) {
-                                        // Limpar o campo ao carregar para não mostrar o hash, mas manter placeholder
                                         $component->state('');
                                     }),
                             ]),
