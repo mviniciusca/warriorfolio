@@ -9,10 +9,10 @@ $linkedin = collect($profile->social)->firstWhere('social_network', 'linkedin')[
     <section class="mx-auto" id="profile-section-one">
         <div class="mb-8" id="profile-avatar">
             @if ($profile->avatar)
-            <img class="relative mx-auto my-2 h-28 w-28 rounded-full bg-white/10 object-cover p-2 md:h-28 md:w-28 lg:h-36 lg:w-36"
+            <img class="relative mx-auto my-2 h-28 w-28 rounded-full object-cover md:h-28 md:w-28 lg:h-28 lg:w-28"
                 src="{{ asset('storage/' . $profile->avatar) }}" style="object-fit: cover;" />
             @else
-            <img class="relative mx-auto my-2 w-28 rounded-full bg-gradient-to-tr from-secondary-800/50 to-secondary-300/50 object-cover p-1 grayscale md:w-28 lg:w-36"
+            <img class="relative dark:invert invert-0 mx-auto my-2 w-28 rounded-full object-cover grayscale md:w-28 lg:w-28"
                 src="{{ asset('img/core/profile-picture.png') }}" />
             @endif
             @if ($profile->count() === 0)
@@ -35,7 +35,7 @@ $linkedin = collect($profile->social)->firstWhere('social_network', 'linkedin')[
             @endif
         </div>
         @if ($profile->user->name)
-        <div class="text-base font-semibold tracking-tight">
+        <div class="text-base font-medium">
             <span>{{ $profile->user->name }}</span>
         </div>
         @endif
