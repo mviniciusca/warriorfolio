@@ -97,6 +97,22 @@ class PageResource extends ResourcesPageResource
                     ->sortable()
                     ->searchable(),
 
+                ToggleColumn::make('is_password_protected')
+                    ->label(__('Password Protected'))
+                    ->toggleable()
+                    ->alignCenter()
+                    ->sortable()
+                    ->searchable(),
+
+                TextColumn::make('access_password')
+                    ->label(__('Has Password'))
+                    ->badge()
+                    ->alignCenter()
+                    ->toggleable()
+                    ->formatStateUsing(fn ($state) => $state ? __('Yes') : __('No'))
+                    ->color(fn ($state) => $state ? 'success' : 'gray')
+                    ->icon(fn ($state) => $state ? 'heroicon-o-key' : 'heroicon-o-minus'),
+
                 TextColumn::make('created_at')
                     ->label(__('Created At'))
                     ->dateTime()

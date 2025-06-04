@@ -23,7 +23,7 @@
     $unlocked = request()->has('unlocked');
     @endphp
 
-    @if($page->style !== 'blog' && $page->is_active)
+    @if($page->is_active)
 
     @if(!$page->redirect_url)
     @if (!$maintenance || ($discovery && auth()->user()))

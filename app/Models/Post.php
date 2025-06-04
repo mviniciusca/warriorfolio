@@ -22,6 +22,23 @@ class Post extends Model
     protected $guarded = [];
 
     /**
+     * The "booted" method of the model.
+     * Sync the is_active status between Post and Page models.
+     */
+    protected static function booted(): void
+    {
+        static::updated(function (Post $post) {
+            // Verifica se o campo is_active foi alterado
+            if ($post->isDirty('is_active')) {
+                // Atualiza todas as páginas relacionadas a este post
+                $post->page()->update([
+                    'is_active' => $post->is_active,
+                ]);
+            }
+        });
+    }
+
+    /**
      * Get the category that the post belongs to.
      *
      * @return BelongsTo
