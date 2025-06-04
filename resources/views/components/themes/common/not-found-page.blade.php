@@ -4,7 +4,7 @@
             <div class="flex items-center justify-center gap-2 mb-4">
                 <x-ui.ionicon icon="telescope-outline" class="h-6 w-6" />
             </div>
-            <h1 class="saturn-h4 font-semibold">{{ __('Not Found') }}</h1>
+            <h1 class="saturn-h4 font-semibold">{{ __('404 - Page Not Found') }}</h1>
         </div>
         <p class="mb-6 text-sm">
             {{ __('The page you are looking for might have been removed, had its name changed, or is temporarily
