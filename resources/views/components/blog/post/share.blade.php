@@ -24,42 +24,42 @@
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}&quote={{ urlencode($page->title) }}"
                     target="_blank" class="flex flex-col items-center gap-1 p-2 rounded-md transition-colors group"
                     @click="open = false">
-                    <x-ui.ionicon icon="logo-facebook" size="xl" />
+                    <x-ui.ionicon icon="logo-facebook" size="lg" />
                 </a>
 
                 <!-- Twitter -->
                 <a href="https://twitter.com/intent/tweet?text={{ urlencode($page->title) }}&url={{ urlencode(url()->current()) }}"
                     target="_blank" class="flex flex-col items-center gap-1 p-2 rounded-md transition-colors group"
                     @click="open = false">
-                    <x-ui.ionicon icon="logo-twitter" size="xl" />
+                    <x-ui.ionicon icon="logo-twitter" size="lg" />
                 </a>
 
                 <!-- WhatsApp -->
                 <a href="https://wa.me/?text={{ urlencode($page->title . ' - ' . url()->current()) }}" target="_blank"
                     class="flex flex-col items-center gap-1 p-2 rounded-md transition-colors group"
                     @click="open = false">
-                    <x-ui.ionicon icon="logo-whatsapp" size="xl" />
+                    <x-ui.ionicon icon="logo-whatsapp" size="lg" />
                 </a>
 
                 <!-- LinkedIn -->
                 <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(url()->current()) }}&title={{ urlencode($page->title) }}"
                     target="_blank" class="flex flex-col items-center gap-1 p-2 rounded-md transition-colors group"
                     @click="open = false">
-                    <x-ui.ionicon icon="logo-linkedin" size="xl" />
+                    <x-ui.ionicon icon="logo-linkedin" size="lg" />
                 </a>
 
                 <!-- Pinterest -->
                 <a href="https://pinterest.com/pin/create/button/?url={{ urlencode(url()->current()) }}&description={{ urlencode($page->title) }}"
                     target="_blank" class="flex flex-col items-center gap-1 p-2 rounded-md transition-colors group"
                     @click="open = false">
-                    <x-ui.ionicon icon="logo-pinterest" size="xl" />
+                    <x-ui.ionicon icon="logo-pinterest" size="lg" />
                 </a>
 
                 <!-- Reddit -->
                 <a href="https://www.reddit.com/submit?url={{ urlencode(url()->current()) }}&title={{ urlencode($page->title) }}"
                     target="_blank" class="flex flex-col items-center gap-1 p-2 rounded-md transition-colors group"
                     @click="open = false">
-                    <x-ui.ionicon icon="logo-reddit" size="xl" />
+                    <x-ui.ionicon icon="logo-reddit" size="lg" />
                 </a>
             </div>
         </div>
