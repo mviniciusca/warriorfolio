@@ -54,9 +54,7 @@
                         </div>
 
                         <div class="space-y-8">
-                            @foreach($posts as $post)
-                            <x-blog.partials.recent-posts :$post />
-                            @endforeach
+                            <x-blog.partials.recent-posts :$posts />
                         </div>
                     </div>
                 </div>

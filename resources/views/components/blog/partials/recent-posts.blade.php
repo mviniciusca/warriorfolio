@@ -1,5 +1,6 @@
-@props(['post'])
+@props(['posts' => [], 'url' => config('app.url').'/'])
 
+@foreach ($posts as $post )
 <article class="group cursor-pointer p-6 rounded-lg hover:saturn-bg-accent">
     <div class=" flex gap-6">
         <!-- Image Placeholder -->
@@ -30,9 +31,9 @@
                         </span>
                     </div>
                 </div>
-
-                <x-blog.post.share />
+                <x-blog.post.share :url="$url . $post->slug" />
             </div>
         </div>
     </div>
 </article>
+@endforeach
