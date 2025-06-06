@@ -1,33 +1,42 @@
-@props(['posts' => [], 'url' => config('app.url').'/', 'cols' => '2'])
+@props(['posts' => [], 'url' => config('app.url').'/', 'cols' => 1])
 
 <x-ui.card-grid :cols="$cols" gap="6">
     @foreach ($posts as $post )
-    <x-ui.card :is_border="true" class="group cursor-pointer hover:saturn-bg-accent transition-all duration-300">
-        <x-slot:header>
-            <div class="flex items-center justify-between">
+    <x-ui.card :is_border="false" class="group cursor-pointer hover:saturn-bg-accent transition-all duration-300">
+
+        @if($cols == 1)
+        <div class="flex gap-4">
+            <div class="flex-shrink-0 w-32 overflow-hidden rounded-lg">
+                <x-ui.placeholder.image class="aspect-[4/3] w-full h-full object-cover" :animated="false" />
+            </div>
+
+            <div class="flex-1 space-y-3">
                 <h3
                     class="text-base font-semibold leading-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                    {{ $post->title }}
+                    {{ Str::limit(strip_tags($post->title), 100) }}
                 </h3>
-                <span class="saturn-badge saturn-badge-primary flex-shrink-0">
-                    {{ ucfirst($post->post->category->name) ?? 'Notes' }}
-                </span>
+                <p class="text-sm saturn-text-accent leading-relaxed">
+                    {{ Str::limit(strip_tags($post->post->content), 120) }}
+                </p>
             </div>
-        </x-slot:header>
-
+        </div>
+        @else
         <div class="space-y-4">
-            <!-- Image Placeholder -->
             <div class="flex-shrink-0">
                 <x-ui.placeholder.image class="aspect-[16/9] rounded-lg" :animated="false" />
             </div>
 
-            <!-- Content -->
             <div class="space-y-3">
+                <h3
+                    class="text-base font-semibold leading-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    {{ Str::limit(strip_tags($post->title), 150) }}
+                </h3>
                 <p class="text-sm saturn-text-accent leading-relaxed">
-                    {{ Str::limit(strip_tags($post->post->content), 150) }}
+                    {{ Str::limit(strip_tags($post->post->content), 70) }}
                 </p>
             </div>
         </div>
+        @endif
 
         <x-slot:footer>
             <div class="flex items-center justify-between pt-2">
