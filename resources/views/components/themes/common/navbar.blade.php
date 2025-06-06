@@ -6,7 +6,7 @@
     @endif
     <x-core.layout :no_padding="true" :is_heading_visible="false" :$is_filled :with_padding='false'>
         {{-- Logo and Primary Navigation --}}
-        <div class="flex items-center justify-between py-6 text-xs">
+        <div class="flex items-center justify-between py-6 text-sm">
             <div class="flex flex-wrap items-center gap-4">
                 <x-ui.logo />
                 <x-ui.mobile-navigation />
@@ -20,7 +20,7 @@
                 @endif
             </div>
             {{-- Secondary Navigation and Darkmode App --}}
-            <div class="flex flex-wrap items-center text-xs">
+            <div class="flex flex-wrap items-center text-sm">
                 <x-themes.common.partials.navigation :$is_menu_highlighted :$navigation :secondary_navigation="true" />
                 @if ($darkmode_is_active)
                 <livewire:dark-mode wire:key='header-dark-mode' />
