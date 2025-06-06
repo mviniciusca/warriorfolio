@@ -3,6 +3,7 @@
 namespace App\View\Components\Blog;
 
 use App\Models\Module;
+use App\Models\Page;
 use App\Models\Profile;
 use App\Models\Setting;
 use Closure;
@@ -28,6 +29,12 @@ class Notes extends Component
             'module_blog'           => Module::first('blog')->blog,
             'profile'               => Profile::first(),
             'profile_widget_status' => $this->getProfileWidgetStatus(),
+            'featured_post'         => $this->featured(),
+            'posts'                 => Page::with(['user', 'category', 'post'])
+                ->where('style', '=', 'blog')
+                ->where('is_active', '=', true)
+                ->orderBy('created_at', 'desc')
+                ->paginate(10),
         ]);
     }
 
@@ -38,5 +45,17 @@ class Notes extends Component
     public function getProfileWidgetStatus(): bool
     {
         return Setting::first('blog')?->blog['is_show_profile'] ?? false;
+    }
+
+    public function featured()
+    {
+        return Page::with(['category', 'user', 'post'])
+            ->where('style', '=', 'blog')
+            ->whereHas('post', function ($query) {
+                $query->where('is_featured', '=', true);
+            })
+            ->where('is_active', '=', true)
+            ->orderBy('created_at', 'desc')
+            ->first();
     }
 }

@@ -6,6 +6,7 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Models\Category;
 use App\Models\Page;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
@@ -69,13 +70,15 @@ class PostResource extends Resource
                         Hidden::make('user_id')
                             ->dehydrated()
                             ->default(Auth::user()?->id),
+                        Hidden::make('post_id')
+                            ->dehydrated(),
                         TextInput::make('title')
                             ->label(__('Post Title'))
                             ->live(onBlur: true)
                             ->helperText(__('Title of your post.'))
                             ->prefixIcon('heroicon-o-pencil')
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug',
-                                env('APP_BLOG_PATH').Str::slug($state).env('APP_BLOG_URL_END')))
+                                config('warriorfolio.app_blog_path').Str::slug($state).config('warriorfolio.app_blog_url_end')))
                             ->required()
                             ->maxLength(255),
                         Hidden::make('style')
@@ -84,6 +87,9 @@ class PostResource extends Resource
                             ->dehydrated()
                             ->default([['data' => [], 'type' => 'blog.post']])
                             ->required(),
+                        Hidden::make('is_active')
+                            ->dehydrated()
+                            ->default(true),
                         Group::make()
                             ->relationship('post')
                             ->schema([
@@ -114,7 +120,7 @@ class PostResource extends Resource
                             ->icon('heroicon-o-photo')
                             ->relationship('post')
                             ->schema([
-                                CuratorPicker::make('img_cover')
+                                FileUpload::make('img_cover')
                                     ->helperText(__('Image cover. Optional.'))
                                     ->label(__('Cover')),
                             ]),
@@ -150,17 +156,29 @@ class PostResource extends Resource
                                                     ->label(__('Slug')),
                                             ]),
                                     ])
-                                    ->createOptionUsing(fn (array $data) => Category::create($data + [
-                                        'is_blog'    => true,
-                                        'is_project' => false,
-                                    ])
-                                        ->getKey()),
+                                    ->createOptionUsing(function (array $data): int {
+                                        $category = Category::create([
+                                            'name'       => $data['name'],
+                                            'slug'       => $data['slug'],
+                                            'is_blog'    => true,
+                                            'is_project' => false,
+                                            'is_active'  => true,
+                                        ]);
+
+                                        return $category->getKey();
+                                    }),
                                 Toggle::make('is_active')
                                     ->label(__('Status'))
                                     ->required()
                                     ->label(__('Published'))
                                     ->helperText(__('Visibility status of your post.'))
-                                    ->default(true),
+                                    ->default(true)
+                                    ->live()
+                                    ->afterStateUpdated(fn (Set $set, ?bool $state) => $set('../../is_active', $state)),
+                                Toggle::make('is_featured')
+                                    ->label(__('Featured'))
+                                    ->helperText(__('Mark this post as featured.'))
+                                    ->default(false),
                             ]),
                         Section::make(__('Password Protection'))
                             ->icon('heroicon-o-key')
@@ -229,6 +247,9 @@ class PostResource extends Resource
                 ToggleColumn::make('post.is_active')
                     ->alignCenter()
                     ->label(__('Published')),
+                ToggleColumn::make('post.is_featured')
+                    ->alignCenter()
+                    ->label(__('Featured')),
                 ToggleColumn::make('is_password_protected')
                     ->label(__('Password Protected'))
                     ->alignCenter()

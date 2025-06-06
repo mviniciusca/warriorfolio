@@ -3,6 +3,9 @@ import 'flowbite';
 import Swiper from 'swiper/bundle';
 import chatbox from './components/chatbox';
 
+// Make Swiper globally available
+window.Swiper = Swiper;
+
 // Register Alpine.js components
 window.setupChatbox = chatbox;
 

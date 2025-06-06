@@ -51,6 +51,7 @@ class DatabaseSeeder extends Seeder
             DocumentationPageSeeder::class,
             BlogSeeder::class,
             WelcomeNoteSeeder::class,
+            BlogPostSeeder::class,
             SectionSeeder::class,
         ]);
     }

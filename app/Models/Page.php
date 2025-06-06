@@ -145,12 +145,33 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
 
     /**
      * The "booted" method of the model.
-     * Deletes the associated post when the page is deleted.
-     *
-     * @return void
+     * Handle the lifecycle events for Page model.
      */
     protected static function booted(): void
     {
+        // Quando uma page é criada, garantir que o post também seja criado se necessário
+        static::creating(function ($page) {
+            // Se é uma página de blog e não tem post_id, criar o post
+            if ($page->style === 'blog' && ! $page->post_id) {
+                $post = Post::create([
+                    'user_id'     => $page->user_id,
+                    'is_active'   => $page->is_active ?? true,
+                    'is_featured' => false,
+                ]);
+                $page->post_id = $post->id;
+            }
+        });
+
+        // Quando uma page é atualizada, sincronizar com o post
+        static::updated(function ($page) {
+            if ($page->post && $page->isDirty('is_active')) {
+                $page->post->update([
+                    'is_active' => $page->is_active,
+                ]);
+            }
+        });
+
+        // Quando uma page é deletada, deletar o post/project associado
         static::deleted(function ($page) {
             if ($page->post) {
                 $page->post->delete();

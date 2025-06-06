@@ -46,15 +46,7 @@
             </div>
 
             <div class="saturn-flex-end gap-2">
-                <button class="saturn-btn-ghost p-2">
-                    <x-ui.ionicon icon="heart-outline" class="w-4 h-4" />
-                </button>
-                <button class="saturn-btn-ghost p-2">
-                    <x-ui.ionicon icon="bookmark-outline" class="w-4 h-4" />
-                </button>
-                <button class="saturn-btn-ghost p-2">
-                    <x-ui.ionicon icon="share-outline" class="w-4 h-4" />
-                </button>
+                <x-blog.post.share />
             </div>
         </div>
     </header>

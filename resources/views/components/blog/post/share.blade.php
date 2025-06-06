@@ -13,12 +13,10 @@
         x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100"
         x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 transform scale-100"
         x-transition:leave-end="opacity-0 transform scale-95"
-        class="absolute bottom-full left-0 mb-2 saturn-bg border saturn-border rounded-lg shadow-lg min-w-[200px] z-50"
-        x-cloak>
+        class="absolute bottom-full left-0 mb-2 saturn-bg border saturn-border rounded-lg min-w-[200px] z-50" x-cloak>
         <div class="p-3">
             <p class="text-xs uppercase tracking-wide mb-3 font-mono">{{ __('Share') }}
             </p>
-
             <div class="grid grid-cols-3 gap-3">
                 <!-- Facebook -->
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}&quote={{ urlencode($page->title) }}"
