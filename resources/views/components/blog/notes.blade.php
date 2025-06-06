@@ -4,12 +4,12 @@
 <x-core.layout>
     <div class="min-h-screen">
         <!-- Header -->
-        <header class="border-b border-gray-200 dark:border-gray-700">
-            <div class="max-w-7xl mx-auto py-8">
+        <header>
+            <div class="mx-auto py-8">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Saturn Blog</h1>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Thoughts on design and development</p>
+                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Warriorfolio Notes</h1>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Laravel and Development</p>
                     </div>
 
                     <div class="flex items-center gap-4">
@@ -38,8 +38,6 @@
                     <!-- Featured Post -->
                     <x-blog.partials.featured :featuredPost="$featured_post" />
 
-
-
                     <!-- Posts List -->
                     <div class="space-y-8">
                         <div class="flex items-center justify-between">
@@ -57,57 +55,7 @@
 
                         <div class="space-y-8">
                             @foreach($posts as $post)
-                            <article class="group cursor-pointer">
-                                <div class="space-y-3">
-                                    <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300">
-                                        {{ 'category'}}
-                                    </span>
-
-                                    <h3
-                                        class="text-xl font-semibold leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
-                                        {{'title' }}
-                                    </h3>
-
-                                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia quidem nam
-                                        dolores officiis aperiam, vitae at pariatur animi cupiditate possimus unde
-                                        dolore expedita maiores inventore est, ut delectus. Officia, rem?
-                                    </p>
-
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div
-                                                class="w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                                                <svg class="h-3 w-3 text-gray-400" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                            <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                <span class="font-medium text-gray-900 dark:text-white">{{
-                                                    $post['author']
-                                                    }}</span>
-                                                <span class="mx-2">•</span>
-                                                <span>{{ 'data' }}</span>
-                                                <span class="mx-2">•</span>
-                                                <span>{{ 'readtime'}}</span>
-                                            </div>
-                                        </div>
-
-                                        <button
-                                            class="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </article>
+                            <x-blog.partials.recent-posts :$post />
                             @endforeach
                         </div>
                     </div>

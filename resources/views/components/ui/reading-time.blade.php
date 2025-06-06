@@ -30,9 +30,9 @@ $sizeClasses = [
 ];
 
 $styleClasses = [
-'default' => 'saturn-flex-start gap-1.5 saturn-text-accent',
-'badge' => 'saturn-badge saturn-bg-accent border saturn-border-accent saturn-text-accent',
-'minimal' => 'saturn-text-accent'
+'default' => 'saturn-flex-start gap-1.5 saturn-text',
+'badge' => 'saturn-badge saturn-bg-accent border saturn-border-accent saturn-text',
+'minimal' => 'saturn-text'
 ];
 
 $currentSize = $sizeClasses[$size] ?? $sizeClasses['sm'];
@@ -41,7 +41,7 @@ $currentStyle = $styleClasses[$style] ?? $styleClasses['default'];
 // Fallback if there's any error
 $readingText = '';
 $currentSize = 'text-xs';
-$currentStyle = 'saturn-text-accent';
+$currentStyle = 'saturn-text';
 }
 @endphp
 
