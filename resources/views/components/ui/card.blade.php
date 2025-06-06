@@ -6,6 +6,7 @@
 'is_border' => false,
 'is_card_filled' => false,
 'is_content_center' => false,
+'no_padding' => false,
 'role' => null, // success, warning, danger, info, primary, secondary
 ])
 
@@ -37,7 +38,8 @@ break;
 }
 }
 @endphp
-<div class="rounded-lg py-2 px-4 min-h-10
+<div class="rounded-lg min-h-10
+{{ $no_padding ? 'py-0 px-0' : 'py-2 px-4' }}
 {{ $is_content_center ? 'text-center' : 'text-left' }}
 {{ $role ? $roleClasses : '' }}
 {{ !$role && $is_border && !$is_section_filled_inverted ? 'border saturn-border' : '' }}

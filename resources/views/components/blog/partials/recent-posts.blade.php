@@ -2,17 +2,16 @@
 
 <x-ui.card-grid :cols="$cols" gap="6">
     @foreach ($posts as $post )
-    <x-ui.card :is_border="false" class="group cursor-pointer hover:saturn-bg-accent transition-all duration-300">
+    <x-ui.card :is_border="false" :no_padding="true" class="p-4">
 
         @if($cols == 1)
         <div class="flex gap-4">
             <div class="flex-shrink-0 w-32 overflow-hidden rounded-lg">
-                <x-ui.placeholder.image class="aspect-[4/3] w-full h-full object-cover" :animated="false" />
+                <x-ui.placeholder.image class="aspect-[4/3] w-full h-full object-cover" :animated="true" />
             </div>
 
             <div class="flex-1 space-y-3">
-                <h3
-                    class="text-base font-semibold leading-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                <h3 class="text-base font-semibold leading-tight">
                     {{ Str::limit(strip_tags($post->title), 100) }}
                 </h3>
                 <p class="text-sm saturn-text-accent leading-relaxed">
@@ -23,12 +22,11 @@
         @else
         <div class="space-y-4">
             <div class="flex-shrink-0">
-                <x-ui.placeholder.image class="aspect-[16/9] rounded-lg" :animated="false" />
+                <x-ui.placeholder.image class="aspect-[16/9] rounded-lg" :animated="true" />
             </div>
 
             <div class="space-y-3">
-                <h3
-                    class="text-base font-semibold leading-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                <h3 class="text-base font-semibold leading-tight">
                     {{ Str::limit(strip_tags($post->title), 150) }}
                 </h3>
                 <p class="text-sm saturn-text-accent leading-relaxed">
