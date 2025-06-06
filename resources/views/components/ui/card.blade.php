@@ -37,7 +37,7 @@ break;
 }
 }
 @endphp
-<div class="rounded-lg overflow-hidden py-2 px-4 min-h-10
+<div class="rounded-lg py-2 px-4 min-h-10
 {{ $is_content_center ? 'text-center' : 'text-left' }}
 {{ $role ? $roleClasses : '' }}
 {{ !$role && $is_border && !$is_section_filled_inverted ? 'border saturn-border' : '' }}

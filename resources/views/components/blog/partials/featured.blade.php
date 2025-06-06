@@ -13,12 +13,12 @@
 
 
     <div class="space-y-2">
-        <h2 class="saturn-h3 font-bold">
+        <h2 class="text-base font-bold">
             {{ $featuredPost->title}}
         </h2>
 
-        <p class="">
-            {{ $featuredPost->post->resume ?? Str::limit(strip_tags($featuredPost->post->content), 150) }}
+        <p class="text-sm">
+            {{ Str::limit(strip_tags($featuredPost->post->content), 150) }}
         </p>
 </article>
 @endif
