@@ -70,28 +70,25 @@ $skillsClasses = 'justify-center';
             <x-ui.empty-section :auth="'Update your Profile'" />
             @endif
 
+        </div>
+
+        {{-- Name --}}
+        @if ($profile->user->name)
+        <div class="{{ $currentSize['name'] }} grid gap-1 items-center font-medium">
+            <span>{{ $profile->user->name }}</span>
             {{-- Open to Work Badge --}}
             @if ($profile->is_open_to_work)
             @if ($linkedin)
             <a href="{{ 'https://' . $linkedin }}" target="_blank" rel="noopener">
                 @endif
                 <div
-                    class="absolute {{ $currentSize['badge'] }} inline-block rounded border border-black/80 bg-gradient-to-tr from-secondary-600 to-secondary-950 p-1 {{ $currentSize['content'] }} text-white">
-                    <span class="flex items-center gap-1 font-semibold">
-                        <ion-icon class="h-4 w-4" name="logo-linkedin"></ion-icon>
-                        {{ __('Open to Work') }}
-                    </span>
+                    class="saturn-badge border saturn-bg-inverse saturn-text-inverse text-xs saturn-border font-medium my-2">
+                    {{ __('Open to Work') }}
                 </div>
                 @if ($linkedin)
             </a>
             @endif
             @endif
-        </div>
-
-        {{-- Name --}}
-        @if ($profile->user->name)
-        <div class="{{ $currentSize['name'] }} font-medium">
-            <span>{{ $profile->user->name }}</span>
         </div>
         @endif
     </section>
