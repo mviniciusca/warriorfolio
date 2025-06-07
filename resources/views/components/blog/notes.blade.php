@@ -42,15 +42,9 @@
                     <div class="space-y-8">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Latest Articles</h3>
-                            <button
-                                class="flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                                View all
-                                <svg class="h-4 w-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7">
-                                    </path>
-                                </svg>
-                            </button>
+                            <x-ui.button icon="arrow-forward-sharp" style="primary" :icon_before="false">
+                                {{ __('View All') }}
+                            </x-ui.button>
                         </div>
 
                         <div class="space-y-8">
