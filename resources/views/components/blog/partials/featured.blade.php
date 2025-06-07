@@ -1,24 +1,26 @@
 @props(['featuredPost' => null])
 
 @if($featuredPost)
-<article class="space-y-6">
+<article class="flex flex-col md:flex-row gap-4 md:gap-6">
     @if($featuredPost->img_cover)
-    <div class="aspect-[16/9] bg-muted rounded-lg overflow-hidden">
-        <img src="{{ asset('storage/' . $featuredPost->img_cover) }}" alt="{{ $featuredPost->title }}"
-            class="w-full h-full object-cover" />
+    <div class="flex-shrink-0 w-full md:w-64 lg:w-80">
+        <div class="aspect-[4/3] md:aspect-[3/2] bg-muted rounded-lg overflow-hidden">
+            <img src="{{ asset('storage/' . $featuredPost->img_cover) }}" alt="{{ $featuredPost->title }}"
+                class="w-full h-full object-cover" />
+        </div>
     </div>
     @else
-    <x-ui.placeholder.image aspectRatio="aspect-[16/9]" :animated="false" rounded="rounded-lg" />
+    <div class="flex-shrink-0 w-full md:w-64 lg:w-80">
+        <x-ui.placeholder.image aspectRatio="aspect-[4/3] md:aspect-[3/2]" :animated="false" rounded="rounded-lg" />
+    </div>
     @endif
-
-
-    <div class="space-y-2">
-        <h2 class="text-base font-bold">
+    <div class="flex-1 space-y-3">
+        <h2 class="text-lg md:text-xl font-bold leading-tight">
             {{ $featuredPost->title}}
         </h2>
-
-        <p class="text-sm">
-            {{ Str::limit(strip_tags($featuredPost->post->content), 150) }}
+        <p class="text-sm md:text-base text-muted-foreground leading-relaxed">
+            {{ Str::limit(strip_tags($featuredPost->post->content), 200) }}
         </p>
+    </div>
 </article>
 @endif

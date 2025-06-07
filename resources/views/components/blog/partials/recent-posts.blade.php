@@ -1,4 +1,4 @@
-@props(['posts' => [], 'url' => config('app.url').'/', 'cols' => 2])
+@props(['posts' => [], 'url' => config('app.url').'/', 'cols' => 1])
 
 <x-ui.card-grid :cols="$cols" gap="8">
     @foreach ($posts as $post )

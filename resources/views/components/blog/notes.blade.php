@@ -32,7 +32,7 @@
         </header>
 
         <div class="max-w-7xl mx-auto py-12">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-20">
                 <!-- Main Content -->
                 <div class="lg:col-span-2 space-y-12">
                     <!-- Featured Post -->
@@ -54,7 +54,8 @@
                 </div>
 
                 <!-- Sidebar -->
-                <div class="space-y-8">
+                <div class="space-y-12">
+                    <x-themes.common.profile :centered="true" />
                     <!-- Categories -->
                     <div class="space-y-4">
                         <h4 class="font-semibold text-gray-900 dark:text-white">Topics</h4>
@@ -91,6 +92,7 @@
 
                         </div>
                     </div>
+
 
                     <!-- Newsletter -->
                     <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6 space-y-4">
