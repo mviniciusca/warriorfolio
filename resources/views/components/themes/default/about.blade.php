@@ -4,7 +4,7 @@
     <div class="my-12 flex flex-wrap" id="about-section-wrapper">
         {{-- Profile Section --}}
         <div class="w-full p-4 text-center lg:w-1/4 lg:p-8" id="profile">
-            <x-themes.default.partials.profile :$is_section_filled_inverted :profile="$user->profile" />
+            <x-themes.common.profile />
         </div>
         {{-- About Section --}}
         <div class="about-you-section w-full p-8 text-sm leading-loose md:w-2/3 lg:w-2/4 lg:px-16">

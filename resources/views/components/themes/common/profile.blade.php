@@ -72,7 +72,7 @@ $skillsClasses = 'justify-center';
 
         </div>
 
-        {{-- Name --}}
+        {{-- Name and Open to Work --}}
         @if ($profile->user->name)
         <div class="{{ $currentSize['name'] }} grid gap-1 items-center font-medium">
             <span>{{ $profile->user->name }}</span>
