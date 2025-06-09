@@ -2,8 +2,8 @@
 
 <x-ui.card-grid :cols="$cols" gap="8">
     @foreach ($posts as $post )
-    <a href="{{ $url . $post->slug }}" class="hover:opacity-50">
-        <x-ui.card :is_border="false" :no_padding="true" class="p-4">
+    <x-ui.card :is_border="false" :no_padding="true" class="p-4">
+        <a class="hover:opacity-60 duration-200" href="{{ $url . $post->slug }}">
 
             @if($cols == 1)
             <div class="flex gap-4">
@@ -41,25 +41,24 @@
                 </div>
             </div>
             @endif
-
             <x-slot:footer>
-                <div class="flex items-center justify-between pt-1 opacity-50">
+                <div class="flex items-center justify-between pt-1">
 
-                    <div class="flex items-center gap-3 text-xs">
+                    <div class="flex items-center gap-3 text-xs opacity-70">
                         <span>{{ $post->user->name ?? 'Author' }}</span>
                         <span class="opacity-50">•</span>
                         <span>{{ $post->created_at->diffForHumans() }}</span>
                         <span class="opacity-50">•</span>
                         <x-ui.reading-time :content="$post->post->content" style="default" size="sm" />
                     </div>
+        </a>
+        <div class="flex-shrink-0 opa-100">
+            <x-ui.share :url="$url . $post->slug" />
+        </div>
+        </div>
+        </x-slot:footer>
 
-                    <div class="flex-shrink-0">
-                        <x-blog.post.share :url="$url . $post->slug" />
-                    </div>
+    </x-ui.card>
 
-                </div>
-            </x-slot:footer>
-        </x-ui.card>
-    </a>
     @endforeach
 </x-ui.card-grid>

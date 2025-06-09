@@ -23,7 +23,7 @@
 
         <!-- Post Title -->
         <div id="post-title">
-            <h1 class="saturn-h1 leading-none tracking-tight my-6">{{ $page->title }}</h1>
+            <h3 class="saturn-h2 leading-none tracking-tight my-6">{{ $page->title }}</h3>
         </div>
 
         <!-- Post Description -->
@@ -46,7 +46,7 @@
             </div>
 
             <div class="saturn-flex-end gap-2">
-                <x-blog.post.share />
+                <x-ui.share />
             </div>
         </div>
     </header>
@@ -72,7 +72,7 @@
 
             <!-- Social Share -->
             <div class="saturn-flex-end gap-3">
-                <x-blog.post.share />
+                <x-ui.share />
             </div>
         </div>
     </footer>

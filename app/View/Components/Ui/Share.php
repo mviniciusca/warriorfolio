@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Blog\Post;
+namespace App\View\Components\Ui;
 
 use App\Models\Setting;
 use Closure;
@@ -22,7 +22,7 @@ class Share extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.blog.post.share', [
+        return view('components.ui.share', [
             'data' => Setting::first('blog')->blog,
         ]);
     }
