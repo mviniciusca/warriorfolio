@@ -16,10 +16,10 @@
             </div>
 
             <div class="flex-1 space-y-3">
-                <h3 class="text-sm min-h-8 font-medium leading-tight">
+                <h3 class="text-base font-medium">
                     {{ Str::limit(strip_tags($post->title), 100) }}
                 </h3>
-                <p class="text-sm leading-relaxed">
+                <p class="text-sm opacity-60">
                     {{ Str::limit(strip_tags($post->post->content), 120) }}
                 </p>
             </div>
@@ -42,7 +42,7 @@
         @endif
 
         <x-slot:footer>
-            <div class="flex items-center justify-between pt-4">
+            <div class="flex items-center justify-between pt-1 opacity-50">
 
                 <div class="flex items-center gap-3 text-xs">
                     <span>{{ $post->user->name ?? 'Author' }}</span>
