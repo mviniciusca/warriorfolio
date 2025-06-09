@@ -20,101 +20,37 @@
  * ======================================== */
 
 /** Saturn UI Typography Hierarchy (inspired by Vercel) **/
-.saturn-h1 {
-    @apply text-4xl font-bold tracking-tight saturn-text;
-}
-.saturn-h2 {
-    @apply text-3xl font-bold saturn-text;
-}
-.saturn-h3 {
-    @apply text-2xl font-semibold saturn-text;
-}
-.saturn-h4 {
-    @apply text-xl font-semibold saturn-text;
-}
-.saturn-h5 {
-    @apply text-base font-medium saturn-text;
-}
-.saturn-text-large {
-    @apply text-lg saturn-text;
-}
-.saturn-text-base {
-    @apply text-base saturn-text;
-}
-.saturn-text-secondary {
-    @apply text-sm saturn-text-accent;
-}
+.saturn-h1 { @apply text-4xl font-bold tracking-tight saturn-text; }
+.saturn-h2 { @apply text-3xl font-bold saturn-text; }
+.saturn-h3 { @apply text-2xl font-semibold saturn-text; }
+.saturn-h4 { @apply text-xl font-semibold saturn-text; }
+.saturn-h5 { @apply text-base font-medium saturn-text; }
+.saturn-text-large { @apply text-lg saturn-text; }
+.saturn-text-base { @apply text-base saturn-text; }
+.saturn-text-secondary { @apply text-sm saturn-text-accent; }
 
 /** Saturn UI Typography **/
-.saturn-text {
-    @apply saturn-transition text-saturn-950 dark:text-saturn-50;
-}
-
-/** Post Content Typography - Specific rules for blog post content **/
-#post-content h1 {
-    @apply saturn-h1 mb-8 mt-12 first:mt-0;
-}
-
-#post-content h2 {
-    @apply text-2xl font-semibold saturn-text mb-6 mt-10 first:mt-0;
-}
-
-#post-content h3 {
-    @apply saturn-h3 mb-4 mt-8 first:mt-0;
-}
-
-#post-content h4 {
-    @apply saturn-h4 mb-4 mt-6 first:mt-0;
-}
-
-#post-content, #post-content p {
-    @apply mb-6 leading-loose opacity-80;
-}
-
-.saturn-text-inverse {
-    @apply saturn-transition text-saturn-50 dark:text-saturn-950;
-}
-.saturn-text-accent {
-    @apply saturn-transition text-saturn-600 dark:text-saturn-400;
-}
-.saturn-text-accent-inverse {
-    @apply saturn-transition text-saturn-400 dark:text-saturn-600;
-}
+.saturn-text { @apply saturn-transition text-saturn-950 dark:text-saturn-50; }
+.saturn-text-inverse { @apply saturn-transition text-saturn-50 dark:text-saturn-950; }
+.saturn-text-accent { @apply saturn-transition text-saturn-600 dark:text-saturn-400; }
+.saturn-text-accent-inverse { @apply saturn-transition text-saturn-400 dark:text-saturn-600; }
 
 /* ========================================
  * 2. BASE COLORS & BACKGROUNDS
  * ======================================== */
 
 /** Saturn UI Borders **/
-.saturn-border {
-    @apply saturn-transition border-saturn-300/70 dark:border-saturn-800/70;
-}
-.saturn-border-inverse {
-    @apply saturn-transition border-saturn-800/70 dark:border-saturn-300/70;
-}
-.saturn-border-accent {
-    @apply saturn-transition border-saturn-300 dark:border-saturn-800;
-}
-.saturn-border-accent-inverse {
-    @apply saturn-transition border-saturn-800 dark:border-saturn-300;
-}
+.saturn-border { @apply saturn-transition border-saturn-300/70 dark:border-saturn-800/70; }
+.saturn-border-inverse { @apply saturn-transition border-saturn-800/70 dark:border-saturn-300/70; }
+.saturn-border-accent { @apply saturn-transition border-saturn-300 dark:border-saturn-800; }
+.saturn-border-accent-inverse { @apply saturn-transition border-saturn-800 dark:border-saturn-300; }
 
 /** Saturn UI Backgrounds **/
-.saturn-bg {
-    @apply saturn-transition bg-white dark:bg-saturn-950;
-}
-.saturn-bg-inverse {
-    @apply saturn-transition bg-saturn-950 dark:bg-white;
-}
-.saturn-bg-accent {
-    @apply saturn-transition bg-saturn-light-accent dark:bg-saturn-dark-accent;
-}
-.saturn-bg-accent-inverse {
-    @apply saturn-transition bg-saturn-dark-accent dark:bg-saturn-light-accent;
-}
-.saturn-modal-bg {
-    @apply saturn-transition bg-white/20 dark:bg-black/20 backdrop-blur-sm;
-}
+.saturn-bg { @apply saturn-transition bg-white dark:bg-saturn-950; }
+.saturn-bg-inverse { @apply saturn-transition bg-saturn-950 dark:bg-white; }
+.saturn-bg-accent { @apply saturn-transition bg-saturn-light-accent dark:bg-saturn-dark-accent; }
+.saturn-bg-accent-inverse { @apply saturn-transition bg-saturn-dark-accent dark:bg-saturn-light-accent; }
+.saturn-modal-bg { @apply saturn-transition bg-white/20 dark:bg-black/20 backdrop-blur-sm; }
 
 /* ========================================
  * 3. COMPONENT COMPOSITIONS

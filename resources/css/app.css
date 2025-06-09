@@ -402,6 +402,27 @@ ss
     }
 }
 
+/** Post Content Typography - Specific rules for blog post content **/
+#post-content h1 {
+    @apply saturn-h1 mb-8 mt-12 first:mt-0;
+}
+
+#post-content h2 {
+    @apply text-2xl font-semibold saturn-text mb-6 mt-10 first:mt-0;
+}
+
+#post-content h3 {
+    @apply saturn-h3 mb-4 mt-8 first:mt-0;
+}
+
+#post-content h4 {
+    @apply saturn-h4 mb-4 mt-6 first:mt-0;
+}
+
+#post-content, #post-content p {
+    @apply mb-6 leading-loose opacity-80;
+}
+
 /* Dribbble-inspired Gallery Styles */
 .group {
     backface-visibility: hidden;
