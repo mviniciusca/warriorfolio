@@ -17,7 +17,7 @@
                 </div>
         </header>
 
-        <div class="max-w-7xl mx-auto py-12">
+        <div class="mx-auto py-12">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-20">
                 <!-- Main Content -->
                 <div class="lg:col-span-2 space-y-12">

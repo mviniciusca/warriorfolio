@@ -7,7 +7,12 @@
         @if($cols == 1)
         <div class="flex gap-4">
             <div class="flex-shrink-0 w-32 overflow-hidden rounded-lg">
+                @if($post->post->img_cover)
+                <img class="aspect-[4/3] w-full h-full object-cover"
+                    src="{{ asset('storage/' . $post->post->img_cover) }}" />
+                @else
                 <x-ui.placeholder.image class="aspect-[4/3] w-full h-full object-cover" :animated="true" />
+                @endif
             </div>
 
             <div class="flex-1 space-y-3">
