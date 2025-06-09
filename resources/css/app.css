@@ -194,7 +194,7 @@ ss
     }
 
     .dg {
-        @apply dark:bg-gradient-to-tr dark:from-secondary-400 dark:to-secondary-600 bg-gradient-to-tr from-secondary-400 to-secondary-700 bg-clip-text text-transparent;
+        @apply dark:bg-gradient-to-t dark:from-saturn-50 dark:to-saturn-400 bg-gradient-to-t from-saturn-500 to-saturn-800 bg-clip-text text-transparent;
     }
 
     .ht {

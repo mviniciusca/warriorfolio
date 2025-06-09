@@ -7,8 +7,8 @@
         <header>
             <div class="mx-auto py-8">
                 <div class="flex items-center justify-between">
-                    <div>
-                        <h1 class="text-3xl tracking-tight font-semibold">{{ __('Hurry Up Tomorrow Notes') }}</h1>
+                    <div class="mb-6">
+                        <h1 class="text-3xl tracking-tight font-bold dg">{{ __('Warriorfolio Notes') }}</h1>
                         <p class="text-sm mt-1">{{ __('Laravel News and Tips') }}</p>
                     </div>
                     <div class="flex items-center gap-4">
@@ -72,11 +72,6 @@
                                 {{ __('Latest Articles') }}
                                 @endif
                             </h3>
-                            @if(!request('search'))
-                            <x-ui.button icon="arrow-forward-sharp" style="primary" :icon_before="false">
-                                {{ __('View All') }}
-                            </x-ui.button>
-                            @endif
                         </div>
 
                         <div class="space-y-8">
