@@ -1,13 +1,13 @@
 @props(['featuredPost' => null])
 
+
 @if($featuredPost)
 <article class="flex flex-col md:flex-row gap-4 md:gap-6">
-    @if($featuredPost->img_cover)
+    @if($featuredPost->post->img_cover)
     <div class="flex-shrink-0 w-full md:w-64 lg:w-80">
-        <div class="aspect-[4/3] md:aspect-[3/2] bg-muted rounded-lg overflow-hidden">
-            <img src="{{ asset('storage/' . $featuredPost->img_cover) }}" alt="{{ $featuredPost->title }}"
-                class="w-full h-full object-cover" />
-        </div>
+        <x-ui.image-loader src="{{ asset('storage/' . $featuredPost->post->img_cover) }}"
+            alt="{{ $featuredPost->title }}" class="aspect-[4/3] md:aspect-[3/2]" :animated="true"
+            rounded="rounded-lg" />
     </div>
     @else
     <div class="flex-shrink-0 w-full md:w-64 lg:w-80">
