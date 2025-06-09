@@ -2,7 +2,7 @@
 
 <x-ui.card-grid :cols="$cols" gap="8">
     @foreach ($posts as $post )
-    <x-ui.card :is_border="false" :no_padding="true" class="p-4">
+    <x-ui.card :is_border="false" :no_padding="true">
         <a class="hover:opacity-60 duration-200" href="{{ $url . $post->slug }}">
 
             @if($cols == 1)

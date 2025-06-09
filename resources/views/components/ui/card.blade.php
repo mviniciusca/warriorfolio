@@ -35,6 +35,9 @@ break;
 case 'secondary':
 $roleClasses = 'saturn-color-secondary' . $baseSuffix;
 break;
+case 'accent':
+$roleClasses = 'saturn-bg-accent' . $baseSuffix;
+break;
 }
 }
 @endphp
