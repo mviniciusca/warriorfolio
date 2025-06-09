@@ -41,63 +41,28 @@
 
                 <!-- Sidebar -->
                 <div class="space-y-12">
+
                     <x-themes.common.profile :centered="true" />
-                    <!-- Categories -->
-                    <div class="space-y-4">
-                        <h4 class="font-semibold text-gray-900 dark:text-white">Topics</h4>
-                        <div class="flex flex-wrap gap-2">
 
-                            <button class="h-8 px-3 py-1 text-sm rounded-md transition-colors ">
-                                category
-                            </button>
-
-                        </div>
+                    <div class="rounded-lg saturn-text border saturn-border-accent p-12 space-y-4">
+                        <x-blog.widget.counter />
                     </div>
-
-                    <!-- Trending -->
-                    <div class="space-y-4">
-                        <h4 class="font-semibold text-gray-900 dark:text-white">Trending</h4>
-                        <div class="space-y-4">
-
-                            <div class="flex gap-3 group cursor-pointer">
-                                <span class="text-2xl font-bold text-gray-300 dark:text-gray-600 mt-1">
-
-                                </span>
-                                <div class="space-y-1">
-                                    <h5
-                                        class="font-medium leading-tight text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
-                                        Lorem
-                                    </h5>
-                                    <div class="text-xs text-gray-600 dark:text-gray-400">
-                                        <span>lorem</span>
-                                        <span class="mx-1">•</span>
-                                        <span>readtime</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
                     <!-- Newsletter -->
-                    <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6 space-y-4">
-                        <h4 class="font-semibold text-gray-900 dark:text-white">Stay Updated</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Get the latest articles delivered to your
-                            inbox.
-                        </p>
-                        <div class="space-y-3">
-                            <input type="email" placeholder="Enter your email"
-                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white" />
-                            <button
-                                class="w-full px-4 py-2 text-sm font-medium text-white bg-gray-900 dark:bg-white dark:text-gray-900 rounded-md hover:bg-gray-800 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">
-                                Subscribe
-                            </button>
-                        </div>
+                    <div class="saturn-bg-accent rounded-lg saturn-text border saturn-border-accent p-12 space-y-4">
+                        <h1 class="saturn-h5 saturn-text">{{ __('Join our Newsletter') }}</h1>
+                        <p class="text-sm opacity-70">{!! __('Join our
+                            newsletter and stay updated with the latest articles, tips, and resources for Laravel and
+                            development.')
+                            !!}</p>
+                        @livewire('newsletter', ['is_section_filled_inverted' => true])
+                        <p class="text-xs">{{ __('We hate spam!') }}</p>
                     </div>
+
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </x-core.layout>
 @endif
