@@ -8,19 +8,16 @@
             <div class="mx-auto py-8">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Warriorfolio Notes</h1>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Laravel and Development</p>
+                        <h1 class="text-3xl tracking-tight font-semibold">{{ __('Hurry Up Tomorrow Notes') }}</h1>
+                        <p class="text-sm mt-1">{{ __('Laravel News and Tips') }}</p>
                     </div>
                     <div class="flex items-center gap-4">
                         <!-- Search Form -->
                         <form method="GET" action="{{ request()->url() }}" class="relative" id="searchForm">
                             <div class="relative">
-                                <input type="text" name="search" value="{{ request('search') }}"
-                                    placeholder="{{ __('Search articles...') }}"
-                                    class="saturn-input w-full sm:w-64 pl-10 pr-4" autocomplete="off" id="searchInput">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <x-ui.ionicon icon="search-outline" class="h-5 w-5 saturn-text opacity-50" />
-                                </div>
+                                <x-ui.form.input type="text" name="search" value="{{ request('search') }}"
+                                    icon="search-outline" placeholder="{{ __('Search articles...') }}"
+                                    class="saturn-input w-full sm:w-64" autocomplete="off" id="searchInput" />
                                 @if(request('search'))
                                 <a href="{{ request()->url() }}"
                                     class="absolute inset-y-0 right-0 pr-3 flex items-center">
@@ -68,7 +65,7 @@
                     <!-- Posts List -->
                     <div class="space-y-8">
                         <div class="flex items-center justify-between">
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="text-xl font-semibold">
                                 @if(request('search'))
                                 {{ __('Search Results') }}
                                 @else
