@@ -18,7 +18,7 @@
     :$button_url>
     <div class="my-2">
         <section class="my-4">
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
                 @foreach ($posts as $item)
                 <x-blog.post.card-block :$item />
                 @endforeach

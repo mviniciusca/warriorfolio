@@ -53,7 +53,7 @@ if (! function_exists('getSlider')) {
      * @return string Formatted content.
      */
     if (! function_exists('formatContent')) {
-        function formatContent(string $content, int $words = 20, string $end = '...'): string
+        function formatContent(string $content, int $words = 15, string $end = '...'): string
         {
             return Str::words(
                 preg_replace('/<figure[^>]*>.*?<\/figure>/s', '', strip_tags($content, '<figure>')),
