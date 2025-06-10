@@ -1,5 +1,5 @@
 @aware(['page'])
-@props(['title' => $page->title ?? null])
+@props(['page','title' => $page->title ?? null])
 
 @if ($page->post->is_active)
 <article class="saturn-container-narrow saturn-y-section">
