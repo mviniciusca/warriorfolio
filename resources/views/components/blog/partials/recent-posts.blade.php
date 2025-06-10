@@ -9,8 +9,8 @@
             <div class="flex gap-4">
                 @if($post->post->img_cover)
                 <div class="flex-shrink-0 w-32 overflow-hidden rounded-lg">
-                    <x-ui.image-loader src="{{ asset('storage/' . $post->post->img_cover) }}" alt="{{ $post->title }}"
-                        class="aspect-[4/3] md:aspect-[3/2]" :animated="true" rounded="rounded-lg" />
+                    <img src="{{ asset('storage/' . $post->post->img_cover) }}" alt="{{ $post->title }}"
+                        class="aspect-[4/3] md:aspect-[3/2] rounded-lg" :animated="true" rounded="rounded-lg" />
                 </div>
                 @endif
                 <div class="flex-1 space-y-1">
