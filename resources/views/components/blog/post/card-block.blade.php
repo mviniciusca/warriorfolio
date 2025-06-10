@@ -1,7 +1,7 @@
 @props(['item'])
 
 <article
-    class="rounded-lg border border-secondary-300 bg-white/30 p-8 transition-all duration-500 hover:bg-gradient-to-br hover:from-primary-100/0 hover:to-secondary-200/20 dark:border-secondary-800 dark:bg-black/30 dark:hover:from-primary-600/0 dark:hover:to-secondary-700/30">
+    class="flex h-full flex-col rounded-lg border border-secondary-300 bg-white/30 p-8 transition-all duration-500 hover:bg-gradient-to-br hover:from-primary-100/0 hover:to-secondary-200/20 dark:border-secondary-800 dark:bg-black/30 dark:hover:from-primary-600/0 dark:hover:to-secondary-700/30">
     <div class="mb-5 flex items-center justify-between">
         <span class="flex items-center gap-1 text-xs">
             {{ ucfirst($item->post->category->name) }}
@@ -14,11 +14,11 @@
         <a class="hover:underline" href="{{ config('app.url', env('APP_URL')) . '/' . $item->slug }}">
             {{ Str::words($item->title, 13, '...') }}
     </h2>
-    <p class="mb-5 text-xs opacity-70">
+    <p class="mb-5 flex-grow text-xs opacity-70">
         {{ formatContent($item->post->content) }}
     </p>
     </a>
-    <div class="flex items-center justify-between">
+    <div class="mt-auto flex items-center justify-between">
         <div class="flex items-center space-x-2">
             @if ($item->user->profile->avatar)
             <img class="mx-1 h-7 w-7 rounded-full" src="{{ asset('storage/' . $item->user->profile->avatar) }}" />
