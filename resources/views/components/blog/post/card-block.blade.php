@@ -12,7 +12,7 @@
     </div>
     <h2 class="mb-2 font-medium text-sm">
         <a class="hover:underline" href="{{ config('app.url', env('APP_URL')) . '/' . $item->slug }}">
-            {{ Str::words($item->title, 15, '...') }}
+            {{ Str::words($item->title, 20, '...') }}
     </h2>
     <p class="mb-5 flex-grow text-xs opacity-70">
         {{ formatContent($item->post->content) }}
