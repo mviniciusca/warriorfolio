@@ -31,7 +31,7 @@ class FeaturedPosts extends Component
                 ->with('user')
                 ->where('is_active', '=', true)
                 ->where('style', '=', 'blog')
-                ->limit(3)
+                ->limit(4)
                 ->orderByDesc('created_at')
                 ->get(),
         ]);
