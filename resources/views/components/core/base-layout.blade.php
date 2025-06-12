@@ -36,6 +36,9 @@
     {{ $footer }}
     @endif
     @endif
+
+    {{-- Filament Notifications --}}
+    @livewire('notifications')
     @endif
     @if ($maintenance && (!$discovery || !auth()->user()))
     <x-themes.common.maintenance />

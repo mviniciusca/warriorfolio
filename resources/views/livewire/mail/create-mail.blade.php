@@ -9,6 +9,4 @@
             {{ __('Send Message') }}
         </x-ui.button>
     </form>
-    <x-filament-actions::modals />
-    </script>
 </div>
