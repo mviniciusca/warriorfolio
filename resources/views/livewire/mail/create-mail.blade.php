@@ -4,7 +4,8 @@
     <form wire:submit.prevent="create" id="mail">
         {{ $this->form }}
         <x-recaptcha />
-        <x-ui.button :$is_section_filled_inverted class="mt-6" :type="'submit'" :icon="'chevron-forward-outline'">
+        <x-ui.button :$is_section_filled_inverted class="mt-2" :icon_before="false" :type="'submit'"
+            :icon="'chevron-forward-outline'">
             {{ __('Send Message') }}
         </x-ui.button>
     </form>
