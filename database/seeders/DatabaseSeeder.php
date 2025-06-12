@@ -53,6 +53,7 @@ class DatabaseSeeder extends Seeder
             WelcomeNoteSeeder::class,
             BlogPostSeeder::class,
             SectionSeeder::class,
+            HeroSectionSeeder::class,
         ]);
     }
 }

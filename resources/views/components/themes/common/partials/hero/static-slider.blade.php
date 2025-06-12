@@ -36,8 +36,10 @@ break;
             {{-- Duplicate for seamless loop --}}
             @foreach ($hero->content['slider_content'] as $item)
             <div class="swiper-slide">
+                @isset($item['slider_image'])
                 <img class="{{ $hero->content['is_invert'] ? 'dark:invert' : null }} h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 object-contain opacity-80 transition-all duration-200 hover:opacity-100"
                     src="{{ asset('storage/' . $item['slider_image']) }}" alt="Logo" />
+                @endisset
             </div>
             @endforeach
         </div>
@@ -48,8 +50,10 @@ break;
 <div
     class="w-full mt-24 animate__animated animate__fadeInUp animate__delay-1s flex flex-wrap justify-between items-center gap-3">
     @foreach ($hero->content['slider_content'] as $item)
+    @isset($item['slider_image'])
     <img class="{{ $hero->content['is_invert'] ? 'dark:invert' : null }} h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 object-contain opacity-80 transition-all duration-200 hover:opacity-100 flex-shrink-0"
         src="{{ asset('storage/' . $item['slider_image']) }}" alt="Logo" />
+    @endisset
     @endforeach
 </div>
 @endif
