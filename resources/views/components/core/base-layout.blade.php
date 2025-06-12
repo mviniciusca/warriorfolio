@@ -1,6 +1,7 @@
 @aware(['page'])
 
 @props([
+'page'=> null,
 'maintenance' => false,
 'discovery' => false,
 'bodyClass' => '',
