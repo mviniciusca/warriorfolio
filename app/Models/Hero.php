@@ -25,7 +25,7 @@ class Hero extends Model
 
         static::saving(function ($hero) {
             if ($hero->is_active) {
-                // Desativa todos os outros heroes quando este for ativado
+                // Deactivate all other heroes when a new one is activated
                 static::where('id', '!=', $hero->id)->update(['is_active' => false]);
             }
         });
