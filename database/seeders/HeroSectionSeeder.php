@@ -30,8 +30,8 @@ class HeroSectionSeeder extends Seeder
                 'is_mailing_active'               => true,
 
                 // Headings
-                'section_title'    => 'Welcome to <span class="tl">Warriorfolio</span>',
-                'section_subtitle' => 'Build your professional portfolio in a simple and <span class="dg">elegant</span> way',
+                'section_title'    => 'Warriorfolio v3 is here with Juno, Saturn UI and more!',
+                'section_subtitle' => 'Welcome to the new era of portfolio building!',
 
                 // Action buttons
                 'buttons' => [
