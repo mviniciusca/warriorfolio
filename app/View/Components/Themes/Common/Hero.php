@@ -21,7 +21,7 @@ class Hero extends Component
     public function __construct()
     {
         $this->loadSection('hero');
-        $this->hero = HeroSectionModel::first() ?? null;
+        $this->hero = HeroSectionModel::where('is_active', '=', true)->first() ?? null;
     }
 
     /**
