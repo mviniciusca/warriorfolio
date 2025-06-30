@@ -13,28 +13,28 @@ class HeroSeeder extends Seeder
      */
     public function run(): void
     {
-        // Limpar dados existentes
+        // Clear existing data
         Hero::truncate();
 
-        // Criar Hero Section principal
+        // Create main Hero Section
         Hero::create([
             'is_active' => true,
-            'title'     => 'Hero Principal - Warriorfolio',
+            'title'     => 'Main Hero - Warriorfolio',
             'content'   => [
-                // Configurações gerais
+                // General settings
                 'theme'                           => 'sierra',
                 'is_filled'                       => false,
                 'social_network_module_is_active' => true,
                 'is_mailing_active'               => true,
 
-                // Títulos
-                'section_title'    => 'Bem-vindo ao <span class="tl">Warriorfolio</span>',
-                'section_subtitle' => 'Construa seu portfólio profissional de forma simples e <span class="dg">elegante</span>',
+                // Titles
+                'section_title'    => 'Welcome to <span class="tl">Warriorfolio</span>',
+                'section_subtitle' => 'Build your professional portfolio in a simple and <span class="dg">elegant</span> way',
 
-                // Botões de ação
+                // Action buttons
                 'buttons' => [
                     [
-                        'button_title'  => 'Começar Agora',
+                        'button_title'  => 'Get Started',
                         'button_url'    => '/admin',
                         'button_style'  => 'primary',
                         'button_target' => '_self',
@@ -42,7 +42,7 @@ class HeroSeeder extends Seeder
                         'icon_before'   => true,
                     ],
                     [
-                        'button_title'  => 'Ver Projetos',
+                        'button_title'  => 'View Projects',
                         'button_url'    => '#portfolio',
                         'button_style'  => 'outlined',
                         'button_target' => '_self',
@@ -55,20 +55,20 @@ class HeroSeeder extends Seeder
                 'bumper_is_active'   => true,
                 'bumper_is_animated' => true,
                 'bumper_is_center'   => false,
-                'bumper_tag'         => 'Novo',
-                'bumper_title'       => '🚀 Versão 2.2 disponível!',
+                'bumper_tag'         => 'New',
+                'bumper_title'       => '🚀 Version 2.2 available!',
                 'bumper_icon'        => 'sparkles-outline',
                 'bumper_link'        => '#',
                 'bumper_target'      => '_self',
                 'bumper_role'        => 'primary',
 
-                // Imagem em destaque
+                // Featured image
                 'featured_image_is_active' => true,
                 'browser_border_is_active' => true,
                 'browser_border_device'    => 'browser',
                 'browser_border_url'       => 'https://example.com',
 
-                // Imagem de fundo
+                // Background image
                 'is_active'         => false,
                 'is_upper'          => false,
                 'is_highlight'      => false,
@@ -80,11 +80,11 @@ class HeroSeeder extends Seeder
                 'is_overlay_active' => false,
                 'bg_overlay'        => 'hero-bg-overlay-default',
 
-                // Padrão de fundo
+                // Background pattern
                 'is_pattern_bg' => false,
                 'pattern_name'  => 'cross',
 
-                // Slider estático
+                // Static slider
                 'slider_is_active'  => true,
                 'is_invert'         => true,
                 'is_marquee'        => false,
@@ -119,25 +119,25 @@ class HeroSeeder extends Seeder
             ],
         ]);
 
-        // Criar Hero Section alternativo
+        // Create alternative Hero Section
         Hero::create([
             'is_active' => false,
-            'title'     => 'Hero Alternativo - Portfólio Criativo',
+            'title'     => 'Alternative Hero - Creative Portfolio',
             'content'   => [
-                // Configurações gerais
+                // General settings
                 'theme'                           => 'default',
                 'is_filled'                       => true,
                 'social_network_module_is_active' => false,
                 'is_mailing_active'               => false,
 
-                // Títulos
-                'section_title'    => 'Desenvolvedor <span class="tl">Full Stack</span>',
-                'section_subtitle' => 'Transformando ideias em <span class="dg">soluções digitais</span> inovadoras',
+                // Titles
+                'section_title'    => '<span class="tl">Full Stack</span> Developer',
+                'section_subtitle' => 'Transforming ideas into innovative <span class="dg">digital solutions</span>',
 
-                // Botões de ação
+                // Action buttons
                 'buttons' => [
                     [
-                        'button_title'  => 'Meus Projetos',
+                        'button_title'  => 'My Projects',
                         'button_url'    => '#projects',
                         'button_style'  => 'primary',
                         'button_target' => '_self',
@@ -145,7 +145,7 @@ class HeroSeeder extends Seeder
                         'icon_before'   => true,
                     ],
                     [
-                        'button_title'  => 'Entrar em Contato',
+                        'button_title'  => 'Get in Touch',
                         'button_url'    => '#contact',
                         'button_style'  => 'secondary',
                         'button_target' => '_self',
@@ -158,19 +158,19 @@ class HeroSeeder extends Seeder
                 'bumper_is_active'   => true,
                 'bumper_is_animated' => false,
                 'bumper_is_center'   => true,
-                'bumper_tag'         => 'Disponível',
-                'bumper_title'       => '💼 Aberto para novos projetos',
+                'bumper_tag'         => 'Available',
+                'bumper_title'       => '💼 Open for new projects',
                 'bumper_icon'        => 'briefcase-outline',
                 'bumper_link'        => '#contact',
                 'bumper_target'      => '_self',
                 'bumper_role'        => 'info',
 
-                // Imagem em destaque
+                // Featured image
                 'featured_image_is_active' => true,
                 'browser_border_is_active' => false,
                 'browser_border_device'    => 'mobile',
 
-                // Imagem de fundo
+                // Background image
                 'is_active'         => true,
                 'is_upper'          => true,
                 'is_highlight'      => true,
@@ -182,11 +182,11 @@ class HeroSeeder extends Seeder
                 'is_overlay_active' => true,
                 'bg_overlay'        => 'hero-bg-overlay-middle',
 
-                // Padrão de fundo
+                // Background pattern
                 'is_pattern_bg' => false,
                 'pattern_name'  => 'dot',
 
-                // Slider estático
+                // Static slider
                 'slider_is_active'  => true,
                 'is_invert'         => false,
                 'is_marquee'        => true,
@@ -217,25 +217,25 @@ class HeroSeeder extends Seeder
             ],
         ]);
 
-        // Criar Hero Section minimalista
+        // Create minimalist Hero Section
         Hero::create([
             'is_active' => false,
-            'title'     => 'Hero Minimalista - Designer',
+            'title'     => 'Minimalist Hero - Designer',
             'content'   => [
-                // Configurações gerais
+                // General settings
                 'theme'                           => 'default',
                 'is_filled'                       => false,
                 'social_network_module_is_active' => true,
                 'is_mailing_active'               => false,
 
-                // Títulos
-                'section_title'    => 'Design <span class="tl">Simples</span>, Impacto <span class="dg">Máximo</span>',
-                'section_subtitle' => 'Criando experiências digitais memoráveis',
+                // Titles
+                'section_title'    => '<span class="tl">Simple</span> Design, <span class="dg">Maximum</span> Impact',
+                'section_subtitle' => 'Creating memorable digital experiences',
 
-                // Botões de ação
+                // Action buttons
                 'buttons' => [
                     [
-                        'button_title'  => 'Ver Portfolio',
+                        'button_title'  => 'View Portfolio',
                         'button_url'    => '#portfolio',
                         'button_style'  => 'ghost',
                         'button_target' => '_self',
@@ -247,17 +247,17 @@ class HeroSeeder extends Seeder
                 // Info Bumper
                 'bumper_is_active' => false,
 
-                // Imagem em destaque
+                // Featured image
                 'featured_image_is_active' => false,
 
-                // Imagem de fundo
+                // Background image
                 'is_active' => false,
 
-                // Padrão de fundo
+                // Background pattern
                 'is_pattern_bg' => true,
                 'pattern_name'  => 'dot',
 
-                // Slider estático
+                // Static slider
                 'slider_is_active' => false,
             ],
         ]);
