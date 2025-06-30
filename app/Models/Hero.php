@@ -18,4 +18,16 @@ class Hero extends Model
     protected $casts = [
         'content' => 'array',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($hero) {
+            if ($hero->is_active) {
+                // Desativa todos os outros heroes quando este for ativado
+                static::where('id', '!=', $hero->id)->update(['is_active' => false]);
+            }
+        });
+    }
 }

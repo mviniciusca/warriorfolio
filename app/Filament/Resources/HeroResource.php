@@ -20,6 +20,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
@@ -62,7 +63,15 @@ class HeroResource extends Resource
                         Toggle::make('is_active')
                             ->label(__('Active'))
                             ->default(false)
-                            ->helperText(__('Show or hide the hero section on the website.')),
+                            ->helperText(__('Show or hide the hero section on the website.'))
+                            ->afterStateUpdated(function ($set, $state, $get, $record) {
+                                if ($state && $record) {
+                                    // Quando ativado, desativa todos os outros heroes
+                                    Hero::where('id', '!=', $record->id)
+                                        ->update(['is_active' => false]);
+                                }
+                            })
+                            ->live(),
                         TextInput::make('title')
                             ->label(__('Hero Section Title'))
                             ->helperText(__('Title of the hero section.'))
@@ -510,10 +519,11 @@ class HeroResource extends Resource
                                                             ]),
                                                     ]),
                                             ]),
-                                        Forms\Components\View::make('components.filament.pattern-active-notice')
+                                        Forms\Components\Placeholder::make('pattern_notice')
+                                            ->label(__('Pattern Background Active'))
+                                            ->content(__('Pattern background is currently enabled. The pattern will repeat across the entire hero section.'))
                                             ->columnSpanFull()
-                                            ->visible(fn ($get) => $get('content.is_pattern_bg'))
-                                            ->extraAttributes(['class' => 'mt-2 border-t border-secondary-300 dark:border-secondary-700 rounded-b-lg']),
+                                            ->visible(fn ($get) => $get('content.is_pattern_bg')),
                                     ]),
                                 Tab::make(__('Static Slider'))
                                     ->icon('heroicon-o-photo')
@@ -650,9 +660,15 @@ class HeroResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label(__('Title'))
                     ->searchable(),
-                Tables\Columns\IconColumn::make('is_active')
+                ToggleColumn::make('is_active')
                     ->label(__('Status'))
-                    ->boolean(),
+                    ->afterStateUpdated(function ($record, $state) {
+                        if ($state) {
+                            // Quando ativado, desativa todos os outros heroes
+                            Hero::where('id', '!=', $record->id)
+                                ->update(['is_active' => false]);
+                        }
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
