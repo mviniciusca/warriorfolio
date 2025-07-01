@@ -6,7 +6,7 @@
     @endif
     <x-core.layout :no_padding="true" :is_heading_visible="false" :$is_filled :with_padding='false'>
         {{-- Logo and Primary Navigation --}}
-        <div class="flex items-center justify-between py-6 text-sm">
+        <div class="flex items-center justify-between py-8 text-sm">
             <div class="flex flex-wrap items-center gap-4">
                 <x-ui.logo />
                 <x-ui.mobile-navigation />
