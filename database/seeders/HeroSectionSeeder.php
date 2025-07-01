@@ -64,13 +64,13 @@ class HeroSectionSeeder extends Seeder
                 'bumper_target'      => '_self',
                 'bumper_role'        => 'primary',
 
-                // Imagem em destaque
+                // Featured image
                 'featured_image_is_active' => true,
                 'browser_border_is_active' => true,
                 'browser_border_device'    => 'browser',
                 'browser_border_url'       => 'https://example.com',
 
-                // Imagem de fundo
+                // Background image
                 'is_active'         => false,
                 'is_upper'          => false,
                 'is_highlight'      => false,
@@ -82,11 +82,11 @@ class HeroSectionSeeder extends Seeder
                 'is_overlay_active' => false,
                 'bg_overlay'        => 'hero-bg-overlay-default',
 
-                // Padrão de fundo
+                // Background pattern
                 'is_pattern_bg' => false,
                 'pattern_name'  => 'cross',
 
-                // Slider estático
+                // Static slider
                 'slider_is_active'  => true,
                 'is_invert'         => true,
                 'is_marquee'        => false,
@@ -167,12 +167,12 @@ class HeroSectionSeeder extends Seeder
                 'bumper_target'      => '_self',
                 'bumper_role'        => 'info',
 
-                // Imagem em destaque
+                // Featured image
                 'featured_image_is_active' => true,
                 'browser_border_is_active' => false,
                 'browser_border_device'    => 'mobile',
 
-                // Imagem de fundo
+                // Background image
                 'is_active'         => true,
                 'is_upper'          => true,
                 'is_highlight'      => true,
@@ -184,11 +184,11 @@ class HeroSectionSeeder extends Seeder
                 'is_overlay_active' => true,
                 'bg_overlay'        => 'hero-bg-overlay-middle',
 
-                // Padrão de fundo
+                // Background pattern
                 'is_pattern_bg' => false,
                 'pattern_name'  => 'dot',
 
-                // Slider estático
+                // Static slider
                 'slider_is_active'  => true,
                 'is_invert'         => false,
                 'is_marquee'        => true,
