@@ -15,7 +15,7 @@ class LandingPageSeeder extends Seeder
     {
         DB::table('pages')
             ->insert([
-                'layout'     => 'default',
+                'layout'     => 'juno',
                 'title'      => 'Landing Page',
                 'slug'       => '/',
                 'created_at' => now(),
