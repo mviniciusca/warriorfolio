@@ -17,10 +17,10 @@ class BlogPostSeeder extends Seeder
      */
     public function run(): void
     {
-        // Busca o primeiro usuário ou usa o ID 1 como fallback
+        // Find the first user or use ID 1 as fallback
         $userId = User::first()?->id ?? 1;
 
-        // Busca categorias ativas para blog
+        // Find active blog categories
         $blogCategories = Category::where('is_blog', true)
             ->where('is_active', true)
             ->pluck('id')
@@ -32,7 +32,7 @@ class BlogPostSeeder extends Seeder
             return;
         }
 
-        // Títulos realistas para posts de blog sobre tecnologia
+        // Realistic titles for technology blog posts
         $postTitles = [
             'Getting Started with Laravel 11: A Complete Guide',
             'Building Responsive UIs with Tailwind CSS',
@@ -57,13 +57,13 @@ class BlogPostSeeder extends Seeder
         ];
 
         foreach ($postTitles as $index => $title) {
-            // Criar o post com categoria aleatória
+            // Create the post with random category
             $post = Post::factory()->create([
                 'user_id'     => $userId,
-                'category_id' => $blogCategories[array_rand($blogCategories)], // Categoria aleatória
+                'category_id' => $blogCategories[array_rand($blogCategories)], // Random category
             ]);
 
-            // Criar a página associada
+            // Create the associated page
             Page::create([
                 'post_id' => $post->id,
                 'user_id' => $userId,
