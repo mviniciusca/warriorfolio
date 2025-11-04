@@ -30,7 +30,7 @@ Warriorfolio is a powerful, modular portfolio and blog platform that empowers us
 
 ## What's New in v2.2.0
 
-**Release Date:** November 4, 2025
+November, 2025
 
 ### Major Features
 - **Juno Theme** - The first official theme for Warriorfolio 2 with tabbed interface
