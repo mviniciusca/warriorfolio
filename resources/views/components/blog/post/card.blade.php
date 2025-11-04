@@ -1,46 +1,64 @@
 @props(['item' => null])
 
-<div wire:key="{{ $item->id }}">
-    <a class="hover:opacity-80 active:opacity-20 transition-all duration-100"
-        href="{{ config('app.url', env('APP_URL')) . '/' . $item->slug }}">
+<article wire:key="{{ $item->id }}" class="group">
+    <a class="block" href="{{ config('app.url', env('APP_URL')) . '/' . $item->slug }}">
         <div
-            class="flex w-full justify-between overflow-hidden border-b border-b-secondary-200/50 py-6 dark:border-b-secondary-800/50">
-            <div class="w-2/3">
-                <div class="text-md mb-2 font-bold leading-tight tracking-tighter md:text-lg">
-                    {{ Str::words($item->title, 18, '...') }}
+            class="flex gap-6 border-b border-gray-100 py-8 transition-all duration-200 hover:bg-gray-50/50 dark:border-gray-800 dark:hover:bg-gray-900/20">
+            <div class="flex-1 space-y-3">
+                <!-- Author and category info -->
+                <div class="flex items-center gap-2 text-sm">
+                    <span
+                        class="saturn-badge px-2 py-1 text-xs font-medium border saturn-border-accent saturn-bg-accent">
+                        {{ $item->post->category->name }}
+                    </span>
+                    <span class="text-gray-400 dark:text-gray-600">·</span>
+                    <time class="text-gray-500 dark:text-gray-400" datetime="{{ $item->created_at }}">
+                        {{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}
+                    </time>
                 </div>
-                <p class="text-xs md:text-sm">
-                    {{ Str::words(strip_tags(preg_replace('/<figure\b[^>]*>.*?<\/figure>/s', '', $item->post->content)), 15, '...') }}
+
+                <!-- Title -->
+                <h2
+                    class="saturn-h3 font-bold leading-tight text-gray-900 transition-colors duration-200 group-hover:text-gray-700 dark:text-gray-100 dark:group-hover:text-gray-300">
+                    {{ Str::words($item->title, 12, '...') }}
+                </h2>
+
+                <!-- Excerpt -->
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    {{ Str::words(strip_tags(preg_replace('#<figure\b[^>]*>.*?</figure>#is', '', $item->post?->content
+                        ?? '')), 20, '...') }}
                 </p>
-                <span class="mt-4 flex items-center justify-between font-mono uppercase text-xs">
+
+                <!-- Reading time and engagement -->
+                <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
                     <span class="flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
-                            stroke="currentColor" class="size-4">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        <p>{{ $item->post->category->name }}</p>
+                        {{ ceil(str_word_count(strip_tags($item->post?->content ?? '')) / 200) }} min read
                     </span>
-                    <span class="flex items-center gap-1 font-mono text-xs uppercase">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
-                            stroke="currentColor" class="size-4">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-                        </svg>
-                        <p>{{ $item->created_at->diffForHumans() . ' • ' . \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}
-                        </p>
-                    </span>
-                </span>
+                </div>
             </div>
-            <div
-                class="flex h-20 w-20 justify-center rounded-lg border border-secondary-200 bg-secondary-50 object-center items-center p-4 text-center dark:border-secondary-800 dark:bg-secondary-950 lg:h-24 lg:w-24">
-                @if ($item->post->img_cover)
-                    <x-curator-glider class="rounded-lg object-cover" :media="$item->post->img_cover" />
-                @else
-                    <img class="rounded-lg opacity-50 grayscale filter dark:invert"
-                        src="{{ asset('img/core/logo-app.svg') }}" />
-                @endif
+
+            <!-- Image -->
+            <div class="flex-shrink-0">
+                <div
+                    class="h-24 w-24 overflow-hidden rounded-md saturn-bg-accent transition-transform duration-200 group-hover:scale-105  sm:h-28 sm:w-28">
+                    @if ($item->post->img_cover)
+                    <x-curator-glider class="h-full w-full object-cover" :media="$item->post->img_cover" />
+                    @else
+                    <div class="flex h-full w-full items-center justify-center">
+                        <svg class="h-8 w-8 text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    @endif
+                </div>
             </div>
         </div>
     </a>
-</div>
+</article>

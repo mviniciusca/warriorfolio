@@ -5,6 +5,7 @@ namespace App\Livewire\Mail;
 use App\Models\Mail;
 use App\Models\User;
 use App\Notifications\NewMailNotification;
+use App\Traits\WithRecaptcha;
 use Exception;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -19,6 +20,7 @@ use Livewire\Component;
 class CreateMail extends Component implements HasForms
 {
     use InteractsWithForms;
+    use WithRecaptcha;
 
     public ?array $data = [];
 
@@ -27,6 +29,7 @@ class CreateMail extends Component implements HasForms
     public function mount(): void
     {
         $this->form->fill();
+        $this->initializeWithRecaptcha();
     }
 
     public function form(Form $form): Form
@@ -88,6 +91,10 @@ class CreateMail extends Component implements HasForms
 
     public function create(): void
     {
+        if (! $this->verifyRecaptcha()) {
+            return;
+        }
+
         $data = $this->form->getState();
 
         try {
@@ -96,6 +103,10 @@ class CreateMail extends Component implements HasForms
                 ->title(__('Message sent!'))
                 ->success()
                 ->send();
+
+            $this->reset(['data', 'recaptchaToken']);
+            $this->form->fill();
+            $this->dispatch('formSubmitted');
         } catch (Exception $e) {
             Notification::make()
                 ->title(__('Error on sent message!'))
@@ -112,10 +123,6 @@ class CreateMail extends Component implements HasForms
                 Log::error($e->getMessage());
             }
         }
-
-        $this->reset('data');
-
-        $this->form->model($record)->saveRelationships();
     }
 
     public function render(): View

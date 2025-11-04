@@ -1,24 +1,18 @@
-{{-- Notes (Blog) --}}
+@props(['featuredPost', 'posts'])
 
 @if($module_blog ?? false)
-    <x-core.layout :with_padding="false">
-        <div class="mx-auto my-16">
-            <div class="flex flex-wrap">
-                <div class="order-2 mx-auto w-full lg:order-1 lg:w-3/4 lg:pr-24">
-                    <x-blog.homepage />
+<x-core.layout>
+    <div class="min-h-screen">
+        <x-blog.partials.header :$posts />
+        <div class="mx-auto py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-20">
+                <!-- Main Content -->
+                <div class="lg:col-span-2 space-y-12">
+                    <x-blog.partials.main-content :$posts :$featured_post />
                 </div>
-                <div class="order-1 hidden w-full lg:order-2 lg:block lg:w-1/4 lg:pl-8">
-                    <aside class="px-4 text-center">
-                        @if(($profile_widget_status ?? null) ?? true)
-                            <x-about.profile :$profile />
-                        @endif
-                        <x-blog.widget.counter />
-                    </aside>
-                </div>
+                <x-blog.partials.sidebar />
             </div>
-    </x-core.layout>
-@else
-    <div class="grid h-screen items-center">
-        <x-ui.empty-section :message="__('Ops! Notes not available yet!')" :auth="__('Activate Notes on your Dashboard!')" />
+        </div>
     </div>
+</x-core.layout>
 @endif

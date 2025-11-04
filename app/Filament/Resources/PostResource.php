@@ -6,6 +6,7 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Models\Category;
 use App\Models\Page;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
@@ -69,13 +70,15 @@ class PostResource extends Resource
                         Hidden::make('user_id')
                             ->dehydrated()
                             ->default(Auth::user()?->id),
+                        Hidden::make('post_id')
+                            ->dehydrated(),
                         TextInput::make('title')
                             ->label(__('Post Title'))
                             ->live(onBlur: true)
                             ->helperText(__('Title of your post.'))
                             ->prefixIcon('heroicon-o-pencil')
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug',
-                                env('APP_BLOG_PATH').Str::slug($state).env('APP_BLOG_URL_END')))
+                                config('warriorfolio.app_blog_path').Str::slug($state).config('warriorfolio.app_blog_url_end')))
                             ->required()
                             ->maxLength(255),
                         Hidden::make('style')
@@ -84,12 +87,16 @@ class PostResource extends Resource
                             ->dehydrated()
                             ->default([['data' => [], 'type' => 'blog.post']])
                             ->required(),
+                        Hidden::make('is_active')
+                            ->dehydrated()
+                            ->default(true),
                         Group::make()
                             ->relationship('post')
                             ->schema([
                                 Textarea::make('resume')
                                     ->helperText(__('Optional'))
-                                    ->label(__('Short Description')),
+                                    ->label(__('Short Description'))
+                                    ->rows(3),
                                 RichEditor::make('content')
                                     ->required()
                                     ->helperText(__('Content of your post.'))
@@ -108,13 +115,10 @@ class PostResource extends Resource
                     ->columnSpan(1)
                     ->relationship('post')
                     ->schema([
-                        Hidden::make('user_id')
-                            ->dehydrated()
-                            ->default(Auth::user()->id),
                         Section::make(__('Featured Image'))
                             ->icon('heroicon-o-photo')
                             ->schema([
-                                CuratorPicker::make('img_cover')
+                                FileUpload::make('img_cover')
                                     ->helperText(__('Image cover. Optional.'))
                                     ->label(__('Cover')),
                             ]),
@@ -149,18 +153,68 @@ class PostResource extends Resource
                                                     ->label(__('Slug')),
                                             ]),
                                     ])
-                                    ->createOptionUsing(fn (array $data) => Category::create($data + [
-                                        'is_blog'    => true,
-                                        'is_project' => false,
-                                    ])
-                                        ->getKey()),
+                                    ->createOptionUsing(function (array $data): int {
+                                        $category = Category::create([
+                                            'name'       => $data['name'],
+                                            'slug'       => $data['slug'],
+                                            'is_blog'    => true,
+                                            'is_project' => false,
+                                            'is_active'  => true,
+                                        ]);
+
+                                        return $category->getKey();
+                                    }),
                                 Toggle::make('is_active')
-                                    ->label(__('Status'))
-                                    ->required()
                                     ->label(__('Published'))
                                     ->helperText(__('Visibility status of your post.'))
-                                    ->default(true),
+                                    ->default(true)
+                                    ->live()
+                                    ->afterStateUpdated(fn (Set $set, ?bool $state) => $set('../../is_active', $state)),
+                                Toggle::make('is_featured')
+                                    ->label(__('Featured'))
+                                    ->helperText(__('Mark this post as featured.'))
+                                    ->default(false),
                             ]),
+                    ]),
+                Section::make(__('Password Protection'))
+                    ->columnSpan(3)
+
+                    ->icon('heroicon-o-key')
+                    ->columns(1)
+                    ->schema([
+                        Toggle::make('is_password_protected')
+                            ->label(__('Password Protected'))
+                            ->helperText(__('Require a password to view this post'))
+                            ->reactive(),
+                        TextInput::make('access_password')
+                            ->label(__('Access Password'))
+                            ->revealable()
+                            ->password()
+                            ->helperText(function ($record) {
+                                if ($record && ! empty($record->access_password)) {
+                                    return __('Password is set. Enter a new password to change it, or leave empty to keep current password.');
+                                }
+
+                                return __('Password required to access this post.');
+                            })
+                            ->placeholder(function ($record) {
+                                if ($record && ! empty($record->access_password)) {
+                                    return '••••••••••••••••';
+                                }
+
+                                return __('Enter password');
+                            })
+                            ->visible(fn ($get) => $get('is_password_protected'))
+                            ->dehydrateStateUsing(function ($state, $record) {
+                                if (empty($state) && $record) {
+                                    return $record->access_password;
+                                }
+
+                                return filled($state) ? bcrypt($state) : null;
+                            })
+                            ->afterStateHydrated(function ($component, $state, $record) {
+                                $component->state('');
+                            }),
                     ]),
             ]);
     }
@@ -190,6 +244,20 @@ class PostResource extends Resource
                 ToggleColumn::make('post.is_active')
                     ->alignCenter()
                     ->label(__('Published')),
+                ToggleColumn::make('post.is_featured')
+                    ->alignCenter()
+                    ->label(__('Featured')),
+                ToggleColumn::make('is_password_protected')
+                    ->label(__('Password Protected'))
+                    ->alignCenter()
+                    ->sortable(),
+                TextColumn::make('access_password')
+                    ->label(__('Has Password'))
+                    ->badge()
+                    ->alignCenter()
+                    ->formatStateUsing(fn ($state) => $state ? __('Yes') : __('No'))
+                    ->color(fn ($state) => $state ? 'success' : 'gray')
+                    ->icon(fn ($state) => $state ? 'heroicon-o-key' : 'heroicon-o-minus'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

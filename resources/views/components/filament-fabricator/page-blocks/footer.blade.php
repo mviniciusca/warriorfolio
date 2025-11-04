@@ -1,3 +1,3 @@
 @aware(['page'])
 
-<x-footer.section />
+<x-themes.common.footer />

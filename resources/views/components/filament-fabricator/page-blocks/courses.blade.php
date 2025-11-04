@@ -1,3 +1,3 @@
 @aware(['page'])
 
-<x-about.section />
+<x-themes.default.about />

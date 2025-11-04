@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Core;
 use App\Models\Maintenance;
+use App\View\Components\Ui\Quickbar;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 

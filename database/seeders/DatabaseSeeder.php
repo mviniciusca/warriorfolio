@@ -14,6 +14,7 @@ use App\Models\Setting;
 use App\Models\User;
 use Database\Seeders\DocumentationPageSeeder;
 use Database\Seeders\LandingPageSeeder;
+use Database\Seeders\SectionSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -50,6 +51,9 @@ class DatabaseSeeder extends Seeder
             DocumentationPageSeeder::class,
             BlogSeeder::class,
             WelcomeNoteSeeder::class,
+            BlogPostSeeder::class,
+            SectionSeeder::class,
+            HeroSectionSeeder::class,
         ]);
     }
 }

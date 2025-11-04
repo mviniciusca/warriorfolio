@@ -7,6 +7,7 @@ use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Model;
 
 class EditPost extends EditRecord
 {
@@ -15,6 +16,20 @@ class EditPost extends EditRecord
     public function getTitle(): string | Htmlable
     {
         return __('Edit Note');
+    }
+
+    protected function handleRecordUpdate(Model $record, array $data): Model
+    {
+        // Se há dados do post no relacionamento, atualizá-los separadamente
+        if (isset($data['post']) && is_array($data['post']) && $record->post) {
+            $record->post->update($data['post']);
+            unset($data['post']);
+        }
+
+        // Atualizar a página
+        $record->update($data);
+
+        return $record;
     }
 
     protected function getHeaderActions(): array

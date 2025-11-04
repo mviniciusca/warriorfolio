@@ -13,6 +13,26 @@ class EditProject extends EditRecord
 {
     protected static string $resource = ProjectResource::class;
 
+    protected function getSteps(): array
+    {
+        return [
+            'Project Information' => [
+                'icon'   => 'heroicon-o-rocket-launch',
+                'schema' => [
+                    // Just for the wizard steps visualization; complete form is in tabs
+                ],
+            ],
+            'Media & Categorization' => [
+                'icon'   => 'heroicon-o-photo',
+                'schema' => [],
+            ],
+            'Publication' => [
+                'icon'   => 'heroicon-o-eye',
+                'schema' => [],
+            ],
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [

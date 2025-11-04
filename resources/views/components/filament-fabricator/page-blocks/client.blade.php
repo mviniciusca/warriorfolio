@@ -1,3 +1,3 @@
 @aware(['page'])
 
-<x-client.section />
+<x-themes.default.clients />

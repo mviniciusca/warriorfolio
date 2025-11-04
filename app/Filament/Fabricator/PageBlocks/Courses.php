@@ -3,7 +3,6 @@
 namespace App\Filament\Fabricator\PageBlocks;
 
 use App\Forms\Components\Core\Info;
-use App\Models\Profile;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;

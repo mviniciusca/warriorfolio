@@ -3,12 +3,8 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
-use Filament\Actions;
-use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;
@@ -22,12 +18,12 @@ class EditSecurity extends EditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('Account Security Manager');
+        return __('Account');
     }
 
     public function getTitle(): string | Htmlable
     {
-        return __('Account Security Manager');
+        return __('Account');
     }
 
     public function getSubheading(): string | Htmlable | null
@@ -66,30 +62,37 @@ class EditSecurity extends EditRecord
                 ->description('This section is used to manage your account password. This affects your login password after reload the page.')
                 ->icon('heroicon-o-lock-closed')
                 ->schema([
+                    TextInput::make('current_password')
+                        ->password()
+                        ->required()
+                        ->label('Current Password')
+                        ->revealable()
+                        ->helperText('Please enter your current password.')
+                        ->rules(['current_password']),
                     TextInput::make('password')
                         ->password()
                         ->confirmed()
-                        ->regex('/^\S+$/')
+                        ->regex('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,64}$/')
                         ->validationMessages([
                             'confirmed' => 'The password confirmation does not match.',
-                            'regex'     => 'The password must not contain any whitespace.',
+                            'regex'     => 'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character.',
                         ])
                         ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
                         ->dehydrated(fn (?string $state): bool => filled($state))
-                        ->label('Password')
-                        ->minLength(6)
-                        ->maxLength(15)
+                        ->label('New Password')
+                        ->minLength(8)
+                        ->maxLength(64)
                         ->revealable()
-                        ->helperText('Password must be at least 6 characters long and no more than 15 characters long.'),
+                        ->helperText('Password must be 8-64 characters long and include uppercase, lowercase, numbers and special characters.'),
                     TextInput::make('password_confirmation')
                         ->password()
                         ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
                         ->dehydrated(fn (?string $state): bool => filled($state))
-                        ->label('Confirm Password')
+                        ->label('Confirm New Password')
                         ->revealable()
-                        ->helperText('Please confirm your password.')
-                        ->minLength(6)
-                        ->maxLength(15),
+                        ->helperText('Please confirm your new password.')
+                        ->minLength(8)
+                        ->maxLength(64),
                 ])->columns(2),
         ]);
     }

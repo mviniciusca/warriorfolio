@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Dashboard;
 use App\Models\Setting;
 use Awcodes\Curator\CuratorPlugin;
 use Filament\Http\Middleware\Authenticate;
@@ -30,9 +31,9 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->breadcrumbs(true)
             ->login()
             ->maxContentWidth('Full')
-            ->breadcrumbs(false)
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandLogo(asset('img/core/logo-app.svg'))
@@ -43,11 +44,6 @@ class AdminPanelProvider extends PanelProvider
                     ->url(env('APP_URL'), shouldOpenInNewTab: true)
                     ->icon('heroicon-o-arrow-up-right')
                     ->sort(-1),
-                NavigationItem::make(__('Hero Section'))
-                    ->icon('heroicon-o-bolt')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit-hero-section')
-                    ->group(__('Website Design'))
-                    ->sort(0),
                 NavigationItem::make(__('Background & Logo'))
                     ->icon('heroicon-o-paint-brush')
                     ->url('/admin/settings/'.$this->getSetting().'/edit-appearance')
@@ -58,26 +54,6 @@ class AdminPanelProvider extends PanelProvider
                     ->url('/admin/settings/'.$this->getSetting().'/edit-navigation')
                     ->group(__('Website Design'))
                     ->sort(1),
-                NavigationItem::make(__('About Section'))
-                    ->icon('heroicon-o-user')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit-about-section')
-                    ->group(__('App Sections'))
-                    ->sort(1),
-                NavigationItem::make(__('Projects Section'))
-                    ->icon('heroicon-o-rocket-launch')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit-portfolio-section')
-                    ->group(__('App Sections'))
-                    ->sort(2),
-                NavigationItem::make(__('Contact Section'))
-                    ->icon('heroicon-o-envelope')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit-contact-section')
-                    ->group(__('App Sections'))
-                    ->sort(3),
-                NavigationItem::make(__('More Sections'))
-                    ->icon('heroicon-o-arrow-up-right')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit')
-                    ->group(__('App Sections'))
-                    ->sort(3),
                 NavigationItem::make(__('Log Viewer'))
                     ->icon('heroicon-o-arrow-up-right')
                     ->url('/admin/logs')
@@ -99,6 +75,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary'   => Color::Purple,
                 'secondary' => Color::Zinc,
+                'gray'      => Color::Zinc,
             ])
             ->navigationGroups([
                 'Core Features',
@@ -107,14 +84,11 @@ class AdminPanelProvider extends PanelProvider
                 'Settings',
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                // Widgets\AccountWidget::class,
-                // Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

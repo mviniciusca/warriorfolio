@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->text('content')->nullable();
             $table->text('resume')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->boolean('is_featured')->default(false);
             $table->string('style')->default('default');
             $table->string('img_cover')->nullable();
             $table->timestamps();

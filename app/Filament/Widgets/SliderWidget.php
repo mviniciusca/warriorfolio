@@ -13,6 +13,13 @@ class SliderWidget extends BaseWidget
 {
     protected static ?int $sort = 7;
 
+    protected int|string|array $columnSpan = 2;
+
+    protected function getColumns(): int|array
+    {
+        return 3; // Total de 3 colunas disponíveis
+    }
+
     public function table(Table $table): Table
     {
         return $table
@@ -23,8 +30,7 @@ class SliderWidget extends BaseWidget
                     ->orderBy('created_at', 'desc')
                     ->take(5)
             )
-            ->heading(__('Active Sliders'))
-            ->description(__('Active sliders in your application.'))
+            ->heading(__('Sliders'))
             ->headerActions(
                 [
                     ViewAction::make()

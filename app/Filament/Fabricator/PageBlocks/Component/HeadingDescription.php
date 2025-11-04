@@ -7,8 +7,12 @@ use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Tabs\Tab;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Illuminate\Support\Str;
@@ -19,100 +23,113 @@ class HeadingDescription extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('component.heading-description')
-            ->label(__('Module Creator'))
+            ->label(__('Page Heading'))
             ->icon('heroicon-o-cube')
             ->schema([
-                Section::make(__('Module Creator'))
-                    ->description(__('Create a module with a heading and description.'))
-                    ->icon('heroicon-o-cube')
-                    ->collapsed()
-                    ->columns(4)
-                    ->schema([
-                        Group::make()
-                            ->columns(4)
-                            ->columnSpanFull()
+                Tabs::make('heading_configuration')
+                    ->tabs([
+                        Tab::make('content')
+                            ->label(__('Content'))
+                            ->columns(2)
+                            ->icon('heroicon-o-document-text')
                             ->schema([
-                                Section::make()
-                                    ->description(__('Settings'))
-                                    ->icon('heroicon-o-cog-6-tooth')
-                                    ->collapsed()
-                                    ->columns(3)
-                                    ->schema([
-                                        Group::make()
-                                            ->schema([
-                                                Checkbox::make('is_active')
-                                                    ->label(__('Show Module'))
-                                                    ->helperText(__('Show or hide this module.'))
-                                                    ->default(true),
-                                                Checkbox::make('is_heading_middle')
-                                                    ->label(__('Align to Middle'))
-                                                    ->helperText(__('Align the heading to the middle when Featured Image is Active.'))
-                                                    ->default(true),
-                                                Checkbox::make('is_heading_full_width')
-                                                    ->label(__('Full Width Heading'))
-                                                    ->helperText(__('Make the heading full width.'))
-                                                    ->default(false),
-                                                Checkbox::make('is_center')
-                                                    ->label(__('Align to Center'))
-                                                    ->helperText(__('Align the content to the center.'))
-                                                    ->default(false),
-                                                Checkbox::make('is_filled')
-                                                    ->label(__('Fill Section Background'))
-                                                    ->helperText(__('Fill the section background with a color.'))
-                                                    ->default(false),
-                                            ]),
-                                        Group::make()
-                                            ->columnSpan(2)
-                                            ->schema([
-                                                TextInput::make('module_id')
-                                                    ->live(true)
-                                                    ->label(__('Module Name'))
-                                                    ->prefixIcon('heroicon-o-hashtag')
-                                                    ->maxLength(255)
-                                                    ->afterStateUpdated(function (Get $get, Set $set, ?string $state) {
-                                                        if ($state !== null) {
-                                                            $set('module_id', Str::slug($state));
-                                                        }
-                                                    })
-                                                    ->placeholder(__('slug generated automatically'))
-                                                    ->helperText(__('You can use this ID to link to this module in navigation or other pages.')),
-                                            ]),
-                                    ]),
+                                TextInput::make('module_name')
+                                    ->prefixIcon('heroicon-o-hashtag')
+                                    ->label(__('Module Name'))
+                                    ->helperText(__('Identifier for this module (not shown to visitors)')),
+
+                                TextInput::make('title')
+                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                    ->label(__('Title'))
+                                    ->helperText(__('Main heading text displayed on the page'))
+                                    ->visible(fn (Get $get): bool => $get('is_heading_visible'))
+                                    ->required(fn (Get $get): bool => $get('is_heading_visible')),
+
+                                Textarea::make('subtitle')
+                                    ->columnSpanFull()
+                                    ->label(__('Subtitle'))
+                                    ->helperText(__('Additional text displayed below the title'))
+                                    ->visible(fn (Get $get): bool => $get('is_heading_visible')),
                             ]),
 
-                        TextInput::make('heading')
-                            ->label(__('Heading Title'))
-                            ->helperText(__('HTML Allowed. Use class "tl" to highlight a word.'))
-                            ->columnSpanFull()
-                            ->prefixIcon('heroicon-o-pencil')
-                            ->placeholder('hackable ♠')
-                            ->maxLength(255)
-                            ->required(),
-                        RichEditor::make('content')
-                            ->label(__('Subtitle / Main Content'))
-                            ->helperText(__('Short description or main content.'))
-                            ->columnSpanFull()
-                            ->maxLength(6000),
-                        Group::make()
-                            ->columnSpanFull()
+                        Tab::make('appearance')
+                            ->label(__('Appearance'))
+                            ->columns(4)
+                            ->icon('heroicon-o-swatch')
                             ->schema([
-                                Group::make()
-                                    ->columns(2)
-                                    ->schema([
-                                        Checkbox::make('is_featured_image_active')
-                                            ->label(__('Show Featured Image'))
-                                            ->helperText(__('Show or hide the featured image.')),
-                                        FileUpload::make('featured_image')
-                                            ->imageEditor()
-                                            ->imageEditorAspectRatios([
-                                                '16:9' => '16:9',
-                                                '4:3'  => '4:3',
-                                            ])
-                                            ->label(__('Featured Image')),
-                                    ]),
+                                Toggle::make('is_active')
+                                    ->label(__('Active'))
+                                    ->helperText(__('Enable or disable this section'))
+                                    ->default(true)
+                                    ->live(),
+
+                                Toggle::make('is_heading_visible')
+                                    ->label(__('Show Heading'))
+                                    ->helperText(__('Display the title and subtitle'))
+                                    ->default(true)
+                                    ->live(),
+
+                                Toggle::make('is_centered')
+                                    ->label(__('Center Content'))
+                                    ->helperText(__('Align content to the center instead of left'))
+                                    ->default(false)
+                                    ->live(),
+
+                                Toggle::make('with_padding')
+                                    ->label(__('Add Padding'))
+                                    ->helperText(__('Add extra space around the content'))
+                                    ->default(false)
+                                    ->live(),
+                            ]),
+
+                        Tab::make('background')
+                            ->columns(2)
+                            ->label(__('Background'))
+                            ->icon('heroicon-o-sparkles')
+                            ->schema([
+                                Toggle::make('is_filled')
+                                    ->label(__('Use Background Fill'))
+                                    ->helperText(__('Add a background color to this section'))
+                                    ->live(),
+
+                                Toggle::make('is_section_filled_inverted')
+                                    ->label(__('Invert Fill Colors'))
+                                    ->helperText(__('Swap the background and text colors'))
+                                    ->visible(fn (Get $get): bool => $get('is_filled'))
+                                    ->live(),
+                            ]),
+
+                        Tab::make('button')
+                            ->columns(4)
+                            ->label(__('Button'))
+                            ->icon('heroicon-o-cursor-arrow-rays')
+                            ->schema([
+                                TextInput::make('button_header')
+                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                    ->label(__('Button Text'))
+                                    ->helperText(__('Text to display on the button')),
+
+                                TextInput::make('button_icon')
+                                    ->prefixIcon('heroicon-o-cube')
+                                    ->label(__('Button Icon'))
+                                    ->helperText(__('Enter a Ionicon name (e.g., heart-outline)')),
+
+                                Select::make('button_style')
+                                    ->label(__('Button Style'))
+                                    ->helperText(__('Choose a style for the button'))
+                                    ->options([
+                                        'outlined' => __('Outlined'),
+                                        'filled'   => __('Filled'),
+                                    ])
+                                    ->default('outlined'),
+
+                                TextInput::make('button_url')
+                                    ->prefixIcon('heroicon-o-link')
+                                    ->label(__('Button URL'))
+                                    ->helperText(__('Where the button should link to'))
+                                    ->url(),
                             ]),
                     ]),
-
             ]);
     }
 

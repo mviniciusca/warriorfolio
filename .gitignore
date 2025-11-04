@@ -19,3 +19,5 @@ yarn-error.log
 /.vscode
 .phpctlrc
 .php-cs-fixer.php
+CHANGELOGS.md
+/docs

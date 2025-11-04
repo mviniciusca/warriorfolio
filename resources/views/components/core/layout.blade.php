@@ -9,48 +9,41 @@ This is the default layout component for the website. Used for website and compo
 
 @aware(['page'])
 @props([
-    'module_title' => null,
-    'module_subtitle' => null,
-    'button_url' => null,
-    'button_header' => null,
-    'with_padding' => true,
-    'is_filled' => null,
-    'icon' => 'arrow-forward-sharp',
-    'is_center' => true,
-    'module_name' => null,
-    'is_section_filled_inverted' => false,
+// Section Header Props
+'button_header' => null,
+'button_icon' => null,
+'button_style' => null,
+'button_url' => null,
+'icon_before' => null,
+'is_centered' => null,
+'is_filled' => false,
+'is_heading_visible' => false,
+'is_section_filled_inverted' => false,
+'module_name' => null,
+'module_slug' => null ?? 'section' . rand(1, 10),
+'style' => 'outlined',
+'subtitle' => null,
+'title' => null,
+'with_padding' => true,
+'no_padding' => false,
+// Layout Props
+'container' => settings('design.container_width', 'max-w-7xl'),
+'px_padding' => true,
 ])
 
-<div id="{{ $module_name ?? 'app-' . rand(1, 10) }}"
-    class="{{ $with_padding ? 'py-12 md:py-16 lg:py-20' : 'py-0' }}
-    {{ $is_section_filled_inverted ? 'bg-secondary-950 text-secondary-300 dark:bg-secondary-50 dark:text-secondary-900' : '' }}
-    {{ $is_filled ? 'section-filled duration-300 transition-all' : '' }}
-    px-4">
-
-    <div class="mx-auto max-w-7xl">
-        @if ($module_title)
-            <div class="{{ $button_header ? 'flex justify-between flex-initial' : '' }} py-4">
-                <p class="dg header-title {{ $is_center ? 'text-center' : 'text-left' }}">{{ $module_title }}</p>
-                @if ($button_header)
-                    @if ($button_url)
-                        <a href="{{ $button_url }}">
-                    @endif
-                    <x-ui.button :$icon :style="'outlined'">
-                        {!! $button_header !!}
-                    </x-ui.button>
-                @endif
-                @if ($button_url)
-                    </a>
-                @endif
-            </div>
-        @endif
-        @if ($module_subtitle)
-            <div class="subtitle mb-12 {{ $is_center ? 'text-center max-w-4xl' : 'text-left w-full' }} subtitle text-sm">
-                {{ $module_subtitle }}
-            </div>
-        @endif
-        <div id="app-container-{{ rand(1, 10) }}">
-            {!! $slot !!}
+<div class="{{ $no_padding ? 'py-0' : ($with_padding ? 'saturn-y-section' : ($is_heading_visible ? 'pb-16' : 'py-6')) }}
+{{ $is_section_filled_inverted ? 'saturn-bg-inverse saturn-text-inverse' : '' }}
+ {{ $is_filled ? 'saturn-bg-accent duration-300 transition-all' : '' }}
+  {{ $px_padding ? 'saturn-x-section' : '' }}" id="{{ $module_name ?? '' }}">
+    <div class="{{ $container }} mx-auto">
+        <div id="{{ $module_slug }}">
+            {{-- Heading --}}
+            @if($is_heading_visible)
+            <x-core.partials.section-heading :$icon_before :$is_section_filled_inverted :$title :$subtitle
+                :$button_header :$button_icon :$button_style :$button_url :$is_centered :$is_filled />
+            @endif
+            {{-- Content --}}
+            {{ $slot }}
         </div>
     </div>
 </div>

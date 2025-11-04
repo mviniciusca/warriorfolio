@@ -9,11 +9,18 @@ use Flowframe\Trend\TrendValue;
 
 class SubscriberWidget extends ChartWidget
 {
-    protected static ?string $heading = 'Mailing List';
+    protected static ?string $heading = 'Subscribers Graph';
 
-    protected static ?string $description = 'Your mailing list subscribers.';
+    protected static ?int $sort = 8;  // Mudando para 8 para ficar logo após o SliderWidget
 
-    protected static ?int $sort = 9;
+    protected int|string|array $columnSpan = 'full';
+
+    protected static ?string $maxHeight = '320px';
+
+    protected function getColumns(): int|array
+    {
+        return 6; // Total de 3 colunas disponíveis
+    }
 
     protected function getData(): array
     {

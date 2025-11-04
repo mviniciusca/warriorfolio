@@ -23,4 +23,13 @@ return [
 
     /** SMTP Services */
     'smtp_services' => env('SMTP_SERVICES', 'false'),
+
+    /** GitHub API */
+    'github_api_token'              => env('GITHUB_API_TOKEN', null),
+    'github_api_url'                => env('GITHUB_API_URL', 'https://api.github.com'),
+    'github_api_url_repo'           => env('GITHUB_API_URL_REPO', 'https://api.github.com/repos'),
+    'github_username'               => env('GITHUB_USERNAME', 'mviniciusca'),
+    'github_show_only_repositories' => env('GITHUB_SHOW_ONLY_REPOSITORIES', 'warriorfolio'),
+    'github_repo_quantity'          => env('GITHUB_REPO_QUANTITY', 9),
+
 ];

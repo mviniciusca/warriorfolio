@@ -37,7 +37,10 @@ class Counter extends Component
     public function getData(): array
     {
         return Category::withCount(['post' => function ($query) {
-            $query->whereHas('page');
+            $query->where('is_active', true)
+                ->whereHas('page', function ($pageQuery) {
+                    $pageQuery->where('is_active', true);
+                });
         }])
             ->where('is_active', true)
             ->limit(10)

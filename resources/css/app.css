@@ -1,101 +1,117 @@
-/** Animate CSS **/
-@import '../../node_modules/animate.css/animate.css';
+/*
+ * ========================================
+ * WARRIORFOLIO - MAIN STYLESHEET
+ * ========================================
+ *
+ * Table of Contents:
+ * 1. Imports & Base
+ * 2. Animations & Keyframes
+ * 3. Saturn UI Components
+ * 4. Layout Components
+ * 5. Form Components
+ * 6. Content Components
+ * 7. Utility Classes
+ * ========================================
+ */
 
-/* Default Theme CSS */
+/* ========================================
+ * 1. IMPORTS & BASE
+ * ======================================== */
+@import '../../node_modules/animate.css/animate.css';
+@import url('../css/saturn-ui.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/** Background Animation FX **/
+[x-cloak] {
+    display: none !important;
+}
 
+/* ========================================
+ * 2. ANIMATIONS & KEYFRAMES
+ * ======================================== */
+
+/* Background Animations */
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.animation-bg-spin {
-    animation: spin 60s linear infinite;
-}
-
-.animate-opacity {
-    animation: animateOpacity 2s ease-in;
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes animateOpacity {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0.5;
-    }
+    0% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
 
 @keyframes moveDotsLeft {
-    0% {
-        background-position: 0% 0%;
-    }
-
-    100% {
-        background-position: 100% 0%;
-    }
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
 }
 
-.bg-dots {
-    background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
-    background-size: 20px 20px;
-    animation: moveDotsLeft 60s linear infinite;
-}
-
-.dark .bg-dots {
-    background-image: radial-gradient(circle, #4b5563 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-/** Rocket Animation **/
-.rocket {
-    font-size: 42px;
-    margin-top: -50px;
-    animation: float 4s ease-in-out infinite;
-    position: relative;
-    right: 10px;
-    z-index: 2;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-
+/* Element Animations */
 @keyframes float {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-30px) rotate(2deg);
-    }
-
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(2deg); }
+    100% { transform: translateY(0) rotate(0deg); }
 }
 
 @keyframes flicker {
-    0% {
-        opacity: 0.7;
-        transform: translateX(-50%) rotate(180deg) scale(0.9);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) rotate(180deg) scale(1.1);
-    }
+    0% { opacity: 0.7; transform: translateX(-50%) rotate(180deg) scale(0.9); }
+    100% { opacity: 1; transform: translateX(-50%) rotate(180deg) scale(1.1); }
 }
 
-/** Main App **/
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); filter: blur(0); }
+    25% { transform: translateX(-4px) rotate(-1deg); filter: blur(1px); }
+    75% { transform: translateX(4px) rotate(1deg); filter: blur(1px); }
+}
+
+@keyframes spinHover {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Animation Classes */
+.animation-bg-spin { animation: spin 60s linear infinite; }
+.animate-opacity { animation: animateOpacity 2s ease-in; }
+.fade-enter { animation: fadeIn 0.5s ease forwards; }
+.fade-leave { animation: fadeOut 0.5s ease forwards; }
+/* ========================================
+ * 3. SATURN UI COMPONENTS
+ * ======================================== */
+
+/** Tabs CSS **/
+.tab-pane {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+}
+
+.tab-pane:not(.hidden) {
+    opacity: 1;
+}
+
+.tab-button {
+    position: relative;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-button.active-tab {
+    border-bottom-color: currentColor;
+}
+
+/* ========================================
+ * 4. LAYOUT COMPONENTS
+ * ======================================== */
 
 @layer base {
     html {
@@ -104,19 +120,19 @@
 
     /** Default Theme **/
     body {
-        @apply overflow-x-hidden antialiased scroll-smooth bg-white text-secondary-900 dark:bg-secondary-950 dark:text-secondary-300
+        @apply overflow-x-hidden antialiased scroll-smooth saturn-text saturn-bg;
     }
-
     .section-filled {
-        @apply bg-secondary-50 dark:bg-black;
+        @apply saturn-bg-accent;
     }
-
-    /** Saturn UI **/
+    .section-filled-inverse {
+        @apply saturn-bg-inverse saturn-text-inverse;
+    }
     .saturn-ui,
     .saturn-ui-primary {
-        @apply bg-black text-white dark:bg-white dark:text-black;
+        @apply saturn-text saturn-bg;
     }
-
+ss
     /** Highlighted text **/
     .text-gradient,
     .tg {
@@ -148,7 +164,7 @@
     }
 
     .hero-section-featured-border {
-        @apply p-2 mx-auto bg-white/20 dark:bg-white/20 rounded-xl shadow-xl border border-black/10 dark:border-white/10;
+        @apply p-1.5 mx-auto saturn-bg-accent saturn-border-accent rounded-lg shadow-xl border;
     }
 
     .hero-bg-overlay-default {
@@ -178,7 +194,7 @@
     }
 
     .dg {
-        @apply dark:bg-gradient-to-tr dark:from-secondary-400 dark:to-secondary-600 bg-gradient-to-tr from-secondary-400 to-secondary-700 bg-clip-text text-transparent;
+        @apply dark:bg-gradient-to-t dark:from-saturn-50 dark:to-saturn-400 bg-gradient-to-t from-saturn-500 to-saturn-800 bg-clip-text text-transparent;
     }
 
     .ht {
@@ -284,16 +300,6 @@
         @apply font-semibold;
     }
 
-    /** UI Components: Tag, Notification Tag**/
-    .tag {
-        @apply bg-primary-600 animate-pulse uppercase font-mono text-xs px-1 font-semibold text-white;
-    }
-
-    .notify {
-        @apply bg-primary-500 animate-ping lowercase w-1 h-1 absolute float-end -mt-1 rounded-full;
-
-    }
-
     /** Global Settings  **/
 
     trix-editor {
@@ -338,3 +344,270 @@
     }
 
 }
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+        filter: blur(0);
+    }
+    25% {
+        transform: translateX(-4px) rotate(-1deg);
+        filter: blur(1px);
+    }
+    75% {
+        transform: translateX(4px) rotate(1deg);
+        filter: blur(1px);
+    }
+}
+
+@keyframes spinHover {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@layer utilities {
+    .shake-animation {
+        animation: shake 0.4s ease-in-out;
+        will-change: transform, filter;
+    }
+
+    .pop-scale {
+        animation: popScale 0.3s ease-in-out;
+    }
+
+    .glow-pulse {
+        --glow-color: 59, 130, 246;
+        animation: glowPulse 0.8s ease-in-out;
+    }
+
+    .dark .glow-pulse {
+        --glow-color: 147, 197, 253;
+    }
+
+    .spin-fade {
+        animation: spinFade 0.5s ease-out;
+    }
+
+    .click-effect {
+        @apply active:scale-95 transition-transform duration-150;
+    }
+
+    .hover-spin-icon {
+        @apply transition-transform duration-300;
+    }
+
+    .hover-spin-icon svg,
+    .hover-spin-icon ion-icon {
+        animation: spinHover 2s linear infinite;
+    }
+}
+
+/** Post Content Typography - Specific rules for blog post content **/
+#post-content h1 {
+    @apply saturn-h1 mb-8 mt-12 first:mt-0;
+}
+
+#post-content h2 {
+    @apply text-2xl font-semibold saturn-text mb-6 mt-10 first:mt-0;
+}
+
+#post-content h3 {
+    @apply saturn-h3 mb-4 mt-8 first:mt-0;
+}
+
+#post-content h4 {
+    @apply saturn-h4 mb-4 mt-6 first:mt-0;
+}
+
+#post-content, #post-content p {
+    @apply mb-6 leading-loose opacity-80;
+}
+
+/* Dribbble-inspired Gallery Styles */
+.group {
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.group img {
+    transition: transform 0.3s ease;
+}
+
+#portfolio-wrapper .grid {
+    margin: 0 auto;
+    max-width: 1600px;
+}
+
+/* Category Badge */
+.group .absolute {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* Category Navigation */
+nav[aria-label="Categories"] {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+nav[aria-label="Categories"]::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Edge */
+}
+
+nav[aria-label="Categories"] button {
+    position: relative;
+    scroll-snap-align: start;
+    overflow: hidden;
+}
+
+nav[aria-label="Categories"] button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+nav[aria-label="Categories"] button:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* ========================================
+ * MARQUEE ANIMATIONS FOR LOGO SLIDER
+ * ======================================== */
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-33.33%);
+    }
+}
+
+@keyframes marquee-reverse {
+    0% {
+        transform: translateX(-33.33%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Normal speed */
+.animate-marquee {
+    animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+    animation: marquee-reverse 25s linear infinite;
+}
+
+/* Slow speed */
+.animate-marquee-slow {
+    animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-slow-reverse {
+    animation: marquee-reverse 40s linear infinite;
+}
+
+/* Fast speed */
+.animate-marquee-fast {
+    animation: marquee 15s linear infinite;
+}
+
+.animate-marquee-fast-reverse {
+    animation: marquee-reverse 15s linear infinite;
+}
+
+/* Pause on hover */
+.animate-marquee:hover,
+.animate-marquee-reverse:hover,
+.animate-marquee-slow:hover,
+.animate-marquee-slow-reverse:hover,
+.animate-marquee-fast:hover,
+.animate-marquee-fast-reverse:hover {
+    animation-play-state: paused;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .animate-marquee,
+    .animate-marquee-reverse {
+        animation-duration: 20s;
+    }
+
+    .animate-marquee-slow,
+    .animate-marquee-slow-reverse {
+        animation-duration: 30s;
+    }
+
+    .animate-marquee-fast,
+    .animate-marquee-fast-reverse {
+        animation-duration: 12s;
+    }
+}
+
+/* ========================================
+ * SWIPER MARQUEE STYLES FOR HERO LOGOS
+ * ======================================== */
+
+/** Hero Logos Marquee Styles **/
+.hero-logos-swiper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    height: auto;
+}
+
+.hero-logos-swiper .swiper-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* 32px spacing */
+    width: max-content;
+    min-width: 100%;
+    justify-content: space-around;
+}
+
+.hero-logos-swiper .swiper-slide {
+    width: auto;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    min-width: 80px; /* Minimum width for each slide */
+}
+
+/* Marquee animation keyframes */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive spacing adjustments */
+@media (max-width: 767px) {
+    .hero-logos-swiper .swiper-wrapper {
+        gap: 1rem; /* 16px on mobile */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero-logos-swiper .swiper-wrapper {
+        gap: 1.5rem; /* 24px on tablet */
+    }
+}
+

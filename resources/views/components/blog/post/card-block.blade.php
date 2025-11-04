@@ -1,46 +1,36 @@
 @props(['item'])
 
 <article
-    class="rounded-lg border border-secondary-300 bg-white/30 p-6 transition-all duration-300 hover:bg-gradient-to-br hover:from-primary-100/0 hover:to-secondary-200/30 dark:border-secondary-800 dark:bg-black/30 dark:hover:from-primary-600/0 dark:hover:to-secondary-700/30">
+    class="flex h-full flex-col rounded-lg border saturn-border bg-white/30 p-8 transition-all duration-500 hover:bg-gradient-to-br hover:from-primary-100/0 hover:to-secondary-200/20 dark:bg-black/30 dark:hover:from-saturn-600/0 dark:hover:to-saturn-700/30">
     <div class="mb-5 flex items-center justify-between">
-        <span class="flex items-center gap-1 text-sm">
-            <svg class="size-6" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
-                    stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            {{ $item->post->category->name }}
+        <span class="flex items-center gap-1 text-xs">
+            {{ ucfirst($item->post->category->name) }}
         </span>
-        <span class="text-sm">
+        <span class="text-xs">
             {{ $item->created_at->diffForHumans() }}
         </span>
     </div>
-    <h2 class="mb-2 text-xl font-bold tracking-tight md:text-lg">
+    <h2 class="mb-2 font-medium text-sm">
         <a class="hover:underline" href="{{ config('app.url', env('APP_URL')) . '/' . $item->slug }}">
-            {{ Str::words($item->title, 13, '...') }}
+            {{ Str::words($item->title, 20, '...') }}
     </h2>
-    <p class="mb-5 text-sm opacity-70">
-        {{ Str::words(
-            preg_replace('/<figure[^>]*>.*?<\/figure>/s', '', strip_tags($item->post->content, '<figure>')),
-            20,
-            '...',
-        ) }}
+    <p class="mb-5 flex-grow text-xs opacity-70">
+        {{ formatContent($item->post->content) }}
     </p>
     </a>
-    <div class="flex items-center justify-between">
+    <div class="mt-auto flex items-center justify-between">
         <div class="flex items-center space-x-2">
             @if ($item->user->profile->avatar)
-                <img class="mx-1 h-7 w-7 rounded-full" src="{{ asset('storage/' . $item->user->profile->avatar) }}" />
+            <img class="mx-1 h-7 w-7 rounded-full" src="{{ asset('storage/' . $item->user->profile->avatar) }}" />
             @else
-                <img class="mx-1 h-7 w-7 rounded-full invert-0 dark:invert"
-                    src="{{ asset('img/core/profile-picture.png') }}" />
+            <img class="mx-1 h-7 w-7 rounded-full invert-0 dark:invert"
+                src="{{ asset('img/core/profile-picture.png') }}" />
             @endif
-            <span class="text-sm font-medium">
+            <span class="text-xs font-medium">
                 {{ $item->user->name }}
             </span>
         </div>
-        <a class="inline-flex items-center text-sm font-medium hover:underline"
+        <a class="inline-flex items-center text-xs font-medium hover:underline"
             href="{{ env('APP_URL') . '/' . $item->slug }}">
             {{ __('Read more') }}
             <svg class="ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

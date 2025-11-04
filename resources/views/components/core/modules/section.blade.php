@@ -1,30 +1,42 @@
 {{-- Core Core Module Decoupling --}}
 <div>
-    @if ($hero_core ?? false)
-        <x-hero.section :global_visibility="true ?? false" />
+    @foreach ($modules as $module)
+
+    {{-- Hero Section as Coupled Module --}}
+    @if($module->slug === 'hero')
+    <x-themes.common.hero />
     @endif
 
-    @if($blog_core ?? false)
-        <x-blog.featured-posts :global_visibility="true ?? false" />
+    {{-- Blog as Coupled Module --}}
+    @if($module->slug === 'blog')
+    <x-blog.featured-posts />
     @endif
 
-    @if ($about_core ?? false)
-        <x-about.section :global_visibility="true ?? false" />
+    {{-- About Me as Coupled Module --}}
+    @if ($module->slug === 'about-me'))
+    <x-themes.default.about />
     @endif
 
-    @if ($portfolio_core ?? false)
-        <x-project.section :global_visibility="true ?? false" />
+    {{-- Portfolio as Coupled Module --}}
+    @if ($module->slug === 'portfolio')
+    <x-themes.default.projects />
     @endif
 
-    @if ($clients_core ?? false)
-        <x-client.section :global_visibility="true ?? false" />
+    {{-- Clients as Coupled Module --}}
+    @if ($module->slug === 'clients')
+    <x-themes.default.clients />
     @endif
 
-    @if ($contact_core ?? false)
-        <x-contact.section :global_visibility="true ?? false" />
+    {{-- Contact as Coupled Module --}}
+    @if ($module->slug === 'contact')
+    <x-themes.default.contact />
     @endif
 
-    @if ($newsletter_core ?? false)
-        <x-newsletter.section :global_visibility="true ?? false" />
+
+    {{-- Newsletter as Coupled Module --}}
+    @if ($module->slug === 'newsletter')
+    <x-themes.default.newsletter />
     @endif
+
+    @endforeach
 </div>

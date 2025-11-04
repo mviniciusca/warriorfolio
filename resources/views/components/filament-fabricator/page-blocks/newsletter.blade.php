@@ -1,1 +1,1 @@
-<x-newsletter.section />
+<x-themes.default.newsletter />

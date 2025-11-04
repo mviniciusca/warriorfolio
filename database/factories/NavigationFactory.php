@@ -21,12 +21,12 @@ class NavigationFactory extends Factory
                 ['url' => '/', 'name' => 'Homepage', 'target' => false, 'is_active' => true, 'is_secondary' => false],
                 ['url' => config('app.url').'/'.'#about', 'name' => 'About Me', 'target' => false, 'is_active' => true, 'is_secondary' => false],
                 ['url' => config('app.url').'/'.'#portfolio', 'name' => 'Projects', 'target' => false, 'is_active' => true, 'is_secondary' => false],
-                ['url' => config('app.url').'/blog', 'name' => 'Notes <span class="tag">new</span>', 'target' => false, 'is_active' => true, 'is_secondary' => false],
+                ['url' => config('app.url').'/blog', 'name' => 'Notes <span class="saturn-notify"></span>', 'target' => false, 'is_active' => true, 'is_secondary' => false],
                 ['url' => config('app.url').'/'.'#contact', 'name' => 'Talk', 'target' => false, 'is_active' => true, 'is_secondary' => false],
 
                 // Secondary navigation
 
-                ['url' => '/docs', 'name' => 'Docs <span class="tag">new</span>', 'target' => false, 'is_active' => true, 'is_secondary' => true],
+                ['url' => '/docs', 'name' => 'Docs <span class="saturn-notify"></span>', 'target' => false, 'is_active' => true, 'is_secondary' => true],
                 ['url' => 'https://github.com/mviniciusca/warriorfolio', 'name' => 'Github', 'target' => true, 'is_active' => true, 'is_secondary' => true],
             ],
         ];

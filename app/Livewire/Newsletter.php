@@ -21,6 +21,10 @@ class Newsletter extends Component implements HasForms
 
     public $buttonText = 'Subscribe';
 
+    public $is_section_filled_inverted = false;
+
+    public $buttonIcon = 'mail-outline';
+
     public function mount(): void
     {
         $this->form->fill();
@@ -76,6 +80,6 @@ class Newsletter extends Component implements HasForms
 
     public function render(): View
     {
-        return view('livewire.newsletter');
+        return view('livewire.newsletter', ['buttonIcon' => $this->buttonIcon, 'is_section_filled_inverted' => $this->is_section_filled_inverted]);
     }
 }

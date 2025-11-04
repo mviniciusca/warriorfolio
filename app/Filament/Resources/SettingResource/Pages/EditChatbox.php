@@ -51,7 +51,7 @@ class EditChatbox extends EditRecord
                             ->required()
                             ->label(__('Active')),
                         TextInput::make('telephone')
-                            ->prefix('+'.env('MOBILE_COUNTRY_CODE'))
+                            ->prefix('+'.config('warriorfolio.mobile_country_code', '55'))
                             ->label(__('Whatsapp Number'))
                             ->helperText(__('Your whatsapp telephone number. Just Numbers.'))
                             ->placeholder(__('Mobile Number'))
@@ -73,11 +73,9 @@ class EditChatbox extends EditRecord
                             ->helperText(__('Following the Tailwind CSS documentation'))
                             ->label(__('Animation Style')),
                         ColorPicker::make('color')
-                            ->required()
                             ->prefixIcon('heroicon-o-paint-brush')
-                            ->default('#9000c7')
                             ->placeholder('#25D366')
-                            ->helperText(__('I know that Whatsapp is green 😂 #25D366 is the hex code')),
+                            ->helperText(__('#25D366 is the hex code for the whatsapp green color')),
                         TextInput::make('icon')
                             ->label('Ionicon Name')
                             ->prefix('ion-icon')

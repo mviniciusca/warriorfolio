@@ -1,4 +1,3 @@
-{{-- Hero Section Loader --}}
 @aware(['page'])
 
-<x-hero.section />
+<x-themes.common.hero />

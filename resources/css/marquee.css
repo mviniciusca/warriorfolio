@@ -1,0 +1,73 @@
+/* Marquee Animation for Logo Slider */
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-33.33%);
+    }
+}
+
+@keyframes marquee-reverse {
+    0% {
+        transform: translateX(-33.33%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Normal speed */
+.animate-marquee {
+    animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+    animation: marquee-reverse 25s linear infinite;
+}
+
+/* Slow speed */
+.animate-marquee-slow {
+    animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-slow-reverse {
+    animation: marquee-reverse 40s linear infinite;
+}
+
+/* Fast speed */
+.animate-marquee-fast {
+    animation: marquee 15s linear infinite;
+}
+
+.animate-marquee-fast-reverse {
+    animation: marquee-reverse 15s linear infinite;
+}
+
+/* Pause on hover */
+.animate-marquee:hover,
+.animate-marquee-reverse:hover,
+.animate-marquee-slow:hover,
+.animate-marquee-slow-reverse:hover,
+.animate-marquee-fast:hover,
+.animate-marquee-fast-reverse:hover {
+    animation-play-state: paused;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .animate-marquee,
+    .animate-marquee-reverse {
+        animation-duration: 20s;
+    }
+
+    .animate-marquee-slow,
+    .animate-marquee-slow-reverse {
+        animation-duration: 30s;
+    }
+
+    .animate-marquee-fast,
+    .animate-marquee-fast-reverse {
+        animation-duration: 12s;
+    }
+}

@@ -1,3 +1,3 @@
 @aware(['page'])
 
-<x-contact.section />
+<x-themes.default.contact />

@@ -5,7 +5,7 @@ namespace App\Filament\Widgets;
 use App\Models\Core;
 use App\Models\Setting;
 use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
@@ -13,7 +13,7 @@ class CoreModuleWidget extends BaseWidget
 {
     protected int|string|array $columnSpan = 'full';
 
-    protected static ?int $sort = 10;
+    protected static ?int $sort = 6;
 
     public function table(Table $table): Table
     {
@@ -22,8 +22,7 @@ class CoreModuleWidget extends BaseWidget
                 Core::query()->select()
             )
             ->striped()
-            ->heading(__('Modules'))
-            ->description(__('See the status of the modules of your application.'))
+            ->heading(__('Module Visibility'))
             ->emptyStateIcon('heroicon-o-cpu-chip')
             ->paginated(false)
             ->headerActions(
@@ -37,38 +36,30 @@ class CoreModuleWidget extends BaseWidget
                 ]
             )
             ->columns([
-                IconColumn::make('about')
+                CheckboxColumn::make('about')
                     ->label('About')
-                    ->alignCenter()
-                    ->boolean(),
-                IconColumn::make('clients')
+                    ->alignCenter(),
+                CheckboxColumn::make('clients')
                     ->label('Clients')
-                    ->alignCenter()
-                    ->boolean(),
-                IconColumn::make('contact')
+                    ->alignCenter(),
+                CheckboxColumn::make('contact')
                     ->label('Contact')
-                    ->alignCenter()
-                    ->boolean(),
-                IconColumn::make('footer')
+                    ->alignCenter(),
+                CheckboxColumn::make('footer')
                     ->label('Footer')
-                    ->alignCenter()
-                    ->boolean(),
-                IconColumn::make('header')
+                    ->alignCenter(),
+                CheckboxColumn::make('header')
                     ->label('Header')
-                    ->alignCenter()
-                    ->boolean(),
-                IconColumn::make('hero')
+                    ->alignCenter(),
+                CheckboxColumn::make('hero')
                     ->label('Hero')
-                    ->alignCenter()
-                    ->boolean(),
-                IconColumn::make('newsletter')
+                    ->alignCenter(),
+                CheckboxColumn::make('newsletter')
                     ->label('Newsletter')
-                    ->alignCenter()
-                    ->boolean(),
-                IconColumn::make('portfolio')
+                    ->alignCenter(),
+                CheckboxColumn::make('portfolio')
                     ->label('Portfolio')
-                    ->alignCenter()
-                    ->boolean(),
+                    ->alignCenter(),
             ]);
     }
 }

@@ -1,1 +1,1 @@
-<x-project.section />
+<x-themes.default.projects />
