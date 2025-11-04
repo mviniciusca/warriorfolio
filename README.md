@@ -17,12 +17,14 @@ Developed to be 100% managed through the Control Panel, without the need for dee
 
 ### ✨ Features
 
-###### New in v2.1.5 May, 2025
+###### New in v2.2.0 November, 2025
 
 - Juno: the very first theme for Warriorfolio 2
+- Fast Search for Blog and Portfolio
 - Quickbar for easy access to all modules
 - New Portfolio Gallery
 - Dashboard Layout Redesign
+- Github Services Integration (Juno Theme)
 
 ##### Inside the box
 - 📝 Blog and Portfolio with advanced features  

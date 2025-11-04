@@ -81,7 +81,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'component.feature-list',
                         'data' => [
                             'module_title'               => 'Features',
-                            'module_subtitle'            => 'Discover the features of Warriorfolio. v3.0.0',
+                            'module_subtitle'            => 'Discover the features of Warriorfolio. v2.2.0',
                             'columns'                    => '4',
                             'is_active'                  => true,
                             'is_center'                  => false,
@@ -217,7 +217,7 @@ class DocumentationPageSeeder extends Seeder
                         'type' => 'component.feature-list',
                         'data' => [
                             'module_title'               => 'Core Components',
-                            'module_subtitle'            => 'Now that you know some of the main features and updates in this version of Warriorfolio, let\'s get our hands dirty, or rather, on the components.',
+                            'module_subtitle'            => 'Now that you know some of the main features and updates in this version of Warriorfolio.',
                             'columns'                    => '4',
                             'is_active'                  => true,
                             'is_center'                  => false,
