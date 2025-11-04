@@ -83,7 +83,11 @@ class GithubService
                         $repositories[] = $repo;
                     }
                 } else {
-                    Log::warning("Failed to fetch GitHub repo: {$this->githubUser}/{$repoName}. Status: ".$response->status());
+                    Log::warning("Failed to fetch GitHub repo: {$this->githubUser}/{$repoName}. Status: ".$response->status(), [
+                        'response'  => $response->body(),
+                        'api_url'   => $api,
+                        'has_token' => ! empty($this->githubToken),
+                    ]);
                 }
             }
 
@@ -108,12 +112,18 @@ class GithubService
                 ]);
 
             if ($response->successful()) {
+                Log::info("Successfully fetched repositories for user: {$this->githubUser}");
+
                 // Filter out forks after getting the response
                 return array_filter($response->json(), function ($repo) {
                     return ! ($repo['fork'] ?? false);
                 });
             } else {
-                Log::warning("Failed to fetch repositories for user: {$this->githubUser}. Status: ".$response->status());
+                Log::warning("Failed to fetch repositories for user: {$this->githubUser}. Status: ".$response->status(), [
+                    'response'  => $response->body(),
+                    'api_url'   => $api,
+                    'has_token' => ! empty($this->githubToken),
+                ]);
 
                 return [];
             }
