@@ -16,29 +16,26 @@
 $roleClasses = '';
 
 if ($role) {
-$baseSuffix = $is_border ? '-border' : '';
+// Sempre usa a variante com border para roles, pois as classes Saturn já incluem o background
 switch ($role) {
 case 'success':
-$roleClasses = 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800';
+$roleClasses = 'saturn-color-success-border';
 break;
 case 'warning':
-$roleClasses = 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800';
+$roleClasses = 'saturn-color-warning-border';
 break;
 case 'danger':
 case 'error':
-$roleClasses = 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800';
+$roleClasses = 'saturn-color-error-border';
 break;
 case 'info':
-$roleClasses = 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800';
+$roleClasses = 'saturn-color-info-border';
 break;
 case 'primary':
-$roleClasses = 'bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800';
+$roleClasses = 'saturn-color-primary-border';
 break;
 case 'secondary':
-$roleClasses = 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700';
-break;
-case 'accent':
-$roleClasses = 'saturn-bg-accent' . $baseSuffix;
+$roleClasses = 'saturn-color-secondary-border';
 break;
 }
 }
@@ -46,7 +43,7 @@ break;
 <div class="rounded-lg h-full flex flex-col
 {{ $no_padding ? 'py-0 px-0' : 'py-2 px-4' }}
 {{ $is_content_center ? 'text-center' : 'text-left' }}
-{{ $role ? $roleClasses . ' border' : '' }}
+{{ $role ? $roleClasses : '' }}
 {{ !$role && $is_border && !$is_section_filled_inverted ? 'border saturn-border' : '' }}
 {{ !$role && $is_border && $is_section_filled_inverted ? 'border saturn-border-inverse' : '' }}
 {{ !$role && $is_card_filled && !$is_filled && !$is_section_filled_inverted ? 'saturn-bg-accent' : '' }}
