@@ -32,8 +32,8 @@
         @foreach ($features as $item)
         @if(!isset($item['is_card_hidden']) || empty($item['is_card_hidden']))
         @if(!empty($item['link']))
-        <a href="{{ $item['link'] }}" @if(!empty($item['is_new_window'])) target="_blank" rel="noopener noreferrer"
-            @endif>
+        <a class="pointer hover:opacity-80 active:opacity-70 transition-all duration-100" href="{{ $item['link'] }}"
+            @if(!empty($item['is_new_window'])) target="_blank" rel="noopener noreferrer" @endif>
             <x-ui.card :role="$item['role'] ?? null" :$is_filled :$is_color_icon :$is_content_center
                 :$is_section_filled_inverted :$is_border :$is_card_filled>
                 <x-slot:header>
