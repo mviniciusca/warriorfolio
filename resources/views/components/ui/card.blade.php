@@ -8,7 +8,9 @@
 'is_content_center' => false,
 'no_padding' => false,
 'role' => null, // success, warning, danger, info, primary, secondary
+'link' => null,
 ])
+
 
 @php
 $roleClasses = '';
