@@ -58,7 +58,7 @@ class HeroSectionSeeder extends Seeder
                 'bumper_is_animated' => true,
                 'bumper_is_center'   => false,
                 'bumper_tag'         => 'New',
-                'bumper_title'       => '🚀 Version 2.2.0 available!',
+                'bumper_title'       => '🚀 Version 2.2.1 available!',
                 'bumper_icon'        => 'sparkles-outline',
                 'bumper_link'        => '#',
                 'bumper_target'      => '_self',

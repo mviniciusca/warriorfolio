@@ -8,40 +8,38 @@
 'is_content_center' => false,
 'no_padding' => false,
 'role' => null, // success, warning, danger, info, primary, secondary
+'link' => null,
 ])
+
 
 @php
 $roleClasses = '';
 
 if ($role) {
-$baseSuffix = $is_border ? '-border' : '';
 switch ($role) {
 case 'success':
-$roleClasses = 'saturn-color-success' . $baseSuffix;
+$roleClasses = 'saturn-color-success-border';
 break;
 case 'warning':
-$roleClasses = 'saturn-color-warning' . $baseSuffix;
+$roleClasses = 'saturn-color-warning-border';
 break;
 case 'danger':
 case 'error':
-$roleClasses = 'saturn-color-error' . $baseSuffix;
+$roleClasses = 'saturn-color-error-border';
 break;
 case 'info':
-$roleClasses = 'saturn-color-info' . $baseSuffix;
+$roleClasses = 'saturn-color-info-border';
 break;
 case 'primary':
-$roleClasses = 'saturn-color-primary' . $baseSuffix;
+$roleClasses = 'saturn-color-primary-border';
 break;
 case 'secondary':
-$roleClasses = 'saturn-color-secondary' . $baseSuffix;
-break;
-case 'accent':
-$roleClasses = 'saturn-bg-accent' . $baseSuffix;
+$roleClasses = 'saturn-color-secondary-border';
 break;
 }
 }
 @endphp
-<div class="rounded-lg min-h-10
+<div class="rounded-lg h-full flex flex-col
 {{ $no_padding ? 'py-0 px-0' : 'py-2 px-4' }}
 {{ $is_content_center ? 'text-center' : 'text-left' }}
 {{ $role ? $roleClasses : '' }}
@@ -57,7 +55,7 @@ break;
     </div>
     @endif
 
-    <div class="text-xs py-1">
+    <div class="text-xs py-1 flex-1">
         {{ $slot }}
     </div>
 

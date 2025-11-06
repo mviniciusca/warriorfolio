@@ -31,6 +31,22 @@
     <x-ui.card-grid :cols="$columns">
         @foreach ($features as $item)
         @if(!isset($item['is_card_hidden']) || empty($item['is_card_hidden']))
+        @if(!empty($item['link']))
+        <a class="pointer hover:opacity-80 active:opacity-70 transition-all duration-100" href="{{ $item['link'] }}"
+            @if(!empty($item['is_new_window'])) target="_blank" rel="noopener noreferrer" @endif>
+            <x-ui.card :role="$item['role'] ?? null" :$is_filled :$is_color_icon :$is_content_center
+                :$is_section_filled_inverted :$is_border :$is_card_filled>
+                <x-slot:header>
+                    <div class="flex items-center gap-2">
+                        <x-ui.ionicon :icon="$item['icon'] ?? null"
+                            class="h-7 w-7 {{ $is_color_icon ? 'text-primary-500' : '' }}" />
+                        <span>{!! $item['title'] ?? null !!}</span>
+                    </div>
+                </x-slot:header>
+                {!! $item['description'] ?? null !!}
+            </x-ui.card>
+        </a>
+        @else
         <x-ui.card :role="$item['role'] ?? null" :$is_filled :$is_color_icon :$is_content_center
             :$is_section_filled_inverted :$is_border :$is_card_filled>
             <x-slot:header>
@@ -42,6 +58,7 @@
             </x-slot:header>
             {!! $item['description'] ?? null !!}
         </x-ui.card>
+        @endif
         @endif
         @endforeach
     </x-ui.card-grid>

@@ -318,6 +318,7 @@ class DocumentationPageSeeder extends Seeder
                                     'description'   => 'The official documentation on Vercel.',
                                     'link'          => 'https://warriorfolio.vercel.app',
                                     'is_new_window' => true,
+                                    'role'          => 'primary',
                                 ],
                                 [
                                     'icon'          => 'logo-github',
@@ -325,6 +326,7 @@ class DocumentationPageSeeder extends Seeder
                                     'description'   => 'Get the latest updates on Github ',
                                     'link'          => 'https://github.com/mviniciusca/warriorfolio',
                                     'is_new_window' => true,
+                                    'role'          => 'info',
                                 ],
                                 [
                                     'icon'          => 'logo-laravel',
@@ -332,6 +334,7 @@ class DocumentationPageSeeder extends Seeder
                                     'description'   => 'Get the latest updates on Github ',
                                     'link'          => 'https://laravel.com',
                                     'is_new_window' => true,
+                                    'role'          => 'danger',
                                 ],
                             ],
                         ],
