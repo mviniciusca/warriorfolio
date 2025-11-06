@@ -16,7 +16,6 @@
 $roleClasses = '';
 
 if ($role) {
-// Sempre usa a variante com border para roles, pois as classes Saturn já incluem o background
 switch ($role) {
 case 'success':
 $roleClasses = 'saturn-color-success-border';
