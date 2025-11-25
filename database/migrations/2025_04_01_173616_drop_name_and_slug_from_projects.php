@@ -11,11 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            // ⚠️ Passo crucial para o SQLite:
-            // Remover o índice unique/chave única primeiro.
             $table->dropUnique('projects_slug_unique');
-
-            // Agora, dropar as colunas.
             $table->dropColumn(['name', 'slug']);
         });
     }
@@ -26,9 +22,8 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            // Adicionar as colunas de volta para reverter (importante para o rollback).
             $table->string('name')->nullable();
-            $table->string('slug')->unique(); // Recria a chave única
-        });
+            $table->string('slug')->unique();
+            });
     }
 };
