@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -10,9 +12,11 @@ class DashboardTest extends TestCase
 {
     use RefreshDatabase;
 
+
     /** @test **/
     public function it_should_be_allowed_to_see_inbox_on_dashboard(): void
     {
+
         $user = \App\Models\User::factory()->create();
 
         $response = $this->actingAs($user)->get(route('filament.admin.resources.mails.index'));
@@ -24,6 +28,7 @@ class DashboardTest extends TestCase
     /** @test **/
     public function it_should_be_allowed_to_see_settings_on_dashboard(): void
     {
+
         $user = \App\Models\User::factory()->create();
         $response = $this->actingAs($user)->get(route('filament.admin.resources.settings.edit', ['record' => 1]));
         $response->assertStatus(200);
@@ -33,6 +38,7 @@ class DashboardTest extends TestCase
     /** @test **/
     public function it_should_be_allowed_to_see_profile_on_dashboard(): void
     {
+
         $user = \App\Models\User::factory()->create();
         $response = $this->actingAs($user)->get(route('filament.admin.resources.profiles.index'));
         $response->assertStatus(200);

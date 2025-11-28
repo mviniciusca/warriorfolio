@@ -30,7 +30,7 @@ class StartupApplicationTest extends TestCase
     /** @test **/
     public function it_should_see_the_landing_page_on_startup(): void
     {
-        //$this->seed();
+
         $response = $this->get('/');
         $response->assertStatus(200);
     }
@@ -38,7 +38,7 @@ class StartupApplicationTest extends TestCase
     /** @test **/
     public function it_should_see_the_documentation_page_on_startup(): void
     {
-        //$this->seed();
+
         $response = $this->get('/docs');
         $response->assertStatus(200);
     }
@@ -46,7 +46,7 @@ class StartupApplicationTest extends TestCase
     /** @test **/
     public function it_should_see_blog_on_startup(): void
     {
-        // $this->seed();
+
         $response = $this->get('/blog');
         $response->assertStatus(200);
     }
@@ -56,7 +56,7 @@ class StartupApplicationTest extends TestCase
      * **/
     public function it_should_access_the_dashboard(): void
     {
-        //$this->seed();
+
         $user = \App\Models\User::factory()->create();
         $this->actingAs($user);
 
