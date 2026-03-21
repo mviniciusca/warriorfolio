@@ -1,127 +1,95 @@
-<div class="px-4">
+@php
+    $hours = $content['business_hours'] ?? $content['business_hour'] ?? null;
+@endphp
+
+<div class="saturn-y-section border-t saturn-border px-4 pt-12 md:pt-16">
     @if($is_heading_visible)
-    <x-themes.juno.partials.header :$title :$subtitle />
+        <x-themes.juno.partials.header :$title :$subtitle />
     @endif
+
     @if(isset($content['google_map']))
-    <div class="relative min-h-[600px]">
-        <!-- Google Maps Background -->
-        <div
-            class="absolute grayscale inset-0 w-full h-full pointer-events-none hover:pointer-events-auto transition-all duration-300">
-            <iframe src="{{ $content['google_map'] }}" class="w-full h-full border-0" allowfullscreen="false"
-                loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-        <!-- Contact Info Overlay -->
-        <div class="relative z-10 p-8 grid grid-cols-1 md:grid-cols-2">
-            <div class="hidden md:block"></div>
-            <div
-                class="max-w-md bg-white/95 dark:bg-secondary-800/95 rounded-lg shadow-lg p-8 backdrop-blur-sm ml-auto">
-                <div class="space-y-4">
-                    @isset($content['address'])
-                    <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="location-outline" />
-                        <div>
-                            <p class="text-sm font-medium">{{ __('Address') }}</p>
-                            <p>{!! $content['address'] ?? null !!}</p>
-                        </div>
-                    </div>
-                    @endisset
-
-                    @isset($content['phone'])
-                    <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="call-outline" />
-                        <div>
-                            <p class="text-sm font-medium">Phone</p>
-                            <p class="mt-1 text-sm">{!! $content['phone'] !!}</p>
-                        </div>
-                    </div>
-                    @endisset
-
-                    @isset($content['email'])
-                    <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="mail-outline" />
-                        <div>
-                            <p class="text-sm font-medium">Email</p>
-                            <p class="mt-1 text-sm">{{ $content['email'] ?? null }}</p>
-                        </div>
-                    </div>
-                    @endisset
-
-                    @isset($content['business_hour'])
-                    <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="time-outline" />
-                        <div>
-                            <p class="text-sm font-medium">Business Hours</p>
-                            <p class="mt-1 text-sm">{!! $content['business_hour'] !!}</p>
-                        </div>
-                    </div>
-                    @endisset
+        <div class="mt-10 space-y-8">
+            <div class="overflow-hidden rounded-xl border saturn-border">
+                <div class="relative aspect-[21/9] min-h-[240px] w-full md:min-h-[320px]">
+                    <iframe src="{{ $content['google_map'] }}" class="absolute inset-0 h-full w-full border-0 grayscale"
+                        allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        title="{{ __('Map') }}">
+                    </iframe>
                 </div>
-
-                <!-- Contact Form -->
-                <div class="mt-6">
-                    @livewire('mail.create-mail')
+            </div>
+            <div class="grid gap-10 lg:grid-cols-2 lg:gap-12">
+                <div class="rounded-xl border saturn-border bg-black/[0.02] px-6 py-6 dark:bg-white/[0.02]">
+                    <dl class="space-y-6 text-sm">
+                        @isset($content['address'])
+                            <div>
+                                <dt class="text-xs font-medium uppercase tracking-wider saturn-text-accent">{{ __('Address') }}</dt>
+                                <dd class="mt-2 saturn-text prose prose-sm max-w-none dark:prose-invert">{!! $content['address'] !!}</dd>
+                            </div>
+                        @endisset
+                        @isset($content['phone'])
+                            <div>
+                                <dt class="text-xs font-medium uppercase tracking-wider saturn-text-accent">{{ __('Phone') }}</dt>
+                                <dd class="mt-2 saturn-text">{!! $content['phone'] !!}</dd>
+                            </div>
+                        @endisset
+                        @isset($content['email'])
+                            <div>
+                                <dt class="text-xs font-medium uppercase tracking-wider saturn-text-accent">{{ __('Email') }}</dt>
+                                <dd class="mt-2">
+                                    <a href="mailto:{{ $content['email'] }}" class="saturn-text underline-offset-2 hover:underline">{{ $content['email'] }}</a>
+                                </dd>
+                            </div>
+                        @endisset
+                        @if ($hours)
+                            <div>
+                                <dt class="text-xs font-medium uppercase tracking-wider saturn-text-accent">{{ __('Business hours') }}</dt>
+                                <dd class="mt-2 saturn-text prose prose-sm max-w-none dark:prose-invert">{!! $hours !!}</dd>
+                            </div>
+                        @endif
+                    </dl>
+                </div>
+                <div>
+                    <p class="mb-6 text-sm saturn-text-accent">{{ __('Send us a message and we will get back to you.') }}</p>
+                    <livewire:mail.create-mail :is-section-filled-inverted="$is_section_filled_inverted" />
                 </div>
             </div>
         </div>
-    </div>
     @else
-    <div class="grid gap-8 md:grid-cols-2">
-        <!-- Contact Info Column -->
-        <div class="space-y-6">
-            <div>
-                <div class="space-y-4">
+        <div class="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-12">
+            <div class="rounded-xl border saturn-border bg-black/[0.02] px-6 py-6 dark:bg-white/[0.02]">
+                <dl class="space-y-6 text-sm">
                     @isset($content['address'])
-                    <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="location-outline" />
                         <div>
-                            <p class="text-sm font-medium">
-                                {{ __('Address') }}</p>
-                            <p>{!! $content['address'] ?? null !!} </p>
+                            <dt class="text-xs font-medium uppercase tracking-wider saturn-text-accent">{{ __('Address') }}</dt>
+                            <dd class="mt-2 saturn-text prose prose-sm max-w-none dark:prose-invert">{!! $content['address'] !!}</dd>
                         </div>
-                    </div>
                     @endisset
                     @isset($content['phone'])
-                    <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="call-outline" />
                         <div>
-                            <p class="text-sm font-medium ">
-                                Phone</p>
-                            <p class="mt-1 text-sm  ">
-                                {!! $content['phone'] !!}</p>
+                            <dt class="text-xs font-medium uppercase tracking-wider saturn-text-accent">{{ __('Phone') }}</dt>
+                            <dd class="mt-2 saturn-text">{!! $content['phone'] !!}</dd>
                         </div>
-                    </div>
                     @endisset
                     @isset($content['email'])
-                    <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="mail-outline" />
                         <div>
-                            <p class="text-sm font-medium ">
-                                Email</p>
-                            <p class="mt-1 text-sm  ">
-                                {{ $content['email'] ?? null }}</p>
+                            <dt class="text-xs font-medium uppercase tracking-wider saturn-text-accent">{{ __('Email') }}</dt>
+                            <dd class="mt-2">
+                                <a href="mailto:{{ $content['email'] }}" class="saturn-text underline-offset-2 hover:underline">{{ $content['email'] }}</a>
+                            </dd>
                         </div>
-                    </div>
                     @endisset
-                    @isset($content['business_hour']))
-                    <div class="flex items-start gap-3">
-                        <x-ui.ionicon class="mt-1 h-5 w-5" icon="time-outline" />
+                    @if ($hours)
                         <div>
-                            <p class="text-sm font-medium ">
-                                Business Hours</p>
-                            <p class="mt-1 text-sm">
-                                {!! $content['business_hour'] !!}
-                            </p>
+                            <dt class="text-xs font-medium uppercase tracking-wider saturn-text-accent">{{ __('Business hours') }}</dt>
+                            <dd class="mt-2 saturn-text prose prose-sm max-w-none dark:prose-invert">{!! $hours !!}</dd>
                         </div>
-                    </div>
-                    @endisset
-                </div>
+                    @endif
+                </dl>
+            </div>
+            <div>
+                <p class="mb-6 text-sm saturn-text-accent">{{ __('Send us a message and we will get back to you.') }}</p>
+                <livewire:mail.create-mail :is-section-filled-inverted="$is_section_filled_inverted" />
             </div>
         </div>
-        <!-- Contact Form Column -->
-        <div>
-            @livewire('mail.create-mail')
-        </div>
-    </div>
     @endif
 </div>

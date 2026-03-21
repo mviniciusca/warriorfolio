@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Services\RecaptchaService;
+use App\Contracts\CaptchaVerifier;
 use Filament\Notifications\Notification;
 
 trait WithRecaptcha
@@ -23,13 +23,13 @@ trait WithRecaptcha
 
     protected function verifyRecaptcha(): bool
     {
-        $recaptchaService = app(RecaptchaService::class);
+        $captchaVerifier = app(CaptchaVerifier::class);
 
-        if (! $recaptchaService->isEnabled()) {
+        if (! $captchaVerifier->isEnabled()) {
             return true;
         }
 
-        if (! $recaptchaService->verify($this->recaptchaToken)) {
+        if (! $captchaVerifier->verifyToken($this->recaptchaToken, request()->ip())) {
             Notification::make()
                 ->title(__('Please complete the reCAPTCHA challenge'))
                 ->danger()

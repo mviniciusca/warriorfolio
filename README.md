@@ -176,6 +176,8 @@ Customize which core modules appear on your site:
 
 ## Documentation
 
+**In-repo deep dive (architecture, admin, page builder, prompts for future docs):** see the [`docs/`](./docs/) folder and start at [`docs/README.md`](./docs/README.md).
+
 Comprehensive documentation is available at [warriorfolio.vercel.app](https://warriorfolio.vercel.app/)
 
 **Topics covered:**

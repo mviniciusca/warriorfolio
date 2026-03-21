@@ -24,6 +24,9 @@ export default {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                sans: ['"Geist"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
             colors: {
                 primary: colors.violet,//accent color: default violet
 

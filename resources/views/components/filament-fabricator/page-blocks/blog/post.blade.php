@@ -76,5 +76,9 @@
             </div>
         </div>
     </footer>
+
+    @if ($page->areCommentsEnabled())
+        @livewire('blog.post-comments', ['page' => $page], key('post-comments-' . $page->id))
+    @endif
 </article>
 @endif

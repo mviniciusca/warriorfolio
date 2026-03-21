@@ -33,23 +33,13 @@
 <!-- Scripts -->
 @filamentStyles
 @vite(['resources/css/app.css', 'resources/js/app.js'])
-@if ($googleFonts != 'Inter')
+@if (filled($googleFontsCode))
 <!-- Google Fonts -->
 {!! $googleFontsCode !!}
 <style>
+    html,
     body {
-        font-family: '{{ $googleFonts }}',
-        'Inter',
-        sans-serif;
-    }
-</style>
-@else
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-<link as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-<style>
-    body {
-        font-family: 'Inter', sans-serif;
+        font-family: '{{ $googleFonts }}', 'Geist', sans-serif;
     }
 </style>
 @endif

@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SettingResource\Pages;
 use App\Models\Setting;
-use Closure;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
@@ -280,7 +279,7 @@ class SettingResource extends Resource
                                             ->schema([
                                                 TextInput::make('google.font_name')
                                                     ->maxLength(255)
-                                                    ->helperText(__('Default: Inter'))
+                                                    ->helperText(__('Default: Geist'))
                                                     ->prefixIcon('heroicon-o-document-text')
                                                     ->label(__('Google Fonts Name')),
                                                 Textarea::make('google.fonts_code')
@@ -445,14 +444,14 @@ class SettingResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'                    => Pages\ListSettings::route('/'),
-            'edit'                     => Pages\EditSetting::route('/{record}/edit'),
-            'edit-appearance'          => Pages\EditAppearance::route('/{record}/edit-appearance'),
-            'edit-chatbox'             => Pages\EditChatbox::route('/{record}/edit-chatbox'),
+            'index' => Pages\ListSettings::route('/'),
+            'edit' => Pages\EditSetting::route('/{record}/edit'),
+            'edit-appearance' => Pages\EditAppearance::route('/{record}/edit-appearance'),
+            'edit-chatbox' => Pages\EditChatbox::route('/{record}/edit-chatbox'),
             'edit-maintenance-section' => Pages\EditMaintenanceSection::route('/{record}/edit-maintenance-section'),
-            'edit-navigation'          => Pages\EditNavigation::route('/{record}/edit-navigation'),
-            'edit-security'            => Pages\EditSecurity::route('/{record}/edit-security'),
-            'edit-blog'                => Pages\EditBlogSettings::route('/{record}/edit-blog'),
+            'edit-navigation' => Pages\EditNavigation::route('/{record}/edit-navigation'),
+            'edit-security' => Pages\EditSecurity::route('/{record}/edit-security'),
+            'edit-blog' => Pages\EditBlogSettings::route('/{record}/edit-blog'),
 
         ];
     }

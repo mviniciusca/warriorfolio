@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
+use App\Contracts\CaptchaVerifier;
 use App\Models\Core;
 use App\Models\Maintenance;
-use App\View\Components\Ui\Quickbar;
-use Illuminate\Support\Facades\Blade;
+use App\Services\Captcha\GoogleRecaptchaVerifier;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-       //
+        $this->app->singleton(CaptchaVerifier::class, GoogleRecaptchaVerifier::class);
     }
 
     /**
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         if (Schema::hasTable('settings')) {
             $maintenance = optional(Maintenance::first(['is_active', 'is_discovery']));
             view()->share([
-                'discovery'   => $maintenance->is_discovery ?? false,
+                'discovery' => $maintenance->is_discovery ?? false,
                 'maintenance' => $maintenance->is_active ?? false,
             ]);
         }

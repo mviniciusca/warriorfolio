@@ -9,7 +9,8 @@
             </h2>
             <p class="my-2 text-sm">{!! $subtitle ?? null !!}</p>
             <div class="mx-auto mt-1 grid">
-                <livewire:newsletter :buttonIcon="$button_icon" :buttonText='$button_header' />
+                <livewire:newsletter :buttonIcon="$button_icon" :buttonText='$button_header'
+                    :is_section_filled_inverted="$is_section_filled_inverted" />
             </div>
         </div>
     </div>

@@ -12,9 +12,6 @@ use App\Models\Newsletter;
 use App\Models\Project;
 use App\Models\Setting;
 use App\Models\User;
-use Database\Seeders\DocumentationPageSeeder;
-use Database\Seeders\LandingPageSeeder;
-use Database\Seeders\SectionSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,7 +26,7 @@ class DatabaseSeeder extends Seeder
         $user = User::factory()
             ->hasProfile()
             ->create([
-                'name'  => 'Warriorfolio',
+                'name' => 'Warriorfolio',
                 'email' => 'warriorfolio@test.dev',
             ]);
         Setting::factory()
@@ -52,6 +49,7 @@ class DatabaseSeeder extends Seeder
             BlogSeeder::class,
             WelcomeNoteSeeder::class,
             BlogPostSeeder::class,
+            PageCommentSeeder::class,
             SectionSeeder::class,
             HeroSectionSeeder::class,
         ]);

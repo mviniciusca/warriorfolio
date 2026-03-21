@@ -7,86 +7,26 @@ use App\Models\User;
 use App\Notifications\NewMailNotification;
 use App\Traits\WithRecaptcha;
 use Exception;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
-class CreateMail extends Component implements HasForms
+class CreateMail extends Component
 {
-    use InteractsWithForms;
     use WithRecaptcha;
 
-    public ?array $data = [];
+    public array $data = [];
 
     public $is_section_filled_inverted = '';
 
-    public function mount(): void
+    public function mount($is_section_filled_inverted = null): void
     {
-        $this->form->fill();
+        if ($is_section_filled_inverted !== null) {
+            $this->is_section_filled_inverted = $is_section_filled_inverted;
+        }
+        $this->resetData();
         $this->initializeWithRecaptcha();
-    }
-
-    public function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                TextInput::make('name')
-                    ->maxLength(50)
-                    ->minLength(5)
-                    ->required()
-                    ->extraAttributes(['class' => 'border'])
-                    ->hiddenLabel()
-                    ->placeholder(__('Full Name'))
-                    ->prefixIcon('heroicon-o-user')
-                    ->columnSpanFull(),
-                TextInput::make('email')
-                    ->placeholder(__('Email Address'))
-                    ->email()
-                    ->extraAttributes(['class' => 'border'])
-                    ->hiddenLabel()
-                    ->prefixIcon('heroicon-o-envelope')
-                    ->maxLength(140)
-                    ->minLength(8)
-                    ->columnSpanFull()
-                    ->required(),
-                TextInput::make('phone')
-                    ->extraAttributes(['class' => 'border'])
-                    ->placeholder(__('Phone Number'))
-                    ->tel()
-                    ->hiddenLabel()
-                    ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/')
-                    ->maxLength(20)
-                    ->columnSpanFull()
-                    ->prefixIcon('heroicon-o-phone')
-                    ->required(),
-                TextInput::make('subject')
-                    ->extraAttributes(['class' => 'border'])
-                    ->hiddenLabel()
-                    ->prefixIcon('heroicon-o-tag')
-                    ->maxLength(140)
-                    ->minLength(5)
-                    ->placeholder(__('Message Subject'))
-                    ->required()
-                    ->columnSpanFull(),
-                Textarea::make('body')
-                    ->extraAttributes(['class' => 'border'])
-                    ->hiddenLabel()
-                    ->rows(5)
-                    ->required()
-                    ->label(__('Message'))
-                    ->minLength(20)
-                    ->maxLength(1200)
-                    ->placeholder(__('Your Message. Min 20 and Max 1200 characters.'))
-                    ->columnSpanFull(),
-            ])
-            ->statePath('data')
-            ->model(Mail::class);
     }
 
     public function create(): void
@@ -95,17 +35,23 @@ class CreateMail extends Component implements HasForms
             return;
         }
 
-        $data = $this->form->getState();
+        $data = $this->validate([
+            'data.name' => ['required', 'string', 'min:5', 'max:50'],
+            'data.email' => ['required', 'email', 'min:8', 'max:140'],
+            'data.phone' => ['required', 'string', 'max:20', 'regex:/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/'],
+            'data.subject' => ['required', 'string', 'min:5', 'max:140'],
+            'data.body' => ['required', 'string', 'min:20', 'max:1200'],
+        ])['data'];
 
         try {
-            $record = Mail::create($data);
+            Mail::create($data);
             Notification::make()
                 ->title(__('Message sent!'))
                 ->success()
                 ->send();
 
-            $this->reset(['data', 'recaptchaToken']);
-            $this->form->fill();
+            $this->resetData();
+            $this->reset('recaptchaToken');
             $this->dispatch('formSubmitted');
         } catch (Exception $e) {
             Notification::make()
@@ -128,5 +74,16 @@ class CreateMail extends Component implements HasForms
     public function render(): View
     {
         return view('livewire.mail.create-mail');
+    }
+
+    private function resetData(): void
+    {
+        $this->data = [
+            'name' => '',
+            'email' => '',
+            'phone' => '',
+            'subject' => '',
+            'body' => '',
+        ];
     }
 }

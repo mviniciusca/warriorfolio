@@ -2,47 +2,27 @@
 
 namespace App\Services;
 
-use ReCaptcha\ReCaptcha;
+use App\Contracts\CaptchaVerifier;
 
 class RecaptchaService
 {
-    private ?ReCaptcha $recaptcha = null;
+    public function __construct(private readonly CaptchaVerifier $captchaVerifier) {}
 
-    private $settings;
-
-    public function __construct()
-    {
-        $this->settings = app(\App\Models\Setting::class)->first();
-
-        if ($this->isEnabled() && ! empty($this->settings->config['recaptcha_secret_key'])) {
-            $this->recaptcha = new ReCaptcha($this->settings->config['recaptcha_secret_key']);
-        }
-    }
-
+    /**
+     * @deprecated Use App\Contracts\CaptchaVerifier directly.
+     */
     public function verify(?string $token): bool
     {
-        if (! $this->isEnabled()) {
-            return true; // Se o reCAPTCHA está desativado, considera válido
-        }
-
-        if (empty($token) || ! $this->recaptcha) {
-            return false;
-        }
-
-        $response = $this->recaptcha->verify($token);
-
-        return $response->isSuccess();
+        return $this->captchaVerifier->verifyToken($token, request()->ip());
     }
 
     public function getSiteKey(): string
     {
-        return $this->settings->config['recaptcha_site_key'] ?? '';
+        return $this->captchaVerifier->getSiteKey();
     }
 
     public function isEnabled(): bool
     {
-        return ! empty($this->settings->config['recaptcha_is_active']) &&
-               ! empty($this->settings->config['recaptcha_site_key']) &&
-               ! empty($this->settings->config['recaptcha_secret_key']);
+        return $this->captchaVerifier->isEnabled();
     }
 }

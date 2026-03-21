@@ -24,12 +24,12 @@ class EditBlogSettings extends EditRecord
         return __('Notes Section');
     }
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('Notes Section');
     }
 
-    public function getSubheading(): string | Htmlable | null
+    public function getSubheading(): string|Htmlable|null
     {
         return __('Manage your Blog Settings.');
     }
@@ -56,7 +56,7 @@ class EditBlogSettings extends EditRecord
                                 Group::make()
                                     ->columns(2)
                                     ->extraAttributes([
-                                        'class'       => 'space-y-4',
+                                        'class' => 'space-y-4',
                                         'description' => __('This module shows your latest posts in your Post Page. All fields are optional.'),
                                     ])
                                     ->schema([
@@ -81,7 +81,7 @@ class EditBlogSettings extends EditRecord
                             ->schema([
                                 Group::make()
                                     ->extraAttributes([
-                                        'class'       => 'space-y-4',
+                                        'class' => 'space-y-4',
                                         'description' => __('This module shows your latest posts from your Notes. All fields are optional.'),
                                     ])
                                     ->columns(2)
@@ -117,7 +117,7 @@ class EditBlogSettings extends EditRecord
                             ->schema([
                                 Group::make()
                                     ->extraAttributes([
-                                        'class'       => 'space-y-4',
+                                        'class' => 'space-y-4',
                                         'description' => __('Manage your Notes Pages Settings'),
                                     ])
                                     ->columns(3)
@@ -134,6 +134,10 @@ class EditBlogSettings extends EditRecord
                                             ->default(true)
                                             ->label(__('Trend Widget Feature'))
                                             ->helperText(__('Enable or disable the trend widget feature.')),
+                                        Checkbox::make('blog.comments_enabled')
+                                            ->default(true)
+                                            ->label(__('Comments on Notes'))
+                                            ->helperText(__('When disabled, the comment form and thread are hidden on every post. You can still turn comments off per post in the Notes editor.')),
                                     ]),
                             ]),
 
@@ -142,7 +146,7 @@ class EditBlogSettings extends EditRecord
                             ->schema([
                                 Group::make()
                                     ->extraAttributes([
-                                        'class'       => 'space-y-4',
+                                        'class' => 'space-y-4',
                                         'description' => __('Manage your Notes Settings and Public Definitions.'),
                                     ])
                                     ->columns(3)

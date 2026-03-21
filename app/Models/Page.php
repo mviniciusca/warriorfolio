@@ -2,23 +2,21 @@
 
 namespace App\Models;
 
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\Project;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Page extends \Z3d0X\FilamentFabricator\Models\Page
 {
     protected $guarded = [];
 
     protected $casts = [
-        'seo'                   => 'array',
-        'blocks'                => 'array',
-        'advanced_settings'     => 'array',
-        'publish_at'            => 'datetime',
-        'expire_at'             => 'datetime',
+        'seo' => 'array',
+        'blocks' => 'array',
+        'advanced_settings' => 'array',
+        'publish_at' => 'datetime',
+        'expire_at' => 'datetime',
         'is_password_protected' => 'boolean',
+        'comments_enabled' => 'boolean',
     ];
 
     /**
@@ -105,8 +103,6 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
 
     /**
      * Get the category that the page belongs to.
-     *
-     * @return BelongsTo
      */
     public function category(): BelongsTo
     {
@@ -115,8 +111,6 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
 
     /**
      * Get the post that the page belongs to.
-     *
-     * @return BelongsTo
      */
     public function post(): BelongsTo
     {
@@ -125,8 +119,6 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
 
     /**
      * Get the project that the page belongs to.
-     *
-     * @return BelongsTo
      */
     public function project(): BelongsTo
     {
@@ -135,12 +127,28 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
 
     /**
      * Get the user that owns the page.
-     *
-     * @return BelongsTo
      */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @return HasMany<PageComment, $this>
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(PageComment::class);
+    }
+
+    public function areCommentsEnabled(): bool
+    {
+        $global = (bool) data_get(Setting::query()->first()?->blog, 'comments_enabled', true);
+        if (! $global) {
+            return false;
+        }
+
+        return (bool) ($this->comments_enabled ?? true);
     }
 
     /**
@@ -154,8 +162,8 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
             // Se é uma página de blog e não tem post_id, criar o post
             if ($page->style === 'blog' && ! $page->post_id) {
                 $post = Post::create([
-                    'user_id'     => $page->user_id,
-                    'is_active'   => $page->is_active ?? true,
+                    'user_id' => $page->user_id,
+                    'is_active' => $page->is_active ?? true,
                     'is_featured' => false,
                 ]);
                 $page->post_id = $post->id;
@@ -188,10 +196,10 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
     {
         $tabs = [
             'github-repositories' => 'Repositories',
-            'portfolio'           => 'Portfolio',
-            'blog'                => 'Blog',
-            'about-me'            => 'About Me',
-            'contact'             => 'Contact',
+            'portfolio' => 'Portfolio',
+            'blog' => 'Blog',
+            'about-me' => 'About Me',
+            'contact' => 'Contact',
         ];
 
         $activeSections = Section::whereIn('slug', array_keys($tabs))

@@ -18,6 +18,7 @@
  * 1. IMPORTS & BASE
  * ======================================== */
 @import '../../node_modules/animate.css/animate.css';
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 @import url('../css/saturn-ui.css');
 
 @tailwind base;
@@ -115,7 +116,7 @@
 
 @layer base {
     html {
-        font-family: system-ui, sans-serif;
+        font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
     }
 
     /** Default Theme **/
@@ -132,7 +133,7 @@
     .saturn-ui-primary {
         @apply saturn-text saturn-bg;
     }
-ss
+
     /** Highlighted text **/
     .text-gradient,
     .tg {

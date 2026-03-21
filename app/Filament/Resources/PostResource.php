@@ -3,9 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
+use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Category;
 use App\Models\Page;
-use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
@@ -155,11 +155,11 @@ class PostResource extends Resource
                                     ])
                                     ->createOptionUsing(function (array $data): int {
                                         $category = Category::create([
-                                            'name'       => $data['name'],
-                                            'slug'       => $data['slug'],
-                                            'is_blog'    => true,
+                                            'name' => $data['name'],
+                                            'slug' => $data['slug'],
+                                            'is_blog' => true,
                                             'is_project' => false,
-                                            'is_active'  => true,
+                                            'is_active' => true,
                                         ]);
 
                                         return $category->getKey();
@@ -175,6 +175,15 @@ class PostResource extends Resource
                                     ->helperText(__('Mark this post as featured.'))
                                     ->default(false),
                             ]),
+                    ]),
+                Section::make(__('Comments'))
+                    ->columnSpan(3)
+                    ->icon('heroicon-o-chat-bubble-left-right')
+                    ->schema([
+                        Toggle::make('comments_enabled')
+                            ->label(__('Allow comments on this post'))
+                            ->helperText(__('Requires global comments to be enabled in Settings → Notes Section → Comments.'))
+                            ->default(true),
                     ]),
                 Section::make(__('Password Protection'))
                     ->columnSpan(3)
@@ -227,9 +236,13 @@ class PostResource extends Resource
             ->query(
                 Page::query()
                     ->where('style', 'blog')
+                    ->withCount([
+                        'comments',
+                        'comments as pending_comments_count' => fn ($query) => $query->where('status', 'pending'),
+                    ])
             )
             ->recordClasses(fn (Page $record) => match ($record?->is_active) {
-                0       => 'opacity-50 dark:opacity-30',
+                0 => 'opacity-50 dark:opacity-30',
                 default => null,
             })
             ->columns([
@@ -247,6 +260,22 @@ class PostResource extends Resource
                 ToggleColumn::make('post.is_featured')
                     ->alignCenter()
                     ->label(__('Featured')),
+                ToggleColumn::make('comments_enabled')
+                    ->label(__('Comments'))
+                    ->alignCenter()
+                    ->sortable(),
+                TextColumn::make('comments_count')
+                    ->label(__('Comments Count'))
+                    ->badge()
+                    ->alignCenter()
+                    ->color('info')
+                    ->sortable(),
+                TextColumn::make('pending_comments_count')
+                    ->label(__('Pending'))
+                    ->badge()
+                    ->alignCenter()
+                    ->color(fn ($state) => (int) $state > 0 ? 'warning' : 'gray')
+                    ->sortable(),
                 ToggleColumn::make('is_password_protected')
                     ->label(__('Password Protected'))
                     ->alignCenter()
@@ -299,16 +328,16 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\CommentsRelationManager::class,
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListPosts::route('/'),
+            'index' => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
-            'edit'   => Pages\EditPost::route('/{record}/edit'),
+            'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
     }
 }

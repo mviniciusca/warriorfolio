@@ -19,7 +19,7 @@ class NavigationFactory extends Factory
         return [
             'content' => [
                 ['url' => '/', 'name' => 'Homepage', 'target' => false, 'is_active' => true, 'is_secondary' => false],
-                ['url' => config('app.url').'/'.'#about', 'name' => 'About Me', 'target' => false, 'is_active' => true, 'is_secondary' => false],
+                ['url' => config('app.url').'/'.'#about-me', 'name' => 'About Me', 'target' => false, 'is_active' => true, 'is_secondary' => false],
                 ['url' => config('app.url').'/'.'#portfolio', 'name' => 'Projects', 'target' => false, 'is_active' => true, 'is_secondary' => false],
                 ['url' => config('app.url').'/blog', 'name' => 'Notes <span class="saturn-notify"></span>', 'target' => false, 'is_active' => true, 'is_secondary' => false],
                 ['url' => config('app.url').'/'.'#contact', 'name' => 'Talk', 'target' => false, 'is_active' => true, 'is_secondary' => false],

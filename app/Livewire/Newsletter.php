@@ -4,20 +4,15 @@ namespace App\Livewire;
 
 use App\Models\Newsletter as ModelNewsletter;
 use Exception;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
-class Newsletter extends Component implements HasForms
+class Newsletter extends Component
 {
-    use InteractsWithForms;
-
-    public ?array $data = [];
+    public string $email = '';
 
     public $buttonText = 'Subscribe';
 
@@ -25,28 +20,19 @@ class Newsletter extends Component implements HasForms
 
     public $buttonIcon = 'mail-outline';
 
-    public function mount(): void
+    public function mount($buttonText = null, $buttonIcon = null, $is_section_filled_inverted = null): void
     {
-        $this->form->fill();
-    }
+        if ($buttonText !== null) {
+            $this->buttonText = $buttonText;
+        }
 
-    public function form(Form $form): Form
-    {
-        return $form
-            ->columns(1)
-            ->schema([
-                TextInput::make('email')
-                    ->placeholder(__('Email address'))
-                    ->prefixIcon('heroicon-o-envelope')
-                    ->minLength(5)
-                    ->maxLength(255)
-                    ->hiddenLabel()
-                    ->email()
-                    ->unique('newsletters', 'email')
-                    ->required(),
-            ])
-            ->statePath('data')
-            ->model(self::class);
+        if ($buttonIcon !== null) {
+            $this->buttonIcon = $buttonIcon;
+        }
+
+        if ($is_section_filled_inverted !== null) {
+            $this->is_section_filled_inverted = $is_section_filled_inverted;
+        }
     }
 
     /**
@@ -56,10 +42,19 @@ class Newsletter extends Component implements HasForms
      */
     public function create(): void
     {
-        $data = $this->form->getState();
+        $data = $this->validate([
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'min:5',
+                'max:255',
+                Rule::unique('newsletters', 'email'),
+            ],
+        ]);
 
         try {
-            $record = ModelNewsletter::create($data);
+            ModelNewsletter::create($data);
 
             Notification::make()
                 ->title(__('Thanks for subscribing!'))
@@ -73,13 +68,14 @@ class Newsletter extends Component implements HasForms
                 ->send();
         }
 
-        $this->reset('data');
-
-        $this->form->model($record)->saveRelationships();
+        $this->reset('email');
     }
 
     public function render(): View
     {
-        return view('livewire.newsletter', ['buttonIcon' => $this->buttonIcon, 'is_section_filled_inverted' => $this->is_section_filled_inverted]);
+        return view('livewire.newsletter', [
+            'buttonIcon' => $this->buttonIcon,
+            'is_section_filled_inverted' => $this->is_section_filled_inverted,
+        ]);
     }
 }

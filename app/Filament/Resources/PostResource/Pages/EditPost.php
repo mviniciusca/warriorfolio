@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\PostResource\Pages;
 
 use App\Filament\Resources\PostResource;
+use App\Filament\Resources\PostResource\RelationManagers\CommentsRelationManager;
 use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
@@ -13,7 +14,7 @@ class EditPost extends EditRecord
 {
     protected static string $resource = PostResource::class;
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('Edit Note');
     }
@@ -43,12 +44,27 @@ class EditPost extends EditRecord
                 ->icon('heroicon-o-arrow-top-right-on-square')
                 ->size('xs')
                 ->color('info'),
+            Action::make('moderate_comments')
+                ->label(__('Moderate Comments'))
+                ->url(route('filament.admin.resources.page-comments.index', [
+                    'tableFilters[page_id][value]' => $this->record->id,
+                ]))
+                ->icon('heroicon-o-chat-bubble-left-right')
+                ->size('xs')
+                ->color('warning'),
             Actions\DeleteAction::make()
                 ->size('xs')
                 ->label(__('Delete'))
                 ->modalHeading(__('Delete Note'))
                 ->requiresConfirmation()
                 ->icon('heroicon-o-trash'),
+        ];
+    }
+
+    public function getRelationManagers(): array
+    {
+        return [
+            CommentsRelationManager::class,
         ];
     }
 }

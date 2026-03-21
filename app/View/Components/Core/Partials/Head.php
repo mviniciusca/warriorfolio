@@ -3,6 +3,7 @@
 namespace App\View\Components\Core\Partials;
 
 use App\Models\Setting;
+use App\Support\PublicSiteGoogleFonts;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -46,8 +47,7 @@ class Head extends Component
         // Google Services and Integrations
         $this->googleSiteVerification = $setting?->google['tag'] ?? null;
         $this->googleAnalytics = $setting?->google['analytics'] ?? null;
-        $this->googleFonts = $setting?->google['font_name'] ?? 'Inter';
-        $this->googleFontsCode = $setting?->google['fonts_code'] ?? null;
+        [$this->googleFonts, $this->googleFontsCode] = PublicSiteGoogleFonts::fromSettings($setting?->google);
 
         // Scripts
         $this->headerScripts = $setting?->scripts['header_scripts'] ?? null;

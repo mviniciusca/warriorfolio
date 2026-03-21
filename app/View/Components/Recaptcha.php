@@ -2,7 +2,7 @@
 
 namespace App\View\Components;
 
-use App\Services\RecaptchaService;
+use App\Contracts\CaptchaVerifier;
 use Illuminate\View\Component;
 
 class Recaptcha extends Component
@@ -11,10 +11,10 @@ class Recaptcha extends Component
 
     public bool $enabled;
 
-    public function __construct(RecaptchaService $recaptchaService)
+    public function __construct(CaptchaVerifier $captchaVerifier)
     {
-        $this->siteKey = $recaptchaService->getSiteKey();
-        $this->enabled = $recaptchaService->isEnabled();
+        $this->siteKey = $captchaVerifier->getSiteKey();
+        $this->enabled = $captchaVerifier->isEnabled();
     }
 
     public function render()
