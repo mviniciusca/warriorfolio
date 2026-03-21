@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PageCommentResource\Pages;
+use App\Filament\Support\PageCommentTableActions;
 use App\Models\Page;
 use App\Models\PageComment;
 use Filament\Forms\Components\Select;
@@ -115,6 +116,10 @@ class PageCommentResource extends Resource
             ->persistSortInSession(false)
             ->paginated(false)
             ->defaultSort('created_at', 'desc')
+            ->headerActions([
+                PageCommentTableActions::approveAllPendingHeaderAction(),
+                PageCommentTableActions::deleteAllPendingHeaderAction(),
+            ])
             ->columns([
                 Tables\Columns\ImageColumn::make('avatar')
                     ->label('')
@@ -213,11 +218,12 @@ class PageCommentResource extends Resource
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\EditAction::make(),
+                    PageCommentTableActions::viewOnPostAction(),
                     Tables\Actions\Action::make('approve')
                         ->label(__('Approve'))
                         ->icon('heroicon-o-check-circle')
                         ->color('success')
-                        ->visible(fn (PageComment $record) => $record->status === PageComment::STATUS_PENDING)
+                        ->visible(fn (PageComment $record) => $record->status !== PageComment::STATUS_APPROVED)
                         ->requiresConfirmation()
                         ->action(function (PageComment $record): void {
                             $record->update([
@@ -230,7 +236,7 @@ class PageCommentResource extends Resource
                         ->label(__('Reject'))
                         ->icon('heroicon-o-x-circle')
                         ->color('danger')
-                        ->visible(fn (PageComment $record) => $record->status === PageComment::STATUS_PENDING)
+                        ->visible(fn (PageComment $record) => $record->status !== PageComment::STATUS_REJECTED)
                         ->requiresConfirmation()
                         ->action(function (PageComment $record): void {
                             $record->update([
@@ -243,43 +249,7 @@ class PageCommentResource extends Resource
                 ])->label(__('Actions')),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\BulkAction::make('approve')
-                        ->label(__('Approve selected'))
-                        ->icon('heroicon-o-check-circle')
-                        ->color('success')
-                        ->requiresConfirmation()
-                        ->action(function (\Illuminate\Support\Collection $records): void {
-                            $records->each(function (PageComment $record): void {
-                                if ($record->status !== PageComment::STATUS_PENDING) {
-                                    return;
-                                }
-                                $record->update([
-                                    'status' => PageComment::STATUS_APPROVED,
-                                    'moderated_at' => now(),
-                                    'moderated_by' => Auth::id(),
-                                ]);
-                            });
-                        }),
-                    Tables\Actions\BulkAction::make('reject')
-                        ->label(__('Reject selected'))
-                        ->icon('heroicon-o-x-circle')
-                        ->color('danger')
-                        ->requiresConfirmation()
-                        ->action(function (\Illuminate\Support\Collection $records): void {
-                            $records->each(function (PageComment $record): void {
-                                if ($record->status !== PageComment::STATUS_PENDING) {
-                                    return;
-                                }
-                                $record->update([
-                                    'status' => PageComment::STATUS_REJECTED,
-                                    'moderated_at' => now(),
-                                    'moderated_by' => Auth::id(),
-                                ]);
-                            });
-                        }),
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                PageCommentTableActions::bulkActionGroup(),
             ]);
     }
 

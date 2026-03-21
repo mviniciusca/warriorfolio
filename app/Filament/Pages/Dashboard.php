@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 use App\Filament\Widgets\AlertWidget;
+use App\Filament\Widgets\CommentsModerationWidget;
 use App\Filament\Widgets\CoreModuleWidget;
 use App\Filament\Widgets\LogActivityWidget;
 use App\Filament\Widgets\MailWidget;
@@ -21,13 +22,13 @@ class Dashboard extends BaseDashboard
 {
     protected static ?string $title = 'Dashboard';
 
-    public function getSubheading(): string | Htmlable | null
+    public function getSubheading(): string|Htmlable|null
     {
         $hour = Carbon::now()->hour;
         $greeting = match (true) {
-            $hour >= 5 && $hour < 12  => 'Good morning',
+            $hour >= 5 && $hour < 12 => 'Good morning',
             $hour >= 12 && $hour < 18 => 'Good afternoon',
-            default                   => 'Good evening',
+            default => 'Good evening',
         };
 
         return $greeting.', '.Auth::user()->name.'!';
@@ -35,14 +36,14 @@ class Dashboard extends BaseDashboard
 
     protected static ?string $navigationIcon = 'heroicon-o-home';
 
-    public function getColumns(): int | array
+    public function getColumns(): int|array
     {
         return [
             'default' => 1,
-            'sm'      => 1,
-            'md'      => 2,
-            'lg'      => 3,
-            'xl'      => 4,
+            'sm' => 1,
+            'md' => 2,
+            'lg' => 3,
+            'xl' => 4,
         ];
     }
 
@@ -58,6 +59,8 @@ class Dashboard extends BaseDashboard
         return [
             // Row 1 - Full Width Messages
             MailWidget::class,
+
+            CommentsModerationWidget::class,
 
             // Row 2 - Projects and Posts
             ProjectWidget::class,

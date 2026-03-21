@@ -2,7 +2,8 @@
     $maxDepth = 6;
     $pad = min($depth, $maxDepth);
 @endphp
-<li class="list-none" style="margin-left: {{ $pad * 1.25 }}rem" wire:key="comment-{{ $comment->id }}">
+<li id="page-comment-{{ $comment->id }}" class="list-none" style="margin-left: {{ $pad * 1.25 }}rem"
+    wire:key="comment-{{ $comment->id }}">
     <article class="flex gap-3 rounded-lg border saturn-border p-4">
         <img src="{{ $comment->avatar_url }}" alt="" width="40" height="40"
             class="h-10 w-10 shrink-0 rounded-full border saturn-border bg-white/5" loading="lazy" decoding="async" />

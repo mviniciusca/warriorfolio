@@ -94,6 +94,34 @@ class PageComment extends Model
         return DicebearAvatar::url($this->avatar_seed);
     }
 
+    public function hasPublicPostUrl(): bool
+    {
+        $this->loadMissing('page');
+        $page = $this->page;
+
+        return $page !== null
+            && ($page->style ?? '') === 'blog'
+            && filled($page->slug);
+    }
+
+    /**
+     * Public post URL with a fragment: the comment node when approved, otherwise the comments section.
+     */
+    public function urlOnPublicPost(): ?string
+    {
+        if (! $this->hasPublicPostUrl()) {
+            return null;
+        }
+        $page = $this->page;
+        $base = rtrim((string) config('app.url', url('/')), '/');
+        $path = $base.'/'.ltrim((string) $page->slug, '/');
+        $fragment = $this->status === self::STATUS_APPROVED
+            ? 'page-comment-'.$this->id
+            : 'post-comments-heading';
+
+        return $path.'#'.$fragment;
+    }
+
     /**
      * @return Collection<int, PageComment>
      */

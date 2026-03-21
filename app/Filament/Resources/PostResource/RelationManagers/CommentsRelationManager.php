@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\PostResource\RelationManagers;
 
+use App\Filament\Support\PageCommentTableActions;
 use App\Models\PageComment;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -112,15 +113,19 @@ class CommentsRelationManager extends RelationManager
                         PageComment::STATUS_REJECTED => __('Rejected'),
                     ]),
             ])
-            ->headerActions([])
+            ->headerActions([
+                PageCommentTableActions::approveAllPendingForPageHeaderAction($this->ownerRecord->getKey()),
+                PageCommentTableActions::deleteAllPendingForPageHeaderAction($this->ownerRecord->getKey()),
+            ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\EditAction::make(),
+                    PageCommentTableActions::viewOnPostAction(),
                     Tables\Actions\Action::make('approve')
                         ->label(__('Approve'))
                         ->icon('heroicon-o-check-circle')
                         ->color('success')
-                        ->visible(fn (PageComment $record) => $record->status === PageComment::STATUS_PENDING)
+                        ->visible(fn (PageComment $record) => $record->status !== PageComment::STATUS_APPROVED)
                         ->requiresConfirmation()
                         ->action(function (PageComment $record): void {
                             $record->update([
@@ -133,7 +138,7 @@ class CommentsRelationManager extends RelationManager
                         ->label(__('Reject'))
                         ->icon('heroicon-o-x-circle')
                         ->color('danger')
-                        ->visible(fn (PageComment $record) => $record->status === PageComment::STATUS_PENDING)
+                        ->visible(fn (PageComment $record) => $record->status !== PageComment::STATUS_REJECTED)
                         ->requiresConfirmation()
                         ->action(function (PageComment $record): void {
                             $record->update([
@@ -146,9 +151,7 @@ class CommentsRelationManager extends RelationManager
                 ])->label(__('Actions')),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                PageCommentTableActions::bulkActionGroup(),
             ]);
     }
 }
