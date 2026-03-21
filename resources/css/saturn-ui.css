@@ -136,6 +136,11 @@
     @apply saturn-badge bg-red-500/10 text-red-600 dark:bg-red-400/20 dark:text-red-600 border border-red-500/20 dark:border-red-400/30;
 }
 
+/** Contadores / pills neutros (preto–branco, alinhado ao Saturn) **/
+.saturn-badge-neutral {
+    @apply saturn-badge rounded-md border border-saturn-200/90 bg-saturn-100/90 text-saturn-900 dark:border-saturn-700/90 dark:bg-saturn-900/60 dark:text-saturn-100;
+}
+
 /** Color System - Padrão Vercel para cores semânticas **/
 .saturn-color-primary {
     @apply bg-primary-100 text-primary-800 dark:bg-primary-900/20 dark:text-primary-400;

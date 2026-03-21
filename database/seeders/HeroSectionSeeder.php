@@ -30,8 +30,8 @@ class HeroSectionSeeder extends Seeder
                 'is_mailing_active'               => true,
 
                 // Headings
-                'section_title'    => 'Warriorfolio is here with Juno, <br /> Saturn UI, Github Integration and more!',
-                'section_subtitle' => 'Welcome to the new era of portfolio building!',
+                'section_title'    => 'Your own <span class="dg">community</span> starts here!',
+                'section_subtitle' => 'Featuring comments in your posts. See what\'s new in v2.2.4',
 
                 // Action buttons
                 'buttons' => [
@@ -58,7 +58,7 @@ class HeroSectionSeeder extends Seeder
                 'bumper_is_animated' => true,
                 'bumper_is_center'   => false,
                 'bumper_tag'         => 'New',
-                'bumper_title'       => '🚀 Version 2.2.3 available!',
+                'bumper_title'       => '🚀 v2.2.4 is here!',
                 'bumper_icon'        => 'sparkles-outline',
                 'bumper_link'        => '#',
                 'bumper_target'      => '_self',
