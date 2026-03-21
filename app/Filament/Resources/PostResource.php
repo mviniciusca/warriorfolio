@@ -172,7 +172,7 @@ class PostResource extends Resource
                                     ->afterStateUpdated(fn (Set $set, ?bool $state) => $set('../../is_active', $state)),
                                 Toggle::make('is_featured')
                                     ->label(__('Featured'))
-                                    ->helperText(__('Mark this post as featured.'))
+                                    ->helperText(__('Mark as featured. You can enable this on multiple posts; they appear together in the featured carousel on the notes listing.'))
                                     ->default(false),
                             ]),
                     ]),

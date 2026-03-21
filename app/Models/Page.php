@@ -151,6 +151,15 @@ class Page extends \Z3d0X\FilamentFabricator\Models\Page
         return (bool) ($this->comments_enabled ?? true);
     }
 
+    public function approvedCommentsCount(): int
+    {
+        if (! $this->areCommentsEnabled()) {
+            return 0;
+        }
+
+        return $this->comments()->approved()->count();
+    }
+
     /**
      * The "booted" method of the model.
      * Handle the lifecycle events for Page model.

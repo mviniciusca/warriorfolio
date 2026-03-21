@@ -20,7 +20,7 @@ export default {
         'lg:grid-cols-3', 'lg:grid-cols-4',
         'xl:grid-cols-4',
         // Gap classes
-        'gap-1', 'gap-2', 'gap-3', 'gap-4', 'gap-5', 'gap-6', 'gap-8',
+        'gap-1', 'gap-2', 'gap-3', 'gap-4', 'gap-5', 'gap-6', 'gap-8', 'gap-10', 'gap-12', 'gap-16',
     ],
     theme: {
         extend: {

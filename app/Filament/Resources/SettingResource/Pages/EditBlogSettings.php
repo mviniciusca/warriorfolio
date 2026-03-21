@@ -82,6 +82,26 @@ class EditBlogSettings extends EditRecord
                                 Group::make()
                                     ->extraAttributes([
                                         'class' => 'space-y-4',
+                                        'description' => __('Heading shown above the featured posts carousel on the Notes homepage.'),
+                                    ])
+                                    ->columns(2)
+                                    ->schema([
+                                        TextInput::make('blog.featured_carousel_title')
+                                            ->label(__('Featured carousel title'))
+                                            ->placeholder(__('Featured'))
+                                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                                            ->default(__('Featured'))
+                                            ->helperText(__('HTML allowed. Same style as other Notes headings (e.g. class "tl").')),
+                                        TextInput::make('blog.featured_carousel_icon')
+                                            ->label(__('Featured carousel icon'))
+                                            ->placeholder('sparkles-outline')
+                                            ->prefixIcon('heroicon-o-photo')
+                                            ->default('sparkles-outline')
+                                            ->helperText(__('Ionicon name (outline), e.g. sparkles-outline, star-outline, flame-outline.')),
+                                    ]),
+                                Group::make()
+                                    ->extraAttributes([
+                                        'class' => 'space-y-4',
                                         'description' => __('This module shows your latest posts from your Notes. All fields are optional.'),
                                     ])
                                     ->columns(2)

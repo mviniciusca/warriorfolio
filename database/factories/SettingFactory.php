@@ -43,6 +43,8 @@ class SettingFactory extends Factory
                 'is_trend_widget_active' => true,
                 'more_articles_btn_title' => null,
                 'comments_enabled' => true,
+                'featured_carousel_title' => 'Featured',
+                'featured_carousel_icon' => 'sparkles-outline',
             ],
             //
             'meta' => [

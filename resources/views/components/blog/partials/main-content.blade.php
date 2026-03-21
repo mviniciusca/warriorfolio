@@ -1,9 +1,11 @@
-@props(['posts', 'featured_post'])
+@props(['posts', 'featured_posts', 'active_category' => null])
 
-<!-- Featured Post (only show when not searching) -->
-@if(!request('search') && $featured_post)
-<x-blog.partials.featured :featuredPost="$featured_post" />
+@if (! request('search') && $featured_posts->isNotEmpty())
+    <x-blog.partials.featured :featuredPosts="$featured_posts" />
 @endif
 
-<!-- Posts List -->
-<x-blog.partials.posts-list :$posts />
+@if (! request('search'))
+    <x-blog.partials.feed-tabs />
+@endif
+
+<x-blog.partials.posts-list :$posts :active-category="$active_category" />

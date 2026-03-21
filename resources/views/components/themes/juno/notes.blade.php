@@ -25,6 +25,10 @@
                         {{ $post->post->category->name }}
                     </span>
                     @endif
+                    <span class="text-secondary-400 dark:text-secondary-600">•</span>
+                    <span class="text-secondary-500 dark:text-secondary-400">
+                        {{ $post->approvedCommentsCount() }} {{ __('comments') }}
+                    </span>
                 </div>
 
                 <h3

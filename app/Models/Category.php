@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Page;
-use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -27,8 +25,6 @@ class Category extends Model
 
     /**
      * Get all of the projects for the Category.
-     *
-     * @return HasMany
      */
     public function project(): HasMany
     {
@@ -37,8 +33,6 @@ class Category extends Model
 
     /**
      * Get the parent category that owns the Category.
-     *
-     * @return BelongsTo
      */
     public function parent(): BelongsTo
     {
@@ -47,8 +41,6 @@ class Category extends Model
 
     /**
      * Get all of the pages associated with the Category.
-     *
-     * @return HasMany
      */
     public function pages(): HasMany
     {
@@ -57,11 +49,10 @@ class Category extends Model
 
     /**
      * Get all of the posts associated with the Category.
-     *
-     * @return HasMany
      */
     public function post(): HasMany
     {
         return $this->hasMany(Post::class);
     }
+
 }

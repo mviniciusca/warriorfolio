@@ -7,7 +7,6 @@ use App\Models\Setting;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use OpenSpout\Reader\ODS\Helper\SettingsHelper;
 
 class Counter extends Component
 {
@@ -24,15 +23,16 @@ class Counter extends Component
      */
     public function render(): View|Closure|string
     {
+        $blog = Setting::first('blog');
+
         return view('components.blog.widget.counter', [
-            'data'      => $this->getData(),
-            'blog_data' => Setting::first('blog')->blog,
+            'data' => $this->getData(),
+            'blog_data' => $blog?->blog ?? [],
         ]);
     }
 
     /**
      * Connects to Page and check the Category from the Post
-     * @return array
      */
     public function getData(): array
     {
@@ -60,8 +60,6 @@ class Counter extends Component
 
     /**
      * Get the total of posts and return the value
-     * @param int $counter
-     * @return int|string
      */
     public function counterGuide(int $counter): int|string
     {

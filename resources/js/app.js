@@ -93,17 +93,26 @@ document.querySelectorAll('a').forEach(function (link) {
 });
 
 /**
- * Swiper Carousel Configuration
- * Initializes the Swiper carousel with specific settings
+ * Swiper: carrosséis genéricos da página (blocos / hero).
+ * Não usar o seletor ".swiper" solto: o blog featured e o Livewire categories têm init próprio.
  */
-const swiper = new Swiper(".swiper", {
-    slidesPerView: 5,
-    loop: true,
-    centerInsufficientSlides: true,
-    centeredSlidesBounds: true,
-    speed: 500,
-    autoplay: true,
-    centeredSlides: true,
+document.addEventListener('DOMContentLoaded', () => {
+    document
+        .querySelectorAll('.swiper:not(.blog-featured-swiper):not(.categories-swiper)')
+        .forEach((el) => {
+            if (!el.querySelector('.swiper-wrapper')) {
+                return;
+            }
+            new Swiper(el, {
+                slidesPerView: 5,
+                loop: true,
+                centerInsufficientSlides: true,
+                centeredSlidesBounds: true,
+                speed: 500,
+                autoplay: true,
+                centeredSlides: true,
+            });
+        });
 });
 
 /**

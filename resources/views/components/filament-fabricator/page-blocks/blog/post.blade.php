@@ -19,6 +19,12 @@
             @endif
             <time>{{ $page->created_at->format('M d, Y') }}</time>
             <x-ui.reading-time :content="$page->post->content" style="default" size="md" />
+            @if ($page->areCommentsEnabled())
+                <a href="#post-comments-heading" class="saturn-flex-start gap-1 underline-offset-2 hover:underline">
+                    <x-ui.ionicon icon="chatbubble-ellipses-outline" class="text-base" />
+                    <span>{{ $page->approvedCommentsCount() }} {{ __('comments') }}</span>
+                </a>
+            @endif
         </div>
 
         <!-- Post Title -->
