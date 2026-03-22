@@ -222,10 +222,11 @@
     }
 
     /*
-     * Painel do conteúdo das form tabs: borda + cantos arredondados para delimitar
-     * o bloco (canvas branco/escuro sem outro “cartão” fica menos vazio).
+     * Painel do conteúdo das form tabs: sem moldura própria.
+     * Cada bloco fica numa Section (título, descrição, ícone) = um contorno só.
+     * A homepage do painel (.fi-dashboard-page) não usa .fi-fo-tabs-tab.
      */
     .fi-fo-tabs .fi-fo-tabs-tab.fi-active {
-        @apply !rounded-lg !border !border-neutral-200 !px-4 !pb-6 !pt-4 dark:!border-neutral-800 sm:!px-6;
+        @apply !rounded-none !border-0 !shadow-none !ring-0 !px-0 !pb-6 !pt-3;
     }
 }

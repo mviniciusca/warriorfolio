@@ -330,8 +330,9 @@ class SettingResource extends Resource
                                         Tab::make(__('GitHub Service'))
                                             ->icon('heroicon-o-code-bracket-square')
                                             ->schema([
-                                                Group::make()
-                                                    ->columns(1)
+                                                Section::make(__('GitHub integration'))
+                                                    ->description(__('Connect your GitHub account: API token, username, repository feed and graphs.'))
+                                                    ->icon('heroicon-o-code-bracket-square')
                                                     ->schema([
                                                         Group::make()
                                                             ->columns(4)
@@ -382,8 +383,9 @@ class SettingResource extends Resource
                                         Tab::make(__('Google reCAPTCHA'))
                                             ->icon('heroicon-o-shield-check')
                                             ->schema([
-                                                Group::make()
-                                                    ->columns(1)
+                                                Section::make(__('Google reCAPTCHA'))
+                                                    ->description(__('Protect public forms with reCAPTCHA v2. Add your site and secret keys below.'))
+                                                    ->icon('heroicon-o-shield-check')
                                                     ->schema([
                                                         Group::make()
                                                             ->columns(2)

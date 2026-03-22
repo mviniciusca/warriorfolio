@@ -6,6 +6,7 @@ use App\Filament\Resources\SettingResource;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -44,21 +45,24 @@ class EditBlogSettings extends EditRecord
                         Tabs\Tab::make('General')
                             ->icon('heroicon-o-cog')
                             ->schema([
-                                Toggle::make('blog.module_is_active')
-                                    ->default(true)
-                                    ->helperText(__('To hide your blog system completely, you can disable the module in Application Settings > Core Modules Global Visibility Control '))
-                                    ->label(__('Show Featured Posts from Notes Module')),
+                                Section::make(__('Featured posts module'))
+                                    ->description(__('Control whether featured posts from the Notes module appear. To hide Notes completely, use Application Settings ▸ Core Modules.'))
+                                    ->icon('heroicon-o-cog')
+                                    ->schema([
+                                        Toggle::make('blog.module_is_active')
+                                            ->default(true)
+                                            ->helperText(__('To hide your blog system completely, you can disable the module in Application Settings > Core Modules Global Visibility Control '))
+                                            ->label(__('Show Featured Posts from Notes Module')),
+                                    ]),
                             ]),
 
                         Tabs\Tab::make('Articles Section')
                             ->icon('heroicon-o-book-open')
                             ->schema([
-                                Group::make()
+                                Section::make(__('More articles block'))
+                                    ->description(__('Copy for the “more articles” area on the post page. All fields are optional.'))
+                                    ->icon('heroicon-o-book-open')
                                     ->columns(2)
-                                    ->extraAttributes([
-                                        'class' => 'space-y-4',
-                                        'description' => __('This module shows your latest posts in your Post Page. All fields are optional.'),
-                                    ])
                                     ->schema([
                                         TextInput::make('blog.more_articles_title')
                                             ->label(__('More Articles Title'))
@@ -72,18 +76,15 @@ class EditBlogSettings extends EditRecord
                                             ->prefixIcon('heroicon-o-pencil')
                                             ->default(__('More Stories'))
                                             ->helperText(__('HTML allowed. Use the class "tl" to highlight a word')),
-
                                     ]),
                             ]),
 
                         Tabs\Tab::make('Featured Posts')
                             ->icon('heroicon-o-pencil')
                             ->schema([
-                                Group::make()
-                                    ->extraAttributes([
-                                        'class' => 'space-y-4',
-                                        'description' => __('Heading shown above the featured posts carousel on the Notes homepage.'),
-                                    ])
+                                Section::make(__('Featured carousel'))
+                                    ->description(__('Heading shown above the featured posts carousel on the Notes homepage.'))
+                                    ->icon('heroicon-o-sparkles')
                                     ->columns(2)
                                     ->schema([
                                         TextInput::make('blog.featured_carousel_title')
@@ -99,11 +100,9 @@ class EditBlogSettings extends EditRecord
                                             ->default('sparkles-outline')
                                             ->helperText(__('Ionicon name (outline), e.g. sparkles-outline, star-outline, flame-outline.')),
                                     ]),
-                                Group::make()
-                                    ->extraAttributes([
-                                        'class' => 'space-y-4',
-                                        'description' => __('This module shows your latest posts from your Notes. All fields are optional.'),
-                                    ])
+                                Section::make(__('Section heading & CTA'))
+                                    ->description(__('Titles, subtitle and button for the featured posts block. All fields are optional.'))
+                                    ->icon('heroicon-o-rectangle-stack')
                                     ->columns(2)
                                     ->schema([
                                         Checkbox::make('blog.is_heading_visible')
@@ -135,11 +134,9 @@ class EditBlogSettings extends EditRecord
                         Tabs\Tab::make('Features')
                             ->icon('heroicon-o-bolt')
                             ->schema([
-                                Group::make()
-                                    ->extraAttributes([
-                                        'class' => 'space-y-4',
-                                        'description' => __('Manage your Notes Pages Settings'),
-                                    ])
+                                Section::make(__('Notes page features'))
+                                    ->description(__('Toggle profile, share, trends and comments on Notes pages.'))
+                                    ->icon('heroicon-o-bolt')
                                     ->columns(3)
                                     ->schema([
                                         Checkbox::make('blog.is_show_profile')
@@ -164,11 +161,9 @@ class EditBlogSettings extends EditRecord
                         Tabs\Tab::make('Header')
                             ->icon('heroicon-o-photo')
                             ->schema([
-                                Group::make()
-                                    ->extraAttributes([
-                                        'class' => 'space-y-4',
-                                        'description' => __('Manage your Notes Settings and Public Definitions.'),
-                                    ])
+                                Section::make(__('Public Notes header'))
+                                    ->description(__('Name, description, logo and visibility for the Notes header.'))
+                                    ->icon('heroicon-o-photo')
                                     ->columns(3)
                                     ->schema([
                                         Group::make()
