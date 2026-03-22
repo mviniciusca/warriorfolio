@@ -9,7 +9,7 @@
     $tabFeatured = $feed === 'featured';
 @endphp
 
-<nav aria-label="{{ __('Notes feed') }}" class="mb-8"
+<nav aria-label="{{ __('Notes feed') }}" class="mb-5 sm:mb-8"
     x-data="{
         left: 0,
         width: 0,
@@ -34,7 +34,7 @@
             style="scrollbar-width: none"
             @scroll.passive="updateBar()">
             <a href="{{ NotesFeedUrl::build('for-you') }}"
-                class="shrink-0 whitespace-nowrap pb-3 text-sm font-medium transition-colors hover:saturn-text"
+                class="shrink-0 whitespace-nowrap pb-2.5 text-xs font-medium transition-colors hover:saturn-text sm:pb-3 sm:text-sm"
                 data-feed-tab
                 @if ($tabForYou) data-feed-active @endif
                 @class([
@@ -44,7 +44,7 @@
                 {{ __('For you') }}
             </a>
             <a href="{{ NotesFeedUrl::build('featured') }}"
-                class="shrink-0 whitespace-nowrap pb-3 text-sm font-medium transition-colors hover:saturn-text"
+                class="shrink-0 whitespace-nowrap pb-2.5 text-xs font-medium transition-colors hover:saturn-text sm:pb-3 sm:text-sm"
                 data-feed-tab
                 @if ($tabFeatured) data-feed-active @endif
                 @class([

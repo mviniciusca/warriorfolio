@@ -17,9 +17,9 @@
     }
 @endphp
 
-<div class="space-y-8">
-    <div class="mb-2 flex items-center justify-between">
-        <h3 class="text-2xl font-bold tracking-tight saturn-text">
+<div class="space-y-5 md:space-y-8">
+    <div class="mb-0 flex items-center justify-between sm:mb-2">
+        <h3 class="saturn-text text-lg font-bold tracking-tight sm:text-xl md:text-2xl">
             {{ $listTitle }}
         </h3>
     </div>
@@ -33,7 +33,7 @@
     </div>
 
     @if ($posts->hasPages())
-        <div class="mt-12">
+        <div class="mt-8 md:mt-12">
             <x-ui.pagination :paginator="$posts" />
         </div>
     @endif

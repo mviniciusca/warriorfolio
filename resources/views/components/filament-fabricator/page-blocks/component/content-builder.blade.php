@@ -9,9 +9,9 @@
 
 @if ($is_active)
 <section id="{{ $section_id }}"
-    class="content-builder-section py-{{ $spacing === 'sm' ? '4' : ($spacing === 'lg' ? '16' : '8') }}">
+    class="content-builder-section saturn-x-section py-{{ $spacing === 'sm' ? '4' : ($spacing === 'lg' ? '16' : '8') }}">
     @if ($with_container)
-    <div class="container mx-auto px-4">
+    <div class="mx-auto w-full max-w-7xl">
         @endif
 
         @foreach ($content_blocks as $block)

@@ -8,7 +8,7 @@
     ]));
 @endphp
 
-<div class="saturn-y-section px-4 pt-12 md:pt-16">
+<div class="saturn-y-section pt-12 md:pt-16">
     @if($is_heading_visible)
         <x-themes.juno.partials.header :$title :$subtitle />
     @endif

@@ -1,12 +1,12 @@
 @props(['posts'])
 
-<div class="flex items-center gap-4">
+<div class="flex w-full items-center gap-2 sm:gap-4">
     <!-- Search Form -->
-    <form method="GET" action="{{ request()->url() }}" class="relative" id="searchForm">
-        <div class="relative">
+    <form method="GET" action="{{ request()->url() }}" class="relative w-full" id="searchForm">
+        <div class="relative w-full">
             <x-ui.form.input type="text" name="search" value="{{ request('search') }}" icon="search-outline"
-                placeholder="{{ __('Search articles...') }}" class="saturn-input w-full sm:w-64" autocomplete="off"
-                id="searchInput" />
+                placeholder="{{ __('Search articles...') }}" class="saturn-input w-full text-sm sm:w-64 sm:text-base"
+                autocomplete="off" id="searchInput" />
             @if(request('search'))
             <a href="{{ request()->url() }}" class="absolute inset-y-0 right-0 pr-3 flex items-center">
                 <x-ui.ionicon icon="close-outline" class="h-5 w-5 saturn-text opacity-50 hover:opacity-100" />
@@ -18,17 +18,18 @@
 
 <!-- Search Results Info -->
 @if(request('search'))
-<div class="mt-4 p-4 saturn-bg-accent rounded-lg saturn-border border">
-    <div class="flex items-center justify-between">
-        <div>
-            <p class="saturn-text text-sm">
+<div class="mt-3 rounded-lg border p-3 saturn-border saturn-bg-accent sm:mt-4 sm:p-4">
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+        <div class="min-w-0">
+            <p class="saturn-text text-xs sm:text-sm">
                 {{ __('Search results for:') }} <strong>"{{ request('search') }}"</strong>
             </p>
-            <p class="saturn-text text-xs opacity-70 mt-1">
+            <p class="mt-1 saturn-text text-[11px] opacity-70 sm:text-xs">
                 {{ $posts->total() }} {{ $posts->total() === 1 ? __('result found') : __('results found') }}
             </p>
         </div>
-        <a href="{{ request()->url() }}" class="saturn-btn-outlined text-sm">
+        <a href="{{ request()->url() }}"
+            class="saturn-btn-outlined shrink-0 self-start text-xs sm:self-auto sm:text-sm">
             <x-ui.ionicon icon="close-outline" />
             {{ __('Clear search') }}
         </a>

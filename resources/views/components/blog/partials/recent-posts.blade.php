@@ -5,12 +5,12 @@
         <x-ui.card :is_border="false" :no_padding="true">
             @if ($cols == 1)
                 @php $hasCover = (bool) $post->post?->img_cover; @endphp
-                <div class="border-b saturn-border pb-14 pt-2 last:border-0 last:pb-2 md:pb-16">
+                <div class="border-b saturn-border pb-8 pt-1 last:border-0 last:pb-2 sm:pb-12 sm:pt-2 md:pb-16">
                     <div
-                        class="{{ $hasCover ? 'flex flex-row items-start gap-4 sm:gap-6 md:gap-8' : 'flex flex-col' }}">
+                        class="{{ $hasCover ? 'flex flex-row items-start gap-3 sm:gap-5 md:gap-8' : 'flex flex-col' }}">
                         @if ($hasCover)
                             <a href="{{ $url . $post->slug }}"
-                                class="relative block w-28 shrink-0 overflow-hidden rounded-lg sm:w-40 md:w-48 lg:w-52 outline-none ring-purple-500/30 focus-visible:ring-2">
+                                class="relative block w-[5.25rem] shrink-0 overflow-hidden rounded-lg outline-none ring-purple-500/30 focus-visible:ring-2 sm:w-28 md:w-40 lg:w-48 xl:w-52">
                                 @if ($post->post?->is_featured)
                                     <span
                                         class="pointer-events-none absolute left-2 top-2 z-10 rounded-md border saturn-border-accent px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider shadow-sm saturn-bg saturn-text">
@@ -18,16 +18,16 @@
                                     </span>
                                 @endif
                                 <x-blog.post.cover-image :media="$post->post->img_cover" :alt="strip_tags($post->title)"
-                                    class="aspect-square h-24 w-full object-cover transition duration-300 hover:opacity-[0.96] sm:h-36 md:h-40 lg:h-44" />
+                                    class="aspect-square h-[4.5rem] w-full object-cover transition duration-300 hover:opacity-[0.96] sm:h-24 md:h-36 lg:h-40 xl:h-44" />
                             </a>
                         @endif
 
                         <div class="flex min-w-0 flex-1 flex-col">
                             <a class="block outline-none ring-purple-500/30 focus-visible:ring-2"
                                 href="{{ $url . $post->slug }}">
-                                <div class="max-w-3xl space-y-3">
+                                <div class="max-w-3xl space-y-2 sm:space-y-3">
                                     <div
-                                        class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm opacity-80 saturn-text">
+                                        class="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs opacity-80 saturn-text sm:gap-x-2 sm:gap-y-1 sm:text-sm">
                                         @if ($post->post?->category)
                                             <span class="font-medium opacity-100">{{ $post->post->category->name }}</span>
                                             <span class="opacity-40" aria-hidden="true">·</span>
@@ -37,30 +37,31 @@
                                         </time>
                                     </div>
 
-                                    <h3 class="text-xl font-semibold leading-snug tracking-tight saturn-text md:text-2xl">
+                                    <h3
+                                        class="text-lg font-semibold leading-snug tracking-tight saturn-text sm:text-xl md:text-2xl">
                                         {{ Str::limit(strip_tags($post->title), 120) }}
                                     </h3>
 
                                     <p
-                                        class="text-base leading-relaxed opacity-75 saturn-text line-clamp-3 md:line-clamp-4">
+                                        class="text-sm leading-relaxed opacity-75 saturn-text line-clamp-2 sm:line-clamp-3 sm:text-base md:line-clamp-4">
                                         {{ Str::limit(strip_tags($post->post->content), 220) }}
                                     </p>
                                 </div>
                             </a>
 
                             <div
-                                class="mt-5 flex max-w-3xl flex-wrap items-center justify-between gap-4 text-xs opacity-70 saturn-text">
-                                <div class="flex flex-wrap items-center gap-3">
+                                class="mt-3 flex max-w-3xl flex-col gap-3 text-[11px] opacity-70 saturn-text sm:mt-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-4 sm:text-xs">
+                                <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 sm:gap-3">
                                     <span>{{ $post->user->name ?? __('Author') }}</span>
                                     <span class="opacity-40" aria-hidden="true">·</span>
                                     <span>{{ $post->created_at->diffForHumans() }}</span>
                                     <span class="opacity-40" aria-hidden="true">·</span>
                                     <x-ui.reading-time :content="$post->post->content" style="default" size="sm" />
                                 </div>
-                                <div class="flex items-center gap-4">
+                                <div class="flex flex-wrap items-center gap-3 sm:gap-4">
                                     <a href="{{ $url . $post->slug }}#post-comments-heading"
                                         class="inline-flex items-center gap-1 underline-offset-2 hover:underline">
-                                        <x-ui.ionicon icon="chatbubble-ellipses-outline" class="text-sm" />
+                                        <x-ui.ionicon icon="chatbubble-ellipses-outline" class="text-xs sm:text-sm" />
                                         <span>{{ $post->approvedCommentsCount() }} {{ __('comments') }}</span>
                                     </a>
                                     <x-ui.share :url="$url . $post->slug" />

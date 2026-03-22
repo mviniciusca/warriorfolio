@@ -39,7 +39,7 @@
 
     {{-- Profile Expanded --}}
     <div x-show="isExpanded" x-transition:enter="fade-enter" x-transition:leave="fade-leave">
-        <div class="container mx-auto px-4">
+        <div class="mx-auto w-full max-w-7xl">
             <div class="flex flex-col md:flex-row md:items-start md:gap-8">
                 @if ($showAvatar)
                 <div class="relative mb-8 md:mb-0 md:w-1/3 flex justify-center md:justify-end">

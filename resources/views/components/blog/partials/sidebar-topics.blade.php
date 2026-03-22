@@ -8,12 +8,13 @@
     };
 @endphp
 
-<div id="blog-topics" class="rounded-xl border saturn-border p-6 saturn-text sm:p-8">
-    <h2 class="mb-1 flex items-center justify-between gap-2 text-base font-semibold tracking-tight saturn-text">
+<div id="blog-topics" class="rounded-xl border saturn-border p-4 saturn-text sm:p-6 md:p-8">
+    <h2
+        class="mb-1 flex items-center justify-between gap-2 text-sm font-semibold tracking-tight saturn-text sm:text-base">
         {{ __('Topics') }}
-        <x-ui.ionicon icon="pricetag-outline" class="h-5 w-5 shrink-0 opacity-50" aria-hidden="true" />
+        <x-ui.ionicon icon="pricetag-outline" class="h-4 w-4 shrink-0 opacity-50 sm:h-5 sm:w-5" aria-hidden="true" />
     </h2>
-    <p class="mb-4 text-xs leading-relaxed saturn-text-accent">
+    <p class="mb-3 text-[11px] leading-relaxed saturn-text-accent sm:mb-4 sm:text-xs">
         {{ __('All categories. Tap a tag to filter.') }}
     </p>
     @if ($categories->isNotEmpty())

@@ -282,6 +282,7 @@
 .saturn-y-subsection {
     @apply py-4 md:py-8 lg:py-10;
 }
+/** Gutter horizontal do site (navbar, x-core.layout, blocos full-width). Não somar px-* extra no filho. */
 .saturn-x-section {
     @apply px-4 sm:px-6 lg:px-8;
 }

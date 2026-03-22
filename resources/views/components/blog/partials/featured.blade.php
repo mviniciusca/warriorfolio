@@ -8,15 +8,16 @@
         $featuredIcon = trim((string) settings('blog.featured_carousel_icon', 'sparkles-outline')) ?: 'sparkles-outline';
     @endphp
 
-    <div class="relative mb-10 md:mb-12" data-blog-featured data-featured-count="{{ $featuredCount }}">
-        <div class="mb-5 flex flex-col gap-4 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
-            <h2 class="saturn-h3 flex items-center gap-2.5 font-semibold tracking-tight saturn-text md:text-2xl">
-                <x-ui.ionicon :icon="$featuredIcon" class="h-6 w-6 shrink-0 opacity-80" />
+    <div class="relative mb-6 md:mb-10 lg:mb-12" data-blog-featured data-featured-count="{{ $featuredCount }}">
+        <div class="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+            <h2
+                class="flex items-center gap-2 font-semibold tracking-tight saturn-text text-lg sm:gap-2.5 sm:text-xl md:text-2xl">
+                <x-ui.ionicon :icon="$featuredIcon" class="h-5 w-5 shrink-0 opacity-80 sm:h-6 sm:w-6" />
                 <span>{!! $featuredHeading !!}</span>
             </h2>
             @if ($featuredCount > 1)
                 <div
-                    class="inline-flex w-fit shrink-0 items-stretch self-start overflow-hidden rounded-lg border saturn-border bg-black/[0.02] text-sm font-medium saturn-text shadow-none sm:self-auto dark:bg-white/[0.02]"
+                    class="inline-flex w-fit shrink-0 items-stretch self-start overflow-hidden rounded-lg border saturn-border bg-black/[0.02] text-xs font-medium saturn-text shadow-none sm:self-auto sm:text-sm dark:bg-white/[0.02]"
                     role="group" aria-label="{{ __('Featured posts navigation') }}">
                     <button type="button"
                         class="blog-featured-prev flex items-center justify-center px-2.5 py-2 transition hover:bg-black/[0.05] dark:hover:bg-white/[0.06]"
@@ -47,7 +48,7 @@
                     <div class="swiper-slide box-border w-full min-w-0 shrink-0">
                         <a href="{{ $postBase . '/' . ltrim($featuredPost->slug, '/') }}"
                             class="block rounded-xl outline-none ring-purple-500/30 transition hover:opacity-[0.98] focus-visible:ring-2">
-                            <article class="flex flex-col gap-6 md:flex-row md:items-stretch md:gap-10">
+                            <article class="flex flex-col gap-4 md:flex-row md:items-stretch md:gap-8 lg:gap-10">
                                 <div
                                     class="relative w-full flex-shrink-0 overflow-hidden rounded-xl bg-black/[0.03] md:w-[44%] dark:bg-white/[0.04]">
                                     @if ($hasCover)
@@ -64,21 +65,21 @@
                                         </div>
                                     @endif
                                 </div>
-                                <div class="flex min-w-0 flex-1 flex-col justify-center space-y-3 md:py-1">
+                                <div class="flex min-w-0 flex-1 flex-col justify-center space-y-2 md:space-y-3 md:py-1">
                                     @if ($featuredPost->post?->category)
                                         <span
-                                            class="inline-flex w-fit rounded-lg border saturn-border bg-black/[0.02] px-2.5 py-1 text-xs font-medium saturn-text-accent dark:bg-white/[0.03]">
+                                            class="inline-flex w-fit rounded-lg border saturn-border bg-black/[0.02] px-2 py-0.5 text-[11px] font-medium saturn-text-accent sm:px-2.5 sm:py-1 sm:text-xs dark:bg-white/[0.03]">
                                             {{ $featuredPost->post->category->name }}
                                         </span>
                                     @endif
                                     <h2
-                                        class="blog-featured-title break-words text-xl font-semibold leading-snug tracking-tight saturn-text md:text-2xl">
+                                        class="blog-featured-title break-words text-lg font-semibold leading-snug tracking-tight saturn-text sm:text-xl md:text-2xl">
                                         {{ $featuredPost->title }}
                                     </h2>
-                                    <p class="blog-featured-excerpt text-base leading-relaxed saturn-text-accent">
+                                    <p class="blog-featured-excerpt text-sm leading-relaxed saturn-text-accent sm:text-base">
                                         {{ strip_tags($excerptRaw) }}
                                     </p>
-                                    <span class="text-sm saturn-text-accent">
+                                    <span class="text-xs saturn-text-accent sm:text-sm">
                                         {{ $featuredPost->created_at->diffForHumans() }}
                                     </span>
                                 </div>
@@ -88,7 +89,7 @@
                 @endforeach
             </div>
             @if ($featuredCount > 1)
-                <div class="blog-featured-pagination mt-6 flex justify-center"></div>
+                <div class="blog-featured-pagination mt-4 flex justify-center sm:mt-6"></div>
             @endif
         </div>
     </div>
@@ -149,7 +150,10 @@
 
                 const options = {
                     slidesPerView: 1,
-                    spaceBetween: 24,
+                    spaceBetween: 16,
+                    breakpoints: {
+                        640: { spaceBetween: 24 },
+                    },
                     speed: 450,
                     watchOverflow: true,
                     rewind: count > 1,
