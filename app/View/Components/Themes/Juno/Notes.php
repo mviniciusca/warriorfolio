@@ -63,8 +63,9 @@ class Notes extends Component
                 })
                 ->where('is_active', '=', true)
                 ->latest()
-                ->take(6)
+                ->take(5)
                 ->get(),
+            'blog_index_url' => url(config('warriorfolio.app_blog_basepath', 'blog/')),
             'module_blog' => $moduleBlog,
             'header_title' => $headerTitle,
             'header_subtitle' => $headerSubtitle,

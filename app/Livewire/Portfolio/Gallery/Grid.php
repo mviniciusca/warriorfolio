@@ -19,16 +19,15 @@ class Grid extends Component
     public $search = '';
 
     protected $queryString = [
-        'search'         => ['except' => ''],
-        'page'           => ['except' => 1],
+        'search' => ['except' => ''],
         'activeCategory' => ['except' => null],
     ];
 
     protected $listeners = [
         'category-changed' => 'handleCategoryChange',
-        'sort-changed'     => 'handleSortChange',
-        'search-changed'   => 'handleSearch',
-        'controls-reset'   => 'handleReset',
+        'sort-changed' => 'handleSortChange',
+        'search-changed' => 'handleSearch',
+        'controls-reset' => 'handleReset',
     ];
 
     public function mount()
