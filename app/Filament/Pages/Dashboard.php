@@ -11,6 +11,7 @@ use App\Filament\Widgets\NotificationsWidget;
 use App\Filament\Widgets\PostsWidget;
 use App\Filament\Widgets\ProfileWidget;
 use App\Filament\Widgets\ProjectWidget;
+use App\Filament\Widgets\PulseAttentionStripWidget;
 use App\Filament\Widgets\PulseMetricsSectionHeaderWidget;
 use App\Filament\Widgets\PulseQuickActionsWidget;
 use App\Filament\Widgets\SliderWidget;
@@ -120,10 +121,13 @@ class Dashboard extends BaseDashboard
                 'lg' => 3,
                 'xl' => 4,
             ],
-            'inbox', 'studio', 'audience' => [
+            'inbox' => [
                 'default' => 1,
                 'md' => 2,
                 'xl' => 3,
+            ],
+            'studio', 'audience' => [
+                'default' => 1,
             ],
             'checks' => [
                 'default' => 1,
@@ -145,6 +149,7 @@ class Dashboard extends BaseDashboard
         return match ($this->activeTab) {
             'pulse' => [
                 PulseQuickActionsWidget::class,
+                PulseAttentionStripWidget::class,
                 PulseMetricsSectionHeaderWidget::class,
                 StatsOverview::class,
                 CoreModuleWidget::class,

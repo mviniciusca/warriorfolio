@@ -23,7 +23,12 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class StatsOverview extends BaseWidget
 {
-    protected static ?int $sort = 4;
+    protected static ?int $sort = 5;
+
+    /**
+     * @var non-empty-string
+     */
+    private const STAT_CARD_INTERACTION_CLASS = 'cursor-pointer transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-900/60';
 
     /**
      * Filament Stat::url() only accepts ?string (not Closure).
@@ -69,7 +74,7 @@ class StatsOverview extends BaseWidget
                 ->description(Maintenance::first()->is_active ? __('Maintenance Mode') : __('Website is Live'))
                 ->color(Maintenance::first()->is_active ? 'warning' : 'success')
                 ->extraAttributes([
-                    'class' => 'cursor-pointer transition-all hover:scale-101',
+                    'class' => self::STAT_CARD_INTERACTION_CLASS,
                 ]),
 
             // Profile Status
@@ -82,7 +87,7 @@ class StatsOverview extends BaseWidget
                 ->description(Profile::first()?->job_position ?? __('No Position Set'))
                 ->color(Profile::where('is_open_to_work', true)->count() > 0 ? 'success' : 'gray')
                 ->extraAttributes([
-                    'class' => 'cursor-pointer transition-all hover:scale-101',
+                    'class' => self::STAT_CARD_INTERACTION_CLASS,
                 ]),
 
             // Blog Stats
@@ -97,7 +102,7 @@ class StatsOverview extends BaseWidget
                 ->color('info')
                 ->chart(Post::where('is_active', true)->pluck('id')->toArray())
                 ->extraAttributes([
-                    'class' => 'cursor-pointer transition-all hover:scale-101',
+                    'class' => self::STAT_CARD_INTERACTION_CLASS,
                 ]),
 
             // Newsletter Stats (Enhanced)
@@ -112,7 +117,7 @@ class StatsOverview extends BaseWidget
                 ->chart(Newsletter::chartSubscribers())
                 ->color('info')
                 ->extraAttributes([
-                    'class' => 'cursor-pointer transition-all hover:scale-101',
+                    'class' => self::STAT_CARD_INTERACTION_CLASS,
                 ]),
 
             // Inbox Stats (Enhanced)
@@ -127,7 +132,7 @@ class StatsOverview extends BaseWidget
                 ->chart(Mail::chartInbox())
                 ->color('warning')
                 ->extraAttributes([
-                    'class' => 'cursor-pointer transition-all hover:scale-101',
+                    'class' => self::STAT_CARD_INTERACTION_CLASS,
                 ]),
 
             // Projects Stats (Enhanced)
@@ -142,7 +147,7 @@ class StatsOverview extends BaseWidget
                 ->color('success')
                 ->chart(Project::where('is_active', true)->pluck('id')->toArray())
                 ->extraAttributes([
-                    'class' => 'cursor-pointer transition-all hover:scale-101',
+                    'class' => self::STAT_CARD_INTERACTION_CLASS,
                 ]),
 
             // Chatbox Status
@@ -155,7 +160,7 @@ class StatsOverview extends BaseWidget
                 ->description('+'.env('MOBILE_COUNTRY_CODE', '').' '.(Chatbox::first()?->telephone ?? __('Not Set')))
                 ->color(Chatbox::first()?->visible ? 'success' : 'gray')
                 ->extraAttributes([
-                    'class' => 'cursor-pointer transition-all hover:scale-101',
+                    'class' => self::STAT_CARD_INTERACTION_CLASS,
                 ]),
 
             // GitHub Repositories
@@ -168,7 +173,7 @@ class StatsOverview extends BaseWidget
                 ->description('@'.(Setting::first()?->config['github_username'] ?? env('GITHUB_USERNAME', 'username')))
                 ->color(Setting::first()?->config['github_is_active'] ?? false ? 'success' : 'gray')
                 ->extraAttributes([
-                    'class' => 'cursor-pointer transition-all hover:scale-101',
+                    'class' => self::STAT_CARD_INTERACTION_CLASS,
                 ]),
         ];
     }
