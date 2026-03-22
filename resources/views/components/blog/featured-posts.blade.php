@@ -18,7 +18,9 @@
     :$button_url>
     <div class="my-2">
         <section class="my-4">
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
+            {{-- auto-fit + 1fr: preenche a largura total (evita faixa vazia com 3 cards em grelha de 4 colunas) --}}
+            <div
+                class="grid w-full min-w-0 gap-6 max-md:grid-cols-1 md:[grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))]">
                 @foreach ($posts as $item)
                 <x-blog.post.card-block :$item />
                 @endforeach

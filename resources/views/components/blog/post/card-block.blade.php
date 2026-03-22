@@ -1,7 +1,7 @@
 @props(['item'])
 
 <article
-    class="flex h-full flex-col rounded-lg border saturn-border bg-white/30 p-8 transition-all duration-500 hover:bg-gradient-to-br hover:from-primary-100/0 hover:to-secondary-200/20 dark:bg-black/30 dark:hover:from-saturn-600/0 dark:hover:to-saturn-700/30">
+    class="flex h-full min-h-0 min-w-0 w-full flex-col rounded-lg border saturn-border bg-white/30 p-8 transition-all duration-500 hover:bg-gradient-to-br hover:from-primary-100/0 hover:to-secondary-200/20 dark:bg-black/30 dark:hover:from-saturn-600/0 dark:hover:to-saturn-700/30">
     <div class="mb-5 flex items-center justify-between">
         <span class="flex items-center gap-1 text-xs">
             {{ ucfirst($item->post->category->name) }}

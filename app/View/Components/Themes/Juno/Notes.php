@@ -55,6 +55,8 @@ class Notes extends Component
 
         $showCta = (bool) ($this->content['show_button'] ?? true);
 
+        $postsLimit = Setting::moduleBlogPostsLimit($blogSetting);
+
         return view('components.themes.juno.notes', [
             'posts' => Page::with(['post', 'post.category'])
                 ->where('style', '=', 'blog')
@@ -63,7 +65,7 @@ class Notes extends Component
                 })
                 ->where('is_active', '=', true)
                 ->latest()
-                ->take(5)
+                ->take($postsLimit)
                 ->get(),
             'blog_index_url' => url(config('warriorfolio.app_blog_basepath', 'blog/')),
             'module_blog' => $moduleBlog,

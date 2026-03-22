@@ -2,13 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Chatbox;
-use App\Models\Core;
-use App\Models\Layout;
-use App\Models\Maintenance;
-use App\Models\Module;
-use App\Models\Navigation;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,12 +15,12 @@ class Setting extends Model
 
     protected $casts = [
         'application' => 'array',
-        'design'      => 'array',
-        'meta'        => 'array',
-        'google'      => 'array',
-        'scripts'     => 'array',
-        'blog'        => 'array',
-        'config'      => 'array',
+        'design' => 'array',
+        'meta' => 'array',
+        'google' => 'array',
+        'scripts' => 'array',
+        'blog' => 'array',
+        'config' => 'array',
     ];
 
     /**
@@ -141,5 +134,22 @@ class Setting extends Model
         } else {
             return __('System is active');
         }
+    }
+
+    /**
+     * Recent post count for embedded Notes (home block, Juno tab, etc.). Configured under Settings → Notes Section.
+     */
+    public static function moduleBlogPostsLimit(?array $blog = null): int
+    {
+        if ($blog === null) {
+            $blog = self::query()->value('blog') ?? [];
+        }
+        if (! is_array($blog)) {
+            $blog = [];
+        }
+        $raw = data_get($blog, 'module_blog_posts_limit');
+        $n = is_numeric($raw) ? (int) $raw : 5;
+
+        return max(1, min(50, $n));
     }
 }

@@ -24,15 +24,18 @@ class FeaturedPosts extends Component
      */
     public function render(): View|Closure|string
     {
+        $blogRow = Setting::query()->first();
+        $blogConfig = is_array($blogRow?->blog ?? null) ? $blogRow->blog : [];
+        $limit = Setting::moduleBlogPostsLimit($blogConfig);
+
         return view('components.blog.featured-posts', [
-            'module_blog' => Module::first('blog')->blog,
-            'info'        => Setting::first('blog')->blog,
-            'posts'       => Page::with('post')
-                ->with('user')
+            'module_blog' => (bool) (Module::query()->value('blog') ?? false),
+            'info' => $blogConfig,
+            'posts' => Page::with(['post', 'user'])
                 ->where('is_active', '=', true)
                 ->where('style', '=', 'blog')
-                ->limit(4)
                 ->orderByDesc('created_at')
+                ->limit($limit)
                 ->get(),
         ]);
     }

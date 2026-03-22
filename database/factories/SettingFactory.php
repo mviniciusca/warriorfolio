@@ -45,6 +45,7 @@ class SettingFactory extends Factory
                 'comments_enabled' => true,
                 'featured_carousel_title' => 'Featured',
                 'featured_carousel_icon' => 'sparkles-outline',
+                'module_blog_posts_limit' => 5,
             ],
             //
             'meta' => [

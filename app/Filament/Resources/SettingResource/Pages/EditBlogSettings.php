@@ -128,6 +128,17 @@ class EditBlogSettings extends EditRecord
                                             ->prefixIcon('heroicon-o-link')
                                             ->label(__('URL'))
                                             ->helperText(__('Define the Header Button URL')),
+                                        TextInput::make('blog.module_blog_posts_limit')
+                                            ->label(__('Posts in embedded module'))
+                                            ->numeric()
+                                            ->minValue(1)
+                                            ->maxValue(50)
+                                            ->default(5)
+                                            ->suffix(__('posts'))
+                                            ->columnSpanFull()
+                                            ->helperText(
+                                                __('How many recent posts to show when Notes is embedded in another layout (e.g. portfolio tab, home block). The full blog listing page is unchanged.')
+                                            ),
                                     ]),
                             ]),
 
