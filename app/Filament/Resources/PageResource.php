@@ -34,6 +34,16 @@ class PageResource extends ResourcesPageResource
 {
     protected static ?string $model = Page::class;
 
+    /** URL de edição correta consoante o estilo (blog → Notes, project → Projects, resto → constructor). */
+    public static function getEditUrlForPage(Page $page): string
+    {
+        return match ($page->style) {
+            'blog' => PostResource::getUrl('edit', ['record' => $page]),
+            'project' => ProjectResource::getUrl('edit', ['record' => $page]),
+            default => static::getUrl('edit', ['record' => $page]),
+        };
+    }
+
     protected static ?string $cluster = SiteCluster::class;
 
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
@@ -55,6 +65,7 @@ class PageResource extends ResourcesPageResource
     {
         return $table
             ->query(Page::query())
+            ->recordUrl(fn (Page $record): string => static::getEditUrlForPage($record))
             ->columns([
                 TextColumn::make('title')
                     ->label(__('filament-fabricator::page-resource.labels.title'))
@@ -128,7 +139,15 @@ class PageResource extends ResourcesPageResource
                     ->label(__('filament-fabricator::page-resource.labels.parent'))
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->formatStateUsing(fn ($state) => $state ?? '-')
-                    ->url(fn (?PageContract $record) => filled($record->parent_id) ? PageResource::getUrl('edit', ['record' => $record->parent_id]) : null),
+                    ->url(function (?PageContract $record) {
+                        if (! $record instanceof Page || ! filled($record->parent_id)) {
+                            return null;
+                        }
+
+                        $parent = $record->parent;
+
+                        return $parent instanceof Page ? static::getEditUrlForPage($parent) : null;
+                    }),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
@@ -158,11 +177,7 @@ class PageResource extends ResourcesPageResource
                     ViewAction::make()
                         ->visible(config('filament-fabricator.enable-view-page')),
                     EditAction::make()
-                        ->url(fn (Page $record): string => match ($record->style) {
-                            'blog' => PostResource::getUrl('edit', ['record' => $record->id]),
-                            'project' => ProjectResource::getUrl('edit', ['record' => $record->id]),
-                            default => PageResource::getUrl('edit', ['record' => $record])
-                        }),
+                        ->url(fn (Page $record): string => static::getEditUrlForPage($record)),
                     Action::make('visit')
                         ->label(__('filament-fabricator::page-resource.actions.visit'))
                         ->url(fn (?PageContract $record) => FilamentFabricator::getPageUrlFromId($record->id, true) ?: null)

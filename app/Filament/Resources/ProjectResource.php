@@ -33,6 +33,7 @@ use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -60,9 +61,63 @@ class ProjectResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    /**
+     * @return array<int, string>
+     */
+    public static function getGloballySearchableAttributes(): array
+    {
+        // `projects.name` / `projects.slug` foram removidos (migration 2025_04_01_173616).
+        return [
+            'title',
+            'slug',
+            'project.short_description',
+            'project.content',
+            'project.external_link',
+        ];
+    }
+
+    public static function getGlobalSearchEloquentQuery(): Builder
+    {
+        $query = parent::getGlobalSearchEloquentQuery();
+
+        return $query
+            ->where($query->qualifyColumn('style'), 'project')
+            ->with('project');
+    }
+
     public static function getGlobalSearchResultTitle(Model $record): string|Htmlable
     {
-        return $record->name;
+        /** @var Page $record */
+        if (filled($record->title)) {
+            return $record->title;
+        }
+
+        if (filled($record->slug)) {
+            return $record->slug;
+        }
+
+        return __('Project #:id', ['id' => $record->getKey()]);
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        /** @var Page $record */
+        $details = [];
+
+        if (filled($record->slug)) {
+            $details[__('Path')] = Str::limit((string) $record->slug, 48);
+        }
+
+        if ($record->project !== null) {
+            $details[__('Status')] = $record->project->is_active
+                ? __('Published')
+                : __('Draft');
+        }
+
+        return $details;
     }
 
     public static function getNavigationBadge(): ?string
