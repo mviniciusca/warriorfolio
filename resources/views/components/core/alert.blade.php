@@ -5,7 +5,6 @@
 @livewire('alert', [
 'id' => $alert->id,
 'style' => $alert->style,
-'icon' => $alert->icon,
 'is_dismissible' => $alert->is_dismissible,
 'button_text' => $alert->button_text,
 'is_active' => $alert->is_active,
