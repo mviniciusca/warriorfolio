@@ -3,8 +3,13 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\Dashboard;
+use App\Filament\Resources\PageResource;
+use App\Filament\Resources\PostResource;
+use App\Filament\Resources\ProjectResource;
+use App\Filament\Resources\SettingResource;
 use App\Models\Setting;
 use Awcodes\Curator\CuratorPlugin;
+use Closure;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -83,16 +88,46 @@ class AdminPanelProvider extends PanelProvider
                     ->url(env('APP_URL'), shouldOpenInNewTab: true)
                     ->icon('heroicon-o-arrow-up-right')
                     ->sort(-1),
+                NavigationItem::make(__('New Note'))
+                    ->icon('heroicon-o-document-plus')
+                    ->url(fn (): string => PostResource::getUrl('create'))
+                    ->group(__('Workspace'))
+                    ->sort(-30),
+                NavigationItem::make(__('New Project'))
+                    ->icon('heroicon-o-rocket-launch')
+                    ->url(fn (): string => ProjectResource::getUrl('create'))
+                    ->group(__('Workspace'))
+                    ->sort(-29),
+                NavigationItem::make(__('New Page'))
+                    ->icon('heroicon-o-rectangle-stack')
+                    ->url(fn (): string => PageResource::getUrl('create'))
+                    ->group(__('Workspace'))
+                    ->sort(-28),
                 NavigationItem::make(__('Background & Logo'))
                     ->icon('heroicon-o-paint-brush')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit-appearance')
+                    ->url($this->settingShortcutUrl('edit-appearance'))
                     ->group(__('Site shortcuts'))
                     ->sort(1),
                 NavigationItem::make(__('Navigation'))
                     ->icon('heroicon-o-bars-3-bottom-left')
-                    ->url('/admin/settings/'.$this->getSetting().'/edit-navigation')
+                    ->url($this->settingShortcutUrl('edit-navigation'))
                     ->group(__('Site shortcuts'))
                     ->sort(2),
+                NavigationItem::make(__('Notes Section'))
+                    ->icon('heroicon-o-pencil-square')
+                    ->url($this->settingShortcutUrl('edit-blog'))
+                    ->group(__('Site shortcuts'))
+                    ->sort(3),
+                NavigationItem::make(__('Whatsapp Chatbox'))
+                    ->icon('heroicon-o-chat-bubble-left-right')
+                    ->url($this->settingShortcutUrl('edit-chatbox'))
+                    ->group(__('Site shortcuts'))
+                    ->sort(4),
+                NavigationItem::make(__('Maintenance Mode'))
+                    ->icon('heroicon-o-wrench-screwdriver')
+                    ->url($this->settingShortcutUrl('edit-maintenance-section'))
+                    ->group(__('Site shortcuts'))
+                    ->sort(5),
                 NavigationItem::make(__('Log Viewer'))
                     ->icon('heroicon-o-arrow-up-right')
                     ->url('/admin/logs')
@@ -156,5 +191,22 @@ class AdminPanelProvider extends PanelProvider
         }
 
         return null;
+    }
+
+    /**
+     * Lazy URL for a SettingResource sub-page: must not call getUrl() while the panel
+     * is still registering (current panel is null → generateRouteName() error).
+     */
+    private function settingShortcutUrl(string $page): Closure
+    {
+        return function () use ($page): string {
+            $id = $this->getSetting();
+
+            if ($id === null) {
+                return '#';
+            }
+
+            return SettingResource::getUrl($page, ['record' => $id]);
+        };
     }
 }
