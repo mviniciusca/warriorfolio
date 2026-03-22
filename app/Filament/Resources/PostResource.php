@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\ContentCluster;
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Category;
@@ -17,6 +18,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
@@ -34,16 +36,17 @@ class PostResource extends Resource
 {
     protected static ?string $model = Page::class;
 
+    protected static ?string $cluster = ContentCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-o-pencil';
+
+    protected static ?int $navigationSort = -30;
 
     public static function getNavigationLabel(): string
     {
         return __('Notes');
-    }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Core Features');
     }
 
     public static function getNavigationBadge(): ?string

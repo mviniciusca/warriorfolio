@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\SlideshowResource;
 use App\Models\Slideshow;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
@@ -31,11 +32,16 @@ class SliderWidget extends BaseWidget
                     ->take(5)
             )
             ->heading(__('Sliders'))
+            ->description(
+                __(
+                    'Image sliders that are currently active on the site. Manage slides and placement from the Sliders section when you need to update a carousel.'
+                )
+            )
             ->headerActions(
                 [
                     ViewAction::make()
-                        ->url(route('filament.admin.resources.slideshows.index'))
-                        ->label('View All')
+                        ->url(SlideshowResource::getUrl('index'))
+                        ->label(__('View All'))
                         ->icon('heroicon-o-arrow-up-right')
                         ->outlined()
                         ->size('xs'),

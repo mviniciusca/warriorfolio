@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\EngagementCluster;
 use App\Filament\Resources\ProjectResource\Pages;
 use App\Filament\Resources\ProjectResource\Pages\EditProject;
 use App\Models\Category;
@@ -22,6 +23,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
@@ -43,14 +45,13 @@ class ProjectResource extends Resource
     // And use Fabricator Routing System
     protected static ?string $model = Page::class;
 
+    protected static ?string $cluster = EngagementCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-o-rocket-launch';
 
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Core Features');
-    }
-
-    protected static ?int $navigationSort = -1;
+    protected static ?int $navigationSort = 0;
 
     public static function getNavigationLabel(): string
     {
@@ -133,8 +134,8 @@ class ProjectResource extends Resource
                                         ->imageEditor()
                                         ->imageEditorAspectRatios([
                                             '16:9' => '16:9',
-                                            '4:3'  => '4:3',
-                                            '1:1'  => '1:1',
+                                            '4:3' => '4:3',
+                                            '1:1' => '1:1',
                                         ])
                                         ->label(__('Cover Image')),
                                 ]),
@@ -164,7 +165,7 @@ class ProjectResource extends Resource
                                                 ->relationship('category', 'name')
                                                 ->options(Category::where('is_project', '=', true)->pluck('name', 'id'))
                                                 ->createOptionUsing(fn (array $data) => Category::create($data + [
-                                                    'is_blog'    => false,
+                                                    'is_blog' => false,
                                                     'is_project' => true,
                                                 ])->getKey())
                                                 ->label(__('Category')),
@@ -243,7 +244,7 @@ class ProjectResource extends Resource
                 'lg' => 3,
                 'xl' => 4,
             ])
-            ->recordUrl(fn (Page $record): string => route('filament.admin.resources.projects.edit', ['record' => $record]))
+            ->recordUrl(fn (Page $record): string => static::getUrl('edit', ['record' => $record]))
             ->defaultSort('created_at', 'desc')
             ->persistFiltersInSession()
             ->filters([
@@ -261,7 +262,7 @@ class ProjectResource extends Resource
 
                         return ['Status' => $state['value'] ? 'Published' : 'Not Published'];
                     }),
-            ], layout:FiltersLayout::Modal)
+            ], layout: FiltersLayout::Modal)
             ->actions([
                 ActionGroup::make([
                     Action::make('publish')
@@ -317,9 +318,9 @@ class ProjectResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListProjects::route('/'),
+            'index' => Pages\ListProjects::route('/'),
             'create' => Pages\CreateProject::route('/create'),
-            'edit'   => EditProject::route('/{record}/edit'),
+            'edit' => EditProject::route('/{record}/edit'),
         ];
     }
 }

@@ -2,25 +2,24 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\EngagementCluster;
 use App\Filament\Resources\NewsletterResource\Pages;
-use App\Filament\Resources\NewsletterResource\RelationManagers;
 use App\Models\Newsletter;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class NewsletterResource extends Resource
 {
     protected static ?string $model = Newsletter::class;
+
+    protected static ?string $cluster = EngagementCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
 
@@ -29,12 +28,7 @@ class NewsletterResource extends Resource
         return __('Subscribers');
     }
 
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Core Features');
-    }
-
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = -20;
 
     public static function getNavigationBadge(): ?string
     {

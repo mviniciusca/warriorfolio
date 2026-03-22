@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\CategoryResource;
 use App\Models\Category;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
@@ -54,8 +55,7 @@ class CategoryStatsWidget extends BaseWidget
             ])
             ->actions([
                 Action::make('view')
-                    ->url(fn (Category $record): string => route('filament.admin.resources.categories.edit', ['record' => $record])
-                    )
+                    ->url(fn (Category $record): string => CategoryResource::getUrl('edit', ['record' => $record]))
                     ->icon('heroicon-m-pencil-square')
                     ->tooltip(__('Edit Category'))
                     ->color('gray'),

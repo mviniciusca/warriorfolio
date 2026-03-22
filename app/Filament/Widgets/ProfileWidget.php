@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\ProfileResource;
 use App\Models\Profile;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -25,11 +26,15 @@ class ProfileWidget extends BaseWidget
                     ->where('user_id', Auth::id())
             )
             ->heading(__('Profile Overview'))
-            ->description(__('Quick overview of your professional profile'))
+            ->description(
+                __(
+                    'Summary of the profile tied to your user: name, role, visibility flags, and social links. This is what feeds your public “about” experience when those blocks are enabled.'
+                )
+            )
             ->striped()
             ->headerActions([
                 ViewAction::make()
-                    ->url(route('filament.admin.resources.profiles.edit', Auth::user()->id))
+                    ->url(ProfileResource::getUrl('edit', ['record' => Auth::id()]))
                     ->label(__('Edit Profile'))
                     ->icon('heroicon-o-pencil-square')
                     ->outlined()

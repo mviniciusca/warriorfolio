@@ -2,10 +2,11 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\EngagementCluster;
 use App\Filament\Resources\ProfileResource\Pages;
 use App\Models\Profile;
-use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Pages\Page;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -14,16 +15,15 @@ class ProfileResource extends Resource
 {
     protected static ?string $model = Profile::class;
 
+    protected static ?string $cluster = EngagementCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
     public static function getNavigationLabel(): string
     {
         return __('Profile');
-    }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Core Features');
     }
 
     public static function getNavigationUrl(): string
@@ -33,7 +33,7 @@ class ProfileResource extends Resource
 
     protected static bool $shouldRegisterNavigation = true;
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 20;
 
     public static function getRecordSubNavigation(Page $page): array
     {
@@ -91,9 +91,9 @@ class ProfileResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'               => Pages\ListProfiles::route('/'),
-            'create'              => Pages\CreateProfile::route('/create'),
-            'edit'                => Pages\EditProfile::route('/{record}/edit'),
+            'index' => Pages\ListProfiles::route('/'),
+            'create' => Pages\CreateProfile::route('/create'),
+            'edit' => Pages\EditProfile::route('/{record}/edit'),
             'edit-social-network' => Pages\EditSocialNetwork::route('/{record}/edit-social-network'),
         ];
     }

@@ -21,14 +21,30 @@ class MailTrashed extends ListRecords
 
     protected static ?string $navigationIcon = 'heroicon-o-trash';
 
-    public static function getNavigationLabel(): string
+    /**
+     * @return array<\Filament\Navigation\NavigationItem|\Filament\Navigation\NavigationGroup>
+     */
+    public function getSubNavigation(): array
     {
-        return __('Trashed Mails');
+        return $this->generateNavigationItems([
+            ManageMails::class,
+            self::class,
+        ]);
     }
 
-    public function getTitle(): string | Htmlable
+    public static function getNavigationLabel(): string
     {
-        return __('Trashed Mails');
+        return __('Trash');
+    }
+
+    public static function getNavigationSort(): ?int
+    {
+        return 1;
+    }
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('Trash');
     }
 
     public function table(Table $table): Table

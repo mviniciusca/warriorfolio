@@ -2,34 +2,27 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\EngagementCluster;
 use App\Filament\Resources\CourseResource\Pages;
-use App\Filament\Resources\CourseResource\RelationManagers;
 use App\Models\Course;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CourseResource extends Resource
 {
     protected static ?string $model = Course::class;
 
+    protected static ?string $cluster = EngagementCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Core Features');
-    }
-
-    public static function getNavigationParentItem(): ?string
-    {
-        return __('Profile');
-    }
 
     public static function getNavigationLabel(): string
     {
@@ -45,7 +38,7 @@ class CourseResource extends Resource
         return null;
     }
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 10;
 
     public static function form(Form $form): Form
     {
@@ -83,9 +76,9 @@ class CourseResource extends Resource
                             ->helperText('The status of the course')
                             ->options([
                                 'in-progress' => 'In Progress',
-                                'completed'   => 'Completed',
-                                'dropped'     => 'Dropped',
-                                'planned'     => 'Planned',
+                                'completed' => 'Completed',
+                                'dropped' => 'Dropped',
+                                'planned' => 'Planned',
                             ])
                             ->default('in-progress')
                             ->required(),
@@ -103,10 +96,10 @@ class CourseResource extends Resource
                     ->colors([
                         'primary',
                         'primary' => 'in-progress',
-                        'danger'  => 'dropped',
+                        'danger' => 'dropped',
                         'warning' => 'planned',
                         'success' => 'completed',
-                        'info'    => 'ongoing',
+                        'info' => 'ongoing',
                     ]),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Course Name')
@@ -152,9 +145,9 @@ class CourseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListCourses::route('/'),
+            'index' => Pages\ListCourses::route('/'),
             'create' => Pages\CreateCourse::route('/create'),
-            'edit'   => Pages\EditCourse::route('/{record}/edit'),
+            'edit' => Pages\EditCourse::route('/{record}/edit'),
         ];
     }
 }

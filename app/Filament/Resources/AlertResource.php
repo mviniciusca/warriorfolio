@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\SiteCluster;
 use App\Filament\Resources\AlertResource\Pages;
 use App\Models\Alert;
-use Filament\Forms;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
@@ -13,28 +13,28 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
 class AlertResource extends Resource
 {
     protected static ?string $model = Alert::class;
 
+    protected static ?string $cluster = SiteCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-o-bell';
+
+    protected static ?int $navigationSort = 10;
 
     public static function getNavigationLabel(): string
     {
         return __('Website Alerts');
-    }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Website Design');
     }
 
     public static function getNavigationBadge(): ?string
@@ -45,8 +45,6 @@ class AlertResource extends Resource
 
         return null;
     }
-
-    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {
@@ -76,10 +74,10 @@ class AlertResource extends Resource
                                     ->label(__('Alert Style'))
                                     ->options([
                                         'default' => 'Default',
-                                        'bumper'  => 'Bumper',
-                                        'banner'  => 'Banner',
-                                        'toast'   => 'Toast',
-                                        'modal'   => 'Modal',
+                                        'bumper' => 'Bumper',
+                                        'banner' => 'Banner',
+                                        'toast' => 'Toast',
+                                        'modal' => 'Modal',
                                     ])
                                     ->helperText(__('Select the style of the alert.'))
                                     ->default('default')
@@ -164,9 +162,9 @@ class AlertResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListAlerts::route('/'),
+            'index' => Pages\ListAlerts::route('/'),
             'create' => Pages\CreateAlert::route('/create'),
-            'edit'   => Pages\EditAlert::route('/{record}/edit'),
+            'edit' => Pages\EditAlert::route('/{record}/edit'),
         ];
     }
 }

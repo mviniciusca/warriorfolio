@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\SiteCluster;
 use App\Filament\Resources\SlideshowResource\Pages;
-use App\Filament\Resources\SlideshowResource\RelationManagers;
 use App\Models\Slideshow;
 use Filament\Forms;
 use Filament\Forms\Components\Group;
@@ -12,30 +12,28 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
 class SlideshowResource extends Resource
 {
     protected static ?string $model = Slideshow::class;
 
+    protected static ?string $cluster = SiteCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-o-photo';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 0;
 
     public static function getNavigationLabel(): string
     {
         return __('Sliders');
-    }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Website Design');
     }
 
     public static function getNavigationBadge(): ?string
@@ -62,8 +60,8 @@ class SlideshowResource extends Resource
                             ->maxLength(255),
                         Select::make('module_name')
                             ->options([
-                                'hero-section'    => 'Hero Section',
-                                'about-section'   => 'About Section',
+                                'hero-section' => 'Hero Section',
+                                'about-section' => 'About Section',
                                 'clients-section' => 'Clients Section',
                             ])
                             ->default('hero-section')
@@ -153,10 +151,10 @@ class SlideshowResource extends Resource
                                         ->default('max-w-5xl'),
                                     Select::make('image_size')
                                         ->options([
-                                            'small'       => 'Small (h-10)',
-                                            'default'     => 'Default (h-12)',
-                                            'medium'      => 'Medium (h-14)',
-                                            'large'       => 'Large (h-16)',
+                                            'small' => 'Small (h-10)',
+                                            'default' => 'Default (h-12)',
+                                            'medium' => 'Medium (h-14)',
+                                            'large' => 'Large (h-16)',
                                             'extra-large' => 'Extra Large (h-20)',
                                         ])
                                         ->default('default'),
@@ -203,9 +201,9 @@ class SlideshowResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListSlideshows::route('/'),
+            'index' => Pages\ListSlideshows::route('/'),
             'create' => Pages\CreateSlideshow::route('/create'),
-            'edit'   => Pages\EditSlideshow::route('/{record}/edit'),
+            'edit' => Pages\EditSlideshow::route('/{record}/edit'),
         ];
     }
 }

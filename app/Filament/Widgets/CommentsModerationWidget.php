@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Filament\Resources\PageCommentResource;
+use App\Filament\Resources\PostResource;
 use App\Filament\Support\PageCommentTableActions;
 use App\Models\PageComment;
 use Filament\Tables\Actions\Action;
@@ -31,7 +32,11 @@ class CommentsModerationWidget extends BaseWidget
     public function table(Table $table): Table
     {
         return $table
-            ->description(__('Pending comments on your notes. Approve to publish or reject to hide.'))
+            ->description(
+                __(
+                    'Comments visitors left on your notes that are still pending. Approve to show them on the site, or reject / delete to keep them hidden.'
+                )
+            )
             ->query(
                 PageComment::query()
                     ->pending()
@@ -65,7 +70,7 @@ class CommentsModerationWidget extends BaseWidget
                     ->placeholder('—')
                     ->limit(36)
                     ->url(fn (PageComment $record): ?string => $record->page_id
-                        ? route('filament.admin.resources.posts.edit', ['record' => $record->page_id])
+                        ? PostResource::getUrl('edit', ['record' => $record->page_id])
                         : null)
                     ->icon('heroicon-m-document-text'),
                 TextColumn::make('created_at')

@@ -4,9 +4,7 @@ namespace App\Filament\Widgets;
 
 use App\Models\Mail;
 use App\Models\Page;
-use App\Models\Project;
 use Filament\Widgets\Widget;
-use Illuminate\Support\Carbon;
 
 class TimelineWidget extends Widget
 {
@@ -31,11 +29,11 @@ class TimelineWidget extends Widget
             ->get()
             ->each(function ($project) use ($events) {
                 $events->push([
-                    'type'  => 'project',
-                    'icon'  => 'heroicon-o-rocket-launch',
+                    'type' => 'project',
+                    'icon' => 'heroicon-o-rocket-launch',
                     'color' => 'success',
                     'title' => 'New Project: '.$project->title,
-                    'date'  => $project->created_at,
+                    'date' => $project->created_at,
                 ]);
             });
 
@@ -47,11 +45,11 @@ class TimelineWidget extends Widget
             ->get()
             ->each(function ($post) use ($events) {
                 $events->push([
-                    'type'  => 'post',
-                    'icon'  => 'heroicon-o-document-text',
+                    'type' => 'post',
+                    'icon' => 'heroicon-o-document-text',
                     'color' => 'info',
                     'title' => 'New Post: '.$post->title,
-                    'date'  => $post->created_at,
+                    'date' => $post->created_at,
                 ]);
             });
 
@@ -62,11 +60,11 @@ class TimelineWidget extends Widget
             ->get()
             ->each(function ($mail) use ($events) {
                 $events->push([
-                    'type'  => 'mail',
-                    'icon'  => 'heroicon-o-envelope',
+                    'type' => 'mail',
+                    'icon' => 'heroicon-o-envelope',
                     'color' => 'warning',
                     'title' => 'Important Message: '.$mail->subject,
-                    'date'  => $mail->created_at,
+                    'date' => $mail->created_at,
                 ]);
             });
 

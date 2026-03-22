@@ -32,7 +32,7 @@ class SettingResource extends Resource
         return __('Settings');
     }
 
-    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Start;
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     protected static ?int $navigationSort = 0;
 

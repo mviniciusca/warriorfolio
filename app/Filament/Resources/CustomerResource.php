@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\EngagementCluster;
 use App\Filament\Resources\CustomerResource\Pages;
 use App\Models\Customer;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -9,6 +10,7 @@ use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
@@ -19,16 +21,15 @@ class CustomerResource extends Resource
 {
     protected static ?string $model = Customer::class;
 
+    protected static ?string $cluster = EngagementCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-o-building-office';
 
     public static function getNavigationLabel(): string
     {
         return __('Customers');
-    }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Core Features');
     }
 
     public static function getNavigationBadge(): ?string
@@ -40,7 +41,7 @@ class CustomerResource extends Resource
         return null;
     }
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = -10;
 
     public static function form(Form $form): Form
     {

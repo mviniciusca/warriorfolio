@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\SettingResource;
 use App\Models\Maintenance;
 use App\Models\Setting;
 use Filament\Tables\Actions\ViewAction;
@@ -25,7 +26,7 @@ class SystemStatusWidget extends BaseWidget
             ->headerActions(
                 [
                     ViewAction::make()
-                        ->url(route('filament.admin.resources.settings.edit-maintenance-section', Setting::first()))
+                        ->url(fn (): string => SettingResource::getUrl('edit-maintenance-section', ['record' => Setting::query()->value('id')]))
                         ->label(__('Manager'))
                         ->icon('heroicon-o-arrow-up-right')
                         ->outlined()

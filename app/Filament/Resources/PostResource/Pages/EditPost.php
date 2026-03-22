@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\PostResource\Pages;
 
+use App\Filament\Resources\PageCommentResource;
 use App\Filament\Resources\PostResource;
 use App\Filament\Resources\PostResource\RelationManagers\CommentsRelationManager;
 use Filament\Actions;
@@ -46,8 +47,12 @@ class EditPost extends EditRecord
                 ->color('info'),
             Action::make('moderate_comments')
                 ->label(__('Moderate Comments'))
-                ->url(route('filament.admin.resources.page-comments.index', [
-                    'tableFilters[page_id][value]' => $this->record->id,
+                ->url(PageCommentResource::getUrl('index').'?'.http_build_query([
+                    'tableFilters' => [
+                        'page_id' => [
+                            'value' => (string) $this->record->id,
+                        ],
+                    ],
                 ]))
                 ->icon('heroicon-o-chat-bubble-left-right')
                 ->size('xs')

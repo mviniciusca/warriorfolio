@@ -14,7 +14,7 @@ class ViewMail extends ViewRecord
 {
     protected static string $resource = MailResource::class;
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('Mail');
     }
@@ -27,7 +27,7 @@ class ViewMail extends ViewRecord
                 ->color('gray')
                 ->label(__('Back'))
                 ->size('sm')
-                ->url(route('filament.admin.resources.mails.index'))
+                ->url(MailResource::getUrl('index'))
                 ->icon('heroicon-o-arrow-left'),
             DeleteAction::make()
                 ->icon('heroicon-o-trash')

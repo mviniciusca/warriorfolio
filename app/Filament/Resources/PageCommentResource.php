@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\ContentCluster;
 use App\Filament\Resources\PageCommentResource\Pages;
 use App\Filament\Support\PageCommentTableActions;
 use App\Models\Page;
@@ -10,6 +11,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -20,18 +22,17 @@ class PageCommentResource extends Resource
 {
     protected static ?string $model = PageComment::class;
 
+    protected static ?string $cluster = ContentCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = -10;
 
     public static function getNavigationLabel(): string
     {
         return __('Comments');
-    }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Core Features');
     }
 
     public static function getNavigationBadge(): ?string
@@ -132,7 +133,7 @@ class PageCommentResource extends Resource
                     ->sortable()
                     ->limit(40)
                     ->url(fn (PageComment $record): ?string => $record->page_id
-                        ? route('filament.admin.resources.posts.edit', ['record' => $record->page_id])
+                        ? PostResource::getUrl('edit', ['record' => $record->page_id])
                         : null),
                 Tables\Columns\TextColumn::make('author_name')
                     ->label(__('Name'))

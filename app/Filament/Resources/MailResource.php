@@ -12,44 +12,68 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Pages\SubNavigationPosition;
+use Filament\Resources\Pages\Page as ResourcePage;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\Alignment;
+use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
-use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\Action as TableRecordAction;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\CreateAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\IconColumn\IconColumnSize;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class MailResource extends Resource
 {
     protected static ?string $model = Mail::class;
 
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-o-inbox-stack';
+
+    protected static ?int $navigationSort = 0;
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Workspace');
+    }
 
     public static function getNavigationLabel(): string
     {
         return __('Inbox');
     }
 
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Core Features');
-    }
-
     public static function getNavigationBadge(): ?string
     {
-        if (static::getModel()::where('is_read', false)->count() > 0) {
-            if (static::getModel()::where('is_read', false)->count() >= 999) {
-                return '+999';
-            } else {
-                return static::getModel()::where('is_read', false)->count();
-            }
+        $unread = static::getModel()::query()
+            ->where('is_read', false)
+            ->where('is_sent', false)
+            ->count();
+
+        if ($unread <= 0) {
+            return null;
         }
 
-        return null;
+        return $unread >= 999 ? '+999' : (string) $unread;
+    }
+
+    /**
+     * @return array<\Filament\Navigation\NavigationItem|\Filament\Navigation\NavigationGroup>
+     */
+    public static function getRecordSubNavigation(ResourcePage $page): array
+    {
+        return $page->generateNavigationItems([
+            Pages\ManageMails::class,
+            Pages\MailTrashed::class,
+        ]);
     }
 
     public static function form(Form $form): Form
@@ -147,7 +171,7 @@ class MailResource extends Resource
                                     ->label(__('Message')),
                             ]),
                     ])
-                    ->after(function (?array $data): MailService|null {
+                    ->after(function (?array $data): ?MailService {
                         if (env('SMTP_SERVICES')) {
                             $mail = new MailService($data);
 
@@ -156,38 +180,63 @@ class MailResource extends Resource
 
                         return null;
                     }),
-                Action::make('view_trashed_mails')
-                    ->color('gray')
-                    ->label(__('View Trash'))
-                    ->size('sm')
-                    ->icon('heroicon-o-trash')
-                    ->url(route('filament.admin.resources.mails.bin')),
             ])
             ->heading(__('Inbox'))
-            ->description(__('Your messages from your website contact form.'))
-            ->recordClasses(fn (Mail $record) => match ($record->is_read) {
-                1       => 'opacity-50 dark:opacity-30 decoration-dashed line-through',
-                default => null,
-            })
+            ->description(__('Messages from your site contact form and outbound mail you send from here.'))
+            ->recordClasses(fn (Mail $record): string => (bool) $record->is_read
+                ? 'opacity-70'
+                : 'border-s-2 border-primary-500/60 dark:border-primary-400/50')
             ->columns([
-                ToggleColumn::make('is_important')
-                    ->label(__('Favorite'))
-                    ->onColor('primary')
-                    ->offColor('gray')
-                    ->onIcon('heroicon-m-star')
-                    ->offIcon('heroicon-o-star'),
-                TextColumn::make('name')
-                    ->label(__('From:'))
-                    ->limit(15)
-                    ->searchable(),
                 TextColumn::make('email')
-                    ->label(__('Email:'))
-                    ->limit(20)
-                    ->searchable(),
-                TextColumn::make('subject')
-                    ->label(__('Subject:'))
-                    ->limit(50)
-                    ->searchable(),
+                    ->searchable()
+                    ->hidden(),
+
+                Split::make([
+                    IconColumn::make('is_read')
+                        ->label('')
+                        ->alignStart()
+                        ->icon(fn (mixed $state): string => (bool) $state
+                            ? 'heroicon-o-envelope-open'
+                            : 'heroicon-s-envelope')
+                        ->color(fn (mixed $state): string => (bool) $state ? 'gray' : 'primary')
+                        ->size(IconColumnSize::Medium)
+                        ->extraAttributes([
+                            'class' => 'shrink-0 [&_.fi-ta-icon]:size-5',
+                        ])
+                        ->grow(false),
+
+                    Stack::make([
+                        Split::make([
+                            TextColumn::make('subject')
+                                ->label('')
+                                ->weight(FontWeight::SemiBold)
+                                ->searchable()
+                                ->limit(85)
+                                ->tooltip(fn (Mail $record): string => $record->subject),
+
+                            TextColumn::make('created_at')
+                                ->label('')
+                                ->since()
+                                ->alignment(Alignment::End)
+                                ->color('gray')
+                                ->size('sm')
+                                ->grow(false),
+                        ]),
+
+                        TextColumn::make('name')
+                            ->label('')
+                            ->color('gray')
+                            ->size('sm')
+                            ->formatStateUsing(fn (string $state, Mail $record): string => $state.' · '.$record->email)
+                            ->searchable(),
+
+                        TextColumn::make('body')
+                            ->label('')
+                            ->color('gray')
+                            ->size('sm')
+                            ->formatStateUsing(fn (?string $state): string => static::plainBodyPreview($state, 155)),
+                    ])->space(1),
+                ])->from('sm'),
             ])
             ->defaultSort('created_at', 'desc')
             ->defaultPaginationPageOption(25)
@@ -207,6 +256,14 @@ class MailResource extends Resource
                     ->trueLabel(__('With Star')),
             ])
             ->actions([
+                TableRecordAction::make('toggleImportant')
+                    ->label(fn (Mail $record): string => $record->is_important ? __('Unstar') : __('Star'))
+                    ->icon(fn (Mail $record): string => $record->is_important ? 'heroicon-s-star' : 'heroicon-o-star')
+                    ->iconButton()
+                    ->color('warning')
+                    ->action(function (Mail $record): void {
+                        $record->update(['is_important' => ! $record->is_important]);
+                    }),
                 ActionGroup::make([
                     Tables\Actions\EditAction::make()
                         ->modalHeading(__('Mail')),
@@ -227,8 +284,15 @@ class MailResource extends Resource
     {
         return [
             'index' => Pages\ManageMails::route('/'),
-            'view'  => Pages\ViewMail::route('{record}/read'),
-            'bin'   => Pages\MailTrashed::route('/bin'),
+            'view' => Pages\ViewMail::route('{record}/read'),
+            'bin' => Pages\MailTrashed::route('/bin'),
         ];
+    }
+
+    public static function plainBodyPreview(?string $html, int $limit = 160): string
+    {
+        $text = strip_tags(html_entity_decode($html ?? '', ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+
+        return Str::of($text)->squish()->limit($limit)->toString();
     }
 }

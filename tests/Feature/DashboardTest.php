@@ -2,16 +2,26 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Filament\Resources\AlertResource;
+use App\Filament\Resources\CategoryResource;
+use App\Filament\Resources\CustomerResource;
+use App\Filament\Resources\HeroResource;
+use App\Filament\Resources\MailResource;
+use App\Filament\Resources\NewsletterResource;
+use App\Filament\Resources\PageResource;
+use App\Filament\Resources\PostResource;
+use App\Filament\Resources\ProfileResource;
+use App\Filament\Resources\ProjectResource;
+use App\Filament\Resources\SectionResource;
+use App\Filament\Resources\SettingResource;
+use App\Filament\Resources\SlideshowResource;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Z3d0X\FilamentLogger\Resources\ActivityResource;
 
 class DashboardTest extends TestCase
 {
     use RefreshDatabase;
-
 
     /** @test **/
     public function it_should_be_allowed_to_see_inbox_on_dashboard(): void
@@ -19,7 +29,7 @@ class DashboardTest extends TestCase
 
         $user = \App\Models\User::factory()->create();
 
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.mails.index'));
+        $response = $this->actingAs($user)->get(MailResource::getUrl('index'));
 
         $response->assertStatus(200);
         $response->assertSee('Inbox');
@@ -30,7 +40,7 @@ class DashboardTest extends TestCase
     {
 
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.settings.edit', ['record' => 1]));
+        $response = $this->actingAs($user)->get(SettingResource::getUrl('edit', ['record' => 1]));
         $response->assertStatus(200);
         $response->assertSee('Settings');
     }
@@ -40,7 +50,7 @@ class DashboardTest extends TestCase
     {
 
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.profiles.index'));
+        $response = $this->actingAs($user)->get(ProfileResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Profile');
     }
@@ -49,7 +59,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_blog_posts_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.posts.index'));
+        $response = $this->actingAs($user)->get(PostResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Notes');
     }
@@ -58,7 +68,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_projects_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.projects.index'));
+        $response = $this->actingAs($user)->get(ProjectResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Projects');
     }
@@ -67,7 +77,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_categories_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.categories.index'));
+        $response = $this->actingAs($user)->get(CategoryResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Categories');
     }
@@ -76,7 +86,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_customers_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.customers.index'));
+        $response = $this->actingAs($user)->get(CustomerResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Customers');
     }
@@ -85,7 +95,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_subscribers_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.newsletters.index'));
+        $response = $this->actingAs($user)->get(NewsletterResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Subscribers');
     }
@@ -94,7 +104,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_website_pages_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.pages.index'));
+        $response = $this->actingAs($user)->get(PageResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Pages');
     }
@@ -103,7 +113,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_hero_section_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.heroes.index'));
+        $response = $this->actingAs($user)->get(HeroResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Hero Section');
     }
@@ -112,7 +122,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_website_sections_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.sections.index'));
+        $response = $this->actingAs($user)->get(SectionResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Sections');
     }
@@ -121,7 +131,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_website_alerts_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.alerts.index'));
+        $response = $this->actingAs($user)->get(AlertResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Alerts');
     }
@@ -130,7 +140,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_slideshow_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.slideshows.index'));
+        $response = $this->actingAs($user)->get(SlideshowResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Slideshow');
     }
@@ -139,7 +149,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_activity_log_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.activity-logs.index'));
+        $response = $this->actingAs($user)->get(ActivityResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Activity Log');
     }
@@ -148,7 +158,7 @@ class DashboardTest extends TestCase
     public function it_should_be_allowed_to_see_website_settings_on_dashboard(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.settings.edit', ['record' => 1]));
+        $response = $this->actingAs($user)->get(SettingResource::getUrl('edit', ['record' => 1]));
         $response->assertStatus(200);
         $response->assertSee('Settings');
     }

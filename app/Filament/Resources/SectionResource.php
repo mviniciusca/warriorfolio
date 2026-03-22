@@ -2,17 +2,17 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\SiteCluster;
 use App\Filament\Resources\SectionResource\Pages;
 use App\Models\Section;
 use Filament\Forms;
-use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -21,11 +21,13 @@ class SectionResource extends Resource
 {
     protected static ?string $model = Section::class;
 
+    protected static ?string $cluster = SiteCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-m-bars-3-center-left';
 
-    protected static ?string $navigationGroup = 'Website Design';
-
-    protected static ?int $navigationSort = -1;
+    protected static ?int $navigationSort = -30;
 
     public static function getNavigationLabel(): string
     {
@@ -317,7 +319,7 @@ class SectionResource extends Resource
     {
         return [
             'index' => Pages\ListSections::route('/'),
-            //'create' => Pages\CreateSection::route('/create'),
+            // 'create' => Pages\CreateSection::route('/create'),
             'edit' => Pages\EditSection::route('/{record}/edit'),
         ];
     }

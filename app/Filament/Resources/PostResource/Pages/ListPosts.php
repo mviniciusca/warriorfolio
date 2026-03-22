@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\PostResource\Pages;
 
 use App\Filament\Resources\PostResource;
+use App\Filament\Resources\SettingResource;
 use App\Models\Setting;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
@@ -12,7 +13,7 @@ class ListPosts extends ListRecords
 {
     protected static string $resource = PostResource::class;
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('Notes');
     }
@@ -25,7 +26,7 @@ class ListPosts extends ListRecords
                 ->size('sm')
                 ->label(__('New Note')),
             Actions\Action::make('view_blog_settings')
-                ->url(route('filament.admin.resources.settings.edit-blog', Setting::first('id')->id))
+                ->url(SettingResource::getUrl('edit-blog', ['record' => Setting::query()->value('id')]))
                 ->color('gray')
                 ->size('sm')
                 ->icon('heroicon-o-cog-6-tooth')

@@ -2,6 +2,12 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\MailResource;
+use App\Filament\Resources\NewsletterResource;
+use App\Filament\Resources\PostResource;
+use App\Filament\Resources\ProfileResource;
+use App\Filament\Resources\ProjectResource;
+use App\Filament\Resources\SettingResource;
 use App\Models\Category;
 use App\Models\Chatbox;
 use App\Models\Mail;
@@ -12,13 +18,19 @@ use App\Models\Post;
 use App\Models\Profile;
 use App\Models\Project;
 use App\Models\Setting;
-use App\Services\GithubService;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Illuminate\Support\Facades\Auth;
 
 class StatsOverview extends BaseWidget
 {
+    /**
+     * Filament Stat::url() only accepts ?string (not Closure).
+     */
+    protected function statUrl(mixed $url): ?string
+    {
+        return is_string($url) ? $url : null;
+    }
+
     protected function getColumns(): int
     {
         $count = count($this->getCachedStats());
@@ -36,13 +48,21 @@ class StatsOverview extends BaseWidget
 
     protected function getStats(): array
     {
+        $settingId = Setting::query()->value('id');
+        $settingsEditUrl = null;
+        $settingsChatboxUrl = null;
+        if ($settingId !== null && $settingId !== '') {
+            $settingsEditUrl = (string) SettingResource::getUrl('edit', ['record' => $settingId]);
+            $settingsChatboxUrl = (string) SettingResource::getUrl('edit-chatbox', ['record' => $settingId]);
+        }
+
         return [
             // Website Status Widget (Improved)
             Stat::make(
                 __('Website Status'),
                 Maintenance::first()->is_active ? __('Maintenance') : __('Live')
             )
-                ->url(route('filament.admin.resources.settings.edit', Auth::user()?->id))
+                ->url($this->statUrl($settingsEditUrl))
                 ->icon(Maintenance::first()->is_active ? 'heroicon-o-shield-exclamation' : 'heroicon-o-check-circle')
                 ->description(Maintenance::first()->is_active ? __('Maintenance Mode') : __('Website is Live'))
                 ->color(Maintenance::first()->is_active ? 'warning' : 'success')
@@ -56,7 +76,7 @@ class StatsOverview extends BaseWidget
                 Profile::where('is_open_to_work', true)->count() > 0 ? __('Open to Work') : __('Not Available')
             )
                 ->icon('heroicon-o-identification')
-                ->url(route('filament.admin.resources.profiles.index'))
+                ->url($this->statUrl(ProfileResource::getUrl('index')))
                 ->description(Profile::first()?->job_position ?? __('No Position Set'))
                 ->color(Profile::where('is_open_to_work', true)->count() > 0 ? 'success' : 'gray')
                 ->extraAttributes([
@@ -69,7 +89,7 @@ class StatsOverview extends BaseWidget
                 (string) Page::where('style', 'blog')->where('is_active', true)->count()
             )
                 ->icon('heroicon-o-document-text')
-                ->url(route('filament.admin.resources.posts.index'))
+                ->url($this->statUrl(PostResource::getUrl('index')))
                 ->description(Category::where('is_blog', true)->where('is_active', true)->count().' '.__('Categories'))
                 ->descriptionIcon('heroicon-m-hashtag')
                 ->color('info')
@@ -84,7 +104,7 @@ class StatsOverview extends BaseWidget
                 (string) Newsletter::counter()
             )
                 ->icon('heroicon-o-megaphone')
-                ->url(route('filament.admin.resources.newsletters.index'))
+                ->url($this->statUrl(NewsletterResource::getUrl('index')))
                 ->description(__('Total Subscribers'))
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
                 ->chart(Newsletter::chartSubscribers())
@@ -98,7 +118,7 @@ class StatsOverview extends BaseWidget
                 __('Messages'),
                 (string) Mail::where('is_read', false)->where('is_sent', '=', false)->count()
             )
-                ->url(route('filament.admin.resources.mails.index'))
+                ->url($this->statUrl(MailResource::getUrl('index')))
                 ->icon('heroicon-o-inbox-stack')
                 ->description(Mail::where('is_important', true)->count().' '.__('Important'))
                 ->descriptionIcon('heroicon-m-star')
@@ -114,7 +134,7 @@ class StatsOverview extends BaseWidget
                 (string) Project::where('is_active', true)->count()
             )
                 ->icon('heroicon-o-rocket-launch')
-                ->url(route('filament.admin.resources.projects.index'))
+                ->url($this->statUrl(ProjectResource::getUrl('index')))
                 ->description(Category::where('is_project', true)->where('is_active', true)->count().' '.__('Categories'))
                 ->descriptionIcon('heroicon-m-squares-2x2')
                 ->color('success')
@@ -129,7 +149,7 @@ class StatsOverview extends BaseWidget
                 Chatbox::first()?->visible ? __('Online') : __('Offline')
             )
                 ->icon('heroicon-o-chat-bubble-left-right')
-                ->url(route('filament.admin.resources.settings.edit-chatbox', ['record' => 1]))
+                ->url($this->statUrl($settingsChatboxUrl))
                 ->description('+'.env('MOBILE_COUNTRY_CODE', '').' '.(Chatbox::first()?->telephone ?? __('Not Set')))
                 ->color(Chatbox::first()?->visible ? 'success' : 'gray')
                 ->extraAttributes([
@@ -142,7 +162,7 @@ class StatsOverview extends BaseWidget
                 Setting::first()?->config['github_is_active'] ?? false ? __('Active') : __('Inactive')
             )
                 ->icon('heroicon-o-code-bracket')
-                ->url(route('filament.admin.resources.settings.edit', ['record' => Setting::first()?->id]))
+                ->url($this->statUrl($settingsEditUrl))
                 ->description('@'.(Setting::first()?->config['github_username'] ?? env('GITHUB_USERNAME', 'username')))
                 ->color(Setting::first()?->config['github_is_active'] ?? false ? 'success' : 'gray')
                 ->extraAttributes([

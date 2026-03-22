@@ -2,7 +2,6 @@
 
 // config for Z3d0X/FilamentFabricator
 
-use App\Filament\Resources\PageResource;
 use App\Models\Page;
 
 return [
@@ -37,8 +36,12 @@ return [
         App\Http\Middleware\PasswordProtectedPageMiddleware::class,
     ],
 
-    'page-model'       => Page::class,
-    'page-resource'    => PageResource::class,
+    'page-model' => Page::class,
+    /**
+     * Leave null so FilamentFabricatorPlugin does not register the resource a second time.
+     * App\Filament\Resources\PageResource is still loaded via panel discoverResources().
+     */
+    'page-resource' => null,
     'enable-view-page' => false,
     'table_name'       => 'pages',
 ];

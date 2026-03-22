@@ -1,5 +1,7 @@
 @php
-$project = $getRecord();
+    use App\Filament\Resources\ProjectResource;
+
+    $project = $getRecord();
 @endphp
 
 <div class="group relative transition-all duration-300 -my-4">
@@ -14,7 +16,7 @@ $project = $getRecord();
     </a>
 
     {{-- Main link for project editing --}}
-    <a href="{{ route('filament.admin.resources.projects.edit', ['record' => $project]) }}" class="block py-4 px-4">
+    <a href="{{ ProjectResource::getUrl('edit', ['record' => $project]) }}" class="block py-4 px-4">
         <div class="relative">
             {{-- Category Badge --}}
             <div class="absolute z-10 left-3 top-3 flex items-center gap-1 rounded-lg border px-2 py-0.5 text-[10px] font-medium bg-secondary-900 text-white bg-opacity-75 border-transparent"

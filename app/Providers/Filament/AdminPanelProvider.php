@@ -8,8 +8,8 @@ use Awcodes\Curator\CuratorPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Navigation\NavigationItem;
-use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -28,6 +28,26 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->bootUsing(function (): void {
+                // Default Filament is Start (sidebar). Set Top for resources/pages that inherit the base property.
+                // Runs with the panel (not service provider boot) so core classes are loaded; use leading \ to avoid import clashes.
+                $top = \Filament\Pages\SubNavigationPosition::Top;
+
+                try {
+                    $resourceProp = new \ReflectionProperty(\Filament\Resources\Resource::class, 'subNavigationPosition');
+                    $resourceProp->setAccessible(true);
+                    $resourceProp->setValue(null, $top);
+                } catch (\Throwable) {
+                    // Filament internals may rename the property in a future version.
+                }
+
+                try {
+                    $pageProp = new \ReflectionProperty(\Filament\Pages\Page::class, 'subNavigationPosition');
+                    $pageProp->setAccessible(true);
+                    $pageProp->setValue(null, $top);
+                } catch (\Throwable) {
+                }
+            })
             ->default()
             ->id('admin')
             ->path('admin')
@@ -47,13 +67,13 @@ class AdminPanelProvider extends PanelProvider
                 NavigationItem::make(__('Background & Logo'))
                     ->icon('heroicon-o-paint-brush')
                     ->url('/admin/settings/'.$this->getSetting().'/edit-appearance')
-                    ->group(__('Website Design'))
+                    ->group(__('Site shortcuts'))
                     ->sort(1),
                 NavigationItem::make(__('Navigation'))
                     ->icon('heroicon-o-bars-3-bottom-left')
                     ->url('/admin/settings/'.$this->getSetting().'/edit-navigation')
-                    ->group(__('Website Design'))
-                    ->sort(1),
+                    ->group(__('Site shortcuts'))
+                    ->sort(2),
                 NavigationItem::make(__('Log Viewer'))
                     ->icon('heroicon-o-arrow-up-right')
                     ->url('/admin/logs')
@@ -66,23 +86,26 @@ class AdminPanelProvider extends PanelProvider
                     ->label('Media')
                     ->pluralLabel('Media Library')
                     ->navigationIcon('heroicon-o-rectangle-stack')
-                    ->navigationSort(2)
+                    ->navigationGroup(__('Library'))
+                    ->navigationSort(10)
                     ->navigationCountBadge(),
             ])
             ->resources([
                 config('filament-logger.activity_resource'),
             ])
             ->colors([
-                'primary'   => Color::Purple,
+                'primary' => Color::Purple,
                 'secondary' => Color::Zinc,
-                'gray'      => Color::Zinc,
+                'gray' => Color::Zinc,
             ])
             ->navigationGroups([
-                'Core Features',
-                'Website Design',
-                'App Sections',
-                'Settings',
+                // No group icons: Filament forbids group + item icons when the sidebar is not collapsible on desktop.
+                NavigationGroup::make(__('Workspace'))->collapsible(),
+                NavigationGroup::make(__('Library'))->collapsed(),
+                NavigationGroup::make(__('Site shortcuts'))->collapsed(),
+                NavigationGroup::make(__('Settings'))->collapsed(),
             ])
+            ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\\Filament\\Clusters')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->pages([
                 Dashboard::class,

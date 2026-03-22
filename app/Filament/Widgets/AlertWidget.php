@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\AlertResource;
 use App\Models\Alert;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
@@ -26,10 +27,15 @@ class AlertWidget extends BaseWidget
                     ->take(5)
             )
             ->heading(__('Site Alerts'))
+            ->description(
+                __(
+                    'Banners and notices shown to visitors (for example maintenance or announcements). Only active alerts are listed; open “View all” to create or schedule new ones.'
+                )
+            )
             ->headerActions(
                 [
                     ViewAction::make()
-                        ->url(route('filament.admin.resources.alerts.index'))
+                        ->url(AlertResource::getUrl('index'))
                         ->label(__('View All'))
                         ->icon('heroicon-o-arrow-up-right')
                         ->outlined()

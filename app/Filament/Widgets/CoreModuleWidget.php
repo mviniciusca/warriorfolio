@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\SettingResource;
 use App\Models\Core;
 use App\Models\Setting;
 use Filament\Tables\Actions\ViewAction;
@@ -23,13 +24,18 @@ class CoreModuleWidget extends BaseWidget
             )
             ->striped()
             ->heading(__('Module Visibility'))
+            ->description(
+                __(
+                    'These switches control which site sections are visible on the public website. Each module stays in its usual fixed position in the layout (for example header, hero, portfolio, contact, or footer)—they are not page-specific.'
+                )
+            )
             ->emptyStateIcon('heroicon-o-cpu-chip')
             ->paginated(false)
             ->headerActions(
                 [
                     ViewAction::make()
-                        ->url(route('filament.admin.resources.settings.edit', Setting::query()->first()->id))
-                        ->label('Settings')
+                        ->url(fn (): string => SettingResource::getUrl('edit', ['record' => Setting::query()->value('id')]))
+                        ->label(__('Settings'))
                         ->icon('heroicon-o-arrow-up-right')
                         ->outlined()
                         ->size('xs'),

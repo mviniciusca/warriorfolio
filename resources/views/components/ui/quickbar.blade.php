@@ -1,3 +1,22 @@
+@php
+    use App\Filament\Resources\AlertResource;
+    use App\Filament\Resources\CategoryResource;
+    use App\Filament\Resources\CustomerResource;
+    use App\Filament\Resources\HeroResource;
+    use App\Filament\Resources\MailResource;
+    use App\Filament\Resources\PageResource;
+    use App\Filament\Resources\PostResource;
+    use App\Filament\Resources\ProfileResource;
+    use App\Filament\Resources\ProjectResource;
+    use App\Filament\Resources\SectionResource;
+    use App\Filament\Resources\SettingResource;
+    use App\Filament\Resources\SlideshowResource;
+    use App\Models\Setting;
+    use Awcodes\Curator\Resources\MediaResource;
+    use Z3d0X\FilamentLogger\Resources\ActivityResource;
+
+    $settingId = Setting::query()->value('id') ?? 1;
+@endphp
 @if($isActive)
 @auth
 <div x-data="{
@@ -79,15 +98,15 @@
                             {{ __('General') }}</h3>
                         <x-ui.link href="{{ route('filament.admin.pages.dashboard') }}" icon="home-outline"
                             text="Dashboard Max" />
-                        <x-ui.link href="{{ route('filament.admin.resources.media.index') }}" icon="images-outline"
+                        <x-ui.link href="{{ MediaResource::getUrl('index') }}" icon="images-outline"
                             text="{{ __('Media') }}" />
-                        <x-ui.link href="{{ route('filament.admin.resources.pages.index') }}" icon="brush-outline"
+                        <x-ui.link href="{{ PageResource::getUrl('index') }}" icon="brush-outline"
                             text="{{ __('Theme Switch') }}" />
                         <x-ui.link
-                            href="{{ route('filament.admin.resources.settings.edit-maintenance-section',['record' => 1]) }}"
+                            href="{{ SettingResource::getUrl('edit-maintenance-section', ['record' => $settingId]) }}"
                             icon="construct-outline" text="{{ __('Maintenance Mode') }}" />
                         <x-ui.link
-                            href="{{ route('filament.admin.resources.settings.edit-security', ['record' => 1]) }}"
+                            href="{{ SettingResource::getUrl('edit-security', ['record' => $settingId]) }}"
                             icon="lock-open-outline" text="{{ __('Account Security Manager') }}" />
                     </div>
 
@@ -95,20 +114,20 @@
                     <div class="space-y-1">
                         <h3 class="mb-3 text-[10px] font-semibold uppercase tracking-widest saturn-text-accent">
                             {{ __('Core Features') }}</h3>
-                        <x-ui.link href="{{ route('filament.admin.resources.mails.index') }}" icon="mail-outline"
+                        <x-ui.link href="{{ MailResource::getUrl('index') }}" icon="mail-outline"
                             text="{{ __('Mails') }}" badge="{{ $mailCount > 0 ? $mailCount : '' }}" />
-                        <x-ui.link href="{{ route('filament.admin.resources.posts.index') }}"
+                        <x-ui.link href="{{ PostResource::getUrl('index') }}"
                             icon="document-text-outline" text="{{ __('Posts') }}"
                             badge="{{ $postCount > 0 ? $postCount : '' }}" />
-                        <x-ui.link href="{{ route('filament.admin.resources.projects.index') }}"
+                        <x-ui.link href="{{ ProjectResource::getUrl('index') }}"
                             icon="briefcase-outline" text="{{ __('Projects') }}"
                             badge="{{ $projectCount > 0 ? $projectCount : '' }}" />
-                        <x-ui.link href="{{ route('filament.admin.resources.categories.index') }}"
+                        <x-ui.link href="{{ CategoryResource::getUrl('index') }}"
                             icon="pricetags-outline" text="{{ __('Categories') }}"
                             badge="{{ $categoryCount > 0 ? $categoryCount : '' }}" />
-                        <x-ui.link href="{{ route('filament.admin.resources.profiles.index') }}" icon="person-outline"
+                        <x-ui.link href="{{ ProfileResource::getUrl('index') }}" icon="person-outline"
                             text="{{ __('Profile') }}" />
-                        <x-ui.link href="{{ route('filament.admin.resources.customers.index') }}" icon="people-outline"
+                        <x-ui.link href="{{ CustomerResource::getUrl('index') }}" icon="people-outline"
                             text="{{ __('Customers') }}" />
                     </div>
 
@@ -116,19 +135,19 @@
                     <div class="space-y-1">
                         <h3 class="mb-3 text-[10px] font-semibold uppercase tracking-widest saturn-text-accent">
                             {{ __('Website Design') }}</h3>
-                        <x-ui.link href="{{ route('filament.admin.resources.pages.index') }}" icon="document-outline"
+                        <x-ui.link href="{{ PageResource::getUrl('index') }}" icon="document-outline"
                             text="{{ __('Pages') }}" badge="{{ $pageCount > 0 ? $pageCount : '' }}" />
-                        <x-ui.link href="{{ route('filament.admin.resources.heroes.index') }}" icon="flag-outline"
+                        <x-ui.link href="{{ HeroResource::getUrl('index') }}" icon="flag-outline"
                             text="{{ __('Hero Section') }}" />
                         <x-ui.link
-                            href="{{ route('filament.admin.resources.settings.edit-appearance', ['record' => 1]) }}"
+                            href="{{ SettingResource::getUrl('edit-appearance', ['record' => $settingId]) }}"
                             icon="color-palette-outline" text="{{ __('Appearance') }}" />
                         <x-ui.link
-                            href="{{ route('filament.admin.resources.settings.edit-navigation', ['record' => 1]) }}"
+                            href="{{ SettingResource::getUrl('edit-navigation', ['record' => $settingId]) }}"
                             icon="menu-outline" text="{{ __('Navigation') }}" />
-                        <x-ui.link href="{{ route('filament.admin.resources.slideshows.index') }}" icon="albums-outline"
+                        <x-ui.link href="{{ SlideshowResource::getUrl('index') }}" icon="albums-outline"
                             text="{{ __('Slideshows') }}" />
-                        <x-ui.link href="{{ route('filament.admin.resources.alerts.index') }}"
+                        <x-ui.link href="{{ AlertResource::getUrl('index') }}"
                             icon="alert-circle-outline" text="{{ __('Alerts') }}" />
                     </div>
 
@@ -136,7 +155,7 @@
                     <div class="space-y-1">
                         <h3 class="mb-3 text-[10px] font-semibold uppercase tracking-widest saturn-text-accent">
                             {{ __('App Sections') }}</h3>
-                        <x-ui.link href="{{ route('filament.admin.resources.sections.index') }}" icon="radio-outline"
+                        <x-ui.link href="{{ SectionResource::getUrl('index') }}" icon="radio-outline"
                             text="{{ __('App Sections') }}" />
                     </div>
 
@@ -144,9 +163,9 @@
                     <div class="space-y-1">
                         <h3 class="mb-3 text-[10px] font-semibold uppercase tracking-widest saturn-text-accent">
                             {{ __('Settings') }}</h3>
-                        <x-ui.link href="{{ route('filament.admin.resources.activity-logs.index') }}"
+                        <x-ui.link href="{{ ActivityResource::getUrl('index') }}"
                             icon="time-outline" text="{{ __('Activity Log') }}" />
-                        <x-ui.link href="{{ route('filament.admin.resources.settings.index') }}" icon="settings-outline"
+                        <x-ui.link href="{{ SettingResource::getUrl('index') }}" icon="settings-outline"
                             text="{{ __('Settings') }}" />
                         <x-ui.link href="{{ route('log-viewer.index') }}" icon="clipboard-outline"
                             text="{{ __('Log Viewer') }}" />

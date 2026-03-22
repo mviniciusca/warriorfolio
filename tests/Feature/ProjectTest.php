@@ -2,8 +2,7 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Filament\Resources\ProjectResource;
 use Tests\TestCase;
 
 class ProjectTest extends TestCase
@@ -13,7 +12,7 @@ class ProjectTest extends TestCase
     {
 
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.projects.index'));
+        $response = $this->actingAs($user)->get(ProjectResource::getUrl('index'));
         $response->assertStatus(200);
         $response->assertSee('Projects');
     }
@@ -22,7 +21,7 @@ class ProjectTest extends TestCase
     public function it_should_show_create_project_page(): void
     {
         $user = \App\Models\User::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.projects.create'));
+        $response = $this->actingAs($user)->get(ProjectResource::getUrl('create'));
         $response->assertStatus(200);
         $response->assertSee('Create Project');
     }
@@ -32,7 +31,7 @@ class ProjectTest extends TestCase
     {
         $user = \App\Models\User::factory()->create();
         $project = \App\Models\Project::factory()->create();
-        $response = $this->actingAs($user)->get(route('filament.admin.resources.projects.edit', ['record' => $project->id]));
+        $response = $this->actingAs($user)->get(ProjectResource::getUrl('edit', ['record' => $project->id]));
         $response->assertStatus(200);
         $response->assertSee('Edit');
     }

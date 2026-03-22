@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\ContentCluster;
 use App\Filament\Custom\PageBuilder;
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\Page;
-use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -13,6 +13,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\EditAction;
@@ -30,12 +31,13 @@ class PageResource extends ResourcesPageResource
 {
     protected static ?string $model = Page::class;
 
+    protected static ?string $cluster = ContentCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-o-document';
 
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Website Design');
-    }
+    protected static ?int $navigationSort = 10;
 
     public static function getNavigationBadge(): ?string
     {
@@ -63,9 +65,9 @@ class PageResource extends ResourcesPageResource
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'default' => 'primary',
-                        'blog'    => 'success',
+                        'blog' => 'success',
                         'project' => 'warning',
-                        default   => 'gray',
+                        default => 'gray',
                     })
                     ->toggleable()
                     ->sortable(),
@@ -84,7 +86,7 @@ class PageResource extends ResourcesPageResource
                     ->label(__('filament-fabricator::page-resource.labels.layout'))
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'juno'  => 'danger',
+                        'juno' => 'danger',
                         default => 'gray',
                     })
                     ->toggleable()
@@ -130,7 +132,7 @@ class PageResource extends ResourcesPageResource
                 SelectFilter::make('style')
                     ->options([
                         'default' => 'Default',
-                        'blog'    => 'Blog',
+                        'blog' => 'Blog',
                         'project' => 'Project',
                     ])
                     ->default('default')
@@ -154,9 +156,9 @@ class PageResource extends ResourcesPageResource
                         ->visible(config('filament-fabricator.enable-view-page')),
                     EditAction::make()
                         ->url(fn (Page $record): string => match ($record->style) {
-                            'blog'    => route('filament.admin.resources.posts.edit', ['record' => $record->id]),
-                            'project' => route('filament.admin.resources.projects.edit', ['record' => $record->id]),
-                            default   => PageResource::getUrl('edit', ['record' => $record])
+                            'blog' => PostResource::getUrl('edit', ['record' => $record->id]),
+                            'project' => ProjectResource::getUrl('edit', ['record' => $record->id]),
+                            default => PageResource::getUrl('edit', ['record' => $record])
                         }),
                     Action::make('visit')
                         ->label(__('filament-fabricator::page-resource.actions.visit'))
@@ -344,9 +346,9 @@ class PageResource extends ResourcesPageResource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListPages::route('/'),
+            'index' => Pages\ListPages::route('/'),
             'create' => Pages\CreatePage::route('/create'),
-            'edit'   => Pages\EditPage::route('/{record}/edit'),
+            'edit' => Pages\EditPage::route('/{record}/edit'),
         ];
     }
 }

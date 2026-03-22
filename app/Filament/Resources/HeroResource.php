@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Clusters\SiteCluster;
 use App\Filament\Resources\HeroResource\Pages;
-use App\Filament\Resources\HeroResource\RelationManagers;
 use App\Models\Hero;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
@@ -18,36 +18,36 @@ use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class HeroResource extends Resource
 {
     protected static ?string $model = Hero::class;
 
+    protected static ?string $cluster = SiteCluster::class;
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     protected static ?string $navigationIcon = 'heroicon-o-photo';
+
+    protected static ?int $navigationSort = -20;
 
     public static function getNavigationLabel(): string
     {
         return __('Hero Section');
     }
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('Hero Section');
     }
 
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Website Design');
-    }
-
-    public function getSubheading(): string | Htmlable | null
+    public function getSubheading(): string|Htmlable|null
     {
         return __('Manager your Hero Section from your website.');
     }
@@ -98,7 +98,7 @@ class HeroResource extends Resource
                                                     ->label(__('Theme'))
                                                     ->options([
                                                         'default' => __('Default'),
-                                                        'sierra'  => __('Sierra'),
+                                                        'sierra' => __('Sierra'),
                                                     ])
                                                     ->default('sierra')
                                                     ->helperText(__('Choose the visual theme for the Hero section.')),
@@ -196,10 +196,10 @@ class HeroResource extends Resource
                                                                     ->helperText(__('Visual appearance of the button.'))
                                                                     ->prefixIcon('heroicon-o-swatch')
                                                                     ->options([
-                                                                        'primary'   => __('Primary'),
+                                                                        'primary' => __('Primary'),
                                                                         'secondary' => __('Secondary'),
-                                                                        'ghost'     => __('Ghost (Transparent)'),
-                                                                        'outlined'  => __('Outlined'),
+                                                                        'ghost' => __('Ghost (Transparent)'),
+                                                                        'outlined' => __('Outlined'),
                                                                     ])
                                                                     ->default('primary'),
                                                                 Select::make('button_target')
@@ -207,7 +207,7 @@ class HeroResource extends Resource
                                                                     ->helperText(__('How the link will open.'))
                                                                     ->prefixIcon('heroicon-o-arrow-top-right-on-square')
                                                                     ->options([
-                                                                        '_self'  => __('Same Window'),
+                                                                        '_self' => __('Same Window'),
                                                                         '_blank' => __('New Window/Tab'),
                                                                     ])
                                                                     ->default('_self'),
@@ -285,7 +285,7 @@ class HeroResource extends Resource
                                                     ->prefixIcon('heroicon-o-arrow-top-right-on-square')
                                                     ->helperText(__('How the link will open when clicked.'))
                                                     ->options([
-                                                        '_self'  => __('Same Window'),
+                                                        '_self' => __('Same Window'),
                                                         '_blank' => __('New Window'),
                                                     ])
                                                     ->default('_self'),
@@ -295,8 +295,8 @@ class HeroResource extends Resource
                                                     ->helperText(__('Visual style of the bumper.'))
                                                     ->options([
                                                         'primary' => __('Primary'),
-                                                        'danger'  => __('Danger'),
-                                                        'info'    => __('Info'),
+                                                        'danger' => __('Danger'),
+                                                        'info' => __('Info'),
                                                     ])
                                                     ->default('primary'),
                                             ]),
@@ -318,7 +318,7 @@ class HeroResource extends Resource
                                                 Radio::make('content.browser_border_device')
                                                     ->options([
                                                         'browser' => __('Desktop'),
-                                                        'mobile'  => __('Mobile'),
+                                                        'mobile' => __('Mobile'),
                                                     ])
                                                     ->default('browser')
                                                     ->label(__('Browser Device'))
@@ -343,10 +343,10 @@ class HeroResource extends Resource
                                                     ->imageEditorAspectRatios([
                                                         '16:9' => '16:9',
                                                         '9:16' => '9:16',
-                                                        '4:3'  => '4:3',
-                                                        '3:2'  => '3:2',
-                                                        '2:1'  => '2:1',
-                                                        '1:1'  => '1:1',
+                                                        '4:3' => '4:3',
+                                                        '3:2' => '3:2',
+                                                        '2:1' => '2:1',
+                                                        '1:1' => '1:1',
                                                     ])
                                                     ->helperText(__('16:9 for browser and 9:16 for mobile is recommended.')),
                                                 FileUpload::make('content.dark_mode_featured_image')
@@ -360,10 +360,10 @@ class HeroResource extends Resource
                                                     ->imageEditorAspectRatios([
                                                         '16:9' => '16:9',
                                                         '9:16' => '9:16',
-                                                        '4:3'  => '4:3',
-                                                        '3:2'  => '3:2',
-                                                        '2:1'  => '2:1',
-                                                        '1:1'  => '1:1',
+                                                        '4:3' => '4:3',
+                                                        '3:2' => '3:2',
+                                                        '2:1' => '2:1',
+                                                        '1:1' => '1:1',
                                                     ])
                                                     ->helperText(__('16:9 for browser and 9:16 for mobile is recommended.')),
                                             ]),
@@ -405,9 +405,9 @@ class HeroResource extends Resource
                                                             ->imageEditorAspectRatios([
                                                                 '16:9' => '16:9',
                                                                 '21:9' => '21:9 (Ultrawide)',
-                                                                '4:3'  => '4:3',
-                                                                '3:2'  => '3:2',
-                                                                '2:1'  => '2:1',
+                                                                '4:3' => '4:3',
+                                                                '3:2' => '3:2',
+                                                                '2:1' => '2:1',
                                                             ])
                                                             ->helperText(__('Recommended size: 1920×1080px (16:9) or 1920×900px (21:9). Use high quality images for best results.')),
                                                     ]),
@@ -420,19 +420,19 @@ class HeroResource extends Resource
                                                                 Select::make('content.bg_position')
                                                                     ->options([
                                                                         'bg-center' => __('Center (Recommended)'),
-                                                                        'bg-top'    => __('Top'),
+                                                                        'bg-top' => __('Top'),
                                                                         'bg-bottom' => __('Bottom'),
-                                                                        'bg-left'   => __('Left'),
-                                                                        'bg-right'  => __('Right'),
+                                                                        'bg-left' => __('Left'),
+                                                                        'bg-right' => __('Right'),
                                                                     ])
                                                                     ->default('bg-center')
                                                                     ->label(__('Position'))
                                                                     ->helperText(__('How the image is positioned within its container.')),
                                                                 Select::make('content.bg_size')
                                                                     ->options([
-                                                                        'bg-cover'   => __('Cover (Recommended)'),
+                                                                        'bg-cover' => __('Cover (Recommended)'),
                                                                         'bg-contain' => __('Contain'),
-                                                                        'bg-auto'    => __('Auto'),
+                                                                        'bg-auto' => __('Auto'),
                                                                     ])
                                                                     ->default('bg-cover')
                                                                     ->label(__('Size'))
@@ -444,9 +444,9 @@ class HeroResource extends Resource
                                                                 Select::make('content.bg_repeat')
                                                                     ->options([
                                                                         'bg-no-repeat' => __('No Repeat (Recommended)'),
-                                                                        'bg-repeat'    => __('Tile in All Directions'),
-                                                                        'bg-repeat-x'  => __('Repeat Horizontally'),
-                                                                        'bg-repeat-y'  => __('Repeat Vertically'),
+                                                                        'bg-repeat' => __('Tile in All Directions'),
+                                                                        'bg-repeat-x' => __('Repeat Horizontally'),
+                                                                        'bg-repeat-y' => __('Repeat Vertically'),
                                                                     ])
                                                                     ->default('bg-no-repeat')
                                                                     ->label(__('Repeat'))
@@ -474,8 +474,8 @@ class HeroResource extends Resource
                                                         Radio::make('content.bg_overlay')
                                                             ->options([
                                                                 'hero-bg-overlay-default' => __('Light (25% opacity)'),
-                                                                'hero-bg-overlay-middle'  => __('Medium (50% opacity)'),
-                                                                'hero-bg-overlay-down'    => __('Heavy (75% opacity)'),
+                                                                'hero-bg-overlay-middle' => __('Medium (50% opacity)'),
+                                                                'hero-bg-overlay-down' => __('Heavy (75% opacity)'),
                                                             ])
                                                             ->default('hero-bg-overlay-default')
                                                             ->label(__('Overlay Intensity'))
@@ -509,7 +509,7 @@ class HeroResource extends Resource
                                                                     }),
                                                                 Radio::make('content.pattern_name')
                                                                     ->options([
-                                                                        'dot'   => __('Dots Pattern'),
+                                                                        'dot' => __('Dots Pattern'),
                                                                         'cross' => __('Crosses Pattern'),
                                                                     ])
                                                                     ->default('cross')
@@ -552,16 +552,16 @@ class HeroResource extends Resource
                                                 Select::make('content.marquee_speed')
                                                     ->label(__('Marquee Speed'))
                                                     ->options([
-                                                        'slow'   => __('Slow'),
+                                                        'slow' => __('Slow'),
                                                         'normal' => __('Normal'),
-                                                        'fast'   => __('Fast'),
+                                                        'fast' => __('Fast'),
                                                     ])
                                                     ->default('normal')
                                                     ->helperText(__('Control the scrolling speed of the marquee.')),
                                                 Select::make('content.marquee_direction')
                                                     ->label(__('Marquee Direction'))
                                                     ->options([
-                                                        'left'  => __('Left to Right'),
+                                                        'left' => __('Left to Right'),
                                                         'right' => __('Right to Left'),
                                                     ])
                                                     ->default('left')
@@ -603,9 +603,9 @@ class HeroResource extends Resource
                                                                     ->imageEditor()
                                                                     ->imageEditorAspectRatios([
                                                                         '16:9' => __('16:9 (Widescreen)'),
-                                                                        '4:3'  => __('4:3 (Standard)'),
-                                                                        '3:2'  => __('3:2 (Classic)'),
-                                                                        '1:1'  => __('1:1 (Square)'),
+                                                                        '4:3' => __('4:3 (Standard)'),
+                                                                        '3:2' => __('3:2 (Classic)'),
+                                                                        '1:1' => __('1:1 (Square)'),
                                                                     ])
                                                                     ->columnSpanFull()
                                                                     ->helperText(__('Recommended size: 1920×1080px (16:9). Use high-quality images for best results.')),
@@ -634,10 +634,10 @@ class HeroResource extends Resource
                                                                         Select::make('overlay')
                                                                             ->label(__('Overlay'))
                                                                             ->options([
-                                                                                'none'   => __('None'),
-                                                                                'light'  => __('Light (25%)'),
+                                                                                'none' => __('None'),
+                                                                                'light' => __('Light (25%)'),
                                                                                 'medium' => __('Medium (50%)'),
-                                                                                'dark'   => __('Dark (75%)'),
+                                                                                'dark' => __('Dark (75%)'),
                                                                             ])
                                                                             ->default('none')
                                                                             ->helperText(__('Add a dark overlay to improve text readability.')),
@@ -705,9 +705,9 @@ class HeroResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListHeroes::route('/'),
+            'index' => Pages\ListHeroes::route('/'),
             'create' => Pages\CreateHero::route('/create'),
-            'edit'   => Pages\EditHero::route('/{record}/edit'),
+            'edit' => Pages\EditHero::route('/{record}/edit'),
         ];
     }
 }

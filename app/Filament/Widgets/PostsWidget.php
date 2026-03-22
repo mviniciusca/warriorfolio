@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\PostResource;
 use App\Models\Page;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
@@ -25,12 +26,16 @@ class PostsWidget extends BaseWidget
             ->striped()
             ->paginated(false)
             ->searchable(false)
-            ->recordClasses(fn (Page $record): string|null => match ($record->is_active) {
-                0       => 'opacity-50 dark:opacity-30',
+            ->recordClasses(fn (Page $record): ?string => match ($record->is_active) {
+                0 => 'opacity-50 dark:opacity-30',
                 default => null,
             })
             ->heading(__('Latest Posts'))
-            ->description(__('Your latest posts from your blog.'))
+            ->description(
+                __(
+                    'Your most recently created notes (blog-style pages). Draft or unpublished items appear muted; use this list to open an article quickly.'
+                )
+            )
             ->query(
                 Page::query()
                     ->with('post')
@@ -38,7 +43,7 @@ class PostsWidget extends BaseWidget
                     ->latest('created_at')
                     ->take(5)
             )
-            ->recordUrl(fn (Page $record) => route('filament.admin.resources.posts.edit', $record?->id))
+            ->recordUrl(fn (Page $record) => PostResource::getUrl('edit', ['record' => $record]))
             ->headerActions(
                 [
                     ViewAction::make('new')
@@ -46,10 +51,10 @@ class PostsWidget extends BaseWidget
                         ->color('primary')
                         ->size('xs')
                         ->outlined()
-                        ->url(route('filament.admin.resources.posts.create'))
+                        ->url(PostResource::getUrl('create'))
                         ->label(__('New Post')),
                     ViewAction::make()
-                        ->url(route('filament.admin.resources.posts.index'))
+                        ->url(PostResource::getUrl('index'))
                         ->label(__('View All'))
                         ->icon('heroicon-o-arrow-up-right')
                         ->outlined()

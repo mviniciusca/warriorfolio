@@ -2,21 +2,15 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\ProjectResource;
 use App\Models\Page;
-use App\Models\Project;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\Layout\View;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
 class ProjectWidget extends BaseWidget
 {
     protected int|string|array $columnSpan = 'full';
-
-    protected static ?string $heading = 'Featured Projects';
-
-    protected static ?string $description = 'Your latest published projects';
 
     protected static ?int $sort = 2;
 
@@ -39,11 +33,15 @@ class ProjectWidget extends BaseWidget
                 'xl' => 4,
             ])
             ->heading(__('Published Projects'))
-            ->description(__('See the latest published projects.'))
+            ->description(
+                __(
+                    'Projects that are live on your portfolio. Use this grid to spot what is active and jump straight into editing a project page.'
+                )
+            )
             ->columns([
                 View::make('filament.widgets.projects.card'),
             ])
-            ->recordUrl(fn (Page $record): string => route('filament.admin.resources.projects.edit', ['record' => $record]))
+            ->recordUrl(fn (Page $record): string => ProjectResource::getUrl('edit', ['record' => $record]))
             ->emptyStateIcon('heroicon-o-rocket-launch')
             ->emptyStateHeading(__('No Projects'))
             ->emptyStateDescription(__('Create your first project to see it here'))
