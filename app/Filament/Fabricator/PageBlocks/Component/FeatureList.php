@@ -100,7 +100,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_new_window')
                                                     ->label(__('New Tab'))
                                                     ->helperText(__('Open link in new tab'))
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->columnSpan(1),
@@ -108,7 +107,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_card_hidden')
                                                     ->label(__('Hide Card'))
                                                     ->helperText(__('Temporarily hide this card'))
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->columnSpan(1),
@@ -128,7 +126,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_heading_active')
                                                     ->label(__('Show Heading'))
                                                     ->default(true)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->helperText(__('Show or hide the title and subtitle')),
@@ -136,7 +133,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_heading_centered')
                                                     ->label(__('Center Heading'))
                                                     ->default(true)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->helperText(__('Center align title and subtitle')),
@@ -167,7 +163,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_active')
                                                     ->label(__('Module Active'))
                                                     ->default(true)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->helperText(__('Show or hide this entire module')),
@@ -175,7 +170,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('with_padding')
                                                     ->label(__('Vertical Padding'))
                                                     ->default(true)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->helperText(__('Add vertical spacing around the module')),
@@ -190,7 +184,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_filled')
                                                     ->label(__('Section Background'))
                                                     ->default(false)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->live()
                                                     ->inline()
@@ -204,7 +197,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_section_filled_inverted')
                                                     ->label(__('Invert Background'))
                                                     ->default(false)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->live()
                                                     ->inline()
@@ -218,7 +210,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_section_top_border')
                                                     ->label(__('Top border'))
                                                     ->default(false)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->helperText(
@@ -228,7 +219,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_content_center')
                                                     ->label(__('Center Content'))
                                                     ->default(true)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->helperText(__('Center align card content')),
@@ -243,7 +233,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_card_filled')
                                                     ->label(__('Card Backgrounds'))
                                                     ->default(false)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->helperText(__('Add background color to cards')),
@@ -251,7 +240,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_border')
                                                     ->label(__('Card Borders'))
                                                     ->default(false)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->helperText(__('Add borders around cards')),
@@ -259,7 +247,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_color_icon')
                                                     ->label(__('Colored Icons'))
                                                     ->default(true)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->helperText(__('Use brand colors for icons')),
@@ -285,7 +272,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_light_fx')
                                                     ->label(__('Hover Light Effect'))
                                                     ->default(false)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->helperText(__('Add light effect on card hover')),
@@ -293,7 +279,6 @@ class FeatureList extends PageBlock
                                                 Toggle::make('is_animated')
                                                     ->label(__('Animations'))
                                                     ->default(false)
-                                                    ->onIcon('heroicon-o-check-circle')
                                                     ->offIcon('heroicon-o-x-circle')
                                                     ->inline()
                                                     ->helperText(__('Enable entrance animations')),

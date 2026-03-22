@@ -65,13 +65,11 @@ class SectionResource extends Resource
                                         Toggle::make('is_active')
                                             ->label(__('Active'))
                                             ->helperText(__('Controls section visibility on the frontend'))
-                                            ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
                                             ->default(true),
                                         Toggle::make('is_coupled')
                                             ->label(__('Coupled'))
                                             ->helperText(__('Integrates section with the main layout structure'))
-                                            ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
                                             ->default(false),
                                     ]),
@@ -82,7 +80,6 @@ class SectionResource extends Resource
                                         Toggle::make('content.is_filled')
                                             ->label(__('Fill Section'))
                                             ->helperText(__('Applies accent color background to the section'))
-                                            ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
                                             ->default(false)
                                             ->live()
@@ -94,7 +91,6 @@ class SectionResource extends Resource
                                         Toggle::make('content.is_section_filled_inverted')
                                             ->label(__('Fill Section Inverted'))
                                             ->helperText(__('Applies inverted theme colors with contrasting text'))
-                                            ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
                                             ->default(false)
                                             ->live()
@@ -110,13 +106,11 @@ class SectionResource extends Resource
                                     ->schema([
                                         Toggle::make('content.with_padding')
                                             ->label(__('Vertical Padding'))
-                                            ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
                                             ->helperText(__('Adds vertical spacing around section content'))
                                             ->default(true),
                                         Toggle::make('content.is_section_top_border')
                                             ->label(__('Top border'))
-                                            ->onIcon('heroicon-o-check-circle')
                                             ->offIcon('heroicon-o-x-circle')
                                             ->helperText(
                                                 __('Adds a thin top border (Saturn) to separate this section from the one above. Respects inverted section colors.')
@@ -138,19 +132,16 @@ class SectionResource extends Resource
                                                 ->columns(3)
                                                 ->schema([
                                                     Toggle::make('content.is_heading_visible')
-                                                        ->onIcon('heroicon-o-check-circle')
                                                         ->offIcon('heroicon-o-x-circle')
                                                         ->label(__('Heading Visible'))
                                                         ->helperText(__('Shows the section title and subtitle'))
                                                         ->default(false),
                                                     Toggle::make('content.is_centered')
-                                                        ->onIcon('heroicon-o-check-circle')
                                                         ->offIcon('heroicon-o-x-circle')
                                                         ->label(__('Heading Centered'))
                                                         ->helperText(__('Centers the section title and subtitle'))
                                                         ->default(false),
                                                     Toggle::make('content.show_button')
-                                                        ->onIcon('heroicon-o-check-circle')
                                                         ->offIcon('heroicon-o-x-circle')
                                                         ->label(__('Show Button'))
                                                         ->helperText(__('Displays the action button in the section'))

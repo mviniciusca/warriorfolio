@@ -256,7 +256,6 @@ class ProjectResource extends Resource
                                         ->label('Published')
                                         ->helperText(__('Publish the project to make it visible on your portfolio section.'))
                                         ->default(true)
-                                        ->onIcon('heroicon-o-check-circle')
                                         ->offIcon('heroicon-o-eye-slash'),
                                     Card::make()
                                         ->schema([

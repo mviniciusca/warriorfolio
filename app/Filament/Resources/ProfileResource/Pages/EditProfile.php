@@ -3,8 +3,6 @@
 namespace App\Filament\Resources\ProfileResource\Pages;
 
 use App\Filament\Resources\ProfileResource;
-use Awcodes\Curator\Components\Forms\CuratorPicker;
-use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
@@ -19,7 +17,6 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
-use Filament\Support\Enums\IconPosition;
 
 class EditProfile extends EditRecord
 {
@@ -117,14 +114,12 @@ class EditProfile extends EditRecord
                                                                     ->label(__('Open to Work'))
                                                                     ->helperText(__('Show that you are available for new opportunities'))
                                                                     ->inline(true)
-                                                                    ->onIcon('heroicon-m-sparkles')
                                                                     ->offIcon('heroicon-m-x-mark'),
 
                                                                 Toggle::make('is_downloadable')
                                                                     ->label(__('Resume Available'))
                                                                     ->helperText(__('Allow visitors to download your resume/CV'))
                                                                     ->inline(true)
-                                                                    ->onIcon('heroicon-m-arrow-down-tray')
                                                                     ->offIcon('heroicon-m-lock-closed'),
                                                             ]),
                                                     ]),
@@ -221,7 +216,6 @@ class EditProfile extends EditRecord
                                                     ->helperText(__('Enable or disable this social link'))
                                                     ->inline(false)
                                                     ->default(true)
-                                                    ->onIcon('heroicon-m-check-circle')
                                                     ->offIcon('heroicon-m-no-symbol'),
                                                 Select::make('social_network')
                                                     ->columnSpan(2)
@@ -231,23 +225,23 @@ class EditProfile extends EditRecord
                                                     ->placeholder(__('Select platform'))
                                                     ->prefixIcon('heroicon-o-user')
                                                     ->options([
-                                                        'behance'       => 'Behance',
-                                                        'codepen'       => 'Codepen',
-                                                        'discord'       => 'Discord',
-                                                        'dribbble'      => 'Dribbble',
-                                                        'facebook'      => 'Facebook',
-                                                        'github'        => 'Github',
-                                                        'instagram'     => 'Instagram',
-                                                        'linkedin'      => 'Linkedin',
-                                                        'medium'        => 'Medium',
-                                                        'npm'           => 'NPM',
+                                                        'behance' => 'Behance',
+                                                        'codepen' => 'Codepen',
+                                                        'discord' => 'Discord',
+                                                        'dribbble' => 'Dribbble',
+                                                        'facebook' => 'Facebook',
+                                                        'github' => 'Github',
+                                                        'instagram' => 'Instagram',
+                                                        'linkedin' => 'Linkedin',
+                                                        'medium' => 'Medium',
+                                                        'npm' => 'NPM',
                                                         'stackoverflow' => 'Stackoverflow',
-                                                        'tiktok'        => 'Tiktok',
-                                                        'twitch'        => 'Twitch',
-                                                        'twitter'       => 'X / Twitter',
-                                                        'vercel'        => 'Vercel',
-                                                        'whatsapp'      => 'Whatsapp',
-                                                        'youtube'       => 'Youtube',
+                                                        'tiktok' => 'Tiktok',
+                                                        'twitch' => 'Twitch',
+                                                        'twitter' => 'X / Twitter',
+                                                        'vercel' => 'Vercel',
+                                                        'whatsapp' => 'Whatsapp',
+                                                        'youtube' => 'Youtube',
                                                     ])
                                                     ->label(__('Social Network')),
                                                 TextInput::make('profile_link')

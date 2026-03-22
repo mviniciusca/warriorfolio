@@ -30,6 +30,13 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->bootUsing(function (): void {
+                \Filament\Forms\Components\Toggle::configureUsing(function (\Filament\Forms\Components\Toggle $toggle): void {
+                    $toggle->onIcon('heroicon-m-check');
+                });
+                \Filament\Tables\Columns\ToggleColumn::configureUsing(function (\Filament\Tables\Columns\ToggleColumn $column): void {
+                    $column->onIcon('heroicon-m-check');
+                });
+
                 // Default Filament is Start (sidebar). Set Top for resources/pages that inherit the base property.
                 // Runs with the panel (not service provider boot) so core classes are loaded; use leading \ to avoid import clashes.
                 $top = \Filament\Pages\SubNavigationPosition::Top;
