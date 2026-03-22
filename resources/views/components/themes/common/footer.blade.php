@@ -1,6 +1,6 @@
 @if ($is_active)
 <div class="{{ $is_filled ? 'section-filled' : '' }}">
-    <x-core.layout :$is_section_filled_inverted :$with_padding>
+    <x-core.layout :$is_section_filled_inverted :$is_section_top_border :$with_padding>
         <div class="py-8" id="footer-content">
             <div class="mx-auto">
                 <div class="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">

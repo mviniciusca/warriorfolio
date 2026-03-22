@@ -1,5 +1,5 @@
 @if ($is_active)
-<x-core.layout :$with_padding :$is_section_filled_inverted :$module_name>
+<x-core.layout :$with_padding :$is_section_filled_inverted :$is_section_top_border :$module_name>
     <div
         class="{{ $class ?? 'bg-dots relative items-center overflow-hidden rounded-3xl border border-secondary-100 bg-white px-8 py-16 text-left dark:border-secondary-900 dark:bg-black' }}">
         <div class="absolute inset-0 z-0 bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-70"></div>

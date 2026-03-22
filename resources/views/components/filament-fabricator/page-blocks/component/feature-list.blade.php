@@ -23,10 +23,11 @@
 'is_centered' => $is_heading_centered ?? false,
 'is_heading_visible' => $is_heading_active ?? null,
 'is_section_filled_inverted' => false,
+'is_section_top_border' => false,
 ])
 
 @if($is_active)
-<x-core.layout :$is_filled :$with_padding :$is_centered :$is_section_filled_inverted :$title :$subtitle
+<x-core.layout :$is_filled :$with_padding :$is_centered :$is_section_filled_inverted :$is_section_top_border :$title :$subtitle
     :$is_heading_visible :$button_header :$button_url :$button_icon>
     <x-ui.card-grid :cols="$columns">
         @foreach ($features as $item)

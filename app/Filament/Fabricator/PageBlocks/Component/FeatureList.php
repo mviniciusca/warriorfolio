@@ -85,13 +85,13 @@ class FeatureList extends PageBlock
                                                     ->label(__('Card Style'))
                                                     ->prefixIcon('heroicon-o-swatch')
                                                     ->options([
-                                                        ''          => __('Default'),
-                                                        'primary'   => __('Primary'),
+                                                        '' => __('Default'),
+                                                        'primary' => __('Primary'),
                                                         'secondary' => __('Secondary'),
-                                                        'success'   => __('Success'),
-                                                        'warning'   => __('Warning'),
-                                                        'danger'    => __('Danger'),
-                                                        'info'      => __('Info'),
+                                                        'success' => __('Success'),
+                                                        'warning' => __('Warning'),
+                                                        'danger' => __('Danger'),
+                                                        'info' => __('Info'),
                                                     ])
                                                     ->default('')
                                                     ->helperText(__('Choose a color theme for this card'))
@@ -185,7 +185,7 @@ class FeatureList extends PageBlock
                                 Fieldset::make(__('Background & Layout'))
                                     ->schema([
                                         Grid::make()
-                                            ->columns(3)
+                                            ->columns(2)
                                             ->schema([
                                                 Toggle::make('is_filled')
                                                     ->label(__('Section Background'))
@@ -214,6 +214,16 @@ class FeatureList extends PageBlock
                                                             $set('is_filled', false);
                                                         }
                                                     }),
+
+                                                Toggle::make('is_section_top_border')
+                                                    ->label(__('Top border'))
+                                                    ->default(false)
+                                                    ->onIcon('heroicon-o-check-circle')
+                                                    ->offIcon('heroicon-o-x-circle')
+                                                    ->inline()
+                                                    ->helperText(
+                                                        __('Thin Saturn border on top of the section (matches site alerts). Uses inverse tokens when the section is inverted.')
+                                                    ),
 
                                                 Toggle::make('is_content_center')
                                                     ->label(__('Center Content'))

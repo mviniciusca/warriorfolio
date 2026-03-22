@@ -114,6 +114,14 @@ class SectionResource extends Resource
                                             ->offIcon('heroicon-o-x-circle')
                                             ->helperText(__('Adds vertical spacing around section content'))
                                             ->default(true),
+                                        Toggle::make('content.is_section_top_border')
+                                            ->label(__('Top border'))
+                                            ->onIcon('heroicon-o-check-circle')
+                                            ->offIcon('heroicon-o-x-circle')
+                                            ->helperText(
+                                                __('Adds a thin top border (Saturn) to separate this section from the one above. Respects inverted section colors.')
+                                            )
+                                            ->default(false),
                                     ]),
 
                             ]),

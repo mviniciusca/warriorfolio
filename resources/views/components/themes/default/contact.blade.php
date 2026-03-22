@@ -1,6 +1,6 @@
 @if($is_active)
 <x-core.layout :$is_filled :$with_padding :$module_name :$button_header :$button_url :$is_centered :$title :$subtitle
-    :$is_section_filled_inverted :$is_heading_visible :$button_icon :$module_slug>
+    :$is_section_filled_inverted :$is_section_top_border :$is_heading_visible :$button_icon :$module_slug>
     <section class="mx-auto border-t saturn-border pt-10 md:pt-12" id="contact-wrapper">
         <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
             {{-- Info / map --}}

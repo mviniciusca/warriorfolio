@@ -5,7 +5,7 @@
 
 @if ($is_active)
 <x-core.layout :$is_filled :$with_padding :$module_name :$button_header :$button_url :$is_centered :$title :$subtitle
-    :$is_section_filled_inverted :$is_heading_visible :$button_icon :$module_slug>
+    :$is_section_filled_inverted :$is_section_top_border :$is_heading_visible :$button_icon :$module_slug>
     <section
         class="my-12 flex flex-wrap content-center items-center justify-center justify-items-center gap-8 transition-all duration-300"
         id="customer-wrapper">

@@ -4,6 +4,7 @@
 'is_active' => null,
 'is_filled' => null,
 'is_section_filled_inverted' => null,
+'is_section_top_border' => false,
 'is_heading_visible' => null,
 'title' => null,
 'subtitle' => null,
@@ -22,7 +23,7 @@ $processedButtonHeader = $button_header ? new Illuminate\Support\HtmlString($but
 @endphp
 
 @if ($is_active)
-<x-core.layout :$is_centered :$module_name :$is_filled :$is_section_filled_inverted :$button_icon :$with_padding :$title
+<x-core.layout :$is_centered :$module_name :$is_filled :$is_section_filled_inverted :$is_section_top_border :$button_icon :$with_padding :$title
     :$subtitle :$is_heading_visible :$button_style :button_header="$processedButtonHeader">
 </x-core.layout>
 @endif

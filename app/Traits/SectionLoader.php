@@ -25,6 +25,8 @@ trait SectionLoader
 
     public ?bool $is_section_filled_inverted;
 
+    public ?bool $is_section_top_border;
+
     public ?bool $with_padding;
 
     public ?string $module_name;
@@ -63,6 +65,7 @@ trait SectionLoader
         $this->is_filled = $section->content['is_filled'] ?? null;
         $this->with_padding = $section->content['with_padding'] ?? null;
         $this->is_section_filled_inverted = $section->content['is_section_filled_inverted'] ?? null;
+        $this->is_section_top_border = $section->content['is_section_top_border'] ?? false;
         $this->is_centered = $section->content['is_centered'] ?? false;
         $this->module_slug = $section->slug ?? null;
         $this->module_name = $section->name ?? null;

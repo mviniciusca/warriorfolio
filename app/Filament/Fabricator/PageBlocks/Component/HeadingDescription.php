@@ -3,10 +3,6 @@
 namespace App\Filament\Fabricator\PageBlocks\Component;
 
 use Filament\Forms\Components\Builder\Block;
-use Filament\Forms\Components\Checkbox;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Group;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
@@ -14,8 +10,6 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Get;
-use Filament\Forms\Set;
-use Illuminate\Support\Str;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class HeadingDescription extends PageBlock
@@ -97,6 +91,14 @@ class HeadingDescription extends PageBlock
                                     ->helperText(__('Swap the background and text colors'))
                                     ->visible(fn (Get $get): bool => $get('is_filled'))
                                     ->live(),
+
+                                Toggle::make('is_section_top_border')
+                                    ->label(__('Top border'))
+                                    ->helperText(
+                                        __('Thin Saturn top border to separate from the section above (inverse-aware).')
+                                    )
+                                    ->default(false)
+                                    ->columnSpanFull(),
                             ]),
 
                         Tab::make('button')
@@ -119,7 +121,7 @@ class HeadingDescription extends PageBlock
                                     ->helperText(__('Choose a style for the button'))
                                     ->options([
                                         'outlined' => __('Outlined'),
-                                        'filled'   => __('Filled'),
+                                        'filled' => __('Filled'),
                                     ])
                                     ->default('outlined'),
 
