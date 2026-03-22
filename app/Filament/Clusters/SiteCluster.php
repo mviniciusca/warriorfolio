@@ -17,11 +17,11 @@ class SiteCluster extends Cluster
 
     public static function getNavigationLabel(): string
     {
-        return __('Site & layout');
+        return __('Your Website');
     }
 
     public static function getClusterBreadcrumb(): ?string
     {
-        return __('Site & layout');
+        return __('Your Website');
     }
 }

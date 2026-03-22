@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Clusters\ContentCluster;
+use App\Filament\Clusters\SiteCluster;
 use App\Filament\Custom\PageBuilder;
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\Page;
@@ -34,13 +34,13 @@ class PageResource extends ResourcesPageResource
 {
     protected static ?string $model = Page::class;
 
-    protected static ?string $cluster = ContentCluster::class;
+    protected static ?string $cluster = SiteCluster::class;
 
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     protected static ?string $navigationIcon = 'heroicon-o-document';
 
-    protected static ?int $navigationSort = 10;
+    protected static ?int $navigationSort = -25;
 
     public static function getNavigationBadge(): ?string
     {

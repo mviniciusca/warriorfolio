@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Clusters\EngagementCluster;
+use App\Filament\Clusters\ContentCluster;
 use App\Filament\Resources\ProjectResource\Pages;
 use App\Filament\Resources\ProjectResource\Pages\EditProject;
 use App\Models\Category;
@@ -45,7 +45,7 @@ class ProjectResource extends Resource
     // And use Fabricator Routing System
     protected static ?string $model = Page::class;
 
-    protected static ?string $cluster = EngagementCluster::class;
+    protected static ?string $cluster = ContentCluster::class;
 
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 

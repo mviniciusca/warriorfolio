@@ -17,11 +17,11 @@ class EngagementCluster extends Cluster
 
     public static function getNavigationLabel(): string
     {
-        return __('Audience & work');
+        return __('Social');
     }
 
     public static function getClusterBreadcrumb(): ?string
     {
-        return __('Audience & work');
+        return __('Social');
     }
 }
