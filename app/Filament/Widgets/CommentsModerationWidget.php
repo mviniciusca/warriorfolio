@@ -50,8 +50,9 @@ class CommentsModerationWidget extends BaseWidget
                     ->label(__('View all comments'))
                     ->icon('heroicon-o-chat-bubble-left-right')
                     ->url(PageCommentResource::getUrl('index'))
+                    ->color('gray')
                     ->outlined()
-                    ->size('xs'),
+                    ->size('sm'),
                 PageCommentTableActions::approveAllPendingHeaderAction(),
                 PageCommentTableActions::deleteAllPendingHeaderAction(),
             ])

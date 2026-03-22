@@ -68,9 +68,9 @@ class MailWidget extends BaseWidget
                     ->label(__('Open inbox'))
                     ->url(MailResource::getUrl('index'))
                     ->icon('heroicon-o-arrow-top-right-on-square')
-                    ->button()
-                    ->size('sm')
-                    ->color('gray'),
+                    ->color('gray')
+                    ->outlined()
+                    ->size('sm'),
             ])
             ->contentGrid([
                 'default' => 1,

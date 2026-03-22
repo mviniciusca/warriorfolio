@@ -98,6 +98,8 @@ final class PageCommentTableActions
             ->label(__('Approve all pending on this post'))
             ->icon('heroicon-o-check-badge')
             ->color('success')
+            ->outlined()
+            ->size('sm')
             ->requiresConfirmation()
             ->modalHeading(__('Approve every pending comment on this post?'))
             ->modalDescription(function () use ($pageId): string {
@@ -129,6 +131,8 @@ final class PageCommentTableActions
             ->label(__('Delete all pending on this post'))
             ->icon('heroicon-o-trash')
             ->color('danger')
+            ->outlined()
+            ->size('sm')
             ->requiresConfirmation()
             ->modalHeading(__('Delete every pending comment on this post?'))
             ->modalDescription(function () use ($pageId): string {
@@ -157,6 +161,8 @@ final class PageCommentTableActions
             ->label(__('Approve all pending'))
             ->icon('heroicon-o-check-badge')
             ->color('success')
+            ->outlined()
+            ->size('sm')
             ->requiresConfirmation()
             ->modalHeading(__('Approve every pending comment?'))
             ->modalDescription(function (): string {
@@ -190,6 +196,8 @@ final class PageCommentTableActions
             ->label(__('Delete all pending'))
             ->icon('heroicon-o-trash')
             ->color('danger')
+            ->outlined()
+            ->size('sm')
             ->requiresConfirmation()
             ->modalHeading(__('Delete every pending comment?'))
             ->modalDescription(function (): string {
