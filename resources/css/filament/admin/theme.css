@@ -3,3 +3,97 @@
 @import '/node_modules/cropperjs/dist/cropper.css';
 
 @config 'tailwind.config.js';
+
+/*
+ * Filament admin — shadcn / Vercel adjacente: monocromático, bordas 1px, pouca sombra.
+ * Cores de estado (danger, success, …) mantêm o default do Filament para legibilidade.
+ */
+@layer components {
+    html.fi {
+        @apply antialiased;
+    }
+
+    .fi-main {
+        @apply bg-neutral-50 dark:bg-neutral-950;
+    }
+}
+
+/* Utilitários com `!` para vencer classes no HTML (ring/shadow/rounded do Filament). */
+@layer utilities {
+    .fi-section:not(.fi-aside) {
+        @apply !rounded-lg !border !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+    }
+
+    .fi-topbar nav {
+        @apply !border-b !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+    }
+
+    .fi-sidebar-header {
+        @apply !border-b !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950 lg:!shadow-none;
+    }
+
+    .fi-ta-ctn {
+        @apply !rounded-lg !border !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+    }
+
+    .fi-wi-stats-overview-stat {
+        @apply !rounded-lg !border !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+    }
+
+    .fi-wi-stats-overview-stat-chart {
+        @apply !rounded-b-lg;
+    }
+
+    .fi-sidebar {
+        @apply bg-white dark:bg-neutral-950 lg:!bg-white lg:dark:!bg-neutral-950;
+    }
+
+    .fi-modal-window {
+        @apply !rounded-lg !border !border-neutral-200 !bg-white !shadow-lg !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+    }
+
+    /* Botões — mesma linguagem visual (shadcn-like): md, medium, flat + foco neutro */
+    .fi-btn.rounded-lg {
+        @apply !rounded-md;
+    }
+
+    .fi-btn {
+        @apply !font-medium;
+    }
+
+    .fi-btn:not(.fi-btn-outlined) {
+        @apply !shadow-none;
+    }
+
+    .fi-btn:not(.fi-color-custom):not(.fi-btn-outlined) {
+        @apply !ring-1 !ring-neutral-200 dark:!ring-neutral-800;
+    }
+
+    .fi-btn.fi-btn-outlined {
+        @apply !rounded-md !shadow-none;
+    }
+
+    .fi-btn.fi-color-custom:focus-visible {
+        @apply !ring-2 !ring-neutral-400 !ring-offset-2 !ring-offset-white dark:!ring-neutral-500 dark:!ring-offset-neutral-950;
+    }
+
+    .fi-btn-group {
+        @apply !rounded-md !shadow-none !ring-1 !ring-neutral-200 dark:!ring-neutral-800;
+    }
+
+    .fi-icon-btn {
+        @apply !rounded-md;
+    }
+
+    .fi-icon-btn.fi-color-gray {
+        @apply !text-neutral-600 hover:!bg-neutral-100 hover:!text-neutral-950 dark:!text-neutral-400 dark:hover:!bg-neutral-800 dark:hover:!text-neutral-50;
+    }
+
+    .fi-icon-btn.fi-color-primary {
+        @apply !text-neutral-700 hover:!bg-neutral-100 dark:!text-neutral-300 dark:hover:!bg-neutral-800;
+    }
+
+    .fi-icon-btn:focus-visible {
+        @apply !ring-2 !ring-neutral-400 !ring-offset-2 !ring-offset-white dark:!ring-neutral-500 dark:!ring-offset-neutral-950;
+    }
+}

@@ -101,9 +101,9 @@ class AdminPanelProvider extends PanelProvider
                 config('filament-logger.activity_resource'),
             ])
             ->colors([
-                'primary' => Color::Purple,
-                'secondary' => Color::Zinc,
-                'gray' => Color::Zinc,
+                'primary' => Color::Neutral,
+                'secondary' => Color::Neutral,
+                'gray' => Color::Neutral,
             ])
             ->navigationGroups([
                 NavigationGroup::make(__('Workspace'))->collapsible(),
