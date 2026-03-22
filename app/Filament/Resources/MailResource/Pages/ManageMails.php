@@ -16,6 +16,11 @@ class ManageMails extends ManageRecords
         return __('Inbox');
     }
 
+    public function getSubheading(): string|Htmlable|null
+    {
+        return __('Contact form and inbound mail. Open a row to read the full message.');
+    }
+
     /**
      * @return array<\Filament\Navigation\NavigationItem|\Filament\Navigation\NavigationGroup>
      */

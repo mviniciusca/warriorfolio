@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\SettingResource\Pages;
 
 use App\Filament\Resources\SettingResource;
-use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -14,9 +13,14 @@ class ListSettings extends ListRecords
 {
     protected static string $resource = SettingResource::class;
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('Application Overview');
+    }
+
+    public function getSubheading(): string|Htmlable|null
+    {
+        return __('Quick read-only snapshot of app name, owner and maintenance flags.');
     }
 
     public function table(Table $table): Table

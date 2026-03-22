@@ -132,7 +132,7 @@ class MailResource extends Resource
                     ->label(__('New Message'))
                     ->closeModalByClickingAway(false)
                     ->color('primary')
-                    ->icon('heroicon-o-pencil')
+                    ->icon('heroicon-o-paper-airplane')
                     ->createAnother(false)
                     ->form([
                         Group::make()

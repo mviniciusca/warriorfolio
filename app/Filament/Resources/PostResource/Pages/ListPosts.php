@@ -18,13 +18,18 @@ class ListPosts extends ListRecords
         return __('Notes');
     }
 
+    public function getSubheading(): string|Htmlable|null
+    {
+        return __('Write and publish notes, control visibility and open the Notes module settings when you need them.');
+    }
+
     protected function getHeaderActions(): array
     {
         return [
             Actions\CreateAction::make()
-                ->icon('heroicon-o-pencil')
-                ->size('sm')
-                ->label(__('New Note')),
+                ->label(__('New Note'))
+                ->icon('heroicon-o-document-plus')
+                ->size('sm'),
             Actions\Action::make('view_blog_settings')
                 ->url(SettingResource::getUrl('edit-blog', ['record' => Setting::query()->value('id')]))
                 ->color('gray')

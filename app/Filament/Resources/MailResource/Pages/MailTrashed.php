@@ -47,6 +47,11 @@ class MailTrashed extends ListRecords
         return __('Trash');
     }
 
+    public function getSubheading(): string|Htmlable|null
+    {
+        return __('Deleted messages. Restore them to the inbox or remove permanently.');
+    }
+
     public function table(Table $table): Table
     {
         return $table
