@@ -143,4 +143,75 @@
     #pulse-core-modules .fi-ta-ctn {
         @apply !rounded-none !border-0 !bg-transparent !shadow-none !ring-0 dark:!bg-transparent;
     }
+
+    /*
+     * Tabs — shadcn “pill” / segmented (trilho + ativo com fundo):
+     * forms (.fi-fo-tabs), sub-navegação superior (Settings, etc.) e Dashboard.
+     */
+    .fi-fo-tabs nav.fi-tabs,
+    nav.fi-tabs.fi-page-sub-navigation-tabs,
+    .fi-dashboard-page nav.fi-tabs {
+        @apply !mx-0 !w-fit !max-w-full !gap-x-1 !gap-y-0 !overflow-x-auto !rounded-lg !border-0 !bg-neutral-100 !p-1 !shadow-none !ring-0 dark:!bg-neutral-800/70;
+    }
+
+    .fi-fo-tabs nav.fi-tabs .fi-tabs-item,
+    nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item,
+    .fi-dashboard-page nav.fi-tabs .fi-tabs-item {
+        @apply !rounded-md !border-0 !border-b-0 !bg-transparent !px-3 !py-2 !shadow-none;
+    }
+
+    .fi-fo-tabs nav.fi-tabs .fi-tabs-item.fi-active,
+    .fi-fo-tabs nav.fi-tabs .fi-tabs-item.fi-tabs-item-active,
+    nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item.fi-active,
+    nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item.fi-tabs-item-active,
+    .fi-dashboard-page nav.fi-tabs .fi-tabs-item.fi-active,
+    .fi-dashboard-page nav.fi-tabs .fi-tabs-item.fi-tabs-item-active {
+        @apply !border-transparent !bg-white !shadow-sm dark:!bg-neutral-950;
+    }
+
+    .fi-fo-tabs nav.fi-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active),
+    nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active),
+    .fi-dashboard-page nav.fi-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active) {
+        @apply hover:!bg-neutral-200/50 dark:hover:!bg-neutral-700/40;
+    }
+
+    .fi-fo-tabs nav.fi-tabs .fi-tabs-item.fi-active .fi-tabs-item-label,
+    .fi-fo-tabs nav.fi-tabs .fi-tabs-item.fi-tabs-item-active .fi-tabs-item-label,
+    nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item.fi-active .fi-tabs-item-label,
+    nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item.fi-tabs-item-active .fi-tabs-item-label,
+    .fi-dashboard-page nav.fi-tabs .fi-tabs-item.fi-active .fi-tabs-item-label,
+    .fi-dashboard-page nav.fi-tabs .fi-tabs-item.fi-tabs-item-active .fi-tabs-item-label {
+        @apply !font-medium !text-neutral-950 dark:!text-neutral-50;
+    }
+
+    .fi-fo-tabs nav.fi-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active) .fi-tabs-item-label,
+    nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active) .fi-tabs-item-label,
+    .fi-dashboard-page nav.fi-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active) .fi-tabs-item-label {
+        @apply !font-medium !text-neutral-600 dark:!text-neutral-400;
+    }
+
+    .fi-fo-tabs nav.fi-tabs .fi-tabs-item.fi-active .fi-tabs-item-icon,
+    .fi-fo-tabs nav.fi-tabs .fi-tabs-item.fi-tabs-item-active .fi-tabs-item-icon,
+    nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item.fi-active .fi-tabs-item-icon,
+    nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item.fi-tabs-item-active .fi-tabs-item-icon,
+    .fi-dashboard-page nav.fi-tabs .fi-tabs-item.fi-active .fi-tabs-item-icon,
+    .fi-dashboard-page nav.fi-tabs .fi-tabs-item.fi-tabs-item-active .fi-tabs-item-icon {
+        @apply !text-neutral-700 dark:!text-neutral-200;
+    }
+
+    .fi-fo-tabs nav.fi-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active) .fi-tabs-item-icon,
+    nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active) .fi-tabs-item-icon,
+    .fi-dashboard-page nav.fi-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active) .fi-tabs-item-icon {
+        @apply !text-neutral-500 dark:!text-neutral-500;
+    }
+
+    /* Form Tabs: sem cartão exterior */
+    .fi-fo-tabs.fi-contained {
+        @apply !gap-3 !rounded-none !bg-transparent !shadow-none !ring-0 dark:!bg-transparent;
+    }
+
+    /* Painel do conteúdo da tab: Filament usa p-6; reduzir evita “caixa dentro de caixa” e alinha às secções */
+    .fi-fo-tabs .fi-fo-tabs-tab.fi-active {
+        @apply !px-0 !pb-6 !pt-3;
+    }
 }

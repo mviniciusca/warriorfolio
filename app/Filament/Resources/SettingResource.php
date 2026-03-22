@@ -134,6 +134,7 @@ class SettingResource extends Resource
                             ->schema([
                                 Section::make(__('Core Module Decoupling'))
                                     ->relationship('core')
+                                    ->compact()
                                     ->description(__('Couple or decouple core modules from your default layout.'))
                                     ->icon('heroicon-o-cpu-chip')
                                     ->schema([
@@ -171,6 +172,7 @@ class SettingResource extends Resource
                                     ]),
 
                                 Section::make(__('Core Modules Global Visibility Control'))
+                                    ->compact()
                                     ->description(__('Enable or disable modules. This is a global setting and will hide the module from entire application.'))
                                     ->icon('heroicon-o-eye')
                                     ->schema([
