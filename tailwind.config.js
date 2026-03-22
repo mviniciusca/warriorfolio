@@ -1,6 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 import preset from './vendor/filament/support/tailwind.config.preset'
 const colors = require('tailwindcss/colors')
+
+/**
+ * Paleta neutra da Saturn UI (texto, bordas, `saturn-50`…`saturn-950`).
+ * Trocar para `colors.slate`, `colors.stone`, etc. realinha escala + superfícies escuras.
+ */
+const saturnNeutral = colors.zinc
+
 export default {
     // presets: [preset],
     content: [
@@ -28,24 +35,27 @@ export default {
                 sans: ['"Geist"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
             },
             colors: {
-                primary: colors.violet,//accent color: default violet
+                primary: colors.violet,
+                info: colors.blue,
+                danger: colors.red,
+                success: colors.green,
+                warning: colors.yellow,
+                secondary: colors.zinc,
+                tertiary: colors.pink,
 
-                info: colors.blue,//info color: default blue
-                danger: colors.red,//danger color: default red
-                success: colors.green,//success color: default green
-                warning: colors.yellow,//warning color: default yellow
+                /** Escala neutra Saturn — ver `saturnNeutral` no topo do ficheiro */
+                saturn: saturnNeutral,
 
-                secondary: colors.zinc,//dark color: default zinc
-                tertiary: colors.pink,//highlight fx color: default pink
+                /** Fundo página claro / escuro (`.saturn-bg`, `.saturn-bg-inverse`) */
+                'saturn-surface': '#ffffff',
+                'saturn-surface-dark': saturnNeutral[950],
 
-                // Saturn UI Colors
-                saturn: colors.zinc,//main color: default zinc
-                'saturn-dark-accent': '#0f0f11', // accent color for dark mode
-                'saturn-light-accent': '#fcfcfc', // accent color for light mode
+                /** Trilhos suaves (`.saturn-bg-accent`, tabs) */
+                'saturn-dark-accent': '#0f0f11',
+                'saturn-light-accent': '#fcfcfc',
             }
         },
     },
     plugins: [
     ],
 }
-

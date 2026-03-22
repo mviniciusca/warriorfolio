@@ -1,7 +1,14 @@
 /*
  * ========================================
- * SATURN UI - COMPONENT LIBRARY
+ * SATURN UI — biblioteca de utilitários (site público + quickbar)
  * ========================================
+ *
+ * Tokens de cor vivem em `tailwind.config.js` (`saturn`, `saturn-surface`, acentos).
+ * Documentação: docs/saturn-ui.md
+ *
+ * Modo “invertido” (não confundir com `dark:`):
+ *   — Classes `*-inverse` trocam claro/escuro *dentro do mesmo tema* (ex. botão escuro em fundo claro).
+ *   — `dark:` continua a ser o tema escuro global (`class="dark"` no <html>).
  *
  * Table of Contents:
  * 1. Base Typography
@@ -45,12 +52,15 @@
 .saturn-border-accent { @apply saturn-transition border-saturn-300 dark:border-saturn-800; }
 .saturn-border-accent-inverse { @apply saturn-transition border-saturn-800 dark:border-saturn-300; }
 
-/** Saturn UI Backgrounds **/
-.saturn-bg { @apply saturn-transition bg-white dark:bg-saturn-950; }
-.saturn-bg-inverse { @apply saturn-transition bg-saturn-950 dark:bg-white; }
+/** Saturn UI Backgrounds (superfícies = `saturn-surface` / `saturn-surface-dark` no Tailwind) **/
+.saturn-bg { @apply saturn-transition bg-saturn-surface dark:bg-saturn-surface-dark; }
+.saturn-bg-inverse { @apply saturn-transition bg-saturn-surface-dark dark:bg-saturn-surface; }
 .saturn-bg-accent { @apply saturn-transition bg-saturn-light-accent dark:bg-saturn-dark-accent; }
 .saturn-bg-accent-inverse { @apply saturn-transition bg-saturn-dark-accent dark:bg-saturn-light-accent; }
-.saturn-modal-bg { @apply saturn-transition bg-white/20 dark:bg-black/20 backdrop-blur-sm; }
+.saturn-modal-bg { @apply saturn-transition bg-saturn-surface/20 dark:bg-black/20 backdrop-blur-sm; }
+
+/** Hover de superfície (também usado por `.saturn-nav-item`) */
+.saturn-hover-bg-accent { @apply hover:bg-saturn-light-accent dark:hover:bg-saturn-dark-accent; }
 
 /* ========================================
  * 3. COMPONENT COMPOSITIONS
@@ -100,7 +110,7 @@
 
 /** Input Fields **/
 .saturn-input {
-    @apply w-full px-3 py-2 saturn-border saturn-bg saturn-text rounded-lg focus:outline-none focus:ring-2 focus:ring-saturn-500 focus:border-transparent;
+    @apply w-full px-3 py-2 saturn-border saturn-bg saturn-text rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-transparent dark:focus:ring-primary-400/35;
 }
 
 .saturn-input-group {
@@ -183,11 +193,11 @@
 }
 
 .saturn-color-secondary {
-    @apply bg-zinc-100 text-zinc-800 dark:bg-zinc-900/20 dark:text-zinc-400;
+    @apply bg-secondary-100 text-secondary-800 dark:bg-secondary-900/20 dark:text-secondary-400;
 }
 
 .saturn-color-secondary-border {
-    @apply bg-zinc-100 text-zinc-800 dark:bg-zinc-900/20 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800;
+    @apply bg-secondary-100 text-secondary-800 dark:bg-secondary-900/20 dark:text-secondary-400 border border-secondary-200 dark:border-secondary-800;
 }
 
 .saturn-notify {
@@ -418,7 +428,7 @@
 }
 
 .saturn-hover-glow {
-    @apply hover:shadow-lg hover:shadow-saturn-500/25 transition-shadow duration-200;
+    @apply hover:shadow-lg hover:shadow-primary-500/20 dark:hover:shadow-primary-400/15 transition-shadow duration-200;
 }
 
 }
