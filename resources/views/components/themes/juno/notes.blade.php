@@ -1,8 +1,15 @@
-{{-- No props required since we get posts from the component class --}}
+{{-- Título, subtítulo e CTA: Section "blog" + fallbacks de Setting (Notes Section no admin) --}}
 
-@if($is_active)
-<x-themes.juno.partials.header :$title :$subtitle buttonIcon="newspaper-outline" buttonUrl="/blog" button="View All"
-    subtitle="Sharing thoughts, tutorials, and insights" title="Notes" />
+@if ($is_active && ($module_blog ?? false))
+    @if ($heading_visible ?? true)
+        <x-themes.juno.partials.header
+            :title="$header_title"
+            :subtitle="$header_subtitle"
+            :button="$show_cta ? $cta_label : null"
+            :buttonUrl="$show_cta ? $cta_url : null"
+            :buttonIcon="$cta_icon"
+        />
+    @endif
 
 <div class="divide-y divide-secondary-200 dark:divide-secondary-800">
     @forelse ($posts as $post)
@@ -48,4 +55,4 @@
     </div>
     @endforelse
 </div>
-@endif
+@endif {{-- module_blog --}}
