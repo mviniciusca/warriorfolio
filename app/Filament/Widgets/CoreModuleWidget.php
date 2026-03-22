@@ -5,16 +5,31 @@ namespace App\Filament\Widgets;
 use App\Filament\Resources\SettingResource;
 use App\Models\Core;
 use App\Models\Setting;
-use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
 class CoreModuleWidget extends BaseWidget
 {
+    protected static string $view = 'filament.widgets.core-module-table-widget';
+
     protected int|string|array $columnSpan = 'full';
 
     protected static ?int $sort = 6;
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getViewData(): array
+    {
+        $settingId = Setting::query()->value('id');
+
+        return [
+            'coreSettingsUrl' => $settingId !== null && $settingId !== ''
+                ? SettingResource::getUrl('edit', ['record' => $settingId])
+                : null,
+        ];
+    }
 
     public function table(Table $table): Table
     {
@@ -23,24 +38,10 @@ class CoreModuleWidget extends BaseWidget
                 Core::query()->select()
             )
             ->striped()
-            ->heading(__('Module Visibility'))
-            ->description(
-                __(
-                    'These switches control which site sections are visible on the public website. Each module stays in its usual fixed position in the layout (for example header, hero, portfolio, contact, or footer)—they are not page-specific.'
-                )
-            )
+            ->heading(null)
+            ->description(null)
             ->emptyStateIcon('heroicon-o-cpu-chip')
             ->paginated(false)
-            ->headerActions(
-                [
-                    ViewAction::make()
-                        ->url(fn (): string => SettingResource::getUrl('edit', ['record' => Setting::query()->value('id')]))
-                        ->label(__('Settings'))
-                        ->icon('heroicon-o-arrow-up-right')
-                        ->outlined()
-                        ->size('xs'),
-                ]
-            )
             ->columns([
                 CheckboxColumn::make('about')
                     ->label('About')

@@ -38,10 +38,48 @@
 
     .fi-wi-stats-overview-stat {
         @apply !rounded-lg !border !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+        /* Compacto (shadcn-like): menos padding e valor principal menor */
+        @apply !px-3 !pt-3 !pb-5;
+    }
+
+    .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-value {
+        @apply !text-xl !font-semibold !leading-7 !tracking-tight;
+    }
+
+    .fi-wi-stats-overview-stat .grid.gap-y-2 {
+        @apply !gap-y-1;
+    }
+
+    .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-icon {
+        @apply !h-4 !w-4;
+    }
+
+    .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-label {
+        @apply !text-xs;
+    }
+
+    .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-description {
+        @apply !text-xs;
+    }
+
+    .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-description-icon {
+        @apply !h-3.5 !w-3.5;
     }
 
     .fi-wi-stats-overview-stat-chart {
         @apply !rounded-b-lg;
+    }
+
+    .fi-wi-stats-overview-stat-chart canvas {
+        @apply !h-4;
+    }
+
+    .fi-wi-stats-overview-stats-ctn {
+        @apply !gap-3 md:!gap-4;
+    }
+
+    .fi-wi-stats-overview.fi-wi-widget {
+        @apply !gap-y-3;
     }
 
     .fi-sidebar {
@@ -95,5 +133,14 @@
 
     .fi-icon-btn:focus-visible {
         @apply !ring-2 !ring-neutral-400 !ring-offset-2 !ring-offset-white dark:!ring-neutral-500 dark:!ring-offset-neutral-950;
+    }
+
+    /* Pulse — Module visibility: um contorno só, sem “segundo cartão” nem fill extra (shadcn-like). */
+    #pulse-core-modules .pulse-core-module-card {
+        @apply rounded-lg border border-neutral-200 bg-white shadow-none ring-0 dark:border-neutral-800 dark:bg-transparent;
+    }
+
+    #pulse-core-modules .fi-ta-ctn {
+        @apply !rounded-none !border-0 !bg-transparent !shadow-none !ring-0 dark:!bg-transparent;
     }
 }

@@ -23,6 +23,8 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class StatsOverview extends BaseWidget
 {
+    protected static ?int $sort = 4;
+
     /**
      * Filament Stat::url() only accepts ?string (not Closure).
      */

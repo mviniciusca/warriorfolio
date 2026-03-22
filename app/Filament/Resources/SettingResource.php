@@ -318,6 +318,7 @@ class SettingResource extends Resource
                             ]),
 
                         Tab::make(__('API Keys & Integrations'))
+                            ->id('api-keys-integrations')
                             ->icon('heroicon-o-key')
                             ->schema([
                                 Tabs::make('api_integrations')

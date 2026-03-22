@@ -11,6 +11,8 @@ use App\Filament\Widgets\NotificationsWidget;
 use App\Filament\Widgets\PostsWidget;
 use App\Filament\Widgets\ProfileWidget;
 use App\Filament\Widgets\ProjectWidget;
+use App\Filament\Widgets\PulseMetricsSectionHeaderWidget;
+use App\Filament\Widgets\PulseQuickActionsWidget;
 use App\Filament\Widgets\SliderWidget;
 use App\Filament\Widgets\StatsOverview;
 use App\Filament\Widgets\SubscriberWidget;
@@ -18,7 +20,6 @@ use Filament\Pages\Dashboard as BaseDashboard;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\HtmlString;
 
 class Dashboard extends BaseDashboard
 {
@@ -46,44 +47,65 @@ class Dashboard extends BaseDashboard
         $greetingLine = filled($name)
             ? $greeting.', '.$name.'!'
             : $greeting.'!';
-        $tabSubtitle = $this->getTabSubheading();
 
-        if ($tabSubtitle === '') {
-            return $greetingLine;
-        }
-
-        return new HtmlString(
-            '<span class="block">'.e($greetingLine).'</span>'
-            .'<span class="mt-1 block text-sm text-gray-500 dark:text-gray-400">'.e($tabSubtitle).'</span>'
-        );
+        return $greetingLine;
     }
 
     /**
-     * Context line for the active dashboard section (shown under the greeting).
+     * @return array{title: string, description: string}
      */
-    protected function getTabSubheading(): string
+    protected function getTabMeta(): array
     {
         return match ($this->activeTab) {
-            'pulse' => __(
-                'Pulse combines key metrics with global module visibility—what you toggle here affects fixed slots across the public layout, not individual pages.'
-            ),
-            'checks' => __(
-                'System checks surface configuration and environment issues before they become outages. Address items here, or dismiss them if you accept the risk.'
-            ),
-            'inbox' => __(
-                'Inbox and moderation: unread messages from your forms and comments waiting for approval.'
-            ),
-            'studio' => __(
-                'Studio pulls together projects, notes, and sliders so you can edit the creative surface of your site from one place.'
-            ),
-            'audience' => __(
-                'Audience covers how you present yourself and how subscribers grow: profile summary, newsletter trend, and visitor-facing alerts.'
-            ),
-            'activity' => __(
-                'Activity is the audit trail—who changed what and when across the admin.'
-            ),
-            default => '',
+            'pulse' => [
+                'title' => __('Pulse'),
+                'description' => '',
+            ],
+            'checks' => [
+                'title' => __('System checks'),
+                'description' => __(
+                    'System checks surface configuration and environment issues before they become outages. Address items here, or dismiss them if you accept the risk.'
+                ),
+            ],
+            'inbox' => [
+                'title' => __('Inbox'),
+                'description' => __(
+                    'Inbox and moderation: unread messages from your forms and comments waiting for approval.'
+                ),
+            ],
+            'studio' => [
+                'title' => __('Studio'),
+                'description' => __(
+                    'Studio pulls together projects, notes, and sliders so you can edit the creative surface of your site from one place.'
+                ),
+            ],
+            'audience' => [
+                'title' => __('Audience'),
+                'description' => __(
+                    'Audience covers how you present yourself and how subscribers grow: profile summary, newsletter trend, and visitor-facing alerts.'
+                ),
+            ],
+            'activity' => [
+                'title' => __('Activity'),
+                'description' => __(
+                    'Activity is the audit trail—who changed what and when across the admin.'
+                ),
+            ],
+            default => [
+                'title' => '',
+                'description' => '',
+            ],
         };
+    }
+
+    public function getActiveTabSectionTitle(): string
+    {
+        return $this->getTabMeta()['title'];
+    }
+
+    public function getActiveTabSectionDescription(): string
+    {
+        return $this->getTabMeta()['description'];
     }
 
     protected static ?string $navigationIcon = 'heroicon-o-home';
@@ -122,6 +144,8 @@ class Dashboard extends BaseDashboard
     {
         return match ($this->activeTab) {
             'pulse' => [
+                PulseQuickActionsWidget::class,
+                PulseMetricsSectionHeaderWidget::class,
                 StatsOverview::class,
                 CoreModuleWidget::class,
             ],
