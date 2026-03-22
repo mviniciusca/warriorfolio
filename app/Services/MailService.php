@@ -3,11 +3,12 @@
 namespace App\Services;
 
 use App\Mail\MailMessage;
+use App\Models\Mail;
 use Exception;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Mail as MailFacade;
 
 class MailService
 {
@@ -15,19 +16,24 @@ class MailService
 
     private bool $error = false;
 
-    public function __construct(public array $data)
-    {
+    /**
+     * @param  array<string, mixed>  $data
+     * @param  Mail|null  $record  When set (admin “sent” row), updates {@see Mail::$smtp_delivered} after SMTP attempt.
+     */
+    public function __construct(
+        public array $data,
+        protected ?Mail $record = null,
+    ) {
         $this->fromEmail = env('MAIL_FROM_ADDRESS', config('mail.from.address')) ?? Auth::user()?->email;
     }
 
     /**
-     * Summary of prepare
-     * @return MailService
+     * @return $this
      */
     private function prepare(): static
     {
         try {
-            Mail::to($this->data['email'])
+            MailFacade::to($this->data['email'])
                 ->send(new MailMessage($this->data));
         } catch (Exception $e) {
             $this->error = true;
@@ -38,9 +44,7 @@ class MailService
     }
 
     /**
-     * Summary of validate
-     * @param mixed $message
-     * @return MailService
+     * @return $this
      */
     private function validate(?string $message = null): static
     {
@@ -60,21 +64,29 @@ class MailService
         return $this;
     }
 
+    private function persistSmtpDeliveredFlag(): void
+    {
+        if ($this->record === null || ! $this->record->is_sent) {
+            return;
+        }
+
+        $this->record->forceFill([
+            'smtp_delivered' => ! $this->error,
+        ])->save();
+    }
+
     /**
-     * Summary of save
-     * @return MailService
+     * @return $this
      */
     private function save(): static
     {
-        $this->prepare()->validate();
+        $this->prepare();
+        $this->persistSmtpDeliveredFlag();
+        $this->validate();
 
         return $this;
     }
 
-    /**
-     * Summary of send
-     * @return MailService
-     */
     public function send(): self
     {
         return $this->save();

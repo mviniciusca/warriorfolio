@@ -7,7 +7,6 @@ namespace Database\Seeders;
 use App\Models\Alert;
 use App\Models\Category;
 use App\Models\Course;
-use App\Models\Mail;
 use App\Models\Newsletter;
 use App\Models\Project;
 use App\Models\Setting;
@@ -35,7 +34,7 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'user_id' => $user->id,
             ]);
-        Mail::factory()->create();
+        $this->call(MailSeeder::class);
         Newsletter::factory()->create();
         Course::factory()->create();
         Category::factory(10)->create();

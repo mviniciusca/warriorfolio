@@ -27,6 +27,16 @@ class Mail extends Model
     protected $guarded = [];
 
     /**
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'smtp_delivered' => 'boolean',
+        ];
+    }
+
+    /**
      * Retrieve all unread mails.
      *
      * @return Collection|array A collection or array of unread mails.

@@ -8,7 +8,7 @@ use Filament\Resources\Pages\ManageRecords;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 
-class ManageMails extends ManageRecords
+class ManageMailRead extends ManageRecords
 {
     use InteractsWithMailboxInboxPages;
 
@@ -16,33 +16,35 @@ class ManageMails extends ManageRecords
 
     public function getTitle(): string|Htmlable
     {
-        return __('Inbox');
+        return __('Read');
     }
 
     public function getSubheading(): string|Htmlable|null
     {
-        return __('Contact form and inbound mail. Open a row to read the full message.');
+        return __('Messages you have already opened.');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('Inbox');
+        return __('Read');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return 'heroicon-o-inbox-stack';
+        return 'heroicon-o-envelope-open';
     }
 
     public static function getNavigationSort(): ?int
     {
-        return 0;
+        return 2;
     }
 
     public static function getNavigationBadge(): ?string
     {
         return MailResource::mailboxSubNavigationBadge(
-            fn (Builder $query) => $query->where('is_sent', false),
+            fn (Builder $query) => $query
+                ->where('is_sent', false)
+                ->where('is_read', true),
         );
     }
 
@@ -54,6 +56,7 @@ class ManageMails extends ManageRecords
     protected function getTableQuery(): ?Builder
     {
         return parent::getTableQuery()
-            ->where('is_sent', false);
+            ->where('is_sent', false)
+            ->where('is_read', true);
     }
 }

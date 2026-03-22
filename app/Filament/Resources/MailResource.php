@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\MailResource\Pages;
 use App\Models\Mail;
 use App\Services\MailService;
+use Closure;
+use Filament\Actions\CreateAction;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
@@ -15,19 +17,14 @@ use Filament\Forms\Form;
 use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Pages\Page as ResourcePage;
 use Filament\Resources\Resource;
-use Filament\Support\Enums\Alignment;
-use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
 use Filament\Tables\Actions\Action as TableRecordAction;
 use Filament\Tables\Actions\ActionGroup;
-use Filament\Tables\Actions\CreateAction;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\IconColumn\IconColumnSize;
 use Filament\Tables\Columns\Layout\Split;
-use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\TernaryFilter;
+use Filament\Tables\Enums\ActionsPosition;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -66,14 +63,187 @@ class MailResource extends Resource
     }
 
     /**
+     * @return array<class-string<ResourcePage>>
+     */
+    public static function getMailboxSubNavigationPages(): array
+    {
+        return [
+            Pages\ManageMails::class,
+            Pages\ManageMailUnread::class,
+            Pages\ManageMailRead::class,
+            Pages\ManageMailImportant::class,
+            Pages\ManageMailSent::class,
+            Pages\MailTrashed::class,
+        ];
+    }
+
+    /**
+     * Contagem para badge nas abas do mail (sub-navegação). Devolve null quando é 0.
+     *
+     * @param  Closure(Builder<Mail>): void  $scope
+     */
+    public static function mailboxSubNavigationBadge(Closure $scope): ?string
+    {
+        $query = static::getModel()::query();
+        $scope($query);
+        $count = $query->count();
+
+        if ($count <= 0) {
+            return null;
+        }
+
+        return $count >= 999 ? '+999' : (string) $count;
+    }
+
+    public static function getNewMessageAction(): CreateAction
+    {
+        return CreateAction::make('write_message')
+            ->model(Mail::class)
+            ->modalHeading(__('New Message'))
+            ->size('sm')
+            ->modalIcon('heroicon-o-envelope')
+            ->modalDescription(__('Write a new mail message. Be sure that SMTP services are enabled.'))
+            ->modalSubmitActionLabel(__('Send Message'))
+            ->label(__('New Message'))
+            ->closeModalByClickingAway(false)
+            ->color('primary')
+            ->icon('heroicon-o-paper-airplane')
+            ->createAnother(false)
+            ->form([
+                Group::make()
+                    ->columns(2)
+                    ->schema([
+                        Hidden::make('is_sent')
+                            ->default(true),
+                        TextInput::make('email')
+                            ->required()
+                            ->email()
+                            ->placeholder(__('Destiny email address'))
+                            ->maxLength(255)
+                            ->prefixIcon('heroicon-o-envelope')
+                            ->label(__('To:')),
+                        TextInput::make('name')
+                            ->required()
+                            ->placeholder(__('Your Name'))
+                            ->maxLength(255)
+                            ->prefixIcon('heroicon-o-user')
+                            ->label(__('Your Name:'))
+                            ->default(function (): mixed {
+                                return Auth::user()->name ?? env('APP_NAME');
+                            }),
+                        TextInput::make('subject')
+                            ->required()
+                            ->placeholder(__('Email subject'))
+                            ->maxLength(255)
+                            ->columnSpanFull()
+                            ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                            ->label(__('Subject:')),
+                        RichEditor::make('body')
+                            ->required()
+                            ->placeholder(__('Your Message'))
+                            ->maxLength(5000)
+                            ->columnSpanFull()
+                            ->label(__('Message')),
+                    ]),
+            ])
+            ->after(function (CreateAction $action): ?MailService {
+                if (! env('SMTP_SERVICES')) {
+                    return null;
+                }
+
+                $record = $action->getRecord();
+
+                if (! $record instanceof Mail) {
+                    return null;
+                }
+
+                return (new MailService([
+                    'email' => $record->email,
+                    'name' => $record->name,
+                    'subject' => $record->subject,
+                    'body' => $record->body,
+                ], $record))->send();
+            });
+    }
+
+    /**
+     * Formulário do modal “Responder” na vista de leitura.
+     *
+     * @return array<int, \Filament\Forms\Components\Component>
+     */
+    public static function getReplyFormSchema(): array
+    {
+        return [
+            Group::make()
+                ->columns(2)
+                ->columnSpanFull()
+                ->schema([
+                    Hidden::make('is_sent')
+                        ->default(true),
+                    TextInput::make('email')
+                        ->email()
+                        ->label(__('To:'))
+                        ->disabled()
+                        ->dehydrated()
+                        ->maxLength(255)
+                        ->prefixIcon('heroicon-o-envelope'),
+                    TextInput::make('name')
+                        ->required()
+                        ->maxLength(255)
+                        ->prefixIcon('heroicon-o-user')
+                        ->label(__('Your name:')),
+                    TextInput::make('subject')
+                        ->required()
+                        ->maxLength(255)
+                        ->columnSpanFull()
+                        ->prefixIcon('heroicon-o-bars-3-bottom-left')
+                        ->label(__('Subject:')),
+                    RichEditor::make('body')
+                        ->required()
+                        ->maxLength(15000)
+                        ->columnSpanFull()
+                        ->label(__('Message')),
+                ]),
+        ];
+    }
+
+    public static function getReplyFormState(Mail $mail): array
+    {
+        $subject = trim((string) ($mail->subject ?? ''));
+
+        if ($subject !== '' && ! preg_match('/^re:\s/i', $subject)) {
+            $subject = 'Re: '.$subject;
+        }
+
+        return [
+            'email' => $mail->email,
+            'name' => Auth::user()->name ?? (string) env('APP_NAME'),
+            'subject' => $subject,
+            'body' => static::quotedReplyHtml($mail),
+            'is_sent' => true,
+        ];
+    }
+
+    public static function quotedReplyHtml(Mail $mail): string
+    {
+        $when = $mail->created_at
+            ? $mail->created_at->timezone(config('app.timezone'))->format('D, M j, Y \a\t g:i A')
+            : '';
+
+        $header = __('On :date, :name wrote:', [
+            'date' => $when,
+            'name' => $mail->name,
+        ]);
+
+        return '<p><br></p><p>'.e($header).'</p><blockquote class="mail-reply-quote">'.$mail->body.'</blockquote>';
+    }
+
+    /**
      * @return array<\Filament\Navigation\NavigationItem|\Filament\Navigation\NavigationGroup>
      */
     public static function getRecordSubNavigation(ResourcePage $page): array
     {
-        return $page->generateNavigationItems([
-            Pages\ManageMails::class,
-            Pages\MailTrashed::class,
-        ]);
+        return $page->generateNavigationItems(static::getMailboxSubNavigationPages());
     }
 
     public static function form(Form $form): Form
@@ -122,140 +292,71 @@ class MailResource extends Resource
     {
         return $table
             ->striped(false)
-            ->headerActions([
-                CreateAction::make('write_message')
-                    ->modalHeading(__('New Message'))
-                    ->size('sm')
-                    ->modalIcon('heroicon-o-envelope')
-                    ->modalDescription(__('Write a new mail message. Be sure that SMTP services are enabled.'))
-                    ->modalSubmitActionLabel(__('Send Message'))
-                    ->label(__('New Message'))
-                    ->closeModalByClickingAway(false)
-                    ->color('primary')
-                    ->icon('heroicon-o-paper-airplane')
-                    ->createAnother(false)
-                    ->form([
-                        Group::make()
-                            ->columns(2)
-                            ->schema([
-                                Hidden::make('is_sent')
-                                    ->default(true),
-                                TextInput::make('email')
-                                    ->required()
-                                    ->email()
-                                    ->placeholder(__('Destiny email address'))
-                                    ->maxLength(255)
-                                    ->prefixIcon('heroicon-o-envelope')
-                                    ->label(__('To:')),
-                                TextInput::make('name')
-                                    ->required()
-                                    ->placeholder(__('Your Name'))
-                                    ->maxLength(255)
-                                    ->prefixIcon('heroicon-o-user')
-                                    ->label(__('Your Name:'))
-                                    ->default(function (): mixed {
-                                        return Auth::user()->name ?? env('APP_NAME');
-                                    }),
-                                TextInput::make('subject')
-                                    ->required()
-                                    ->placeholder(__('Email subject'))
-                                    ->maxLength(255)
-                                    ->columnSpanFull()
-                                    ->prefixIcon('heroicon-o-bars-3-bottom-left')
-                                    ->label(__('Subject:')),
-                                RichEditor::make('body')
-                                    ->required()
-                                    ->placeholder(__('Your Message'))
-                                    ->maxLength(5000)
-                                    ->columnSpanFull()
-                                    ->label(__('Message')),
-                            ]),
-                    ])
-                    ->after(function (?array $data): ?MailService {
-                        if (env('SMTP_SERVICES')) {
-                            $mail = new MailService($data);
-
-                            return $mail->send();
-                        }
-
-                        return null;
-                    }),
-            ])
-            ->heading(__('Inbox'))
-            ->description(__('Messages from your site contact form and outbound mail you send from here.'))
-            ->recordClasses(fn (Mail $record): string => (bool) $record->is_read
-                ? 'opacity-70'
-                : 'border-s-2 border-primary-500/60 dark:border-primary-400/50')
+            ->heading(null)
+            ->description(null)
+            ->recordClasses(fn (Mail $record): string => 'mail-row-compact '.((bool) $record->is_read
+                ? 'is-read'
+                : 'is-unread border-s-2 border-primary-500/50 dark:border-primary-400/40'))
             ->columns([
                 TextColumn::make('email')
                     ->searchable()
                     ->hidden(),
+                TextColumn::make('name')
+                    ->searchable()
+                    ->hidden(),
 
                 Split::make([
-                    IconColumn::make('is_read')
+                    TextColumn::make('subject')
                         ->label('')
-                        ->alignStart()
-                        ->icon(fn (mixed $state): string => (bool) $state
-                            ? 'heroicon-o-envelope-open'
-                            : 'heroicon-s-envelope')
-                        ->color(fn (mixed $state): string => (bool) $state ? 'gray' : 'primary')
-                        ->size(IconColumnSize::Medium)
-                        ->extraAttributes([
-                            'class' => 'shrink-0 [&_.fi-ta-icon]:size-5',
-                        ])
-                        ->grow(false),
+                        ->searchable()
+                        ->sortable()
+                        ->grow()
+                        ->wrap(false)
+                        ->tooltip(fn (Mail $record): string => $record->subject)
+                        ->html()
+                        ->formatStateUsing(function (mixed $state, Mail $record): string {
+                            $name = e($record->name);
+                            $subject = e(Str::limit($record->subject, 72));
+                            $snippet = e(static::plainBodyPreview($record->body, 100));
+                            $emphasis = $record->is_read
+                                ? 'font-medium'
+                                : 'font-semibold';
 
-                    Stack::make([
-                        Split::make([
-                            TextColumn::make('subject')
-                                ->label('')
-                                ->weight(FontWeight::SemiBold)
-                                ->searchable()
-                                ->limit(85)
-                                ->tooltip(fn (Mail $record): string => $record->subject),
-
-                            TextColumn::make('created_at')
-                                ->label('')
-                                ->since()
-                                ->alignment(Alignment::End)
-                                ->color('gray')
-                                ->size('sm')
-                                ->grow(false),
-                        ]),
-
-                        TextColumn::make('name')
-                            ->label('')
-                            ->color('gray')
-                            ->size('sm')
-                            ->formatStateUsing(fn (string $state, Mail $record): string => $state.' · '.$record->email)
-                            ->searchable(),
-
-                        TextColumn::make('body')
-                            ->label('')
-                            ->color('gray')
-                            ->size('sm')
-                            ->formatStateUsing(fn (?string $state): string => static::plainBodyPreview($state, 155)),
-                    ])->space(1),
-                ])->from('sm'),
+                            return '<div class="min-w-0 truncate text-sm leading-tight">'
+                                .'<span class="'.$emphasis.' text-neutral-950 dark:text-white">'.$name.'</span>'
+                                .' <span class="'.$emphasis.' text-neutral-800 dark:text-neutral-100">'.$subject.'</span>'
+                                .' <span class="font-normal text-neutral-500 dark:text-neutral-400">— '.$snippet.'</span>'
+                                .'</div>';
+                        }),
+                    TextColumn::make('created_at')
+                        ->label('')
+                        ->since()
+                        ->grow(false)
+                        ->wrap(false)
+                        ->color('gray')
+                        ->size('sm')
+                        ->extraCellAttributes(['class' => 'whitespace-nowrap ps-3 align-middle shrink-0']),
+                ])->extraAttributes(fn (Mail $record): array => [
+                    'class' => '!gap-3 min-w-0 flex-1 items-center md:flex-row'
+                        .($record->is_read ? ' mail-inbox-read-dim' : ''),
+                ]),
             ])
             ->defaultSort('created_at', 'desc')
             ->defaultPaginationPageOption(25)
-            ->filters([
-                TernaryFilter::make('is_read')
-                    ->label(__('Messages'))
-                    ->falseLabel(__('Unread'))
-                    ->trueLabel(__('Read')),
-                TernaryFilter::make('is_sent')
-                    ->label(__('Status'))
-                    ->default(false)
-                    ->falseLabel(__('Received'))
-                    ->trueLabel(__('Sent')),
-                TernaryFilter::make('is_important')
-                    ->label(__('Important'))
-                    ->falseLabel(__('Without Star'))
-                    ->trueLabel(__('With Star')),
-            ])
+            ->filters([])
             ->actions([
+                TableRecordAction::make('smtpDeliveredIndicator')
+                    ->label('')
+                    ->icon(fn (Mail $record): string => $record->smtp_delivered
+                        ? 'heroicon-o-paper-airplane'
+                        : 'heroicon-o-circle-stack')
+                    ->iconButton()
+                    ->color(fn (Mail $record): string => $record->smtp_delivered ? 'success' : 'gray')
+                    ->tooltip(fn (Mail $record): string => $record->smtp_delivered
+                        ? __('Delivered via SMTP')
+                        : __('Saved in the database only (SMTP disabled or send failed).'))
+                    ->hidden(fn (Mail $record): bool => ! $record->is_sent)
+                    ->action(static function (): void {}),
                 TableRecordAction::make('toggleImportant')
                     ->label(fn (Mail $record): string => $record->is_important ? __('Unstar') : __('Star'))
                     ->icon(fn (Mail $record): string => $record->is_important ? 'heroicon-s-star' : 'heroicon-o-star')
@@ -270,7 +371,7 @@ class MailResource extends Resource
                     Tables\Actions\DeleteAction::make()
                         ->label(__('Move to Trash')),
                 ]),
-            ])
+            ], ActionsPosition::BeforeColumns)
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make()
@@ -284,6 +385,10 @@ class MailResource extends Resource
     {
         return [
             'index' => Pages\ManageMails::route('/'),
+            'unread' => Pages\ManageMailUnread::route('/unread'),
+            'read' => Pages\ManageMailRead::route('/read'),
+            'important' => Pages\ManageMailImportant::route('/important'),
+            'sent' => Pages\ManageMailSent::route('/sent'),
             'view' => Pages\ViewMail::route('{record}/read'),
             'bin' => Pages\MailTrashed::route('/bin'),
         ];

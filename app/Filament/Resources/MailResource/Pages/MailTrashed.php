@@ -14,6 +14,7 @@ use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Builder;
 
 class MailTrashed extends ListRecords
 {
@@ -26,10 +27,7 @@ class MailTrashed extends ListRecords
      */
     public function getSubNavigation(): array
     {
-        return $this->generateNavigationItems([
-            ManageMails::class,
-            self::class,
-        ]);
+        return $this->generateNavigationItems(MailResource::getMailboxSubNavigationPages());
     }
 
     public static function getNavigationLabel(): string
@@ -39,7 +37,19 @@ class MailTrashed extends ListRecords
 
     public static function getNavigationSort(): ?int
     {
-        return 1;
+        return 5;
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return MailResource::mailboxSubNavigationBadge(
+            fn (Builder $query) => $query->onlyTrashed(),
+        );
+    }
+
+    public static function getNavigationBadgeColor(): string|array|null
+    {
+        return 'gray';
     }
 
     public function getTitle(): string|Htmlable
