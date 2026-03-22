@@ -14,30 +14,35 @@
     }
 
     .fi-main {
-        @apply bg-neutral-50 dark:bg-neutral-950;
+        @apply bg-white dark:bg-neutral-950;
+    }
+
+    /* Canvas único no claro: branco (alinha com .fi-main; evita gray-50 do Filament). */
+    .fi-body {
+        @apply !min-h-screen !bg-white !font-normal !text-neutral-950 antialiased dark:!bg-neutral-950 dark:!text-white;
     }
 }
 
 /* Utilitários com `!` para vencer classes no HTML (ring/shadow/rounded do Filament). */
 @layer utilities {
     .fi-section:not(.fi-aside) {
-        @apply !rounded-lg !border !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+        @apply !rounded-lg !border !border-neutral-200 !bg-transparent !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
     }
 
     .fi-topbar nav {
-        @apply !border-b !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+        @apply !border-b !border-neutral-200 !bg-transparent !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
     }
 
     .fi-sidebar-header {
-        @apply !border-b !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950 lg:!shadow-none;
+        @apply !border-b !border-neutral-200 !bg-transparent !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950 lg:!shadow-none;
     }
 
     .fi-ta-ctn {
-        @apply !rounded-lg !border !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+        @apply !rounded-lg !border !border-neutral-200 !bg-transparent !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
     }
 
     .fi-wi-stats-overview-stat {
-        @apply !rounded-lg !border !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+        @apply !rounded-lg !border !border-neutral-200 !bg-transparent !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
         /* Compacto (shadcn-like): menos padding e valor principal menor */
         @apply !px-3 !pt-3 !pb-5;
     }
@@ -83,11 +88,16 @@
     }
 
     .fi-sidebar {
-        @apply bg-white dark:bg-neutral-950 lg:!bg-white lg:dark:!bg-neutral-950;
+        @apply bg-white dark:bg-neutral-950 lg:!bg-transparent lg:dark:!bg-transparent;
     }
 
     .fi-modal-window {
-        @apply !rounded-lg !border !border-neutral-200 !bg-white !shadow-lg !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+        @apply !rounded-lg !border !border-neutral-200 !bg-white !shadow-none !ring-0 dark:!border-neutral-800 dark:!bg-neutral-950;
+    }
+
+    /* Sticky headers/footers (form actions, modais): mesmo fundo do canvas */
+    .fi-sticky {
+        @apply !bg-white/95 !backdrop-blur-sm dark:!bg-neutral-950/95;
     }
 
     /* Botões — mesma linguagem visual (shadcn-like): md, medium, flat + foco neutro */
@@ -137,7 +147,7 @@
 
     /* Pulse — Module visibility: um contorno só, sem “segundo cartão” nem fill extra (shadcn-like). */
     #pulse-core-modules .pulse-core-module-card {
-        @apply rounded-lg border border-neutral-200 bg-white shadow-none ring-0 dark:border-neutral-800 dark:bg-transparent;
+        @apply rounded-lg border border-neutral-200 bg-transparent shadow-none ring-0 dark:border-neutral-800 dark:bg-transparent;
     }
 
     #pulse-core-modules .fi-ta-ctn {
@@ -151,7 +161,8 @@
     .fi-fo-tabs nav.fi-tabs,
     nav.fi-tabs.fi-page-sub-navigation-tabs,
     .fi-dashboard-page nav.fi-tabs {
-        @apply !mx-0 !w-fit !max-w-full !gap-x-1 !gap-y-0 !overflow-x-auto !rounded-lg !border-0 !bg-neutral-100 !p-1 !shadow-none !ring-0 dark:!bg-neutral-800/70;
+        @apply !mx-0 !w-fit !max-w-full !gap-x-1 !gap-y-0 !overflow-x-auto !rounded-lg !p-1 !shadow-none !ring-0;
+        @apply !border !border-neutral-200 !bg-transparent dark:!border-0 dark:!bg-neutral-800/70;
     }
 
     .fi-fo-tabs nav.fi-tabs .fi-tabs-item,
@@ -166,13 +177,13 @@
     nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item.fi-tabs-item-active,
     .fi-dashboard-page nav.fi-tabs .fi-tabs-item.fi-active,
     .fi-dashboard-page nav.fi-tabs .fi-tabs-item.fi-tabs-item-active {
-        @apply !border-transparent !bg-white !shadow-sm dark:!bg-neutral-950;
+        @apply !border-transparent !bg-neutral-100 !shadow-sm dark:!bg-neutral-950;
     }
 
     .fi-fo-tabs nav.fi-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active),
     nav.fi-tabs.fi-page-sub-navigation-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active),
     .fi-dashboard-page nav.fi-tabs .fi-tabs-item:not(.fi-active):not(.fi-tabs-item-active) {
-        @apply hover:!bg-neutral-200/50 dark:hover:!bg-neutral-700/40;
+        @apply hover:!bg-neutral-100/60 dark:hover:!bg-neutral-700/40;
     }
 
     .fi-fo-tabs nav.fi-tabs .fi-tabs-item.fi-active .fi-tabs-item-label,
@@ -210,8 +221,11 @@
         @apply !gap-3 !rounded-none !bg-transparent !shadow-none !ring-0 dark:!bg-transparent;
     }
 
-    /* Painel do conteúdo da tab: Filament usa p-6; reduzir evita “caixa dentro de caixa” e alinha às secções */
+    /*
+     * Painel do conteúdo das form tabs: borda + cantos arredondados para delimitar
+     * o bloco (canvas branco/escuro sem outro “cartão” fica menos vazio).
+     */
     .fi-fo-tabs .fi-fo-tabs-tab.fi-active {
-        @apply !px-0 !pb-6 !pt-3;
+        @apply !rounded-lg !border !border-neutral-200 !px-4 !pb-6 !pt-4 dark:!border-neutral-800 sm:!px-6;
     }
 }

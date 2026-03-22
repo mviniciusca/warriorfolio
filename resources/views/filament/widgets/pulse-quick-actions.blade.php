@@ -1,6 +1,6 @@
 @php
     $cardBase =
-        'group relative flex flex-col gap-1.5 rounded-lg border border-neutral-200 bg-white px-3 py-3 text-start shadow-sm transition dark:border-neutral-800 dark:bg-neutral-950 dark:shadow-none';
+        'group relative flex flex-col gap-1.5 rounded-lg border border-neutral-200 bg-transparent px-3 py-3 text-start shadow-none transition dark:border-neutral-800 dark:bg-transparent';
     $cardHover =
         'hover:border-neutral-300 hover:bg-neutral-50 dark:hover:border-neutral-700 dark:hover:bg-neutral-900/80';
     $titleClass = 'text-sm font-semibold leading-tight text-neutral-950 dark:text-white';
