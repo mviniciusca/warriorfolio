@@ -25,7 +25,8 @@ class GithubService
 
     public function getGithubToken()
     {
-        $token = Setting::first(['config'])->config['github_token'] ?? null;
+        $config = Setting::first(['config'])?->config ?? [];
+        $token = $config['github_api_token'] ?? $config['github_token'] ?? null;
         if (empty($token)) {
             $token = config('warriorfolio.github_api_token', env('GITHUB_API_TOKEN'));
             Log::info('Using GitHub API token from config');
@@ -84,8 +85,8 @@ class GithubService
                     }
                 } else {
                     Log::warning("Failed to fetch GitHub repo: {$this->githubUser}/{$repoName}. Status: ".$response->status(), [
-                        'response'  => $response->body(),
-                        'api_url'   => $api,
+                        'response' => $response->body(),
+                        'api_url' => $api,
                         'has_token' => ! empty($this->githubToken),
                     ]);
                 }
@@ -105,10 +106,10 @@ class GithubService
 
             $response = Http::withToken($this->githubToken)
                 ->get($api, [
-                    'type'      => 'owner', // Only show repositories owned by the user
-                    'sort'      => 'updated',
+                    'type' => 'owner', // Only show repositories owned by the user
+                    'sort' => 'updated',
                     'direction' => 'desc',
-                    'per_page'  => 100,
+                    'per_page' => 100,
                 ]);
 
             if ($response->successful()) {
@@ -120,8 +121,8 @@ class GithubService
                 });
             } else {
                 Log::warning("Failed to fetch repositories for user: {$this->githubUser}. Status: ".$response->status(), [
-                    'response'  => $response->body(),
-                    'api_url'   => $api,
+                    'response' => $response->body(),
+                    'api_url' => $api,
                     'has_token' => ! empty($this->githubToken),
                 ]);
 

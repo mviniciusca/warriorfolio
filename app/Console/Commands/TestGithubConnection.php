@@ -38,7 +38,8 @@ class TestGithubConnection extends Command
         $this->newLine();
 
         // Get token
-        $token = Setting::first(['config'])->config['github_token'] ?? null;
+        $cfg = Setting::first(['config'])?->config ?? [];
+        $token = $cfg['github_api_token'] ?? $cfg['github_token'] ?? null;
         if (empty($token)) {
             $token = config('warriorfolio.github_api_token', env('GITHUB_API_TOKEN'));
             $this->warn('Using token from config/env');
@@ -82,10 +83,10 @@ class TestGithubConnection extends Command
         $response = Http::withHeaders([
             'Authorization' => 'Bearer '.$token,
         ])->get("https://api.github.com/users/{$username}/repos", [
-            'type'      => 'owner',
-            'sort'      => 'updated',
+            'type' => 'owner',
+            'sort' => 'updated',
             'direction' => 'desc',
-            'per_page'  => 10,
+            'per_page' => 10,
         ]);
 
         if (! $response->successful()) {

@@ -69,7 +69,7 @@
                     </svg>
                     {{ $repository['forks_count'] ?? 0 }}
                 </span>
-            </divgp>
+            </div>
             {{-- Language --}}
             @if (!empty($repository['language']))
             <span

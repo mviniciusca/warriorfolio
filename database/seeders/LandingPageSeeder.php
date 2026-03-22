@@ -78,6 +78,12 @@ class LandingPageSeeder extends Seeder
                         'data' => [
                             'active' => null,
                         ],
+                        'type' => 'github-repositories',
+                    ],
+                    [
+                        'data' => [
+                            'active' => null,
+                        ],
                         'type' => 'courses',
                     ],
                     [

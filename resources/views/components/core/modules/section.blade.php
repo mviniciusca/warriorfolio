@@ -13,8 +13,8 @@
     @endif
 
     {{-- About Me as Coupled Module --}}
-    @if ($module->slug === 'about-me'))
-    <x-themes.default.about />
+    @if ($module->slug === 'about-me')
+        <x-themes.default.about />
     @endif
 
     {{-- Portfolio as Coupled Module --}}
