@@ -123,8 +123,6 @@ class Dashboard extends BaseDashboard
             ],
             'inbox' => [
                 'default' => 1,
-                'md' => 2,
-                'xl' => 3,
             ],
             'studio', 'audience' => [
                 'default' => 1,

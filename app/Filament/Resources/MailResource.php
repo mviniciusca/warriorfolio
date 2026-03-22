@@ -324,7 +324,8 @@ class MailResource extends Resource
 
                             return '<div class="min-w-0 truncate text-sm leading-tight">'
                                 .'<span class="'.$emphasis.' text-neutral-950 dark:text-white">'.$name.'</span>'
-                                .' <span class="'.$emphasis.' text-neutral-800 dark:text-neutral-100">'.$subject.'</span>'
+                                .' <span class="font-normal text-neutral-400 dark:text-neutral-500">—</span> '
+                                .'<span class="'.$emphasis.' text-neutral-800 dark:text-neutral-100">'.$subject.'</span>'
                                 .' <span class="font-normal text-neutral-500 dark:text-neutral-400">— '.$snippet.'</span>'
                                 .'</div>';
                         }),
