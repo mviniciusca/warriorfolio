@@ -62,6 +62,11 @@ class AdminPanelProvider extends PanelProvider
             ->breadcrumbs(true)
             ->login()
             ->maxContentWidth('Full')
+            /*
+             * Navegação principal horizontal (topbar), em vez da sidebar.
+             * Para voltar ao menu lateral: comente ou remova a linha abaixo.
+             */
+            ->topNavigation()
             ->sidebarCollapsibleOnDesktop()
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
             ->font(
