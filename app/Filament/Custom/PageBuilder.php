@@ -3,8 +3,8 @@
 namespace App\Filament\Custom;
 
 use Filament\Forms\Components\Builder\Block;
+use Filament\Support\Enums\MaxWidth;
 use Z3d0X\FilamentFabricator\Enums\BlockPickerStyle;
-use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 
 class PageBuilder extends \Z3d0X\FilamentFabricator\Forms\Components\PageBuilder
 {
@@ -12,12 +12,14 @@ class PageBuilder extends \Z3d0X\FilamentFabricator\Forms\Components\PageBuilder
 
     protected BlockPickerStyle $blockPickerStyle = BlockPickerStyle::Modal;
 
-    protected bool $showSidebar = false;
+    /** Biblioteca fixa ao estilo painel de blocos (ex.: WordPress). */
+    protected bool $showSidebar = true;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->blockPickerColumns(4);
+        $this->blockPickerWidth(MaxWidth::FiveExtraLarge);
     }
 
     public function getBlocks(): array

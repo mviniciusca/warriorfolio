@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use App\Filament\Pages\Dashboard;
 use App\Models\Setting;
 use Awcodes\Curator\CuratorPlugin;
+use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -54,7 +55,13 @@ class AdminPanelProvider extends PanelProvider
             ->breadcrumbs(true)
             ->login()
             ->maxContentWidth('Full')
+            ->sidebarCollapsibleOnDesktop()
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
+            ->font(
+                'Geist',
+                'https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap',
+                GoogleFontProvider::class,
+            )
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandLogo(asset('img/core/logo-app.svg'))
             ->brandLogoHeight('2rem')
@@ -99,7 +106,6 @@ class AdminPanelProvider extends PanelProvider
                 'gray' => Color::Zinc,
             ])
             ->navigationGroups([
-                // No group icons: Filament forbids group + item icons when the sidebar is not collapsible on desktop.
                 NavigationGroup::make(__('Workspace'))->collapsible(),
                 NavigationGroup::make(__('Library'))->collapsed(),
                 NavigationGroup::make(__('Site shortcuts'))->collapsed(),

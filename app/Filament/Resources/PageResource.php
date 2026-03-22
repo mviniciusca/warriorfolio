@@ -10,8 +10,11 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Wizard;
+use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Form;
 use Filament\Pages\SubNavigationPosition;
 use Filament\Tables\Actions\Action;
@@ -176,170 +179,197 @@ class PageResource extends ResourcesPageResource
     {
         return $form
             ->schema([
-                Tabs::make('Page Management')
-                    ->columnSpanFull()
-                    ->tabs([
-                        Tabs\Tab::make('Page Constructor')
-                            ->icon('heroicon-o-puzzle-piece')
-                            ->schema([
-                                Section::make('Page Builder')
-                                    ->description('Design your page by adding and arranging components')
-                                    ->icon('heroicon-o-puzzle-piece')
-                                    ->collapsible()
-                                    ->schema([
-                                        PageBuilder::make('blocks')
-                                            ->label(false)
-                                            ->blocks(FilamentFabricator::getPageBlocks())
-                                            ->collapsible(false)
-                                            ->cloneable()
-                                            ->collapsible()
-                                            ->showSidebar(false),
-                                    ]),
-                            ]),
+                Wizard::make([
+                    Step::make('constructor')
+                        ->label(__('Content'))
+                        ->description(__('Blocks and layout for this page'))
+                        ->icon('heroicon-o-puzzle-piece')
+                        ->schema([
+                            PageBuilder::make('blocks')
+                                ->label(false)
+                                ->columnSpanFull()
+                                ->blocks(FilamentFabricator::getPageBlocks())
+                                ->cloneable()
+                                ->collapsible()
+                                ->blockIcons()
+                                ->addActionLabel(__('Add block'))
+                                ->addBetweenActionLabel(__('Insert block here')),
+                        ]),
 
-                        Tabs\Tab::make('Page Details')
-                            ->icon('heroicon-o-document-text')
-                            ->schema([
-                                Section::make('Page Information')
-                                    ->description('Basic information about the page')
-                                    ->icon('heroicon-o-information-circle')
-                                    ->collapsible()
-                                    ->schema([
-                                        Grid::make(3)
-                                            ->schema([
-                                                TextInput::make('title')
-                                                    ->label(__('Title'))
-                                                    ->helperText(__('The title of the page'))
-                                                    ->required()
-                                                    ->maxLength(255)
-                                                    ->live(onBlur: true)
-                                                    ->afterStateUpdated(fn (string $operation, $state, callable $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+                    Step::make('details')
+                        ->label(__('Page details'))
+                        ->description(__('Title, URL, SEO, and custom scripts'))
+                        ->icon('heroicon-o-document-text')
+                        ->schema([
+                            Tabs::make('pageDetailsTabs')
+                                ->columnSpanFull()
+                                ->persistTabInQueryString('details')
+                                ->tabs([
+                                    Tabs\Tab::make('general')
+                                        ->label(__('General'))
+                                        ->icon('heroicon-o-information-circle')
+                                        ->schema([
+                                            Section::make(__('Page information'))
+                                                ->description(__('Basic information about the page'))
+                                                ->icon('heroicon-o-information-circle')
+                                                ->schema([
+                                                    Grid::make(3)
+                                                        ->schema([
+                                                            TextInput::make('title')
+                                                                ->label(__('Title'))
+                                                                ->helperText(__('The title of the page'))
+                                                                ->required()
+                                                                ->maxLength(255)
+                                                                ->live(onBlur: true)
+                                                                ->afterStateUpdated(fn (string $operation, $state, callable $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
 
-                                                TextInput::make('slug')
-                                                    ->label(__('Slug'))
-                                                    ->required()
-                                                    ->maxLength(255)
-                                                    ->unique(ignoreRecord: true)
-                                                    ->rules(['regex:/^[a-zA-Z0-9\-\/]+$/'])
-                                                    ->helperText(__('This will be the URL of your page. Use / for homepage')),
+                                                            TextInput::make('slug')
+                                                                ->label(__('Slug'))
+                                                                ->required()
+                                                                ->maxLength(255)
+                                                                ->unique(ignoreRecord: true)
+                                                                ->rules(['regex:/^[a-zA-Z0-9\-\/]+$/'])
+                                                                ->helperText(__('This will be the URL of your page. Use / for homepage')),
 
-                                                Select::make('layout')
-                                                    ->label(__('Layout'))
-                                                    ->helperText(__('Select the layout for this page'))
-                                                    ->options(FilamentFabricator::getLayouts())
-                                                    ->required(),
-                                            ]),
-                                    ]),
+                                                            Select::make('layout')
+                                                                ->label(__('Layout'))
+                                                                ->helperText(__('Select the layout for this page'))
+                                                                ->options(FilamentFabricator::getLayouts())
+                                                                ->required(),
+                                                        ]),
+                                                ]),
+                                        ]),
 
-                                Section::make('SEO Information')
-                                    ->description('Search engine optimization settings for this page')
-                                    ->icon('heroicon-o-magnifying-glass')
-                                    ->collapsible()
-                                    ->schema([
-                                        TextInput::make('meta_title')
-                                            ->label(__('Meta Title'))
-                                            ->helperText(__('Title that appears in search engine results (if different from page title)'))
-                                            ->maxLength(60),
+                                    Tabs\Tab::make('seo')
+                                        ->label(__('SEO'))
+                                        ->icon('heroicon-o-magnifying-glass')
+                                        ->schema([
+                                            Section::make(__('SEO'))
+                                                ->description(__('Search engine optimization for this page'))
+                                                ->icon('heroicon-o-magnifying-glass')
+                                                ->schema([
+                                                    TextInput::make('meta_title')
+                                                        ->label(__('Meta Title'))
+                                                        ->helperText(__('Title that appears in search engine results (if different from page title)'))
+                                                        ->maxLength(60),
 
-                                        TextInput::make('meta_description')
-                                            ->label(__('Meta Description'))
-                                            ->helperText(__('Brief description used in search engine results'))
-                                            ->maxLength(160),
+                                                    TextInput::make('meta_description')
+                                                        ->label(__('Meta Description'))
+                                                        ->helperText(__('Brief description used in search engine results'))
+                                                        ->maxLength(160),
 
-                                        TextInput::make('meta_keywords')
-                                            ->label(__('Meta Keywords'))
-                                            ->helperText(__('Keywords separated by commas'))
-                                            ->maxLength(255),
-                                    ]),
+                                                    TextInput::make('meta_keywords')
+                                                        ->label(__('Meta Keywords'))
+                                                        ->helperText(__('Keywords separated by commas'))
+                                                        ->maxLength(255),
+                                                ]),
+                                        ]),
 
-                                Section::make('Page Scripts')
-                                    ->description('Add custom scripts that will run only on this page')
-                                    ->icon('heroicon-o-code-bracket')
-                                    ->collapsible()
-                                    ->schema([
-                                        \Filament\Forms\Components\Textarea::make('header_scripts')
-                                            ->label(__('Header Scripts'))
-                                            ->helperText(__('Scripts that will be added to the <head> section of this page only'))
-                                            ->placeholder('<script>// Your script here</script>')
-                                            ->rows(6),
+                                    Tabs\Tab::make('scripts')
+                                        ->label(__('Scripts'))
+                                        ->icon('heroicon-o-code-bracket')
+                                        ->schema([
+                                            Section::make(__('Page scripts'))
+                                                ->description(__('Run only on this page'))
+                                                ->icon('heroicon-o-code-bracket')
+                                                ->schema([
+                                                    Textarea::make('header_scripts')
+                                                        ->label(__('Header scripts'))
+                                                        ->helperText(__('Added to the <head> of this page only'))
+                                                        ->placeholder('<script>// Your script here</script>')
+                                                        ->rows(6),
 
-                                        \Filament\Forms\Components\Textarea::make('footer_scripts')
-                                            ->label(__('Footer Scripts'))
-                                            ->helperText(__('Scripts that will be added before the closing </body> tag of this page only'))
-                                            ->placeholder('<script>// Your script here</script>')
-                                            ->rows(6),
-                                    ]),
-                            ]),
+                                                    Textarea::make('footer_scripts')
+                                                        ->label(__('Footer scripts'))
+                                                        ->helperText(__('Added before </body> on this page only'))
+                                                        ->placeholder('<script>// Your script here</script>')
+                                                        ->rows(6),
+                                                ]),
+                                        ]),
+                                ]),
+                        ]),
 
-                        Tabs\Tab::make('Settings')
-                            ->icon('heroicon-o-cog-6-tooth')
-                            ->schema([
-                                Section::make(__('Visibility & Access'))
-                                    ->description(__('Control who can see this page and when'))
-                                    ->icon('heroicon-o-eye')
-                                    ->collapsible()
-                                    ->columns(3)
-                                    ->schema([
-                                        Toggle::make('is_active')
-                                            ->label(__('Published'))
-                                            ->helperText(__('Make this page visible to visitors'))
-                                            ->default(true),
+                    Step::make('settings')
+                        ->label(__('Settings'))
+                        ->description(__('Publishing, access, and redirects'))
+                        ->icon('heroicon-o-cog-6-tooth')
+                        ->schema([
+                            Tabs::make('pageSettingsTabs')
+                                ->columnSpanFull()
+                                ->persistTabInQueryString('settings')
+                                ->tabs([
+                                    Tabs\Tab::make('visibility')
+                                        ->label(__('Visibility & access'))
+                                        ->icon('heroicon-o-eye')
+                                        ->schema([
+                                            Section::make(__('Visibility & access'))
+                                                ->description(__('Control who can see this page'))
+                                                ->icon('heroicon-o-eye')
+                                                ->columns(3)
+                                                ->schema([
+                                                    Toggle::make('is_active')
+                                                        ->label(__('Published'))
+                                                        ->helperText(__('Make this page visible to visitors'))
+                                                        ->default(true),
 
-                                        Toggle::make('is_password_protected')
-                                            ->label(__('Password Protected'))
-                                            ->helperText(__('Require a password to view this page'))
-                                            ->reactive(),
+                                                    Toggle::make('is_password_protected')
+                                                        ->label(__('Password protected'))
+                                                        ->helperText(__('Require a password to view this page'))
+                                                        ->reactive(),
 
-                                        TextInput::make('access_password')
-                                            ->label(__('Access Password'))
-                                            ->revealable()
-                                            ->password()
-                                            ->helperText(function ($record) {
-                                                if ($record && ! empty($record->access_password)) {
-                                                    return __('Password is set. Enter a new password to change it, or leave empty to keep current password.');
-                                                }
+                                                    TextInput::make('access_password')
+                                                        ->label(__('Access password'))
+                                                        ->revealable()
+                                                        ->password()
+                                                        ->helperText(function ($record) {
+                                                            if ($record && ! empty($record->access_password)) {
+                                                                return __('Password is set. Enter a new password to change it, or leave empty to keep current password.');
+                                                            }
 
-                                                return __('Password required to access this page.');
-                                            })
-                                            ->placeholder(function ($record) {
-                                                if ($record && ! empty($record->access_password)) {
-                                                    return '••••••••••••••••';
-                                                }
+                                                            return __('Password required to access this page.');
+                                                        })
+                                                        ->placeholder(function ($record) {
+                                                            if ($record && ! empty($record->access_password)) {
+                                                                return '••••••••••••••••';
+                                                            }
 
-                                                return __('Enter password');
-                                            })
-                                            ->visible(fn ($get) => $get('is_password_protected'))
-                                            ->dehydrateStateUsing(function ($state, $record) {
-                                                // Se o campo está vazio e estamos editando um registro existente, manter a senha atual
-                                                if (empty($state) && $record) {
-                                                    return $record->access_password;
-                                                }
+                                                            return __('Enter password');
+                                                        })
+                                                        ->visible(fn ($get) => $get('is_password_protected'))
+                                                        ->dehydrateStateUsing(function ($state, $record) {
+                                                            if (empty($state) && $record) {
+                                                                return $record->access_password;
+                                                            }
 
-                                                // Se uma nova senha foi digitada, fazer hash
-                                                return filled($state) ? bcrypt($state) : null;
-                                            })
-                                            ->afterStateHydrated(function ($component, $state, $record) {
-                                                // Limpar o campo ao carregar para não mostrar o hash, mas manter placeholder
-                                                $component->state('');
-                                            }),
-                                    ]),
+                                                            return filled($state) ? bcrypt($state) : null;
+                                                        })
+                                                        ->afterStateHydrated(function ($component, $state, $record) {
+                                                            $component->state('');
+                                                        }),
+                                                ]),
+                                        ]),
 
-                                Section::make(__('Page Behavior'))
-                                    ->description(__('Configure how this page functions'))
-                                    ->icon('heroicon-o-arrow-path')
-                                    ->collapsible()
-                                    ->columns(2)
-                                    ->schema([
-                                        TextInput::make('advanced_settings.behavior.redirect_url')
-                                            ->label(__('Redirect URL'))
-                                            ->prefixIcon('heroicon-o-link')
-                                            ->url()
-                                            ->helperText(__('If set, visitors will be redirected to this URL')),
-                                    ]),
-
-                            ]),
-                    ])
-                    ->persistTabInQueryString('tab'),
+                                    Tabs\Tab::make('behavior')
+                                        ->label(__('Behavior'))
+                                        ->icon('heroicon-o-arrow-path')
+                                        ->schema([
+                                            Section::make(__('Page behavior'))
+                                                ->description(__('Redirects and other behavior'))
+                                                ->icon('heroicon-o-arrow-path')
+                                                ->schema([
+                                                    TextInput::make('advanced_settings.behavior.redirect_url')
+                                                        ->label(__('Redirect URL'))
+                                                        ->prefixIcon('heroicon-o-link')
+                                                        ->url()
+                                                        ->helperText(__('If set, visitors will be redirected to this URL')),
+                                                ]),
+                                        ]),
+                                ]),
+                        ]),
+                ])
+                    ->skippable()
+                    ->persistStepInQueryString('page')
+                    ->columnSpanFull(),
             ]);
     }
 
